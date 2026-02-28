@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Bible Study Archive</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:wght@400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment:      #f5efe0;
+    --parchment-dark: #ede3cc;
+    --parchment-deep: #e0d4b8;
+    --ink:            #1e1710;
+    --ink-soft:       #3a2f22;
+    --ink-muted:      #6b5d4a;
+    --forest:         #2d5a3d;
+    --forest-mid:     #3d7a54;
+    --forest-light:   #5a9e72;
+    --forest-pale:    #c8dfc8;
+    --emerald:        #1a4a2e;
+    --gold:           #b8860b;
+    --gold-light:     #d4a820;
+    --gold-pale:      #f0d870;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #1a2e1e;
+    background-image:
+      radial-gradient(ellipse at 15% 10%, rgba(45,90,61,0.4) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 90%, rgba(26,74,46,0.3) 0%, transparent 55%);
+    font-family: 'Lato', sans-serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 20px 14px 60px;
+  }
+
+  .page { max-width: 680px; margin: 0 auto; }
+
+  /* HEADER */
+  .header {
+    background: var(--parchment-dark);
+    border-radius: 2px 2px 0 0;
+    position: relative;
+    overflow: hidden;
+    border-top: 5px solid var(--forest);
+    border-left: 3px solid var(--forest);
+    border-right: 3px solid var(--forest);
+  }
+  .header-knotwork {
+    height: 18px;
+    background: var(--forest);
+    position: relative;
+    overflow: hidden;
+  }
+  .header-knotwork::after {
+    content: '✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦';
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    transform: translateY(-50%);
+    text-align: center;
+    color: var(--gold-light);
+    font-size: 7px;
+    letter-spacing: 4px;
+    opacity: 0.6;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .header-inner {
+    padding: 28px 24px 24px;
+    text-align: center;
+    position: relative;
+  }
+  .header-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--forest-mid);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .header-eyebrow::before { content: ''; display: block; height: 1px; width: 40px; background: linear-gradient(90deg, transparent, var(--forest-mid)); }
+  .header-eyebrow::after  { content: ''; display: block; height: 1px; width: 40px; background: linear-gradient(90deg, var(--forest-mid), transparent); }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 5.5vw, 34px);
+    font-weight: 700;
+    color: var(--emerald);
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+  .header-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-muted);
+    margin-bottom: 18px;
+  }
+  .celtic-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 8px 0 16px;
+  }
+  .celtic-divider span { display: block; height: 1px; width: 55px; background: linear-gradient(90deg, transparent, var(--forest-light), transparent); }
+  .celtic-divider .symbol { font-size: 20px; color: var(--forest); line-height: 1; }
+
+  /* CARD */
+  .card {
+    background: var(--parchment);
+    border-left: 3px solid var(--forest);
+    border-right: 3px solid var(--forest);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  /* INSTRUCTION SECTION */
+  .section {
+    padding: 24px 22px;
+    border-bottom: 1px solid rgba(45,90,61,0.15);
+    position: relative;
+  }
+  .section:last-child { border-bottom: none; }
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .section-emoji { font-size: 18px; line-height: 1; }
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--forest-mid);
+  }
+  .section-title-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--forest-pale), transparent); }
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--emerald);
+    margin-bottom: 12px;
+  }
+  .section p {
+    font-size: 15px;
+    line-height: 1.78;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .section p:last-child { margin-bottom: 0; }
+
+  /* STUDY LIST */
+  .studies-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .study-item {
+    border-bottom: 1px solid rgba(45,90,61,0.12);
+  }
+  .study-item:last-child { border-bottom: none; }
+  .study-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 15px 22px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s;
+    position: relative;
+  }
+  .study-link:hover { background: rgba(45,90,61,0.05); }
+  .study-link:hover .study-arrow { opacity: 1; transform: translateX(3px); }
+
+  .study-date-badge {
+    flex-shrink: 0;
+    background: var(--forest);
+    color: var(--gold-pale);
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    text-align: center;
+    min-width: 72px;
+    line-height: 1.5;
+  }
+  .study-date-badge .badge-month { display: block; }
+  .study-date-badge .badge-day   { display: block; font-size: 16px; font-weight: 700; letter-spacing: 0; line-height: 1.1; }
+
+  .study-info { flex: 1; min-width: 0; }
+  .study-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--emerald);
+    line-height: 1.3;
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .study-meta {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .study-arrow {
+    color: var(--forest-mid);
+    font-size: 14px;
+    opacity: 0.4;
+    transition: opacity 0.15s, transform 0.15s;
+    flex-shrink: 0;
+  }
+
+  /* EMPTY STATE */
+  .empty-state {
+    text-align: center;
+    padding: 40px 22px;
+  }
+  .empty-icon { font-size: 36px; margin-bottom: 12px; }
+  .empty-state h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--emerald);
+    margin-bottom: 8px;
+  }
+  .empty-state p {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.7;
+  }
+
+  /* QUARTER GROUPS */
+  .quarter-header {
+    background: var(--parchment-deep);
+    padding: 10px 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid rgba(45,90,61,0.2);
+    border-top: 1px solid rgba(45,90,61,0.2);
+  }
+  .quarter-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--forest);
+  }
+  .quarter-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--forest-pale), transparent); }
+  .quarter-count {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    color: var(--ink-muted);
+    letter-spacing: 1px;
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--parchment-deep);
+    padding: 14px 22px;
+    display: flex;
+    gap: 24px;
+    border-bottom: 1px solid rgba(45,90,61,0.15);
+    flex-wrap: wrap;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--emerald);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* HOW TO ADD */
+  .how-to {
+    background: linear-gradient(135deg, #e8efe8, #d8e8d8);
+    border-left: 4px solid var(--forest);
+  }
+  .step-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+  .step-item { display: flex; gap: 12px; align-items: flex-start; }
+  .step-num {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    background: var(--forest);
+    color: var(--gold-pale);
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    margin-top: 1px;
+  }
+  .step-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+  .step-text strong { color: var(--emerald); font-weight: 700; }
+  .naming-rule {
+    background: var(--forest);
+    color: var(--gold-pale);
+    font-family: 'Lora', serif;
+    font-size: 14px;
+    padding: 10px 14px;
+    margin-top: 12px;
+    border-radius: 2px;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  .naming-rule .label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 18px 20px;
+    background: var(--emerald);
+    border-radius: 0 0 2px 2px;
+    border: 3px solid var(--forest);
+    border-top: none;
+  }
+  .footer-knotwork {
+    height: 8px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--forest-light) 0px, var(--forest-light) 3px,
+      transparent 3px, transparent 8px,
+      var(--gold) 8px, var(--gold) 10px,
+      transparent 10px, transparent 15px
+    );
+    opacity: 0.3;
+    margin-bottom: 10px;
+  }
+  .footer p {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-pale);
+    opacity: 0.7;
+  }
+
+  @media (max-width: 480px) {
+    body { padding: 0 0 48px; }
+    .header-inner { padding: 22px 16px 18px; }
+    .section { padding: 20px 16px; }
+    .study-link { padding: 14px 16px; }
+    .stats-bar { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-knotwork"></div>
+    <div class="header-inner">
+      <div class="header-eyebrow">Daily Bible Study</div>
+      <h1>Study Archive</h1>
+      <div class="header-subtitle">Every study, in one place</div>
+      <div class="celtic-divider">
+        <span></span>
+        <div class="symbol">☩</div>
+        <span></span>
+      </div>
+    </div>
+    <div class="header-knotwork"></div>
+  </div>
+
+  <div class="card">
+
+    <!-- STATS -->
+    <div class="stats-bar" id="stats-bar" style="display:none;">
+      <div class="stat">
+        <div class="stat-num" id="stat-total">0</div>
+        <div class="stat-label">Studies Complete</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="stat-streak">0</div>
+        <div class="stat-label">Current Streak</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="stat-quarter">—</div>
+        <div class="stat-label">Current Quarter</div>
+      </div>
+    </div>
+
+    <!-- STUDIES LIST -->
+    <div id="studies-container">
+      <div class="empty-state">
+        <div class="empty-icon">📖</div>
+        <h3>No studies yet</h3>
+        <p>Upload your first daily HTML file to see it appear here automatically.</p>
+      </div>
+    </div>
+
+    <!-- HOW TO ADD SECTION -->
+    <div class="section how-to" style="display:none;">
+      <div class="section-label">
+        <span class="section-emoji">📲</span>
+        <span class="section-title">Adding a New Study</span>
+        <div class="section-title-line"></div>
+      </div>
+      <div class="section-heading">Your Daily 4-Tap Workflow</div>
+      <ol class="step-list">
+        <li class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-text">Claude generates your HTML file — <strong>download it</strong> from the Claude app to your phone</div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-text">Open the <strong>GitHub mobile app</strong> → tap your <code>bible-study</code> repository</div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-text">Tap the <strong>+</strong> button → <em>Upload files</em> → select the downloaded HTML file</div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-text"><strong>Rename the file</strong> before uploading using the format below, then tap <em>Commit changes</em></div>
+        </li>
+      </ol>
+      <div class="naming-rule">
+        <span class="label">Required File Naming Format</span>
+        YYYY-MM-DD.html &nbsp;·&nbsp; example: 2026-02-28.html
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-knotwork"></div>
+    <p>Daily Bible Study · Shared with ✝ Love</p>
+  </div>
+
+</div>
+
+<script>
+// ─────────────────────────────────────────────────────────────────────
+// AUTO-DISCOVERY — no manual editing ever needed
+// Just set your GitHub username below (already set for you)
+// ─────────────────────────────────────────────────────────────────────
+const GITHUB_USER = 'blessed-dooley';
+const GITHUB_REPO = 'bible-study';
+const EXCLUDED = ['index.html', 'substack-mockup.html', 'substack-real.html', '_config.yml', 'README.md'];
+
+function parseDate(filename) {
+  const match = filename.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!match) return null;
+  return new Date(parseInt(match[1]), parseInt(match[2]) - 1, parseInt(match[3]));
+}
+
+function formatMonth(date) {
+  return date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+}
+
+function formatDay(date) {
+  return date.getDate();
+}
+
+function getTitleFromFilename(filename) {
+  return filename
+    .replace(/\.html$/, '')
+    .replace(/^\d{4}-\d{2}-\d{2}-?/, '')
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, c => c.toUpperCase()) || filename.replace(/\.html$/, '');
+}
+
+function getGroupLabel(date) {
+  if (!date) return 'Archive';
+  const q = Math.floor(date.getMonth() / 3) + 1;
+  return `Q${q} ${date.getFullYear()}`;
+}
+
+function calcStreak(dates) {
+  if (!dates.length) return 0;
+  const today = new Date(); today.setHours(0,0,0,0);
+  const yesterday = new Date(today); yesterday.setDate(today.getDate() - 1);
+  const set = new Set(dates.map(d => d.toDateString()));
+  if (!set.has(today.toDateString()) && !set.has(yesterday.toDateString())) return 0;
+  let check = set.has(today.toDateString()) ? today : yesterday;
+  let streak = 0;
+  while (set.has(check.toDateString())) {
+    streak++;
+    check = new Date(check); check.setDate(check.getDate() - 1);
+  }
+  return streak;
+}
+
+function showLoading() {
+  document.getElementById('studies-container').innerHTML = `
+    <div class="empty-state">
+      <div class="empty-icon">⏳</div>
+      <h3>Loading studies…</h3>
+      <p>Fetching your archive from GitHub.</p>
+    </div>`;
+}
+
+function showEmpty() {
+  document.getElementById('studies-container').innerHTML = `
+    <div class="empty-state">
+      <div class="empty-icon">📖</div>
+      <h3>No studies yet</h3>
+      <p>Upload your first daily HTML file — it will appear here automatically.</p>
+    </div>`;
+}
+
+function render(files) {
+  const container = document.getElementById('studies-container');
+  const statsBar  = document.getElementById('stats-bar');
+
+  const studies = files
+    .filter(f => f.type === 'file' && f.name.endsWith('.html') && !EXCLUDED.includes(f.name))
+    .map(f => ({ file: f.name, date: parseDate(f.name), title: getTitleFromFilename(f.name) }))
+    .sort((a, b) => {
+      if (a.date && b.date) return b.date - a.date;
+      if (a.date) return -1;
+      if (b.date) return 1;
+      return a.file.localeCompare(b.file);
+    });
+
+  if (!studies.length) { showEmpty(); return; }
+
+  statsBar.style.display = 'flex';
+  document.getElementById('stat-total').textContent = studies.length;
+  const dates = studies.map(s => s.date).filter(Boolean);
+  document.getElementById('stat-streak').textContent = calcStreak(dates);
+  const latestDate = dates[0];
+  document.getElementById('stat-quarter').textContent = latestDate
+    ? `Q${Math.floor(latestDate.getMonth()/3)+1} ${latestDate.getFullYear()}` : '—';
+
+  const groups = {};
+  studies.forEach(s => {
+    const key = getGroupLabel(s.date);
+    if (!groups[key]) groups[key] = [];
+    groups[key].push(s);
+  });
+
+  let html = '<ul class="studies-list">';
+  Object.entries(groups).forEach(([group, items]) => {
+    html += `
+      <li>
+        <div class="quarter-header">
+          <span class="quarter-label">☩ ${group}</span>
+          <span class="quarter-line"></span>
+          <span class="quarter-count">${items.length} ${items.length === 1 ? 'study' : 'studies'}</span>
+        </div>
+        <ul class="studies-list">`;
+    items.forEach(s => {
+      const month = s.date ? formatMonth(s.date) : '☩';
+      const day   = s.date ? formatDay(s.date) : '';
+      const meta  = s.date ? s.date.toLocaleString('en-US',{month:'long',day:'numeric',year:'numeric'}) : 'Daily Verse';
+      html += `
+        <li class="study-item">
+          <a class="study-link" href="${s.file}">
+            <div class="study-date-badge">
+              <span class="badge-month">${month}</span>
+              <span class="badge-day">${day}</span>
+            </div>
+            <div class="study-info">
+              <div class="study-title">${s.title}</div>
+              <div class="study-meta">${meta}</div>
+            </div>
+            <div class="study-arrow">›</div>
+          </a>
+        </li>`;
+    });
+    html += '</ul></li>';
+  });
+  html += '</ul>';
+  container.innerHTML = html;
+}
+
+async function loadStudies() {
+  showLoading();
+  try {
+    const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/`);
+    if (!res.ok) throw new Error('API error');
+    render(await res.json());
+  } catch(e) {
+    showEmpty();
+  }
+}
+
+loadStudies();
+</script>
+</body>
+</html>
