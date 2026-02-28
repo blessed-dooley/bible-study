@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Substack Mockup — John 3:16</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #f0f0f0;
+    font-family: 'Inter', sans-serif;
+    color: #1a1a1a;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  /* SUBSTACK CHROME */
+  .substack-bar {
+    background: #fff;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .pub-name {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pub-avatar {
+    width: 28px; height: 28px;
+    background: #2d5a3d;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #f0d870;
+    font-size: 14px;
+  }
+  .subscribe-btn {
+    background: #ff6719;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 7px 16px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* ARTICLE WRAPPER */
+  .article-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    background: #fff;
+    min-height: 100vh;
+    padding: 48px 28px 80px;
+  }
+
+  /* META */
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .meta-avatar {
+    width: 40px; height: 40px;
+    background: #2d5a3d;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #f0d870;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .meta-info { flex: 1; }
+  .meta-author {
+    font-weight: 600;
+    font-size: 14px;
+    color: #1a1a1a;
+  }
+  .meta-date {
+    font-size: 13px;
+    color: #666;
+    margin-top: 1px;
+  }
+  .meta-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .meta-action {
+    font-size: 13px;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* CONTENT */
+  .article-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #2d5a3d;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: clamp(28px, 5vw, 38px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+  }
+
+  .subtitle {
+    font-family: 'Source Serif 4', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .section-heading {
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #2d5a3d;
+    margin: 36px 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-heading::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e5e5e5;
+  }
+
+  p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 18px;
+    line-height: 1.75;
+    color: #222;
+    margin-bottom: 20px;
+  }
+
+  /* TLDR */
+  .tldr-box {
+    background: #f7f7f5;
+    border-left: 3px solid #2d5a3d;
+    padding: 18px 20px;
+    margin-bottom: 32px;
+    border-radius: 0 4px 4px 0;
+  }
+  .tldr-box ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .tldr-box li {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333;
+    display: flex;
+    gap: 8px;
+  }
+  .tldr-box li::before {
+    content: '✦';
+    color: #2d5a3d;
+    font-size: 10px;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+
+  /* VERSE BLOCK */
+  .verse-block {
+    background: #f7f7f5;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 24px 0;
+    border: 1px solid #e5e5e5;
+  }
+  .verse-ref {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #2d5a3d;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .bible-link {
+    font-size: 11px;
+    color: #2d5a3d;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    border: 1px solid #2d5a3d;
+    padding: 3px 9px;
+    border-radius: 3px;
+  }
+  .verse-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 19px;
+    line-height: 1.7;
+    color: #1a1a1a;
+    font-style: italic;
+    margin-bottom: 6px;
+  }
+  .verse-translation {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #999;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .verse-commentary {
+    font-family: 'Source Serif 4', serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #444;
+    padding-top: 14px;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  /* ACTION BOX */
+  .action-box {
+    background: #2d5a3d;
+    color: #f5efe0;
+    padding: 20px 22px;
+    border-radius: 4px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 17px;
+    line-height: 1.7;
+    margin: 8px 0 20px;
+  }
+
+  /* PRAYER */
+  .prayer-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 18px;
+    line-height: 1.85;
+    color: #222;
+    font-style: italic;
+  }
+
+  /* DISCUSSION */
+  .discussion-q {
+    font-family: 'Source Serif 4', serif;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #1a4a2e;
+    font-style: italic;
+    border-left: 3px solid #2d5a3d;
+    padding-left: 18px;
+    margin: 8px 0;
+  }
+
+  /* SHARE BAR */
+  .share-bar {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid #e5e5e5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .like-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #444;
+    background: #f0f0f0;
+    border: 1px solid #e0e0e0;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  .share-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #fff;
+    background: #1a1a1a;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  /* SUBSCRIBE FOOTER */
+  .subscribe-footer {
+    margin-top: 48px;
+    background: #f7f7f5;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .subscribe-footer h3 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .subscribe-footer p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 16px;
+  }
+  .subscribe-input-row {
+    display: flex;
+    gap: 8px;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+  .subscribe-input-row input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  .subscribe-input-row button {
+    background: #ff6719;
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  /* MOCKUP LABEL */
+  .mockup-banner {
+    background: #1a1a1a;
+    color: #f0d870;
+    text-align: center;
+    padding: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 480px) {
+    .article-wrap { padding: 32px 18px 60px; }
+    .subscribe-input-row { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mockup-banner">☩ Substack Mockup Preview — Not a live page</div>
+
+<!-- SUBSTACK TOP BAR -->
+<div class="substack-bar">
+  <div class="pub-name">
+    <div class="pub-avatar">☩</div>
+    Daily Bible Study
+  </div>
+  <button class="subscribe-btn">Subscribe</button>
+</div>
+
+<!-- ARTICLE -->
+<div class="article-wrap">
+
+  <div class="article-label">☩ Daily Verse</div>
+
+  <h1>John 3:16 — The Most Famous Verse</h1>
+  <div class="subtitle">What does the most quoted verse in history actually mean — and have we heard it so many times that we've stopped hearing it at all?</div>
+
+  <div class="article-meta">
+    <div class="meta-avatar">☩</div>
+    <div class="meta-info">
+      <div class="meta-author">Daily Bible Study</div>
+      <div class="meta-date">Feb 28, 2026 · 8 min read</div>
+    </div>
+    <div class="meta-actions">
+      <span class="meta-action">♡ 12</span>
+      <span class="meta-action">💬 3</span>
+    </div>
+  </div>
+
+  <!-- TLDR -->
+  <div class="section-heading">📌 TL;DR</div>
+  <div class="tldr-box">
+    <ul>
+      <li>John 3:16 is not a bumper sticker — it is the compressed gospel, containing everything Christianity stands or falls on.</li>
+      <li>God's love is not a feeling — it is an action: He gave His Son deliberately, at full cost, for people who didn't deserve it.</li>
+      <li>The word "believes" in Greek is continuous action — not a moment you passed through, but a posture you maintain.</li>
+      <li>Verse 17 completes the picture: Jesus didn't come to condemn. He came as a rescuer diving into the water.</li>
+    </ul>
+  </div>
+
+  <!-- CONTEXT -->
+  <div class="section-heading">🗺️ Historical & Cultural Context</div>
+  <p>John 3:16 arrives in the middle of a night conversation — and in John's Gospel, night is never just a time of day. Nicodemus, a Pharisee and member of the Sanhedrin (the 70-member ruling council of Jewish religious life), comes to Jesus after dark. He is a man of enormous theological training and social standing, and he comes with questions that his position won't allow him to ask in public.</p>
+  <p>The Pharisees were not villains in a vacuum. They were the most rigorous defenders of Torah observance in first-century Judaism, deeply committed to keeping Israel faithful to God's law. For Nicodemus to approach Jesus at all — given the growing institutional suspicion of this Galilean rabbi — is itself a remarkable act. Jesus' response demolishes every category Nicodemus has and introduces an entirely new framework: rebirth, Spirit, and a love so large it encompasses "the world" — not just Israel.</p>
+
+  <!-- WALKTHROUGH -->
+  <div class="section-heading">📖 Chronological Walkthrough</div>
+
+  <div class="verse-block">
+    <div class="verse-ref">
+      John 3:1–2
+      <a class="bible-link" href="https://www.bible.com/bible/1713/JHN.3.1" target="_blank">☩ Open in Bible App</a>
+    </div>
+    <div class="verse-text">"There was a man from the Pharisees named Nicodemus, a ruler of the Jews. This man came to him at night and said, 'Rabbi, we know that you are a teacher who has come from God, for no one could perform these signs you do unless God were with him.'"</div>
+    <div class="verse-translation">Christian Standard Bible · CSB</div>
+    <div class="verse-commentary">The scene is set deliberately: a man of supreme religious authority comes at night. The nighttime detail is not incidental — John uses darkness symbolically throughout his Gospel. Nicodemus comes with respectful curiosity but also, perhaps, protective secrecy. His opening admission — "we know you are from God" — reveals that even within the religious establishment, there was awareness that Jesus was extraordinary. Yet Nicodemus is still trying to categorize Jesus within existing frameworks. Jesus is about to shatter every one of them.</div>
+  </div>
+
+  <div class="verse-block">
+    <div class="verse-ref">
+      John 3:14–15
+      <a class="bible-link" href="https://www.bible.com/bible/1713/JHN.3.14" target="_blank">☩ Open in Bible App</a>
+    </div>
+    <div class="verse-text">"Just as Moses lifted up the snake in the wilderness, so the Son of Man must be lifted up, so that everyone who believes in him may have eternal life."</div>
+    <div class="verse-translation">Christian Standard Bible · CSB</div>
+    <div class="verse-commentary">Before reaching verse 16, Jesus lays crucial groundwork by referencing Numbers 21 — a story Nicodemus, as a Torah scholar, would know cold. Moses crafted a bronze serpent and lifted it on a pole; anyone bitten who looked up at it in faith was healed. Jesus maps this directly onto His own coming crucifixion. The Cross is not Plan B. It is the plan, foretold in shadow and type throughout the entire Old Testament.</div>
+  </div>
+
+  <div class="verse-block">
+    <div class="verse-ref">
+      John 3:16
+      <a class="bible-link" href="https://www.bible.com/bible/1713/JHN.3.16" target="_blank">☩ Open in Bible App</a>
+    </div>
+    <div class="verse-text">"For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life."</div>
+    <div class="verse-translation">Christian Standard Bible · CSB</div>
+    <div class="verse-commentary">Four Greek words anchor this verse. <strong>Houtōs</strong> — "so" — means "in this way," describing the manner of God's love, not merely the intensity. <strong>Monogenē</strong> means "one and only" — a Son in a category entirely alone. <strong>Pisteuōn</strong> is a present active participle — continuous, ongoing belief, not a moment you passed through. And <strong>aiōnion</strong>, eternal life, is not primarily about duration but about quality — the life of the age to come, beginning now.</div>
+  </div>
+
+  <div class="verse-block">
+    <div class="verse-ref">
+      John 3:17
+      <a class="bible-link" href="https://www.bible.com/bible/1713/JHN.3.17" target="_blank">☩ Open in Bible App</a>
+    </div>
+    <div class="verse-text">"For God did not send his Son into the world to condemn the world, but to save the world through him."</div>
+    <div class="verse-translation">Christian Standard Bible · CSB</div>
+    <div class="verse-commentary">Verse 17 is the essential companion to verse 16, and it's often overlooked. The world Jesus entered was already under condemnation. God's mission was not to pile on more judgment but to provide rescue. Jesus did not arrive as a judge pronouncing a verdict; He arrived as a rescuer diving into the water.</div>
+  </div>
+
+  <!-- STREET LEVEL -->
+  <div class="section-heading">🎯 Street Level</div>
+  <p><strong>The Parent Who Steps In Front of the Car</strong></p>
+  <p>You've seen it — maybe you've even done it. A child darts into traffic without looking, and a parent reacts before their brain even processes what's happening. They step in front of the car. They don't weigh the cost. They don't calculate the odds. The love moves faster than the logic.</p>
+  <p>That's the closest human picture we have to John 3:16 — except this: God didn't react in a panic. He planned it. Before the world was even created, He knew exactly what humanity would do, and He decided in advance that His Son would be the provision. That's not impulsive love. That's deliberate, costly, eyes-wide-open love. The kind that looks at the full bill — suffering, abandonment, death — and signs it anyway. And the name on the check is Jesus.</p>
+
+  <!-- TODAY'S WORLD -->
+  <div class="section-heading">🌍 Today's World, Ancient Truth</div>
+  <p><strong>Five Lives from One: A 2025 Story of Giving All You Have</strong></p>
+  <p>In October 2025, South Korean author Baek Se-hee died at age 35. Her family chose organ donation, and she gave her heart, lungs, liver, and both kidneys to five different people — five strangers received life from her death.</p>
+  <p>One life given. Five lives saved. The math of sacrificial love never makes rational sense — and that's precisely the point. When God looked at a world in perishing, He didn't calculate ROI. He gave His most precious thing for people who didn't know Him, didn't deserve it, and in many cases would never thank Him. That's not transactional love. That's the love that defines the cross.</p>
+
+  <!-- CHRIST CONNECTION -->
+  <div class="section-heading">✝️ The Christ Connection</div>
+  <p>John 3:16 is not a description of a principle — it is a description of a Person. "He gave his one and only Son" is the thesis statement for everything Jesus is and does. The entire Gospel of John is an unpacking of what it means that God stepped into creation in human flesh, lived the life we couldn't live, died the death we deserved, and rose to prove that death had no final claim on those who trust in Him.</p>
+  <p>The Cross is where "God so loved the world" stopped being a declaration and became an act — the most costly gift in the history of the universe. And Jesus went to it not dragged, but willingly — because He too loved the world the Father loved.</p>
+
+  <!-- APPLICATION -->
+  <div class="section-heading">✅ Personal Application Challenge</div>
+  <div class="action-box">
+    Today, write John 3:16 out by hand — not typed, written — and underneath it, write one specific name of someone in your life who doesn't yet know Jesus. Pray for that person by name, asking God to give you one natural opportunity this week to share what this verse means to you personally. Don't prepare a speech. Just be ready to say, "This is what God did for me."
+  </div>
+
+  <!-- PRAYER -->
+  <div class="section-heading">🙏 Closing Prayer</div>
+  <p class="prayer-text">Father, I've read John 3:16 so many times that it's easy to say the words without feeling their full weight. Today I want to slow down and actually feel them. You loved — not as a distant admirer, but as a Father who looked at a world in free fall and refused to let it go. You gave — and what You gave cost You everything. Hold me in that truth today. Make it more than theology — make it the ground I stand on. In Jesus' name, Amen.</p>
+
+  <!-- DISCUSSION -->
+  <div class="section-heading">💬 Discussion Question</div>
+  <div class="discussion-q">"John 3:16 is perhaps the most familiar verse in the Bible — but familiarity can be the enemy of impact. When was the last time this verse actually moved you? What would it take for you to read it as if for the very first time?"</div>
+
+  <!-- SHARE BAR -->
+  <div class="share-bar">
+    <button class="like-btn">♡ Like · 12</button>
+    <button class="share-btn">↗ Share</button>
+  </div>
+
+  <!-- SUBSCRIBE FOOTER -->
+  <div class="subscribe-footer">
+    <h3>Get the daily study in your inbox</h3>
+    <p>Join readers studying Scripture every morning. Free, always.</p>
+    <div class="subscribe-input-row">
+      <input type="email" placeholder="your@email.com">
+      <button>Subscribe</button>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
