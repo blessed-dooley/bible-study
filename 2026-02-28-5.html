@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Bible Study</title>
+<meta name="study-title" content="Sabbath/Sunday — Christ Is the Whole Treasury">
+<meta name="study-series" content="Colossians · Week 10, Day 1">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:           #1a1a1a;
+    --bg-raise:     #222222;
+    --bg-high:      #2a2a2a;
+    --bg-card:      #1f1f1f;
+    --border:       rgba(255,255,255,0.07);
+    --border-mid:   rgba(255,255,255,0.12);
+    --emerald:      #3d9970;
+    --emerald-dim:  #2a6b4e;
+    --emerald-glow: rgba(61,153,112,0.15);
+    --emerald-pale: rgba(61,153,112,0.08);
+    --text:         #e8e8e8;
+    --text-soft:    #a8a8a8;
+    --text-muted:   #666666;
+    --text-verse:   #f0ede6;
+    --white:        #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(61,153,112,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(61,153,112,0.04) 0%, transparent 50%);
+    font-family: 'Nunito', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    padding: 24px 16px 80px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { max-width: 660px; margin: 0 auto; }
+
+  /* ── HEADER ── */
+  .header {
+    margin-bottom: 0;
+    padding: 40px 28px 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-bottom: none;
+    border-radius: 12px 12px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--emerald), transparent);
+  }
+  .header-eyebrow {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--emerald);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header-eyebrow::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--emerald);
+    opacity: 0.6;
+  }
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 6vw, 42px);
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+  .header-subtitle {
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--text-soft);
+    letter-spacing: 0.02em;
+    margin-bottom: 24px;
+  }
+  .date-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--emerald-pale);
+    border: 1px solid var(--emerald-dim);
+    color: var(--emerald);
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 4px;
+  }
+  .date-badge::before {
+    content: '☩';
+    font-size: 12px;
+    opacity: 0.7;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-bottom: none;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 28px 28px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .section-emoji { font-size: 24px; line-height: 1; flex-shrink: 0; }
+  .section-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--emerald);
+    white-space: nowrap;
+  }
+  .section-title-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border-mid), transparent);
+  }
+  .section-heading {
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 14px;
+    line-height: 1.3;
+  }
+  .section p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 14px;
+    font-weight: 300;
+  }
+  .section p:last-child { margin-bottom: 0; }
+
+  /* ── TL;DR ── */
+  .tldr-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .tldr-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text);
+    font-weight: 300;
+  }
+  .bullet-icon {
+    color: var(--emerald);
+    font-size: 10px;
+    margin-top: 6px;
+    flex-shrink: 0;
+    opacity: 0.8;
+  }
+
+  /* ── VERSE BLOCK ── */
+  .verse-block {
+    margin: 20px 0;
+    background: var(--bg-high);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--emerald);
+    border-radius: 0 8px 8px 0;
+    padding: 18px 20px;
+    position: relative;
+  }
+  .verse-block:first-child { margin-top: 8px; }
+  .verse-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .verse-ref {
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--emerald);
+  }
+  .bible-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--emerald-pale);
+    border: 1px solid var(--emerald-dim);
+    color: var(--emerald);
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .bible-btn:hover {
+    background: var(--emerald-glow);
+    border-color: var(--emerald);
+  }
+  .verse-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    font-style: italic;
+    line-height: 1.8;
+    color: var(--text-verse);
+    margin-bottom: 8px;
+    font-weight: 400;
+  }
+  .verse-translation {
+    font-family: 'Nunito', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 14px;
+  }
+  .verse-commentary {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-soft);
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-weight: 300;
+  }
+
+  /* ── ACCENT SECTIONS ── */
+  .section-context { background: var(--bg-card); }
+
+  .section-christ {
+    background: linear-gradient(135deg, rgba(61,153,112,0.12) 0%, rgba(61,153,112,0.05) 100%);
+    border-left: 4px solid var(--emerald);
+    position: relative;
+  }
+  .section-christ::after {
+    content: '✝';
+    position: absolute;
+    bottom: 16px;
+    right: 24px;
+    font-size: 28px;
+    color: var(--emerald);
+    opacity: 0.12;
+  }
+
+  .section-prayer { background: var(--bg-card); border-top: 2px solid var(--emerald-dim) !important; }
+  .section-prayer p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--text-verse);
+  }
+
+  .section-application { background: var(--bg-card); }
+  .action-box {
+    background: var(--emerald-glow);
+    border: 1px solid var(--emerald);
+    border-radius: 8px;
+    padding: 22px 24px;
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--white);
+    font-weight: 400;
+    position: relative;
+    box-shadow: 0 0 24px rgba(61,153,112,0.1), inset 0 1px 0 rgba(61,153,112,0.2);
+  }
+  .action-box::before {
+    content: 'DO THIS TODAY';
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: var(--emerald);
+    margin-bottom: 10px;
+  }
+
+  .section-discussion { background: var(--bg-card); }
+  .discussion-q {
+    font-family: 'Nunito', sans-serif;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--white);
+    padding-left: 20px;
+    border-left: 3px solid var(--emerald);
+  }
+
+  /* ── BIBLE APP STRIP ── */
+  .bible-app-strip {
+    background: var(--bg-raise);
+    border: 1px solid var(--border);
+    border-top: 1px solid var(--border-mid);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .strip-label {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
+  .app-link {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    border: 1px solid var(--border-mid);
+    color: var(--text-soft);
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .app-link:hover { border-color: var(--emerald); color: var(--emerald); }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 20px 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 1px solid var(--border-mid);
+    border-radius: 0 0 12px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .footer p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .footer-archive {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--emerald);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .footer-archive:hover { opacity: 1; }
+
+  @media (max-width: 480px) {
+    body { padding: 0 0 60px; }
+    .header { padding: 28px 20px 24px; border-radius: 0; }
+    .card { border-radius: 0; }
+    .section { padding: 24px 20px; }
+    .bible-app-strip { padding: 14px 20px; flex-direction: column; align-items: flex-start; }
+    .footer { padding: 16px 20px; border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-eyebrow">Daily Bible Study</div>
+    <h1>Sabbath/Sunday — Christ Is the Whole Treasury</h1>
+    <div class="header-subtitle">Colossians · Week 10, Day 1</div>
+    <div class="date-badge">February 28 – March 1, 2026</div>
+  </div>
+
+  <div class="card">
+
+    <!-- TL;DR -->
+    <div class="section">
+      <div class="section-label">
+        <span class="section-emoji">📌</span>
+        <span class="section-title">TL;DR</span>
+        <div class="section-title-line"></div>
+      </div>
+      <ul class="tldr-list">
+        <li><span class="bullet-icon">◆</span> A new week, a new chapter — and Paul's argument gets sharper: every treasure of wisdom and knowledge is hidden in Christ alone, not in any religious system or philosophical supplement.</li>
+        <li><span class="bullet-icon">◆</span> The false teachers in Colossae were religious, sincere, and wrong — blending Jewish law-keeping, angelic worship, ascetic rules, and human philosophy in ways that quietly demoted Christ from sufficient Savior to useful starting point.</li>
+        <li><span class="bullet-icon">◆</span> Paul's antidote isn't a better ruleset — it's a deeper vision of Christ: if you have Him, you have everything.</li>
+        <li><span class="bullet-icon">◆</span> The church's "good order" (taxis) and "steadfastness" (stereōma) are not bureaucratic virtues — they are the structural fortress that protects believers from being destabilized by every new spiritual trend.</li>
+      </ul>
+    </div>
+
+    <!-- CONTEXT -->
+    <div class="section section-context">
+      <div class="section-label">
+        <span class="section-emoji">🗺️</span>
+        <span class="section-title">Historical &amp; Cultural Context</span>
+        <div class="section-title-line"></div>
+      </div>
+      <div class="section-heading">Colossae — A City at the Crossroads of Ideas</div>
+      <p>Colossae sat at the intersection of major trade routes in the Lycus Valley of Asia Minor (modern Turkey), making it a natural mixing bowl of cultures, philosophies, and religions. By the time Paul wrote this letter (approximately AD 60–62), the city had been exposed to Greek Stoic and Platonic philosophy, Jewish mysticism and law-keeping, early proto-Gnostic ideas about secret spiritual hierarchies, and local mystery religions featuring angelic intermediaries and elaborate ritual systems.</p>
+      <p>The false teaching threatening the Colossian church wasn't a single heresy with a name tag — it was a cocktail. A little circumcision here, some dietary regulations there, angel veneration mixed in, topped off with human philosophical reasoning, all presented as a supplement to the gospel. The subtle danger: it didn't replace Christ outright — it just quietly demoted Him. Paul's letter is a sustained, passionate argument that Christ cannot be supplemented — He can only be embraced fully or abandoned gradually.</p>
+    </div>
+
+    <!-- WALKTHROUGH -->
+    <div class="section">
+      <div class="section-label">
+        <span class="section-emoji">📖</span>
+        <span class="section-title">Chronological Walkthrough</span>
+        <div class="section-title-line"></div>
+      </div>
+
+      <!-- Memory Text -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Colossians 2:16–17 · Memory Text</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/1713/COL.2.16" target="_blank">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">"So let no one judge you in food or in drink, or regarding a festival or a new moon or sabbaths, which are a shadow of things to come; but the substance is of Christ."</div>
+        <div class="verse-translation">New King James Version · NKJV</div>
+        <div class="verse-commentary">Paul plants his flag immediately. The Jewish ceremonial calendar — festivals, new moons, sabbaths in their ceremonial dimension — were shadows. The Greek word is <em>skia</em>, meaning shade or silhouette. A shadow tells you something is coming, but the moment the real thing arrives, you stop staring at the shadow. Christ is the <em>substance</em> — the Greek word <em>sōma</em>, literally the body casting the shadow. This verse was never written to address weekly Sabbath-keeping; it was written in response to false teachers using Jewish ceremonial observances as tools of spiritual judgment and control.</div>
+      </div>
+
+      <!-- Job 28:12 -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Job 28:12</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/1713/JOB.28.12" target="_blank">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">"But where can wisdom be found? And where is the place of understanding?"</div>
+        <div class="verse-translation">New King James Version · NKJV</div>
+        <div class="verse-commentary">Job's anguished question echoes through millennia. Every philosopher, every spiritual seeker, every religious system has tried to answer it. Paul's answer in Colossians 2 is shockingly simple and radically exclusive: Christ.</div>
+      </div>
+
+      <!-- Colossians 2:1–7 -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Colossians 2:1–7</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/1713/COL.2.1" target="_blank">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">"I want you to know how greatly I am struggling for you, for those in Laodicea, and for all who have not seen me in person. I want their hearts to be encouraged and joined together in love, so that they may have all the riches of complete understanding and have the knowledge of God's mystery — Christ. In him are hidden all the treasures of wisdom and knowledge. I am saying this so that no one will deceive you with compelling arguments. For I may be absent in body, but I am with you in spirit, rejoicing to see your good order and the firmness of your faith in Christ. So then, just as you have received Christ Jesus as Lord, continue to walk in him, being rooted and built up in him and established in the faith, just as you were taught, and overflowing with gratitude."</div>
+        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-commentary"><strong style="color:var(--text);">"All the riches of complete understanding"</strong> — the Greek <em>plērophoria</em> means full assurance or complete certainty. Paul wants believers settled in total conviction, not hovering in spiritual uncertainty. <strong style="color:var(--text);">"Hidden all the treasures of wisdom and knowledge"</strong> — the Greek <em>apokryphoi</em> is deliberate. Everything the false teachers promised through elaborate systems is already in Christ. Not partially — all of it. The word <em>thēsauroi</em> (treasures) is the same root as our word "thesaurus" — a complete storehouse. <strong style="color:var(--text);">"Compelling arguments"</strong> — the Greek <em>pithanologia</em> means persuasive rhetoric. The false teaching sounds convincing. The danger is not that it's obviously wrong — it's that it's attractively sophisticated.</div>
+      </div>
+
+      <!-- 1 Corinthians 1:30 -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">1 Corinthians 1:30</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.1.30" target="_blank">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">"It is from him that you are in Christ Jesus, who became wisdom from God for us — our righteousness, sanctification, and redemption."</div>
+        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-commentary">Paul says the same thing here as in Colossians 2. Christ isn't one ingredient in a spiritual recipe. He is the righteousness, the sanctification, and the redemption. He is not the beginning of wisdom — He is wisdom itself. This is why supplementing Christ is not just unnecessary — it is theologically incoherent.</div>
+      </div>
+
+      <!-- Colossians 2:5 — Taxis -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Colossians 2:5</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/1713/COL.2.5" target="_blank">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">"For though I am absent in the flesh, yet I am with you in spirit, rejoicing to see your good order and the steadfastness of your faith in Christ."</div>
+        <div class="verse-translation">New King James Version · NKJV</div>
+        <div class="verse-commentary">The Greek word <em>taxis</em> (order) was a military term for troops arranged in proper battle formation. In the New Testament it describes the ordered worship of the Levitical priesthood (Luke 1:8) and the eternal priestly order of Melchizedek (Hebrews 7:11). Paul applies it to the church's organizational life — this is not bureaucracy for its own sake but strategic formation that protects the body. <em>Stereōma</em> (steadfastness) is a complementary military term meaning a solid fortification or fortress wall. The Colossians' ordered, doctrinally grounded faith is their defensive wall against the sophisticated attack of false teachers.</div>
+      </div>
+
+      <!-- 1 Corinthians 14:40 -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">1 Corinthians 14:40</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.14.40" target="_blank">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">"But everything is to be done decently and in order."</div>
+        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-commentary">The same Greek word <em>taxis</em> appears here. Order in worship isn't aesthetic preference — it is the structural expression of who God is. A chaotic, undisciplined spiritual community is vulnerable to every wind of doctrine.</div>
+      </div>
+
+      <!-- 1 Timothy 3:15 -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">1 Timothy 3:15</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/1713/1TI.3.15" target="_blank">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">"...but if I should be delayed, I have written so that you will know how people ought to conduct themselves in God's household, which is the church of the living God, the pillar and foundation of the truth."</div>
+        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-commentary">Elders and deacons aren't organizational conveniences — they are truth-preservation structures. A properly ordered church with biblically qualified leadership is one of God's primary mechanisms for protecting the gospel from corruption. The structure exists to serve the substance — and the substance is always Christ.</div>
+      </div>
+
+    </div>
+
+    <!-- STREET LEVEL -->
+    <div class="section">
+      <div class="section-label">
+        <span class="section-emoji">🎯</span>
+        <span class="section-title">Street Level</span>
+        <div class="section-title-line"></div>
+      </div>
+      <div class="section-heading">The Safe With Everything in It</div>
+      <p>Imagine you've been searching everywhere for something — wisdom, peace, direction, spiritual depth. Someone tells you there's a safe that contains everything you're looking for. Everything. The complete answers to every question you've been chasing.</p>
+      <p>But here's the catch: a group of very sophisticated, well-dressed people keeps approaching you saying, "Yes, the safe is good — but you'll also need this key, and this ritual, and this philosophy, and this dietary system, and this higher angelic knowledge..." They sound educated. They're articulate. Their system is elaborate and impressive.</p>
+      <p>Paul's message to the Colossians — and to us — is devastatingly simple: the safe already has everything. You don't need the additions. Stop being talked out of the treasure you already possess. Christ isn't a starting point you supplement — He is the full treasury. Crack the safe, and you have it all.</p>
+    </div>
+
+    <!-- TODAY'S WORLD -->
+    <div class="section">
+      <div class="section-label">
+        <span class="section-emoji">🌍</span>
+        <span class="section-title">Today's World, Ancient Truth</span>
+        <div class="section-title-line"></div>
+      </div>
+      <div class="section-heading">The Spiritual Buffet Has No Main Course</div>
+      <p>The false teaching in Colossae has a striking modern parallel in what researchers now call the "spiritual but not religious" movement — the fastest-growing spiritual demographic in America today. According to the Pew Research Center, 83% of Americans believe in God or a Universal Spirit and 86% believe humans have a soul — yet formal Christian identification has dropped from 78% to 62% of US adults between 2007 and 2024. What's filling the gap isn't atheism — it's a spirituality that functions exactly like the Colossian heresy: a sophisticated blend of Eastern philosophy, Christian vocabulary, wellness culture, personal affirmation, and selective spirituality that feels deeply meaningful but has quietly removed Christ from the center.</p>
+      <p>Christian theologians and researchers have noted how, in misguided attempts to remain culturally relevant, many churches have adopted features of postmodernism and New Age spirituality — a syncretism that blurs the line between biblical truth and personal spiritual preference. The Colossian false teachers were "clearly religious and sincere" — and so are millions of people today constructing personalized spiritual lives from a buffet of traditions. Paul's answer then is his answer now: you don't need a better blend. You need to go deeper into the One in whom all the treasures of wisdom and knowledge are already hidden — Christ, not a curated spiritual playlist.</p>
+    </div>
+
+    <!-- CHRIST CONNECTION -->
+    <div class="section section-christ">
+      <div class="section-label">
+        <span class="section-emoji">✝️</span>
+        <span class="section-title">The Christ Connection</span>
+        <div class="section-title-line"></div>
+      </div>
+      <p>Job asked where wisdom could be found — and every human philosophical and religious system since has tried to answer that question with a system, a practice, a hierarchy, or a discipline. Paul's answer in Colossians 2 is not a better system. It is a Person. Jesus Christ is not the gateway to wisdom — He is wisdom (1 Corinthians 1:30). He is not the path to understanding — He is the mystery of God revealed (Colossians 2:2).</p>
+      <p>At the Cross, Christ didn't just purchase our forgiveness — He became our complete sufficiency. Every spiritual hunger, every quest for deeper knowledge, every longing for order and meaning and truth finds its ultimate answer not in a philosophy or a practice but in the risen Christ, who is the same yesterday, today, and forever. The shadow system of rituals and regulations has served its purpose. The substance has arrived — and His name is Jesus.</p>
+    </div>
+
+    <!-- APPLICATION -->
+    <div class="section section-application">
+      <div class="section-label">
+        <span class="section-emoji">✅</span>
+        <span class="section-title">Personal Application Challenge</span>
+        <div class="section-title-line"></div>
+      </div>
+      <div class="action-box">
+        Today, identify one area of your spiritual life where you've been supplementing Christ — adding a rule, a system, a ritual, or even a spiritual discipline that has gradually taken on more weight than your simple, daily walk with Him. It doesn't have to be obviously wrong. Write it down, acknowledge it honestly, then spend five minutes in prayer — no agenda, no system, just the treasury itself.
+      </div>
+    </div>
+
+    <!-- CONNECTION TO YESTERDAY -->
+    <div class="section">
+      <div class="section-label">
+        <span class="section-emoji">🔁</span>
+        <span class="section-title">Connection to Yesterday</span>
+        <div class="section-title-line"></div>
+      </div>
+      <p>Last week ended with Friday's powerful conclusion: no righteousness of our own, Christ's character standing in our place, and the call to be "grounded and steadfast" in genuine faith. This week opens in exactly the same theological neighborhood — but Paul now goes deeper, explaining why Christ alone is sufficient. Last week established that we bring nothing to salvation. This week shows us that Christ brings everything — all the treasures of wisdom and knowledge, all the fullness of God's mystery, hidden in Him alone.</p>
+      <p>The "grounded and steadfast" faith of last week is built on the inexhaustible treasury of this week. You can afford to be immovable — because what you're standing on is infinite.</p>
+    </div>
+
+    <!-- PRAYER -->
+    <div class="section section-prayer">
+      <div class="section-label">
+        <span class="section-emoji">🙏</span>
+        <span class="section-title">Closing Prayer</span>
+        <div class="section-title-line"></div>
+      </div>
+      <p>Father, forgive me for the times I've treated Christ as a starting point rather than the complete treasury. Forgive me for being impressed by sophisticated spiritual systems that promise depth while quietly leading me away from the simple, inexhaustible riches hidden in Your Son. Today I want to go deeper into Christ — not around Him, not beyond Him, not supplementing Him — but deeper into the One in whom everything I need is already fully found. Knit my heart together with my brothers and sisters in love. Give my church the good order and steadfastness that becomes a fortress against deception. In Jesus' name, Amen.</p>
+    </div>
+
+    <!-- DISCUSSION -->
+    <div class="section section-discussion">
+      <div class="section-label">
+        <span class="section-emoji">💬</span>
+        <span class="section-title">Discussion Question</span>
+        <div class="section-title-line"></div>
+      </div>
+      <div class="discussion-q">"Paul says all the treasures of wisdom and knowledge are already hidden in Christ — meaning every believer already has access to the full treasury — so why do you think Christians are so consistently drawn to spiritual supplements and additions, and what does it reveal about our actual view of Christ's sufficiency when we reach for them?"</div>
+    </div>
+
+  </div>
+
+  <!-- BIBLE APP STRIP -->
+  <div class="bible-app-strip">
+    <div class="strip-label">☩ Read today's passages in full</div>
+    <div class="strip-apps">
+      <a class="app-link" href="https://www.bible.com" target="_blank">YouVersion</a>
+      <a class="app-link" href="https://www.biblegateway.com" target="_blank">Bible Gateway</a>
+      <a class="app-link" href="https://www.esv.org" target="_blank">ESV Bible</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>☩ Daily Bible Study · Shared with Love</p>
+    <a class="footer-archive" href="index.html">← Archive</a>
+  </div>
+
+</div>
+</body>
+</html>
