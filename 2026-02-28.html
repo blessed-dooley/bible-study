@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Bible Study</title>
+<meta name="study-title" content="Saturday — The Gospel in One Sentence">
+<meta name="study-series" content="Daily Verse">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:           #1a1a1a;
+    --bg-raise:     #222222;
+    --bg-high:      #2a2a2a;
+    --bg-card:      #1f1f1f;
+    --border:       rgba(255,255,255,0.07);
+    --border-mid:   rgba(255,255,255,0.12);
+    --emerald:      #3d9970;
+    --emerald-dim:  #2a6b4e;
+    --emerald-glow: rgba(61,153,112,0.15);
+    --emerald-pale: rgba(61,153,112,0.08);
+    --text:         #e8e8e8;
+    --text-soft:    #a8a8a8;
+    --text-muted:   #666666;
+    --text-verse:   #f0ede6;
+    --white:        #ffffff;
+    --cross:        #3d9970;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(61,153,112,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(61,153,112,0.04) 0%, transparent 50%);
+    font-family: 'Nunito', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    padding: 24px 16px 80px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { max-width: 660px; margin: 0 auto; }
+
+  /* ── HEADER ── */
+  .header {
+    margin-bottom: 2px;
+    padding: 40px 28px 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-bottom: none;
+    border-radius: 12px 12px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--emerald), transparent);
+  }
+
+  .header::after {
+    content: '✦';
+    position: absolute;
+    top: 16px; right: 20px;
+    color: var(--emerald);
+    font-size: 11px;
+    opacity: 0.4;
+  }
+
+  .header-eyebrow {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--emerald);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header-eyebrow::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--emerald);
+    opacity: 0.6;
+  }
+
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 6vw, 42px);
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+
+  .header-subtitle {
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--text-soft);
+    letter-spacing: 0.02em;
+    margin-bottom: 24px;
+  }
+
+  .date-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--emerald-pale);
+    border: 1px solid var(--emerald-dim);
+    color: var(--emerald);
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 4px;
+  }
+  .date-badge::before {
+    content: '☩';
+    font-size: 12px;
+    opacity: 0.7;
+  }
+
+  /* ── CARD WRAPPER ── */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-bottom: none;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 28px 28px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .section-emoji {
+    font-size: 24px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--emerald);
+    white-space: nowrap;
+  }
+  .section-title-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border-mid), transparent);
+  }
+
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 14px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .section p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 14px;
+    font-weight: 300;
+  }
+  .section p:last-child { margin-bottom: 0; }
+
+  /* ── TL;DR ── */
+  .tldr-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .tldr-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text);
+    font-weight: 300;
+  }
+  .bullet-icon {
+    color: var(--emerald);
+    font-size: 10px;
+    margin-top: 6px;
+    flex-shrink: 0;
+    opacity: 0.8;
+  }
+
+  /* ── VERSE BLOCK ── */
+  .verse-block {
+    margin: 20px 0;
+    background: var(--bg-high);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--emerald);
+    border-radius: 0 8px 8px 0;
+    padding: 18px 20px;
+    position: relative;
+  }
+  .verse-block:first-child { margin-top: 8px; }
+
+  .verse-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .verse-ref {
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--emerald);
+  }
+  .bible-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--emerald-pale);
+    border: 1px solid var(--emerald-dim);
+    color: var(--emerald);
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .bible-btn:hover {
+    background: var(--emerald-glow);
+    border-color: var(--emerald);
+  }
+
+  .verse-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    line-height: 1.75;
+    color: var(--text-verse);
+    margin-bottom: 6px;
+    font-weight: 400;
+  }
+  .verse-translation {
+    font-family: 'Nunito', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 14px;
+  }
+  .verse-commentary {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-soft);
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-weight: 300;
+  }
+
+  /* ── ACCENT SECTIONS ── */
+  .section-context {
+    background: var(--bg-raise);
+  }
+
+  .section-christ {
+    background: var(--emerald-pale);
+    border-left: 3px solid var(--emerald);
+  }
+  .section-christ .section p {
+    color: var(--text);
+  }
+
+  .section-prayer {
+    background: var(--bg-raise);
+  }
+  .section-prayer p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    line-height: 1.9;
+    color: var(--text-verse);
+    font-weight: 400;
+  }
+
+  .section-application {
+    background: var(--bg-raise);
+  }
+
+  .action-box {
+    background: var(--emerald-glow);
+    border: 1px solid var(--emerald-dim);
+    border-radius: 8px;
+    padding: 20px 22px;
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--text);
+    font-weight: 300;
+    position: relative;
+  }
+  .action-box::before {
+    content: '✦';
+    position: absolute;
+    top: 14px; right: 16px;
+    color: var(--emerald);
+    font-size: 11px;
+    opacity: 0.5;
+  }
+
+  .section-discussion {
+    background: var(--bg-raise);
+  }
+  .discussion-q {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--white);
+    font-weight: 400;
+    padding-left: 16px;
+    border-left: 2px solid var(--emerald);
+  }
+
+  /* ── BIBLE APP STRIP ── */
+  .bible-app-strip {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 1px solid var(--border-mid);
+    border-bottom: none;
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .strip-label {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
+  .app-link {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    border: 1px solid var(--border-mid);
+    color: var(--text-soft);
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .app-link:hover {
+    border-color: var(--emerald);
+    color: var(--emerald);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    padding: 20px 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 1px solid var(--border-mid);
+    border-radius: 0 0 12px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-cross {
+    color: var(--emerald);
+    font-size: 18px;
+    opacity: 0.6;
+  }
+  .footer p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .footer-archive {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--emerald);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .footer-archive:hover { opacity: 1; }
+
+  @media (max-width: 480px) {
+    body { padding: 0 0 60px; }
+    .header { padding: 28px 20px 24px; border-radius: 0; }
+    .card { border-radius: 0; }
+    .section { padding: 24px 20px; }
+    .bible-app-strip { padding: 14px 20px; flex-direction: column; align-items: flex-start; }
+    .footer { padding: 16px 20px; border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-eyebrow">Daily Bible Study</div>
+    <h1>✝️ The Gospel in One Sentence</h1>
+    <div class="header-subtitle">John 3:16 · The Heart of Everything</div>
+    <div class="date-badge">February 28, 2026</div>
+  </div>
+
+  <div class="card">
+
+    <!-- TL;DR -->
+    <div class="section">
+      <div class="section-label">
+        <span class="section-emoji">📌</span>
+        <span class="section-title">TL;DR</span>
+        <div class="section-title-line"></div>
+      </div>
+      <ul class="tldr-list">
+        <li><span class="bullet-icon">◆</span> The entire gospel — God's love, Christ's mission, and humanity's choice — is compressed into a single verse that has no equal in all of Scripture.</li>
+        <li><span class="bullet-icon">◆</span> The problem: humanity is perishing, separated from God by sin, with no way to bridge that gap on its own.</li>
+        <li><span class="bullet-icon">◆</span> The solution: God initiated a rescue mission — not out of obligation, but out of love so vast it cost Him His only Son.</li>
+        <li><span class="bullet-icon">◆</span> The challenge: This isn't just information to know — it's an invitation to believe, and belief in John's Gospel means ongoing, life-transforming trust, not a one-time mental agreement.</li>
+      </ul>
+    </div>
+
+    <!-- CONTEXT -->
+    <div class="section section-context">
+      <div class="section-label">
+        <span class="section-emoji">🗺️</span>
+        <span class="section-title">Historical &amp; Cultural Context</span>
+        <div class="section-title-line"></div>
+      </div>
+      <div class="section-heading">A Midnight Conversation That Changed Everything</div>
+      <p>John 3:16 doesn't float in a vacuum — it lands in the middle of a nighttime conversation between Jesus and Nicodemus, one of the most powerful religious figures in all of Jerusalem. Nicodemus was a Pharisee and a member of the Sanhedrin, the 70-man ruling council of Jewish religious life. He had spent his entire life mastering the Torah, keeping the law, earning his place before God. And yet something about Jesus compelled him to come — secretly, under cover of night — to ask his questions.</p>
+      <p>The Jewish world of first-century Judea operated on a clear theological framework: God's favor was earned through covenant faithfulness, Torah obedience, ritual purity, and national identity. The idea that God would send His own Son as a gift to the entire <em>world</em> — not just Israel — was nothing short of revolutionary. When Jesus says "God so loved the world," He is deliberately exploding the boundaries of who is included in God's redemptive plan. This was not what Nicodemus had been taught. It was not what anyone expected. That's what makes this verse so stunning in its original context.</p>
+    </div>
+
+    <!-- WALKTHROUGH -->
+    <div class="section">
+      <div class="section-label">
+        <span class="section-emoji">📖</span>
+        <span class="section-title">Chronological Walkthrough</span>
+        <div class="section-title-line"></div>
+      </div>
+
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">John 3:1–2</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.3.1" target="_blank">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">"There was a man from the Pharisees named Nicodemus, a ruler of the Jews. This man came to him at night and said, 'Rabbi, we know that you are a teacher who has come from God, for no one could perform these signs you do unless God were with him.'"</div>
+        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-commentary">The scene is set deliberately: a man of supreme religious authority comes at night. The nighttime detail is not incidental — John uses darkness symbolically throughout his Gospel (see John 1:5; 13:30). Nicodemus comes with respectful curiosity but also, perhaps, protective secrecy. His opening admission — "we know you are from God" — reveals that even within the religious establishment, there was an awareness that Jesus was extraordinary. Yet Nicodemus is still trying to categorize Jesus within existing frameworks: "a teacher who has come from God." Jesus is about to shatter every category Nicodemus has.</div>
+      </div>
+
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">John 3:14–15</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.3.14" target="_blank">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">"Just as Moses lifted up the snake in the wilderness, so the Son of Man must be lifted up, so that everyone who believes in him may have eternal life."</div>
+        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-commentary">Before reaching verse 16, Jesus lays crucial groundwork by referencing an episode from Numbers 21:4–9 — a story Nicodemus, as a Torah scholar, would know cold. In the wilderness, Israel sinned, and God sent deadly serpents among the people as judgment. Moses, at God's instruction, crafted a bronze serpent and lifted it on a pole; anyone bitten who looked up at it in faith was healed and lived. Jesus maps this directly onto His own coming crucifixion: He will be "lifted up" on a cross, and everyone who looks to Him in faith — trusting not in their own merit but in the provision God has lifted up for them — will receive eternal life. The Cross is not Plan B. It is the plan, foretold in shadow and type throughout the entire Old Testament.</div>
+      </div>
+
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">John 3:16</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.3.16" target="_blank">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">"For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life."</div>
+        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-commentary">Four Greek words anchor this verse, and each one is worth sitting with. <strong>Houtōs</strong> (οὕτως) — translated "so" — does not mean "so much" (as in intensity of emotion). It means "in this way" — describing the manner of God's love: it expressed itself through sacrifice. <strong>Monogenē</strong> (μονογενῆ) means "one and only" or "uniquely born" — not merely a beloved son, but a son in a category entirely alone. <strong>Pisteuōn</strong> (πιστεύων) is a present active participle — continuous, ongoing action. Belief in John's Gospel is not a moment you passed through; it is a posture you maintain. And <strong>aiōnion</strong> (αἰώνιον), eternal life, is not primarily about duration but about a quality of life — the life of the age to come, beginning now for those who trust in Christ.</div>
+      </div>
+
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">John 3:17</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.3.17" target="_blank">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">"For God did not send his Son into the world to condemn the world, but to save the world through him."</div>
+        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-commentary">Verse 17 is the essential companion to verse 16, and it's often overlooked. The world Jesus entered was already under condemnation — the diagnosis had already been made. God's mission in sending His Son was not to pile on more judgment but to provide rescue. The word "save" (Greek: <em>sōthē</em>) carries the imagery of a rescue from drowning, a deliverance from mortal danger. Jesus did not arrive as a judge arriving to pronounce a verdict; He arrived as a rescuer diving into the water. The condemnation humanity faces is real — but so is the Savior God sent to address it.</div>
+      </div>
+
+    </div>
+
+    <!-- STREET LEVEL -->
+    <div class="section">
+      <div class="section-label">
+        <span class="section-emoji">🎯</span>
+        <span class="section-title">Street Level</span>
+        <div class="section-title-line"></div>
+      </div>
+      <div class="section-heading">The Parent Who Steps In Front of the Car</div>
+      <p>You've seen it — maybe you've even done it. A child darts into traffic without looking, and a parent reacts before their brain even processes what's happening. They step in front of the car. They don't weigh the cost. They don't calculate the odds. The love moves faster than the logic.</p>
+      <p>That's the closest human picture we have to John 3:16 — except this: God didn't react in a panic. He planned it. Before the world was even created, He knew exactly what humanity would do, and He decided in advance that His Son would be the provision. That's not impulsive love. That's deliberate, costly, eyes-wide-open love. The kind that looks at the full bill — suffering, abandonment, death — and signs it anyway. And the name on the check is Jesus.</p>
+    </div>
+
+    <!-- TODAY'S WORLD -->
+    <div class="section">
+      <div class="section-label">
+        <span class="section-emoji">🌍</span>
+        <span class="section-title">Today's World, Ancient Truth</span>
+        <div class="section-title-line"></div>
+      </div>
+      <div class="section-heading">Five Lives from One: A 2025 Story of Giving All You Have</div>
+      <p>In October 2025, South Korean author Baek Se-hee died at the age of 35. She was best known for her raw, honest memoir about her lifelong struggle with depression. But the detail that stopped people was what happened after her death: her family chose organ donation, and she gave her heart, lungs, liver, and both kidneys to five different people — five strangers received life from her death.</p>
+      <p>One life given. Five lives saved. The numbers don't balance on paper, but somehow, that's exactly how it works. John 3:16 operates on the same staggering logic. One Son given. An entire world with the possibility of salvation. The math of sacrificial love never makes rational sense — and that's precisely the point. When God looked at a world in perishing, He didn't calculate ROI. He gave His most precious thing for people who didn't know Him, didn't deserve it, and in many cases would never thank Him. That's not transactional love. That's the love that defines the cross.</p>
+    </div>
+
+    <!-- CHRIST CONNECTION -->
+    <div class="section section-christ">
+      <div class="section-label">
+        <span class="section-emoji">✝️</span>
+        <span class="section-title">The Christ Connection</span>
+        <div class="section-title-line"></div>
+      </div>
+      <p>John 3:16 is not a description of a principle — it is a description of a Person. "He gave his one and only Son" is the thesis statement for everything Jesus is and does. The entire Gospel of John is an unpacking of what it means that God stepped into creation in human flesh, lived the life we couldn't live, died the death we deserved, and rose to prove that death had no final claim on those who trust in Him.</p>
+      <p>The Cross is where "God so loved the world" stopped being a declaration and became a transaction — not in a cold, commercial sense, but in the most profound covenantal sense. Our perishing was real. His giving was real. The exchange at Calvary was the most costly gift in the history of the universe. And Jesus went to it not dragged, but willingly — because He too loved the world the Father loved. John 3:16 is the gospel in microcosm, and the gospel is Jesus.</p>
+    </div>
+
+    <!-- APPLICATION -->
+    <div class="section section-application">
+      <div class="section-label">
+        <span class="section-emoji">✅</span>
+        <span class="section-title">Personal Application Challenge</span>
+        <div class="section-title-line"></div>
+      </div>
+      <div class="action-box">
+        Today, write John 3:16 out by hand — not typed, written — and underneath it, write one specific name of someone in your life who doesn't yet know Jesus. Pray for that person by name, asking God to give you one natural opportunity this week to share what this verse means to you personally. Don't prepare a speech. Just be ready to say, "This is what God did for me."
+      </div>
+    </div>
+
+    <!-- CONNECTION TO YESTERDAY -->
+    <div class="section">
+      <div class="section-label">
+        <span class="section-emoji">🔁</span>
+        <span class="section-title">Connection to Yesterday</span>
+        <div class="section-title-line"></div>
+      </div>
+      <p>This is the first day of this particular study conversation, so there is no prior session to connect to — which is actually fitting. John 3:16 is the perfect starting point. It is, in many ways, the foundation upon which every other Bible study is built. Before we explore any other passage of Scripture, we begin here: God loved, God gave, we believe, we live. Every lesson forward will be an unpacking of one or more of those four movements.</p>
+    </div>
+
+    <!-- PRAYER -->
+    <div class="section section-prayer">
+      <div class="section-label">
+        <span class="section-emoji">🙏</span>
+        <span class="section-title">Closing Prayer</span>
+        <div class="section-title-line"></div>
+      </div>
+      <p>Father, I've read John 3:16 so many times that it's easy to say the words without feeling their full weight. Today I want to slow down and actually feel them. You loved — not as a distant admirer, but as a Father who looked at a world in free fall and refused to let it go. You gave — and what You gave cost You everything. You gave Your Son. I'm not sure I will ever fully comprehend that side of eternity. But I believe it. And I believe that Jesus' life and death and resurrection were not accidents of history — they were the plan. Hold me in that truth today. Make it more than theology — make it the ground I stand on. And Lord, put the name of someone on my heart today who needs to hear this too. Let me be someone who carries this verse not just in my memory but in my life. In Jesus' name, Amen.</p>
+    </div>
+
+    <!-- DISCUSSION -->
+    <div class="section section-discussion">
+      <div class="section-label">
+        <span class="section-emoji">💬</span>
+        <span class="section-title">Discussion Question</span>
+        <div class="section-title-line"></div>
+      </div>
+      <div class="discussion-q">"John 3:16 is perhaps the most familiar verse in the Bible — but familiarity can be the enemy of impact. When was the last time this verse actually moved you? What would it take for you to read it as if for the very first time?"</div>
+    </div>
+
+  </div>
+
+  <!-- BIBLE APP STRIP -->
+  <div class="bible-app-strip">
+    <div class="strip-label">☩ Read today's passages in full</div>
+    <div class="strip-apps">
+      <a class="app-link" href="https://www.bible.com/bible/1713/JHN.3.1" target="_blank">YouVersion · John 3</a>
+      <a class="app-link" href="https://www.biblegateway.com/passage/?search=John+3%3A1-21&version=CSB" target="_blank">Bible Gateway</a>
+      <a class="app-link" href="https://www.esv.org/John+3/" target="_blank">ESV Bible</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-cross">☩</div>
+    <p>Daily Bible Study · Shared with Love</p>
+    <a class="footer-archive" href="index.html">← Archive</a>
+  </div>
+
+</div>
+</body>
+</html>
