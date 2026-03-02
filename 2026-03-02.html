@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Bible Study</title>
+<meta name="study-title" content="Monday — Rooted and Growing in Christ">
+<meta name="study-series" content="Colossians · Week 10, Day 3">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:           #1a1a1a;
+    --bg-raise:     #222222;
+    --bg-high:      #2a2a2a;
+    --bg-card:      #1f1f1f;
+    --border:       rgba(255,255,255,0.07);
+    --border-mid:   rgba(255,255,255,0.12);
+    --emerald:      #3d9970;
+    --emerald-dim:  #2a6b4e;
+    --emerald-glow: rgba(61,153,112,0.15);
+    --emerald-pale: rgba(61,153,112,0.08);
+    --text:         #e8e8e8;
+    --text-soft:    #a8a8a8;
+    --text-muted:   #666666;
+    --text-verse:   #f0ede6;
+    --white:        #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(61,153,112,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(61,153,112,0.04) 0%, transparent 50%);
+    font-family: 'Nunito', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    padding: 24px 16px 80px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { max-width: 660px; margin: 0 auto; }
+
+  /* ── HEADER ── */
+  .header {
+    margin-bottom: 0;
+    padding: 40px 28px 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-bottom: none;
+    border-radius: 12px 12px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--emerald), transparent);
+  }
+  .header::after {
+    content: '☩';
+    position: absolute;
+    bottom: -10px;
+    right: 16px;
+    font-size: 100px;
+    color: var(--emerald);
+    opacity: 0.04;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .header-eyebrow {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--emerald);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header-eyebrow::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--emerald);
+    opacity: 0.6;
+  }
+
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 6vw, 42px);
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+
+  .header-subtitle {
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--text-soft);
+    letter-spacing: 0.02em;
+    margin-bottom: 24px;
+  }
+
+  .date-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--emerald-pale);
+    border: 1px solid var(--emerald-dim);
+    color: var(--emerald);
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 4px;
+  }
+  .date-badge::before {
+    content: '☩';
+    font-size: 12px;
+    opacity: 0.7;
+  }
+
+  /* ── CELTIC DIVIDER ── */
+  .celtic-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    background: var(--bg-card);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    padding: 0;
+    height: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .celtic-divider::before,
+  .celtic-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--emerald-dim));
+  }
+  .celtic-divider::after {
+    background: linear-gradient(90deg, var(--emerald-dim), transparent);
+  }
+  .celtic-divider-symbol {
+    color: var(--emerald);
+    font-size: 14px;
+    opacity: 0.6;
+    padding: 0 14px;
+    letter-spacing: 8px;
+    user-select: none;
+  }
+
+  /* ── CARD WRAPPER ── */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-bottom: none;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 28px 28px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .section-emoji {
+    font-size: 24px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--emerald);
+    white-space: nowrap;
+  }
+  .section-title-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border-mid), transparent);
+  }
+
+  .section-heading {
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 14px;
+    line-height: 1.3;
+  }
+
+  .section p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 14px;
+    font-weight: 300;
+  }
+  .section p:last-child { margin-bottom: 0; }
+
+  /* ── TL;DR ── */
+  .tldr-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .tldr-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text);
+    font-weight: 300;
+  }
+  .bullet-icon {
+    color: var(--emerald);
+    font-size: 13px;
+    margin-top: 3px;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  /* ── VERSE BLOCK ── */
+  .verse-block {
+    margin: 20px 0;
+    background: var(--bg-high);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--emerald);
+    border-radius: 0 8px 8px 0;
+    padding: 18px 20px;
+    position: relative;
+  }
+  .verse-block:first-child { margin-top: 8px; }
+
+  .verse-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .verse-ref {
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--emerald);
+  }
+  .bible-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--emerald-pale);
+    border: 1px solid var(--emerald-dim);
+    color: var(--emerald);
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .bible-btn:hover {
+    background: var(--emerald-glow);
+    border-color: var(--emerald);
+  }
+
+  .verse-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    font-style: italic;
+    line-height: 1.8;
+    color: var(--text-verse);
+    margin-bottom: 8px;
+    font-weight: 400;
+  }
+  .verse-translation {
+    font-family: 'Nunito', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 14px;
+  }
+  .verse-commentary {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-soft);
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-weight: 300;
+  }
+
+  /* ── ACCENT SECTIONS ── */
+  .section-context {
+    background: var(--bg-card);
+  }
+
+  .section-christ {
+    background: linear-gradient(135deg, rgba(61,153,112,0.12) 0%, rgba(61,153,112,0.05) 100%);
+    border-left: 4px solid var(--emerald);
+    position: relative;
+  }
+  .section-christ::after {
+    content: '✝';
+    position: absolute;
+    bottom: 16px;
+    right: 24px;
+    font-size: 28px;
+    color: var(--emerald);
+    opacity: 0.12;
+  }
+  .section-christ .section p {
+    color: var(--text);
+  }
+
+  .section-prayer {
+    background: var(--bg-card);
+    border-top: 2px solid var(--emerald-dim) !important;
+  }
+  .section-prayer p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--text-verse);
+  }
+
+  .section-application {
+    background: var(--bg-card);
+  }
+
+  .action-box {
+    background: var(--emerald-glow);
+    border: 1px solid var(--emerald);
+    border-radius: 8px;
+    padding: 22px 24px;
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--white);
+    font-weight: 400;
+    position: relative;
+    box-shadow: 0 0 24px rgba(61,153,112,0.1), inset 0 1px 0 rgba(61,153,112,0.2);
+  }
+  .action-box::before {
+    content: 'DO THIS TODAY';
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: var(--emerald);
+    margin-bottom: 10px;
+  }
+
+  .section-discussion {
+    background: var(--bg-card);
+  }
+  .discussion-q {
+    font-family: 'Nunito', sans-serif;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--white);
+    padding-left: 20px;
+    border-left: 3px solid var(--emerald);
+  }
+
+  /* ── BIBLE APP STRIP ── */
+  .bible-app-strip {
+    background: var(--bg-raise);
+    border: 1px solid var(--border);
+    border-top: 1px solid var(--border-mid);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .strip-label {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
+  .app-link {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    border: 1px solid var(--border-mid);
+    color: var(--text-soft);
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .app-link:hover {
+    border-color: var(--emerald);
+    color: var(--emerald);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 20px 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 1px solid var(--border-mid);
+    border-radius: 0 0 12px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .footer p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .footer-archive {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--emerald);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .footer-archive:hover { opacity: 1; }
+
+  @media (max-width: 480px) {
+    body { padding: 0 0 60px; }
+    .header { padding: 28px 20px 24px; border-radius: 0; }
+    .card { border-radius: 0; }
+    .section { padding: 24px 20px; }
+    .bible-app-strip { padding: 14px 20px; flex-direction: column; align-items: flex-start; }
+    .footer { padding: 16px 20px; border-radius: 0; }
+  }
+
+  /* ── TL;DR HOOK ── */
+  .tldr-hook {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--text-verse);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── WEEK AHEAD BOX (Sabbath files only) ── */
+  .week-ahead {
+    background: var(--bg-high);
+    border: 1px solid var(--border-mid);
+    border-radius: 8px;
+    padding: 20px 22px;
+    margin-top: 8px;
+  }
+  .week-ahead-label {
+    font-family: 'Nunito', sans-serif;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--emerald);
+    margin-bottom: 14px;
+  }
+  .week-theme-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .week-theme-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-soft);
+    font-weight: 300;
+  }
+  .week-theme-list li strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* ── TL;DR HOOK ── */
+  .tldr-hook {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--text-verse);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── INLINE VERSE LINK ── */
+  .vlink {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+    transition: border-color 0.2s;
+  }
+  .vlink:hover {
+    border-color: var(--emerald);
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-eyebrow">Daily Bible Study</div>
+    <h1>Monday — Rooted and Growing in Christ</h1>
+    <div class="header-subtitle">Colossians · Week 10, Day 3</div>
+    <div class="date-badge">March 2, 2026</div>
+  </div>
+
+  <div class="celtic-divider">
+    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+  </div>
+
+  <div class="card">
+
+    <!-- TL;DR -->
+    <div class="section">
+      <div class="section-label">
+        <span class="section-emoji">📌</span>
+        <span class="section-title">TL;DR</span>
+        <div class="section-title-line"></div>
+      </div>
+      <div class="tldr-hook">You don't receive Christ and then graduate to something deeper — Christ himself is the depth, and staying in him is the whole journey.</div>
+      <ul class="tldr-list">
+        <li><span class="bullet-icon">☩</span><span>The clearest maxim for the Christian life is deceptively simple: walk in Christ the same way you received him — by faith, surrender, and trust in a Person, not a system.</span></li>
+        <li><span class="bullet-icon">☩</span><span>The Living Word (Jesus) and the Written Word (the Bible) are two sides of the same coin — you cannot have a genuine relationship with Christ while dismissing his Word, and you cannot truly know the Bible apart from the Person it reveals.</span></li>
+        <li><span class="bullet-icon">☩</span><span>Paul's plant metaphor cuts both ways: a tree rooted in Christ grows strong and bears fruit, but a plant uprooted from Christ — no matter how it looks on the outside — is already dying.</span></li>
+        <li><span class="bullet-icon">☩</span><span>Accepting unbiblical teaching isn't just a theological error — it means adopting a different gospel entirely and placing human authority over Scripture.</span></li>
+      </ul>
+    </div>
+
+    <!-- CONTEXT -->
+    <div class="section section-context">
+      <div class="section-label">
+        <span class="section-emoji">🗺️</span>
+        <span class="section-title">Historical &amp; Cultural Context</span>
+        <div class="section-title-line"></div>
+      </div>
+      <div class="section-heading">A Church Being Slowly Uprooted</div>
+      <p>The Colossian believers had received the gospel through Epaphras, a faithful associate of Paul's (<a class="vlink" href="https://www.bible.com/bible/1713/COL.1.7" target="_blank">Colossians 1:7</a>). They had been genuinely rooted — their faith, love, and hope were real enough that Paul thanked God for them at the start of his letter. But now, sophisticated teachers had arrived with a more elaborate spiritual program, and the community was in danger of being slowly pulled out of the soil that had given it life.</p>
+      <p>The false teaching threatening them wasn't a frontal assault on Christ — it was a quiet demotion. A little philosophy here, some dietary regulations there, a layer of angel veneration on top, all presented as spiritual enrichment. Paul's response in <a class="vlink" href="https://www.bible.com/bible/1713/COL.2" target="_blank">Colossians 2</a> is not to argue point by point with every error, but to go straight to the root: if you are truly in Christ, you already have everything. There is no supplement. There is no upgrade. You go deeper into him, not beyond him.</p>
+    </div>
+
+    <!-- WALKTHROUGH -->
+    <div class="section">
+      <div class="section-label">
+        <span class="section-emoji">📖</span>
+        <span class="section-title">Into the Word</span>
+        <div class="section-title-line"></div>
+      </div>
+      <p>Today's study is anchored in <strong style="color:var(--white);">Colossians 2:6–7</strong>, where Paul gives his most practical command of the letter: walk in Christ the same way you received him. To unpack what that means — and what's at stake when we drift from it — the study traces the plant metaphor that runs throughout Scripture, from Isaiah's vision of God's redeemed people as planted trees, to Jesus's parable of the sower, to John the Baptist's warning about rootless ones. Paul then draws that thread to its sharpest point in verse 8, naming the exact danger threatening the Colossians. The verses below follow that argument from its foundation to its conclusion.</p>
+
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Colossians 2:6–7</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/1713/COL.2.6" target="_blank">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">"As you therefore have received Christ Jesus the Lord, so walk in Him, rooted and built up in Him and established in the faith, as you have been taught, abounding in it with thanksgiving."</div>
+        <div class="verse-translation">New King James Version · NKJV</div>
+        <div class="verse-commentary">The Greek word <em>peripatēsate</em> (walk) is Paul's go-to metaphor for how the Christian life is actually lived — not a single decision, not a moment of initiation, but a daily pattern of movement. The key phrase is "as you received… so walk." The <em>how</em> of receiving Christ — by faith, surrender, and trust in a Person — is the same <em>how</em> of continuing in him. There is no graduation to a different method. <em>Errizōmenoi</em> (rooted) is a perfect participle in Greek, indicating a completed action with ongoing effects: you were rooted at the moment of faith, and that rootedness continues to sustain everything that grows from it. <em>Epoikodomoumenoi</em> (built up) is a present participle — the building is ongoing, continuous, never finished this side of eternity. Notice also the final word: <em>thanksgiving</em>. A heart that knows it already has everything in Christ overflows with gratitude rather than grasping for more.</div>
+      </div>
+
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Ephesians 2:20</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/1713/EPH.2.20" target="_blank">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">"built on the foundation of the apostles and prophets, with Christ Jesus himself as the cornerstone."</div>
+        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-commentary">Paul clarifies what "built up in him" looks like structurally. The foundation is the apostles and prophets — meaning the Scripture they gave us — with Christ as the cornerstone that holds everything in alignment. This is why the Living Word (Jesus) and the Written Word (the Bible) cannot be separated: you only know Christ through the apostles' testimony, and you only understand the apostles' testimony through Christ. To receive Christ and then set aside their teaching is to pull out the cornerstone and expect the building to stand. It cannot.</div>
+      </div>
+
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Isaiah 61:3</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/1713/ISA.61.3" target="_blank">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">"...to give them a crown of beauty instead of ashes, festive oil instead of mourning, and splendid clothes instead of despair. And they will be called righteous trees, the Lord's planting, for his glorification."</div>
+        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-commentary">Isaiah's vision of the redeemed uses the same plant metaphor Paul employs in <a class="vlink" href="https://www.bible.com/bible/1713/COL.2.6" target="_blank">Colossians 2:6–7</a>: believers are called <em>righteous trees, the Lord's planting</em>. The image is striking — God himself is the gardener, and the people he restores are not wild plants that happened to take root, but intentionally planted trees. The purpose: his glorification. A tree rooted in God grows for God's glory, not its own display. This is the opposite of the false teachers' system, which was ultimately about human achievement and spiritual status.</div>
+      </div>
+
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Matthew 3:10</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.3.10" target="_blank">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">"The ax is already at the root of the trees. Therefore, every tree that doesn't produce good fruit will be cut down and thrown into the fire."</div>
+        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-commentary">John the Baptist's warning makes the stakes of the plant metaphor explicit. The issue isn't whether a tree looks healthy on the outside — it's whether the root system is genuine and producing real fruit. An artificial plant may maintain its appearance for a while. But when the ax comes to the root, what is artificial has nothing there. The question isn't simply "did you receive Christ?" but "are you still genuinely rooted in him and bearing the fruit that comes from that?" See also <a class="vlink" href="https://www.bible.com/bible/1713/LUK.8.11" target="_blank">Luke 8:11–15</a> where Jesus unpacks exactly what genuine rootedness looks like over time.</div>
+      </div>
+
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Luke 8:11–15</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/1713/LUK.8.11" target="_blank">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">"This is the meaning of the parable: The seed is the word of God. The seed along the path are those who have heard and then the devil comes and takes away the word from their heart, so that they may not believe and be saved. And the seed on the rock are those who, when they hear, receive the word with joy. Having no root, these believe for a while and fall away in a time of testing. As for the seed that fell among thorns, these are the ones who, when they have heard, go on their way and are choked with worries, riches, and pleasures of life, and produce no mature fruit. But the seed in the good ground — these are the ones who, having heard the word with an honest and good heart, hold on to it and by enduring, produce fruit."</div>
+        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-commentary">Jesus's parable of the sower is the definitive guide to the plant metaphor. Notice what causes shallow-rooted faith to collapse: <em>testing</em> (v. 13). Not intellectual arguments, not obvious sin — but the sustained pressure of difficulty. The false teaching in Colossae was precisely this kind of pressure: a sophisticated, seemingly spiritual alternative that quietly made rootedness in Christ feel insufficient. The thorns in verse 14 — worries, riches, pleasures — represent anything that competes with the Word for the soil of the heart. The good-ground believers are not smarter or more gifted; they simply hold on and endure. That endurance is itself the evidence of genuine rootedness.</div>
+      </div>
+
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">1 Corinthians 3:6</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.3.6" target="_blank">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">"I planted, Apollos watered, but God gave the growth."</div>
+        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-commentary">Paul uses the same agricultural metaphor to address a parallel crisis in Corinth — factions forming around celebrity teachers. His point deflates the false teachers' entire argument: teachers plant and water, but growth belongs entirely to God. If growth comes from God alone, then no human system, philosophy, or spiritual technique can accelerate it. Supplementing Christ with human wisdom doesn't deepen spiritual development — it replaces the true source of growth with a counterfeit. The Colossians were being offered a better gardening method. Paul says: the gardener is God. You don't improve on him.</div>
+      </div>
+
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Colossians 2:8</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/1713/COL.2.8" target="_blank">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">"Be careful that no one takes you captive through philosophy and empty deceit based on human tradition, based on the elements of the world, rather than Christ."</div>
+        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-commentary">The Greek word <em>sylagōgōn</em> (takes you captive) is a vivid military term — literally, to carry off as plunder or to kidnap. Paul's warning is not about gentle intellectual persuasion; he's describing a hostile act. The person who trades rootedness in Christ for human philosophy isn't making a free upgrade — they're being taken prisoner. Christ has set us free (<a class="vlink" href="https://www.bible.com/bible/1713/GAL.5.1" target="_blank">Galatians 5:1</a>); false teaching re-enslaves. "The elements of the world" — <em>stoicheia tou kosmou</em> — refers to the basic spiritual powers and principles that govern life apart from Christ: rules, rituals, hierarchies, and the belief that human effort can bridge the gap between humanity and God.</div>
+      </div>
+
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Galatians 5:1</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/1713/GAL.5.1" target="_blank">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">"For freedom, Christ set us free. Stand firm, then, and don't submit again to a yoke of slavery."</div>
+        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-commentary">Paul's clearest statement on the stakes of drifting from rootedness in Christ. In Galatia the "yoke of slavery" was the ceremonial law; in Colossae it was the blended system of philosophy, ritual, and angelic hierarchy. In both cases Paul's response is identical: you were set free. Don't voluntarily walk back into captivity because someone made it sound like spiritual depth. Compare <a class="vlink" href="https://www.bible.com/bible/1713/ACT.15.10" target="_blank">Acts 15:10</a>, where Peter makes the same argument at the Jerusalem Council — the law was a burden even for those born into it. Why place it on those Christ has already freed?</div>
+      </div>
+
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Acts 15:10</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/1713/ACT.15.10" target="_blank">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">"Now then, why are you testing God by putting a yoke on the disciples' necks that neither our ancestors nor we have been able to bear?"</div>
+        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-commentary">Peter's words at the Jerusalem Council expose the absurdity of adding requirements to the gospel. The ceremonial system had been a burden even for those born into it — placing that yoke on Gentile believers wasn't adding depth, it was adding weight that crushed rather than built up. Any human system layered on top of Christ operates the same way: it doesn't strengthen faith, it loads it down with requirements that were never meant to be carried by those who are already free in him.</div>
+      </div>
+
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Galatians 1:6–9</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/1713/GAL.1.6" target="_blank">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">"I am amazed that you are so quickly turning away from him who called you by the grace of Christ and are turning to a different gospel — not that there is another gospel, but there are some who are troubling you and want to distort the gospel of Christ. But even if we or an angel from heaven should preach to you a gospel contrary to what we have preached to you, a curse be on him! As we have said before, I am saying it again now: if anyone is preaching to you a gospel contrary to what you received, a curse be on him!"</div>
+        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-commentary">This is Paul at his most severe — twice pronouncing <em>anathema</em> (a curse, the strongest possible condemnation) on anyone who preaches a different gospel, including himself or angels. The repetition is deliberate. Paul is not saying the false teachers' message needs adjustment — he's saying there is no such thing as a "different gospel." There is only the gospel, or there is a distortion of it. Accepting unbiblical teaching doesn't supplement the gospel; it replaces it. And placing any human authority — teacher, tradition, philosophy, or angelic vision — above the Scripture the apostles gave us is precisely what the Colossian false teachers were doing.</div>
+      </div>
+
+    </div>
+
+    <!-- STREET LEVEL -->
+    <div class="section">
+      <div class="section-label">
+        <span class="section-emoji">🎯</span>
+        <span class="section-title">Street Level</span>
+        <div class="section-title-line"></div>
+      </div>
+      <div class="section-heading">The Difference Between a Real Tree and a Fake One</div>
+      <p>Walk into any home goods store and you'll find artificial plants that look remarkably real — the right color, the right shape, the right texture. In a photo, you couldn't tell the difference. But try growing one. No roots means no water uptake, no nutrients, no response to sunlight. It will look exactly the same in ten years as it does today — which sounds like stability until you realize that's not stability, it's stasis. A real tree in the same period will have grown, deepened its roots, weathered storms, and produced fruit.</p>
+      <p>Paul's point about believers who drift from rootedness in Christ is exactly this. On the outside, someone following an elaborate spiritual system — the right rituals, the right philosophy, the right religious vocabulary — can look deeply spiritual. But if the root isn't genuinely in Christ, there's no actual connection to the source of life. The question Paul keeps pressing isn't how the plant looks. It's whether it's actually growing.</p>
+    </div>
+
+    <!-- TODAY'S WORLD -->
+    <div class="section">
+      <div class="section-label">
+        <span class="section-emoji">🌍</span>
+        <span class="section-title">Today's World, Ancient Truth</span>
+        <div class="section-title-line"></div>
+      </div>
+      <div class="section-heading">Deconstruction Without Roots: When Questioning Becomes Uprooting</div>
+      <p>Faith deconstruction is one of the defining spiritual phenomena of the past decade — and it's most concentrated among Millennials and Gen Z. According to a 2024 PRRI survey, the religiously unaffiliated category is now the fastest-growing "religious" group in America, with 67% of those who left saying they simply stopped believing their religion's teachings. At its best, deconstruction is exactly what Paul commends: honest examination of what you've been taught, measured against Scripture, holding on only to what is genuinely rooted in Christ.</p>
+      <p>But researchers and pastors have documented a darker pattern: deconstruction that begins as honest questioning can drift into what one ministry leader described as "destructive cynicism" — where the wrecking ball takes down everything, including the parts that were true and life-giving. This is Paul's warning in <a class="vlink" href="https://www.bible.com/bible/1713/COL.2.8" target="_blank">Colossians 2:8</a> made modern. Being taken captive doesn't always look like obvious apostasy. Sometimes it looks like a thoughtful person gradually replacing rootedness in Christ with a personally curated spiritual framework — human philosophy dressed in the language of authenticity and growth. The artificial plant still looks green. The roots are gone.</p>
+    </div>
+
+    <!-- CHRIST CONNECTION -->
+    <div class="section section-christ">
+      <div class="section-label">
+        <span class="section-emoji">✝️</span>
+        <span class="section-title">The Christ Connection</span>
+        <div class="section-title-line"></div>
+      </div>
+      <p>The plant metaphor finds its deepest meaning in Jesus's own words in <a class="vlink" href="https://www.bible.com/bible/1713/JOH.15.5" target="_blank">John 15:5</a>: "I am the vine; you are the branches. The one who remains in me and I in him produces much fruit, because you can do nothing without me." Paul isn't offering a new metaphor in Colossians — he's unpacking the same truth Jesus declared in the upper room. Rootedness in Christ isn't a beginning-level practice for new believers. It is the entire Christian life. There is no advanced stage beyond abiding in the vine.</p>
+      <p>At the Cross, Christ didn't just provide a starting point — he became the soil, the root system, the source of every nutrient the soul will ever need. Everything Paul describes as the goal of the Christian life — righteousness, sanctification, redemption (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.30" target="_blank">1 Corinthians 1:30</a>) — flows not from spiritual disciplines or supplemental systems but from genuine, sustained connection to him. The moment we treat that connection as the beginning of something we graduate from, we've already started to drift.</p>
+    </div>
+
+    <!-- APPLICATION -->
+    <div class="section section-application">
+      <div class="section-label">
+        <span class="section-emoji">✅</span>
+        <span class="section-title">Personal Application Challenge</span>
+        <div class="section-title-line"></div>
+      </div>
+      <div class="action-box">
+        Paul says we walk in Christ "the same way we received him." Think back to the moment — or the season — when you first received Christ. What did that faith feel like? Simple. Trusting. Dependent. Today, intentionally return to that posture for five minutes. No agenda, no performance, no spiritual checklist. Just the same trust you started with — because that trust is still the whole thing.
+      </div>
+    </div>
+
+    <!-- CONNECTION TO YESTERDAY -->
+    <div class="section">
+      <div class="section-label">
+        <span class="section-emoji">🔁</span>
+        <span class="section-title">Connection to Yesterday</span>
+        <div class="section-title-line"></div>
+      </div>
+      <p>Yesterday's study established that all the treasures of wisdom and knowledge are already hidden in Christ — meaning believers already possess the complete treasury (<a class="vlink" href="https://www.bible.com/bible/1713/COL.2.3" target="_blank">Colossians 2:3</a>). Today Paul presses that truth into daily practice: if you already have everything in Christ, then the way you live must look like someone who knows that. You walk in him. You stay rooted in him. You keep building on him — not because you're trying to earn what you already have, but because a tree that's genuinely rooted keeps growing. It can't help it.</p>
+      <p>The false teachers yesterday were offering a supplement to the treasury. Today Paul reveals what that supplement actually does: it uproots. It takes captive. It replaces the true vine with something that looks alive but has no connection to the source of life.</p>
+    </div>
+
+    <!-- PRAYER -->
+    <div class="section section-prayer">
+      <div class="section-label">
+        <span class="section-emoji">🙏</span>
+        <span class="section-title">Closing Prayer</span>
+        <div class="section-title-line"></div>
+      </div>
+      <p>Lord, I confess how easy it is to start drifting without even noticing — to keep the appearance of faith while quietly letting my roots grow shallow. Today I want to come back to the same simple trust I started with. Not a more sophisticated version of faith. Not a supplemented version. Just the same surrender — to You, to Your Word, to the Person I received when I first believed. Keep my roots deep. Keep me growing. And when the storms come and the ax swings near the root, let them find something real there. In Jesus' name, Amen.</p>
+    </div>
+
+    <!-- DISCUSSION -->
+    <div class="section section-discussion">
+      <div class="section-label">
+        <span class="section-emoji">💬</span>
+        <span class="section-title">Discussion Question</span>
+        <div class="section-title-line"></div>
+      </div>
+      <div class="discussion-q">"Paul says we should walk in Christ 'the same way we received him' — by faith, surrender, and trust in a Person. What does it look like in your own life when that simple rootedness starts to drift, and what usually pulls you back?"</div>
+    </div>
+
+  </div>
+
+  <div class="bible-app-strip">
+    <div class="strip-label">☩ Read today's passages in full</div>
+    <div class="strip-apps">
+      <a class="app-link" href="https://www.bible.com/bible/1713/COL.2.6" target="_blank">Colossians 2:6–8</a>
+      <a class="app-link" href="https://www.biblegateway.com" target="_blank">Bible Gateway</a>
+      <a class="app-link" href="https://www.esv.org" target="_blank">ESV Bible</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>☩ Daily Bible Study · Shared with Love</p>
+    <a class="footer-archive" href="index.html">← Archive</a>
+  </div>
+
+</div>
+</body>
+</html>
