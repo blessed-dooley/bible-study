@@ -1,0 +1,61 @@
+name: Publish Daily Bible Study
+
+on:
+  schedule:
+    # Runs at 9:00 PM CT (02:00 UTC) every night
+    # Note: GitHub Actions uses UTC and does not adjust for daylight saving time.
+    # During CST (Nov–Mar), this runs at 8:00 PM CT. Update to '0 3 * * *' in winter if needed.
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    # Also allows manual trigger from GitHub Actions tab
+    inputs:
+      date_override:
+        description: 'Publish file for this date (YYYY-MM-DD). Leave blank to use tomorrow.'
+        required: false
+        type: string
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Determine target date
+        id: date
+        run: |
+          if [ -n "${{ github.event.inputs.date_override }}" ]; then
+            TARGET="${{ github.event.inputs.date_override }}"
+          else
+            # Tomorrow's date in YYYY-MM-DD format
+            TARGET=$(date -u -d "tomorrow" '+%Y-%m-%d')
+          fi
+          echo "target=$TARGET" >> $GITHUB_OUTPUT
+          echo "filename=${TARGET}.html" >> $GITHUB_OUTPUT
+          echo "Target date: $TARGET"
+
+      - name: Check for staged file
+        id: check
+        run: |
+          FILE="staging/${{ steps.date.outputs.filename }}"
+          if [ -f "$FILE" ]; then
+            echo "found=true" >> $GITHUB_OUTPUT
+            echo "Found: $FILE"
+          else
+            echo "found=false" >> $GITHUB_OUTPUT
+            echo "No staged file for ${{ steps.date.outputs.target }} — nothing to publish."
+          fi
+
+      - name: Move file to root and commit
+        if: steps.check.outputs.found == 'true'
+        run: |
+          FILENAME="${{ steps.date.outputs.filename }}"
+          mv "staging/$FILENAME" "$FILENAME"
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add "$FILENAME"
+          git rm "staging/$FILENAME" 2>/dev/null || true
+          git commit -m "Publish daily study: $FILENAME"
+          git push
+          echo "Published $FILENAME to repo root."
