@@ -30,8 +30,8 @@ jobs:
       - name: Publish tomorrow's study from staging
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
-          # At 8 PM UTC, tomorrow in Central Time is +1 day in UTC
-          TOMORROW=$(date -u -d "+1 day" +%Y-%m-%d)
+          # Compute tomorrow in Central Time. GitHub-hosted runners can start hours late and cross UTC midnight.
+          TOMORROW=$(TZ=America/Chicago date -d "+1 day" +%Y-%m-%d)
           FILE="staging/${TOMORROW}.html"
 
           if [ -f "$FILE" ]; then
@@ -75,7 +75,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           git diff --cached --quiet && echo "Nothing to commit" && exit 0
-          TOMORROW=$(date -u -d "+1 day" +%Y-%m-%d)
+          TOMORROW=$(TZ=America/Chicago date -d "+1 day" +%Y-%m-%d)
           git commit -m "Publish ${TOMORROW} daily study"
           git push
 
