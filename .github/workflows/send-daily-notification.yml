@@ -24,6 +24,9 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Test notification title decoding
+        run: node --test scripts/decode-html-entities.test.js
+
       - name: Install dependencies
         run: npm install firebase-admin@12 google-auth-library@9
 

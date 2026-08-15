@@ -9,6 +9,7 @@
 const admin = require('firebase-admin');
 const fs = require('fs');
 const path = require('path');
+const { decodeHtmlEntities } = require('./decode-html-entities');
 
 // Initialize Firebase Admin from environment variable
 const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
@@ -49,13 +50,7 @@ async function main() {
       const html = fs.readFileSync(filePath, 'utf8');
       const titleMatch = html.match(/<meta\s+name="study-title"\s+content="([^"]+)"/);
       if (titleMatch) {
-        // Decode HTML entities (e.g., &amp; -> &, &#39; -> ')
-        studyTitle = titleMatch[1]
-          .replace(/&amp;/g, '&')
-          .replace(/&lt;/g, '<')
-          .replace(/&gt;/g, '>')
-          .replace(/&#39;/g, "'")
-          .replace(/&quot;/g, '"');
+        studyTitle = decodeHtmlEntities(titleMatch[1]);
       }
       break;
     }
