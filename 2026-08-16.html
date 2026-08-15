@@ -378,6 +378,14 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
   .verse-text sup.verse-number,
   .verse-text-alt sup.verse-number {
     font-family: 'Nunito', sans-serif;
@@ -494,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -557,6 +522,39 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle:hover,
+  .red-letter-toggle:focus-visible {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+    outline: none;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -575,8 +573,11 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -711,7 +712,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">TL;DR</span>
         <div class="section-title-line"></div>
       </div>
-      <p>A letter is being read aloud in a crowded Corinthian living room, and Paul has just reached the words everyone learned first. Christ died for our sins. He was buried. He was raised on the third day. Then comes the astonishing move. Paul calls the witnesses, Peter, the Twelve, five hundred at once, and adds that most of them are still alive. In plain terms, go ask them. <strong>The gospel is not good advice to live by. It is good news that happened, and it still saves everyone who holds on to it.</strong></p>
+      <p>A letter is being read aloud in a crowded Corinthian living room, and Paul has just reached the words everyone learned first. Christ died for our sins. He was buried. He was raised on the third day. Then comes the astonishing move. Paul calls the witnesses, Peter, the Twelve, five hundred at once, and adds that most of them are still living. In plain terms, go ask them. <strong>The gospel is not good advice to live by. It is good news that happened, and it still saves everyone who holds on to it.</strong></p>
     </div>
 
     <!-- 2. CONNECTION TO YESTERDAY -->
@@ -733,7 +734,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Words Paul Learned by Heart</div>
       <p>In a world where most people would never own a book, memory did the work paper does for us. A student sat at his teacher's feet and learned the master's words by exact repetition, until he could recite them without a slip and hand them to students of his own. That hand-off had formal vocabulary. A teacher passed on the tradition. A student received it. When Paul writes that he passed on what he also received, Corinth heard the language of a chain of custody. He is not composing fresh sentences here. He is reciting a fixed formula that was placed in his hands, word for word, by the people who had it before him.</p>
-      <p>Now do the math that historians love about this passage. Paul is writing around twenty-five years after the crucifixion, but he received this creed at the beginning of his Christian life, within just a few years of the events themselves, from the very men named inside it. That timing changes everything. The resurrection was not a legend that crept in generations later, after the eyewitnesses were safely dead. It was the church's founding recitation, already fixed and memorized while the tomb was fresh news and hundreds of people who had seen the risen Jesus were alive to contradict it. Nobody did. The claim was not born in the dark. It was born in public, and it grew up under cross-examination.</p>
+      <p>Now do the math that historians love about this passage. Paul is writing around twenty-five years after the crucifixion, but he received this creed at the beginning of his Christian life, within just a few years of the events themselves, from the very men named inside it. That timing changes everything. The resurrection was not a legend that crept in generations later, after the eyewitnesses were safely dead. It was the church's founding recitation, already fixed and memorized while the tomb was fresh news. The claim was not born in the dark. It was proclaimed in public while many named and unnamed witnesses were still living and could be questioned.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -746,43 +747,45 @@ if ('serviceWorker' in navigator) {
 
       <p>When the courier finally reaches this part of the letter, Paul does something disarming. He argues nothing. He rewinds. Let me remind you, he says, of the gospel I preached to you, the one you received, the one you are standing on right now. Some in Corinth had begun treating resurrection as negotiable, a topic for the seminar room. So Paul takes them back to the words that saved them, recites the message in its oldest form, and then calls a witness list long enough to fill a courtroom. Underneath it all sits one quiet, enormous question. Do you remember what you believed?</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 15:1-4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:779855ccd81e1e3746256ab88f3d27195f167bb299b555e6d7e1edee36ed8307 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 15:1-4</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.15.1-4" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.15.1-4" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"<sup class="verse-number" aria-label="Verse 1">1</sup>Now I want to make clear for you, brothers and sisters, the gospel I preached to you, which you received, on which you have taken your stand <sup class="verse-number" aria-label="Verse 2">2</sup>and by which you are being saved, if you hold to the message I preached to you—unless you believed in vain. <sup class="verse-number" aria-label="Verse 3">3</sup>For I passed on to you as most important what I also received: that Christ died for our sins according to the Scriptures, <sup class="verse-number" aria-label="Verse 4">4</sup>that he was buried, that he was raised on the third day according to the Scriptures,"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>Now, brothers, I want to remind you of the gospel I preached to you, which you received, and in which you stand firm. <sup class="verse-number" aria-label="Verse 2">2</sup>By this gospel you are saved, if you hold firmly to the word I preached to you. Otherwise, you have believed in vain. <sup class="verse-number" aria-label="Verse 3">3</sup>For what I received I passed on to you as of first importance: that Christ died for our sins according to the Scriptures, <sup class="verse-number" aria-label="Verse 4">4</sup>that He was buried, that He was raised on the third day according to the Scriptures,</div>
         <div class="verse-commentary">
-          <p>Four quick verbs carry the opening. Paul preached, they received, they stood, and they are being saved as they keep holding on (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.1-2" target="_blank">1 Corinthians 15:1-2</a>). Then comes the message itself, recited in the cadence of a memorized formula. Christ died for our sins. He was buried. He was raised on the third day. And twice Paul adds according to the Scriptures, because none of this was an accident God scrambled to redeem. The gospel was promised through the prophets long before Bethlehem (<a class="vlink" href="https://www.bible.com/bible/1713/ROM.1.1-4" target="_blank">Romans 1:1-4</a>), and believing that God raised Jesus from the dead is the very heartbeat of saving faith (<a class="vlink" href="https://www.bible.com/bible/1713/ROM.10.9-10" target="_blank">Romans 10:9-10</a>). Notice what sits at the center of the good news. Not advice. Events. Things that happened to a real body in real time, woven so tightly into the gospel that pulling the resurrection out unravels the whole garment.</p>
+          <p>Four quick verbs carry the opening. Paul preached, they received, they stand firm, and by this gospel they are saved, if they hold firmly to the word (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.1-2" target="_blank" rel="noopener">1 Corinthians 15:1-2</a>). Then comes the message itself, recited in the cadence of a memorized formula. Christ died for our sins. He was buried. He was raised on the third day. And twice Paul adds according to the Scriptures, because none of this was an accident God scrambled to redeem. The gospel was promised through the prophets long before Bethlehem (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.1.1-4" target="_blank" rel="noopener">Romans 1:1-4</a>), and believing that God raised Jesus from the dead is the very heartbeat of saving faith (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.10.9-10" target="_blank" rel="noopener">Romans 10:9-10</a>). Notice what sits at the center of the good news. Not advice. Events. Things that happened to a real body in real time, woven so tightly into the gospel that pulling the resurrection out unravels the whole garment.</p>
         </div>
       </div>
 
-      <p>Before calling his witnesses, Paul pauses over a pairing he refuses to separate. What is preached and what is believed are the same thing, or they are nothing. You are being saved as you hold to the word that was preached (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.2" target="_blank">1 Corinthians 15:2</a>), and whether the voice belonged to Paul or to anyone else, so we proclaim and so you believed (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.11" target="_blank">1 Corinthians 15:11</a>). Preaching hands over a fact. Faith closes its hand around it. Neither works alone.</p>
+      <p>Before calling his witnesses, Paul pauses over a pairing he refuses to separate. What is preached and what is believed are the same thing, or they are nothing. By this gospel you are saved, if you hold firmly to the word that was preached (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.2" target="_blank" rel="noopener">1 Corinthians 15:2</a>), and whether the voice belonged to Paul or to anyone else, so we proclaim and so you believed (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.11" target="_blank" rel="noopener">1 Corinthians 15:11</a>). Preaching hands over a fact. Faith closes its hand around it. Neither works alone.</p>
 
+<!-- BSB_BLOCK: Luke 24:44-47 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:17323f2639bcceff3cf872ca61615b26a3335caf9bc1b7bc60db9e541e1dd598 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Luke 24:44-47</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/LUK.24.44-47" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/LUK.24.44-47" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"<sup class="verse-number" aria-label="Verse 44">44</sup>He told them, "These are my words that I spoke to you while I was still with you—that everything written about me in the Law of Moses, the Prophets, and the Psalms must be fulfilled." <sup class="verse-number" aria-label="Verse 45">45</sup>Then he opened their minds to understand the Scriptures. <sup class="verse-number" aria-label="Verse 46">46</sup>He also said to them, "This is what is written: The Messiah will suffer and rise from the dead the third day, <sup class="verse-number" aria-label="Verse 47">47</sup>and repentance for forgiveness of sins will be proclaimed in his name to all the nations, beginning at Jerusalem."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 44">44</sup>Jesus said to them, <span class="words-of-jesus">“These are the words I spoke to you while I was still with you: Everything must be fulfilled that is written about Me in the Law of Moses, the Prophets, and the Psalms.”</span> <sup class="verse-number" aria-label="Verse 45">45</sup>Then He opened their minds to understand the Scriptures. <sup class="verse-number" aria-label="Verse 46">46</sup>And He told them, <span class="words-of-jesus">“This is what is written: The Christ will suffer and rise from the dead on the third day,</span> <sup class="verse-number" aria-label="Verse 47">47</sup><span class="words-of-jesus">and in His name repentance and forgiveness of sins will be proclaimed to all nations, beginning in Jerusalem.</span></div>
         <div class="verse-commentary">
-          <p>The scene is Easter evening, and the risen Jesus is leading a Bible study about Himself. Before He tells the church what to preach, He shows them where it was always written, in Moses, the Prophets, and the Psalms, the whole sweep of the Hebrew Scriptures. A Messiah who suffers, rises on the third day, and sends forgiveness out to every nation was never Plan B. It was the plot. So when Paul writes according to the Scriptures, he is echoing his risen Lord's own teaching method. And do not miss the closing line of the scene, you are witnesses of these things (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.24.48" target="_blank">Luke 24:48</a>). Jesus did not leave behind a theory to be defended. He left people who had seen, and He sent them out talking.</p>
+          <p>The scene is Easter evening, and the risen Jesus is leading a Bible study about Himself. Before He tells the church what to preach, He shows them where it was always written, in Moses, the Prophets, and the Psalms, the whole sweep of the Hebrew Scriptures. A Messiah who suffers, rises on the third day, and sends forgiveness out to every nation was never Plan B. It was the plot. So when Paul writes according to the Scriptures, he is echoing his risen Lord's own teaching method. And do not miss the closing line of the scene, you are witnesses of these things (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.24.48" target="_blank" rel="noopener">Luke 24:48</a>). Jesus did not leave behind a theory to be defended. He left people who had seen, and He sent them out talking.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Luke 24:47 | 24:47 NA, NE, and WH repentance for -->
 
+<!-- BSB_BLOCK: 1 Corinthians 15:5-8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:f58c5b078f7960361163f5e29c97fb3e837c29825107075b5a47c5ae5b659c71 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 15:5-8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.15.5-8" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.15.5-8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"<sup class="verse-number" aria-label="Verse 5">5</sup>and that he appeared to Cephas, then to the Twelve. <sup class="verse-number" aria-label="Verse 6">6</sup>Then he appeared to over five hundred brothers and sisters at one time; most of them are still alive, but some have fallen asleep. <sup class="verse-number" aria-label="Verse 7">7</sup>Then he appeared to James, then to all the apostles. <sup class="verse-number" aria-label="Verse 8">8</sup>Last of all, as to one born at the wrong time, he also appeared to me."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 5">5</sup>and that He appeared to Cephas and then to the Twelve. <sup class="verse-number" aria-label="Verse 6">6</sup>After that, He appeared to more than five hundred brothers at once, most of whom are still living, though some have fallen asleep. <sup class="verse-number" aria-label="Verse 7">7</sup>Then He appeared to James, then to all the apostles. <sup class="verse-number" aria-label="Verse 8">8</sup>And last of all He appeared to me also, as to one of untimely birth.</div>
         <div class="verse-commentary">
-          <p>Here is the courtroom. Cephas, meaning Peter. The Twelve. More than five hundred brothers and sisters at a single moment, and Paul notes that most are still alive (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.6" target="_blank">1 Corinthians 15:6</a>), which in plain terms means go ask them for yourselves. Then James, the skeptical brother turned believer. Then all the apostles. Then, last and least in his own eyes, Paul himself. The Greek verb tolling through this list is <em>ōphthē</em>, he was seen, the word for eyes landing on something actually there. Not dreamed. Not wished into being. Seen, by named people in known places, many of whom went on testifying to it in public despite opposition, pressure, and real personal cost. Paul was that confident in the reality of Christ's resurrection. He did not ask Corinth to close its eyes and believe. He asked them to open their eyes and look.</p>
+          <p>Here is the courtroom. Cephas, meaning Peter. The Twelve. More than five hundred believers at once, and Paul notes that most are still living (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.6" target="_blank" rel="noopener">1 Corinthians 15:6</a>), which in plain terms means go ask them for yourselves. Then James, the skeptical brother turned believer. Then all the apostles. Then, last and least in his own eyes, Paul himself. The Greek verb tolling through this list is <em>ōphthē</em>, he was seen, the word for eyes landing on something actually there. Not dreamed. Not wished into being. Seen, by named people in known places, many of whom went on testifying to it in public despite opposition, pressure, and real personal cost. Paul was that confident in the reality of Christ's resurrection. He did not ask Corinth to close its eyes and believe. He asked them to open their eyes and look.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Corinthians 15:5 | 15:5 That is, Peter -->
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -794,7 +797,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">You Know Your Birthday by Faith</div>
       <p>Nobody remembers being born. Think about how strange that is. Your birthday is the most settled fact you own. You type the date into every form without a flicker of doubt, and yet you were in no condition to witness it. Everything you know about the day you arrived came to you secondhand. Your mother tells the story with details no form ever asks for, the storm that night, the nurse with the cold hands, the exact wrong thing your father said in the waiting room. The relatives retell it at every gathering, and the versions hold together. For most of your life you could test the story any afternoon you wanted, because the witnesses were sitting in the kitchen. You never doubted it. You could always ask.</p>
-      <p>That is the kind of knowing Paul offers Corinth, and notice what he never asks for. He does not ask anyone to believe into the dark. He recites testimony from people who were in the room, fixed early and told the same way from the beginning, and then adds the astonishing detail that most of the five hundred are still alive. That is a man handing out addresses. Go ask them. Faith in the resurrection has never meant believing without evidence. It means trusting witnesses who have held up under a lifetime of asking, the same way you trust the people who were present at the one event your whole life stands on. You have run on tested testimony since you learned your own birthday. The gospel simply asks you to do it about a better morning.</p>
+      <p>That is the kind of knowing Paul offers Corinth, and notice what he never asks for. He does not ask anyone to believe into the dark. He recites testimony from people who were in the room, fixed early and told the same way from the beginning, and then adds the astonishing detail that most of the five hundred are still living. That is a man handing out addresses. Go ask them. Faith in the resurrection has never meant believing without evidence. It means trusting witnesses who have held up under a lifetime of asking, the same way you trust the people who were present at the one event your whole life stands on. You have run on tested testimony since you learned your own birthday. The gospel simply asks you to do it about a better morning.</p>
     </div>
 
     <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
@@ -806,7 +809,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The First Test Is the One That Counts</div>
       <p>For decades the standard line, in courtrooms and psychology departments alike, was that eyewitness testimony is the weakest evidence there is. In August 2025, two leading memory researchers published a paper that complicates that story. Writing in the journal Memory, Laura Mickes of the University of Bristol and John Wixted of UC San Diego argued that many of the famous wrongful convictions were not so much failures of memory as failures to heed a witness's first answer. A memory, Wixted explains, works like the other trace evidence at a crime scene. DNA can be contaminated. Fingerprints can be contaminated. So can a remembered face, every time it is retested, rehearsed, and coached toward trial. On the first properly run test, before the contamination starts, the evidence suggests a confident identification is far more dependable than its courtroom reputation. In many of the DNA exoneration cases, the witness's earliest response actually pointed away from the man who ended up in prison. The first answer was often sound. The system stopped listening after it.</p>
-      <p>Set that beside what Paul does in today's passage. He does not hand Corinth a story that had simmered privately for decades. He recites the church's first answer, a formula fixed within a few years of the events and received from the named men inside it, then lists the witnesses and adds that most are still alive and easy to ask. Scripture preserved the very thing the memory researchers now prize, the earliest record of what the witnesses said, set down before time or pressure could bend it. The parallel deserves honest limits. A study of police lineups cannot test a first-century identification, and no journal article can prove the resurrection. What the research does offer is a reason to take early, well-preserved testimony seriously instead of dismissing witnesses on principle. That is precisely the kind of testimony the church has been carrying for two thousand years, cross-examined by people certain the witnesses had to be wrong, and never revised. Christ died, was buried, was raised, was seen. The first answer is still on the record, and it still deserves a hearing.</p>
+      <p>Set that beside what Paul does in today's passage. He does not hand Corinth a story that had simmered privately for decades. He recites the church's first answer, a formula fixed within a few years of the events and received from the named men inside it, then lists the witnesses and adds that most are still living and easy to ask. Scripture preserved the very thing the memory researchers now prize, the earliest record of what the witnesses said, set down before time or pressure could bend it. The parallel deserves honest limits. A study of police lineups cannot test a first-century identification, and no journal article can prove the resurrection. What the research does offer is a reason to take early, well-preserved testimony seriously instead of dismissing witnesses on principle. That is precisely the kind of testimony the church has been carrying for two thousand years, cross-examined by people certain the witnesses had to be wrong, and never revised. Christ died, was buried, was raised, was seen. The first answer is still on the record, and it still deserves a hearing.</p>
       <!-- TODAYS_WORLD_SOURCE: When eyewitness memory reliably exonerates the wrongfully convicted | Memory (Taylor and Francis) | 2025 | https://doi.org/10.1080/09658211.2025.2546905 -->
     </div>
 
@@ -854,22 +857,41 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.15.1-4" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+15:1-4&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Archive</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

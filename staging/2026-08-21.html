@@ -378,6 +378,14 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
   .verse-text sup.verse-number,
   .verse-text-alt sup.verse-number {
     font-family: 'Nunito', sans-serif;
@@ -494,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -557,6 +522,39 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle:hover,
+  .red-letter-toggle:focus-visible {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+    outline: none;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -575,8 +573,11 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -773,11 +774,11 @@ if ('serviceWorker' in navigator) {
       <p class="tldr-hook">This week Paul staked everything on one Sunday morning, called the living witnesses, priced out a world without Easter, lifted the first sheaf of the harvest, promised a body that cannot die, and ended at a trumpet, with death swallowed by the victory it thought it had won.</p>
       <ul class="week-review-list">
         <li><span class="bullet-icon">☩</span><span><span class="day-label">Sabbath:</span> The Power of Christ's Resurrection. Tombstones shrugged on the road into Corinth, and Paul answered them by staking the entire faith on one checkable claim, daring anyone to test the foundation.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> Proclaiming the Resurrection of Christ. The gospel arrived as a memorized creed with a witness list attached, five hundred alive and askable, a resurrection promised in Scripture and seen in daylight.</span></li>
+        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> Proclaiming the Resurrection of Christ. The gospel arrived as a memorized creed with a witness list attached, more than five hundred witnesses, most still living and available to be questioned, a resurrection promised in Scripture and seen in daylight.</span></li>
         <li><span class="bullet-icon">☩</span><span><span class="day-label">Monday:</span> The Risen Christ, Our Only Hope! Paul walked the deniers' idea to its end, empty preaching, futile faith, the beloved dead simply gone, then turned everyone around to face the open tomb.</span></li>
         <li><span class="bullet-icon">☩</span><span><span class="day-label">Tuesday:</span> Christ, the Firstfruits. Jesus rose on the very morning the first sheaf was lifted in the temple, proof and promise in one armful, and everyone who belongs to Him follows at His coming.</span></li>
         <li><span class="bullet-icon">☩</span><span><span class="day-label">Wednesday:</span> The Resurrected Body. A seed answered the smirking question, sown perishable and raised imperishable, the same you in a body modeled on His glorious, scarred, touchable one.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Thursday:</span> Final Victory Over Death. At the last trumpet, in a blink too thin to cut, the dead rise incorruptible, the living are changed, and death hears its own defeat sung back at it.</span></li>
+        <li><span class="bullet-icon">☩</span><span><span class="day-label">Thursday:</span> Final Victory Over Death. At the last trumpet, in a blink too thin to cut, the dead rise imperishable, the living are changed, and death hears its own defeat sung back at it.</span></li>
       </ul>
     </div>
 
@@ -790,7 +791,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Church Renamed the Graveyard</div>
       <p>Gather up the week's places and you can see the whole battlefield. A highway into Corinth lined with tombs, one shrug carved so often the masons abbreviated it. A lecture hall where the soul escaped and no one wanted the body back. A schoolroom where a creed passed hand to memorizing hand, too early and too public to be legend. A spring field where one armful stood for the whole harvest, and an autumn field where sowing looked exactly like burial. A veteran's trumpet that meant the camp moves now. Paul fought the entire battle over one question. What does a grave actually hold?</p>
-      <p>Then the church did something quietly enormous. In the generations after this letter, Christians began calling their burial grounds sleeping places, dormitories for people with a wake-up coming, and that hopeful word is the direct ancestor of our word cemetery. Think about that. The world's stones said, I am not, I do not care. The church's stones said, asleep, until He comes. Same hillsides, same losses, same tears, and two entirely different futures. Every cemetery still carries, in its own name, the argument of <a class="vlink" href="https://www.bible.com/bible/1713/1CO.15" target="_blank">1 Corinthians 15</a>. The people who buried their dead there were not filing them away. They were tucking them in.</p>
+      <p>Then the church did something quietly enormous. In the generations after this letter, Christians began calling their burial grounds sleeping places, dormitories for people with a wake-up coming, and that hopeful word is the direct ancestor of our word cemetery. Think about that. The world's stones said, I am not, I do not care. The church's stones said, asleep, until He comes. Same hillsides, same losses, same tears, and two entirely different futures. Every cemetery still carries, in its own name, the argument of <a class="vlink" href="https://www.bible.com/bible/3034/1CO.15" target="_blank" rel="noopener">1 Corinthians 15</a>. The people who buried their dead there were not filing them away. They were tucking them in.</p>
     </div>
 
     <!-- 3. WHAT THIS WEEK CLARIFIES -->
@@ -806,31 +807,32 @@ if ('serviceWorker' in navigator) {
       <div class="section-heading">The Faith That Published Its Own Demolition Plan</div>
       <p>The week's most unnerving move came first. On Sabbath we watched Paul hand his opponents the wrecking instructions for his own faith. If Christ has not been raised, everything falls, the preaching, the believing, the forgiveness, all of it. Who builds on purpose with a demolition plan attached?</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 15:5-8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:f58c5b078f7960361163f5e29c97fb3e837c29825107075b5a47c5ae5b659c71 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 15:5-8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.15.5-8" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.15.5-8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"<sup class="verse-number" aria-label="Verse 5">5</sup>and that he appeared to Cephas, then to the Twelve. <sup class="verse-number" aria-label="Verse 6">6</sup>Then he appeared to over five hundred brothers and sisters at one time; most of them are still alive, but some have fallen asleep. <sup class="verse-number" aria-label="Verse 7">7</sup>Then he appeared to James, then to all the apostles. <sup class="verse-number" aria-label="Verse 8">8</sup>Last of all, as to one born at the wrong time, he also appeared to me."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 5">5</sup>and that He appeared to Cephas and then to the Twelve. <sup class="verse-number" aria-label="Verse 6">6</sup>After that, He appeared to more than five hundred brothers at once, most of whom are still living, though some have fallen asleep. <sup class="verse-number" aria-label="Verse 7">7</sup>Then He appeared to James, then to all the apostles. <sup class="verse-number" aria-label="Verse 8">8</sup>And last of all He appeared to me also, as to one of untimely birth.</div>
         <div class="verse-commentary">
-          <p>A man builds that way when he has checked the foundation, and checking is what the week kept honoring. Sunday showed us the creed passing hand to memorizing hand, fixed within a few years of the events and recited while hundreds who saw the risen Lord were alive to contradict it (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.1-4" target="_blank">1 Corinthians 15:1-4</a>). Most of them are still alive is not a rhetorical flourish. It is a man handing out addresses. And Sunday also named the kind of knowing this asks of us, the kind you already run your life on, since the most settled fact you own, your own birthday, came to you entirely from witnesses you trusted because they held up under a lifetime of asking.</p>
-          <p>Here is what that settles. Faith in the resurrection was never believing harder against the evidence. It is trusting testimony that was born in public and grew up under cross-examination. Monday's cold walk through the deniers' world (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.12-19" target="_blank">1 Corinthians 15:12-19</a>) was not a scare tactic. It was Paul proving he had priced his own claim honestly before staking his life on it, because sincerity was never the foundation. He is. A faith willing to be falsified is a faith convinced by what it saw, and twenty centuries of asking later, the first answer has not moved.</p>
+          <p>A man builds that way when he has checked the foundation, and checking is what the week kept honoring. Sunday showed us the creed passing hand to memorizing hand, fixed within a few years of the events, then set beside a witness list that included more than five hundred people, most still living and available to be questioned (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.5-8" target="_blank" rel="noopener">1 Corinthians 15:5-8</a>). Most of whom are still living is not a rhetorical flourish. It is a man handing out addresses. And Sunday also named the kind of knowing this asks of us, the kind you already run your life on, since the most settled fact you own, your own birthday, came to you entirely from witnesses you trusted because they held up under a lifetime of asking.</p>
+          <p>Here is what that settles. Faith in the resurrection was never believing harder against the evidence. It is trusting testimony that was born in public and grew up under cross-examination. Monday's cold walk through the deniers' world (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.12-19" target="_blank" rel="noopener">1 Corinthians 15:12-19</a>) was not a scare tactic. It was Paul proving he had priced his own claim honestly before staking his life on it, because sincerity was never the foundation. He is. A faith willing to be falsified is a faith convinced by what it saw, and twenty centuries of asking later, the first answer has not moved.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Corinthians 15:5 | 15:5 That is, Peter -->
 
       <div class="section-heading">Heaven's Dress Code</div>
       <p>Two stories about the body fought for the room all week. Corinth's schooling said the soul escapes at last and good riddance to the corpse, and some in the church had quietly reclassified resurrection as a metaphor to match. So which is the Christian hope, getting out of the body or getting it back?</p>
 
+<!-- BSB_BLOCK: Philippians 3:21 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:7a196df7c8ea69a5a5ba4aba99f61796a44bd9379e0606d8baeb062dc3e51882 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Philippians 3:21</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/PHP.3.21" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PHP.3.21" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"He will transform the body of our humble condition into the likeness of his glorious body, by the power that enables him to subject everything to himself."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-text">who, by the power that enables Him to subject all things to Himself, will transform our lowly bodies to be like His glorious body.</div>
         <div class="verse-commentary">
-          <p>The week answered with a seed. What goes into the ground is not what comes up, yet it is the same life the whole way through, and God gives it the body He chooses (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.36-38" target="_blank">1 Corinthians 15:36-38</a>). Not a corpse repaired, and not a ghost released. A seed answered. Even the verse skeptics quote against the body agrees once it is read slowly, because flesh and blood there means our frail, dying condition, not our physicality (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.50" target="_blank">1 Corinthians 15:50</a>). Thursday put it in one line. Heaven's dress code is not no body. It is a new body, and the model already exists, scarred, touchable, and recognizably Himself.</p>
+          <p>The week answered with a seed. What goes into the ground is not what comes up, yet it is the same life the whole way through, and God gives it the body He chooses (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.36-38" target="_blank" rel="noopener">1 Corinthians 15:36-38</a>). Not a corpse repaired, and not a ghost released. A seed answered. Even the verse skeptics quote against the body agrees once it is read slowly, because flesh and blood there means our frail, dying condition, not our physicality (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.50" target="_blank" rel="noopener">1 Corinthians 15:50</a>). Thursday put it in one line. Heaven's dress code is not no body. It is a new body, and the model already exists, scarred, touchable, and recognizably Himself.</p>
           <p>So the hope is rescue, not escape, and that clarifies how to hold the body you are reading this in. Jesus did not shed His body at the ascension like a costume. He kept it, scars and all, which means God has never once changed His mind about what He made. The aches, the diagnoses, the birthday numbers are real, and none of them is the last word, because this body is not an embarrassment awaiting disposal. It is seed, and a farmer cares for seed he fully intends to plant.</p>
         </div>
       </div>
@@ -838,18 +840,19 @@ if ('serviceWorker' in navigator) {
       <div class="section-heading">The Wait Belongs to the Waiting Room</div>
       <p>One tension survives every argument this chapter wins, and it lives in the calendar. Twenty centuries of trumpetless mornings. Graves that keep filling while the promise keeps standing. What did the week actually do with the delay?</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 15:51-53 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:1a441b7259edb3df29565f23143121ffc4cfb1ba472763a51c9e069237a8ceac | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 15:51-53</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.15.51-53" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.15.51-53" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"<sup class="verse-number" aria-label="Verse 51">51</sup>Listen, I am telling you a mystery: We will not all fall asleep, but we will all be changed, <sup class="verse-number" aria-label="Verse 52">52</sup>in a moment, in the blink of an eye, at the last trumpet. For the trumpet will sound, the dead will be raised incorruptible, and we will be changed. <sup class="verse-number" aria-label="Verse 53">53</sup>For this corruptible body must be clothed with incorruptibility, and this mortal body must be clothed with immortality."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 51">51</sup>Listen, I tell you a mystery: We will not all sleep, but we will all be changed— <sup class="verse-number" aria-label="Verse 52">52</sup>in an instant, in the twinkling of an eye, at the last trumpet. For the trumpet will sound, the dead will be raised imperishable, and we will be changed. <sup class="verse-number" aria-label="Verse 53">53</sup>For the perishable must be clothed with the imperishable, and the mortal with immortality.</div>
         <div class="verse-commentary">
-          <p>It split the wait in two. Our half is real and it aches, the years measured out in anniversaries and empty chairs, and Scripture never pretends otherwise. But the sleeper's half does not exist. Eyes close on this world and open at the trumpet, the same single blink whether the calendar between them reads three days or three thousand years (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.52" target="_blank">1 Corinthians 15:52</a>). The long delay that wears on us is a wait the ones we miss will never feel. We are the family in the waiting room, watching the clock. The one asleep skips the middle entirely.</p>
-          <p>And for the half we do feel, the week moved certainty off the calendar and onto a Person. The order of events is fixed, Christ the firstfruits, then those who belong to Him at His coming (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.22-23" target="_blank">1 Corinthians 15:22-23</a>), but the date is His, not ours, and Paul shows us how to hold an unknown date without trembling. From a Roman cell, with his own tomorrow unraveling, he anchored everything to a name rather than a schedule. I know whom I have believed (<a class="vlink" href="https://www.bible.com/bible/1713/2TI.1.12" target="_blank">2 Timothy 1:12</a>). Waiting is not wondering. The procession has already turned the corner, and the rest is order of march.</p>
+          <p>It split the wait in two. Our half is real and it aches, the years measured out in anniversaries and empty chairs, and Scripture never pretends otherwise. But the sleeper's half does not exist. Eyes close on this world and open at the trumpet, the same single blink whether the calendar between them reads three days or three thousand years (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.52" target="_blank" rel="noopener">1 Corinthians 15:52</a>). The long delay that wears on us is a wait the ones we miss will never feel. We are the family in the waiting room, watching the clock. The one asleep skips the middle entirely.</p>
+          <p>And for the half we do feel, the week moved certainty off the calendar and onto a Person. The order of events is fixed, Christ the firstfruits, then those who belong to Him at His coming (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.22-23" target="_blank" rel="noopener">1 Corinthians 15:22-23</a>), but the date is His, not ours, and Paul shows us how to hold an unknown date without trembling. From a Roman cell, with his own tomorrow unraveling, he anchored everything to a name rather than a schedule. I know whom I have believed (<a class="vlink" href="https://www.bible.com/bible/3034/2TI.1.12" target="_blank" rel="noopener">2 Timothy 1:12</a>). Waiting is not wondering. The procession has already turned the corner, and the rest is order of march.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Corinthians 15:53 | 15:53 Or clothe itself -->
 
     </div>
 
@@ -862,7 +865,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Condolence We Keep Deleting</div>
       <p>You have stood in the doorway of this moment with your thumbs hovering. Someone you know has just lost someone they love, and you are staring at a glowing text box, typing and deleting. So sorry for your loss. Delete. They are in a better place. Delete. Thinking of you in this difficult time. Delete. Nothing feels sturdy enough to send, because deep down you know what the moment weighs and what your words can hold. Our whole culture is standing in that doorway. It has flowers, casseroles, and soft phrases, passed away, lost, gone too soon, a tenderness with nothing underneath it. Read them slowly and they are the old Corinthian epitaph in a gentler font. Gone is gone. I do not care would be too honest, so we say nothing much, kindly.</p>
-      <p>Words fail at gravesides when there is nothing under them, and this week was seven days of pouring a floor. A creed older than the New Testament, with a witness list attached and addresses you could visit. An honest accounting of what a sealed tomb would cost, every sermon empty, every grave permanent. Then the turn. The first sheaf lifted on the exact morning the festival calendar had been rehearsing for centuries. A risen body you could touch, scarred and solid, the prototype of ours. A trumpet already on God's calendar, and a change quicker than a blink. The believers who received all this took it so literally that they renamed their burial grounds sleeping places, and laid their dead down the way a mother tucks in a child, fully expecting morning. And behind it all stands Jesus at a real tomb, telling a grieving sister that resurrection is not a doctrine but a Person standing in front of her (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.11.25-26" target="_blank">John 11:25-26</a>), then calling a dead man by name and getting an answer. He wept there first, knowing the ending. Knowing does not forbid tears. It forbids despair.</p>
+      <p>Words fail at gravesides when there is nothing under them, and this week was seven days of pouring a floor. A creed older than the New Testament, with a witness list attached and addresses you could visit. An honest accounting of what a sealed tomb would cost, every sermon empty, every grave permanent. Then the turn. The first sheaf lifted on the exact morning the festival calendar had been rehearsing for centuries. A risen body you could touch, scarred and solid, the prototype of ours. A trumpet already on God's calendar, and a change quicker than a blink. The believers who received all this took it so literally that they renamed their burial grounds sleeping places, and laid their dead down the way a mother tucks in a child, fully expecting morning. And behind it all stands Jesus at a real tomb, telling a grieving sister that resurrection is not a doctrine but a Person standing in front of her (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.11.25-26" target="_blank" rel="noopener">John 11:25-26</a>), then calling a dead man by name and getting an answer. He wept there first, knowing the ending. Knowing does not forbid tears. It forbids despair.</p>
       <p>So the name resting in your Bible this week is not an epitaph waiting to be carved. Grief will keep visiting, and it should, because love is why it comes. But underneath the grief there is now a floor that holds. The one you love is not lost, not wandering, not gone. Asleep, with a wake-up already scheduled by Someone who has kept every appointment He ever announced. And the waking is not private. That may be the best part. Nobody rises alone into an empty room. The trumpet empties every believing grave at once, and one morning holds all of us, the friends death pulled apart standing together in the same daylight, with no goodbye left anywhere on the calendar. You are not carrying a memory. You are carrying an appointment.</p>
       <p>Which means you finally have something to send. The next time you stand in that doorway with your thumbs hovering over someone's worst day, you are not reaching for a soft phrase anymore. You are carrying tested news. Do not preach it. Hand a piece of it over, small and plain. Say their person's name out loud, because grieving people ache to hear the name spoken and everyone else avoids it. Then offer one sentence of this week's hope in your own words. Not gone. Asleep, and morning is already on the calendar. It will not fix their grief. It will put a floor under it, and a floor is what the grieving need most. The world keeps deleting and retyping beside its graves. You were handed better words this week. This time, send them.</p>
     </div>
@@ -874,7 +877,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">Christ at the Center of the Week</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Trace Him back through the week. On Sabbath He was the difference between the world's epitaph and the church's, the one Name that made the stones' shrug obsolete. On Sunday He was the content of the creed and the face the witnesses saw, alive in daylight where the claim could be checked. On Monday He was the only wall standing between us and the seven-line bill, empty pulpits, futile faith, unforgiven sin, unraisable dead. On Tuesday He was the Firstfruits, cut and lifted on the sheaf's own morning, the last Adam who wins everything and hands it home. On Wednesday His risen body, scarred, touchable, glorious, became the prototype of ours, proof that God glorifies what He made rather than discarding it. And on Thursday He was the reason the taunt can be sung at all (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.55" target="_blank">1 Corinthians 15:55</a>), the One who drained death's sting, kept the keys, and will sound the trumpet. The week began at tombstones that shrugged. It ends at a tomb that is empty, His, and because His is empty, the ones we visit are temporary. This chapter never asks us to be brave about death. It asks us to be sure about Jesus.</p>
+      <p>Trace Him back through the week. On Sabbath He was the difference between the world's epitaph and the church's, the one Name that made the stones' shrug obsolete. On Sunday He was the content of the creed and the face the witnesses saw, alive in daylight where the claim could be checked. On Monday He was the only wall standing between us and the seven-line bill, empty pulpits, futile faith, unforgiven sin, unraisable dead. On Tuesday He was the Firstfruits, cut and lifted on the sheaf's own morning, the last Adam who wins everything and hands it home. On Wednesday His risen body, scarred, touchable, glorious, became the prototype of ours, proof that God glorifies what He made rather than discarding it. And on Thursday He was the reason the taunt can be sung at all (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.55" target="_blank" rel="noopener">1 Corinthians 15:55</a>), the One who drained death's sting, kept the keys, and will sound the trumpet. The week began at tombstones that shrugged. It ends at a tomb that is empty, His, and because His is empty, the ones we visit are temporary. This chapter never asks us to be brave about death. It asks us to be sure about Jesus.</p>
     </div>
 
     <!-- 6. WEEKEND PRACTICE -->
@@ -901,22 +904,41 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.15" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+15&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Archive</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

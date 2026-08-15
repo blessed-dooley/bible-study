@@ -378,6 +378,14 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
   .verse-text sup.verse-number,
   .verse-text-alt sup.verse-number {
     font-family: 'Nunito', sans-serif;
@@ -494,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -557,6 +522,39 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle:hover,
+  .red-letter-toggle:focus-visible {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+    outline: none;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -575,8 +573,11 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -732,7 +733,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="section-heading">The Soul Was Supposed to Escape</div>
-      <p>Every Greek schoolboy absorbed it along with his alphabet. The real you, the thinking soul, was trapped for now in a body of meat and appetites, and death was the jailbreak. The finest philosophy in the empire taught that the body was a tomb to escape, not a home to return to. So when Paul preached bodily resurrection to the intellectuals of Athens, they did not get angry. They laughed at him (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.17.32" target="_blank">Acts 17:32</a>). Who wants the corpse back? To the Greek mind, resurrection was not too good to be true. It was too crude to be desirable, salvation running in reverse.</p>
+      <p>Many educated Greeks inherited philosophical traditions that treated the soul as the truest self and the body as a temporary confinement. Death could then look like release. Influential schools in the empire taught people to hope for escape from the body, not its return. So when Paul preached bodily resurrection to the intellectuals of Athens, they did not get angry. They laughed at him (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.17.32" target="_blank" rel="noopener">Acts 17:32</a>). Who wants the corpse back? To many Greek hearers, resurrection was not too good to be true. It was too crude to be desirable, salvation running in reverse.</p>
       <p>Now put that schooling inside the Corinthian church. These believers loved Jesus, but they had been raised on soul-escape, and old maps die hard. Resurrection of the dead sounded embarrassing at dinner parties, so some quietly reclassified it. A metaphor, perhaps. A spiritual truth about the inner life. Nothing so vulgar as graves opening. Paul refuses the trade, because Christianity's hope was never a soul slipping out of creation. It is God raising His creation, body included, because He made it, He called it good, and He does not surrender it. That collision, Greek escape versus biblical rescue, is the fight underneath every verse today.</p>
     </div>
 
@@ -744,43 +745,43 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Somewhere in the room when this letter was first read aloud sat the people who had actually said it. There is no resurrection of the dead. They were not trying to attack Jesus. They thought they were being sophisticated. Paul hears it as a crack running through a load-bearing wall, and rather than raise his voice, he does something colder and braver. He accepts their premise for the length of eight verses and walks it to the end of its road (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.9-19" target="_blank">1 Corinthians 15:9-19</a>). Come along, he says, into the world you are proposing. It is a shorter, darker walk than they think.</p>
+      <p>Somewhere in the room when this letter was first read aloud sat the people who had actually said it. There is no resurrection of the dead. They were not trying to attack Jesus. They thought they were being sophisticated. Paul hears it as a crack running through a load-bearing wall, and rather than raise his voice, he does something colder and braver. He accepts their premise for the length of eight verses and walks it to the end of its road (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.9-19" target="_blank" rel="noopener">1 Corinthians 15:9-19</a>). Come along, he says, into the world you are proposing. It is a shorter, darker walk than they think.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 15:12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:08f3191e99fc81e604157e8ae8315e13768981b26f6768cfa20621f35f6862b2 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 15:12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.15.12" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.15.12" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Now if Christ is proclaimed as raised from the dead, how can some of you say, "There is no resurrection of the dead"?"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-text">But if it is preached that Christ has been raised from the dead, how can some of you say that there is no resurrection of the dead?</div>
         <div class="verse-commentary">
-          <p>You can hear Paul's bewilderment coming through the ink. He has just finished the witness list, Peter and the Twelve and the five hundred (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.5-8" target="_blank">1 Corinthians 15:5-8</a>), and now he asks how a church built on that testimony can shrug at resurrection itself. Notice the trap they had wandered into. They wanted to keep Christ's rising as the one glorious exception while denying that resurrection ever happens. Paul closes that door with two quiet hinges. If there is no resurrection of the dead, then Christ has not been raised (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.13" target="_blank">1 Corinthians 15:13</a>), and if the dead are not raised, not even Christ (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.16" target="_blank">1 Corinthians 15:16</a>). His rising was not a special effect. It was the first case of the very thing they were denying. There is no keeping Jesus alive inside a worldview where the dead stay dead.</p>
+          <p>You can hear Paul's bewilderment coming through the ink. He has just finished the witness list, Peter and the Twelve and the five hundred (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.5-8" target="_blank" rel="noopener">1 Corinthians 15:5-8</a>), and now he asks how a church built on that testimony can shrug at resurrection itself. Notice the trap they had wandered into. They wanted to keep Christ's rising as the one glorious exception while denying that resurrection ever happens. Paul closes that door with two quiet hinges. If there is no resurrection of the dead, then Christ has not been raised (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.13" target="_blank" rel="noopener">1 Corinthians 15:13</a>), and if the dead are not raised, not even Christ (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.16" target="_blank" rel="noopener">1 Corinthians 15:16</a>). His rising was not a special effect. It was the first case of the very thing they were denying. There is no keeping Jesus alive inside a worldview where the dead stay dead.</p>
         </div>
       </div>
 
-      <p>So Paul itemizes the cost of their idea, seven consequences in seven relentless lines (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.12-19" target="_blank">1 Corinthians 15:12-19</a>). No risen Christ. Empty preaching. Empty faith. Apostles unmasked as men who testified falsely about God Himself (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.15" target="_blank">1 Corinthians 15:15</a>). Futile faith. Unforgiven sin. The believing dead, gone. Then he slows down on the two lines that cut deepest.</p>
+      <p>So Paul itemizes the cost of their idea, seven consequences in seven relentless lines (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.12-19" target="_blank" rel="noopener">1 Corinthians 15:12-19</a>). No risen Christ. Empty preaching. Empty faith. Apostles unmasked as men who testified falsely about God Himself (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.15" target="_blank" rel="noopener">1 Corinthians 15:15</a>). Futile faith. Unforgiven sin. The believing dead, gone. Then he slows down on the two lines that cut deepest.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 15:14 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:fbc6d2409c9e051a868535d51ede72ca40041b26abf49191bc83e52335ce4109 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 15:14</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.15.14" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.15.14" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"and if Christ has not been raised, then our proclamation is in vain, and so is your faith."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-text">And if Christ has not been raised, our preaching is worthless, and so is your faith.</div>
         <div class="verse-commentary">
           <p>The word Paul reaches for paints a container with nothing inside. Take away the resurrection and the sermon becomes a speech about nothing, and faith becomes a hand closed around air. Notice that he does not soften this for the sake of morale, and he includes himself in the wreckage. Our proclamation, he writes, my life's work along with your believing. Readers have long debated the exact shade of that emptiness, whether it means untrue, or without effect, or without purpose, and the honest answer is that a dead Christ delivers all three at once. A message can be sincere, ancient, beautiful, and comforting, and still be an elegantly wrapped empty box. Only one thing rescues preaching and believing from that verdict. The thing preached has to have happened.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 15:17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:538a02fadbfb7bb066a9d7c76d666b5243b5465e6626447e8e4111dc7e60680d | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 15:17</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.15.17" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.15.17" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"And if Christ has not been raised, your faith is worthless; you are still in your sins."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-text">And if Christ has not been raised, your faith is futile; you are still in your sins.</div>
         <div class="verse-commentary">
-          <p>Here Paul sharpens the point with the Greek word <em>mataios</em>, which means fruitless, the label for effort that comes home empty-handed. Without the resurrection, faith is a field that never yields a harvest, because the one thing it was planted for, forgiveness, never actually arrived. Feel the weight of still in your sins. It would mean the cross was love poured out with nothing to show for it, and every confession you ever prayed changed nothing. Then comes the line that would have stopped every reader with a grave to visit. Those who have fallen asleep in Christ have perished (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.18" target="_blank">1 Corinthians 15:18</a>). The grandmother who prayed for you. The friend who fell asleep trusting Jesus. Gone, on the no-resurrection theory, and our hope would deserve pity, not respect. Paul shows Corinth the whole bill on purpose. Without Easter morning, Good Friday is just a Friday.</p>
+          <p>Here Paul sharpens the point with the Greek word <em>mataios</em>, which means fruitless, the label for effort that comes home empty-handed. Without the resurrection, faith is a field that never yields a harvest, because the one thing it was planted for, forgiveness, never actually arrived. Feel the weight of still in your sins. It would mean the cross was love poured out with nothing to show for it, and every confession you ever prayed changed nothing. Then comes the line that would have stopped every reader with a grave to visit. Those who have fallen asleep in Christ have perished (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.18" target="_blank" rel="noopener">1 Corinthians 15:18</a>). The grandmother who prayed for you. The friend who fell asleep trusting Jesus. Gone, on the no-resurrection theory, and our hope would deserve pity, not respect. Paul shows Corinth the whole bill on purpose. Without Easter morning, Good Friday is just a Friday.</p>
         </div>
       </div>
     </div>
@@ -817,7 +818,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>There is a hidden autobiography inside today's argument. Paul opened this passage calling himself the least of the apostles, a former persecutor remade only by grace (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.10" target="_blank">1 Corinthians 15:10</a>). Now watch what his own logic does to his own story. If Christ is still dead, then no one met Paul on the Damascus road. No light, no voice, no commission, no grace. Just a brilliant man who wrecked his life for a hallucination. The apostle writing this chapter is himself walking evidence that Jesus is alive, a persecutor turned proclaimer by a Person he insists he saw. And that is why the resurrection is not one hopeful doctrine among several. A living Christ guarantees forgiveness now, resurrection later, and reunion after that, because the One making the promises has already walked out of His own grave. He is not our best option among many. He is the only door that was ever open, and it is open.</p>
+      <p>There is a hidden autobiography inside today's argument. Paul opened this passage calling himself the least of the apostles, a former persecutor remade only by grace (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.10" target="_blank" rel="noopener">1 Corinthians 15:10</a>). Now watch what his own logic does to his own story. If Christ is still dead, then no one met Paul on the Damascus road. No light, no voice, no commission, no grace. Just a brilliant man who wrecked his life for a hallucination. The apostle writing this chapter is himself walking evidence that Jesus is alive, a persecutor turned proclaimer by a Person he insists he saw. And that is why the resurrection is not one hopeful doctrine among several. A living Christ guarantees forgiveness now, resurrection later, and reunion after that, because the One making the promises has already walked out of His own grave. He is not our best option among many. He is the only door that was ever open, and it is open.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -854,22 +855,41 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.15.9-19" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+15:9-19&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Archive</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

@@ -378,6 +378,14 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
   .verse-text sup.verse-number,
   .verse-text-alt sup.verse-number {
     font-family: 'Nunito', sans-serif;
@@ -494,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -557,6 +522,39 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle:hover,
+  .red-letter-toggle:focus-visible {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+    outline: none;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -575,8 +573,11 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -732,8 +733,8 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="section-heading">Sowing Season Looked Like a Funeral</div>
-      <p>In the ancient Mediterranean, planting took nerve. Seed grain was food, sacks of it, bread your family could have eaten that winter, and at the start of the rainy season the farmer carried it out and deliberately buried it in the mud. To a hungry household, sowing looked like throwing the harvest away. Scripture itself remembers the ache of it, those who sow in tears will reap with shouts of joy (<a class="vlink" href="https://www.bible.com/bible/1713/PSA.126.5-6" target="_blank">Psalm 126:5-6</a>). Every autumn, farmers across Israel performed a small funeral for their grain and called it hope.</p>
-      <p>And every farmer knew the second half of the story. What broke the ground in spring looked nothing like what had gone into it. A bare, flinty kernel went down. A green blade came up, alive and climbing, the same wheat wearing a body the seed had never worn. Nobody stood in an April field mourning the kernel. Jesus had already hung His own death on this picture, the grain of wheat that must fall into the ground and die to bear much fruit (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.12.24" target="_blank">John 12:24</a>), so by the time Paul writes, the church already thinks in this language. Now Paul takes it one step further. He is about to argue that a cemetery is farmland.</p>
+      <p>In the ancient Mediterranean, planting took nerve. Seed grain was food, sacks of it, bread your family could have eaten that winter, and at the start of the rainy season the farmer carried it out and deliberately buried it in the mud. To a hungry household, sowing looked like throwing the harvest away. Scripture itself remembers the ache of it, those who sow in tears will reap with shouts of joy (<a class="vlink" href="https://www.bible.com/bible/3034/PSA.126.5-6" target="_blank" rel="noopener">Psalm 126:5-6</a>). Every autumn, farmers across Israel performed a small funeral for their grain and called it hope.</p>
+      <p>And every farmer knew the second half of the story. What broke the ground in spring looked nothing like what had gone into it. A bare, flinty kernel went down. A green blade came up, alive and climbing, the same wheat wearing a body the seed had never worn. Nobody stood in an April field mourning the kernel. Jesus had already hung His own death on this picture, the grain of wheat that must fall into the ground and die to bear much fruit (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.12.24" target="_blank" rel="noopener">John 12:24</a>), so by the time Paul writes, the church already thinks in this language. Now Paul takes it one step further. He is about to argue that a cemetery is farmland.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -744,55 +745,55 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Paul has been arguing for thirty-four verses, and now he lets the heckler speak. How are the dead raised? What kind of body will they have when they come? You can hear the smirk riding on that second question. Everyone in Corinth had seen what death does to a body, and the objector assumes resurrection means God gluing the ruin back together. Paul takes the question seriously enough to spend the rest of the chapter answering it (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.36-49" target="_blank">1 Corinthians 15:36-49</a>), and he opens with three pictures any Corinthian could walk outside and check (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.36-41" target="_blank">1 Corinthians 15:36-41</a>). A seed. A world full of different bodies. A night sky.</p>
+      <p>Paul has been arguing for thirty-four verses, and now he lets the heckler speak. How are the dead raised? With what kind of body will they come? You can hear the smirk riding on that second question. Everyone in Corinth had seen what death does to a body, and the objector assumes resurrection means God gluing the ruin back together. Paul takes the question seriously enough to spend the rest of the chapter answering it (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.36-49" target="_blank" rel="noopener">1 Corinthians 15:36-49</a>), and he opens with three pictures any Corinthian could walk outside and check (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.36-41" target="_blank" rel="noopener">1 Corinthians 15:36-41</a>). A seed. A world full of different bodies. A night sky.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 15:35 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:8b096afcdf99f06cdf987208bd556c8429c7d9fba7380535463cb5bd483a8eee | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 15:35</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.15.35" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.15.35" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"But someone will ask, "How are the dead raised? What kind of body will they have when they come?""</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-text">But someone will ask, “How are the dead raised? With what kind of body will they come?”</div>
         <div class="verse-commentary">
-          <p>Give the question its due before Paul dismantles it. These readers knew death without any funeral-home softening. They had watched bodies fail, and they knew what a year in the ground leaves behind. Asking what kind of body is not unbelief. It is realism. The sharp you fool that opens Paul's reply (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.35-39" target="_blank">1 Corinthians 15:35-39</a>) is not aimed at honest asking but at the smirk underneath it, the assumption that God's only option is reassembling the old wreckage. The objector pictures resurrection as a corpse repaired. Paul is about to show him resurrection as a seed answered. The difference between those two pictures is the difference between a horror story and a harvest.</p>
+          <p>Give the question its due before Paul dismantles it. These readers knew death without any funeral-home softening. They had watched bodies fail, and they knew what a year in the ground leaves behind. Asking what kind of body is not unbelief. It is realism. The sharp you fool that opens Paul's reply (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.35-39" target="_blank" rel="noopener">1 Corinthians 15:35-39</a>) is not aimed at honest asking but at the smirk underneath it, the assumption that God's only option is reassembling the old wreckage. The objector pictures resurrection as a corpse repaired. Paul is about to show him resurrection as a seed answered. The difference between those two pictures is the difference between a horror story and a harvest.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 15:36-38 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:fa42aac942339cd42850f687199a21fbf6d4cc1616c82ce9d9b71c92a841c686 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 15:36-38</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.15.36-38" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.15.36-38" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"<sup class="verse-number" aria-label="Verse 36">36</sup>You fool! What you sow does not come to life unless it dies. <sup class="verse-number" aria-label="Verse 37">37</sup>And as for what you sow—you are not sowing the body that will be, but only a seed, perhaps of wheat or another grain. <sup class="verse-number" aria-label="Verse 38">38</sup>But God gives it a body as he wants, and to each of the seeds its own body."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 36">36</sup>You fool! What you sow does not come to life unless it dies. <sup class="verse-number" aria-label="Verse 37">37</sup>And what you sow is not the body that will be, but just a seed, perhaps of wheat or something else. <sup class="verse-number" aria-label="Verse 38">38</sup>But God gives it a body as He has designed, and to each kind of seed He gives its own body.</div>
         <div class="verse-commentary">
-          <p>Every gardener has run this experiment. What you drop into the soil is a dry, hard, unpromising little stone of a thing, and what breaks the surface weeks later is green, alive, and unrecognizable. Not a repaired seed. A body the seed could never have imagined, yet carrying the seed's own life forward, wheat from wheat, never barley from wheat. Paul's point lands in the phrase God gives it a body as he wants. Resurrection is not a natural bounce-back and not a repair job. It is a miracle of the same God who already, in ordinary creation, fits bodies to their worlds, one kind of flesh for humans and others for animals, birds, and fish, each suited to its element (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.39-40" target="_blank">1 Corinthians 15:39-40</a>). The God who dresses life for the sea, the air, and the field can dress your life for the world of glory. He has been doing it all along.</p>
+          <p>Every gardener has run this experiment. What you drop into the soil is a dry, hard, unpromising little stone of a thing, and what breaks the surface weeks later is green, alive, and unrecognizable. Not a repaired seed. A body the seed could never have imagined, yet carrying the seed's own life forward, wheat from wheat, never barley from wheat. Paul's point lands in the phrase God gives it a body as He has designed. Resurrection is not a natural bounce-back and not a repair job. It is a miracle of the same God who already, in ordinary creation, fits bodies to their worlds, one kind of flesh for humans and others for animals, birds, and fish, each suited to its element (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.39-40" target="_blank" rel="noopener">1 Corinthians 15:39-40</a>). The God who dresses life for the sea, the air, and the field can dress your life for the world of glory. He has been doing it all along.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 15:40-44 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:63abf635ada67eb9c5e82369a12335d46aac350a4d3eb7072da437352531eb3c | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 15:40-44</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.15.40-44" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.15.40-44" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"<sup class="verse-number" aria-label="Verse 40">40</sup>There are heavenly bodies and earthly bodies, but the splendor of the heavenly bodies is different from that of the earthly ones. <sup class="verse-number" aria-label="Verse 41">41</sup>There is a splendor of the sun, another of the moon, and another of the stars; in fact, one star differs from another star in splendor. <sup class="verse-number" aria-label="Verse 42">42</sup>So it is with the resurrection of the dead: Sown in corruption, raised in incorruption; <sup class="verse-number" aria-label="Verse 43">43</sup>sown in dishonor, raised in glory; sown in weakness, raised in power; <sup class="verse-number" aria-label="Verse 44">44</sup>sown a natural body, raised a spiritual body. If there is a natural body, there is also a spiritual body."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 40">40</sup>There are also heavenly bodies and earthly bodies. But the splendor of the heavenly bodies is of one degree, and the splendor of the earthly bodies is of another. <sup class="verse-number" aria-label="Verse 41">41</sup>The sun has one degree of splendor, the moon another, and the stars another; and star differs from star in splendor. <sup class="verse-number" aria-label="Verse 42">42</sup>So will it be with the resurrection of the dead: What is sown is perishable; it is raised imperishable. <sup class="verse-number" aria-label="Verse 43">43</sup>It is sown in dishonor; it is raised in glory. It is sown in weakness; it is raised in power. <sup class="verse-number" aria-label="Verse 44">44</sup>It is sown a natural body; it is raised a spiritual body. If there is a natural body, there is also a spiritual body.</div>
         <div class="verse-commentary">
-          <p>Look up on any clear night and you can see Paul's third argument for yourself. Sun, moon, and stars, no two shining alike (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.40-41" target="_blank">1 Corinthians 15:40-41</a>), a sky full of ranked splendors hanging over an earth full of humbler ones. Glory comes in grades, and the resurrection body sits grades above this one. Then come the four contrasts, falling like hammer strokes. Sown in corruption, raised in incorruption. Sown in dishonor, raised in glory. Sown in weakness, raised in power. Sown natural, raised spiritual. Notice the word Paul keeps using on both sides of every arrow. It is <em>sōma</em>, Greek for body, the same word for what goes into the grave and what comes out of it. That one word carries the continuity. It is you they bury and you God raises, not a replacement and not a ghost. The contrasts carry the mercy. The you He raises will never decay again, thank the Lord.</p>
+          <p>Look up on any clear night and you can see Paul's third argument for yourself. Sun, moon, and stars, no two shining alike (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.40-41" target="_blank" rel="noopener">1 Corinthians 15:40-41</a>), a sky full of ranked splendors hanging over an earth full of humbler ones. Glory comes in grades, and the resurrection body sits grades above this one. Then come the four contrasts, falling like hammer strokes. Sown perishable, raised imperishable. Sown in dishonor, raised in glory. Sown in weakness, raised in power. Sown natural, raised spiritual. Notice the word Paul keeps using on both sides of every arrow. It is <em>sōma</em>, Greek for body, the same word for what goes into the grave and what comes out of it. That one word carries the continuity. It is you they bury and you God raises, not a replacement and not a ghost. The contrasts carry the mercy. The you He raises will never decay again, thank the Lord.</p>
         </div>
       </div>
 
       <p>And if spiritual body still sounds to you like a polite phrase for ghost, Paul has one more exhibit. It has a face, a voice, and scars.</p>
 
+<!-- BSB_BLOCK: Philippians 3:21 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:7a196df7c8ea69a5a5ba4aba99f61796a44bd9379e0606d8baeb062dc3e51882 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Philippians 3:21</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/PHP.3.21" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PHP.3.21" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"He will transform the body of our humble condition into the likeness of his glorious body, by the power that enables him to subject everything to himself."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-text">who, by the power that enables Him to subject all things to Himself, will transform our lowly bodies to be like His glorious body.</div>
         <div class="verse-commentary">
-          <p>Here the doctrine stops being abstract, because the model already exists. Our resurrection bodies will be made like His, and His has been seen, heard, and touched. The risen Jesus was no vapor. He walked a road, broke bread, invited fingers into His scars, and ate broiled fish in front of witnesses to settle the question (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.24.39-43" target="_blank">Luke 24:39-43</a>). Recognizably Himself, unmistakably transformed. That is the likeness our humble bodies are headed for, carried there by a power strong enough to subject everything to itself. We will have real bodies that never wear down, never sicken, never die. If you find that hard to picture, be patient with yourself. Decay is all any of us have ever known, and we are being promised a country none of us has visited. But the promise has a living prototype, and He is already home. Your body's future is no longer the grave's business. It is His.</p>
+          <p>Here the doctrine stops being abstract, because the model already exists. Our resurrection bodies will be made like His, and His has been seen, heard, and touched. The risen Jesus was no vapor. He walked a road, broke bread, invited fingers into His scars, and ate broiled fish in front of witnesses to settle the question (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.24.39-43" target="_blank" rel="noopener">Luke 24:39-43</a>). Recognizably Himself, unmistakably transformed. That is the likeness our humble bodies are headed for, carried there by the power that enables Him to subject all things to Himself. We will have real bodies that never wear down, never sicken, never die. If you find that hard to picture, be patient with yourself. Decay is all any of us have ever known, and we are being promised a country none of us has visited. But the promise has a living prototype, and He is already home. Your body's future is no longer the grave's business. It is His.</p>
         </div>
       </div>
     </div>
@@ -805,7 +806,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="section-heading">The Dragonfly Spent Years in the Mud</div>
-      <p>The flash of blue hovering over the lake in August has a history almost nobody knows. Before it owned the air, it lived at the bottom of the pond, for years in some species, as a drab, wingless crawler that scientists call a nymph. It breathed water. It hunted in the silt. Its body was built for that world and no other, and the air above the surface might as well have been another planet. Then one morning the creature climbs a reed it has never climbed, out of the only element it has ever survived. Its skin splits down the back. The same animal pulls itself out of its own outgrown fit, unfolds wings it has never used, and within hours it is hunting on the wing, hovering, even flying backward, over the water it used to crawl beneath.</p>
+      <p>The flash of blue hovering over the lake in August has a history easy to miss. Before it owned the air, it lived at the bottom of the pond, for years in some species, as a drab, wingless crawler that scientists call a nymph. It breathed water. It hunted in the silt. Its body was built for that world and no other, and the air above the surface might as well have been another planet. Then one morning the creature climbs a reed it has never climbed, out of the only element it has ever survived. Its skin splits down the back. The same animal pulls itself out of its own outgrown fit, unfolds wings it has never used, and within hours it is hunting on the wing, hovering, even flying backward, over the water it used to crawl beneath.</p>
       <p>Paul's four hammer strokes describe that reed. Sown a crawler, raised a flier. The dragonfly is not the nymph's ghost, and it is not a repair of the old crawler either. It is the same creature, continued, wearing a body its pond-floor self could not have imagined, made for an element it had never entered. What stays behind on the reed is not the animal. It is the empty old fit, split down the back, still clinging there in the shape of a life that has moved up. That is as close as creation comes to sketching Paul's doctrine in public. It is you they bury and you God raises, the same life carried into a body built for glory, in a world your present self can no more picture than a nymph can picture wind. And you are not asked to imagine the upgrade in the abstract. One risen body already exists, scarred, solid, and glorious. Yours is being made to match.</p>
     </div>
 
@@ -866,22 +867,41 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.15.36-41" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+15:36-41&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Archive</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

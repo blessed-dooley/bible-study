@@ -378,6 +378,14 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
   .verse-text sup.verse-number,
   .verse-text-alt sup.verse-number {
     font-family: 'Nunito', sans-serif;
@@ -524,49 +532,6 @@ if ('serviceWorker' in navigator) {
     opacity: 0.7;
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -587,6 +552,39 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle:hover,
+  .red-letter-toggle:focus-visible {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+    outline: none;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -605,8 +603,11 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -741,7 +742,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">TL;DR</span>
         <div class="section-title-line"></div>
       </div>
-      <p>The road into Corinth ran between tombstones, and the most common epitaph in the empire was a shrug. I was not. I was. I am not. I do not care. Into that city Paul mails the boldest paragraph he ever wrote and dares anyone to check his facts. If Christ is still dead, he says, then the preaching is hollow, the faith is hollow, and the grave wins everything. This week walks his argument all the way to its verdict. <strong>Christ has been raised, and every promise you are living on stands up with Him.</strong></p>
+      <p>The road into Corinth ran between tombstones, and a common Roman epitaph was a shrug. I was not. I was. I am not. I do not care. Into that city Paul mails a paragraph that puts the whole faith on the line and dares anyone to check his facts. If Christ is still dead, he says, then the preaching is hollow, the faith is hollow, and the grave wins everything. This week walks his argument all the way to its verdict. <strong>Christ has been raised, and every promise you are living on stands up with Him.</strong></p>
     </div>
 
     <!-- 2. CONNECTION TO LAST WEEK -->
@@ -762,11 +763,11 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="section-heading">The Graves Outside the City Gate</div>
-      <p>You learned a city's beliefs about death before you ever reached its gate. Roman law kept the dead outside the walls, so the tombs crowded both shoulders of the highway, and the last mile of any journey was a corridor of stone monuments where the dead introduced themselves as you passed. Some epitaphs begged the traveler to stop and read, so the name would live a moment longer in a stranger's mouth. And one line was carved so often across the Roman world that stonecutters shortened it to seven letters, the way we reduce our commonest phrases to initials. Written out, it said this. I was not. I was. I am not. I do not care.</p>
+      <p>You learned a city's beliefs about death before you ever reached its gate. Roman law kept the dead outside the walls, so the tombs crowded both shoulders of the highway, and the last mile of any journey was a corridor of stone monuments where the dead introduced themselves as you passed. Some epitaphs begged the traveler to stop and read, so the name would live a moment longer in a stranger's mouth. And one line was common enough that stonecutters shortened it to seven letters, the way we reduce our commonest phrases to initials. Written out, it said this. I was not. I was. I am not. I do not care.</p>
       <p>That shrug was the empire's best answer to the grave. The philosophers offered a loftier one, a soul slipping free of the body at last, but out on the road where ordinary people buried their children, hope mostly read like the stones. Gone is gone. Into one of those cities came a letter insisting that a man executed by Rome had been seen alive, eating breakfast, holding out scarred hands, and that His rising was not a ghost story but a first installment. Paul knew exactly which world he was writing into. That is why he does not whisper the claim. He builds the entire Christian faith on top of it, in public, and invites the reader to test the foundation.</p>
     </div>
 
-    <!-- 4. THIS WEEK'S MEMORY TEXT (CSB by default) -->
+    <!-- 4. THIS WEEK'S MEMORY TEXT (BSB) -->
     <div class="section">
       <div class="section-label">
         <span class="section-emoji">📖</span>
@@ -774,16 +775,16 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 15:14-17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:17be2ef850ed4efc7d44c3c8c6748a91ce8436232b2e921ac10d916ea037483a | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 15:14-17</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.15.14-17" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.15.14-17" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"<sup class="verse-number" aria-label="Verse 14">14</sup>and if Christ has not been raised, then our proclamation is in vain, and so is your faith. <sup class="verse-number" aria-label="Verse 15">15</sup>Moreover, we are found to be false witnesses about God, because we have testified wrongly about God that he raised up Christ—whom he did not raise up, if in fact the dead are not raised. <sup class="verse-number" aria-label="Verse 16">16</sup>For if the dead are not raised, not even Christ has been raised. <sup class="verse-number" aria-label="Verse 17">17</sup>And if Christ has not been raised, your faith is worthless; you are still in your sins."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 14">14</sup>And if Christ has not been raised, our preaching is worthless, and so is your faith. <sup class="verse-number" aria-label="Verse 15">15</sup>In that case, we are also exposed as false witnesses about God. For we have testified about God that He raised Christ from the dead, but He did not raise Him if in fact the dead are not raised. <sup class="verse-number" aria-label="Verse 16">16</sup>For if the dead are not raised, then not even Christ has been raised. <sup class="verse-number" aria-label="Verse 17">17</sup>And if Christ has not been raised, your faith is futile; you are still in your sins.</div>
         <div class="verse-commentary">
-          <p>Read those verses again and feel how much Paul just put on the table. He hands his opponents the demolition plan for his own faith. If Christ has not been raised, the preaching is hollow, the believing is hollow, the preachers are liars, and every sin ever confessed is still sitting right where it was. No other founder of a movement talks like this. Paul refuses to move Christianity into the safe territory of ideas, where nothing can be checked and nothing can be lost. The Greek word running underneath his argument is <em>anastasis</em>, and it means a standing up again. Dead bodies back on their feet. Paul stakes everything on one dead man having stood up, because on an open road in broad daylight, that Man had stood in front of him.</p>
-          <p>The memory text also hands us this week's route. We will live inside the whole argument (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15" target="_blank">1 Corinthians 15</a>), and watch the risen Jesus prove from Moses, the Prophets, and the Psalms that this was always the plan (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.24.44-47" target="_blank">Luke 24:44-47</a>). We will stand at the resurrection John saw, where those with a part in it are called blessed and holy (<a class="vlink" href="https://www.bible.com/bible/1713/REV.20.5-6" target="_blank">Revelation 20:5-6</a>). We will remember that baptism has already buried us and raised us with Him (<a class="vlink" href="https://www.bible.com/bible/1713/COL.2.12" target="_blank">Colossians 2:12</a>), borrow the settled confidence of an old apostle who knew whom he had believed (<a class="vlink" href="https://www.bible.com/bible/1713/2TI.1.12" target="_blank">2 Timothy 1:12</a>), and end the week beside the graves of people we love, grieving with hope because the dead in Christ will rise (<a class="vlink" href="https://www.bible.com/bible/1713/1TH.4.13-17" target="_blank">1 Thessalonians 4:13-17</a>). Every road this week leads to the same empty tomb.</p>
+          <p>Read those verses again and feel how much Paul just put on the table. He hands his opponents the demolition plan for his own faith. If Christ has not been raised, the preaching is hollow, the believing is hollow, the preachers are liars, and every sin ever confessed is still sitting right where it was. Paul refuses to shield the movement from a testable claim or to move Christianity into the safe territory of ideas, where nothing can be checked and nothing can be lost. The Greek word running underneath his argument is <em>anastasis</em>, and it means a standing up again. Dead bodies back on their feet. Paul stakes everything on one dead man having stood up, because on an open road in broad daylight, that Man had stood in front of him.</p>
+          <p>The memory text also hands us this week's route. We will live inside the whole argument (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15" target="_blank" rel="noopener">1 Corinthians 15</a>), and watch the risen Jesus prove from Moses, the Prophets, and the Psalms that this was always the plan (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.24.44-47" target="_blank" rel="noopener">Luke 24:44-47</a>). We will stand at the resurrection John saw, where those with a part in it are called blessed and holy (<a class="vlink" href="https://www.bible.com/bible/3034/REV.20.5-6" target="_blank" rel="noopener">Revelation 20:5-6</a>). We will remember that baptism has already buried us and raised us with Him (<a class="vlink" href="https://www.bible.com/bible/3034/COL.2.12" target="_blank" rel="noopener">Colossians 2:12</a>), borrow the settled confidence of an old apostle who knew whom he had believed (<a class="vlink" href="https://www.bible.com/bible/3034/2TI.1.12" target="_blank" rel="noopener">2 Timothy 1:12</a>), and end the week beside the graves of people we love, grieving with hope because the dead in Christ will rise (<a class="vlink" href="https://www.bible.com/bible/3034/1TH.4.13-17" target="_blank" rel="noopener">1 Thessalonians 4:13-17</a>). Every road this week leads to the same empty tomb.</p>
         </div>
       </div>
     </div>
@@ -823,7 +824,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="action-box action-box-sabbath">
-        Before Sunday, take a small piece of paper and write one name on it. The name of someone death has taken from you, the one you still catch yourself missing at odd hours. Put the paper in your Bible at <a class="vlink" href="https://www.bible.com/bible/1713/1CO.15" target="_blank">1 Corinthians 15</a> and leave it there all week. Every day of this study will be read over that name. Do not rush past the ache, and do not explain it away. Just let the week's argument stand next to your loss, and watch what a risen Christ has to say to it.
+        Before Sunday, take a small piece of paper and write one name on it. The name of someone death has taken from you, the one you still catch yourself missing at odd hours. Put the paper in your Bible at <a class="vlink" href="https://www.bible.com/bible/3034/1CO.15" target="_blank" rel="noopener">1 Corinthians 15</a> and leave it there all week. Every day of this study will be read over that name. Do not rush past the ache, and do not explain it away. Just let the week's argument stand next to your loss, and watch what a risen Christ has to say to it.
       </div>
     </div>
 
@@ -849,22 +850,41 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.15.14-17" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+15:14-17&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Archive</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

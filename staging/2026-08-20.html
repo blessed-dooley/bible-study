@@ -378,6 +378,14 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
   .verse-text sup.verse-number,
   .verse-text-alt sup.verse-number {
     font-family: 'Nunito', sans-serif;
@@ -494,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -557,6 +522,39 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle:hover,
+  .red-letter-toggle:focus-visible {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+    outline: none;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -575,8 +573,11 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -711,7 +712,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">TL;DR</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Paul saves the loudest scene in the Bible for the end of his argument. A trumpet sounds, and in a slice of time too thin to cut, the dead in Christ stand up incorruptible while the living are changed mid-heartbeat, mortality swapped for immortality like a change of clothes. Then everyone sings the same taunt over the enemy that buried them. Where, death, is your victory? Where is your sting? <strong>Death does not get the last word over you. It gets a trumpet, an empty grave, and a song sung at its expense.</strong></p>
+      <p>Paul saves his loudest scene for the end of the argument. A trumpet sounds, and in a slice of time too thin to cut, the dead in Christ stand up imperishable while the living are changed mid-heartbeat, mortality swapped for immortality like a change of clothes. Then everyone sings the same taunt over the enemy that buried them. Where, death, is your victory? Where is your sting? <strong>Death does not get the last word over you. It gets a trumpet, an empty grave, and a song sung at its expense.</strong></p>
     </div>
 
     <!-- 2. CONNECTION TO YESTERDAY -->
@@ -721,7 +722,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">Connection to Yesterday</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Yesterday Paul answered the smirking question with a seed, a world of fitted bodies, and a night sky, and we left the field knowing what rises. A body sown perishable and raised imperishable, the same you in a form that never wears out (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.42-49" target="_blank">1 Corinthians 15:42-49</a>), with the risen Jesus as the living prototype. One question remains, and it is the one every mourner actually asks. When? How does this end, and what will it be like when it does? Today Paul opens the sealed orders and reads the final scene out loud.</p>
+      <p>Yesterday Paul answered the smirking question with a seed, a world of fitted bodies, and a night sky, and we left the field knowing what rises. A body sown perishable and raised imperishable, the same you in a form that never wears out (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.42-49" target="_blank" rel="noopener">1 Corinthians 15:42-49</a>), with the risen Jesus as the living prototype. One question remains, and it is the one every mourner actually asks. When? How does this end, and what will it be like when it does? Today Paul opens the sealed orders and reads the final scene out loud.</p>
     </div>
 
     <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
@@ -733,7 +734,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Trumpet Meant Break Camp</div>
       <p>Corinth was a Roman colony, rebuilt on Caesar's orders and settled with his people, and Roman order ran on the trumpet. In the legions, brass signals sliced the day into duties. One call woke the camp. One changed the night watch. One summoned the assembly. And there was a signal every soldier and every veteran's household knew in their bones, the call that meant strike the tents. When that trumpet sounded, a camp of thousands came down in minutes, and an army that had gone to sleep in one country could be marching toward another by daylight. Nobody debated it. Nobody voted. The signal was the order.</p>
-      <p>So when Paul writes at the last trumpet, Corinth did not hear sentimental music. It heard mobilization. He paints the same scene in another letter, the Lord Himself descending with a shout, with the archangel's voice, with the trumpet of God, and the dead in Christ rising first (<a class="vlink" href="https://www.bible.com/bible/1713/1TH.4.13-17" target="_blank">1 Thessalonians 4:13-17</a>). Read it with a veteran's ears. The long night watch finally ends. The signal every generation of sleepers has waited for splits the sky, and the whole camp of the dead breaks camp. God's last trumpet is not background music for a mystical moment. It is the order to move, and the destination is home.</p>
+      <p>So when Paul writes at the last trumpet, Corinth did not hear sentimental music. It heard mobilization. He paints the same scene in another letter, the Lord Himself descending with a shout, with the archangel's voice, with the trumpet of God, and the dead in Christ rising first (<a class="vlink" href="https://www.bible.com/bible/3034/1TH.4.13-17" target="_blank" rel="noopener">1 Thessalonians 4:13-17</a>). Read it with a veteran's ears. The long night watch finally ends. The signal every generation of sleepers has waited for splits the sky, and the whole camp of the dead breaks camp. God's last trumpet is not background music for a mystical moment. It is the order to move, and the destination is home.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -744,45 +745,49 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Every symphony saves its loudest chord for the end, and Paul has been building toward his for fifty verses. But before he can sound it, he has to clear away one last misunderstanding, a sentence skeptics still quote at Christians today. Flesh and blood cannot inherit the kingdom of God. Does that not prove heaven is for spirits and the body gets left behind? Stay close, because Paul answers with a mystery, a trumpet, and the most defiant taunt ever aimed at a defeated enemy. Today the week's argument reaches the morning it has been marching toward all along.</p>
+      <p>Like a symphony saving its loudest chord for the end, Paul has been building toward his for fifty verses. But before he can sound it, he has to clear away one last misunderstanding, a sentence skeptics still quote at Christians today. Flesh and blood cannot inherit the kingdom of God. Does that not prove heaven is for spirits and the body gets left behind? Stay close, because Paul answers with a mystery, a trumpet, and a defiant taunt aimed at a defeated enemy. Today the week's argument reaches the morning it has been marching toward all along.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 15:50 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:5bcd8b1846b54ab3d39abc40df4174950dedab175a5bddf90d8d997d9cf69295 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 15:50</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.15.50" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.15.50" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"I want you to know this, brothers and sisters: flesh and blood cannot inherit the kingdom of God, and corruption cannot inherit incorruption."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-text">Now I declare to you, brothers, that flesh and blood cannot inherit the kingdom of God, nor does the perishable inherit the imperishable.</div>
         <div class="verse-commentary">
-          <p>This is the verse people lift out to claim Paul preached a bodiless heaven, and the correction is printed inside the sentence itself. Hebrew speech loved parallel lines, and Paul builds one here. Flesh and blood sits parallel to corruption, and kingdom of God sits parallel to incorruption. In Jewish idiom, flesh and blood was shorthand for frail, fallen humanity, the way Jesus used it when He told Peter that flesh and blood had not revealed his great confession (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.16.17" target="_blank">Matthew 16:17</a>). Paul, who has spent half a chapter promising resurrected bodies, is not barring bodies from the kingdom. He is saying the body in its present condition, corruptible, dying, and bent toward sin, cannot walk into an incorruptible world. It needs radical transformation, not disposal. Heaven's dress code is not no body. It is a new body.</p>
+          <p>This is the verse people lift out to claim Paul preached a bodiless heaven, and the correction is printed inside the sentence itself. Hebrew speech loved parallel lines, and Paul builds one here. Flesh and blood sits parallel to the perishable, and kingdom of God sits parallel to the imperishable. In Jewish idiom, flesh and blood was shorthand for frail, fallen humanity, the way Jesus used it when He told Peter that flesh and blood had not revealed his great confession (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.16.17" target="_blank" rel="noopener">Matthew 16:17</a>). Paul, who has spent half a chapter promising resurrected bodies, is not barring bodies from the kingdom. He is saying the body in its present condition, perishable, dying, and bent toward sin, cannot walk into an imperishable world. It needs radical transformation, not disposal. Heaven's dress code is not no body. It is a new body.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 15:51-53 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:1a441b7259edb3df29565f23143121ffc4cfb1ba472763a51c9e069237a8ceac | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 15:51-53</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.15.51-53" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.15.51-53" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"<sup class="verse-number" aria-label="Verse 51">51</sup>Listen, I am telling you a mystery: We will not all fall asleep, but we will all be changed, <sup class="verse-number" aria-label="Verse 52">52</sup>in a moment, in the blink of an eye, at the last trumpet. For the trumpet will sound, the dead will be raised incorruptible, and we will be changed. <sup class="verse-number" aria-label="Verse 53">53</sup>For this corruptible body must be clothed with incorruptibility, and this mortal body must be clothed with immortality."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 51">51</sup>Listen, I tell you a mystery: We will not all sleep, but we will all be changed— <sup class="verse-number" aria-label="Verse 52">52</sup>in an instant, in the twinkling of an eye, at the last trumpet. For the trumpet will sound, the dead will be raised imperishable, and we will be changed. <sup class="verse-number" aria-label="Verse 53">53</sup>For the perishable must be clothed with the imperishable, and the mortal with immortality.</div>
         <div class="verse-commentary">
-          <p>Paul leans in like a man sharing a secret, because he is. Not everyone will sleep, but everyone will be changed, and the change takes no time at all. The phrase in a moment translates the Greek <em>atomos</em>, a slice of time too thin to cut, the word that eventually named the atom. In one uncuttable instant, at the last trumpet, two miracles fire together. The dead in Christ rise incorruptible, and the living are changed mid-heartbeat. Then Paul reaches for wardrobe language, this corruptible clothed with incorruptibility, this mortal dressed in immortality, humanity finally wearing what the new world requires. Only when that clothing goes on, when our sinful, dying condition is removed at last (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.54" target="_blank">1 Corinthians 15:54</a>), does the old written promise take effect, and the clothing image hands off directly to the victory shout (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.53-54" target="_blank">1 Corinthians 15:53-54</a>). God does not renovate us gradually into glory. He changes us in the time it takes light to cross an atom.</p>
+          <p>Paul leans in like a man sharing a secret, because he is. Not everyone will sleep, but everyone will be changed, and the change takes no time at all. The phrase in an instant translates the Greek <em>atomos</em>, a slice of time too thin to cut, the word that eventually named the atom. In that uncuttable slice of time, at the last trumpet, two miracles fire together. The dead in Christ are raised imperishable, and the living are changed mid-heartbeat. Then Paul reaches for wardrobe language, the perishable clothed with the imperishable, the mortal dressed in immortality, humanity finally wearing what the new world requires. Only when that clothing goes on, when our sinful, dying condition is removed at last (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.54" target="_blank" rel="noopener">1 Corinthians 15:54</a>), does the old written promise take effect, and the clothing image hands off directly to the victory shout (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.53-54" target="_blank" rel="noopener">1 Corinthians 15:53-54</a>). God does not renovate us gradually into glory. He changes us in an indivisible instant.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Corinthians 15:53 | 15:53 Or clothe itself -->
 
-      <p>Do the arithmetic of experience here, because it is the tenderest math in Scripture. A believer closes her eyes in death, and the next thing she knows is the trumpet, the same instant whether the sleep lasted three days or three thousand years (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.52" target="_blank">1 Corinthians 15:52</a>). The whole scene belongs to the second coming of Christ (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.51-52" target="_blank">1 Corinthians 15:51-52</a>). No one in Jesus experiences a long wait in the dark. They fall asleep, and then it is morning.</p>
+      <p>Do the arithmetic of experience here, because it is the tenderest math in Scripture. A believer closes her eyes in death, and the next thing she knows is the trumpet, the same instant whether the sleep lasted three days or three thousand years (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.52" target="_blank" rel="noopener">1 Corinthians 15:52</a>). The whole scene belongs to the second coming of Christ (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.51-52" target="_blank" rel="noopener">1 Corinthians 15:51-52</a>). No one in Jesus experiences a long wait in the dark. They fall asleep, and then it is morning.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 15:54-57 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:65ee800bc31166a75fcb81f6a3dfbe836ed72d2de4954feac0c4ac2a2069e1cb | footnotes-stripped:3 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 15:54-57</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.15.54-57" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.15.54-57" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"<sup class="verse-number" aria-label="Verse 54">54</sup>Now when this corruptible body is clothed with incorruptibility, and this mortal body is clothed with immortality, then the saying that is written will take place: Death has been swallowed up in victory. <sup class="verse-number" aria-label="Verse 55">55</sup>Where, death, is your victory? Where, death, is your sting? <sup class="verse-number" aria-label="Verse 56">56</sup>Now the sting of death is sin, and the power of sin is the law. <sup class="verse-number" aria-label="Verse 57">57</sup>But thanks be to God, who gives us the victory through our Lord Jesus Christ."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 54">54</sup>When the perishable has been clothed with the imperishable and the mortal with immortality, then the saying that is written will come to pass: “Death has been swallowed up in victory.” <sup class="verse-number" aria-label="Verse 55">55</sup>“Where, O Death, is your victory? Where, O Death, is your sting?” <sup class="verse-number" aria-label="Verse 56">56</sup>The sting of death is sin, and the power of sin is the law. <sup class="verse-number" aria-label="Verse 57">57</sup>But thanks be to God, who gives us the victory through our Lord Jesus Christ!</div>
         <div class="verse-commentary">
-          <p>Paul ends his argument the way Scripture ends the whole story, with singing. The promise that death would be swallowed up comes from Isaiah (<a class="vlink" href="https://www.bible.com/bible/1713/ISA.25.8" target="_blank">Isaiah 25:8</a>), and on that morning it stops being prophecy and becomes history. Then comes the taunt, sung at the enemy that has buried every generation of the human race. Where is your victory? Where is your sting? Paul even performs the autopsy. The sting of death is sin, the venom that makes dying fatal, and sin draws its power from the law we broke. That is exactly where the gospel lands. The whole stinger was driven into Christ at the cross, and a stinger once spent cannot be used again. Death still buzzes. It still frightens, and for now it still takes. But for those in Jesus it carries no poison, and verse 57 says the victory is given, present tense, never earned. We do not fight death for the crown. We thank the One already wearing it.</p>
+          <p>Paul ends his argument the way Scripture ends the whole story, with singing. The promise that death would be swallowed up comes from Isaiah (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.25.8" target="_blank" rel="noopener">Isaiah 25:8</a>), and on that morning it stops being prophecy and becomes history. Then comes the taunt, sung at the enemy that has buried every generation of the human race. Where is your victory? Where is your sting? Paul even performs the autopsy. The sting of death is sin, the venom that makes dying fatal, and sin draws its power from the law we broke. That is exactly where the gospel lands. The whole stinger was driven into Christ at the cross, and a stinger once spent cannot be used again. Death still buzzes. It still frightens, and for now it still takes. But for those in Jesus it carries no poison, and verse 57 says the victory is given, present tense, never earned. We do not fight death for the crown. We thank the One already wearing it.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Corinthians 15:54 | 15:54 WH does not include and the mortal with immortality. -->
+      <!-- BSB_FOOTNOTE: 1 Corinthians 15:54 | 15:54 Isaiah 25:8 -->
+      <!-- BSB_FOOTNOTE: 1 Corinthians 15:55 | 15:55 Hosea 13:14 (see also LXX); BYZ and TR “Where, O Death, is your sting? Where, O Hades, is your victory?” -->
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -806,7 +811,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">Silicon Valley Declared War on Death</div>
       <p>The richest men of our generation have picked their final enemy, and it is the same one Paul names. Sam Altman has put hundreds of millions into Retro Biosciences to add healthy years to human life. Jeff Bezos reportedly backs Altos Labs, a venture famous for hiring Nobel-winning scientists to reprogram old cells young. Peter Thiel funds anti-aging biotech and cryogenic preservation. And the movement has a face, Bryan Johnson, the tech founder who reportedly spends around two million dollars a year running his own body like a research lab, more than a hundred pills a day, every organ measured, every hour scheduled, all under a banner he now frames as a new religion. Its entire creed fits on the label. Don't Die. He is not joking, and it would be cheap to laugh at him. This is our era saying out loud what every era has whispered at gravesides. Death is wrong. It does not belong here. Yet this summer, after an autoimmune diagnosis, Johnson publicly wondered whether he had taken it all too far. The war chest is bottomless. The enemy is undefeated.</p>
-      <p>Paul would recognize the diagnosis instantly. He calls death an enemy too, in fact the last enemy to be destroyed (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.26" target="_blank">1 Corinthians 15:26</a>), and he never once tells believers to make peace with it. Where he parts company with the movement is the strategy, and the tense. Every dollar in the longevity war buys, at very best, delay, and delay is not victory. The chapter's word is sharper than the industry's, not managed, not postponed, but swallowed, and Paul names the one weapon no protocol reaches. The sting of death is sin, and no supplement stack touches that. So the victory had to be won the way wars are actually won, by meeting the enemy, and Someone already has. Christ went into death carrying the sting and came out with it spent, which is why Paul's sentence runs in a tense no billionaire can purchase. Thanks be to God, who gives us the victory. Gives. The best funded war in human history is trying to buy what has been free since a Sunday morning outside Jerusalem. Don't Die was never a plan we could run. It was always a promise only He could make.</p>
+      <p>Paul would recognize the diagnosis instantly. He calls death an enemy too, in fact the last enemy to be destroyed (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.26" target="_blank" rel="noopener">1 Corinthians 15:26</a>), and he never once tells believers to make peace with it. Where he parts company with the movement is the strategy, and the tense. Every dollar in the longevity war buys, at very best, delay, and delay is not victory. The chapter's word is sharper than the industry's, not managed, not postponed, but swallowed, and Paul names the one weapon no protocol reaches. The sting of death is sin, and no supplement stack touches that. So the victory had to be won the way wars are actually won, by meeting the enemy, and Someone already has. Christ went into death carrying the sting and came out with it spent, which is why Paul's sentence runs in a tense no billionaire can purchase. Thanks be to God, who gives us the victory. Gives. This heavily funded war on death is trying to buy what has been free since a Sunday morning outside Jerusalem. Don't Die was never a plan we could run. It was always a promise only He could make.</p>
       <!-- TODAYS_WORLD_SOURCE: Is longevity dead? | Dazed | 2026 | https://www.dazeddigital.com/life-culture/article/70752/1/is-longevity-dead-bryan-johnson-dont-die-movement -->
     </div>
 
@@ -817,7 +822,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Ask how death lost its sting and the answer has coordinates on a map, a hill outside Jerusalem. The taunt Paul sings (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.55" target="_blank">1 Corinthians 15:55</a>) reaches back to God's ancient promise to ransom His people from the power of the grave (<a class="vlink" href="https://www.bible.com/bible/1713/HOS.13.14" target="_blank">Hosea 13:14</a>), and ransoms get paid. At the cross, Jesus took the full dose of death's venom, sin itself, our sin, into His own body. He did not dodge the grave. He drained it. He went in through the front door, lay in the enemy's stronghold, and walked out with the keys. That is why the victory can be given rather than merely admired. The Lord who will sound the last trumpet has already personally beaten the thing the trumpet ends, so His empty tomb signs for yours. The Victor's habit, as this whole week keeps showing us, is not simply to win. It is to bring His people out with Him.</p>
+      <p>Ask how death lost its sting and the answer has coordinates on a map, a hill outside Jerusalem. The taunt Paul sings (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.55" target="_blank" rel="noopener">1 Corinthians 15:55</a>) reaches back to God's ancient promise to ransom His people from the power of the grave (<a class="vlink" href="https://www.bible.com/bible/3034/HOS.13.14" target="_blank" rel="noopener">Hosea 13:14</a>), and ransoms get paid. At the cross, Jesus took the full dose of death's venom, sin itself, our sin, into His own body. He did not dodge the grave. He drained it. He went in through the front door, lay in the enemy's stronghold, and walked out with the keys. That is why the victory can be given rather than merely admired. The Lord who will sound the last trumpet has already personally beaten the thing the trumpet ends, so His empty tomb signs for yours. The Victor's habit, as this whole week keeps showing us, is not simply to win. It is to bring His people out with Him.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -828,7 +833,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="action-box">
-        Take out the paper you placed in your Bible on Sabbath, the one carrying a name you love. Beneath the name, write five words. Asleep until the trumpet sounds. Then read <a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.52" target="_blank">1 Corinthians 15:52</a> aloud over it, slowly, and notice what happens to grief when the sleep has an alarm set. Leave the paper where it is. Tomorrow the week lands, and it lands on the morning that paper is about.
+        Take out the paper you placed in your Bible on Sabbath, the one carrying a name you love. Beneath the name, write five words. Asleep until the trumpet sounds. Then read <a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.52" target="_blank" rel="noopener">1 Corinthians 15:52</a> aloud over it, slowly, and notice what happens to grief when the sleep has an alarm set. Leave the paper where it is. Tomorrow the week lands, and it lands on the morning that paper is about.
       </div>
     </div>
 
@@ -839,7 +844,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">Closing Prayer</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Father, we have spent today at the loudest moment in the Bible's future, the trumpet, the blink, the graves opening, the taunt sung over death itself, and before anything else we want to say thank You, because You give the victory we could never win. Thank You that our corruptible bodies will be clothed, not condemned. Thank You that the sting was spent on Jesus and cannot be spent on us. We confess that death still frightens us, that we grieve hard, and that some of us have stood at gravesides where the trumpet felt very far away. Meet us there, and hold our hope steady. Teach us to close our eyes each night as quiet practice in trusting You with the dark. And keep us ready for the morning when the signal sounds and the whole sleeping camp of Your people breaks camp for home. In Jesus' name, Amen.</p>
+      <p>Father, we have spent today in the trumpet-filled moment the Bible promises, the trumpet, the blink, the graves opening, the taunt sung over death itself, and before anything else we want to say thank You, because You give the victory we could never win. Thank You that our perishable bodies will be clothed, not condemned. Thank You that the sting was spent on Jesus and cannot be spent on us. We confess that death still frightens us, that we grieve hard, and that some of us have stood at gravesides where the trumpet felt very far away. Meet us there, and hold our hope steady. Teach us to close our eyes each night as quiet practice in trusting You with the dark. And keep us ready for the morning when the signal sounds and the whole sleeping camp of Your people breaks camp for home. In Jesus' name, Amen.</p>
     </div>
 
     <!-- 10. DISCUSSION -->
@@ -854,22 +859,41 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.15.54-57" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+15:54-57&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Archive</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
