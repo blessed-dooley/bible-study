@@ -579,11 +579,20 @@ if ('serviceWorker' in navigator) {
     font-size: 11px;
     padding: 5px 11px;
   }
-  .red-letter-toggle:hover,
-  .red-letter-toggle:focus-visible {
+  .red-letter-toggle[aria-pressed="true"] {
     border-color: #ffb4a8;
     color: #ffb4a8;
-    outline: none;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
   }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
