@@ -3,20 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study · Archive</title>
+<title>Daily Bible Study</title>
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Daily Bible Study">
-<meta property="og:title" content="Daily Bible Study · Archive">
+<meta property="og:title" content="Daily Bible Study">
 <meta property="og:description" content="A daily walk in the Word — drawing closer to God, one day at a time.">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Daily Bible Study">
 <meta name="description" content="A daily walk in the Word — drawing closer to God, one day at a time.">
 <meta name="theme-color" content="#1a1a1a">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -491,6 +492,17 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-links {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .footer .footer-links a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 480px) {
@@ -646,14 +658,15 @@ if ('serviceWorker' in navigator) {
 
   <!-- FOOTER -->
   <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love</p>
+    <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-links"><a href="about.html">About Our Approach</a><span aria-hidden="true"> · </span><a href="scripture-sources.html">Scripture Sources</a></p>
   </div>
 
 </div>
 <script>
 const GITHUB_USER = 'blessedcontent';
 const GITHUB_REPO = 'bible-study';
-const EXCLUDED = ['index.html', 'substack-mockup.html', 'substack-real.html', '_config.yml', 'README.md', 'staging'];
+const STUDY_FILE = /^\d{4}-\d{2}-\d{2}\.html$/;
 
 function parseDate(fn) {
   const m = fn.match(/^(\d{4})-(\d{2})-(\d{2})/);
@@ -698,7 +711,7 @@ function render(files, metas) {
   const container = document.getElementById('studies-container');
   const statsBar = document.getElementById('stats-bar');
   const studies = files
-    .filter(f => f.type==='file' && f.name.endsWith('.html') && !EXCLUDED.includes(f.name))
+    .filter(f => f.type==='file' && STUDY_FILE.test(f.name))
     .map((f,i) => ({ file:f.name, date:parseDate(f.name), title:metas[i]?.title||getTitleFromFilename(f.name), series:metas[i]?.series||null }))
     .sort((a,b) => { if (a.date&&b.date) return b.date-a.date; if (a.date) return -1; if (b.date) return 1; return a.file.localeCompare(b.file); });
   if (!studies.length) { showEmpty(); return; }
@@ -742,7 +755,7 @@ async function loadStudies() {
     const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/`);
     if (!res.ok) throw new Error();
     const files = await res.json();
-    const studyFiles = files.filter(f=>f.type==='file'&&f.name.endsWith('.html')&&!EXCLUDED.includes(f.name));
+    const studyFiles = files.filter(f=>f.type==='file'&&STUDY_FILE.test(f.name));
     const metas = await Promise.all(studyFiles.map(f=>fetchStudyMeta(f.name)));
     render(studyFiles, metas);
   } catch(e) { showEmpty(); }
