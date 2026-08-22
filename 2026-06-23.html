@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -735,51 +758,53 @@ if ('serviceWorker' in navigator) {
 
       <p>Heaven is almost impossible to describe, and the Bible knows it. No set of human words is big enough to hold the glory of what God has prepared, and Scripture admits as much rather than pretending otherwise. So instead of measurements, God hands John a relationship. The vision John receives on Patmos does not lead with architecture. It leads with a wedding, because the truest thing about our future is not where we will be but Whose we will be.</p>
 
+<!-- BSB_BLOCK: John 14:1-3 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c9781bdff12cfaffee9410713a9cf9d22cd7d007250a42d2f9a7541f548313d7 | footnotes-stripped:2 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">John 14:1-3</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.14.1-3" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.14.1-3" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Don't let your heart be troubled. Believe in God; believe also in me. In my Father's house are many rooms. If it were not so, would I have told you that I am going to prepare a place for you? If I go away and prepare a place for you, I will come again and take you to myself, so that where I am you may be also."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Jesus says these words on the worst night of the disciples' lives, hours before the cross, and He says them in the exact cadence of a groom leaving for the engagement. In My Father's house there is room. I am going to prepare a place. I will come again and take you to Myself. Every listener would have heard a wedding in it. This is why He opens with "don't let your heart be troubled." A bride does not panic when the groom leaves to build; the leaving is the proof that he is coming back. And notice the final clause, because it is the whole point: not so you can have a mansion, but "so that where I am you may be also." The destination is not the real estate. The destination is being with Him. The rooms only matter because of Whose house they are in.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup><span class="words-of-jesus">“Do not let your hearts be troubled. You believe in God; believe in Me as well.</span> <sup class="verse-number" aria-label="Verse 2">2</sup><span class="words-of-jesus">In My Father’s house are many rooms. If it were not so, would I have told you that I am going there to prepare a place for you?</span> <sup class="verse-number" aria-label="Verse 3">3</sup><span class="words-of-jesus">And if I go and prepare a place for you, I will come back and welcome you into My presence, so that you also may be where I am.</span></div>
+<div class="verse-commentary">
+          <p>Jesus says these words on the worst night of the disciples' lives, hours before the cross, and He says them in the exact cadence of a groom leaving for the engagement. In My Father's house there is room. I am going to prepare a place. I will come again and take you to Myself. Every listener would have heard a wedding in it. This is why He opens with "Do not let your hearts be troubled." A bride does not panic when the groom leaves to build; the leaving is the proof that he is coming back. And notice the final clause, because it is the whole point: not so you can have a mansion, but "so that you also may be where I am." The destination is not the real estate. The destination is being with Him. The rooms only matter because of Whose house they are in.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: John 14:1 | 14:1 Or Believe in God -->
+      <!-- BSB_FOOTNOTE: John 14:2 | 14:2 Or If it were not so, I would have told you. I am going there to prepare a place for you. -->
 
+<!-- BSB_BLOCK: Revelation 21:9-11 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c5bd243e312244a9c1e5ae4b66cf9b142487d6d096b732f9f473723ee63ebb17 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Revelation 21:9-11</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/REV.21.9-11" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/REV.21.9-11" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Then one of the seven angels... came and spoke with me: 'Come, I will show you the bride, the wife of the Lamb.' He then carried me away in the Spirit to a great, high mountain and showed me the holy city, Jerusalem, coming down out of heaven from God, having the glory of God. Her radiance was like a precious jewel, like a jasper stone, clear as crystal."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Watch the sleight of hand the angel performs, because it is the heart of the day. He says, "Come, I will show you the bride," and then he shows John a city. The word for bride here is the Greek <em>nymphe</em>, and the whole vision turns on the fact that the bride and the city are the same thing. The dazzling place coming down out of heaven, glowing like a flawless jewel, is not just where the people of God will live; it is a portrait of the people of God themselves, made radiant by His glory. So when you read the long, jaw-dropping description of the city's gates and walls and light (<a class="vlink" href="https://www.bible.com/bible/1713/REV.21.9-27" target="_blank">Revelation 21:9-27</a>), do not read it as a real-estate listing. Read it as a wedding portrait. That is how beautiful God intends to make the bride. The radiance is not the gold; it is the glory of God resting on His people at last.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 9">9</sup>Then one of the seven angels with the seven bowls full of the seven final plagues came and said to me, “Come, I will show you the bride, the wife of the Lamb.” <sup class="verse-number" aria-label="Verse 10">10</sup>And he carried me away in the Spirit to a mountain great and high, and showed me the holy city of Jerusalem coming down out of heaven from God, <sup class="verse-number" aria-label="Verse 11">11</sup>shining with the glory of God. Its radiance was like a most precious jewel, like a jasper, as clear as crystal.</div>
+<div class="verse-commentary">
+          <p>Watch the sleight of hand the angel performs, because it is the heart of the day. He says, "Come, I will show you the bride," and then he shows John a city. The word for bride here is the Greek <em>nymphe</em>, and the whole vision turns on the fact that the bride and the city are the same thing. The dazzling place coming down out of heaven, glowing like a flawless jewel, is not just where the people of God will live; it is a portrait of the people of God themselves, made radiant by His glory. So when you read the long, jaw-dropping description of the city's gates and walls and light (<a class="vlink" href="https://www.bible.com/bible/3034/REV.21.9-27" target="_blank" rel="noopener">Revelation 21:9-27</a>), do not read it as a real-estate listing. Read it as a wedding portrait. That is how beautiful God intends to make the bride. The radiance is not the gold; it is the glory of God resting on His people at last.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Revelation 19:7 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b631c0b5d2768189f1d24bfccf454ea62fec1035249d3c9ed40a8d91f2029b0c | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Revelation 19:7</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/REV.19.7" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/REV.19.7" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Let us be glad, rejoice, and give him glory, because the marriage of the Lamb has come, and his bride has prepared herself."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>All of heaven erupts, and the reason is a wedding. "The marriage of the Lamb has come." This is the moment the long engagement ends, the moment the whole universe has been waiting to celebrate. And there is one small phrase here that protects us from a lazy reading: "his bride has prepared herself." The waiting was never meant to be passive. Just as the Galilean bride kept herself ready for a date she could not predict, the people of God live in the engagement on purpose, keeping our hearts turned toward Him, setting our minds on things above rather than getting swallowed by what is below (<a class="vlink" href="https://www.bible.com/bible/1713/COL.3.2" target="_blank">Colossians 3:2</a>). We do not prepare ourselves to earn the wedding. We prepare ourselves because we are already promised, and a promised bride lives differently.</p>
+        <div class="verse-text">Let us rejoice and be glad and give Him the glory. For the marriage of the Lamb has come, and His bride has made herself ready.</div>
+<div class="verse-commentary">
+          <p>All of heaven erupts, and the reason is a wedding. "The marriage of the Lamb has come." This is the moment the long engagement ends, the moment the whole universe has been waiting to celebrate. And there is one small phrase here that protects us from a lazy reading: "His bride has made herself ready." The waiting was never meant to be passive. Just as the Galilean bride kept herself ready for a date she could not predict, the people of God live in the engagement on purpose, keeping our hearts turned toward Him, setting our minds on things above rather than getting swallowed by what is below (<a class="vlink" href="https://www.bible.com/bible/3034/COL.3.2" target="_blank" rel="noopener">Colossians 3:2</a>). We do not prepare ourselves to earn the wedding. We prepare ourselves because we are already promised, and a promised bride lives differently.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Revelation 21:2 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:0c99be08f8f2ddf77b6f74ba949af21e30378b415d9bb40e0cd41c138ca7ffac | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Revelation 21:2</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/REV.21.2" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/REV.21.2" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"I also saw the holy city, the new Jerusalem, coming down out of heaven from God, prepared like a bride adorned for her husband."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Here the two pictures fuse completely: the holy city comes down "prepared like a bride adorned for her husband." A bride on her wedding day is the one person every eye in the room wants to see, dressed and ready, walking toward the one she loves. That is the image God leaves us with for the end of all things. And the warnings Jesus told about being ready (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.22.1-14" target="_blank">Matthew 22:1-14</a> and the ten who waited for the bridegroom in <a class="vlink" href="https://www.bible.com/bible/1713/MAT.25.1-13" target="_blank">Matthew 25:1-13</a>) are not meant to frighten us but to keep us from missing the very feast we were invited to. He does not want the wedding to take us by surprise. He wants us at the table. The God of the whole Bible is not arranging an evacuation. He is throwing a wedding, and we are the bride.</p>
+        <div class="verse-text">I saw the holy city, the new Jerusalem, coming down out of heaven from God, prepared as a bride adorned for her husband.</div>
+<div class="verse-commentary">
+          <p>Here the two pictures fuse completely: the holy city comes down "prepared as a bride adorned for her husband." A bride on her wedding day is the one person every eye in the room wants to see, dressed and ready, walking toward the one she loves. That is the image God leaves us with for the end of all things. And the warnings Jesus told about being ready (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.22.1-14" target="_blank" rel="noopener">Matthew 22:1-14</a> and the ten who waited for the bridegroom in <a class="vlink" href="https://www.bible.com/bible/3034/MAT.25.1-13" target="_blank" rel="noopener">Matthew 25:1-13</a>) are not meant to frighten us but to keep us from missing the very feast we were invited to. He does not want the wedding to take us by surprise. He wants us at the table. The God of the whole Bible is not arranging an evacuation. He is throwing a wedding, and we are the bride.</p>
         </div>
       </div>
     </div>
@@ -805,7 +830,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Day the Family Becomes Forever</div>
       <p>In courthouses all over the country there is a kind of hearing unlike any other, the day an adoption is finalized. The papers are signed, a judge says a few words, sometimes a small gavel comes down, and a child who has been living in a home becomes, permanently and legally, a daughter or a son. Agencies call it gaining a "forever family," and the word doing all the work is forever. Ask the people who walk families through it and they will tell you the same thing. What a child most needs is not a bigger bedroom or a nicer neighborhood but the settled certainty that they belong, that this is permanent, that no one is going to send them back. The security of being fully and finally chosen does more for a child than any upgrade in square footage ever could.</p>
-      <p>That is exactly the promise hiding inside the wedding and the prepared home. When Jesus says "I will come again and take you to Myself," He is not mainly offering us better scenery. He is offering us a forever family. The deepest thing a human heart aches for is not an upgrade in square footage but the certainty that we belong somewhere, to someone, for good. Heaven is the day that hearing is finalized for everyone who is His. The gavel comes down, the belonging is made permanent, and the One who went ahead to prepare the home turns out to have wanted, all along, simply to bring us in and call us His own.</p>
+      <p>That is exactly the promise hiding inside the wedding and the prepared home. When Jesus says "I will come back and welcome you into My presence," He is not mainly offering us better scenery. He is offering us a forever family. The deepest thing a human heart aches for is not an upgrade in square footage but the certainty that we belong somewhere, to someone, for good. Heaven is the day that hearing is finalized for everyone who is His. The gavel comes down, the belonging is made permanent, and the One who went ahead to prepare the home turns out to have wanted, all along, simply to bring us in and call us His own.</p>
     </div>
 
     <!-- 7. CHRIST CONNECTION -->
@@ -852,22 +877,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/REV.21.9-11" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Revelation+21:9-11&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

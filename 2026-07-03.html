@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -625,7 +648,7 @@ if ('serviceWorker' in navigator) {
     white-space: nowrap;
   }
 
-  /* ── DEEPER QUESTIONS ── */
+  /* LEGACY DEEPER QUESTIONS: retained only so archived Friday bodies can still be reassembled */
   .dq-block {
     margin: 28px 0;
     padding: 0;
@@ -782,72 +805,58 @@ if ('serviceWorker' in navigator) {
       <p>Into all of that, God planted something small and unlikely, a handful of believers meeting in a house next door to the synagogue that had thrown them out. They had no temple, no status, no political cover, just a crucified Messiah and a tentmaker's letters arriving by ship. By every measure Corinth respected, this church should have been swallowed whole. It was not. The same pressures that ran through that city, money, sex, status, and the constant noise of a culture sure of itself, are the pressures running through ours. Which is exactly why two letters written to that loud city still speak so plainly into this one.</p>
     </div>
 
-    <!-- 3. DEEPER QUESTIONS -->
+    <!-- 3. WHAT THIS WEEK CLARIFIES -->
     <div class="section">
       <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Deeper Questions</span>
+        <span class="section-emoji">💡</span>
+        <span class="section-title">What This Week Clarifies</span>
         <div class="section-title-line"></div>
       </div>
 
-      <p>This week handed us a city we recognize and a Savior strong enough for it. These questions are an invitation to take the week off the page and into the parts of your life that look the most like Corinth. Sit with them honestly, alone or with someone you trust.</p>
+      <p>This opening week covered a lot of road, Athens to Corinth, a synagogue to the house next door, a workbench to a night vision. Three tensions traveled with us the whole way, and the week itself has already answered them.</p>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">1</span>
-          <div class="dq-question">Paul was certain he was an apostle of Jesus, called by God Himself. Why does it matter so much to know who you are and what you have been called to do?</div>
+      <div class="section-heading">Corinth Had Everything to Prove. Paul Did Not.</div>
+      <p>Sunday put a strange first sentence under the microscope. Corinth was new money from the ground up, a city with no old families and everything to prove, and its young church had caught the same fever, lining up behind favorite leaders. Writing into that room, Paul had a resume worth leading with. He led instead with a credential he did not give himself.</p>
+
+<!-- BSB_BLOCK: 1 Corinthians 1:1 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:02017c4c23446260a2b6321bcd2ed32243332e66a620d88400561128affe44ed | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">1 Corinthians 1:1</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.1" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">1 Corinthians 1:1</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.1.1" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Paul, called as an apostle of Christ Jesus by God's will, and Sosthenes our brother:"</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Paul leads with this in his very first line because everything else depends on it. He knew who he was, an apostle, and he knew Whose he was, called by God's will and not his own ambition. That settled identity was the keel that kept him upright when the synagogue turned on him, when Athens laughed him off, and when his own churches questioned him. A person who is unsure who they are will be blown around by every bit of praise and every insult. A person who knows they are loved, called, and sent by God can lose an argument, lose their reputation, even lose their nerve for a night, and still not lose their footing. Knowing your calling is not pride. It is ballast.</p>
-          </div>
+        <div class="verse-text">Paul, called to be an apostle of Christ Jesus by the will of God, and our brother Sosthenes,</div>
+<div class="verse-commentary">
+          <p>The week's answer starts with the word apostle, which Sunday unpacked as a sent one, an envoy carrying authority that belongs entirely to the King who sent him. Paul wraps two safeguards around it. He was called, not self-appointed, and the call was God's will, not his own ambition. In a city where every identity was built, his was given, settled before he was born and handed to him while he was still hunting Christians, which is why he names grace as the only explanation for what he became. That is what made him steady in a place that graded everybody. A self-made man has to defend his standing every day. A sent man just has to deliver the message, and he does not need the room to admire him.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">2</span>
-          <div class="dq-question">For a moment, Paul was ready to give up and leave Corinth. What changed his mind, and how can that help us when we want to quit something God has given us? And might there ever be a right time to stop?</div>
-        </div>
+      <div class="section-heading">The City Was His Before It Believed</div>
+      <p>By midweek the evidence had stacked up against Corinth. The synagogue had turned hostile, the city ran on money and appetite, and the missionary was worn down to the edge of quitting. Anyone doing the math Paul could see would have called the place unreachable. Then Jesus stood beside him at night and counted the city differently.</p>
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Acts 18:9-10</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/ACT.18.9-10" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"The Lord said to Paul in a night vision, 'Don't be afraid, but keep on speaking and don't be silent. For I am with you, and no one will lay a hand on you to hurt you, because I have many people in this city.' "</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>What changed Paul's mind was not a surge of willpower. It was a word from God that reframed the whole situation. He was counting enemies; God told him to count the harvest he could not see yet. The lesson for us is to be careful what we measure when we are tired. Sometimes the urge to quit comes from looking only at the resistance and never at what God might be quietly growing.</p>
-            <p>And yet the question has a second edge worth keeping. Paul did not always stay. He shook the dust off in some cities and moved on, and elsewhere he plainly turned away from a door that had closed. Perseverance is not the same as refusing to ever change course. The difference is how we decide. We do not quit because it got hard or because we are discouraged on a given night. We move on only after honest prayer, wise counsel, and a clear sense that God is redirecting us, not simply because the work stopped being comfortable.</p>
-          </div>
+<!-- BSB_BLOCK: Acts 18:9-10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:68f9f12cf72b0c021f46473c50be4598b0dc30825cce66a10eb1f76470b5cd72 | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Acts 18:9-10</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ACT.18.9-10" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 9">9</sup>One night the Lord spoke to Paul in a vision: <span class="words-of-jesus">“Do not be afraid; keep on speaking; do not be silent.</span> <sup class="verse-number" aria-label="Verse 10">10</sup><span class="words-of-jesus">For I am with you and no one will lay a hand on you, because I have many people in this city.”</span></div>
+<div class="verse-commentary">
+          <p>The promise turns on one word. Sabbath pointed at the Greek word behind it, laos, the covenant name Scripture normally saves for Israel, God's own nation, and Jesus spends it on a pagan port full of people who have not yet believed. He claims them in advance. The week then watched the claim come true, the synagogue's own leader believing with his whole household, a congregation growing one wall away from the room that had rejected it. And Wednesday named the reason the promise could be made at all. The harvest was not a hopeful forecast. It was already paid for, purchased at the cross before Paul ever opened his mouth. God does not measure a city by its resistance. He measures it by His people inside it, the ones nobody else can see yet.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">3</span>
-          <div class="dq-question">The Corinthian believers were being shaped by the culture around them, and so are we. How do we stay genuinely "in the world" without being molded by the lust of the flesh, the lust of the eyes, and the pride of life? Where is the surrounding culture quietly influencing us?</div>
-        </div>
+      <div class="section-heading">Love Kept Picking the Pen Back Up</div>
+      <p>Thursday put the famous letters in an uncomfortable light. They are full of hard words, rebukes about division, tolerated sin, and worship gone sideways, all aimed at people Paul claimed to love. Correction and affection do not usually share a page, and a father who keeps sending painful letters starts to look like something other than a father.</p>
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">1 John 2:16</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/1JN.2.16" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"For everything in the world—the lust of the flesh, the lust of the eyes, and the pride in one's possessions—is not from the Father, but is from the world."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>John names the three currents running through every Corinth, ancient or modern. The lust of the flesh is the appetite that wants what feels good now. The lust of the eyes is the craving for whatever we see and decide we must have. And the pride of life is the hunger to be admired and to look successful. Corinth ran on all three, and so does the world on our screens. The danger is rarely a dramatic decision to abandon Jesus. It is slow absorption, picking up the values of the culture the way you pick up an accent, without ever choosing to.</p>
-            <p>So how did Jesus say we survive it? Not by leaving. On the night before He died, He prayed for His followers who would stay right in the middle of the world (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.17.11" target="_blank">John 17:11</a>), and He asked the Father not to take them out of it but to guard them in it, keeping them from the evil one (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.17.15" target="_blank">John 17:15</a>). The answer to a loud culture is not a thicker wall. It is a deeper anchor. We resist being shaped by the world the same way the Corinthians had to, by staying so close to Christ that His values, not the culture's, become the ones we absorb without thinking.</p>
-          </div>
+<!-- BSB_BLOCK: 2 Corinthians 2:4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c86a1174732ba0faf3a7b6b13bae6c7ef4a695d0bc4c92d0821ce16bfb05bd7f | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">2 Corinthians 2:4</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.2.4" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">For through many tears I wrote you out of great distress and anguish of heart, not to grieve you but to let you know how much I love you.</div>
+<div class="verse-commentary">
+          <p>The verse hands us Paul's own explanation. The severe letter was written through tears, with his chest knotted, and the stated goal was not to grieve them but to show them the depth of his love. Thursday filled in the rest. He warns them as beloved children, and the authority behind every rebuke exists for building up, not tearing down. The week's picture for it was a bone that healed crooked. Leaving it alone feels kind and quietly cripples, so a good surgeon breaks it again to set it straight, hating the pain the whole time. That is what each letter was, a father refusing to let his children heal wrong. The same love that claimed a corrupt city refused to flatter a compromised church. Hard words were simply what that love looked like when it picked up a pen.</p>
         </div>
       </div>
 
@@ -899,22 +908,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/ACT.18.9-10" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Acts+18:9-10&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

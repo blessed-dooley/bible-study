@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -619,7 +648,7 @@ if ('serviceWorker' in navigator) {
     white-space: nowrap;
   }
 
-  /* ── DEEPER QUESTIONS ── */
+  /* LEGACY DEEPER QUESTIONS: retained only so archived Friday bodies can still be reassembled */
   .dq-block {
     margin: 28px 0;
     padding: 0;
@@ -775,115 +804,63 @@ if ('serviceWorker' in navigator) {
       <p>Set the week out on a map. Dalmanutha on the western shore of the Sea of Galilee, an unremarkable boat-landing where the Pharisees demanded a sign and got refused. The Roman barracks at Capernaum, a few miles northeast, where a centurion who had built the local synagogue sent two sets of messengers to a Rabbi he could not bring himself to face. A dirt road north out of Galilee, climbing into Phoenician country toward Tyre and Sidon, where a Canaanite mother chased Jesus down and handed His own metaphor back at Him as a comeback. The base of Mount Hermon, where a father had just watched the disciples fail to help his son. The hallway of Hebrews 11, written from somewhere in the Roman world to a Jewish-Christian community wavering under quiet pressure, walking past Abel, Enoch, Noah, Abraham, Sarah, Moses, Rahab, Gideon, David, the prophets, and a roll call too long to finish. And finally Gethsemane, an olive grove across the Kidron Valley from Jerusalem on a Thursday night in early spring. Five rooms separated by miles and centuries; one inclined Ear; one Son in a garden carrying the trust the rest of us could not generate.</p>
     </div>
 
-    <!-- 3. DEEPER QUESTIONS -->
+    <!-- 3. WHAT THIS WEEK CLARIFIES -->
     <div class="section">
       <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Deeper Questions</span>
+        <span class="section-emoji">💡</span>
+        <span class="section-title">What This Week Clarifies</span>
         <div class="section-title-line"></div>
       </div>
 
-      <p>This week ended with two long observations: one about the kind of dependence that turns visible helplessness into invisible strength, and one about the kind of faith that, paired with prayer and a humbled heart, becomes our share in the spiritual battle. Both are worth sitting with for a few more minutes. The five questions below pick up the threads of the week and offer a verse alongside each one, so the conversation has something biblical to land on.</p>
+      <p>This week kept overturning the expected order of things. The experts with the scrolls were refused, and a Roman officer heard that his faith outstripped what Jesus had found in Israel. The disciples who lived beside Jesus were told their faith was the wrong kind. And a week spent studying our faith ended by handing us Someone else's. Three tensions sit under those reversals, and the week left each one resolved. They are worth one last walk-through.</p>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">1</span>
-          <div class="dq-question">What does real partnership with the Holy Spirit against the spiritual forces working against us actually look like? List the convictions, postures, or practices that mark such a person in your life.</div>
+      <div class="section-heading">The Sigh and the Marvel Came From the Same Eyes</div>
+      <p>Sunday and Monday set two scenes a day's walk apart and let them collide. On the shore at Dalmanutha the trained theologians, men with the scrolls and a front-row seat to two years of miracles, asked for one more sign and heard one of the strongest refusals in the gospels. On the road near Capernaum a Roman officer who had never met Jesus sent word that a sentence would be enough, and Jesus marveled. By every expected measure the order is backwards.</p>
+
+<!-- BSB_BLOCK: Luke 7:1-10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:776e23dadb35dd51209f36d2f217b3637ec0f6304a3311f7c8817ceb69818db9 | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Luke 7:1-10</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/LUK.7.1-10" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Galatians 2:20</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/GAL.2.20" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"I have been crucified with Christ, and I no longer live, but Christ lives in me. The life I now live in the body, I live by faith in the Son of God, who loved me and gave himself for me."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Paul writes this single verse in Galatians 2:20 as the compressed summary of his entire life. Five movements live inside it. Crucified with Christ. No longer "I." Christ lives in me. The life I live, I live by faith. The faith is in the Son of God who loved me. Real Spirit-partnership begins where the first phrase begins, with the willingness to count yourself dead with Christ. The soul that has admitted its own helplessness is not weakened by the admission; it is opened by it. The Spirit fills what self has vacated. Every person you have ever met who walked steadily through a long battle has had some version of this verse running underneath them. Crucified, no longer mine, His life in me, by faith.</p>
-            <p>The English word "faith" in Galatians 2:20 is the same <em>pistis</em> we have been tracing all week. It is not a feeling. It is a steady, contractual loyalty to the Person of Christ, exercised in the body, in the small choices of an ordinary Friday. The five marks of real partnership with the Spirit are not exotic. They are the marks any saint of Hebrews 11 would have recognized. Dependence on God rather than on self. Surrendered commitment to His work rather than ours. Prayer with weight to it rather than wishful background noise. A heart willing to be humbled rather than defended. And a faith that keeps showing up even when the felt weather is silent.</p>
-          </div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>When Jesus had concluded His discourse in the hearing of the people, He went to Capernaum. <sup class="verse-number" aria-label="Verse 2">2</sup>There a highly valued servant of a centurion was sick and about to die. <sup class="verse-number" aria-label="Verse 3">3</sup>When the centurion heard about Jesus, he sent some Jewish elders to ask Him to come and heal his servant. <sup class="verse-number" aria-label="Verse 4">4</sup>They came to Jesus and pleaded with Him earnestly, “This man is worthy to have You grant this, <sup class="verse-number" aria-label="Verse 5">5</sup>for he loves our nation and has built our synagogue.” <sup class="verse-number" aria-label="Verse 6">6</sup>So Jesus went with them. But when He was not far from the house, the centurion sent friends with the message: “Lord, do not trouble Yourself, for I am not worthy to have You come under my roof. <sup class="verse-number" aria-label="Verse 7">7</sup>That is why I did not consider myself worthy to come to You. But just say the word, and my servant will be healed. <sup class="verse-number" aria-label="Verse 8">8</sup>For I myself am a man under authority, with soldiers under me. I tell one to go, and he goes, and another to come, and he comes. I tell my servant to do something, and he does it.” <sup class="verse-number" aria-label="Verse 9">9</sup>When Jesus heard this, He marveled at the centurion. Turning to the crowd following Him, He said, <span class="words-of-jesus">“I tell you, not even in Israel have I found such great faith.”</span> <sup class="verse-number" aria-label="Verse 10">10</sup>And when the messengers returned to the house, they found the servant in good health.</div>
+        <div class="verse-commentary">
+          <p>The week's answer is that faith was never a function of how much evidence a person holds. It is what a person does with the evidence already given. The Pharisees had baskets of proof, and every miracle went into a drawer marked do not consult, because the sign they wanted was one that would let them keep their categories. The centurion heard a rumor and drew the right conclusion from it. He knew how authority works, took Jesus at His word before any demonstration, and Luke records the Son of God marveling at a Gentile soldier. That is why more proof was never the cure for the one group and less proof was never a handicap for the other. The deciding organ was not the eye. It was the willingness behind it.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">2</span>
-          <div class="dq-question">What role does faith play in the battle against evil? Where have you seen, in Scripture or in someone else's life or in your own, faith functioning as a weapon and not just a comfort?</div>
-        </div>
+      <div class="section-heading">The Seed Outweighed the Boulder</div>
+      <p>Underneath the whole week ran the worry that our faith might be too small to count. The father at the mountain brought belief mixed with unbelief. The disciples who had watched two years of miracles failed at one demon. And the quiet assumption in both scenes is that faith works by volume, that somewhere there is a scale and most of us are underweight.</p>
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Acts 26:18</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/ACT.26.18" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"to open their eyes so that they may turn from darkness to light and from the power of Satan to God, that they may receive forgiveness of sins and a share among those who are sanctified by faith in me."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>This is the risen Jesus speaking to Paul on the Damascus road, summarizing the entire commission of the church in one sentence. Notice the verbs. Open their eyes. Turn them. Forgive their sins. Sanctify them by faith. The battle against evil in the Bible is not primarily fought by argument; it is fought by light. And faith is the means by which the light is received. The phrase "sanctified by faith" places the same <em>pistis</em> we have been tracing inside the engine of spiritual warfare. The believer's faith is the channel through which Christ's victory at the cross becomes effective in a specific life, week after week.</p>
-            <p>Two examples make this concrete. In <a class="vlink" href="https://www.bible.com/bible/1713/MRK.9.24" target="_blank">Mark 9:24</a> the father at the bottom of the mountain prays for his demonized son and ends with the most honest six words in the gospels, and the demon comes out. In <a class="vlink" href="https://www.bible.com/bible/1713/HEB.11" target="_blank">Hebrews 11</a> the cloud of witnesses includes Daniel shutting the mouths of lions and Gideon putting an army to flight with three hundred men. The pattern is unmistakable. Faith is not the comfort we carry into the fight after the fight is over. Faith is the lever by which the battle is fought.</p>
-          </div>
+<!-- BSB_BLOCK: Matthew 17:20 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:5e083b0f8497212e1c7ee81bf715ba30ae1113e814b9de436c58a9c5062538e4 | footnotes-stripped:1 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Matthew 17:20</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.17.20" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text"><span class="words-of-jesus">“Because you have so little faith,”</span> He answered. <span class="words-of-jesus">“For truly I tell you, if you have faith the size of a mustard seed, you can say to this mountain, ‘Move from here to there,’ and it will move. Nothing will be impossible for you.”</span></div>
+        <div class="verse-commentary">
+          <p>Jesus answered the volume assumption by shrinking the unit. The word He chose for the disciples' problem was never about smallness. Tuesday unpacked it as wrong-kind-of-faith, religious volume without the living substance, a boulder of the pretend thing. Against it He set the smallest seed in a Galilean garden and promised it could move a mountain, because a seed of the real thing is alive and aimed at the right Person. The weight was never supposed to rest on the grip. It rests on the One being gripped. And the seed itself is not our manufacture. The week kept saying so. God deals a measure of faith to each of us, the way a parent presses a first coin into a child's palm. Nobody is underweight. Some of us have just not planted what we were handed.</p>
+        </div>
+      </div>
+      <!-- BSB_FOOTNOTE: Matthew 17:20 | 17:20 BYZ and TR include 21But this kind does not come out except by prayer and fasting; see Mark 9:29. -->
+
+      <div class="section-heading">The Week Ended With Someone Else's Faith</div>
+      <p>For five days the week studied human faith, the officer's, the mother's, the father's, and the long wall of witnesses Wednesday walked us past. Most of those witnesses died before receiving what they were promised, and none of them was asked to pray what Jesus prayed in the olive grove. So a week about having faith closed with an honest problem. If the heroes finished empty-handed and the Son's Gethsemane trust is beyond us, our own supply looks thin for the road ahead.</p>
+
+<!-- BSB_BLOCK: Revelation 14:12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:4b9bb8431bed9be97934f024f8903941aa9bd0ae5b3a4abf5d90c6d0f0d5617f | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Revelation 14:12</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/REV.14.12" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">Here is a call for the perseverance of the saints, who keep the commandments of God and the faith of Jesus.</div>
+        <div class="verse-commentary">
+          <p>The verse the week was always climbing toward answers with two words that read both directions. The faith of Jesus is the trust we place in Him, and it is also the trust He Himself carried, and the wording holds both on purpose. The people who stand at the end are not the ones who generated heroic belief. They are the ones joined to a faith that was already tested in a garden across the Kidron, where the Son asked for the cup to pass and stayed in the Father's hand when the answer was no. Nothing in the cloud ever matched that night, and nothing needed to. He walked the whole dark road first, and what He carried through it is now credited to the people who hold on to Him.</p>
+          <p>That is why the week never asked us to measure our supply. The officer sent a message, the mother kept walking, the father told the truth about his mixture, and every one of them was reaching for the same Person we reach for. Our grip has always been the small end of the rope. The strong end is anchored in Him, and it held through the one night it was tested with everything. We walk into next week not with more faith than we had on Sabbath, but with a better grasp of Whose faith is holding us.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">3</span>
-          <div class="dq-question">How do you see this battle right now in your own life? Name a specific arena where the struggle is real (a relationship, a habit, a fear, a calling), and identify where faith is currently being exercised or under-exercised.</div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Romans 5:1</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/ROM.5.1" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Therefore, since we have been justified by faith, we have peace with God through our Lord Jesus Christ."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>The verse for honest self-assessment is the verse that places the assessment on the right ground. Paul begins the great central chapter of Romans 5 with the result of the long argument of chapters 1 through 4. Justified by faith, we have peace with God. The Greek for "we have" is <em>echomen</em>, the present-tense verb of continuing possession. Peace is not a feeling we work up before facing the day's battle. It is a fact about our standing that the day's battle does not change.</p>
-            <p>This matters for question 3. When you name your specific battle (the calling that has gone quiet, the marriage on its third silence, the addiction that has not budged in spite of three serious attempts), you are not naming it from the outside of God's family. You are naming it from inside the room where the Father has already declared you justified through the work of His Son. The battle is being fought on safe ground. The peace is not the absence of war; it is the presence of the Person who has guaranteed the outcome. Honest self-assessment, in the Bible's grammar, is not a tour of shame. It is a faith-act from a settled identity. We see the battle clearly because we are no longer afraid of what seeing it might cost us.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">4</span>
-          <div class="dq-question">Read Hebrews 10:23. Why is it important to hold fast to our confession of faith, especially in seasons when the visible evidence is slow to arrive?</div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Hebrews 10:23</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/HEB.10.23" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Let us hold on to the confession of our hope without wavering, since he who promised is faithful."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>The Greek verb behind "hold on to" is <em>katecho</em>, a compound of <em>kata</em> (down) and <em>echo</em> (to hold). It pictures a grip pressed downward, the way you would press a tent stake into the ground in a wind. The writer is not telling us to feel strongly about our confession. He is telling us to drive it down into something that will hold.</p>
-            <p>The reason is in the second half of the verse. "He who promised is faithful." The Greek for "faithful" is <em>pistos</em>, the adjective form of <em>pistis</em>. Our holding-fast is built on His being-faithful. We do not generate the bond between us and God; we hold on to the bond He has already made. This is the structural answer to the question. Hold fast not because your grip is strong, but because the Promiser is. The first witnesses of Hebrews 11 walked decades or centuries without seeing the visible evidence catch up. <a class="vlink" href="https://www.bible.com/bible/1713/JER.31.2-4" target="_blank">Jeremiah 31:2-4</a> said the people who survived the sword found favor in the wilderness, and the LORD appeared to them from far away saying, "I have loved you with an everlasting love; therefore I have continued to extend faithful love to you." The wilderness was the holding-on. The everlasting love was the reason the holding-on was not in vain. The same chapter went on to promise that those who came weeping would be brought back with consolation, led to wadis filled with water, kept from stumbling (<a class="vlink" href="https://www.bible.com/bible/1713/JER.31.9" target="_blank">Jeremiah 31:9</a>); that the LORD would ransom Jacob and redeem him from the power of one stronger than he (<a class="vlink" href="https://www.bible.com/bible/1713/JER.31.11" target="_blank">Jeremiah 31:11</a>); and that their life would become like an irrigated garden, no longer growing weak from hunger (<a class="vlink" href="https://www.bible.com/bible/1713/JER.31.12" target="_blank">Jeremiah 31:12</a>). The chapter is what holding-fast was holding on to.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">5</span>
-          <div class="dq-question">How often do you consider that when you feel helpless, you are being given an invitation, not a verdict? In what way is the open admission that we cannot actually the doorway into the strength of the One who can?</div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">John 1:12</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.1.12" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"But to all who did receive him, he gave them the right to be children of God, to those who believe in his name."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>The Greek for "right" in John 1:12 is <em>exousia</em>, the word for authority or legal standing. The verse gives every believer a piece of standing they did not have before they received Christ. They get the <em>right</em> to be children of God. Not the invitation to try to be. The legal title. And the receiving is by faith.</p>
-            <p>This changes the meaning of helplessness. The toddler who cannot tie a shoe is not less the parent's child; the helplessness is part of the proof of belonging. The Father has not arranged things so that we have to be self-sufficient in order to be His. He has arranged them so that the moment we admit we cannot, we discover whose lap we have already been sitting on. The soul that has finally stopped pretending to be self-made is not being told to manufacture more faith. It is being told to look down, recognize the lap, and lean back. <em>Pistis</em> in this verse is the receiving of a gift that has already been given. The week began with Hebrews 11:1's title deed; it ends with John 1:12's name on the family tree. Both were already true. The faith of this morning is the act of reading the documents and believing what they say.</p>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- 4. STILL SPEAKING -->
@@ -928,27 +905,47 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">Closing Prayer for the Week</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Father, we thank You for a week that walked us past a centurion in Capernaum, a mother on the road to Tyre, a father at the bottom of a mountain, the cloud at the end of Hebrews 11, and Your Son in the olive press across the Kidron. We thank You that we were not asked, in any of those scenes, to bring more than what the Bible's people brought, which was honest, mustard-seed, hand-empty trust. We confess that we have spent stretches of our lives demanding signs, refusing to count what You had already given, and measuring our faith by the temperature of our hearts. Forgive us. Today we lay all of that down. We hold on to the confession of our hope, because You who promised are faithful. We come to You believing You are, and that You reward those who diligently seek You. We thank You for the faith of Jesus, exercised in our place, in a garden we could not have prayed in. Take that faith, credit it to us, and carry us into next week the way the prophets carried Hebrews 11 across thirteen hundred years: by walking, not by seeing. We trust You to bring it to completion. In Jesus' name, Amen.</p>
+      <p>Father, we thank You for a week that walked us past a centurion in Capernaum, a mother on the road to Tyre, a father at the bottom of a mountain, the cloud at the end of Hebrews 11, and Your Son in the olive press across the Kidron. We thank You that we were not asked, in any of those scenes, to bring more than what the Bible's people brought, which was honest, mustard-seed, hand-empty trust. We confess that we have spent stretches of our lives demanding signs, refusing to count what You had already given, and measuring our faith by the temperature of our hearts. Forgive us. Today we lay all of that down. We hold resolutely to the confession of our hope, because You who promised are faithful. We come to You believing You are, and that You reward those who diligently seek You. We thank You for the faith of Jesus, exercised in our place, in a garden we could not have prayed in. Take that faith, credit it to us, and carry us into next week the way the prophets carried Hebrews 11 across thirteen hundred years: by walking, not by seeing. We trust You to bring it to completion. In Jesus' name, Amen.</p>
     </div>
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/HEB.11" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Hebrews+11&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -977,8 +974,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -987,18 +986,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -1006,6 +1009,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -1025,6 +1029,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

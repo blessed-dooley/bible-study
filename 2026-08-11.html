@@ -378,6 +378,14 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
   .verse-text sup.verse-number,
   .verse-text-alt sup.verse-number {
     font-family: 'Nunito', sans-serif;
@@ -494,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -557,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -575,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -746,40 +758,40 @@ if ('serviceWorker' in navigator) {
 
       <p>Why would Paul spend half his portrait on negatives? Because the Corinthians could have signed the positive list and gone to lunch. It is the refusals that name names. Read the eight again slowly and notice how precisely they trace this church's file, the envy behind the factions, the puffed-up knowledge, the rudeness of the strong toward the weak, the lawsuits chasing personal rights. Paul re-reads his own list back to a congregation that was living its opposite, and somewhere in the reading, the mirror turns toward us.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 13:4-7 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:0e9dc8f7826c8de2c3b444349df0554c95f46c1e8645834aaa343304504143e6 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 13:4-7</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.13.4-7" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.13.4-7" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"<sup class="verse-number" aria-label="Verse 4">4</sup>Love is patient, love is kind. Love does not envy, is not boastful, is not arrogant, <sup class="verse-number" aria-label="Verse 5">5</sup>is not rude, is not self-seeking, is not irritable, and does not keep a record of wrongs. <sup class="verse-number" aria-label="Verse 6">6</sup>Love finds no joy in unrighteousness but rejoices in the truth. <sup class="verse-number" aria-label="Verse 7">7</sup>It bears all things, believes all things, hopes all things, endures all things."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 4">4</sup>Love is patient, love is kind. It does not envy, it does not boast, it is not proud. <sup class="verse-number" aria-label="Verse 5">5</sup>It is not rude, it is not self-seeking, it is not easily angered, it keeps no account of wrongs. <sup class="verse-number" aria-label="Verse 6">6</sup>Love takes no pleasure in evil, but rejoices in the truth. <sup class="verse-number" aria-label="Verse 7">7</sup>It bears all things, believes all things, hopes all things, endures all things.</div>
+<div class="verse-commentary">
           <p>Count the refusals this time. Love does not envy, does not boast, is not arrogant, is not rude, is not self-seeking, is not irritable, keeps no record of wrongs, and finds no joy when someone else goes wrong. Behind that record-keeping phrase sits the Greek verb <em>logizomai</em>, an accounting word, to enter something into the books. Love refuses the ledger. It also refuses the touchiness that turns every slight into an event, and the smug little lift we feel when a rival stumbles. None of these refusals comes naturally, because each one means giving up something that pays immediately, the win, the credit, the collected debt. That is exactly why they prove love is real. Anyone can perform the positives on a good day. Only love says no to what feels this good.</p>
         </div>
       </div>
 
-      <p>The first refusal deserves a closer look, because Paul has used its verb positively all through this letter. Desire the greater gifts, he says (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.31" target="_blank">1 Corinthians 12:31</a>). Desire spiritual gifts (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.14.1" target="_blank">1 Corinthians 14:1</a>). Desire to prophesy (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.14.39" target="_blank">1 Corinthians 14:39</a>). Same Greek verb, turned toward God's gifts, and it is holy hunger. Turned toward a gifted person, it curdles into the thing that made Joseph's brothers sell him south (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.7.9" target="_blank">Acts 7:9</a>) and the thing splitting Corinth into camps, where envy and strife were walking proof of spiritual infancy (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.3.3" target="_blank">1 Corinthians 3:3</a>). Wanting what God gives is worship. Resenting who God gave it to is war.</p>
+      <p>The first refusal deserves a closer look, because Paul has used its verb positively all through this letter. Desire the greater gifts, he says (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.31" target="_blank" rel="noopener">1 Corinthians 12:31</a>). Desire spiritual gifts (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.1" target="_blank" rel="noopener">1 Corinthians 14:1</a>). Desire to prophesy (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.39" target="_blank" rel="noopener">1 Corinthians 14:39</a>). Same Greek verb, turned toward God's gifts, and it is holy hunger. Turned toward a gifted person, it curdles into the thing that made Joseph's brothers sell him south (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.7.9" target="_blank" rel="noopener">Acts 7:9</a>) and the thing splitting Corinth into camps, where envy and strife were walking proof of spiritual infancy (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.3.3" target="_blank" rel="noopener">1 Corinthians 3:3</a>). Wanting what God gives is worship. Resenting who God gave it to is war.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 8:1 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:f2614614e676bf35092b1a210f078fc824e7f3885b1466924650dbbda1a90a3a | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 8:1</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.8.1" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.8.1" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Now about food sacrificed to idols: We know that 'we all have knowledge.' Knowledge puffs up, but love builds up."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Here is where boasting and arrogance were actually living in Corinth. The educated members knew an idol was nothing, and their knowledge had inflated them until they could no longer see the brother at the next table whose conscience was still tender from a lifetime in the temples (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.8" target="_blank">1 Corinthians 8</a>). Paul does not dispute their facts. He disputes their posture, dripping irony about the wise and strong looking down on the fools for Christ (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.4.10" target="_blank">1 Corinthians 4:10</a>). His two verbs tell the whole story. Puffing up inflates one person, a balloon, all air and skin. Building up raises a house other people can live in. Every congregation is doing one or the other, and rudeness towards the weak is simply arrogance with its elbows out.</p>
+        <div class="verse-text">Now about food sacrificed to idols: We know that we all have knowledge. Knowledge puffs up, but love builds up.</div>
+<div class="verse-commentary">
+          <p>Here is where boasting and arrogance were actually living in Corinth. The educated members knew an idol was nothing, and their knowledge had inflated them until they could no longer see the brother at the next table whose conscience was still tender from a lifetime in the temples (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.8" target="_blank" rel="noopener">1 Corinthians 8</a>). Paul does not dispute their facts. He disputes their posture, dripping irony about the wise and strong looking down on the fools for Christ (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.4.10" target="_blank" rel="noopener">1 Corinthians 4:10</a>). His two verbs tell the whole story. Puffing up inflates one person, a balloon, all air and skin. Building up raises a house other people can live in. Every congregation is doing one or the other, and rudeness towards the weak is simply arrogance with its elbows out.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 10:24 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:940d2746f6b036e87e98a1b937ed5baa1f3bf28a61997c526835dc6dd33717f3 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 10:24</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.10.24" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.10.24" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"No one is to seek his own good, but the good of the other person."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">No one should seek his own good, but the good of others.</div>
+<div class="verse-commentary">
           <p>Love is not self-seeking, and Paul had already given that refusal a rule of its own. Do not chase your own advantage. Chase the other person's. This is the sentence that sounded most insane in Corinth and sounds most insane now, because both cultures run on securing your own. Notice, though, what Paul is actually proposing. Not a world where nobody's needs matter, but a community where everyone's needs are carried by someone else, each member seeking the good of the other until the circle closes and every person in it is looked after. Rights enforced to the wall leave a room full of winners who cannot stand each other. Rights laid down build the one thing Corinth could not buy, a people who actually belong to one another.</p>
         </div>
       </div>
@@ -854,22 +866,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.13.4-7" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+13:4-7&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -469,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -532,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -550,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -648,16 +685,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/bible-study/sw.js')
-      .catch(function(err) { console.log('SW registration failed:', err); });
-  });
-}
-</script>
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -737,17 +764,15 @@ if ('serviceWorker' in navigator) {
 
       <p>The anchor today is Psalm 119:11, a single sentence from the longest song about the Word, that asks something very concrete of the reader: where do you keep the Bible inside of you? The supporting passages spread the Bible's claims about itself across the whole canon. Jesus says His words are spirit and life; Isaiah and David say God's word accomplishes what He sends it to do and revives those who receive it. Jeremiah, Peter, and Jesus use a food metaphor that will not let us stay abstract. You eat the Scripture, or you do not eat at all.</p>
 
+<!-- BSB_BLOCK: Psalms 119:11 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:915ae217ac0690a62aa4866afcb07bbfa04eaab420fed3c8d97b7f91a5c362cf | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
-          <div class="verse-ref">Psalm 119:11</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/PSA.119.11" target="_blank">☩ Open in Bible App</a>
+          <div class="verse-ref">Psalms 119:11</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.119.11" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Your word I have hidden in my heart, That I might not sin against You."</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"I have treasured your word in my heart so that I may not sin against you."</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-        <p>The two translations quietly tell you everything. Where the NKJV says "hidden," the CSB says "treasured." Both are right, because the Hebrew <em>tsaphan</em> carries both. To hide is to treasure, because in the ancient Near East what you most valued was what you took the most care to hide. Buried silver. Buried title deeds. Buried heirlooms. The psalmist is not talking about filing a verse away in case it comes up at a Bible study. He is talking about burying the Word where no thief, no mood swing, no bad week, no sleepless night, no argument, no moment of despair can get to it and empty it out.</p>
+        <div class="verse-text">I have hidden Your word in my heart that I might not sin against You.</div>
+<div class="verse-commentary">
+        <p>The BSB says "hidden," and the Hebrew <em>tsaphan</em> also carries the sense "treasured." Both ideas belong together. To hide is to treasure, because in the ancient Near East what you most valued was what you took the most care to hide. Buried silver. Buried title deeds. Buried heirlooms. The psalmist is not talking about filing a verse away in case it comes up at a Bible study. He is talking about burying the Word where no thief, no mood swing, no bad week, no sleepless night, no argument, no moment of despair can get to it and empty it out.</p>
 
 <p>Then look at the second half of the verse, which gives us the purpose. "So that I may not sin against You." Most modern readers hear "sin against you" and hear a rulebook. The Hebrew does not. "Sin" here, <em>chata</em>, literally means to miss the target, the way an archer's arrow misses the mark. The psalmist is saying this. When the Word is not buried inside me, I miss. My actions miss the target, my words miss the target, my responses miss the target, my thoughts miss the target. Scripture hidden in the heart functions as the sight-line on the arrow. It does not force me to hit. It lets me see what I am aiming at.</p>
 
@@ -756,26 +781,28 @@ if ('serviceWorker' in navigator) {
 <p>That is the claim Wednesday puts in front of us. The Bible is not meant to stay on the page. It is meant to live, in full treasure-chest form, underneath your decisions.</p></div>
       </div>
 
+<!-- BSB_BLOCK: John 6:63 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:a791e241636a80195f28ca87950eaaafbb2bcdfcca3da20878cfeb07e28b6a2b | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">John 6:63</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.6.63" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.6.63" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"It is the Spirit who gives life; the flesh profits nothing. The words that I speak to you are spirit, and they are life."</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"The Spirit is the one who gives life. The flesh doesn't help at all. The words that I have spoken to you are spirit and are life."</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">Jesus is speaking in the Capernaum synagogue, the morning after the feeding of the five thousand. The crowd has followed Him across the lake hoping for more bread. He answers with a sentence that would have gotten any other rabbi arrested. His words are <em>pneuma</em> (spirit) and <em>zoe</em> (life). Not a metaphor. A claim. The Word is not merely a description of spiritual life. It carries spiritual life. Pair that with Isaiah's promise that God's word "will not return to me empty, but it will accomplish what I please and will prosper in what I send it to do" (<a class="vlink" href="https://www.bible.com/bible/1713/ISA.55.11" target="_blank">Isaiah 55:11</a>), and with David's own testimony that "Your promise has given me life in my affliction" (<a class="vlink" href="https://www.bible.com/bible/1713/PSA.119.50" target="_blank">Psalm 119:50</a>), and a single picture emerges. The Scripture is not static. It goes out, works, revives, and returns with its mission accomplished. That is a claim no other book would survive making.</div>
+        <div class="verse-text"><span class="words-of-jesus">The Spirit gives life; the flesh profits nothing. The words I have spoken to you are spirit and they are life.</span></div>
+<div class="verse-commentary">
+          <p>Jesus is speaking in the Capernaum synagogue, the morning after the feeding of the five thousand. The crowd has followed Him across the lake hoping for more bread. He answers with a sentence that would have gotten any other rabbi arrested. His words are <em>pneuma</em> (spirit) and <em>zoe</em> (life). Not a metaphor. A claim. The Word is not merely a description of spiritual life. It carries spiritual life. Pair that with Isaiah's promise that God's word "will not return to me empty, but it will accomplish what I please and will prosper in what I send it to do" (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.55.11" target="_blank" rel="noopener">Isaiah 55:11</a>), and with David's own testimony that "Your promise has given me life in my affliction" (<a class="vlink" href="https://www.bible.com/bible/3034/PSA.119.50" target="_blank" rel="noopener">Psalm 119:50</a>), and a single picture emerges. The Scripture is not static. It goes out, works, revives, and returns with its mission accomplished. That is a claim no other book would survive making.</p>
+        </div>
       </div>
 
+<!-- BSB_BLOCK: Jeremiah 15:16 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:7ddb12bf5ac25b577a33ec786dc205af2ec692162ebafb1221a1b36189ae80a2 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Jeremiah 15:16</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JER.15.16" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JER.15.16" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Your words were found, and I ate them. Your words became a delight to me and the joy of my heart, for I bear your name, Lord God of Armies."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">Jeremiah's verb is shocking. He did not read God's words. He ate them. The same image surfaces in Peter's letter: "Like newborn infants, desire the pure milk of the word, so that by it you may grow up into your salvation" (<a class="vlink" href="https://www.bible.com/bible/1713/1PE.2.2" target="_blank">1 Peter 2:2</a>). And it sits at the center of Jesus' reply to the first wilderness temptation: "Man must not live on bread alone but on every word that comes from the mouth of God" (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.4.4" target="_blank">Matthew 4:4</a>). Three voices, one meal. Scripture is food. If you have ever come off a long fast or ended a hard diet, you know that the first real bite after genuine hunger does not taste the way food tastes when you are well-fed. It tastes like life returning. A person who reads their Bible once in a while and finds it dry is almost never facing a Bible problem. They are facing a hunger problem. They are not hungry yet.</div>
+        <div class="verse-text">Your words were found, and I ate them. Your words became my joy and my heart’s delight. For I bear Your name, O LORD God of Hosts.</div>
+<div class="verse-commentary">
+          <p>Jeremiah's verb is shocking. He did not read God's words. He ate them. The same image surfaces in Peter's letter: "Like newborn infants, desire the pure milk of the word, so that by it you may grow up into your salvation" (<a class="vlink" href="https://www.bible.com/bible/3034/1PE.2.2" target="_blank" rel="noopener">1 Peter 2:2</a>). And it sits at the center of Jesus' reply to the first wilderness temptation: "Man must not live on bread alone but on every word that comes from the mouth of God" (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.4.4" target="_blank" rel="noopener">Matthew 4:4</a>). Three voices, one meal. Scripture is food. If you have ever come off a long fast or ended a hard diet, you know that the first real bite after genuine hunger does not taste the way food tastes when you are well-fed. It tastes like life returning. A person who reads their Bible once in a while and finds it dry is almost never facing a Bible problem. They are facing a hunger problem. They are not hungry yet.</p>
+        </div>
       </div>
     </div>
 
@@ -801,7 +828,7 @@ if ('serviceWorker' in navigator) {
       <div class="section-heading">The Memory We Gave Away</div>
       <p>Researchers have a name now for what our phones are doing to our brains. They call it <em>digital amnesia</em>, or the <em>Google effect</em>, the documented tendency of human beings to forget information they know they can look up later. It was first described in peer-reviewed literature more than a decade ago, but the volume of research has exploded. A 2025 bibliometric analysis in <em>Discover Psychology</em> (Springer Nature) tracked publications on the topic rising from 195 articles in 2019 to 837 in 2023, a more-than-fourfold increase in four years. We are studying it so much because it is happening so fast.</p>
       <p>The effects are not hypothetical. A 2025 study of nursing students published in PubMed Central found measurable correlations between smartphone dependency, digital amnesia, and somatic symptoms of anxiety. A separate 2025 industry study reported that employees who leaned most heavily on AI for decision-making showed 32 percent slower problem-solving speeds when the AI was unavailable, and that students who overuse AI tools experience a 20 to 30 percent faster rate of memory decline for the information they supposedly "learned." In simple terms, the more we outsource, the less the muscle works. The phone in our pocket is doing the memorizing for us, and the part of us that used to do it is atrophying.</p>
-      <p>That is the faculty David was using when he said, "Your word I have hidden in my heart." He was using the very capacity our culture is trading away for convenience. The Bible app is a gift, and nobody is suggesting we throw it in a drawer. But if every verse you know lives on a server and not in your chest, you have unknowingly reversed David's strategy. You are storing the treasure where the thief can cut the power. The answer is not to reject technology. The answer is to keep practicing the old discipline anyway. Bury at least one verse a week the old way, in your actual memory, so that the battery level on your phone never becomes the battery level on your faith.</p>
+      <p>That is the faculty David was using when he said, "I have hidden Your word in my heart." He was using the very capacity our culture is trading away for convenience. The Bible app is a gift, and nobody is suggesting we throw it in a drawer. But if every verse you know lives on a server and not in your chest, you have unknowingly reversed David's strategy. You are storing the treasure where the thief can cut the power. The answer is not to reject technology. The answer is to keep practicing the old discipline anyway. Bury at least one verse a week the old way, in your actual memory, so that the battery level on your phone never becomes the battery level on your faith.</p>
     </div>
 
     <!-- 7. CHRIST CONNECTION -->
@@ -811,7 +838,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>The same morning Jesus said His words were spirit and life, He made a claim about Himself that made the crowd walk away. "I am the bread of life" (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.6.35" target="_blank">John 6:35</a>). The word that feeds and the One the word is about are not two different things. When Jeremiah ate God's words, he was unknowingly tasting the Person those words testified about, the Word who would one day take on flesh and bone and be broken at a Passover table so that His followers could take Him in. The Bible's boldest claim about itself is that it is a book through which you meet a Person, and that Person offers Himself as food. To read Scripture is never just to gather information. It is to eat the bread of life, one verse at a time. The Word on the page is the Person who already knows your name.</p>
+      <p>The same morning Jesus said His words were spirit and life, He made a claim about Himself that made the crowd walk away. "I am the bread of life" (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.6.35" target="_blank" rel="noopener">John 6:35</a>). The word that feeds and the One the word is about are not two different things. When Jeremiah ate God's words, he was unknowingly tasting the Person those words testified about, the Word who would one day take on flesh and bone and be broken at a Passover table so that His followers could take Him in. The Bible's boldest claim about itself is that it is a book through which you meet a Person, and that Person offers Himself as food. To read Scripture is never just to gather information. It is to eat the bread of life, one verse at a time. The Word on the page is the Person who already knows your name.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -848,23 +875,51 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/PSA.119.11" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Psalm+119:11&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/bible-study/sw.js')
+    .then(reg => console.log('SW registered:', reg.scope))
+    .catch(err => console.log('SW registration failed:', err));
+}
+</script>
+
 <!-- Firebase SDK for push notifications -->
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>

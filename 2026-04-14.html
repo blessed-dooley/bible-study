@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -380,6 +413,16 @@
     padding-top: 14px;
     border-top: 1px solid var(--border);
     font-weight: 300;
+  }
+  .verse-commentary p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-soft);
+    font-weight: 300;
+    margin: 0 0 14px 0;
+  }
+  .verse-commentary p:last-child {
+    margin-bottom: 0;
   }
 
   /* ── ACCENT SECTIONS ── */
@@ -459,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -522,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -540,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -638,8 +685,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -705,7 +750,7 @@
         <div class="section-title-line"></div>
       </div>
       <div class="section-heading">The Education That Ruled the World</div>
-      <p>To understand what Moses gave up, you have to understand what Egypt offered. In the era scholars place Moses' upbringing, Egypt was the undisputed superpower of the ancient Near East. The royal court did not simply educate its princes; it engineered them. A prince raised in Pharaoh's household would have been trained in scribal arts, diplomatic protocol, military strategy, administrative law, engineering, mathematics, and the religious texts of a civilization that had been refining its knowledge for over a thousand years. Stephen's summary in <a class="vlink" href="https://www.bible.com/bible/1713/ACT.7.22" target="_blank">Acts 7:22</a> is not exaggeration: Moses was educated in all the wisdom of the Egyptians and was powerful in both speech and action.</p>
+      <p>To understand what Moses gave up, you have to understand what Egypt offered. In the era scholars place Moses' upbringing, Egypt was the undisputed superpower of the ancient Near East. The royal court did not simply educate its princes; it engineered them. A prince raised in Pharaoh's household would have been trained in scribal arts, diplomatic protocol, military strategy, administrative law, engineering, mathematics, and the religious texts of a civilization that had been refining its knowledge for over a thousand years. Stephen's summary in <a class="vlink" href="https://www.bible.com/bible/3034/ACT.7.22" target="_blank" rel="noopener">Acts 7:22</a> is not exaggeration: Moses was educated in all the wisdom of the Egyptians and was powerful in both speech and action.</p>
       <p>Walking away from that was not a career change. It was a renunciation of the most complete preparation for power the ancient world could produce. As a historian, poet, philosopher, general, and legislator, Moses stood without a peer. Yet he had the moral strength to refuse the flattering prospects of wealth, greatness, and fame, choosing instead to suffer with an enslaved nation that had nothing to offer him except a God who had made them a promise. That choice is the foundation everything else in his story is built on.</p>
     </div>
 
@@ -720,33 +765,35 @@
       <p>Hebrews 11 is the Bible's hall of faith, and Moses occupies one of its longest entries. The writer of Hebrews does not focus on Moses' miracles or his leadership; instead, the spotlight falls on a series of choices that only make sense if Moses could see something invisible. What drove a man to walk away from everything? And how did that man, after a devastating failure, become the most humble person on the face of the earth? The answer is faith: a calculated decision to value what God promised over what Egypt displayed.</p>
 
       <!-- ANCHOR: Hebrews 11:24-26 -->
+<!-- BSB_BLOCK: Hebrews 11:24-26 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b1469d592b159dcd8406234d9e3ace80ec9fe0e1a39d9c5bf603ce77e4db15b4 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Hebrews 11:24-26</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/HEB.11.24-26" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/HEB.11.24-26" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"By faith Moses, when he had grown up, refused to be called the son of Pharaoh's daughter and chose to suffer with the people of God rather than to enjoy the fleeting pleasure of sin. For he considered reproach for the sake of Christ to be greater wealth than the treasures of Egypt, since he was looking ahead to the reward."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">Three verbs define Moses' faith: he refused, he chose, and he considered. Each one is an act of will driven by sight that goes beyond the visible. The Greek <em>pistei</em> ("by faith") opens the sentence and governs everything that follows. Moses' decision was not emotional; it was evaluative. He weighed the treasures of Egypt against the <em>oneidismos</em> ("reproach, disgrace") of identifying with God's people, and he concluded that the disgrace was worth more. The word translated "fleeting" (<em>proskairon</em>) means "lasting for a season, temporary." Moses did the math that pride never does: he measured the lifespan of what Egypt offered against the lifespan of what God promised.
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 24">24</sup>By faith Moses, when he was grown, refused to be called the son of Pharaoh’s daughter. <sup class="verse-number" aria-label="Verse 25">25</sup>He chose to suffer oppression with God’s people rather than to experience the fleeting enjoyment of sin. <sup class="verse-number" aria-label="Verse 26">26</sup>He valued disgrace for Christ above the treasures of Egypt, for he was looking ahead to his reward.</div>
+<div class="verse-commentary">
+          <p>Three verbs define Moses' faith: he refused, he chose, and he considered. Each one is an act of will driven by sight that goes beyond the visible. The Greek <em>pistei</em> ("by faith") opens the sentence and governs everything that follows. Moses' decision was not emotional; it was evaluative. He weighed the treasures of Egypt against the <em>oneidismos</em> ("reproach, disgrace") of identifying with God's people, and he concluded that the disgrace was worth more. The word translated "fleeting" (<em>proskairon</em>) means "lasting for a season, temporary." Moses did the math that pride never does: he measured the lifespan of what Egypt offered against the lifespan of what God promised.
 
-The phrase "reproach for the sake of Christ" is remarkable. Moses lived centuries before the incarnation, yet Hebrews says he suffered for Christ. The writer is making a theological claim: every act of faith in the Old Testament, every choice to suffer for God's people rather than prosper with the world, participates in the same story that would culminate in Jesus. Moses was not just choosing between Egypt and Israel. He was choosing between the passing world and the eternal kingdom, the same choice 1 John 2:17 set before us yesterday.
+The phrase "disgrace for Christ" is remarkable. Moses lived centuries before the incarnation, yet Hebrews says he suffered for Christ. The writer is making a theological claim: every act of faith in the Old Testament, every choice to suffer for God's people rather than prosper with the world, participates in the same story that would culminate in Jesus. Moses was not just choosing between Egypt and Israel. He was choosing between the passing world and the eternal kingdom, the same choice 1 John 2:17 set before us yesterday.
 
-But Moses did not walk this path perfectly. After his initial stand with his people, he killed an Egyptian in an impulsive act of violence (<a class="vlink" href="https://www.bible.com/bible/1713/EXO.2.11-12" target="_blank">Exodus 2:11-12</a>). That act cost him everything: his position, his self-confidence, his plans, and 40 years of his life. He fled to Midian, where mountains replaced marble halls and sheep replaced soldiers. His self-sufficiency was stripped away. And it was precisely in that wilderness, with his pride ground to dust, that God appeared in a burning bush and called him to the greatest leadership task in the Old Testament. The palace education made Moses capable. The wilderness made Moses usable.</div>
+But Moses did not walk this path perfectly. After his initial stand with his people, he killed an Egyptian in an impulsive act of violence (<a class="vlink" href="https://www.bible.com/bible/3034/EXO.2.11-12" target="_blank" rel="noopener">Exodus 2:11-12</a>). That act cost him everything: his position, his self-confidence, his plans, and 40 years of his life. He fled to Midian, where mountains replaced marble halls and sheep replaced soldiers. His self-sufficiency was stripped away. And it was precisely in that wilderness, with his pride ground to dust, that God appeared in a burning bush and called him to the greatest leadership task in the Old Testament. The palace education made Moses capable. The wilderness made Moses usable.</p>
+        </div>
       </div>
 
-      <!-- SUPPORTING: Numbers 12:3 (NKJV + CSB dual) -->
+      
+<!-- BSB_BLOCK: Numbers 12:3 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:8ca34f24d7911492c70ed52ca48ee32fddd923ce9d41c2ce39b0f5581c8910c4 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Numbers 12:3</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/NUM.12.3" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/NUM.12.3" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"(Now the man Moses was very humble, more than all men who were on the face of the earth.)"</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"Moses was a very humble man, more so than anyone on the face of the earth."</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">This is one of the most extraordinary descriptions in all of Scripture. The Hebrew word is <em>anav</em>, meaning humble, lowly, meek. It does not mean passive or weak; it describes someone who has power but does not use it for self-promotion. Consider the context: this verse appears in the middle of a chapter where Aaron and Miriam are challenging Moses' authority. Instead of defending himself, Moses says nothing. God Himself steps in to defend him. That is the posture of <em>anav</em>: so secure in God's estimation that you do not need to fight for your own honor.
+        <div class="verse-text">Now Moses was a very humble man, more so than any man on the face of the earth.</div>
+<div class="verse-commentary">
+          <p>This is one of the most extraordinary descriptions in all of Scripture. The Hebrew word is <em>anav</em>, meaning humble, lowly, meek. It does not mean passive or weak; it describes someone who has power but does not use it for self-promotion. Consider the context: this verse appears in the middle of a chapter where Aaron and Miriam are challenging Moses' authority. Instead of defending himself, Moses says nothing. God Himself steps in to defend him. That is the posture of <em>anav</em>: so secure in God's estimation that you do not need to fight for your own honor.
 
-Think about what humility looks like when you hold it against the list of events in Moses' life. The burning bush: Moses removed his sandals instead of demanding credentials. The plagues in Egypt: Moses was the instrument, not the hero. Crossing the Red Sea: Moses lifted his staff while God moved the water. Manna from heaven: Moses distributed what he did not create. Receiving the Ten Commandments: Moses carried what God wrote. In every single one of these moments, pride would have ruined the mission. If Moses had approached the burning bush the way the Pharisee approached the temple, the exodus would never have happened. Humility was not an accessory to Moses' leadership. It was the precondition for it.</div>
+Think about what humility looks like when you hold it against the list of events in Moses' life. The burning bush: Moses removed his sandals instead of demanding credentials. The plagues in Egypt: Moses was the instrument, not the hero. Crossing the Red Sea: Moses lifted his staff while God moved the water. Manna from heaven: Moses distributed what he did not create. Receiving the Ten Commandments: Moses carried what God wrote. In every single one of these moments, pride would have ruined the mission. If Moses had approached the burning bush the way the Pharisee approached the temple, the exodus would never have happened. Humility was not an accessory to Moses' leadership. It was the precondition for it.</p>
+        </div>
       </div>
 
     </div>
@@ -783,7 +830,7 @@ Think about what humility looks like when you hold it against the list of events
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Hebrews says Moses considered the "reproach for the sake of Christ" to be greater wealth than the treasures of Egypt. Moses could not have fully understood what that meant, but we can. Every choice Moses made, the refusal of Egyptian privilege, the willingness to suffer with God's people, the journey through a wilderness that broke his pride, pointed forward to a greater Moses who would make the same choices at an infinitely higher cost. Jesus refused the kingdoms of this world when Satan offered them (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.4.8-10" target="_blank">Matthew 4:8-10</a>). He chose to suffer with sinners rather than remain in the glory He had shared with the Father from eternity. And He walked His own wilderness, not for 40 years but for 33, until the cross became the ultimate act of <em>anav</em>: infinite power choosing not to save itself, so that it could save everyone else.</p>
+      <p>Hebrews says Moses considered the "disgrace for Christ" to be greater wealth than the treasures of Egypt. Moses could not have fully understood what that meant, but we can. Every choice Moses made, the refusal of Egyptian privilege, the willingness to suffer with God's people, the journey through a wilderness that broke his pride, pointed forward to a greater Moses who would make the same choices at an infinitely higher cost. Jesus refused the kingdoms of this world when Satan offered them (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.4.8-10" target="_blank" rel="noopener">Matthew 4:8-10</a>). He chose to suffer with sinners rather than remain in the glory He had shared with the Father from eternity. And He walked His own wilderness, not for 40 years but for 33, until the cross became the ultimate act of <em>anav</em>: infinite power choosing not to save itself, so that it could save everyone else.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -820,22 +867,42 @@ Think about what humility looks like when you hold it against the list of events
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/HEB.11.24-26" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Hebrews+11:24-26&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

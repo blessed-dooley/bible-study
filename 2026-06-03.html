@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -722,7 +751,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Sentence the Rest of the Old Testament Could Not Stop Quoting</div>
       <p>Exodus 34 is the second time Moses goes up the mountain. The first time he came down with two tablets in his hands and a calf still smoking on an altar at the base. He smashed the tablets. The covenant document was now a pile of fragments in the dust at the foot of the mountain. The chapter we read today opens with God telling Moses to cut two new tablets out of the same stone and climb the mountain again, and the LORD will write on them the words that were on the first set. The covenant is being given a second time, in the same handwriting, to the same nation, after the worst betrayal that nation will ever commit. That is the setting in which the seven-word self-introduction is spoken.</p>
-      <p>The line in <a class="vlink" href="https://www.bible.com/bible/1713/EXO.34.6" target="_blank">Exodus 34:6</a>-7 became the Bible's quoting-line for who God is. <a class="vlink" href="https://www.bible.com/bible/1713/PSA.103.8" target="_blank">Psalm 103:8</a> repeats it almost verbatim. <a class="vlink" href="https://www.bible.com/bible/1713/PSA.86.15" target="_blank">Psalm 86:15</a> repeats it. Psalm 145 repeats it. Joel 2:13. Jonah 4:2 (where Jonah complains that God is too forgiving). Nahum 1:3. Nehemiah 9:17. The Bible's own canonical answer to the question "Who is the God of Israel?" is the sentence God spoke after the calf. And what makes the chapter even more astonishing is that the three Hebrew sin words Lesson 9's Sabbath taught us, the words for the wound that English has only one short word for (<em>chattat</em> missing the mark, <em>pesha</em> covenant breach, <em>avon</em> bent and twisted), all appear together in <a class="vlink" href="https://www.bible.com/bible/1713/EXO.34.6-7" target="_blank">verse 7</a> as the three things God says He forgives. The whole cabinet of sin words and the verb of forgiveness in one breath. The same Voice that named the sins names the lifting of them.</p>
+      <p>The line in <a class="vlink" href="https://www.bible.com/bible/3034/EXO.34.6" target="_blank" rel="noopener">Exodus 34:6</a>-7 became the Bible's quoting-line for who God is. <a class="vlink" href="https://www.bible.com/bible/3034/PSA.103.8" target="_blank" rel="noopener">Psalm 103:8</a> repeats it almost verbatim. <a class="vlink" href="https://www.bible.com/bible/3034/PSA.86.15" target="_blank" rel="noopener">Psalm 86:15</a> repeats it. Psalm 145 repeats it. Joel 2:13. Jonah 4:2 (where Jonah complains that God is too forgiving). Nahum 1:3. Nehemiah 9:17. The Bible's own canonical answer to the question "Who is the God of Israel?" is the sentence God spoke after the calf. And what makes the chapter even more astonishing is that the three Hebrew sin words Lesson 9's Sabbath taught us, the words for the wound that English has only one short word for (<em>chattat</em> missing the mark, <em>pesha</em> covenant breach, <em>avon</em> bent and twisted), all appear together in <a class="vlink" href="https://www.bible.com/bible/3034/EXO.34.6-7" target="_blank" rel="noopener">verse 7</a> as the three things God says He forgives. The whole cabinet of sin words and the verb of forgiveness in one breath. The same Voice that named the sins names the lifting of them.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -735,42 +764,39 @@ if ('serviceWorker' in navigator) {
 
       <p>Today's anchor is the most-quoted sentence in the Old Testament about who God is, spoken on the morning after the worst betrayal. We will sit with the seven Hebrew words inside the divine self-introduction, then walk into Paul's two-noun sentence at Romans 6:23 that gives the same news in market vocabulary, then land at Paul's most personally costly sentence at Romans 5:8 about <em>when</em> Christ died for us. The order matters. Wednesday is the day grace stops being an abstract noun and becomes the actual sound of God's own voice.</p>
 
+<!-- BSB_BLOCK: Exodus 34:6 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:e21be0379bba8a0f8e28d9c673c96f47ca39c91afbd3f2bb50cd80686c19aa09 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Exodus 34:6</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/EXO.34.6" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/EXO.34.6" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"The LORD passed in front of him and proclaimed: The LORD&mdash;the LORD is a compassionate and gracious God, slow to anger and abounding in faithful love and truth."</div>
-
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>God walks past Moses and introduces Himself with a string of words English can barely hold. Merciful, a word built on the Hebrew for a mother's womb, the gut-level love a parent has for a newborn before the baby has done a thing to earn it. Gracious, which pictures someone bending down to reach a person who could never reach up to them, because most ancient gods stood far off and made you climb, while this God comes down. Slow to anger, which in Hebrew is literally "long of nose," the opposite of a short fuse. And overflowing with faithful love and truth, a love that isn't a mood but a promise He keeps whether you're in the room or not. Then He says He forgives every kind of wrong, and the word for "forgive" literally means to lift up and carry away. God names every sort of sin and then tells you exactly what He does with them: He picks them up and hauls them off. Read the whole scene in <a class="vlink" href="https://www.bible.com/bible/1713/EXO.34.1-10" target="_blank">Exodus 34:1-10</a>, a man kneeling on the very mountain his nation just betrayed God on, and God strolling past announcing that He's the One who forgives the exact things they did.</p>
+        <div class="verse-text">Then the LORD passed in front of Moses and called out: “The LORD, the LORD God, is compassionate and gracious, slow to anger, abounding in loving devotion and faithfulness,</div>
+<div class="verse-commentary">
+          <p>God walks past Moses and introduces Himself with a string of words English can barely hold. Merciful, a word built on the Hebrew for a mother's womb, the gut-level love a parent has for a newborn before the baby has done a thing to earn it. Gracious, which pictures someone bending down to reach a person who could never reach up to them, because most ancient gods stood far off and made you climb, while this God comes down. Slow to anger, which in Hebrew is literally "long of nose," the opposite of a short fuse. And overflowing with faithful love and truth, a love that isn't a mood but a promise He keeps whether you're in the room or not. Then He says He forgives every kind of wrong, and the word for "forgive" literally means to lift up and carry away. God names every sort of sin and then tells you exactly what He does with them: He picks them up and hauls them off. Read the whole scene in <a class="vlink" href="https://www.bible.com/bible/3034/EXO.34.1-10" target="_blank" rel="noopener">Exodus 34:1-10</a>, a man kneeling on the very mountain his nation just betrayed God on, and God strolling past announcing that He's the One who forgives the exact things they did.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Romans 6:23 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:8f1a3b1d9eb7d788744bc25a82a7c6032be52cfcdc897206650ac0f4c6db3761 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Romans 6:23</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ROM.6.23" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.6.23" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For the wages of sin is death, but the gift of God is eternal life in Christ Jesus our Lord."</div>
-
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Paul builds this verse on two words that never showed up together in any Roman account book. The first is the word for a soldier's daily wages, the coins counted into his hand at the end of a shift for the work he put in. Earned, owed, fair. The wages of sin, Paul says, get paid out exactly like that. Death isn't God being cruel, it's just the ledger doing what a ledger does. Then the second word lands and tears the ledger up: gift. Free, no strings, nothing you worked off, handed across the table for no reason except the giver wanted to give it. Paul doesn't say God's gift is a better deal than the wage. He says pick which category you're in. We earned one. We're being handed the other. A few pages earlier (<a class="vlink" href="https://www.bible.com/bible/1713/ROM.5.20-21" target="_blank">Romans 5:20-21</a>) he put it even stronger: where sin piled up, grace piled up higher and spilled over the edges. The cross isn't God matching the bill. It's the gift flooding right past the math.</p>
+        <div class="verse-text">For the wages of sin is death, but the gift of God is eternal life in Christ Jesus our Lord.</div>
+<div class="verse-commentary">
+          <p>Paul builds this verse on two words that never showed up together in any Roman account book. The first is the word for a soldier's daily wages, the coins counted into his hand at the end of a shift for the work he put in. Earned, owed, fair. The wages of sin, Paul says, get paid out exactly like that. Death isn't God being cruel, it's just the ledger doing what a ledger does. Then the second word lands and tears the ledger up: gift. Free, no strings, nothing you worked off, handed across the table for no reason except the giver wanted to give it. Paul doesn't say God's gift is a better deal than the wage. He says pick which category you're in. We earned one. We're being handed the other. A few pages earlier (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.5.20-21" target="_blank" rel="noopener">Romans 5:20-21</a>) he put it even stronger: where sin piled up, grace piled up higher and spilled over the edges. The cross isn't God matching the bill. It's the gift flooding right past the math.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Romans 5:8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b7ff6de6826fc50b39750ade6b300dc28e1dabb5268bff63df725d438571fd5f | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Romans 5:8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ROM.5.8" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.5.8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"But God proves his own love for us in that while we were still sinners, Christ died for us."</div>
-
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>The phrase in the middle of this verse blows up every version of the gospel that makes you earn your way in: "while we were still sinners." Not after we cleaned ourselves up. Not once we'd strung together a few good weeks. Right in the middle of being a mess, that is when Christ died for us. The cross wasn't waiting around for us to deserve it. And the word for "proves" is the one a lawyer uses when he lays two documents side by side to show they match. God lays His love down next to the worst possible moment, and the match is the proof. This kindness even has a date on it: a hill outside Jerusalem, the year Jesus died. <a class="vlink" href="https://www.bible.com/bible/1713/LUK.18.13" target="_blank">Luke 18:13</a> shows you how a person takes hold of it, a tax collector standing off to the side, too ashamed to look up, beating his chest and begging God for mercy, and he walks home forgiven. <a class="vlink" href="https://www.bible.com/bible/1713/REV.3.20" target="_blank">Revelation 3:20</a> says that same Jesus is still standing at the door knocking, waiting for the latch to be lifted from the inside. We don't climb up to the rock. He came down to it, the same promise He made to the high priest in filthy clothes: "I have taken away your sin, and I will dress you in fine clothes" (<a class="vlink" href="https://www.bible.com/bible/1713/ZEC.3.4" target="_blank">Zechariah 3:4</a>).</p>
+        <div class="verse-text">But God proves His love for us in this: While we were still sinners, Christ died for us.</div>
+<div class="verse-commentary">
+          <p>The phrase in the middle of this verse blows up every version of the gospel that makes you earn your way in: "while we were still sinners." Not after we cleaned ourselves up. Not once we'd strung together a few good weeks. Right in the middle of being a mess, that is when Christ died for us. The cross wasn't waiting around for us to deserve it. And the word for "proves" is the one a lawyer uses when he lays two documents side by side to show they match. God lays His love down next to the worst possible moment, and the match is the proof. This kindness even has a date on it: a hill outside Jerusalem, the year Jesus died. <a class="vlink" href="https://www.bible.com/bible/3034/LUK.18.13" target="_blank" rel="noopener">Luke 18:13</a> shows you how a person takes hold of it, a tax collector standing off to the side, too ashamed to look up, beating his chest and begging God for mercy, and he walks home forgiven. <a class="vlink" href="https://www.bible.com/bible/3034/REV.3.20" target="_blank" rel="noopener">Revelation 3:20</a> says that same Jesus is still standing at the door knocking, waiting for the latch to be lifted from the inside. We don't climb up to the rock. He came down to it, the same promise He made to the high priest in filthy clothes: "I have taken away your sin, and I will dress you in fine clothes" (<a class="vlink" href="https://www.bible.com/bible/3034/ZEC.3.4" target="_blank" rel="noopener">Zechariah 3:4</a>).</p>
         </div>
       </div>
     </div>
@@ -799,7 +825,7 @@ if ('serviceWorker' in navigator) {
       <div class="section-heading">The Order the Door Comes In</div>
       <p>In February 2026 J-PAL North America, the Abdul Latif Jameel Poverty Action Lab affiliated with MIT, published an evidence brief synthesizing more than two decades of randomized-trial work on a homelessness program called Housing First. The model, developed in the early 1990s by Sam Tsemberis at Pathways to Housing in New York, asked a question the United States homeless services system had not asked. What happens if you give a person a key to an apartment before requiring sobriety, before requiring program completion, before requiring proof that they have earned it? The traditional "linear" approach treated housing as the prize at the end of a ladder. Housing First flipped the order. Key first, ladder optional, and everything else from inside the apartment instead of out on the street.</p>
       <p>The data has now run across multiple randomized evaluations. In the Canadian At Home/Chez Soi multisite trial, the largest Housing First RCT to date, participants spent seventy-three percent of a two-year follow-up stably housed, compared with thirty-two percent for the treatment-as-usual controls. The J-PAL brief is careful to note that effects on downstream outcomes (emergency department use, hospitalizations, employment, substance use) have come back more mixed across studies, but the housing-stability finding itself is consistent and the one researchers feel confident standing on. The gift produced what the wage could not. People who were told "earn the housing" mostly never made it onto the ladder. People who were handed the key climbed the ladder anyway, just from inside the apartment.</p>
-      <p>Paul made the same announcement in <a class="vlink" href="https://www.bible.com/bible/1713/ROM.6.23" target="_blank">Romans 6:23</a>. The wage of sin is death. The gift of God is eternal life. The screen at the library was already at zero by the time you walked up to the desk; the apartment door was already unlocked by the time the resident climbed the stairs. Grace is not the prize at the end of the ladder. It is the floor that was put under us while we were still on the street.</p>
+      <p>Paul made the same announcement in <a class="vlink" href="https://www.bible.com/bible/3034/ROM.6.23" target="_blank" rel="noopener">Romans 6:23</a>. The wage of sin is death. The gift of God is eternal life. The screen at the library was already at zero by the time you walked up to the desk; the apartment door was already unlocked by the time the resident climbed the stairs. Grace is not the prize at the end of the ladder. It is the floor that was put under us while we were still on the street.</p>
     </div>
 
     <!-- 7. CHRIST CONNECTION -->
@@ -809,7 +835,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>The verb under Exodus 34:7's "forgiving" is <em>nose</em>, "to lift" or "to carry." Isaiah picked it up seven centuries later in <a class="vlink" href="https://www.bible.com/bible/1713/ISA.53.11" target="_blank">Isaiah 53:11</a>: "By His knowledge My righteous Servant shall justify many, for He shall bear their iniquities." John the Baptist picked it up at the Jordan: "Behold the Lamb of God who takes away the sin of the world." The Greek verb John used (<em>airon</em>) is the New Testament's translation of <em>nose</em>. Same action, two languages, fifteen hundred years apart. The God who walked past Moses saying He was the One who lifts iniquity and transgression and sin was already on His way to do it by walking the lifting up a Roman hill in a body. <em>Charisma</em>, the gift Paul names in Romans 6, was not free in the sense that it cost nothing. It was free to us because someone else paid the <em>opsonion</em>. The wage was paid; the gift was offered. The seven words at Sinai and the four words at Calvary ("It is finished," <em>tetelestai</em>, the Greek receipt-stamp for "paid in full") are the same sentence in two pulpits.</p>
+      <p>The verb under Exodus 34:7's "forgiving" is <em>nose</em>, "to lift" or "to carry." Isaiah picked it up seven centuries later in <a class="vlink" href="https://www.bible.com/bible/3034/ISA.53.11" target="_blank" rel="noopener">Isaiah 53:11</a>: "By His knowledge My righteous Servant shall justify many, for He shall bear their iniquities." John the Baptist picked it up at the Jordan: "Behold the Lamb of God who takes away the sin of the world." The Greek verb John used (<em>airon</em>) is the New Testament's translation of <em>nose</em>. Same action, two languages, fifteen hundred years apart. The God who walked past Moses saying He was the One who lifts iniquity and transgression and sin was already on His way to do it by walking the lifting up a Roman hill in a body. <em>Charisma</em>, the gift Paul names in Romans 6, was not free in the sense that it cost nothing. It was free to us because someone else paid the <em>opsonion</em>. The wage was paid; the gift was offered. The seven words at Sinai and the four words at Calvary ("It is finished," <em>tetelestai</em>, the Greek receipt-stamp for "paid in full") are the same sentence in two pulpits.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -846,22 +872,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/EXO.34.6" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Exodus+34:6&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -890,8 +936,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -900,18 +948,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -919,6 +971,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -938,6 +991,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

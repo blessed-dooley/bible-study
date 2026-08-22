@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -469,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -532,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -550,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -648,16 +685,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/bible-study/sw.js')
-      .catch(function(err) { console.log('SW registration failed:', err); });
-  });
-}
-</script>
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -735,43 +762,50 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Honey was not background flavor in the ancient world. It was the rarest thing on the table, the sweetness children climbed rocks for, the one luxury a shepherd brought home on a feast day. So when the psalmist announces that the words of God taste sweeter than honey to his mouth, he is not reaching for a polite compliment. He is staking a claim: the Book he has been reading is the sweetest thing his tongue has ever actually touched. The whole week reduces to the single imperative David put in <a class="vlink" href="https://www.bible.com/bible/1713/PSA.34.8" target="_blank">Psalm 34:8</a>. Taste. And see.</p>
+      <p>Honey was not background flavor in the ancient world. It was the rarest thing on the table, the sweetness children climbed rocks for, the one luxury a shepherd brought home on a feast day. So when the psalmist announces that the words of God taste sweeter than honey to his mouth, he is not reaching for a polite compliment. He is staking a claim: the Book he has been reading is the sweetest thing his tongue has ever actually touched. The whole week reduces to the single imperative David put in <a class="vlink" href="https://www.bible.com/bible/3034/PSA.34.8" target="_blank" rel="noopener">Psalm 34:8</a>. Taste. And see.</p>
 
       <!-- ANCHOR: Psalm 119:103-104 (dual translation) -->
+<!-- BSB_BLOCK: Psalms 119:103-104 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:ae578eb3beca85bdc691801be39b1d92f790716d4358bac568d7ef12a9590401 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
-          <div class="verse-ref">Psalm 119:103-104</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/PSA.119.103-104" target="_blank">☩ Open in Bible App</a>
+          <div class="verse-ref">Psalms 119:103-104</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.119.103-104" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"How sweet are Your words to my taste, Sweeter than honey to my mouth! Through Your precepts I get understanding; Therefore I hate every false way."</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"How sweet your word is to my taste—sweeter than honey in my mouth. I gain understanding from your precepts; therefore I hate every false way."</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">The psalmist uses a physical verb. He does not say the Word is inspiring or edifying or helpful. He says it is sweet on the palate, <em>matoq</em> in the mouth. The Hebrew word for "mouth" in this verse is <em>chek</em>, which is not the lips but the roof of the mouth, the exact spot where taste happens. He is insisting that this is a sensory claim, not a metaphor he reached for because he could not think of a better one.<br><br>That choice is unsettling in the best way. The rest of the psalm has been describing the Word as a lamp, a treasure, a sword, a path. All of those are tools; they do things to the world. Sweetness does something to the taster. A sweet word is not consumed in order to accomplish a goal. It is consumed because the eating itself is the point. When the psalmist lingers on this image, he is admitting that Bible study eventually stops being work and starts being enjoyment. That is the difference between the believer who has been reading the Bible for forty years and still forces himself to open it every morning, and the believer who has been reading it for forty years and cannot go a day without opening it. One is doing the duty. The other has tasted.<br><br>Verse 104 tracks the consequence. "Through Your precepts I get understanding; therefore I hate every false way." The Hebrew noun <em>binah</em> is not head knowledge; it is the kind of understanding that tells you which way to turn at a fork in the road. Sweetness in the mouth produces <em>binah</em> in the mind, and <em>binah</em> in the mind produces a reflexive recoil from everything that would poison the sweetness. The reader who has tasted the honey of the Word develops a palate for spiritual truth that will make a lie feel physically wrong going down. That is the cumulative gift of the week. Time makes a place. Place makes a method. Method invites a companion. And all of it opens onto the slow awakening of a taste that no other food can feed. The one who has tasted starts to hate the false. The one who has not tasted cannot tell the difference yet.</div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 103">103</sup>How sweet are Your words to my taste—sweeter than honey in my mouth! <sup class="verse-number" aria-label="Verse 104">104</sup>I gain understanding from Your precepts; therefore I hate every false way.</div>
+<div class="verse-commentary">
+          <p>The psalmist uses a physical verb. He does not say the Word is inspiring or edifying or helpful. He says it is sweet on the palate, <em>matoq</em> in the mouth. The Hebrew word for "mouth" in this verse is <em>chek</em>, which is not the lips but the roof of the mouth, the exact spot where taste happens. He is insisting that this is a sensory claim, not a metaphor he reached for because he could not think of a better one.</p>
+          <p>That choice is unsettling in the best way. The rest of the psalm has been describing the Word as a lamp, a treasure, a sword, a path. All of those are tools; they do things to the world. Sweetness does something to the taster. A sweet word is not consumed in order to accomplish a goal. It is consumed because the eating itself is the point. When the psalmist lingers on this image, he is admitting that Bible study eventually stops being work and starts being enjoyment. That is the difference between the believer who has been reading the Bible for forty years and still forces himself to open it every morning, and the believer who has been reading it for forty years and cannot go a day without opening it. One is doing the duty. The other has tasted.</p>
+          <p>Verse 104 tracks the consequence. "I gain understanding from Your precepts; therefore I hate every false way." The Hebrew noun <em>binah</em> is not head knowledge; it is the kind of understanding that tells you which way to turn at a fork in the road. Sweetness in the mouth produces <em>binah</em> in the mind, and <em>binah</em> in the mind produces a reflexive recoil from everything that would poison the sweetness. The reader who has tasted the honey of the Word develops a palate for spiritual truth that will make a lie feel physically wrong going down. That is the cumulative gift of the week. Time makes a place. Place makes a method. Method invites a companion. And all of it opens onto the slow awakening of a taste that no other food can feed. The one who has tasted starts to hate the false. The one who has not tasted cannot tell the difference yet.</p>
+        </div>
       </div>
 
       <!-- SUPPORTING: Isaiah 55:1-3 -->
+<!-- BSB_BLOCK: Isaiah 55:1-3 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:1a6f553a92fe064d0fcc1e8bc3e57afb4ea2e5ea9b085072494eacf787fbff3c | footnotes-stripped:1 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Isaiah 55:1-3</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ISA.55.1-3" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ISA.55.1-3" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Come, everyone who is thirsty, come to the water; and you without silver, come, buy, and eat! Come, buy wine and milk without silver and without cost! Why do you spend silver on what is not food, and your wages on what does not satisfy? Listen carefully to me, and eat what is good, and you will enjoy the choicest of foods. Pay attention and come to me; listen, so that you will live."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">The week's memory text (<a class="vlink" href="https://www.bible.com/bible/1713/ISA.55.11" target="_blank">Isaiah 55:11</a>) lives inside this larger invitation, and the invitation is addressed to the specific kind of tired that most modern readers know well. The hearer is thirsty but has no silver, hungry but has been spending everything on the wrong food, exhausted but can't remember what it felt like to be satisfied.<br><br>God's answer is stunning. Come anyway. No charge. Not because what He offers is cheap, but because He has already paid. The invitation names what the hearer has been doing by mistake: "Why do you spend silver on what is not food?" The verbs pile up, five commands in three verses: come, buy, eat, listen, come, listen. The language is insistent. Scripture is not a quiet suggestion. It is a feast calling across a market square full of counterfeits, and the price tag on the one real thing is a price the invitation has already covered. Every believer who opens the Book in the morning is eating at a table that was paid for on a Friday afternoon at Golgotha and has been set ever since.</div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>“Come, all you who are thirsty, come to the waters; and you without money, come, buy, and eat! Come, buy wine and milk without money and without cost! <sup class="verse-number" aria-label="Verse 2">2</sup>Why spend money on that which is not bread, and your labor on that which does not satisfy? Listen carefully to Me, and eat what is good, and your soul will delight in the richest of foods. <sup class="verse-number" aria-label="Verse 3">3</sup>Incline your ear and come to Me; listen, so that your soul may live. I will make with you an everlasting covenant—My loving devotion promised to David.</div>
+<div class="verse-commentary">
+          <p>The week's memory text (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.55.11" target="_blank" rel="noopener">Isaiah 55:11</a>) lives inside this larger invitation, and the invitation is addressed to the specific kind of tired that most modern readers know well. The hearer is thirsty but has no silver, hungry but has been spending everything on the wrong food, exhausted but can't remember what it felt like to be satisfied.</p>
+          <p>God's answer is stunning. Come anyway. No charge. Not because what He offers is cheap, but because He has already paid. The invitation names what the hearer has been doing by mistake: "Why spend money on that which is not bread?" The verbs pile up, five commands in three verses: come, buy, eat, listen, come, listen. The language is insistent. Scripture is not a quiet suggestion. It is a feast calling across a market square full of counterfeits, and the price tag on the one real thing is a price the invitation has already covered. Every believer who opens the Book in the morning is eating at a table that was paid for on a Friday afternoon at Golgotha and has been set ever since.</p>
+        </div>
       </div>
+      <!-- BSB_FOOTNOTE: Isaiah 55:3 | 55:3 Cited in Acts 13:34 -->
 
       <!-- SUPPORTING: Isaiah 55:6 (dual translation) -->
+<!-- BSB_BLOCK: Isaiah 55:6 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:278426794543aa8551d9b32dafabd173b2de3690e83702daa5c83fc1f98941c2 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Isaiah 55:6</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ISA.55.6" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ISA.55.6" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Seek the LORD while He may be found, Call upon Him while He is near."</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"Seek the LORD while he may be found; call on him while he is near."</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">Isaiah does not say God will always be reachable in the same way He is reachable right now. He says there is a "while," a window, a season during which He can be found. That does not mean God becomes unavailable; it means a heart hardens by degrees, and a life lived on full schedules and cold coffee eventually loses the ability to recognize His nearness even when the Bible is open on the table.<br><br>"While" is the quiet urgency of the whole week. The chair by the window is available today. The chapter you picked on Sabbath is waiting on your table today. The person who would say yes to reading with you is within text-message range today. Every morning offered is an invitation that will not be identical tomorrow. The honey is best when it is still warm. Seek Him while He may be found is not a threat. It is a kindness. It tells the reader that this practice is not meant to be indefinitely deferred; it is meant to be walked through, this week, before the taste becomes an abstraction again.</div>
+        <div class="verse-text">Seek the LORD while He may be found; call on Him while He is near.</div>
+<div class="verse-commentary">
+          <p>Isaiah does not say God will always be reachable in the same way He is reachable right now. He says there is a "while," a window, a season during which He can be found. That does not mean God becomes unavailable; it means a heart hardens by degrees, and a life lived on full schedules and cold coffee eventually loses the ability to recognize His nearness even when the Bible is open on the table.</p>
+          <p>"While" is the quiet urgency of the whole week. The chair by the window is available today. The chapter you picked on Sabbath is waiting on your table today. The person who would say yes to reading with you is within text-message range today. Every morning offered is an invitation that will not be identical tomorrow. The honey is best when it is still warm. Seek Him while He may be found is not a threat. It is a kindness. It tells the reader that this practice is not meant to be indefinitely deferred; it is meant to be walked through, this week, before the taste becomes an abstraction again.</p>
+        </div>
       </div>
     </div>
 
@@ -845,22 +879,51 @@ if ('serviceWorker' in navigator) {
   </div>
 
     <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/PSA.119.103-104" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Psalm+119:103-104&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/bible-study/sw.js')
+    .then(reg => console.log('SW registered:', reg.scope))
+    .catch(err => console.log('SW registration failed:', err));
+}
+</script>
+
 <!-- Firebase SDK for push notifications -->
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>

@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -380,6 +413,16 @@
     padding-top: 14px;
     border-top: 1px solid var(--border);
     font-weight: 300;
+  }
+  .verse-commentary p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-soft);
+    font-weight: 300;
+    margin: 0 0 14px 0;
+  }
+  .verse-commentary p:last-child {
+    margin-bottom: 0;
   }
 
   /* ── ACCENT SECTIONS ── */
@@ -459,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -522,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -540,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -638,8 +685,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -694,7 +739,7 @@
         <span class="section-title">Connection to Yesterday</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Yesterday we saw pride at its most alarming: the disciples arguing about rank at the very table where Jesus was inaugurating the new covenant. Jesus responded by declaring, "I am among you as the one who serves." Today the week arrives at its destination. We have studied what pride grips (Sunday), how blind it makes us (Monday), what humility looks like in a human life (Tuesday), and how deeply pride offends God (Wednesday). Now we look at the Person who is the final answer to all of it. Philippians 2 is not just another passage in the study. It is the climax: the complete, breathtaking picture of what God Himself did with pride's opposite.</p>
+      <p>Yesterday we saw pride at its most alarming: the disciples arguing about rank at the very table where Jesus was inaugurating the new covenant. Jesus responded by declaring, "I am among you as one who serves." Today the week arrives at its destination. We have studied what pride grips (Sunday), how blind it makes us (Monday), what humility looks like in a human life (Tuesday), and how deeply pride offends God (Wednesday). Now we look at the Person who is the final answer to all of it. Philippians 2 is not just another passage in the study. It is the climax: the complete, breathtaking picture of what God Himself did with pride's opposite.</p>
     </div>
 
     <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
@@ -705,7 +750,7 @@
         <div class="section-title-line"></div>
       </div>
       <div class="section-heading">The Lowest Rung</div>
-      <p>When Paul wrote to the Philippians that Jesus humbled Himself "to the point of death, even to death on a cross," he was not adding a poetic flourish. He was naming the single most degrading form of execution the Roman Empire had devised. Crucifixion was reserved for slaves, pirates, and enemies of the state. Roman citizens were legally exempt from it. The victim was stripped naked, nailed or tied to a wooden beam, and displayed in a public place where passersby could mock them as they slowly suffocated over hours or even days. Cicero called it "the cruelest and most disgusting penalty." Seneca said it was better to commit suicide than to endure it. Jewish law added its own verdict: anyone hung on a tree was cursed by God (<a class="vlink" href="https://www.bible.com/bible/1713/DEU.21.23" target="_blank">Deuteronomy 21:23</a>).</p>
+      <p>When Paul wrote to the Philippians that Jesus humbled Himself "to death—even death on a cross," he was not adding a poetic flourish. He was naming the single most degrading form of execution the Roman Empire had devised. Crucifixion was reserved for slaves, pirates, and enemies of the state. Roman citizens were legally exempt from it. The victim was stripped naked, nailed or tied to a wooden beam, and displayed in a public place where passersby could mock them as they slowly suffocated over hours or even days. Cicero called it "the cruelest and most disgusting penalty." Seneca said it was better to commit suicide than to endure it. Jewish law added its own verdict: anyone hung on a tree was cursed by God (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.21.23" target="_blank" rel="noopener">Deuteronomy 21:23</a>).</p>
       <p>For Paul's audience, the phrase "even death on a cross" functioned as a shock: it marked the absolute floor of the descent. There was nowhere lower to go. No form of death carried more shame, more public humiliation, more social erasure. And that is where the eternal God chose to stop descending. Not because He was forced, not because He ran out of options, but because there was no lower place left. The cross was not an accident that happened to Jesus. It was the destination He chose when He decided that saving humanity required going all the way to the bottom.</p>
     </div>
 
@@ -720,39 +765,42 @@
       <p>This is the passage the entire week has been building toward. Paul quotes what many scholars believe is an early Christian hymn, a piece of theology set to music that the first-century church already knew by heart. The hymn traces two movements: a deliberate descent from the highest place in the universe to the lowest, followed by an exaltation that vindicates every step of that descent. Alongside this, Jesus' own words in Luke 22:27 provide the personal statement that puts the hymn in His own voice. Together, these passages answer the week's central question: what does humility actually look like when God practices it?</p>
 
       <!-- ANCHOR: Philippians 2:3-8 -->
+<!-- BSB_BLOCK: Philippians 2:3-8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:73d9d47c47476577e5fb144a3c5f2e05a3eff0ffbaf1f1c139cffb13d9219e48 | footnotes-stripped:1 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Philippians 2:3-8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/PHP.2.3-8" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PHP.2.3-8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Do nothing out of selfish ambition or conceit, but in humility consider others as more important than yourselves. Everyone should look out not only for his own interests, but also for the interests of others. Adopt the same attitude as that of Christ Jesus, who, existing in the form of God, did not consider equality with God as something to be exploited. Instead he emptied himself by assuming the form of a servant, taking on the likeness of humanity. And when he had come as a man, he humbled himself by becoming obedient to the point of death—even to death on a cross."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">The passage opens with a command that would be impossible without what follows it. "Do nothing out of selfish ambition or conceit" is humanly unachievable. Paul knows this. That is why he immediately points to the only Person who ever fully obeyed it: "Adopt the same attitude as that of Christ Jesus." The Greek word <em>phronein</em> ("attitude, mindset") is not about emotion; it is about a settled orientation of the will. Paul is not asking us to feel humble. He is asking us to think the way Jesus thinks.
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 3">3</sup>Do nothing out of selfish ambition or empty pride, but in humility consider others more important than yourselves. <sup class="verse-number" aria-label="Verse 4">4</sup>Each of you should look not only to your own interests, but also to the interests of others. <sup class="verse-number" aria-label="Verse 5">5</sup>Let this mind be in you which was also in Christ Jesus: <sup class="verse-number" aria-label="Verse 6">6</sup>Who, existing in the form of God, did not consider equality with God something to be grasped, <sup class="verse-number" aria-label="Verse 7">7</sup>but emptied Himself, taking the form of a servant, being made in human likeness. <sup class="verse-number" aria-label="Verse 8">8</sup>And being found in appearance as a man, He humbled Himself and became obedient to death—even death on a cross.</div>
+<div class="verse-commentary">
+          <p>The passage opens with a command that would be impossible without what follows it. "Do nothing out of selfish ambition or empty pride" is humanly unachievable. Paul knows this. That is why he immediately points to the only Person who ever fully obeyed it: "Let this mind be in you which was also in Christ Jesus." The Greek word <em>phronein</em> ("attitude, mindset") is not about emotion; it is about a settled orientation of the will. Paul is not asking us to feel humble. He is asking us to think the way Jesus thinks.
 
-Then the hymn begins its descent, and every step is lower than the last. Jesus existed in the <em>morphe</em> ("form, essential nature") of God. This is not a disguise; <em>morphe</em> refers to the inner reality that makes something what it is. Jesus possessed the full, essential nature of deity. And from that position, He "did not consider equality with God as something to be exploited." The Greek <em>harpagmon</em> is a word for something seized or grasped. Lucifer, as we saw on Sunday, tried to grasp equality with God. Jesus, who already had it, opened His hand and let it go.
+Then the hymn begins its descent, and every step is lower than the last. Jesus existed in the <em>morphe</em> ("form, essential nature") of God. This is not a disguise; <em>morphe</em> refers to the inner reality that makes something what it is. Jesus possessed the full, essential nature of deity. And from that position, He "did not consider equality with God something to be grasped." The Greek <em>harpagmon</em> is a word for something seized or grasped. Lucifer, as we saw on Sunday, tried to grasp equality with God. Jesus, who already had it, opened His hand and let it go.
 
 The next word is the most theologically loaded verb in the New Testament: <em>kenoo</em>, "to empty." Jesus emptied Himself. Not of His deity, but of His rights, His privileges, His glory, His comfort. He poured out everything that divine status entitled Him to. And what did He fill up with instead? The <em>morphe doulou</em>, the "form of a servant." The same word that described His divine nature now describes His servant nature. He became as fully a servant as He had been fully God.
 
-The descent continues: servant to human (<em>homoioma</em>, "likeness"), then human to the most obedient human who ever lived, obedient "to the point of death." And then Paul adds the phrase that made his first readers gasp: "even to death on a cross." In a culture where crucifixion was the ultimate degradation, reserved for the lowest of the low, Jesus chose it. He did not stumble into it. He chose it. The Son of God, who held every reason to demand the highest seat, descended to the lowest place that existed in the ancient world and stayed there until redemption was finished.
+The descent continues: servant to human (<em>homoioma</em>, "likeness"), then human to the most obedient human who ever lived, obedient "to death." And then Paul adds the phrase that made his first readers gasp: "even death on a cross." In a culture where crucifixion was the ultimate degradation, reserved for the lowest of the low, Jesus chose it. He did not stumble into it. He chose it. The Son of God, who held every reason to demand the highest seat, descended to the lowest place that existed in the ancient world and stayed there until redemption was finished.
 
-This is what it means to "look at Him." When we pause long enough to see Jesus truly, our own perceived greatness simply vanishes. Who He is, what He has done, and how much He loves us becomes the only thing that matters. Self-will disappears when we stand in the presence of the One who emptied Himself of everything. Jesus is the epitome of humility: a beautiful, mighty name, and the only cure for the pride that has occupied every previous day of this study. If His own disciples, who lived and learned from Him for three years, struggled with pride, we cannot fool ourselves into thinking we are any different. We can grow in our relationship with Jesus only when we come to Him with humble, open hands.</div>
+This is what it means to "look at Him." When we pause long enough to see Jesus truly, our own perceived greatness simply vanishes. Who He is, what He has done, and how much He loves us becomes the only thing that matters. Self-will disappears when we stand in the presence of the One who emptied Himself of everything. Jesus is the epitome of humility: a beautiful, mighty name, and the only cure for the pride that has occupied every previous day of this study. If His own disciples, who lived and learned from Him for three years, struggled with pride, we cannot fool ourselves into thinking we are any different. We can grow in our relationship with Jesus only when we come to Him with humble, open hands.</p>
+        </div>
       </div>
+      <!-- BSB_FOOTNOTE: Philippians 2:6 | 2:6 Or something to be exploited -->
 
-      <!-- SUPPORTING: Luke 22:27 (NKJV + CSB dual) -->
+      
+<!-- BSB_BLOCK: Luke 22:27 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:05bb6d010cf893f53883fbb04a90264752bb6e03640b277747a8ec6c6fee399b | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Luke 22:27</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/LUK.22.27" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/LUK.22.27" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For who is greater, the one who reclines at the table or the one who serves? Is it not the one who reclines at the table? But I am among you as the One who serves."</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"For who is greater, the one at the table or the one serving? Isn't it the one at the table? But I am among you as the one who serves."</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">We looked at this verse yesterday in the context of the disciples' argument, but today it reads differently. Set alongside Philippians 2, this is not just a correction; it is a personal declaration from the One who emptied Himself. "I am among you as the one who serves" is the Philippians 2 hymn in Jesus' own words, spoken at the Last Supper, hours before the cross made it permanently visible. He was already living the descent Paul would later describe. He was already at the table as a servant. Every day of His earthly life, Jesus gave to those in need around Him, filled with compassion, seeing the multitudes as sheep without a shepherd. He knew that humanity needed Him more than anything else, though few realized that simple truth. And knowing all of this, He still chose to go lower: from servant at the table to sacrifice on the cross. The key message for every follower of Christ is this: the attitude we are called to adopt is not a theoretical ideal. It was lived, fully and completely, by the One who invites us to follow Him.</div>
+        <div class="verse-text"><span class="words-of-jesus">For who is greater, the one who reclines at the table or the one who serves? Is it not the one who reclines? But I am among you as one who serves.</span></div>
+<div class="verse-commentary">
+          <p>We looked at this verse yesterday in the context of the disciples' argument, but today it reads differently. Set alongside Philippians 2, this is not just a correction; it is a personal declaration from the One who emptied Himself. "I am among you as one who serves" is the Philippians 2 hymn in Jesus' own words, spoken at the Last Supper, hours before the cross made it permanently visible. He was already living the descent Paul would later describe. He was already at the table as a servant. Every day of His earthly life, Jesus gave to those in need around Him, filled with compassion, seeing the multitudes as sheep without a shepherd. He knew that humanity needed Him more than anything else, though few realized that simple truth. And knowing all of this, He still chose to go lower: from servant at the table to sacrifice on the cross. The key message for every follower of Christ is this: the attitude we are called to adopt is not a theoretical ideal. It was lived, fully and completely, by the One who invites us to follow Him.</p>
+        </div>
       </div>
 
       <!-- Brief pointer to Psalm 138 -->
-      <p>The psalmist David understood this posture. In <a class="vlink" href="https://www.bible.com/bible/1713/PSA.138.6" target="_blank">Psalm 138:6</a>, he wrote: "Though the LORD is exalted, he takes note of the humble; but he knows the haughty from a distance." The God who descended in Philippians 2 is the same God who notices the humble and keeps the proud at arm's length. If you have time today, read all of Psalm 138 slowly. Write it out word for word. Let David's words of grateful humility wash over the pride this week has been exposing.</p>
+      <p>The psalmist David understood this posture. In <a class="vlink" href="https://www.bible.com/bible/3034/PSA.138.6" target="_blank" rel="noopener">Psalm 138:6</a>, he wrote: "Though the LORD is exalted, he takes note of the humble; but he knows the haughty from a distance." The God who descended in Philippians 2 is the same God who notices the humble and keeps the proud at arm's length. If you have time today, read all of Psalm 138 slowly. Write it out word for word. Let David's words of grateful humility wash over the pride this week has been exposing.</p>
 
     </div>
 
@@ -778,7 +826,7 @@ This is what it means to "look at Him." When we pause long enough to see Jesus t
       </div>
       <div class="section-heading">The Emotion That Changes What You Do Next</div>
       <p>Psychologists have documented an emotion they call "moral elevation," and the research, published across multiple studies in journals like the <em>Journal of Positive Psychology</em> and <em>PLOS One</em>, confirms something remarkable: simply witnessing someone else's act of moral goodness changes your own behavior. When people observe genuine virtue, sacrifice, or selflessness, they experience a measurable physical response: warmth in the chest, a lump in the throat, tears in the eyes. More importantly, they become more generous, more prosocial, and more willing to help others. The researchers found that moral elevation is contagious: seeing goodness makes you want to be good.</p>
-      <p>The parallels to Philippians 2 are striking. Paul does not begin by commanding humility in the abstract. He says, "Look at Jesus." He narrates the descent: from God to servant to human to cross. And the expected response is not intellectual agreement but transformation. When you truly see what Christ did, something changes inside you. The research calls it "moral elevation." Scripture calls it being changed "from glory to glory" (<a class="vlink" href="https://www.bible.com/bible/1713/2CO.3.18" target="_blank">2 Corinthians 3:18</a>). The principle is the same: you become like what you gaze at. If you spend your life looking at status, achievement, and comparison, you will become proud. If you spend your life looking at the One who emptied Himself, you will become humble. The cure for pride has never been willpower. It has always been wonder.</p>
+      <p>The parallels to Philippians 2 are striking. Paul does not begin by commanding humility in the abstract. He says, "Look at Jesus." He narrates the descent: from God to servant to human to cross. And the expected response is not intellectual agreement but transformation. When you truly see what Christ did, something changes inside you. The research calls it "moral elevation." Scripture calls it being changed "from glory to glory" (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.3.18" target="_blank" rel="noopener">2 Corinthians 3:18</a>). The principle is the same: you become like what you gaze at. If you spend your life looking at status, achievement, and comparison, you will become proud. If you spend your life looking at the One who emptied Himself, you will become humble. The cure for pride has never been willpower. It has always been wonder.</p>
     </div>
 
     <!-- 7. CHRIST CONNECTION -->
@@ -825,22 +873,42 @@ This is what it means to "look at Him." When we pause long enough to see Jesus t
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/PHP.2.3-8" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Philippians+2:3-8&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

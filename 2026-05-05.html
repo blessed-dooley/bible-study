@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -721,7 +750,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="section-heading">The Twelve Hebrew Words</div>
-      <p>The Bible spends one verse on Enoch's birth, two verses on his walk with God, and one half-sentence on his disappearance. The economy is staggering. Genesis 5 lists ten generations from Adam to Noah and gives most of them only their birth, age, and death. Enoch breaks the pattern. He gets a verb (*halakh*, walked) and a preposition (*et*, with), and the rest of his life happens off-camera in a Hebrew that does not need to fill the silence. He fathered Methuselah at sixty-five. He walked with God three hundred years. The New Testament will later describe what those three hundred years sounded like in a single phrase from <a class="vlink" href="https://www.bible.com/bible/1713/ROM.12.12" target="_blank">Romans 12:12</a>: continuing steadfastly in prayer. He walked with God, then he was not.</p>
+      <p>The Bible spends one verse on Enoch's birth, two verses on his walk with God, and one half-sentence on his disappearance. The economy is staggering. Genesis 5 lists ten generations from Adam to Noah and gives most of them only their birth, age, and death. Enoch breaks the pattern. He gets a verb (*halakh*, walked) and a preposition (*et*, with), and the rest of his life happens off-camera in a Hebrew that does not need to fill the silence. He fathered Methuselah at sixty-five. He walked with God three hundred years. The New Testament will later describe what those three hundred years sounded like in a single phrase from <a class="vlink" href="https://www.bible.com/bible/3034/ROM.12.12" target="_blank" rel="noopener">Romans 12:12</a>: continuing steadfastly in prayer. He walked with God, then he was no more.</p>
       <p>The pre-flood world Enoch inhabited was not a quiet meadow. The next chapter of Genesis describes the earth as "corrupt and full of violence," and the New Testament's brief mention of him in Jude calls him a prophet to that violent age. He preached judgment in the same century the line of Cain was building cities and inventing musical instruments. The walking that Genesis records was not a leisurely escape from the noise. It was the only sustainable way to live as a believer when the surrounding culture made unbelief the easier path. The Hebrew construction *halakh et-Elohim* (walked with God) is used later of Noah in Genesis 6:9 and prescriptively of Israel: walking alongside God, in step, on the same road. The road does not end at the last verse of Enoch's chapter. The road just changes addresses.</p>
     </div>
 
@@ -735,29 +764,31 @@ if ('serviceWorker' in navigator) {
 
       <p>Twelve Hebrew words, three hundred years, one ending the language has never quite found a way to translate. Enoch's biography is a master class in what the Bible chooses to leave out. The most important details about a man whose life ended without a funeral are the ones our verses do not say.</p>
 
+<!-- BSB_BLOCK: Genesis 5:22-24 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:f22541621296c9c083985f6346e189d9a56d496c57fb5f5677886d16aca600f6 | footnotes-stripped:2 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Genesis 5:22-24</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/GEN.5.22-24" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/GEN.5.22-24" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"And after he fathered Methuselah, Enoch walked with God 300 years and fathered other sons and daughters. So Enoch's life lasted 365 years. Enoch walked with God; then he was not there, because God took him."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Genesis 5 is a cemetery of a chapter. "And he died" closes verse after verse with the rhythm of a slow drumbeat. Adam died. Seth died. Enosh died. Kenan died. Mahalalel died. Jared died. Then comes Enoch, and the formula breaks. The verse that should say "and he died" instead says "God took him." The whole chapter, in one sense, exists to set up that broken pattern. Mortality is the loud refrain; Enoch is the quiet exception that names the loophole.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 22">22</sup>And after he had become the father of Methuselah, Enoch walked with God 300 years and had other sons and daughters. <sup class="verse-number" aria-label="Verse 23">23</sup>So Enoch lived a total of 365 years. <sup class="verse-number" aria-label="Verse 24">24</sup>Enoch walked with God, and then he was no more, because God had taken him away.</div>
+<div class="verse-commentary">
+          <p>Genesis 5 is a cemetery of a chapter. "And he died" closes verse after verse with the rhythm of a slow drumbeat. Adam died. Seth died. Enosh died. Kenan died. Mahalalel died. Jared died. Then comes Enoch, and the formula breaks. The verse that should say "and he died" instead says "God had taken him away." The whole chapter, in one sense, exists to set up that broken pattern. Mortality is the loud refrain; Enoch is the quiet exception that names the loophole.</p>
           <p>The Hebrew verb behind "walked" is *halakh*, the ordinary word for going from one place to another. The construction *halakh et-ha'elohim* (walked with God) is used of only a handful of figures in the entire Old Testament: Enoch here, Noah in Genesis 6:9, and prescriptively of how Israel was meant to live. *Halakh* in this construction is reflexive in form, literally "caused himself to walk." Enoch is not being carried. He is choosing the same direction every step, year after year, with God as his companion on the road.</p>
-          <p>The verb tense for the disappearance ("he was not") is sudden in Hebrew but soft in tone. The text does not describe ascension, light, or a chariot. The disappearance is the natural end of the walking. After three hundred years of going the same direction, the walk simply continued past where the witnesses could see. Enoch did not retire from his life and turn into a mystic. He stayed in his life until his life ran out of geography. Hebrews 11:5 will eventually summarize all of this as "taken up so that he did not experience death," and Jude 14 will mention him as a prophet who preached coming judgment to a culture going the other way. None of those later descriptions add a word to what Genesis already said. They just spell out the obvious.</p>
+          <p>The verb tense for the disappearance ("he was no more") is sudden in Hebrew but soft in tone. The text does not describe ascension, light, or a chariot. The disappearance is the natural end of the walking. After three hundred years of going the same direction, the walk simply continued past where the witnesses could see. Enoch did not retire from his life and turn into a mystic. He stayed in his life until his life ran out of geography. Hebrews 11:5 will eventually summarize all of this as "taken up so that he did not experience death," and Jude 14 will mention him as a prophet who preached coming judgment to a culture going the other way. None of those later descriptions add a word to what Genesis already said. They just spell out the obvious.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Genesis 5:22 | 5:22 LXX pleased God; also in verse 24 -->
+      <!-- BSB_FOOTNOTE: Genesis 5:24 | 5:24 LXX and he was no more found, because God had taken him away; cited in Hebrews 11:5 -->
 
+<!-- BSB_BLOCK: Psalms 139:7-12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:843172186bacfb9109fdb4074f0cba400d65788dba523e1fbc23783df518e7ab | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
-          <div class="verse-ref">Psalm 139:7-12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/PSA.139.7-12" target="_blank">☩ Open in Bible App</a>
+          <div class="verse-ref">Psalms 139:7-12</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.139.7-12" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Where can I go to escape your Spirit? Where can I flee from your presence? If I go up to heaven, you are there; if I make my bed in Sheol, you are there. If I live at the eastern horizon or settle at the western limits, even there your hand will lead me; your right hand will hold on to me. If I say, 'Surely the darkness will hide me, and the light around me will be night,' even the darkness is not dark to you. The night shines like the day; darkness and light are alike to you."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>The grammar of Enoch's three hundred years is hidden in this Davidic poem. The reason a believer can walk with God in the middle of a violent civilization is that God does not stay in one place to be visited. There is nowhere a person can go that He is not already there. David is not asking the question philosophically; he is praying it, naming places his soul has wanted to hide. He has wanted to climb into the heavens to be away from accountability. He has wanted to crawl into Sheol to be away from shame. He has wanted to go far enough east, far enough west, deep enough into the night, that he could finally not be seen. None of it works. The omnipresence that makes hiding impossible is the same omnipresence that makes walking with God possible at any address. Enoch did not need a special temple. The cradle in Methuselah's room and the workshop in the courtyard were both already the road. The same is true for the cab of a delivery truck, the kitchen sink, the school-pickup lane, and the prison pit Jeremiah described in <a class="vlink" href="https://www.bible.com/bible/1713/LAM.3.55-57" target="_blank">Lamentations 3:55-57</a>, where he called from the depths and heard God's "do not fear" answer back.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 7">7</sup>Where can I go to escape Your Spirit? Where can I flee from Your presence? <sup class="verse-number" aria-label="Verse 8">8</sup>If I ascend to the heavens, You are there; if I make my bed in Sheol, You are there. <sup class="verse-number" aria-label="Verse 9">9</sup>If I rise on the wings of the dawn, if I settle by the farthest sea, <sup class="verse-number" aria-label="Verse 10">10</sup>even there Your hand will guide me; Your right hand will hold me fast. <sup class="verse-number" aria-label="Verse 11">11</sup>If I say, “Surely the darkness will hide me, and the light become night around me”— <sup class="verse-number" aria-label="Verse 12">12</sup>even the darkness is not dark to You, but the night shines like the day, for darkness is as light to You.</div>
+<div class="verse-commentary">
+          <p>The grammar of Enoch's three hundred years is hidden in this Davidic poem. The reason a believer can walk with God in the middle of a violent civilization is that God does not stay in one place to be visited. There is nowhere a person can go that He is not already there. David is not asking the question philosophically; he is praying it, naming places his soul has wanted to hide. He has wanted to climb into the heavens to be away from accountability. He has wanted to crawl into Sheol to be away from shame. He has wanted to go far enough east, far enough west, deep enough into the night, that he could finally not be seen. None of it works. The omnipresence that makes hiding impossible is the same omnipresence that makes walking with God possible at any address. Enoch did not need a special temple. The cradle in Methuselah's room and the workshop in the courtyard were both already the road. The same is true for the cab of a delivery truck, the kitchen sink, the school-pickup lane, and the prison pit Jeremiah described in <a class="vlink" href="https://www.bible.com/bible/3034/LAM.3.55-57" target="_blank" rel="noopener">Lamentations 3:55-57</a>, where he called from the depths and heard God's "do not fear" answer back.</p>
         </div>
       </div>
     </div>
@@ -832,22 +863,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/GEN.5.22-24" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Genesis+5:22-24&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -862,6 +913,7 @@ if ('serviceWorker' in navigator) {
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 <script>
+// Push notification opt-in
 (function() {
   var firebaseConfig = {
     apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
@@ -872,8 +924,13 @@ if ('serviceWorker' in navigator) {
     appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
     measurementId: "G-BY2BM5HTX4"
   };
+
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
+
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
+
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -881,32 +938,51 @@ if ('serviceWorker' in navigator) {
   function setCookie(name, value) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') { initFirebaseAndRegister(); return; }
+
+  // If already opted in, silently ensure token is current
+  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
+    initFirebaseAndRegister();
+    return;
+  }
+
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
+
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
+
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
     setCookie('dbs_notif', 'yes');
     initFirebaseAndRegister();
   };
+
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
     setCookie('dbs_notif', 'no');
   };
+
   function initFirebaseAndRegister() {
     try {
       if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
       var messaging = firebase.messaging();
       var db = firebase.firestore();
+
       navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({ vapidKey: VAPID_KEY, serviceWorkerRegistration: swReg });
+        return messaging.getToken({
+          vapidKey: VAPID_KEY,
+          serviceWorkerRegistration: swReg
+        });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,
@@ -914,8 +990,12 @@ if ('serviceWorker' in navigator) {
             userAgent: navigator.userAgent.substring(0, 100)
           }, { merge: true });
         }
-      }).catch(function(err) { console.log('Notification setup error:', err); });
-    } catch(e) { console.log('Firebase init error:', e); }
+      }).catch(function(err) {
+        console.log('Notification setup error:', err);
+      });
+    } catch(e) {
+      console.log('Firebase init error:', e);
+    }
   }
 })();
 </script>

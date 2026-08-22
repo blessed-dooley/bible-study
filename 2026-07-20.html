@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -721,7 +744,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="section-heading">A Shared Table Was a Signed Statement</div>
-      <p>In Corinth a business deal did not close with a signature. It closed with a dinner. To recline at another man's table was to tell the whole street something about yourself, that his people were your people, that his standing vouched for yours, that whatever he was known for, you could live with it. Meals ran on this logic across the ancient world. Treaties were sealed over bread and salt. A patron fed his clients, and the feeding announced who belonged to whom. A wedding feast bound two families, not just two people. Israel felt the weight of the table too, which is why the psalmist's bitterest line about betrayal is not about stolen money but a shared loaf, the trusted friend who ate my bread and then turned on me (<a class="vlink" href="https://www.bible.com/bible/1713/PSA.41.9" target="_blank">Psalm 41:9</a>).</p>
+      <p>In Corinth a business deal did not close with a signature. It closed with a dinner. To recline at another man's table was to tell the whole street something about yourself, that his people were your people, that his standing vouched for yours, that whatever he was known for, you could live with it. Meals ran on this logic across the ancient world. Treaties were sealed over bread and salt. A patron fed his clients, and the feeding announced who belonged to whom. A wedding feast bound two families, not just two people. Israel felt the weight of the table too, which is why the psalmist's bitterest line about betrayal is not about stolen money but a shared loaf, the trusted friend who ate my bread and then turned on me (<a class="vlink" href="https://www.bible.com/bible/3034/PSA.41.9" target="_blank" rel="noopener">Psalm 41:9</a>).</p>
       <p>So when Paul writes do not even eat with such a one, he is not inventing a punishment. He is unplugging an endorsement. As long as the church kept passing the bread to a man living in open, unrepentant sin, every meal was a public statement that Jesus' people could live with it. The table was the church's signature, and Corinth could read it from across the street. Withdrawing it was not about hating the man. It was about refusing to let the family's warmth keep telling him, and the watching city, a lie. Sometimes the most honest thing a table can do is sit empty.</p>
     </div>
 
@@ -733,42 +756,44 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Read the chapter again and circle the verbs (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.5.1-13" target="_blank">1 Corinthians 5:1-13</a>). Remove. Judge. Hand over. Put away. They land like a gavel, one blow after another, and it is fair to admit they sound severe to us. Paul knew they would sound severe in Corinth too. He wrote them anyway, because a church that had learned to applaud a scandal was never going to be healed by a shrug. So today's question is what all that severity is actually for. Follow the hardest sentence in the chapter to its final clause and you will find out. This surgery has a survival plan.</p>
+      <p>Read the chapter again and circle the verbs (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.1-13" target="_blank" rel="noopener">1 Corinthians 5:1-13</a>). Remove. Judge. Hand over. Put away. They land like a gavel, one blow after another, and it is fair to admit they sound severe to us. Paul knew they would sound severe in Corinth too. He wrote them anyway, because a church that had learned to applaud a scandal was never going to be healed by a shrug. So today's question is what all that severity is actually for. Follow the hardest sentence in the chapter to its final clause and you will find out. This surgery has a survival plan.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 5:5 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:de8aada21d9d450ad06c6fd1cf3ff66d3c51fa0d9c54bf23747ef4e9562ca675 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 5:5</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.5.5" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.5.5" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"hand that one over to Satan for the destruction of the flesh, so that his spirit may be saved in the day of the Lord."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>This is the verse people quote to prove Paul was harsh, and it ends in a rescue. Handing the man over to Satan is not a curse or a dark ritual. It is a transfer of custody. Inside the church, a person lives under the shelter of God's people, their worship, their warnings, their love. By refusing to repent, this man had already chosen Satan's territory. Paul tells the church to stop pretending otherwise and let him stand on the ground he picked. The destruction of the flesh is not torture. It is a sinful life collapsing under its own weight, the far country doing what the far country always does. Then comes the clause that flips the whole verse. So that his spirit may be saved. Paul had already made the judgment call (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.5.3" target="_blank">1 Corinthians 5:3</a>) that the church kept dodging (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.5.2" target="_blank">1 Corinthians 5:2</a>). The goal was never to lose the man. It was to lose the lie that was keeping him.</p>
+        <div class="verse-text">hand this man over to Satan for the destruction of the flesh, so that his spirit may be saved on the Day of the Lord.</div>
+<div class="verse-commentary">
+          <p>This is the verse people quote to prove Paul was harsh, and it ends in a rescue. Handing the man over to Satan is not a curse or a dark ritual. It is a transfer of custody. Inside the church, a person lives under the shelter of God's people, their worship, their warnings, their love. By refusing to repent, this man had already chosen Satan's territory. Paul tells the church to stop pretending otherwise and let him stand on the ground he picked. The destruction of the flesh is not torture. It is a sinful life collapsing under its own weight, the far country doing what the far country always does. Then comes the clause that flips the whole verse. So that his spirit may be saved. Paul had already made the judgment call (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.3" target="_blank" rel="noopener">1 Corinthians 5:3</a>) that the church kept dodging (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.2" target="_blank" rel="noopener">1 Corinthians 5:2</a>). The goal was never to lose the man. It was to lose the lie that was keeping him.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Corinthians 5:5 | 5:5 BYZ and TR the Lord Jesus -->
 
-      <p>The boundary had teeth, and Paul had drawn it before. An earlier letter had already told them not to associate with the sexually immoral (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.5.9" target="_blank">1 Corinthians 5:9</a>), and they had managed to misread it, so now he spells it out. He never meant the people of the world. You would have to leave the planet to avoid them, and Jesus did not leave His people here to avoid anybody. He meant the one who wears the family name while living in open defiance of the family's Lord, the so-called brother (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.5.11" target="_blank">1 Corinthians 5:11</a>). With him, do not even share a meal. In a world where a meal was a signature, the church's table had to stop signing.</p>
+      <p>The boundary had teeth, and Paul had drawn it before. An earlier letter had already told them not to associate with the sexually immoral (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.9" target="_blank" rel="noopener">1 Corinthians 5:9</a>), and they had managed to misread it, so now he spells it out. He never meant the people of the world. You would have to leave the planet to avoid them, and Jesus did not leave His people here to avoid anybody. He meant the one who wears the family name while living in open defiance of the family's Lord, the so-called brother (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.11" target="_blank" rel="noopener">1 Corinthians 5:11</a>). With him, do not even share a meal. In a world where a meal was a signature, the church's table had to stop signing.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 5:13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:22e8cf77fbf466f7aedbf4333a9120249eb54e08e9b91cc9f854cf2af9291297 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 5:13</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.5.13" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.5.13" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"God judges outsiders. Remove the evil person from among you."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Paul closes the chapter with a division of labor. God judges outsiders. The church tends its own house. Notice how that reverses the posture churches often fall into, loud about the world's sins and silent about their own. Paul does not tell Corinth's believers to police the morals of a pagan city. That is God's business, in God's time. He tells them to take responsibility for what carries Jesus' name. The final command is borrowed from Moses, the old covenant formula spoken when the community's life with God was at stake (<a class="vlink" href="https://www.bible.com/bible/1713/DEU.17.7" target="_blank">Deuteronomy 17:7</a>), purge the evil from among you. The church is not the world's judge. It is the guardian of its own witness. A family cannot control the whole neighborhood. It can decide what happens under its own roof.</p>
+        <div class="verse-text">God will judge those outside. “Expel the wicked man from among you.”</div>
+<div class="verse-commentary">
+          <p>Paul closes the chapter with a division of labor. God judges outsiders. The church tends its own house. Notice how that reverses the posture churches often fall into, loud about the world's sins and silent about their own. Paul does not tell Corinth's believers to police the morals of a pagan city. That is God's business, in God's time. He tells them to take responsibility for what carries Jesus' name. The final command is borrowed from Moses, the old covenant formula spoken when the community's life with God was at stake (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.17.7" target="_blank" rel="noopener">Deuteronomy 17:7</a>), purge the evil from among you. The church is not the world's judge. It is the guardian of its own witness. A family cannot control the whole neighborhood. It can decide what happens under its own roof.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Corinthians 5:13 | 5:13 Literally Expel the evil from among you; Deuteronomy 13:5, 17:7, 19:19, 21:21, 22:21, 22:24, and 24:7 -->
 
+<!-- BSB_BLOCK: 2 Corinthians 2:5-10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c614cb249226a6b7d5ef9ed3e4b11cadc698cc8d31037eef32dc9ad6472b1827 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">2 Corinthians 2:5-10</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/2CO.2.5-10" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.2.5-10" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"If anyone has caused pain, he has caused pain not so much to me but to some degree—not to exaggerate—to all of you. This punishment by the majority is sufficient for that person. As a result, you should instead forgive and comfort him. Otherwise, he may be overwhelmed by excessive grief. Therefore I urge you to reaffirm your love to him. I wrote for this purpose: to test your character to see if you are obedient in everything. Anyone you forgive, I do too. For what I have forgiven—if I have forgiven anything—it is for your benefit in the presence of Christ,"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 5">5</sup>Now if anyone has caused grief, he has not grieved me but all of you—to some degree, not to overstate it. <sup class="verse-number" aria-label="Verse 6">6</sup>The punishment imposed on him by the majority is sufficient for him. <sup class="verse-number" aria-label="Verse 7">7</sup>So instead, you ought to forgive and comfort him, so that he will not be overwhelmed by excessive sorrow. <sup class="verse-number" aria-label="Verse 8">8</sup>Therefore I urge you to reaffirm your love for him. <sup class="verse-number" aria-label="Verse 9">9</sup>My purpose in writing you was to see if you would stand the test and be obedient in everything. <sup class="verse-number" aria-label="Verse 10">10</sup>If you forgive anyone, I also forgive him. And if I have forgiven anything, I have forgiven it in the presence of Christ for your sake,</div>
+<div class="verse-commentary">
           <p>Now read what happened next, quite possibly to this very man, met again one letter later. The discipline did its work. He repented. And the church, so slow to act before, has swung to the opposite pole, so slow to welcome him back that Paul has to intervene again, this time on the sinner's behalf. The punishment was sufficient, he writes. Forgive him and comfort him before the sorrow drowns him. Reaffirm your love. Paul's word for forgive is <em>charizomai</em>, Greek for granting something freely, forgiveness given the way you give a gift, grace with hands on it. And he anchors the reunion in the presence of Christ, because that is where every real restoration happens. Here is the test of church discipline. If the welcome-home was never in the plan, it was never discipline. It was just an exile with better paperwork.</p>
         </div>
       </div>
@@ -783,7 +808,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Month the Money Doesn't Come</div>
       <p>A mother sits at her kitchen counter with her thumb over the transfer button. Her grown son has overdrafted again, the third time this year, and the banking app is waiting for her to make it quietly disappear. She has covered it every time. She calls it helping. But the overdrafts keep growing, the calls only come when the account is empty, and somewhere along the way her rescues stopped rescuing anything. They just moved the weight of his choices from his shoulders to hers, one month at a time. So tonight she does the hardest thing love has ever asked of her. She closes the app. Days later, in a checkout line across town, his card is declined in front of strangers, and for the first time in years the bill lands on the man who ran it up.</p>
-      <p>Everyone watching thinks she gave up on him. The truth is she never fought harder for him in her life. That is the logic of <a class="vlink" href="https://www.bible.com/bible/1713/1CO.5.1-13" target="_blank">1 Corinthians 5:1-13</a>. The congregation's kindness had become the sin's life support, so Paul says stop the transfers. Let the consequences finally reach him, not to crush him, but because they are sometimes the last voice a person can still hear. And notice what the mother never cancels. The porch light stays on. His room stays his room. The whole time, the plan was the homecoming. She did not stop loving him the night she closed the app. That was the night the loving got serious.</p>
+      <p>Everyone watching thinks she gave up on him. The truth is she never fought harder for him in her life. That is the logic of <a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.1-13" target="_blank" rel="noopener">1 Corinthians 5:1-13</a>. The congregation's kindness had become the sin's life support, so Paul says stop the transfers. Let the consequences finally reach him, not to crush him, but because they are sometimes the last voice a person can still hear. And notice what the mother never cancels. The porch light stays on. His room stays his room. The whole time, the plan was the homecoming. She did not stop loving him the night she closed the app. That was the night the loving got serious.</p>
     </div>
 
     <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
@@ -795,7 +820,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Prison That Plans the Homecoming</div>
       <p>Norway's correctional service sums its philosophy up in one sentence. "The punishment is the restriction of liberty; no other rights have been removed by the sentencing court." The consequence is real. The gate locks, and the years are genuinely lost. But the same service runs on what it calls the principle of normality, that life inside should resemble life outside as much as possible, the school, the library, the doctor, the chaplain all brought in from the surrounding community, and a contact officer assigned to assist the prisoner rather than merely watch him. The idea has crossed the ocean. At a Pennsylvania state prison outside Philadelphia, a unit nicknamed Little Scandinavia, built in partnership with Norwegian researchers, now runs on the same principles, with residents assigned at random so a study can measure what happens. The Marshall Project reported in 2025 that early results are promising, including a single physical altercation since the unit opened.</p>
-      <p>Notice what this model refuses to do. It refuses to cancel the consequence, and it refuses to cancel the person. The sentence lands with full weight, and from day one the system designs backward from the homecoming, because the man in that cell is not garbage to be warehoused. He is a neighbor in the making. That is <a class="vlink" href="https://www.bible.com/bible/1713/1CO.5.1-13" target="_blank">1 Corinthians 5:1-13</a> and <a class="vlink" href="https://www.bible.com/bible/1713/2CO.2.5-10" target="_blank">2 Corinthians 2:5-10</a> wearing a corrections uniform. Hand him over, let the far country do its honest work, so that his spirit may be saved, and when he turns, forgive him, comfort him, reaffirm your love. The systems that actually change people are the ones that never stopped picturing them restored. Paul would recognize the blueprint. He drew it first.</p>
+      <p>Notice what this model refuses to do. It refuses to cancel the consequence, and it refuses to cancel the person. The sentence lands with full weight, and from day one the system designs backward from the homecoming, because the man in that cell is not garbage to be warehoused. He is a neighbor in the making. That is <a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.1-13" target="_blank" rel="noopener">1 Corinthians 5:1-13</a> and <a class="vlink" href="https://www.bible.com/bible/3034/2CO.2.5-10" target="_blank" rel="noopener">2 Corinthians 2:5-10</a> wearing a corrections uniform. Hand him over, let the far country do its honest work, so that his spirit may be saved, and when he turns, forgive him, comfort him, reaffirm your love. The systems that actually change people are the ones that never stopped picturing them restored. Paul would recognize the blueprint. He drew it first.</p>
       <!-- TODAYS_WORLD_SOURCE: Fish Tanks, Plants and Podcast Studios — Some States Try a New Approach to Incarceration | The Marshall Project | 2025 | https://www.themarshallproject.org/2025/04/19/pennsylvania-california-nordic-prison-units -->
       <!-- TODAYS_WORLD_SOURCE: About the Norwegian Correctional Service | Norwegian Correctional Service (kriminalomsorgen.no) | 2026 | https://www.kriminalomsorgen.no/en/about-the-norwegian-correctional-service -->
     </div>
@@ -807,7 +832,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Handed over. Notice how strange that phrase should feel by the end of this chapter. The church hands a man over to Satan so that his spirit may be saved, and if that sounds severe, remember that God did something far more severe first. He did not spare His own Son but gave Him up for us all (<a class="vlink" href="https://www.bible.com/bible/1713/ROM.8.32" target="_blank">Romans 8:32</a>). On the night of His arrest, Jesus looked at the torches coming for Him and named the moment as the hour when darkness reigns (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.22.53" target="_blank">Luke 22:53</a>). He was handed over to the dark, not for His sins but for ours, so that every sinner who ever gets handed over to consequences would have somewhere to come home to. That is why discipline in the church can never run on disgust. The Man overseeing the process has scars. He knows exactly what being given up costs, He paid it willingly, and He stands in the middle of every reunion, which is why Paul forgives in the presence of Christ. No one wants the prodigal home more than the One who walked into the far country to carry him back.</p>
+      <p>Handed over. Notice how strange that phrase should feel by the end of this chapter. The church hands a man over to Satan so that his spirit may be saved, and if that sounds severe, remember that God did something far more severe first. He did not spare His own Son but gave Him up for us all (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.8.32" target="_blank" rel="noopener">Romans 8:32</a>). On the night of His arrest, Jesus looked at the torches coming for Him and named the moment as the hour when darkness reigns (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.22.53" target="_blank" rel="noopener">Luke 22:53</a>). He was handed over to the dark, not for His sins but for ours, so that every sinner who ever gets handed over to consequences would have somewhere to come home to. That is why discipline in the church can never run on disgust. The Man overseeing the process has scars. He knows exactly what being given up costs, He paid it willingly, and He stands in the middle of every reunion, which is why Paul forgives in the presence of Christ. No one wants the prodigal home more than the One who walked into the far country to carry him back.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -844,22 +869,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.5.1-13" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+5:1-13&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

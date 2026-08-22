@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -469,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -532,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -550,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -648,16 +685,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/bible-study/sw.js')
-      .catch(function(err) { console.log('SW registration failed:', err); });
-  });
-}
-</script>
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -700,7 +727,7 @@ if ('serviceWorker' in navigator) {
       <ul class="tldr-list">
         <li><span class="bullet-icon">☩</span> Paul tells the Corinthians that the "natural person" cannot receive spiritual things, and the Greek word he uses is not about intelligence but about which frequency you are tuned to.</li>
         <li><span class="bullet-icon">☩</span> In 1 Thessalonians 2:13, the verb for how God's Word works in the believer is the root of our word "energy." It is not static information. It is a live current.</li>
-        <li><span class="bullet-icon">☩</span> When a father cried out, "I believe, help my unbelief," Jesus healed his son without waiting for bigger faith. Small faith with an open heart still opens the book.</li>
+        <li><span class="bullet-icon">☩</span> When a father cried out, "I do believe; help my unbelief," Jesus healed his son without waiting for bigger faith. Small faith with an open heart still opens the book.</li>
         <li><span class="bullet-icon">☩</span> How you approach the Bible determines more of what you receive from the Bible than most people are willing to admit.</li>
       </ul>
     </div>
@@ -724,7 +751,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The City That Paid to Be Impressed</div>
       <p>Paul wrote 1 Corinthians to a church inside one of the most rhetoric-obsessed cities in the Roman Empire. Corinth sat on the isthmus that linked the Greek mainland to the Peloponnese, and every two years it hosted the Isthmian Games, second in prestige only to the Olympics. Between the games the city ran on trade, tourism, and schools of oratory. A well-paid Corinthian speaker could pack a hall the way a modern concert artist sells out an arena. Wisdom, in this city, was a performance. It wore expensive robes. It paid a voice coach. It made you want to applaud.</p>
-      <p>Paul came to town and refused to play the role. In the chapter just before our anchor verse he tells them, "I did not come to you with eloquence or a superior wisdom as I proclaimed the testimony of God. I resolved to know nothing while I was with you except Jesus Christ and him crucified" (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.2.1-2" target="_blank">1 Corinthians 2:1&ndash;2</a>). To a city that paid good money to be dazzled, the apostle showed up plain. Then he wrote them a letter that diagnosed the problem underneath their itch for eloquent teachers. The problem was not that God's truth was missing. The problem was that the listeners were still listening through the wrong organ. They were treating the gospel the way they treated a speech at the games, grading it on style. And Paul tells them, you cannot receive what the Spirit is saying if the receiver is not spiritual. The issue is not the signal. The issue is the antenna.</p>
+      <p>Paul came to town and refused to play the role. In the chapter just before our anchor verse he tells them, "I did not come to you with eloquence or a superior wisdom as I proclaimed the testimony of God. I resolved to know nothing while I was with you except Jesus Christ and him crucified" (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.2.1-2" target="_blank" rel="noopener">1 Corinthians 2:1&ndash;2</a>). To a city that paid good money to be dazzled, the apostle showed up plain. Then he wrote them a letter that diagnosed the problem underneath their itch for eloquent teachers. The problem was not that God's truth was missing. The problem was that the listeners were still listening through the wrong organ. They were treating the gospel the way they treated a speech at the games, grading it on style. And Paul tells them, you cannot receive what the Spirit is saying if the receiver is not spiritual. The issue is not the signal. The issue is the antenna.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -737,16 +764,14 @@ if ('serviceWorker' in navigator) {
 
       <p>The anchor today is 1 Corinthians 2:14, a verse that sounds insulting until you understand the Greek. Paul is not saying anyone is stupid. He is saying that spiritual truth arrives on a frequency that only a spiritually open heart can hear. The supporting verses widen the lens. Job's friend Eliphaz, for all his mistakes elsewhere, hands us one of the cleanest invitations in Scripture: receive instruction from His mouth. Paul's Thessalonian letter describes what happens when someone does receive it. And Jesus, in a crowd at the foot of the transfiguration mountain, lets a father with a mustard seed of faith in a shaking hand walk away with a son made whole.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 2:14 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:66920c7056cc6036ee0a1c7a40b6599ebafa9d95b2b3bdbe678744dd05bd9e7a | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 2:14</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.2.14" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.2.14" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"But the natural man does not receive the things of the Spirit of God, for they are foolishness to him; nor can he know them, because they are spiritually discerned."</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"But the person without the Spirit does not receive what comes from God's Spirit, because it is foolishness to him; he is not able to understand it since it is evaluated spiritually."</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">The natural man does not accept the things that come from the Spirit of God. For they are foolishness to him, and he cannot understand them, because they are spiritually discerned.</div>
+<div class="verse-commentary">
         <p>The word behind "natural man" is <em>psychikos</em>. It comes from <em>psyche</em>, soul, and in Greek philosophy it named the merely human, merely appetite-driven layer of a person. Paul is not saying the unbeliever is dumb. Corinth had plenty of credentialed minds. He is saying that a person operating only on the <em>psychikos</em> level, the level of natural intellect and natural appetite, is tuned to a different station than the one Scripture broadcasts on.</p>
 
 <p>The verb for "receive" is <em>dechetai</em>, the same verb used for welcoming a guest into your home. The natural man does not <em>welcome</em> the things of the Spirit. He may analyze them. He may argue about them. He may pass a test on them. But he does not open the door and say, come in. Why? Paul says, because they are <em>moria</em> to him. The Greek word is the root of our word "moron." To the merely natural reader, the cross looks absurd, the beatitudes look backward, and the claim that an executed carpenter is Lord of the universe looks like a punch line. It is not stupidity, it is a category error. You are trying to receive a radio signal through a toaster.</p>
@@ -756,31 +781,32 @@ if ('serviceWorker' in navigator) {
 <p>Which is why the state of your heart matters more than the state of your library. You can own twenty translations and a Greek lexicon and still leave your Bible the same way you picked it up. Or you can come to a cheap paperback Bible with a heart that has already said yes, and stand up changed.</p></div>
       </div>
 
+<!-- BSB_BLOCK: 1 Thessalonians 2:13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:84047c326535495f787ad35a1f04e9ad9d72febecd4efe7a091b44184d3679be | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Thessalonians 2:13</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1TH.2.13" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1TH.2.13" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For this reason we also thank God without ceasing, because when you received the word of God which you heard from us, you welcomed it not as the word of men, but as it is in truth, the word of God, which also effectively works in you who believe."</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-commentary">
+        <div class="verse-text">And we continually thank God because, when you received the word of God that you heard from us, you accepted it not as the word of men, but as it truly is, the word of God, which is also now at work in you who believe.</div>
+<div class="verse-commentary">
         <p>The verb "effectively works" is the Greek <em>energeitai</em>. It is the root of our word <em>energy</em>. Paul is not describing Scripture as information that sits there waiting to be understood. He is describing it as a live current running through a believer's life. The Thessalonians welcomed the word, and the word began to work. It did not wait for a permission slip. It started rewiring them.</p>
 
-<p>The key word earlier in the verse is the same <em>dechomai</em> family we met in 1 Corinthians, welcoming a guest. They received it "not as the word of men, but as it is in truth, the word of God." That is the posture change that unlocks the power. Job's friend, for all his other faults, says the same thing the right way around: "Receive instruction from His mouth, and lay up His words in your heart" (<a class="vlink" href="https://www.bible.com/bible/1713/JOB.22.22" target="_blank">Job 22:22</a>). First you receive. Then it works. The state of the heart at the moment of opening the book is not a side issue. It is the permission the Holy Spirit was waiting for.</p></div>
+<p>The key word earlier in the verse is the same <em>dechomai</em> family we met in 1 Corinthians, welcoming a guest. They received it "not as the word of men, but as it truly is, the word of God." That is the posture change that unlocks the power. Job's friend, for all his other faults, says the same thing the right way around: "Receive instruction from His mouth, and lay up His words in your heart" (<a class="vlink" href="https://www.bible.com/bible/3034/JOB.22.22" target="_blank" rel="noopener">Job 22:22</a>). First you receive. Then it works. The state of the heart at the moment of opening the book is not a side issue. It is the permission the Holy Spirit was waiting for.</p></div>
       </div>
 
+<!-- BSB_BLOCK: Mark 9:24 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:be6993207cae038814c3990b8c6533c088ef9a92b4ef0a34a1cf9632bb72a828 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Mark 9:24</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MRK.9.24" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MRK.9.24" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Immediately the father of the child cried out and said with tears, 'Lord, I believe; help my unbelief!'"</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-commentary">
-        <p>The boy at the bottom of the mountain was being torn apart by something the disciples could not handle. The father had already been disappointed by nine men in robes. When Jesus arrived, the father's faith was a small, trembling thing, full of honest confession. "I believe, help my unbelief." And Jesus healed the boy. Not after the father mustered bigger faith. Right then, with the faith he had.</p>
+        <div class="verse-text">Immediately the boy’s father cried out, “I do believe; help my unbelief!”</div>
+<div class="verse-commentary">
+        <p>The boy at the bottom of the mountain was being torn apart by something the disciples could not handle. The father had already been disappointed by nine men in robes. When Jesus arrived, the father's faith was a small, trembling thing, full of honest confession. "I do believe; help my unbelief!" And Jesus healed the boy. Not after the father mustered bigger faith. Right then, with the faith he had.</p>
 
-<p>Put that next to Jesus' words in <a class="vlink" href="https://www.bible.com/bible/1713/LUK.17.6" target="_blank">Luke 17:6</a>. "If you have faith as a mustard seed, you can say to this mulberry tree, 'Be pulled up by the roots and be planted in the sea,' and it would obey you." And put that next to Paul's reminder to Timothy that the Scriptures are "able to make you wise for salvation through faith in Christ Jesus" (<a class="vlink" href="https://www.bible.com/bible/1713/2TI.3.15" target="_blank">2 Timothy 3:15</a>). Three verses, one relief. The Bible does not require heroic faith before it will open up. It requires honest faith. An open hand. A heart that says, even shakily, yes. A believer who still struggles with doubt is not locked out of what Scripture can do. The mustard seed opens the book. The humble confession opens the book. The prayer "I believe, help my unbelief" opens the book. What closes the book is not the size of the faith. It is the hardness of the heart.</p></div>
+<p>Put that next to Jesus' words in <a class="vlink" href="https://www.bible.com/bible/3034/LUK.17.6" target="_blank" rel="noopener">Luke 17:6</a>. "If you have faith as a mustard seed, you can say to this mulberry tree, 'Be pulled up by the roots and be planted in the sea,' and it would obey you." And put that next to Paul's reminder to Timothy that the Scriptures are "able to make you wise for salvation through faith in Christ Jesus" (<a class="vlink" href="https://www.bible.com/bible/3034/2TI.3.15" target="_blank" rel="noopener">2 Timothy 3:15</a>). Three verses, one relief. The Bible does not require heroic faith before it will open up. It requires honest faith. An open hand. A heart that says, even shakily, yes. A believer who still struggles with doubt is not locked out of what Scripture can do. The mustard seed opens the book. The humble confession opens the book. The prayer "I do believe; help my unbelief" opens the book. What closes the book is not the size of the faith. It is the hardness of the heart.</p></div>
       </div>
+      <!-- BSB_FOOTNOTE: Mark 9:24 | 9:24 BYZ and TR cried out with tears -->
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -815,7 +841,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>When Jesus walked with two disciples on the Emmaus road, He did not hand them new information. He opened up the Scriptures they had already read and let them hear their own Bible on the right frequency. Later they would say, "Were not our hearts burning within us while He talked with us on the road and opened the Scriptures to us?" (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.24.32" target="_blank">Luke 24:32</a>). The fire was not in the scroll. The fire had been in the scroll all along. What changed was the Teacher who walked beside them and the heart that finally opened to receive. That is what Christ does for every humble reader. He is both the Word the Bible is about and the Spirit who tunes the receiver. He does not bring a new text. He brings a new pair of ears. A heart softened by Jesus is a heart Scripture will speak into. Always.</p>
+      <p>When Jesus walked with two disciples on the Emmaus road, He did not hand them new information. He opened up the Scriptures they had already read and let them hear their own Bible on the right frequency. Later they would say, "Were not our hearts burning within us while He talked with us on the road and opened the Scriptures to us?" (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.24.32" target="_blank" rel="noopener">Luke 24:32</a>). The fire was not in the scroll. The fire had been in the scroll all along. What changed was the Teacher who walked beside them and the heart that finally opened to receive. That is what Christ does for every humble reader. He is both the Word the Bible is about and the Spirit who tunes the receiver. He does not bring a new text. He brings a new pair of ears. A heart softened by Jesus is a heart Scripture will speak into. Always.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -852,23 +878,51 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.2.14" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+2:14&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/bible-study/sw.js')
+    .then(reg => console.log('SW registered:', reg.scope))
+    .catch(err => console.log('SW registration failed:', err));
+}
+</script>
+
 <!-- Firebase SDK for push notifications -->
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>

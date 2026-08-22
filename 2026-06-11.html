@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -700,7 +723,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">TL;DR</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Imagine being led up a steep, exhausting path, told only to keep your eyes up, until you reach the top and see the face of Jesus turned toward you with joy, and every hard step of the climb shrinks to nothing. That is the math Paul does in today's passage. The sufferings of right now are real, but "not worth comparing" with the glory coming, and God works every piece of the climb together for good. The deepest answer to a setback is not an explanation. It is a Face, and <strong>one look at Him will make the whole climb worth it</strong>.</p>
+      <p>Imagine being led up a steep, exhausting path, told only to keep your eyes up, until you reach the top and see the face of Jesus turned toward you with joy, and every hard step of the climb shrinks to nothing. That is the math Paul does in today's passage. The sufferings of right now are real, but "not comparable" with the glory coming, and God works every piece of the climb together for good. The deepest answer to a setback is not an explanation. It is a Face, and <strong>one look at Him will make the whole climb worth it</strong>.</p>
     </div>
 
     <!-- 2. CONNECTION TO YESTERDAY -->
@@ -717,10 +740,11 @@ if ('serviceWorker' in navigator) {
     <div class="section section-context">
       <div class="section-label">
         <span class="section-emoji">🗺️</span>
-        <span class="section-title">The Man Who Said It Had the Scars</span>
+        <span class="section-title">Historical &amp; Cultural Context</span>
         <div class="section-title-line"></div>
       </div>
-      <p>When Paul writes that present sufferings are "not worth comparing" to the coming glory, it lands differently once you know who is holding the pen. This is not a comfortable man theorizing about hardship from a padded chair. By the time he writes Romans he has been whipped five times, beaten with rods, stoned and left for dead, shipwrecked, hungry, sleepless, and run out of more than one city. He is writing to believers in Rome who are starting to feel the heat themselves, a small and suspect minority in the empire's capital, with worse pressure on the horizon. When that man tells them their suffering is real but outweighed, he is not minimizing the pain. He has felt more of it than they have.</p>
+      <div class="section-heading">The Man Who Said It Had the Scars</div>
+      <p>When Paul writes that present sufferings are "not comparable" to the coming glory, it lands differently once you know who is holding the pen. This is not a comfortable man theorizing about hardship from a padded chair. By the time he writes Romans he has been whipped five times, beaten with rods, stoned and left for dead, shipwrecked, hungry, sleepless, and run out of more than one city. He is writing to believers in Rome who are starting to feel the heat themselves, a small and suspect minority in the empire's capital, with worse pressure on the horizon. When that man tells them their suffering is real but outweighed, he is not minimizing the pain. He has felt more of it than they have.</p>
       <p>And he does not isolate their struggle. In the same chapter Paul widens the lens until the whole creation is groaning like a woman in labor, waiting to be set free, and he insists those labor pains are going somewhere. Suffering, in this chapter, is not random noise in a broken world. It is the straining of something being born. That is the frame around the two sentences on the page, and it is why Paul can say what he says without flinching.</p>
     </div>
 
@@ -734,26 +758,26 @@ if ('serviceWorker' in navigator) {
 
       <p>Two short sentences from Paul carry the whole weight of the week. One sets today's pain against tomorrow's glory and weighs them honestly. The other promises that nothing in the climb is wasted. Read slowly, because people have clung to these two lines on the worst days of their lives.</p>
 
+<!-- BSB_BLOCK: Romans 8:18 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:bf0abc55f9fdec0228287b1d2887a5f0aa69845168af100a4622e738424f7522 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Romans 8:18</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ROM.8.18" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.8.18" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For I consider that the sufferings of this present time are not worth comparing with the glory that is going to be revealed to us."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Paul does not say the sufferings are not real, or not heavy, or not worth grieving. He says they are not worth comparing, which means he actually put them on the scale. He weighed a beaten back, a sleepless prison night, a friend's grave, all of it, against the glory coming, and the glory was so much heavier that the comparison stopped making sense. This is the picture behind the old idea of being led up a hard mountain with one instruction, keep your eyes up. The climb is genuinely brutal. But the moment you reach the top and see the face of Jesus turned toward you, the memory of every aching step collapses into nothing, not because the steps were fake but because the joy is that much bigger. The setback is not erased. It is outweighed.</p>
+        <div class="verse-text">I consider that our present sufferings are not comparable to the glory that will be revealed in us.</div>
+<div class="verse-commentary">
+          <p>Paul does not say the sufferings are not real, or not heavy, or not worth grieving. He says they are not comparable, which means he actually put them on the scale. He weighed a beaten back, a sleepless prison night, a friend's grave, all of it, against the glory coming, and the glory was so much heavier that the comparison stopped making sense. This is the picture behind the old idea of being led up a hard mountain with one instruction, keep your eyes up. The climb is genuinely brutal. But the moment you reach the top and see the face of Jesus turned toward you, the memory of every aching step collapses into nothing, not because the steps were fake but because the joy is that much bigger. The setback is not erased. It is outweighed.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Romans 8:28 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:11863ec69105c145391d432c5e02e5114f7f7570d4c7588b305d23c1b3673ed0 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Romans 8:28</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ROM.8.28" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.8.28" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"We know that all things work together for the good of those who love God, who are called according to his purpose."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">And we know that God works all things together for the good of those who love Him, who are called according to His purpose.</div>
+<div class="verse-commentary">
           <p>Be careful what this verse does and does not say. It does not say all things are good. The raiders, the bleeding, the empty tomb that felt like the end, none of that is called good in itself. What Paul says is that God works all of it together, and the Greek behind "work together" is the word we get "synergy" from, many parts pulled into one motion. A single ingredient on the counter might be bitter or sharp on its own, but the baker is folding all of them into one loaf. God is not the author of every hard thing that happens to us, but there is nothing He cannot take up and weave toward our good and His purpose. That is the quiet confidence under the whole week. The storm, the wound, the loss, the buried hope, He is working every piece of it together, even the parts that still taste bitter on the tongue today.</p>
         </div>
       </div>
@@ -768,7 +792,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Day Circled on the Calendar</div>
       <p>Anyone who has loved someone far away knows how you survive it. There is a date circled on the calendar, the day they finally come home, and you live toward that one square on the wall. The months in between are not easy and you do not pretend they are. The empty side of the bed is real. The hard days are hard. But every grainy video call and every crossed-off day shrinks against that circled date, and you keep your eyes on it on purpose, because it is the thing that makes the waiting survivable. Then the day comes. You are standing at the bottom of the airport escalator, and the second their face comes into view at the top, the whole separation collapses into nothing in your arms.</p>
-      <p>That is the math Paul is doing when he weighs real suffering against the glory coming and calls it "not worth comparing." He is not saying the lonely stretch was fake. He is saying the reunion is so much bigger that, the instant it arrives, the ache simply cannot survive it. The whole Christian life is lived toward a date circled on a calendar we cannot see, and the thing waiting at the end of it is not a prize or even an explanation. It is a Face, turned toward us with joy. Keep your eyes on that square on the wall. One look at Him coming toward you, and every hard day of the wait will collapse into the first second of being home.</p>
+      <p>That is the math Paul is doing when he weighs real suffering against the glory coming and calls it "not comparable." He is not saying the lonely stretch was fake. He is saying the reunion is so much bigger that, the instant it arrives, the ache simply cannot survive it. The whole Christian life is lived toward a date circled on a calendar we cannot see, and the thing waiting at the end of it is not a prize or even an explanation. It is a Face, turned toward us with joy. Keep your eyes on that square on the wall. One look at Him coming toward you, and every hard day of the wait will collapse into the first second of being home.</p>
     </div>
 
     <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
@@ -780,7 +804,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Engine Called Hope</div>
       <p>Psychologists used to treat hope as a nice feeling with no real horsepower. Then a psychologist named C.R. Snyder put it under measurement and found the opposite. In what he called hope theory, hope is not crossed fingers. It is a specific engine with two parts, a clear picture of where you are going (what Snyder called pathways) and the belief that you can actually get there (what he called agency). People who score high on it recover faster from illness, trauma, and major setbacks, keep moving toward a goal when the road turns hard, and hold steadier under pressure than people with the same circumstances and less of it. Study after study finds the same pattern, in hospital wards, in chronic illness, across more than twenty countries: a person who can see a concrete, worth-it future ahead can endure a brutal present that would flatten someone staring only at the next painful step.</p>
-      <p>That is the exact machinery Paul is running when he weighs today's real suffering against the glory coming and calls it "not worth comparing." He is not minimizing the pain. He is fixing the eyes on the destination that makes the climb survivable. The modern science can measure that a vivid future steadies people in the present. Paul tells us what the future actually is. It is not a vague better someday. It is a Face, turned toward us with joy, and the marks still in His hands. The researchers found that hope needs a clear picture of where you are going. Paul tells us exactly Who is standing at the top of the climb, waiting.</p>
+      <p>That is the exact machinery Paul is running when he weighs today's real suffering against the glory coming and calls it "not comparable." He is not minimizing the pain. He is fixing the eyes on the destination that makes the climb survivable. The modern science can measure that a vivid future steadies people in the present. Paul tells us what the future actually is. It is not a vague better someday. It is a Face, turned toward us with joy, and the marks still in His hands. The researchers found that hope needs a clear picture of where you are going. Paul tells us exactly Who is standing at the top of the climb, waiting.</p>
     </div>
 
     <!-- 7. CHRIST CONNECTION -->
@@ -801,7 +825,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="action-box">
-        Today, practice keeping your eyes up. When the hard step in front of you starts to fill the whole screen, the pain, the bill, the diagnosis, the grief, deliberately lift your gaze past it for a minute. Picture the moment you actually see Jesus face to face, and say out loud the one true thing this week has been teaching you. "This is real, but it is not worth comparing." Do it the next time the climb feels too steep, on purpose, as a muscle you are training.
+        Today, practice keeping your eyes up. When the hard step in front of you starts to fill the whole screen, the pain, the bill, the diagnosis, the grief, deliberately lift your gaze past it for a minute. Picture the moment you actually see Jesus face to face, and say out loud the one true thing this week has been teaching you. "This is real, but it is not comparable." Do it the next time the climb feels too steep, on purpose, as a muscle you are training.
       </div>
     </div>
 
@@ -827,22 +851,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/ROM.8.18" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Romans+8:18,28&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

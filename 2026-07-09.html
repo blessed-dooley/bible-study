@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -733,41 +756,41 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Here is where Paul brings the whole argument to a point. He has spent the chapter taking human wisdom apart, asking where all the clever people actually ended up (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.20" target="_blank">1 Corinthians 1:20</a>) and warning that God intends to wreck the wisdom of the wise (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.19" target="_blank">1 Corinthians 1:19</a>). But he is not anti-wisdom at all. He is about to show that real wisdom and real power were never an idea or a method in the first place. Reading <a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.24-29" target="_blank">1 Corinthians 1:24-29</a>, watch him gather every thread of the chapter, foolish and wise, weak and strong, and tie them all to one Person.</p>
+      <p>Here is where Paul brings the whole argument to a point. He has spent the chapter taking human wisdom apart, asking where all the clever people actually ended up (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.20" target="_blank" rel="noopener">1 Corinthians 1:20</a>) and warning that God intends to wreck the wisdom of the wise (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.19" target="_blank" rel="noopener">1 Corinthians 1:19</a>). But he is not anti-wisdom at all. He is about to show that real wisdom and real power were never an idea or a method in the first place. Reading <a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.24-29" target="_blank" rel="noopener">1 Corinthians 1:24-29</a>, watch him gather every thread of the chapter, foolish and wise, weak and strong, and tie them all to one Person.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 1:24 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:562da83f759e1628646ea02f29b325864ac0e4eca266208a9f4423a17ab57e11 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 1:24</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.1.24" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.24" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"but to those who are called, both Jews and Greeks, Christ the power of God and the wisdom of God."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>There it is, the sentence the whole week has been building toward. To the people who actually answer God's call, Jews and Greeks alike, the crucified Christ is not weakness and foolishness. He is the power of God and the wisdom of God. The Greek word for wisdom here is <em>sophia</em>, the very thing the Greeks prized above almost everything, the deep insight into how life really works. Paul takes that treasured word and says it was never a system to be mastered. It was a Person to be known. The same Jesus who is God's power to rescue us (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.18" target="_blank">1 Corinthians 1:18</a>) is also God's wisdom, the answer to the question every philosopher kept circling. The gospel is the power of God for everyone who believes (<a class="vlink" href="https://www.bible.com/bible/1713/ROM.1.16" target="_blank">Romans 1:16</a>). Stop hunting for a cleverer answer than the cross. There is not one. There is only a better look at the One already hanging on it.</p>
+        <div class="verse-text">but to those who are called, both Jews and Greeks, Christ the power of God and the wisdom of God.</div>
+<div class="verse-commentary">
+          <p>There it is, the sentence the whole week has been building toward. To the people who actually answer God's call, Jews and Greeks alike, the crucified Christ is not weakness and foolishness. He is the power of God and the wisdom of God. The Greek word for wisdom here is <em>sophia</em>, the very thing the Greeks prized above almost everything, the deep insight into how life really works. Paul takes that treasured word and says it was never a system to be mastered. It was a Person to be known. The same Jesus who is God's power to rescue us (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.18" target="_blank" rel="noopener">1 Corinthians 1:18</a>) is also God's wisdom, the answer to the question every philosopher kept circling. The gospel is the power of God for everyone who believes (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.1.16" target="_blank" rel="noopener">Romans 1:16</a>). Stop hunting for a cleverer answer than the cross. There is not one. There is only a better look at the One already hanging on it.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 1:26 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:3b279c049b91fb6424e39a8ac76b1d157d9e6c2dc5b5d5342b966401995757b2 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 1:26</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.1.26" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.26" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Brothers and sisters, consider your calling: Not many were wise from a human perspective, not many powerful, not many of noble birth."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Paul asks them to take an honest look around the room. Be real, he says. Most of you were not the brilliant, the powerful, or the well-born. You were ordinary people the world had no special use for. That is not an accident, and it is not a problem to hide. It is exactly how God planned it. He deliberately chose the overlooked, so that when the church filled up with changed lives, no one could chalk it up to human talent or family name. The credit would have nowhere to land except on God Himself. That is why Paul ends the thought by saying the only thing left to brag about is the Lord (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.31" target="_blank">1 Corinthians 1:31</a>). Even God's so-called foolishness outclasses our best wisdom (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.25" target="_blank">1 Corinthians 1:25</a>), so the wise have nothing to add and the simple have nothing to fear.</p>
+        <div class="verse-text">Brothers, consider the time of your calling: Not many of you were wise by human standards; not many were powerful; not many were of noble birth.</div>
+<div class="verse-commentary">
+          <p>Paul asks them to take an honest look around the room. Be real, he says. Most of you were not the brilliant, the powerful, or the well-born. You were ordinary people the world had no special use for. That is not an accident, and it is not a problem to hide. It is exactly how God planned it. He deliberately chose the overlooked, so that when the church filled up with changed lives, no one could chalk it up to human talent or family name. The credit would have nowhere to land except on God Himself. That is why Paul ends the thought by saying the only thing left to brag about is the Lord (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.31" target="_blank" rel="noopener">1 Corinthians 1:31</a>). Even God's so-called foolishness outclasses our best wisdom (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.25" target="_blank" rel="noopener">1 Corinthians 1:25</a>), so the wise have nothing to add and the simple have nothing to fear.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 1:30 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:7cbeb6b1e58d3219d28b888dd4b330c199e05a0cd55d1f8e373fa325471c362e | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 1:30</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.1.30" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.30" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"It is from him that you are in Christ Jesus, who became wisdom from God for us—our righteousness, sanctification, and redemption,"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Paul will not leave wisdom floating as an abstraction, so he spells out what it means that Christ became wisdom for us. He breaks it into three gifts. Righteousness, being counted right with God when we were guilty. Sanctification, being slowly remade into the people we were meant to be. Redemption, being bought back and set free. That is what the wisdom of God actually does, and not one piece of it came from us. It is all from Him, received in Christ. The world's smartest thinking could diagnose the human problem a hundred ways and never once cure it (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.21" target="_blank">1 Corinthians 1:21</a>). Only Christ takes a guilty person and makes them righteous, free, and new. This is the wisdom that finally makes someone wise enough to be saved (<a class="vlink" href="https://www.bible.com/bible/1713/2TI.3.15" target="_blank">2 Timothy 3:15</a>).</p>
+        <div class="verse-text">It is because of Him that you are in Christ Jesus, who has become for us wisdom from God: our righteousness, holiness, and redemption.</div>
+<div class="verse-commentary">
+          <p>Paul will not leave wisdom floating as an abstraction, so he spells out what it means that Christ became wisdom for us. He breaks it into three gifts. Righteousness, being counted right with God when we were guilty. Sanctification, being slowly remade into the people we were meant to be. Redemption, being bought back and set free. That is what the wisdom of God actually does, and not one piece of it came from us. It is all from Him, received in Christ. The world's smartest thinking could diagnose the human problem a hundred ways and never once cure it (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.21" target="_blank" rel="noopener">1 Corinthians 1:21</a>). Only Christ takes a guilty person and makes them righteous, free, and new. This is the wisdom that finally makes someone wise enough to be saved (<a class="vlink" href="https://www.bible.com/bible/3034/2TI.3.15" target="_blank" rel="noopener">2 Timothy 3:15</a>).</p>
         </div>
       </div>
     </div>
@@ -841,22 +864,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.1.24-29" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+1:24-29&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

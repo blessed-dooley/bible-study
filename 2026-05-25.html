@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -698,7 +727,7 @@ if ('serviceWorker' in navigator) {
       <ul class="tldr-list">
         <li><span class="bullet-icon">☩</span><span>Strongholds are the entrenched compromises we have made peace with: the lust, the resentment, the trumpet-blast of our own goodness, the quiet contempt for the person at work we love to judge.</span></li>
         <li><span class="bullet-icon">☩</span><span>Jesus did not soften His prescription. Hand, foot, eye. Better to enter life maimed than to keep both and walk into the trash-fire valley south of Jerusalem with a complete body.</span></li>
-        <li><span class="bullet-icon">☩</span><span>Paul takes one look at Samson and writes one sentence to a church that thought it was fine: "Let anyone who thinks he stands watch out that he does not fall."</span></li>
+        <li><span class="bullet-icon">☩</span><span>Paul takes one look at Samson and writes one sentence to a church that thought it was fine: "Let anyone who thinks he is standing firm watch out that he does not fall."</span></li>
         <li><span class="bullet-icon">☩</span><span>The Bible's surgical metaphors are not cruelty. They are the math of a Savior who would rather have part of us forever than all of us thrown away.</span></li>
       </ul>
     </div>
@@ -710,7 +739,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">Connection to Yesterday</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Yesterday Samson told Delilah everything, and we saw the slow downhill of a man whose precepts had quietly become preferences. The Hebrew verb at the head of his fall was <em>ra'ah</em>, "he saw." Today Jesus picks up that very verb in Greek and presses it harder. "Everyone who looks at a woman lustfully has already committed adultery with her in his heart." The seeing-verb that opened Samson's story is the seeing-verb Jesus is naming as a heart-act before the body ever moves. And then He hands us a prescription so blunt only one word fits: "extreme." If your eye causes you to sin, pluck it out. The Word of God is not interested in cosmetic upgrades to our spiritual life today. It is interested in removing what is killing us.</p>
+      <p>Yesterday Samson told Delilah everything, and we saw the slow downhill of a man whose precepts had quietly become preferences. The Hebrew verb at the head of his fall was <em>ra'ah</em>, "he saw." Today Jesus picks up that very verb in Greek and presses it harder. "anyone who looks at a woman to lust after her has already committed adultery with her in his heart." The seeing-verb that opened Samson's story is the seeing-verb Jesus is naming as a heart-act before the body ever moves. And then He hands us a prescription so blunt only one word fits: "extreme." If your eye causes you to sin, pluck it out. The Word of God is not interested in cosmetic upgrades to our spiritual life today. It is interested in removing what is killing us.</p>
     </div>
 
     <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
@@ -722,7 +751,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Valley South of the Walls</div>
       <p>When Jesus warns about being thrown into "hell" in Mark 9, the English word covers a Greek word that covers a specific place on a map. <em>Gehenna</em> is the Greek transliteration of the Hebrew <em>ge ben-hinnom</em>, "valley of the son of Hinnom," a ravine running along the southern and southwestern walls of Jerusalem. Every person in Jesus's audience knew which valley He meant because they had walked past it. In the days of kings Ahaz and Manasseh that valley was where Israelite parents burned their own children alive as offerings to the Canaanite god Molech, a horror the prophet Jeremiah named explicitly (Jer. 7:31, 19:2-6). King Josiah's reforms eventually defiled the place so it could never be used for that worship again, and by the first century the valley had become the city's continuous garbage fire, where refuse, animal carcasses, and the bodies of executed criminals were thrown into a smoke that never lifted off the southern ridge.</p>
-      <p>When Jesus closes Mark 9:48 with the phrase "where their worm does not die, and the fire is not quenched," He is not making it up. He is quoting the last verse of Isaiah (<a class="vlink" href="https://www.bible.com/bible/1713/ISA.66.24" target="_blank">Isaiah 66:24</a>), the prophet's image for the final fate of those who refused God. The first-century listener heard three things at once. A real valley they could point to. A historical horror their grandparents had paid for. And an Isaiah text the synagogue had read on countless Sabbaths. Jesus is not invoking a generic afterlife concept. He is naming the trash-fire valley south of their hometown and telling them not to walk into it carrying everything they currently insist on carrying.</p>
+      <p>When Jesus closes Mark 9:48 with the phrase "where ‘their worm never dies, and the fire is never quenched’," He is not making it up. He is quoting the last verse of Isaiah (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.66.24" target="_blank" rel="noopener">Isaiah 66:24</a>), the prophet's image for the final fate of those who refused God. The first-century listener heard three things at once. A real valley they could point to. A historical horror their grandparents had paid for. And an Isaiah text the synagogue had read on countless Sabbaths. Jesus is not invoking a generic afterlife concept. He is naming the trash-fire valley south of their hometown and telling them not to walk into it carrying everything they currently insist on carrying.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -735,46 +764,51 @@ if ('serviceWorker' in navigator) {
 
       <p>Six strongholds sit across the path this morning (self-reliance, public piety, lust, judgmentalism, hatred of enemies, anger without cause), and Jesus walks straight into Mark 9 where He names the only kind of action serious enough to take them out. His language is surgical. The verb under "causes you to sin" is the verb the surgeon uses on something that is trapping the patient. The math He offers (better to enter life maimed than to be thrown whole into the fire) is the math of a doctor who has already counted the cost of leaving the tumor alone.</p>
 
+<!-- BSB_BLOCK: Mark 9:42-48 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:1da463253aa6296b1198b9a5ed09f5d2c73f444ac1947e57a8ff71f3fb8e4139 | footnotes-stripped:4 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Mark 9:42-48</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MRK.9.42-48" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MRK.9.42-48" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"But whoever causes one of these little ones who believe in me to fall away, it would be better for him if a heavy millstone were hung around his neck and he were thrown into the sea. And if your hand causes you to fall away, cut it off. It is better for you to enter life maimed than to have two hands and go to hell, the unquenchable fire. And if your foot causes you to fall away, cut it off. It is better for you to enter life lame than to have two feet and be thrown into hell. And if your eye causes you to fall away, gouge it out. It is better for you to enter the kingdom of God with one eye than to have two eyes and be thrown into hell, where their worm does not die, and the fire is not quenched."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>The Greek verb behind "causes you to fall away" is <em>skandalizo</em>. The English word "scandalize" comes from it, but the action behind the Greek is older and meaner. A <em>skandalon</em> was the trigger-stick of a hunter's trap, the small wooden piece that, when something brushed against it, snapped the snare closed. Jesus is not talking about embarrassment. He is talking about being caught. The hand, the foot, the eye are the parts of us most likely to brush the trigger. He is not saying the body is the problem (Mark 7 has already located the problem inside the heart). He is saying the body is where the trap closes, and the trap is closable.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 42">42</sup><span class="words-of-jesus">But if anyone causes one of these little ones who believe in Me to stumble, it would be better for him to have a large millstone hung around his neck and to be thrown into the sea.</span> <sup class="verse-number" aria-label="Verse 43">43</sup><span class="words-of-jesus">If your hand causes you to sin, cut it off. It is better for you to enter life crippled than to have two hands and go into hell, into the unquenchable fire.</span> <sup class="verse-number" aria-label="Verse 45">45</sup><span class="words-of-jesus">If your foot causes you to sin, cut it off. It is better for you to enter life lame than to have two feet and be thrown into hell.</span> <sup class="verse-number" aria-label="Verse 47">47</sup><span class="words-of-jesus">And if your eye causes you to sin, pluck it out. It is better for you to enter the kingdom of God with one eye than to have two eyes and be thrown into hell,</span> <sup class="verse-number" aria-label="Verse 48">48</sup><span class="words-of-jesus">where ‘their worm never dies, and the fire is never quenched.’</span></div>
+<div class="verse-commentary">
+          <p>The Greek verb behind "causes you to sin" is <em>skandalizo</em>. The English word "scandalize" comes from it, but the action behind the Greek is older and meaner. A <em>skandalon</em> was the trigger-stick of a hunter's trap, the small wooden piece that, when something brushed against it, snapped the snare closed. Jesus is not talking about embarrassment. He is talking about being caught. The hand, the foot, the eye are the parts of us most likely to brush the trigger. He is not saying the body is the problem (Mark 7 has already located the problem inside the heart). He is saying the body is where the trap closes, and the trap is closable.</p>
           <p>Then the math. Three times in seven verses: <em>better for you to enter life</em>. The verb is straight from the Greek of John 3:16 and Romans 6:23, the eternal life Jesus came to give. The sentence is doing arithmetic between two outcomes. One ending preserves the body part and loses the person. The other ending costs the body part and keeps the person. Jesus is not endorsing self-mutilation; rabbis and church fathers from the earliest days have read this metaphorically, because Jesus's own ministry was full of physical healing rather than amputation. He is endorsing radical action against whatever is closing the trap. The first time you read it, the language sounds extreme. The second time, you realize it is the language of a Surgeon who knows what is at stake.</p>
-          <p>And the final line lands on the valley south of Jerusalem. "Where their worm does not die, and the fire is not quenched." That picture is not invented metaphor. Jesus is quoting <a class="vlink" href="https://www.bible.com/bible/1713/ISA.66.24" target="_blank">Isaiah 66:24</a>, lifting a phrase from the Old Testament about the final fate of unrepented rebellion and laying it on top of a valley His audience could see from the temple wall. The trash-fire south of the city was a parable in the air. He is not threatening; He is naming. The kingdom is not a vague invitation, and the alternative to it is not an abstract idea. Both are real and both are coming, and the choice is being made today, with the hand and the foot and the eye still in our possession.</p>
+          <p>And the final line lands on the valley south of Jerusalem. "Where ‘their worm never dies, and the fire is never quenched.’" That picture is not invented metaphor. Jesus is quoting <a class="vlink" href="https://www.bible.com/bible/3034/ISA.66.24" target="_blank" rel="noopener">Isaiah 66:24</a>, lifting a phrase from the Old Testament about the final fate of unrepented rebellion and laying it on top of a valley His audience could see from the temple wall. The trash-fire south of the city was a parable in the air. He is not threatening; He is naming. The kingdom is not a vague invitation, and the alternative to it is not an abstract idea. Both are real and both are coming, and the choice is being made today, with the hand and the foot and the eye still in our possession.</p>
           <p>Better to enter the kingdom with one of something than to enter the valley with two.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Mark 9:43 | 9:43 Greek Gehenna; also in verses 45 and 47 -->
+      <!-- BSB_FOOTNOTE: Mark 9:43 | 9:43 BYZ and TR include 44where their worm never dies, and the fire is never quenched; see verse 48 and Isaiah 66:24. -->
+      <!-- BSB_FOOTNOTE: Mark 9:45 | 9:45 BYZ and TR include 46where their worm never dies, and the fire is never quenched; see verse 48 and Isaiah 66:24. -->
+      <!-- BSB_FOOTNOTE: Mark 9:48 | 9:48 Isaiah 66:24 -->
 
+<!-- BSB_BLOCK: 1 Corinthians 10:12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:51d5d65e625a61decc0f9188582375984b2f468f254abbe9f5b86cda578e0e4c | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 10:12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.10.12" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.10.12" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"So, whoever thinks he stands must be careful not to fall."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Paul writes this verse to a Corinthian church that was in love with its own spiritual giftings and convinced its standing was secure. He has just walked them through five chapters' worth of warning examples from Israel's wilderness, the very generation that watched the Red Sea split, ate manna for forty years, and still fell at every test in front of them. The Greek verb behind "thinks he stands" is participial: <em>ho dokon hestanai</em>, "the one who supposes himself to be standing." The self-assessment is the lever. Paul is not telling weak Christians to be more careful. He is telling confident ones to be most careful.</p>
-          <p>Yesterday's Samson is exhibit A. He thought he stood. He had every right to think so. He had killed a lion with his bare hands and a thousand Philistines with a donkey's jawbone. The Spirit of the LORD had rushed on him more than once. The hair on his head was a daily reminder of a vow he had not (yet) broken. And he was the most spiritually self-confident man in Israel right up to the morning his strength left him. Paul takes one look at that story and writes one sentence to a church that thought it was fine. The verses Jesus pulls out of the same Sermon on the Mount (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.6.2" target="_blank">Matthew 6:2</a> on the trumpet-blast of our own goodness, <a class="vlink" href="https://www.bible.com/bible/1713/MAT.7.1-2" target="_blank">Matthew 7:1-2</a> on the judging we will be judged by, and <a class="vlink" href="https://www.bible.com/bible/1713/1CO.4.5" target="_blank">1 Corinthians 4:5</a> on letting God be the Judge) all sit in the same paragraph in Paul's brain. Confidence in our own strength is the trigger-stick on the trap.</p>
+        <div class="verse-text">So the one who thinks he is standing firm should be careful not to fall.</div>
+<div class="verse-commentary">
+          <p>Paul writes this verse to a Corinthian church that was in love with its own spiritual giftings and convinced its standing was secure. He has just walked them through five chapters' worth of warning examples from Israel's wilderness, the very generation that watched the Red Sea split, ate manna for forty years, and still fell at every test in front of them. The Greek verb behind "thinks he is standing firm" is participial: <em>ho dokon hestanai</em>, "the one who supposes himself to be standing." The self-assessment is the lever. Paul is not telling weak Christians to be more careful. He is telling confident ones to be most careful.</p>
+          <p>Yesterday's Samson is exhibit A. He thought he stood. He had every right to think so. He had killed a lion with his bare hands and a thousand Philistines with a donkey's jawbone. The Spirit of the LORD had rushed on him more than once. The hair on his head was a daily reminder of a vow he had not (yet) broken. And he was the most spiritually self-confident man in Israel right up to the morning his strength left him. Paul takes one look at that story and writes one sentence to a church that thought it was fine. The verses Jesus pulls out of the same Sermon on the Mount (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.6.2" target="_blank" rel="noopener">Matthew 6:2</a> on the trumpet-blast of our own goodness, <a class="vlink" href="https://www.bible.com/bible/3034/MAT.7.1-2" target="_blank" rel="noopener">Matthew 7:1-2</a> on the judging we will be judged by, and <a class="vlink" href="https://www.bible.com/bible/3034/1CO.4.5" target="_blank" rel="noopener">1 Corinthians 4:5</a> on letting God be the Judge) all sit in the same paragraph in Paul's brain. Confidence in our own strength is the trigger-stick on the trap.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Matthew 5:28-29 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:62562a8f71d1a795229b6d201fcafbc9101f769a2e477e4140116994f5c00c1d | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Matthew 5:28-29</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.5.28-29" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.5.28-29" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"But I tell you, everyone who looks at a woman lustfully has already committed adultery with her in his heart. If your right eye causes you to sin, gouge it out and throw it away. For it is better that you lose one of the parts of your body than for your whole body to be thrown into hell."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 28">28</sup><span class="words-of-jesus">But I tell you that anyone who looks at a woman to lust after her has already committed adultery with her in his heart.</span> <sup class="verse-number" aria-label="Verse 29">29</sup><span class="words-of-jesus">If your right eye causes you to sin, gouge it out and throw it away. It is better for you to lose one part of your body than for your whole body to be thrown into hell.</span></div>
+<div class="verse-commentary">
           <p>This is the verse the Mark 9 surgery is borrowed from. The Sermon on the Mount said it first: lust is not a body act that begins at the bedroom door, it is a heart act that has already finished by the time the eye moves. The Greek word for "looks" is <em>blepo</em>, the simple seeing verb, but the verb attached to it is <em>epithymesai</em>, "to desire intensely," from <em>epithumia</em>, the L3 Sunday cabinet of cravings we met in 1 John 2:16. Jesus is not condemning the first half-second of seeing; the eye is going to see what it sees. He is condemning the continued look that has crossed over into ownership.</p>
-          <p>The "right eye" is specific on purpose. In the ancient world the right side was the prized side, the eye an archer aligned with the bow, the eye a swordsman used to track a duel. Jesus is saying take out your <em>best</em>, your favorite, the asset you would most miss if it left, if that is the asset the enemy is using to set the trap. The Sermon then folds in everything else worth inventorying today: the unjust anger that puts us in danger of judgment (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.5.22" target="_blank">Matthew 5:22</a>), the love-of-enemies that breaks the inner barrier we keep building against the people who hurt us (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.5.44" target="_blank">Matthew 5:44</a>). Each one is a stronghold the enemy has been building. Each one is a thing to take out. The Surgeon is patient, but He is not cosmetic.</p>
+          <p>The "right eye" is specific on purpose. In the ancient world the right side was the prized side, the eye an archer aligned with the bow, the eye a swordsman used to track a duel. Jesus is saying take out your <em>best</em>, your favorite, the asset you would most miss if it left, if that is the asset the enemy is using to set the trap. The Sermon then folds in everything else worth inventorying today: the unjust anger that puts us in danger of judgment (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.5.22" target="_blank" rel="noopener">Matthew 5:22</a>), the love-of-enemies that breaks the inner barrier we keep building against the people who hurt us (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.5.44" target="_blank" rel="noopener">Matthew 5:44</a>). Each one is a stronghold the enemy has been building. Each one is a thing to take out. The Surgeon is patient, but He is not cosmetic.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Matthew 5:29 | 5:29 Greek Gehenna; also in verse 30 -->
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -846,22 +880,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/MRK.9.42-48" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Mark+9:42-48&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -890,8 +944,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -900,18 +956,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -919,6 +979,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -938,6 +999,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

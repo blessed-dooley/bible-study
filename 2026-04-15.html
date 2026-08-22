@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -380,6 +413,16 @@
     padding-top: 14px;
     border-top: 1px solid var(--border);
     font-weight: 300;
+  }
+  .verse-commentary p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-soft);
+    font-weight: 300;
+    margin: 0 0 14px 0;
+  }
+  .verse-commentary p:last-child {
+    margin-bottom: 0;
   }
 
   /* ── ACCENT SECTIONS ── */
@@ -459,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -522,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -540,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -638,8 +685,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -705,8 +750,8 @@
         <div class="section-title-line"></div>
       </div>
       <div class="section-heading">The Argument That Happened at the Wrong Table</div>
-      <p>Luke places this dispute at the Last Supper. Think about the timing. Jesus has just instituted the communion meal. He has broken bread and said, "This is my body, which is given for you" (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.22.19" target="_blank">Luke 22:19</a>). He has passed the cup and said, "This cup is the new covenant in my blood" (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.22.20" target="_blank">Luke 22:20</a>). He has just announced that one of them will betray Him. The air in that upper room was thick with the weight of what was coming. And in the middle of all of it, the twelve men closest to Jesus started arguing about which one of them was the most important.</p>
-      <p>The Greek word Luke uses for their dispute is <em>philoneikia</em>, which literally means "love of strife" or "rivalry." This was not a philosophical debate about leadership theory. It was a status competition, driven by the same honor-shame impulse that governed Roman dinner seating and that Jesus had already addressed in <a class="vlink" href="https://www.bible.com/bible/1713/LUK.14.7-11" target="_blank">Luke 14:7-11</a>. The cultural context makes the scene even more damning: in the Roman patron-client system, the title <em>euergetes</em> ("benefactor") was awarded to wealthy men who funded public works, and it came with enormous social power. Jesus uses that exact word in His response: "Those who have authority over them have themselves called 'Benefactors'" (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.22.25" target="_blank">Luke 22:25</a>). He is saying: the world's system of greatness runs on being served, being honored, being titled. My kingdom runs on the opposite.</p>
+      <p>Luke places this dispute at the Last Supper. Think about the timing. Jesus has just instituted the communion meal. He has broken bread and said, "This is my body, which is given for you" (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.22.19" target="_blank" rel="noopener">Luke 22:19</a>). He has passed the cup and said, "This cup is the new covenant in my blood" (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.22.20" target="_blank" rel="noopener">Luke 22:20</a>). He has just announced that one of them will betray Him. The air in that upper room was thick with the weight of what was coming. And in the middle of all of it, the twelve men closest to Jesus started arguing about which one of them was the most important.</p>
+      <p>The Greek word Luke uses for their dispute is <em>philoneikia</em>, which literally means "love of strife" or "rivalry." This was not a philosophical debate about leadership theory. It was a status competition, driven by the same honor-shame impulse that governed Roman dinner seating and that Jesus had already addressed in <a class="vlink" href="https://www.bible.com/bible/3034/LUK.14.7-11" target="_blank" rel="noopener">Luke 14:7-11</a>. The cultural context makes the scene even more damning: in the Roman patron-client system, the title <em>euergetes</em> ("benefactor") was awarded to wealthy men who funded public works, and it came with enormous social power. Jesus uses that exact word in His response: "Those in authority over them call themselves benefactors" (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.22.25" target="_blank" rel="noopener">Luke 22:25</a>). He is saying: the world's system of greatness runs on being served, being honored, being titled. My kingdom runs on the opposite.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -720,29 +765,42 @@
       <p>Luke 22:24-27 captures one of the most sobering moments in the Gospels: the collision between human pride and divine humility at the very table where salvation was being inaugurated. Jesus' response does not merely correct the disciples' behavior. He redefines the concept of greatness itself, and then offers Himself as the living definition. Alongside this passage, Proverbs gives us the Old Testament verdict on what pride actually does in the sight of God.</p>
 
       <!-- ANCHOR: Luke 22:24-27 -->
+<!-- BSB_BLOCK: Luke 22:24-27 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:83015016722e4c5c0e1278a6c937f6b6067f1b9b83ac7316c5d178eb913d005b | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Luke 22:24-27</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/LUK.22.24-27" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/LUK.22.24-27" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Then a dispute also arose among them about who should be considered the greatest. But he said to them, 'The kings of the Gentiles lord it over them, and those who have authority over them have themselves called "Benefactors." It is not to be like that among you. On the contrary, whoever is greatest among you should become like the youngest, and whoever leads, like the one serving. For who is greater, the one at the table or the one serving? Isn't it the one at the table? But I am among you as the one who serves.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">Jesus' response moves in three stages. First, He names the world's system: kings "lord it over" people and buy the title "Benefactor" with their generosity. The Greek <em>kyrieuousin</em> ("lord it over") and <em>euergetai</em> ("benefactors") are not neutral descriptions; they are the vocabulary of Roman imperial power, where authority was displayed and titles were purchased. Second, He draws a sharp line: "It is not to be like that among you." The phrase could not be more direct. Whatever the world does with power, the kingdom of God does the opposite. Third, He offers the inversion: the greatest should become like the youngest (the person in a household with the least status), and the leader should become like the <em>diakonon</em>, the one who serves at table.
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 24">24</sup>A dispute also arose among the disciples as to which of them should be considered the greatest. <sup class="verse-number" aria-label="Verse 25">25</sup>So Jesus declared, <span class="words-of-jesus">“The kings of the Gentiles lord it over them, and those in authority over them call themselves benefactors.</span> <sup class="verse-number" aria-label="Verse 26">26</sup><span class="words-of-jesus">But you shall not be like them. Instead, the greatest among you should be like the youngest, and the one who leads like the one who serves.</span> <sup class="verse-number" aria-label="Verse 27">27</sup><span class="words-of-jesus">For who is greater, the one who reclines at the table or the one who serves? Is it not the one who reclines? But I am among you as one who serves.</span></div>
+<div class="verse-commentary">
+          <p>Jesus' response moves in three stages. First, He names the world's system: kings "lord it over" people and buy the title "Benefactor" with their generosity. The Greek <em>kyrieuousin</em> ("lord it over") and <em>euergetai</em> ("benefactors") are not neutral descriptions; they are the vocabulary of Roman imperial power, where authority was displayed and titles were purchased. Second, He draws a sharp line: "But you shall not be like them." The phrase could not be more direct. Whatever the world does with power, the kingdom of God does the opposite. Third, He offers the inversion: the greatest should become like the youngest (the person in a household with the least status), and the leader should become like the <em>diakonon</em>, the one who serves at table.
 
-Then Jesus asks a rhetorical question that everyone in the room knew the answer to: "Who is greater, the one at the table or the one serving?" In every Roman dining scenario, the answer was obvious. The one reclining was the honored guest; the one serving was the slave. But Jesus finishes with a statement that rewrites the entire script: "I am among you as the one who serves." The Son of God, the One who held every right to the highest seat, was identifying Himself with the person carrying the plates. This is not a leadership technique. This is a revelation of God's character. The God we studied in Lesson 2, the holy, loving, creative, incarnate God, is a God who serves.
+Then Jesus asks a rhetorical question that everyone in the room knew the answer to: "who is greater, the one who reclines at the table or the one who serves?" In every Roman dining scenario, the answer was obvious. The one reclining was the honored guest; the one serving was the slave. But Jesus finishes with a statement that rewrites the entire script: "I am among you as one who serves." The Son of God, the One who held every right to the highest seat, was identifying Himself with the person carrying the plates. This is not a leadership technique. This is a revelation of God's character. The God we studied in Lesson 2, the holy, loving, creative, incarnate God, is a God who serves.
 
-The timing makes this passage devastating. These men had walked with Jesus for three years. They had seen Him heal the sick, raise the dead, cast out demons, and teach with authority that left crowds speechless. And after all of that exposure to the most humble Person who ever lived, their instinct was still to compete for rank. There is nothing so offensive to God, and nothing so dangerous to the human soul, as pride and self-sufficiency. Of all the sins that entangle human beings, pride is the most hopeless because the person trapped in it cannot see it. It is the most incurable because the patient refuses to believe they are sick. The disciples' argument is not ancient history. It is a mirror.</div>
+The timing makes this passage devastating. These men had walked with Jesus for three years. They had seen Him heal the sick, raise the dead, cast out demons, and teach with authority that left crowds speechless. And after all of that exposure to the most humble Person who ever lived, their instinct was still to compete for rank. There is nothing so offensive to God, and nothing so dangerous to the human soul, as pride and self-sufficiency. Of all the sins that entangle human beings, pride is the most hopeless because the person trapped in it cannot see it. It is the most incurable because the patient refuses to believe they are sick. The disciples' argument is not ancient history. It is a mirror.</p>
+        </div>
       </div>
 
       <!-- SUPPORTING: Proverbs 16:5, 18 -->
+<!-- BSB_BLOCK: Proverbs 16:5 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:422043b1b074fc06ae07e343b50db3026066b455237aba969a70900825902123 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
-          <div class="verse-ref">Proverbs 16:5, 18</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/PRO.16.5" target="_blank">☩ Open in Bible App</a>
+          <div class="verse-ref">Proverbs 16:5</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PRO.16.5" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Everyone with a proud heart is detestable to the LORD; be assured, he will not go unpunished. ... Pride comes before destruction, and an arrogant spirit before a fall."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">The Hebrew in verse 5 does not soften the blow. The word translated "detestable" is <em>toevah</em>, the same word used for the strongest moral revulsions in the Old Testament. A proud heart is not merely disappointing to God. It is <em>toevah</em>: repulsive, abhorrent. And verse 18 reveals why: pride is the precursor to destruction. The Hebrew <em>gaon</em> ("pride, arrogance") leads to <em>shever</em> ("shattering, ruin"), and a haughty spirit leads to <em>kishshalon</em> ("stumbling, a fall"). This is not a threat but a description of cause and effect. Pride is spiritually self-destructive. It is the character trait that, more than any other, keeps us from the honest self-evaluation that would lead to confession, grace, and growth. In our state of self-sufficiency, we choose not to look at ourselves honestly, because pride tells us we do not need to. And that refusal to look is the very thing that keeps us from the relationship with God that this entire quarter is about.</div>
+        <div class="verse-text">Everyone who is proud in heart is detestable to the LORD; be assured that he will not go unpunished.</div>
+      </div>
+
+<!-- BSB_BLOCK: Proverbs 16:18 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:e197c5be6671449569392bfc5dbe5805d7371b90efea74d15865fd423ed0095a | footnotes-stripped:0 | poetry:flattened -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Proverbs 16:18</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PRO.16.18" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">Pride goes before destruction, and a haughty spirit before a fall.</div>
+<div class="verse-commentary">
+          <p>The Hebrew in verse 5 does not soften the blow. The word translated "detestable" is <em>toevah</em>, the same word used for the strongest moral revulsions in the Old Testament. A proud heart is not merely disappointing to God. It is <em>toevah</em>: repulsive, abhorrent. And verse 18 reveals why: pride is the precursor to destruction. The Hebrew <em>gaon</em> ("pride, arrogance") leads to <em>shever</em> ("shattering, ruin"), and a haughty spirit leads to <em>kishshalon</em> ("stumbling, a fall"). This is not a threat but a description of cause and effect. Pride is spiritually self-destructive. It is the character trait that, more than any other, keeps us from the honest self-evaluation that would lead to confession, grace, and growth. In our state of self-sufficiency, we choose not to look at ourselves honestly, because pride tells us we do not need to. And that refusal to look is the very thing that keeps us from the relationship with God that this entire quarter is about.</p>
+        </div>
       </div>
 
     </div>
@@ -768,7 +826,7 @@ The timing makes this passage devastating. These men had walked with Jesus for t
         <div class="section-title-line"></div>
       </div>
       <div class="section-heading">When Ego Sinks the Team</div>
-      <p>A 2026 study published in <em>Frontiers in Psychology</em> investigated how narcissistic leadership affects team performance, and the results illuminate exactly why the disciples' argument was so destructive. The researchers found that when team members score high in narcissistic rivalry, they interpret a leader's behavior as competition for status rather than an invitation to collaborate. The result: instead of working together, team members engage in "derogating others, competing for dominance, and other dysfunctional conflict behaviors." The team does not fail because the mission is unclear or the resources are insufficient. It fails because each member is privately asking the same question the disciples asked: "Who should be considered the greatest?"</p>
+      <p>A 2026 study published in <em>Frontiers in Psychology</em> investigated how narcissistic leadership affects team performance, and the results illuminate exactly why the disciples' argument was so destructive. The researchers found that when team members score high in narcissistic rivalry, they interpret a leader's behavior as competition for status rather than an invitation to collaborate. The result: instead of working together, team members engage in "derogating others, competing for dominance, and other dysfunctional conflict behaviors." The team does not fail because the mission is unclear or the resources are insufficient. It fails because each member is privately asking the same question the disciples asked: "which of them should be considered the greatest?"</p>
       <p>What makes this research so relevant is the finding that narcissistic conflict persists even when the leader models the opposite behavior. The team's ego dynamics can override the leader's example. That is precisely what happened in the upper room. Jesus, the most humble leader who has ever existed, was literally sitting at the table with them, and it was not enough to prevent the argument. Proximity to a humble leader does not automatically produce humility in followers. Something deeper has to change. The research confirms what Scripture has always said: pride is not an information problem. Knowing better does not fix it. It requires an internal transformation that only honesty before God, and the grace He gives to the humble, can accomplish.</p>
     </div>
 
@@ -779,7 +837,7 @@ The timing makes this passage devastating. These men had walked with Jesus for t
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>The most powerful sentence in this passage is the one Jesus says about Himself: "I am among you as the one who serves." At the very moment the disciples were competing for the highest position, the King of the universe was occupying the lowest one. And within hours, He would descend even further: from servant to sacrifice, from the table to the cross, from "the one who serves" to the One who gives His life. Jesus did not just correct the disciples' understanding of greatness. He demonstrated it at the cost of everything. The greatest offense is not that we argue about rank. The greatest offense is that we argue about rank while the Son of God is kneeling to wash our feet (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.13.4-5" target="_blank">John 13:4-5</a>).</p>
+      <p>The most powerful sentence in this passage is the one Jesus says about Himself: "I am among you as one who serves." At the very moment the disciples were competing for the highest position, the King of the universe was occupying the lowest one. And within hours, He would descend even further: from servant to sacrifice, from the table to the cross, from "the one who serves" to the One who gives His life. Jesus did not just correct the disciples' understanding of greatness. He demonstrated it at the cost of everything. The greatest offense is not that we argue about rank. The greatest offense is that we argue about rank while the Son of God is kneeling to wash our feet (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.13.4-5" target="_blank" rel="noopener">John 13:4-5</a>).</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -816,22 +874,42 @@ The timing makes this passage devastating. These men had walked with Jesus for t
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/LUK.22.24-27" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Luke+22:24-27&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -696,7 +725,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <p class="tldr-hook">An old man in Babylon laid a borrowed scroll of Jeremiah on his lap, did the math on seventy years, and prayed sixteen verses that contained praise, confession, requests, and thanksgiving in one sustained pour-out.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span><span><a class="vlink" href="https://www.bible.com/bible/1713/DAN.9" target="_blank">Daniel 9</a> is what the Lord's Prayer looks like at full length: God-ward worship and surrender first, us-ward needs and forgiveness next, all of it driven by what Daniel had just been reading.</span></li>
+        <li><span class="bullet-icon">☩</span><span><a class="vlink" href="https://www.bible.com/bible/3034/DAN.9" target="_blank" rel="noopener">Daniel 9</a> is what the Lord's Prayer looks like at full length: God-ward worship and surrender first, us-ward needs and forgiveness next, all of it driven by what Daniel had just been reading.</span></li>
         <li><span class="bullet-icon">☩</span><span>The four-part prayer model (praise, confession, requests, thanksgiving) is not a checklist; it is the natural shape of speech to a Father whom you actually know.</span></li>
         <li><span class="bullet-icon">☩</span><span>The Hebrew word for "forgive" in Daniel's climactic three-fold cry is salah, a verb the Old Testament uses only of God. Humans pardon. God salahs.</span></li>
         <li><span class="bullet-icon">☩</span><span>Most of our prayers are eighty percent requests and twenty percent everything else. Daniel's prayer is the inverse, and it is a model for the rebalancing.</span></li>
@@ -721,7 +750,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="section-heading">The Old Man Reading Jeremiah</div>
-      <p>The first verse of <a class="vlink" href="https://www.bible.com/bible/1713/DAN.9" target="_blank">Daniel 9</a> dates the prayer to the first year of Darius the Mede, the very first year after Babylon fell to Persia in 539 BC. Daniel was now in his eighties. He had been deported as a teenager during Nebuchadnezzar's first invasion of Jerusalem in 605 BC and had served as a high official under four successive monarchs. The prayer in chapter 9 begins with the smallest detail. He was reading. The Hebrew text says he "perceived in the books"; the books in question were the scrolls of Jeremiah, the prophet whose ministry had ended just before Daniel's exile began. Daniel had a personal copy of Jeremiah's prophecies in Babylon, and he was rereading the part where Jeremiah said the captivity would last seventy years.</p>
+      <p>The first verse of <a class="vlink" href="https://www.bible.com/bible/3034/DAN.9" target="_blank" rel="noopener">Daniel 9</a> dates the prayer to the first year of Darius the Mede, the very first year after Babylon fell to Persia in 539 BC. Daniel was now in his eighties. He had been deported as a teenager during Nebuchadnezzar's first invasion of Jerusalem in 605 BC and had served as a high official under four successive monarchs. The prayer in chapter 9 begins with the smallest detail. He was reading. The Hebrew text says he "perceived in the books"; the books in question were the scrolls of Jeremiah, the prophet whose ministry had ended just before Daniel's exile began. Daniel had a personal copy of Jeremiah's prophecies in Babylon, and he was rereading the part where Jeremiah said the captivity would last seventy years.</p>
       <p>Daniel did the math. Sixty-eight years had passed since the first deportation. The seventy-year mark was almost here. Cyrus, the Persian who had just conquered Babylon, was rumored to be sympathetic to displaced peoples returning home. The promise was about to become history, and the right response was not to wait around to see if Jeremiah was correct. The right response was to pray. So Daniel set himself to a fast of sackcloth and ashes and let the prophet's words crack open his own. The prayer that follows is steeped in the language of Deuteronomy and Jeremiah and the Psalms; an old man whose mind has been formed by Scripture can pray almost no other way. The principle hidden in the prayer's opening sentence is that the most powerful praying is often the praying that follows close reading. Daniel did not generate the prayer from his own emotional reservoir. He let the Bible put the words in his mouth.</p>
     </div>
 
@@ -733,48 +762,47 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Jesus' nine-line prayer in <a class="vlink" href="https://www.bible.com/bible/1713/MAT.6.5-15" target="_blank">Matthew 6:5-15</a> is the compressed version of what Daniel prays here at length. Watch how the four components weave together. The praise opens the prayer (Daniel's first move); the confession dominates its middle; the requests cluster near the end; and the thanksgiving runs underneath the whole thing as the gratitude that he is allowed to pray it at all. Read the full prayer first, then we will trace the four movements.</p>
+      <p>Jesus' nine-line prayer in <a class="vlink" href="https://www.bible.com/bible/3034/MAT.6.5-15" target="_blank" rel="noopener">Matthew 6:5-15</a> is the compressed version of what Daniel prays here at length. Watch how the four components weave together. The praise opens the prayer (Daniel's first move); the confession dominates its middle; the requests cluster near the end; and the thanksgiving runs underneath the whole thing as the gratitude that he is allowed to pray it at all. Read the full prayer first, then we will trace the four movements.</p>
 
+<!-- BSB_BLOCK: Daniel 9:4-19 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c839e1dd6b3c4d0efe46c09677eb98007059a45f75eb27df36a6e51e50e089c9 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Daniel 9:4-19</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/DAN.9.4-19" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/DAN.9.4-19" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"I prayed to the LORD my God and confessed: Ah, Lord—the great and awe-inspiring God who keeps his gracious covenant with those who love him and keep his commands—we have sinned, done wrong, acted wickedly, rebelled, and turned away from your commands and ordinances. We have not listened to your servants the prophets, who spoke in your name to our kings, leaders, ancestors, and all the people of the land. Lord, righteousness belongs to you, but this day public shame belongs to us: the men of Judah, the residents of Jerusalem, and all Israel—those who are near and those who are far, in all the countries where you have banished them because of the disloyalty they have shown toward you. LORD, public shame belongs to us, our kings, our leaders, and our ancestors, because we have sinned against you. Compassion and forgiveness belong to the Lord our God, though we have rebelled against him and have not obeyed the LORD our God by following his instructions that he set before us through his servants the prophets. All Israel has broken your law and turned away, refusing to obey you. The promised curse written in the law of Moses, the servant of God, has been poured out on us because we have sinned against him. He has carried out his words that he spoke against us and against our rulers by bringing on us so great a disaster that nothing like what has been done to Jerusalem has ever been done under all of heaven. Just as it is written in the law of Moses, all this disaster has come on us, but we have not sought the favor of the LORD our God by turning from our iniquities and paying attention to your truth. So the LORD kept the disaster in mind and brought it on us, for the LORD our God is righteous in all he has done. But we have not obeyed him. Now, Lord our God, who brought your people out of the land of Egypt with a strong hand and made your name renowned as it is this day—we have sinned, we have acted wickedly. Lord, in keeping with all your righteous acts, may your anger and wrath turn away from your city Jerusalem, your holy mountain; for because of our sins and the iniquities of our ancestors, Jerusalem and your people have become an object of ridicule to all those around us. Therefore, our God, hear the prayer and the petitions of your servant. Make your face shine on your desolate sanctuary for the Lord's sake. Listen closely, my God, and hear. Open your eyes and see our desolations and the city that bears your name. For we are not presenting our petitions before you based on our righteous acts, but based on your abundant compassion. Lord, hear! Lord, forgive! Lord, listen and act! For your own sake, my God, do not delay, because your city and your people bear your name."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p><strong>Praise.</strong> The prayer opens with two relational adjectives, "great" and "awe-inspiring," and one covenantal claim: "who keeps his gracious covenant with those who love him." Daniel does not begin by listing what is wrong. He begins by reminding himself who he is talking to. Praise in this prayer is not a flourish; it is the necessary first move that frames everything that follows. <a class="vlink" href="https://www.bible.com/bible/1713/PSA.100" target="_blank">Psalm 100</a>, with its "Enter his gates with thanksgiving and his courts with praise," does in five verses what Daniel does in the first sentence. We tell the truth about God before we tell the truth about ourselves, because the second truth only sounds right against the first.</p>
-          <p><strong>Confession.</strong> The middle ten verses are corporate confession. Daniel uses the word "we" relentlessly: "we have sinned, done wrong, acted wickedly, rebelled, and turned away." He was a faithful man. He had not personally bowed to Nebuchadnezzar's image; he had not personally compromised in Babylon; he had been the moral exception in his generation. And yet he confessed the nation's sin in the first person plural. He stood inside the family rather than above it. By Thursday we will see Moses doing exactly the same thing on Sinai, in a register that pointed all the way to the cross.</p>
-          <p><strong>Requests.</strong> Verses 16 to 19 turn at last to what Daniel actually wants. Even here, the request is not "let me come home." It is, "may your anger and wrath turn away from your city Jerusalem," "make your face shine on your desolate sanctuary," "open your eyes and see our desolations," "do not delay, because your city and your people bear your name." Even the request is God-ward. Daniel asks for things on the grounds that <em>God's</em> reputation is at stake, not Daniel's. The climactic verse 19 is three short imperatives in Hebrew: <em>shema, salah, hakshibah va'aseh</em>, "hear, forgive, listen and act." The middle verb is the strongest of the three. <em>Salah</em> is a Hebrew verb the Old Testament uses only of God. Humans can pardon, release, let go; only God can <em>salah</em>. Daniel calls for the divine forgiveness because he knows no human substitute is going to be enough.</p>
-          <p><strong>Thanksgiving.</strong> Daniel does not have a separate paragraph labeled "thanksgiving," because the whole prayer is grateful that the conversation is even happening. The phrase "compassion and forgiveness belong to the Lord our God" in verse 9 is thanksgiving in the form of a confession: gratitude that the Father he is confessing to is also the Father who pardons. The thanksgiving is not at the end. It is the air the whole prayer breathes. Praise opens the door; confession walks through it; requests do their work in the room; thanksgiving is the light that has been on since before the prayer began.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 4">4</sup>And I prayed to the LORD my God and confessed, “O, Lord, the great and awesome God, who keeps His covenant of loving devotion to those who love Him and keep His commandments, <sup class="verse-number" aria-label="Verse 5">5</sup>we have sinned and done wrong. We have acted wickedly and rebelled. We have turned away from Your commandments and ordinances. <sup class="verse-number" aria-label="Verse 6">6</sup>We have not listened to Your servants the prophets, who spoke in Your name to our kings, leaders, fathers, and all the people of the land. <sup class="verse-number" aria-label="Verse 7">7</sup>To You, O Lord, belongs righteousness, but this day we are covered with shame—the men of Judah, the people of Jerusalem, and all Israel near and far, in all the countries to which You have driven us because of our unfaithfulness to You. <sup class="verse-number" aria-label="Verse 8">8</sup>O LORD, we are covered with shame—our kings, our leaders, and our fathers—because we have sinned against You. <sup class="verse-number" aria-label="Verse 9">9</sup>To the Lord our God belong compassion and forgiveness, even though we have rebelled against Him <sup class="verse-number" aria-label="Verse 10">10</sup>and have not obeyed the voice of the LORD our God to walk in His laws, which He set before us through His servants the prophets. <sup class="verse-number" aria-label="Verse 11">11</sup>All Israel has transgressed Your law and turned away, refusing to obey Your voice; so the oath and the curse written in the Law of Moses the servant of God has been poured out on us, because we have sinned against You. <sup class="verse-number" aria-label="Verse 12">12</sup>You have carried out the words spoken against us and against our rulers by bringing upon us a great disaster. For under all of heaven, nothing has ever been done like what has been done to Jerusalem. <sup class="verse-number" aria-label="Verse 13">13</sup>Just as it is written in the Law of Moses, all this disaster has come upon us, yet we have not sought the favor of the LORD our God by turning from our iniquities and giving attention to Your truth. <sup class="verse-number" aria-label="Verse 14">14</sup>Therefore the LORD has kept the calamity in store and brought it upon us. For the LORD our God is righteous in all He does; yet we have not obeyed His voice. <sup class="verse-number" aria-label="Verse 15">15</sup>Now, O Lord our God, who brought Your people out of the land of Egypt with a mighty hand, and who made for Yourself a name renowned to this day, we have sinned; we have acted wickedly. <sup class="verse-number" aria-label="Verse 16">16</sup>O Lord, in keeping with all Your righteous acts, I pray that Your anger and wrath may turn away from Your city Jerusalem, Your holy mountain; for because of our sins and the iniquities of our fathers, Jerusalem and Your people are a reproach to all around us. <sup class="verse-number" aria-label="Verse 17">17</sup>So now, our God, hear the prayers and petitions of Your servant. For Your sake, O Lord, cause Your face to shine upon Your desolate sanctuary. <sup class="verse-number" aria-label="Verse 18">18</sup>Incline Your ear, O my God, and hear; open Your eyes and see the desolation of the city that bears Your name. For we are not presenting our petitions before You because of our righteous acts, but because of Your great compassion. <sup class="verse-number" aria-label="Verse 19">19</sup>O Lord, listen! O Lord, forgive! O Lord, hear and act! For Your sake, O my God, do not delay, because Your city and Your people bear Your name.”</div>
+<div class="verse-commentary">
+          <p><strong>Praise.</strong> The prayer opens with two relational adjectives, "great" and "awe-inspiring," and one covenantal claim: "who keeps His covenant of loving devotion to those who love Him." Daniel does not begin by listing what is wrong. He begins by reminding himself who he is talking to. Praise in this prayer is not a flourish; it is the necessary first move that frames everything that follows. <a class="vlink" href="https://www.bible.com/bible/3034/PSA.100" target="_blank" rel="noopener">Psalm 100</a>, with its "Enter his gates with thanksgiving and his courts with praise," does in five verses what Daniel does in the first sentence. We tell the truth about God before we tell the truth about ourselves, because the second truth only sounds right against the first.</p>
+          <p><strong>Confession.</strong> The middle ten verses are corporate confession. Daniel uses the word "we" relentlessly: "we have sinned and done wrong. We have acted wickedly and rebelled. We have turned away." He was a faithful man. He had not personally bowed to Nebuchadnezzar's image; he had not personally compromised in Babylon; he had been the moral exception in his generation. And yet he confessed the nation's sin in the first person plural. He stood inside the family rather than above it. By Thursday we will see Moses doing exactly the same thing on Sinai, in a register that pointed all the way to the cross.</p>
+          <p><strong>Requests.</strong> Verses 16 to 19 turn at last to what Daniel actually wants. Even here, the request is not "let me come home." It is, "I pray that Your anger and wrath may turn away from Your city Jerusalem," "For Your sake, O Lord, cause Your face to shine upon Your desolate sanctuary," "open Your eyes and see the desolation," "do not delay, because your city and your people bear your name." Even the request is God-ward. Daniel asks for things on the grounds that <em>God's</em> reputation is at stake, not Daniel's. The climactic verse 19 is three short imperatives in Hebrew: <em>shema, salah, hakshibah va'aseh</em>, "hear, forgive, listen and act." The middle verb is the strongest of the three. <em>Salah</em> is a Hebrew verb the Old Testament uses only of God. Humans can pardon, release, let go; only God can <em>salah</em>. Daniel calls for the divine forgiveness because he knows no human substitute is going to be enough.</p>
+          <p><strong>Thanksgiving.</strong> Daniel does not have a separate paragraph labeled "thanksgiving," because the whole prayer is grateful that the conversation is even happening. The phrase "To the Lord our God belong compassion and forgiveness" in verse 9 is thanksgiving in the form of a confession: gratitude that the Father he is confessing to is also the Father who pardons. The thanksgiving is not at the end. It is the air the whole prayer breathes. Praise opens the door; confession walks through it; requests do their work in the room; thanksgiving is the light that has been on since before the prayer began.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Daniel 9:4 | 9:4 Forms of the Hebrew chesed are translated here and in most cases throughout the Scriptures as loving devotion; the range of meaning includes love, goodness, kindness, faithfulness, and mercy, as well as loyalty to a covenant. -->
 
+<!-- BSB_BLOCK: James 5:16 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c426fa1a0c370a892327e1e2b5c45f49a0a603e81590d3c730c305950a0f2513 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">James 5:16</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JAS.5.16" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JAS.5.16" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Confess your trespasses to one another, and pray for one another, that you may be healed. The effective, fervent prayer of a righteous man avails much."</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"Therefore, confess your sins to one another and pray for one another, so that you may be healed. The prayer of a righteous person is very powerful in its effect."</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>James writes confession out as a corporate practice. The Greek verb is <em>exomologeo</em>, the same word used in the New Testament for the public acknowledgment of Jesus as Lord. Confession is not an apology whispered in the dark to make the conscience feel better. It is a public movement, a saying-out-loud that takes the secret out of its hiding place. James pairs confession with intercessory prayer ("pray for one another") and ties both to healing.</p>
-          <p>The Greek phrase behind "very powerful in its effect" is <em>polu ischuei energoumene</em>, "much it accomplishes when energized." The same root <em>energ-</em> shows up in <a class="vlink" href="https://www.bible.com/bible/1713/HEB.4.12" target="_blank">Hebrews 4:12</a>, where the Word is described as <em>energes</em>, at work. The Word at work in the reader produces a prayer at work in the church, and the church's confession-and-intercession is itself a healing instrument. We do not confess in private only. Some sins need a witness, a brother or sister who hears them and prays them out into the light.</p>
+        <div class="verse-text">Therefore confess your sins to each other and pray for each other so that you may be healed. The prayer of a righteous man has great power to prevail.</div>
+<div class="verse-commentary">
+          <p>James writes confession out as a corporate practice. The Greek verb is <em>exomologeo</em>, the same word used in the New Testament for the public acknowledgment of Jesus as Lord. Confession is not an apology whispered in the dark to make the conscience feel better. It is a public movement, a saying-out-loud that takes the secret out of its hiding place. James pairs confession with intercessory prayer ("pray for each other") and ties both to healing.</p>
+          <p>The Greek phrase behind "very powerful in its effect" is <em>polu ischuei energoumene</em>, "much it accomplishes when energized." The same root <em>energ-</em> shows up in <a class="vlink" href="https://www.bible.com/bible/3034/HEB.4.12" target="_blank" rel="noopener">Hebrews 4:12</a>, where the Word is described as <em>energes</em>, at work. The Word at work in the reader produces a prayer at work in the church, and the church's confession-and-intercession is itself a healing instrument. We do not confess in private only. Some sins need a witness, a brother or sister who hears them and prays them out into the light.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Philippians 4:6 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:644b2fc426e43ea33be9be02d1a0b54846b52a6404dd403f668be1e9dbf89d22 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Philippians 4:6</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/PHP.4.6" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PHP.4.6" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Don't worry about anything, but in everything, through prayer and petition with thanksgiving, present your requests to God."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">Be anxious for nothing, but in everything, by prayer and petition, with thanksgiving, present your requests to God.</div>
+<div class="verse-commentary">
           <p>Paul writes this from prison. The Greek word for "thanksgiving" is <em>eucharistia</em>, the word the early church already used for the Lord's Supper. Paul tells the Philippians that requests presented without thanksgiving are an incomplete prayer. The petition has to be tucked inside the gratitude. The shape he prescribes is: anxiety dropped, prayer raised, petition specific, thanksgiving woven throughout.</p>
-          <p>The Hebrew word that sits behind <em>eucharistia</em> is <em>todah</em>, the thanksgiving offering of <a class="vlink" href="https://www.bible.com/bible/1713/LEV.7" target="_blank">Leviticus 7</a>. A worshipper who had been spared something brought a <em>todah</em> meal to the temple, ate part of it with friends, and gave part to the priest. The point of the meal was to share the gratitude before consuming it. Paul's prayer instruction borrows that same instinct. Wrap the request in the meal. Present petitions to God the way a survivor presents a thanksgiving offering: still asking, but already grateful.</p>
+          <p>The Hebrew word that sits behind <em>eucharistia</em> is <em>todah</em>, the thanksgiving offering of <a class="vlink" href="https://www.bible.com/bible/3034/LEV.7" target="_blank" rel="noopener">Leviticus 7</a>. A worshipper who had been spared something brought a <em>todah</em> meal to the temple, ate part of it with friends, and gave part to the priest. The point of the meal was to share the gratitude before consuming it. Paul's prayer instruction borrows that same instinct. Wrap the request in the meal. Present petitions to God the way a survivor presents a thanksgiving offering: still asking, but already grateful.</p>
         </div>
       </div>
     </div>
@@ -799,8 +827,8 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="section-heading">When a Country Kneels</div>
-      <p>Truth and Reconciliation Commissions are the modern world's closest civic parallel to <a class="vlink" href="https://www.bible.com/bible/1713/DAN.9" target="_blank">Daniel 9</a>. After mass atrocities (apartheid in South Africa, the Rwandan genocide, decades of armed conflict in Colombia, the Indian residential school system in Canada), nations have stood up bodies whose work is, in formal terms, exactly what Daniel was doing on his knees: a corporate confession in the first person plural, in the hearing of those who were harmed, with a request for the conditions of a different future.</p>
-      <p>The Colombian Truth Commission's final report, released in 2022 after listening to nearly 24,000 witnesses, was studied at length in a 2025 article in the <em>International Journal of Transitional Justice</em>. The article's central concern was the post-report phase. Other truth commissions had failed because the report sat on a shelf; the Colombians built an explicit "legacy strategy" to keep the corporate confession alive in schools, regional dialogues, and ongoing research. The commission's official task included "promoting victim recognition and voluntary admission of individual and collective responsibilities by the people who took part in the armed conflict." That is Daniel's "we have sinned, done wrong, acted wickedly, rebelled" translated into civic English. A nation cannot heal until it can say that sentence honestly.</p>
+      <p>Truth and Reconciliation Commissions are the modern world's closest civic parallel to <a class="vlink" href="https://www.bible.com/bible/3034/DAN.9" target="_blank" rel="noopener">Daniel 9</a>. After mass atrocities (apartheid in South Africa, the Rwandan genocide, decades of armed conflict in Colombia, the Indian residential school system in Canada), nations have stood up bodies whose work is, in formal terms, exactly what Daniel was doing on his knees: a corporate confession in the first person plural, in the hearing of those who were harmed, with a request for the conditions of a different future.</p>
+      <p>The Colombian Truth Commission's final report, released in 2022 after listening to nearly 24,000 witnesses, was studied at length in a 2025 article in the <em>International Journal of Transitional Justice</em>. The article's central concern was the post-report phase. Other truth commissions had failed because the report sat on a shelf; the Colombians built an explicit "legacy strategy" to keep the corporate confession alive in schools, regional dialogues, and ongoing research. The commission's official task included "promoting victim recognition and voluntary admission of individual and collective responsibilities by the people who took part in the armed conflict." That is Daniel's "we have sinned and done wrong. We have acted wickedly and rebelled" translated into civic English. A nation cannot heal until it can say that sentence honestly.</p>
       <p>The pattern in the research is consistent across very different cultures. Where the corporate "we" is spoken honestly and at scale, the next generation does measurably better. Where it is dodged, the conflict often returns under a new name. Daniel knew this five hundred years before Christ. He had not personally bowed to Nebuchadnezzar's image; he had been the moral exception in his generation. He still confessed in the first person plural, because a nation cannot kneel one citizen at a time. The praise opens the door. The confession walks through it together. Modern transitional justice keeps relearning what an old man with a scroll on his lap knew on his knees in Babylon.</p>
     </div>
 
@@ -848,22 +876,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/DAN.9.4-19" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Daniel+9:4-19&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -892,8 +940,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -902,18 +952,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -921,6 +975,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -940,6 +995,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

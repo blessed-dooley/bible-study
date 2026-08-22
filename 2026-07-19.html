@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -733,30 +756,30 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>For four chapters Paul has been coaxing a divided church, reasoning with it, pleading with it. Then a report stops the quill cold, and you can almost hear the tone change. It is actually reported. Not rumored, not whispered, reported, and the news has already crossed the sea. The whole chapter that follows (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.5.1-13" target="_blank">1 Corinthians 5:1-13</a>) is Paul dealing with the fallout, and today we sit with the two shocks at the top of it. The first is what a church member was doing. The second, and Paul treats it as the worse one, is what the church was feeling about it.</p>
+      <p>For four chapters Paul has been coaxing a divided church, reasoning with it, pleading with it. Then a report stops the quill cold, and you can almost hear the tone change. It is actually reported. Not rumored, not whispered, reported, and the news has already crossed the sea. The whole chapter that follows (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.1-13" target="_blank" rel="noopener">1 Corinthians 5:1-13</a>) is Paul dealing with the fallout, and today we sit with the two shocks at the top of it. The first is what a church member was doing. The second, and Paul treats it as the worse one, is what the church was feeling about it.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 5:1-2 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:a56d69581ff1cf7e1037712d29a23bd6b59091e67d5a17175ac4f3eb6188e0b9 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 5:1-2</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.5.1-2" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.5.1-2" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"It is actually reported that there is sexual immorality among you, and the kind of sexual immorality that is not even tolerated among the Gentiles—a man is sleeping with his father's wife. And you are arrogant! Shouldn't you be filled with grief and remove from your congregation the one who did this?"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Paul names the problem with the broadest word Greek had for it, <em>porneia</em>, sexual immorality of every kind, the word that eventually gave us "pornography." Then comes the detail that made even hardened Corinth blush. A man has his father's wife (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.5.1" target="_blank">1 Corinthians 5:1</a>), his stepmother, crossing a line the Torah had drawn in ink (<a class="vlink" href="https://www.bible.com/bible/1713/LEV.18.7-8" target="_blank">Leviticus 18:7-8</a>) and even pagan law refused to cross. The report came through people from Chloe's household (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.11" target="_blank">1 Corinthians 1:11</a>), so this was no anonymous smear. But watch where Paul aims his shock. Not first at the man. At the congregation. And you are arrogant (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.5.2" target="_blank">1 Corinthians 5:2</a>)! They knew, and the knowing had curdled into a strange pride, as if tolerating what even outsiders condemned proved how free in Christ they were. Grief was the sane response. They chose applause.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>It is actually reported that there is sexual immorality among you, and of a kind that is intolerable even among pagans: A man has his father’s wife. <sup class="verse-number" aria-label="Verse 2">2</sup>And you are proud! Shouldn’t you rather have been stricken with grief and have removed from your fellowship the man who did this?</div>
+<div class="verse-commentary">
+          <p>Paul names the problem with the broadest word Greek had for it, <em>porneia</em>, sexual immorality of every kind, the word that eventually gave us "pornography." Then comes the detail that made even hardened Corinth blush. A man has his father's wife (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.1" target="_blank" rel="noopener">1 Corinthians 5:1</a>), his stepmother, crossing a line the Torah had drawn in ink (<a class="vlink" href="https://www.bible.com/bible/3034/LEV.18.7-8" target="_blank" rel="noopener">Leviticus 18:7-8</a>) and even pagan law refused to cross. The report came through people from Chloe's household (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.11" target="_blank" rel="noopener">1 Corinthians 1:11</a>), so this was no anonymous smear. But watch where Paul aims his shock. Not first at the man. At the congregation. And you are arrogant (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.2" target="_blank" rel="noopener">1 Corinthians 5:2</a>)! They knew, and the knowing had curdled into a strange pride, as if tolerating what even outsiders condemned proved how free in Christ they were. Grief was the sane response. They chose applause.</p>
         </div>
       </div>
 
-      <p>Why would a church do that? Paul never tells us, and honesty beats guessing too hard. Maybe the man was wealthy, a patron the congregation depended on and did not dare confront. Maybe they had twisted the slogan making the rounds in Corinth, everything is permissible for me (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.12" target="_blank">1 Corinthians 6:12</a>), into a license grace never issued. We simply do not know. What we do know is the outcome. A church stared at a flagrant violation of God's design and trained itself to see nothing. Worse than nothing. It learned to call the blindness love.</p>
+      <p>Why would a church do that? Paul never tells us, and honesty beats guessing too hard. Maybe the man was wealthy, a patron the congregation depended on and did not dare confront. Maybe they had twisted the slogan making the rounds in Corinth, everything is permissible for me (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.12" target="_blank" rel="noopener">1 Corinthians 6:12</a>), into a license grace never issued. We simply do not know. What we do know is the outcome. A church stared at a flagrant violation of God's design and trained itself to see nothing. Worse than nothing. It learned to call the blindness love.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 5:6 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:cb41e0afe1af50cb2209e48bd9392caa494a78821ae569d1cc27cc24002873bf | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 5:6</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.5.6" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.5.6" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Your boasting is not good. Don't you know that a little leaven leavens the whole batch of dough?"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">Your boasting is not good. Do you not know that a little leaven works through the whole batch of dough?</div>
+<div class="verse-commentary">
           <p>Every Jewish family knew the ritual. Before Passover you swept the house for leaven, every crumb of it, because the feast required bread with nothing working through it. Paul reaches for that picture on purpose. Yeast is quiet. It never announces itself. It just spreads, cell by cell, until the whole batch rises on its influence. Tolerated sin behaves exactly the same way. The affair was one household's scandal, but the tolerance belonged to everyone, and tolerance teaches. Every week the matter went unaddressed, the whole congregation was quietly learning a new definition of normal, the way dough learns from a pinch of yeast. Paul is not panicking over one man's failure. He is watching a church's conscience ferment. What a church refuses to name, it eventually stops noticing. And what it stops noticing, it starts producing.</p>
         </div>
       </div>
@@ -794,7 +817,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Follow Paul's leaven picture one verse further and you land at the cross. Clean out the old leaven, he writes, for Christ our Passover lamb has been sacrificed (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.5.7" target="_blank">1 Corinthians 5:7</a>). Notice the tense. The Lamb is not about to die, waiting on our housecleaning. He has already been sacrificed. In every Jewish home the order was fixed. The lamb died, and the leaven went out the door, because you do not keep the feast with old rot in the walls. Paul is saying the church lives permanently inside that moment. Calvary has already happened. The blood is already on the doorposts. The only question left is whether we will sweep the house. That is why tolerating the scandal was not extra grace. It was forgetting what grace cost. A church that shrugs at sin is not being generous with Jesus' mercy. It is being careless with His blood. The Lamb has died. Sweep the house.</p>
+      <p>Follow Paul's leaven picture one verse further and you land at the cross. Clean out the old leaven, he writes, for Christ our Passover lamb has been sacrificed (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.7" target="_blank" rel="noopener">1 Corinthians 5:7</a>). Notice the tense. The Lamb is not about to die, waiting on our housecleaning. He has already been sacrificed. In every Jewish home the order was fixed. The lamb died, and the leaven went out the door, because you do not keep the feast with old rot in the walls. Paul is saying the church lives permanently inside that moment. Calvary has already happened. The blood is already on the doorposts. The only question left is whether we will sweep the house. That is why tolerating the scandal was not extra grace. It was forgetting what grace cost. A church that shrugs at sin is not being generous with Jesus' mercy. It is being careless with His blood. The Lamb has died. Sweep the house.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -831,22 +854,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.5.1-13" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+5:1-13&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

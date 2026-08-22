@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -733,40 +756,41 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Paul does something bold across this whole stretch of the letter (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.18-31" target="_blank">1 Corinthians 1:18-31</a>). Instead of dodging the word his critics threw at him, he grabs it and runs. He stands in a city full of professional thinkers, asks where all their wisdom actually got them (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.20" target="_blank">1 Corinthians 1:20</a>), and keeps preaching a crucified Christ that lands on sophisticated ears as pure foolishness (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.23" target="_blank">1 Corinthians 1:23</a>). Watch him use that word "foolish" over and over through the next few verses, daring you to feel the full scandal of the cross before he turns it inside out. The question driving the section is simple. If the message of the cross really is foolishness, then whose foolishness is it, and what does that say about the people doing the laughing?</p>
+      <p>Paul does something bold across this whole stretch of the letter (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.18-31" target="_blank" rel="noopener">1 Corinthians 1:18-31</a>). Instead of dodging the word his critics threw at him, he grabs it and runs. He stands in a city full of professional thinkers, asks where all their wisdom actually got them (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.20" target="_blank" rel="noopener">1 Corinthians 1:20</a>), and keeps preaching a crucified Christ that lands on sophisticated ears as pure foolishness (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.23" target="_blank" rel="noopener">1 Corinthians 1:23</a>). Watch him use that word "foolish" over and over through the next few verses, daring you to feel the full scandal of the cross before he turns it inside out. The question driving the section is simple. If the message of the cross really is foolishness, then whose foolishness is it, and what does that say about the people doing the laughing?</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 1:21 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:6697c117498cb2083c0a7c186f75da9a159b92e27774eddb001f72d9d091a311 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 1:21</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.1.21" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.21" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For since, in God's wisdom, the world did not know God through wisdom, God was pleased to save those who believe through the foolishness of what is preached."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Here is the engine of the whole passage. People had every tool they could want to find God, philosophy, religion, brilliant minds, and with all of it they still could not think their way to Him. The message of the cross only struck them as foolishness (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.18" target="_blank">1 Corinthians 1:18</a>). So God did something that looks backward. He chose to save people not through the kind of wisdom the world respects, but through a message the world calls stupid. The Greek word for that foolishness is <em>moria</em>, and it is where we get our word "moron." Paul uses it on purpose. The same word comes back when he says the natural mind writes off the things of God's Spirit as nonsense (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.2.14" target="_blank">1 Corinthians 2:14</a>) and when he flips it around to call the world's proud wisdom foolishness to God (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.3.19" target="_blank">1 Corinthians 3:19</a>). He is not softening the offense, he is leaning into it. The cross was never meant to win a debate. It was meant to humble us enough to stop arguing and simply believe.</p>
+        <div class="verse-text">For since in the wisdom of God the world through its wisdom did not know Him, God was pleased through the foolishness of what was preached to save those who believe.</div>
+<div class="verse-commentary">
+          <p>Here is the engine of the whole passage. People had every tool they could want to find God, philosophy, religion, brilliant minds, and with all of it they still could not think their way to Him. The message of the cross only struck them as foolishness (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.18" target="_blank" rel="noopener">1 Corinthians 1:18</a>). So God did something that looks backward. He chose to save people not through the kind of wisdom the world respects, but through a message the world calls stupid. The Greek word for that foolishness is <em>moria</em>, and it is where we get our word "moron." Paul uses it on purpose. The same word comes back when he says the natural mind writes off the things of God's Spirit as nonsense (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.2.14" target="_blank" rel="noopener">1 Corinthians 2:14</a>) and when he flips it around to call the world's proud wisdom foolishness to God (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.3.19" target="_blank" rel="noopener">1 Corinthians 3:19</a>). He is not softening the offense, he is leaning into it. The cross was never meant to win a debate. It was meant to humble us enough to stop arguing and simply believe.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 1:25 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:df3668313a94965b9b3086a3d995b9fb30cd54a87391eef639c419283141b8f8 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 1:25</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.1.25" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.25" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For God's foolishness is wiser than human wisdom, and God's weakness is stronger than human strength."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">For the foolishness of God is wiser than man’s wisdom, and the weakness of God is stronger than man’s strength.</div>
+<div class="verse-commentary">
           <p>This is the line that turns the whole insult around. Fine, Paul says, call the cross foolish. But understand what you are actually saying. Even God's so-called foolishness, the plan you think is ridiculous, is wiser than the best idea humanity ever had. Even God's so-called weakness, a Savior too feeble to come down off a cross, is stronger than all the power Rome could put in the field. Paul is not admitting the cross is truly foolish or weak. He is saying that what looks like God at His worst still towers over us at our best. The smartest person mocking the cross is outmatched by the very thing being mocked. That should make every critic stop and look again.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Corinthians 1:25 | 1:25 Literally than men; twice in this verse -->
 
+<!-- BSB_BLOCK: 1 Corinthians 1:27 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:9fceaf7f9ef566704c4cdd2dbefdd6f9acba32cbbcdb42b60f7e3703d4275a3b | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 1:27</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.1.27" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.27" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Instead, God has chosen what is foolish in the world to shame the wise, and God has chosen what is weak in the world to shame the strong."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">But God chose the foolish things of the world to shame the wise; God chose the weak things of the world to shame the strong.</div>
+<div class="verse-commentary">
           <p>Then Paul makes it personal by looking at who actually ends up in the church. Not the trophy cabinet you would expect. God deliberately reaches for the people the world overlooks, the unimpressive, the unconnected, the ones no recruiter would ever chase, and He builds His kingdom out of them. There is a reason He works this way. If He had only saved geniuses and champions, salvation would look like a prize for being remarkable, and the remarkable would take the credit. Instead He fills His church with ordinary people who simply trusted Him, and the whole arrangement quietly embarrasses a world that worships brains and strength. Look around a real congregation sometime. Its plainness is not a flaw in the plan. It is the plan.</p>
         </div>
       </div>
@@ -841,22 +865,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.1.20-27" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+1:20-27&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

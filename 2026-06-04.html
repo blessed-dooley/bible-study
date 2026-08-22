@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -722,7 +751,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Robe the King Provided at the Door</div>
       <p>Royal wedding banquets in the ancient Near East were not casual events. When a king threw a banquet, especially for the marriage of his son, the entire economic and social fabric of his kingdom paused. The guests came from every level of the court, and the host's honor was on the line for the quality of the hospitality. Guests of insufficient wealth could not afford the kind of dress the occasion required, and the historical record (and the implications inside Jesus's own parable) shows that royal hosts often provided wedding garments to their guests at the door. The robe was the King's gift; the wearing of it was the guest's only contribution. Refusing the provided robe was not a fashion choice; it was an insult to the King's hospitality so severe it functioned as a public rejection of the marriage itself.</p>
-      <p>Behind the parable's first-century imagery sits the older, deeper geography of the Bible's first three chapters. In <a class="vlink" href="https://www.bible.com/bible/1713/GEN.3.7" target="_blank">Genesis 3:7</a>, the moment Adam and Eve realize they are naked, the Hebrew word for "naked" is <em>arumim</em>. The same root, almost letter-for-letter, gave us the word in <a class="vlink" href="https://www.bible.com/bible/1713/GEN.3.1" target="_blank">Genesis 3:1</a> for the serpent's cunning: <em>arum</em>. The Bible's first chapter on sin has the same root sound on the cause and the consequence. The serpent was "shrewd"; the people he persuaded ended up "naked." Then God does something extraordinary in <a class="vlink" href="https://www.bible.com/bible/1713/GEN.3.21" target="_blank">Genesis 3:21</a>, three verses after the fig-leaf scene. He makes for them "garments of skin," and clothes them. <em>Kotnot or</em>. Tunics of skin. The Hebrew verb is <em>halash</em> (the same verb Isaiah will use a thousand years later in <a class="vlink" href="https://www.bible.com/bible/1713/ISA.61.10" target="_blank">Isaiah 61:10</a>'s "He has clothed me"). The first death in the universe is the animal that provided the skin. Adam and Eve walked out of the garden wearing a sacrifice. Thursday's robe in the Matthew parable did not begin in the wedding hall; it began in Eden. The wedding garment has always been provided at the cost of a life.</p>
+      <p>Behind the parable's first-century imagery sits the older, deeper geography of the Bible's first three chapters. In <a class="vlink" href="https://www.bible.com/bible/3034/GEN.3.7" target="_blank" rel="noopener">Genesis 3:7</a>, the moment Adam and Eve realize they are naked, the Hebrew word for "naked" is <em>arumim</em>. The same root, almost letter-for-letter, gave us the word in <a class="vlink" href="https://www.bible.com/bible/3034/GEN.3.1" target="_blank" rel="noopener">Genesis 3:1</a> for the serpent's cunning: <em>arum</em>. The Bible's first chapter on sin has the same root sound on the cause and the consequence. The serpent was "shrewd"; the people he persuaded ended up "naked." Then God does something extraordinary in <a class="vlink" href="https://www.bible.com/bible/3034/GEN.3.21" target="_blank" rel="noopener">Genesis 3:21</a>, three verses after the fig-leaf scene. He makes for them "garments of skin," and clothes them. <em>Kotnot or</em>. Tunics of skin. The Hebrew verb is <em>halash</em> (the same verb Isaiah will use a thousand years later in <a class="vlink" href="https://www.bible.com/bible/3034/ISA.61.10" target="_blank" rel="noopener">Isaiah 61:10</a>'s "He has clothed me"). The first death in the universe is the animal that provided the skin. Adam and Eve walked out of the garden wearing a sacrifice. Thursday's robe in the Matthew parable did not begin in the wedding hall; it began in Eden. The wedding garment has always been provided at the cost of a life.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -735,41 +764,39 @@ if ('serviceWorker' in navigator) {
 
       <p>The anchor today is a wedding parable Jesus tells in His last week before the cross. The king throws the banquet, the original guest list does not show up, the hall fills with strangers off the street, and inside the hall there is one man who refused the robe the king was handing out at the door. Then we will pair the parable with the first scene of the Bible's gospel architecture in Genesis 3, and with the eschatological image in Revelation 19 of the Bride wearing what was given to her. Three pictures, one robe, one Provider.</p>
 
+<!-- BSB_BLOCK: Matthew 22:1-14 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:1b937058a5b1cbe06cc502c3c8c4373aa02b402a725a2960b977a50ffa46d534 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Matthew 22:1-14</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.22.1-14" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.22.1-14" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Once more Jesus spoke to them in parables: 'The kingdom of heaven can be compared to a king who gave a wedding banquet for his son. He sent his servants to summon those invited to the banquet, but they didn't want to come. Again, he sent out other servants and said, "Tell those who are invited: See, I've prepared my dinner; my oxen and fattened cattle have been slaughtered, and everything is ready. Come to the wedding banquet." But they paid no attention and went away, one to his own farm, another to his business, while the rest seized his servants, mistreated them, and killed them. The king was enraged, and he sent out his troops, killed those murderers, and burned down their city. Then he told his servants, "The banquet is ready, but those who were invited were not worthy. Go then to the main intersections, and invite to the banquet as many as you find." So those servants went out on the roads and gathered everyone they found, both evil and good. The wedding banquet was filled with guests. When the king came in to see the guests, he noticed a man there who was not dressed for a wedding. So he said to him, "Friend, how did you get in here without wedding clothes?" The man was speechless. Then the king told the attendants, "Tie him up hand and foot, and throw him into the outer darkness, where there will be weeping and gnashing of teeth." For many are invited, but few are chosen.'"</div>
-
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>The parable moves in three beats. The invited guests refuse to come. The king fills the hall instead with whoever his servants can round up off the streets. And there in the packed hall sits one man without the wedding garment. Here's the key: he isn't thrown out for being poor, or late, or a nobody, because the whole street crowd around him is exactly that, and they're fine. He's removed for one reason. He didn't put on the robe the king handed out at the door. When the king confronts him, the word he uses is the Greek <em>hetairos</em>, translated "Friend," but it isn't the warm word for a close buddy. It's the cooler one you'd use for someone you actually know who has crossed a line, the same word Jesus used for Judas in the garden (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.26.50" target="_blank">Matthew 26:50</a>). Close enough to be on a first-name basis, far enough to be in real trouble. This man knew the king, made the list, walked into the real hall, ate the real food, and is being removed over the one thing he wouldn't accept: the free robe at the entrance. Jesus ends with that famous line, "many are invited, but few are chosen." The invitation goes out wide. The robe is the one thing the King won't bend on. We can turn it down. We just can't swap in our own.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>Once again, Jesus spoke to them in parables: <sup class="verse-number" aria-label="Verse 2">2</sup><span class="words-of-jesus">“The kingdom of heaven is like a king who prepared a wedding banquet for his son.</span> <sup class="verse-number" aria-label="Verse 3">3</sup><span class="words-of-jesus">He sent his servants to call those he had invited to the banquet, but they refused to come.</span> <sup class="verse-number" aria-label="Verse 4">4</sup><span class="words-of-jesus">Again, he sent other servants and said, ‘Tell those who have been invited that I have prepared my dinner. My oxen and fattened cattle have been killed, and everything is ready. Come to the wedding banquet.’</span> <sup class="verse-number" aria-label="Verse 5">5</sup><span class="words-of-jesus">But they paid no attention and went away, one to his field, another to his business.</span> <sup class="verse-number" aria-label="Verse 6">6</sup><span class="words-of-jesus">The rest seized his servants, mistreated them, and killed them.</span> <sup class="verse-number" aria-label="Verse 7">7</sup><span class="words-of-jesus">The king was enraged, and he sent his troops to destroy those murderers and burn their city.</span> <sup class="verse-number" aria-label="Verse 8">8</sup><span class="words-of-jesus">Then he said to his servants, ‘The wedding banquet is ready, but those I invited were not worthy.</span> <sup class="verse-number" aria-label="Verse 9">9</sup><span class="words-of-jesus">Go therefore to the crossroads and invite to the banquet as many as you can find.’</span> <sup class="verse-number" aria-label="Verse 10">10</sup><span class="words-of-jesus">So the servants went out into the streets and gathered everyone they could find, both evil and good, and the wedding hall was filled with guests.</span> <sup class="verse-number" aria-label="Verse 11">11</sup><span class="words-of-jesus">But when the king came in to see the guests, he spotted a man who was not dressed in wedding clothes.</span> <sup class="verse-number" aria-label="Verse 12">12</sup><span class="words-of-jesus">‘Friend,’ he asked, ‘how did you get in here without wedding clothes?’ But the man was speechless.</span> <sup class="verse-number" aria-label="Verse 13">13</sup><span class="words-of-jesus">Then the king told the servants, ‘Tie him hand and foot, and throw him into the outer darkness, where there will be weeping and gnashing of teeth.’</span> <sup class="verse-number" aria-label="Verse 14">14</sup><span class="words-of-jesus">For many are called, but few are chosen.”</span></div>
+<div class="verse-commentary">
+          <p>The parable moves in three beats. The invited guests refuse to come. The king fills the hall instead with whoever his servants can round up off the streets. And there in the packed hall sits one man without the wedding garment. Here's the key: he isn't thrown out for being poor, or late, or a nobody, because the whole street crowd around him is exactly that, and they're fine. He's removed for one reason. He didn't put on the robe the king handed out at the door. When the king confronts him, the word he uses is the Greek <em>hetairos</em>, translated "Friend," but it isn't the warm word for a close buddy. It's the cooler one you'd use for someone you actually know who has crossed a line, the same word Jesus used for Judas in the garden (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.26.50" target="_blank" rel="noopener">Matthew 26:50</a>). Close enough to be on a first-name basis, far enough to be in real trouble. This man knew the king, made the list, walked into the real hall, ate the real food, and is being removed over the one thing he wouldn't accept: the free robe at the entrance. Jesus ends with that famous line, "Many are called, but few are chosen." The invitation goes out wide. The robe is the one thing the King won't bend on. We can turn it down. We just can't swap in our own.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Genesis 3:7 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:9ec2e6c43c9a3834f91615ee55d919ac5366b25e9446cced2e37b12533e9e435 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Genesis 3:7</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/GEN.3.7" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/GEN.3.7" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Then the eyes of both of them were opened, and they knew they were naked; so they sewed fig leaves together and made coverings for themselves."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>This short verse holds the very first attempt to cover our own shame. The leaves Adam and Eve sew together make the flimsiest clothing possible, and fig leaves brown and crumble within hours, so it's a patch job at best. This is the only place in the Bible where people stitch their own covering to stand before God. Then, fourteen verses later, God quietly replaces it. In <a class="vlink" href="https://www.bible.com/bible/1713/GEN.3.21" target="_blank">Genesis 3:21</a> He makes them "garments of skin" and dresses them Himself. Two things change. The covering is now a real tunic that actually covers, and it's made of skin, which means something had to die in that garden to provide it. Put the two verses side by side and you're looking at the whole gospel in miniature: we try to cover ourselves with whatever's handy, it doesn't last, and God trades it for a covering that cost a life. The first death in the world was a stand-in for someone else. Every robe God ever hands a guilty person after this, all the way to the wedding feast, traces back to this one.</p>
+        <div class="verse-text">And the eyes of both of them were opened, and they knew that they were naked; so they sewed together fig leaves and made coverings for themselves.</div>
+<div class="verse-commentary">
+          <p>This short verse holds the very first attempt to cover our own shame. The leaves Adam and Eve sew together make the flimsiest clothing possible, and fig leaves brown and crumble within hours, so it's a patch job at best. This is the only place in the Bible where people stitch their own covering to stand before God. Then, fourteen verses later, God quietly replaces it. In <a class="vlink" href="https://www.bible.com/bible/3034/GEN.3.21" target="_blank" rel="noopener">Genesis 3:21</a> He makes them "garments of skin" and dresses them Himself. Two things change. The covering is now a real tunic that actually covers, and it's made of skin, which means something had to die in that garden to provide it. Put the two verses side by side and you're looking at the whole gospel in miniature: we try to cover ourselves with whatever's handy, it doesn't last, and God trades it for a covering that cost a life. The first death in the world was a stand-in for someone else. Every robe God ever hands a guilty person after this, all the way to the wedding feast, traces back to this one.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Revelation 19:8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:7a4c825cdd56445d468daaf1642cc89e2396f8dc95b2988798c7b2e90c3cb950 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Revelation 19:8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/REV.19.8" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/REV.19.8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"She was given fine linen to wear, bright and pure. For the fine linen represents the righteous acts of the saints."</div>
-
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>One little Greek phrase carries the whole verse, and English almost loses it: "it was given to her to wear." Given. The bride doesn't make her own dress. The fine linen, "bright and clean," is a present placed in her hands. She didn't weave it, didn't embroider it, didn't bleach it white. She's wearing it because Someone handed it to her. And look at what the linen turns out to be: "the righteous acts of the saints." Even the good things we'll do in the end are really His robe being worn through us, not an outfit we throw on to impress Him. Paul paints the same picture in <a class="vlink" href="https://www.bible.com/bible/1713/EPH.5.27" target="_blank">Ephesians 5:27</a>, where Christ presents the church to Himself "without spot or wrinkle," the two things that would have ruined a wedding garment back then. And we didn't store up this treasure for ourselves either (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.6.19-21" target="_blank">Matthew 6:19-21</a>). He did. He has been, still is, and always will be the one wrapping us in it.</p>
+        <div class="verse-text">She was given clothing of fine linen, bright and pure.” For the fine linen she wears is the righteous acts of the saints.</div>
+<div class="verse-commentary">
+          <p>One little Greek phrase carries the whole verse, and English almost loses it: "it was given to her to wear." Given. The bride doesn't make her own dress. The fine linen, "bright and clean," is a present placed in her hands. She didn't weave it, didn't embroider it, didn't bleach it white. She's wearing it because Someone handed it to her. And look at what the linen turns out to be: "the righteous acts of the saints." Even the good things we'll do in the end are really His robe being worn through us, not an outfit we throw on to impress Him. Paul paints the same picture in <a class="vlink" href="https://www.bible.com/bible/3034/EPH.5.27" target="_blank" rel="noopener">Ephesians 5:27</a>, where Christ presents the church to Himself "without spot or wrinkle," the two things that would have ruined a wedding garment back then. And we didn't store up this treasure for ourselves either (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.6.19-21" target="_blank" rel="noopener">Matthew 6:19-21</a>). He did. He has been, still is, and always will be the one wrapping us in it.</p>
         </div>
       </div>
     </div>
@@ -798,7 +825,7 @@ if ('serviceWorker' in navigator) {
       <div class="section-heading">Six Billion Left at the Door</div>
       <p>Every January the Internal Revenue Service runs an outreach campaign called EITC Awareness Day, joined by national partners across the federal government and community groups. The Earned Income Tax Credit is one of the largest federal antipoverty programs in the country, fifty years old as of 2025, paid out to about twenty-four million workers and families in tax year 2024 at an average of two thousand eight hundred ninety-four dollars per household. The campaign exists because of the number underneath the big number. Roughly one in five Americans who qualify for the credit do not claim it. The Tax Policy Center, drawing on Treasury Inspector General reporting, and the Taxpayer Advocate Service put the unclaimed amount in the range of six to seven billion dollars per year, with about five million eligible workers each year not signing the form that would release the money to them.</p>
       <p>The reasons run consistent across the IRS's own research: people do not know they qualify, they believe they earn too much, they fear the paperwork, they distrust the offer, or they assume the credit is for someone else. The money is allocated. Their eligibility has already been written into the tax code. The single move that releases it is the form. Five million people every year walk past a desk that would have handed them a check averaging the size of a month's rent, because something at the door made them wave the help off.</p>
-      <p>That is the move the man in Matthew 22 made at the entrance to the wedding banquet. The King had prepared the food. The closet was stocked. The garment was free. Nothing about the man's worthiness was up for negotiation; the only question was whether he would let the King clothe him. <a class="vlink" href="https://www.bible.com/bible/1713/REV.3.20" target="_blank">Revelation 3:20</a> says Jesus stands at the door and knocks. Six billion dollars a year of fully-allocated grace sits on the other side of a door someone has not yet opened, because the desk was always going to give it for free, and that was the part that did not quite feel right.</p>
+      <p>That is the move the man in Matthew 22 made at the entrance to the wedding banquet. The King had prepared the food. The closet was stocked. The garment was free. Nothing about the man's worthiness was up for negotiation; the only question was whether he would let the King clothe him. <a class="vlink" href="https://www.bible.com/bible/3034/REV.3.20" target="_blank" rel="noopener">Revelation 3:20</a> says Jesus stands at the door and knocks. Six billion dollars a year of fully-allocated grace sits on the other side of a door someone has not yet opened, because the desk was always going to give it for free, and that was the part that did not quite feel right.</p>
     </div>
 
     <!-- 7. CHRIST CONNECTION -->
@@ -808,7 +835,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>The robe the King hands out at the door of the wedding banquet was made on a different hill. The animal that died in Eden to clothe Adam and Eve was a sermon preached on the first chapter of the gospel: something has to die for the sinner to be covered. Every garment-of-the-saved scene in the Bible is a footnote on the death between the fig leaves and the tunic. By the time Jesus tells the wedding parable in <a class="vlink" href="https://www.bible.com/bible/1713/MAT.22.1-14" target="_blank">Matthew 22</a>, He is days from being the substitute He has spent His ministry pointing to. The King in the parable is also the Bridegroom. The Bridegroom is also the Lamb. The Lamb is also the One whose blood, John in Revelation 7 saw, washes the great multitude's robes white. The most expensive robe in human history was not the one stitched of pure silk by Solomon's tailors. It was the one woven of His perfect obedience, dipped in His blood, and hung in the closet at the door of the wedding hall with our names on the hook. Today's question is the only one the parable cares about: Will we put it on?</p>
+      <p>The robe the King hands out at the door of the wedding banquet was made on a different hill. The animal that died in Eden to clothe Adam and Eve was a sermon preached on the first chapter of the gospel: something has to die for the sinner to be covered. Every garment-of-the-saved scene in the Bible is a footnote on the death between the fig leaves and the tunic. By the time Jesus tells the wedding parable in <a class="vlink" href="https://www.bible.com/bible/3034/MAT.22.1-14" target="_blank" rel="noopener">Matthew 22</a>, He is days from being the substitute He has spent His ministry pointing to. The King in the parable is also the Bridegroom. The Bridegroom is also the Lamb. The Lamb is also the One whose blood, John in Revelation 7 saw, washes the great multitude's robes white. The most expensive robe in human history was not the one stitched of pure silk by Solomon's tailors. It was the one woven of His perfect obedience, dipped in His blood, and hung in the closet at the door of the wedding hall with our names on the hook. Today's question is the only one the parable cares about: Will we put it on?</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -845,22 +872,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/MAT.22.1-14" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Matthew+22:1-14&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -889,8 +936,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -899,18 +948,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -918,6 +971,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -937,6 +991,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

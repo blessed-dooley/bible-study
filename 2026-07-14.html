@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -700,7 +723,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">TL;DR</span>
         <div class="section-title-line"></div>
       </div>
-      <p>A church that prided itself on being wise gets handed the most deflating word Paul has. Babies. Still on milk, not ready for solid food, and the proof is the bickering, the jealousy, the endless "I belong to Paul" and "I belong to Apollos." To Corinth that partisanship felt sophisticated. To Paul it was a nursery squabble. Real maturity, he says, is not knowing more facts or admiring smarter teachers. It is being trained by walking with God until you can actually tell what matters. <strong>The taking of sides they thought made them look wise was the clearest sign they had never grown up.</strong></p>
+      <p>A church that prided itself on being wise gets handed the most deflating word Paul has. Babies. Still on milk, not ready for solid food, and the proof is the bickering, the jealousy, the endless "I follow Paul" and "I follow Apollos." To Corinth that partisanship felt sophisticated. To Paul it was a nursery squabble. Real maturity, he says, is not knowing more facts or admiring smarter teachers. It is being trained by walking with God until you can actually tell what matters. <strong>The taking of sides they thought made them look wise was the clearest sign they had never grown up.</strong></p>
     </div>
 
     <!-- 2. CONNECTION TO YESTERDAY -->
@@ -710,7 +733,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">Connection to Yesterday</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Yesterday Paul handed us the cure in a single line. Put Christ back in the center and the factions lose their oxygen. But that leaves a painful question hanging. If the answer is that simple, why could the Corinthians not just do it? Today Paul tells them, and it stings. They could not act like a mature church because they were not one yet. They were still spiritual infants, and their fan clubs were the evidence. The very slogans they were so proud of, I belong to Paul, I belong to Apollos, were baby talk. Paul loves them too much to flatter them, so he calls them back to the solid food they keep pushing away.</p>
+      <p>Yesterday Paul handed us the cure in a single line. Put Christ back in the center and the factions lose their oxygen. But that leaves a painful question hanging. If the answer is that simple, why could the Corinthians not just do it? Today Paul tells them, and it stings. They could not act like a mature church because they were not one yet. They were still spiritual infants, and their fan clubs were the evidence. The very slogans they were so proud of, I follow Paul, I belong to Apollos, were baby talk. Paul loves them too much to flatter them, so he calls them back to the solid food they keep pushing away.</p>
     </div>
 
     <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
@@ -735,41 +758,42 @@ if ('serviceWorker' in navigator) {
 
       <p>Paul has been fairly gentle so far. Here he stops cushioning it. He looks at a church that prided itself on wisdom and calls them babies, not as an insult thrown in anger but as a diagnosis given in love, the way a doctor names a condition so it can finally be treated. The factions, the sides, the whole competitive circus, all of it was evidence of one thing. They had never grown up. So Paul reaches for the oldest picture in the book, milk and solid food, to show them how far they still have to travel, and to call them toward the real wisdom they keep trading away for something cheaper.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 3:1-4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:27eb97361ac58fb562f421fc47e483e2cc0730fcbbe695eebb7d4aa25ab72e10 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 3:1-4</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.3.1-4" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.3.1-4" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For my part, brothers and sisters, I was not able to speak to you as spiritual people but as people of the flesh, as babies in Christ. I gave you milk to drink, not solid food, since you were not yet ready for it. In fact, you are still not ready, because you are still worldly. For since there is envy and strife among you, are you not worldly and behaving like mere humans? For whenever someone says, 'I belong to Paul,' and another, 'I belong to Apollos,' are you not acting like mere humans?"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Paul picks the most deflating word he can find. He calls a church obsessed with looking wise a room full of <em>nepioi</em>, the Greek word for babies, infants who can only take milk because they cannot yet chew. Then he points to the evidence sitting right in front of them. The jealousy. The strife. The chant of "I belong to Paul" and "I belong to Apollos." To the Corinthians all that partisanship felt like discernment, a sign they had refined taste in teachers. To Paul it was a nursery squabble. Grown-up faith does not fracture into cliques over personalities, and only the immature mistake taking sides for depth. And what were they fighting to own? A church that was never theirs to divide, God's own field and building and temple, the place where we all belong to God through Christ (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.3.9" target="_blank">1 Corinthians 3:9</a>, <a class="vlink" href="https://www.bible.com/bible/1713/1CO.3.11" target="_blank">1 Corinthians 3:11</a>, <a class="vlink" href="https://www.bible.com/bible/1713/1CO.3.16-17" target="_blank">1 Corinthians 3:16-17</a>).</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>Brothers, I could not address you as spiritual, but as worldly—as infants in Christ. <sup class="verse-number" aria-label="Verse 2">2</sup>I gave you milk, not solid food, for you were not yet ready for solid food. In fact, you are still not ready, <sup class="verse-number" aria-label="Verse 3">3</sup>for you are still worldly. For since there is jealousy and dissension among you, are you not worldly? Are you not walking in the way of man? <sup class="verse-number" aria-label="Verse 4">4</sup>For when one of you says, “I follow Paul,” and another, “I follow Apollos,” are you not mere men?</div>
+<div class="verse-commentary">
+          <p>Paul picks the most deflating word he can find. He calls a church obsessed with looking wise a room full of <em>nepioi</em>, the Greek word for babies, infants who can only take milk because they cannot yet chew. Then he points to the evidence sitting right in front of them. The jealousy. The strife. The chant of "I follow Paul" and "I follow Apollos." To the Corinthians all that partisanship felt like discernment, a sign they had refined taste in teachers. To Paul it was a nursery squabble. Grown-up faith does not fracture into cliques over personalities, and only the immature mistake taking sides for depth. And what were they fighting to own? A church that was never theirs to divide, God's own field and building and temple, the place where we all belong to God through Christ (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.3.9" target="_blank" rel="noopener">1 Corinthians 3:9</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1CO.3.11" target="_blank" rel="noopener">1 Corinthians 3:11</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1CO.3.16-17" target="_blank" rel="noopener">1 Corinthians 3:16-17</a>).</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Hebrews 5:13-14 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:382ccdcd833105d21b9cf8d19028b157b63577f49a55bdd6e9e8a67a1ee1cde1 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Hebrews 5:13-14</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/HEB.5.13-14" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/HEB.5.13-14" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Now everyone who lives on milk is inexperienced with the message about righteousness, because he is an infant. But solid food is for the mature—for those whose senses have been trained to distinguish between good and evil."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Paul is not the only one who used this picture. The book of Hebrews scolds a different set of believers the very same way, telling people who ought to be teachers by now that they still need someone to walk them through the ABCs of the faith (<a class="vlink" href="https://www.bible.com/bible/1713/HEB.5.12" target="_blank">Hebrews 5:12</a>). Here is the sharp part. Staying on milk is not a harmless holding pattern. It leaves a person inexperienced with the deeper things of God, unable to handle real weight, because those things belong to the mature, the ones whose spiritual senses have been trained by practice to tell good from evil. So maturity is not about how many years you have been a Christian or how much Bible trivia you can recite. It is about whether your walk with God has actually trained you to live wisely. You can carry a Bible for fifty years and still be crying for a bottle.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 13">13</sup>For everyone who lives on milk is still an infant, inexperienced in the message of righteousness. <sup class="verse-number" aria-label="Verse 14">14</sup>But solid food is for the mature, who by constant use have trained their senses to distinguish good from evil.</div>
+<div class="verse-commentary">
+          <p>Paul is not the only one who used this picture. The book of Hebrews scolds a different set of believers the very same way, telling people who ought to be teachers by now that they still need someone to walk them through the ABCs of the faith (<a class="vlink" href="https://www.bible.com/bible/3034/HEB.5.12" target="_blank" rel="noopener">Hebrews 5:12</a>). Here is the sharp part. Staying on milk is not a harmless holding pattern. It leaves a person inexperienced with the deeper things of God, unable to handle real weight, because those things belong to the mature, the ones whose spiritual senses have been trained by practice to tell good from evil. So maturity is not about how many years you have been a Christian or how much Bible trivia you can recite. It is about whether your walk with God has actually trained you to live wisely. You can carry a Bible for fifty years and still be crying for a bottle.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 2:6-7 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:5300b246fb3c5b35e3ddd7ae5a1ffab74c979ce297987af1946141a48765ae3d | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 2:6-7</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.2.6-7" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.2.6-7" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"We do, however, speak a wisdom among the mature, but not a wisdom of this age, or of the rulers of this age, who are coming to nothing. On the contrary, we speak God's hidden wisdom in a mystery, a wisdom God predestined before the ages for our glory."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>So what is the solid food they keep refusing? Real wisdom, but not the kind Corinth was chasing. Paul says there is a wisdom he speaks among the mature, and it is nothing like the slick wisdom of this age that is already on its way out. It is God's own hidden wisdom, a plan He laid before time began, and it reaches us not through raw brainpower but through His Spirit, who alone lets us grasp the things of God (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.2.13-14" target="_blank">1 Corinthians 2:13-14</a>). And where is that wisdom found? Not in a lecture hall. In the cross (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.2.1-4" target="_blank">1 Corinthians 2:1-4</a>), the very thing the clever called foolish. This is the whole point Paul is making before he circles back to their unity (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.3.1-17" target="_blank">1 Corinthians 3:1-17</a>). The Corinthians desperately wanted to be wise. The door to real wisdom stood open the entire time, and it was shaped like a cross they kept walking past on their way to argue about their favorite teachers.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 6">6</sup>Among the mature, however, we speak a message of wisdom—but not the wisdom of this age or of the rulers of this age, who are coming to nothing. <sup class="verse-number" aria-label="Verse 7">7</sup>No, we speak of the mysterious and hidden wisdom of God, which He destined for our glory before time began.</div>
+<div class="verse-commentary">
+          <p>So what is the solid food they keep refusing? Real wisdom, but not the kind Corinth was chasing. Paul says there is a wisdom he speaks among the mature, and it is nothing like the slick wisdom of this age that is already on its way out. It is God's own hidden wisdom, a plan He laid before time began, and it reaches us not through raw brainpower but through His Spirit, who alone lets us grasp the things of God (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.2.13-14" target="_blank" rel="noopener">1 Corinthians 2:13-14</a>). And where is that wisdom found? Not in a lecture hall. In the cross (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.2.1-4" target="_blank" rel="noopener">1 Corinthians 2:1-4</a>), the very thing the clever called foolish. This is the whole point Paul is making before he circles back to their unity (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.3.1-17" target="_blank" rel="noopener">1 Corinthians 3:1-17</a>). The Corinthians desperately wanted to be wise. The door to real wisdom stood open the entire time, and it was shaped like a cross they kept walking past on their way to argue about their favorite teachers.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Corinthians 2:7 | 2:7 Or we speak God’s wisdom in a mystery -->
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -841,22 +865,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.3.1-4" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+3:1-4&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

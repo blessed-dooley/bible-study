@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -513,49 +532,6 @@ if ('serviceWorker' in navigator) {
     opacity: 0.7;
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -576,6 +552,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -594,8 +612,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -755,7 +778,7 @@ if ('serviceWorker' in navigator) {
       <p>Now listen to that room. One person starts a hymn. Another has a teaching ready. Someone stands up with a burst of praise in a language nobody present can follow, and three more people are still waiting their turn. Every voice carries something real, and every voice is competing with the city's oldest habit, the itch to rank everything and everyone. We watched that itch split this church into fan clubs in the letter's opening chapters. Gathered worship in Corinth had all the makings of a glorious mess. Paul writes this week's chapters straight into that living room, and his answer is not a seating chart. It is a body.</p>
     </div>
 
-    <!-- 4. THIS WEEK'S MEMORY TEXT (CSB by default) -->
+    
     <div class="section">
       <div class="section-label">
         <span class="section-emoji">📖</span>
@@ -763,16 +786,16 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 14:1 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:2d3ae5f1594e2eb7ded55a29634c09d7265ba6cb348b8b5a875606f06842e97a | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 14:1</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.14.1" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.14.1" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Pursue love and desire spiritual gifts, and especially that you may prophesy."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Two verbs open this verse, and they are not the same size. Love gets the violent one. The Greek word <em>diōkō</em> means to chase something down, to hunt it, and it is the same word Scripture uses for persecution. Paul, the man who once hunted believers from house to house, now tells believers to hunt love with that same relentlessness. The gifts get a warmer verb. Desire them, welcome them, want what the Spirit wants to give. The order is the argument. Chase love first and the gifts become tools for building people up. Reverse the order and the gifts become trophies for measuring people against each other. Paul writes this line in the middle of a long section on what happens when the church gathers (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.11" target="_blank">1 Corinthians 11-14</a>), and this week walks the heart of it (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12" target="_blank">1 Corinthians 12-14</a>).</p>
-          <p>The rest of the week unpacks that one breath. The church is a body with many parts and one Head, no part optional (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12" target="_blank">1 Corinthians 12</a>). The ascended Christ Himself stocked His church with apostles, prophets, evangelists, shepherds, and teachers, gifts with faces, given for one job (<a class="vlink" href="https://www.bible.com/bible/1713/EPH.4.11-13" target="_blank">Ephesians 4:11-13</a>), the building up of the body of Christ (<a class="vlink" href="https://www.bible.com/bible/1713/EPH.4.12" target="_blank">Ephesians 4:12</a>). Between the gift chapters sits the greatest thing ever written on love (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.13" target="_blank">1 Corinthians 13</a>), placed there on purpose. Peter adds that every gift is borrowed property, varied grace to be spent serving others as good stewards (<a class="vlink" href="https://www.bible.com/bible/1713/1PE.4.8-11" target="_blank">1 Peter 4:8-11</a>). Even the meeting itself gets instructions, two or three at most, each in turn (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.14.27" target="_blank">1 Corinthians 14:27</a>), because the God who reveals His counsel to His servants the prophets (<a class="vlink" href="https://www.bible.com/bible/1713/AMO.3.7" target="_blank">Amos 3:7</a>) is a God of order, not noise. And the verse's last clause, especially that you may prophesy, waits for Thursday.</p>
+        <div class="verse-text">Earnestly pursue love and eagerly desire spiritual gifts, especially the gift of prophecy.</div>
+<div class="verse-commentary">
+          <p>Two verbs open this verse, and they are not the same size. Love gets the violent one. The Greek word <em>diōkō</em> means to chase something down, to hunt it, and it is the same word Scripture uses for persecution. Paul, the man who once hunted believers from house to house, now tells believers to hunt love with that same relentlessness. The gifts get a warmer verb. Desire them, welcome them, want what the Spirit wants to give. The order is the argument. Chase love first and the gifts become tools for building people up. Reverse the order and the gifts become trophies for measuring people against each other. Paul writes this line in the middle of a long section on what happens when the church gathers (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.11" target="_blank" rel="noopener">1 Corinthians 11-14</a>), and this week walks the heart of it (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12" target="_blank" rel="noopener">1 Corinthians 12-14</a>).</p>
+          <p>The rest of the week unpacks that one breath. The church is a body with many parts and one Head, no part optional (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12" target="_blank" rel="noopener">1 Corinthians 12</a>). The ascended Christ Himself stocked His church with apostles, prophets, evangelists, shepherds, and teachers, gifts with faces, given for one job (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.4.11-13" target="_blank" rel="noopener">Ephesians 4:11-13</a>), the building up of the body of Christ (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.4.12" target="_blank" rel="noopener">Ephesians 4:12</a>). Between the gift chapters sits the greatest thing ever written on love (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13" target="_blank" rel="noopener">1 Corinthians 13</a>), placed there on purpose. Peter adds that every gift is borrowed property, varied grace to be spent serving others as good stewards (<a class="vlink" href="https://www.bible.com/bible/3034/1PE.4.8-11" target="_blank" rel="noopener">1 Peter 4:8-11</a>). Even the meeting itself gets instructions, two or three at most, each in turn (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.27" target="_blank" rel="noopener">1 Corinthians 14:27</a>), because the God who reveals His counsel to His servants the prophets (<a class="vlink" href="https://www.bible.com/bible/3034/AMO.3.7" target="_blank" rel="noopener">Amos 3:7</a>) is a God of order, not noise. And the verse's last clause, especially that you may prophesy, waits for Thursday.</p>
         </div>
       </div>
     </div>
@@ -801,7 +824,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Here is the seed to carry into the week. Every gift on the coming pages has a Giver, and He is not anonymous. When Christ ascended, He did not leave a memory behind. He left provision. The risen Jesus looked at His young church, knew exactly what it would face in cities like Corinth, and stocked it Himself, the way a builder stocks a job site before the crew ever arrives. He took His victory and handed out its spoils as gifts to people (<a class="vlink" href="https://www.bible.com/bible/1713/EPH.4.8-11" target="_blank">Ephesians 4:8-11</a>). So the real question under every gift list is not which gift do I have. It is what kind of Lord equips His people this thoroughly. Watch for Him all week. He is the Head directing the body on Monday, the love being described line by line on Tuesday, the Word worth understanding on Wednesday, and the One every true prophet has ever pointed to on Thursday. By Friday the gifts will have led us where they always lead. To Him.</p>
+      <p>Here is the seed to carry into the week. Every gift on the coming pages has a Giver, and He is not anonymous. When Christ ascended, He did not leave a memory behind. He left provision. The risen Jesus looked at His young church, knew exactly what it would face in cities like Corinth, and stocked it Himself, the way a builder stocks a job site before the crew ever arrives. He took His victory and handed out its spoils as gifts to people (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.4.8-11" target="_blank" rel="noopener">Ephesians 4:8-11</a>). So the real question under every gift list is not which gift do I have. It is what kind of Lord equips His people this thoroughly. Watch for Him all week. He is the Head directing the body on Monday, the love being described line by line on Tuesday, the Word worth understanding on Wednesday, and the One every true prophet has ever pointed to on Thursday. By Friday the gifts will have led us where they always lead. To Him.</p>
     </div>
 
     <!-- 7. APPLICATION (action-box-sabbath, "BEFORE SUNDAY") -->
@@ -838,22 +861,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.14.1" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+14:1&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

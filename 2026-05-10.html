@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -696,7 +725,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <p class="tldr-hook">The morning after the greatest victory of his career, the prophet who watched fire fall from heaven sat under a desert shrub and asked God to take his life.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span><span>Elijah's first prayer in <a class="vlink" href="https://www.bible.com/bible/1713/1KI.19" target="_blank">1 Kings 19</a> is "I have had enough; take my life," and God's first answer is not a sermon but a meal and a long sleep.</span></li>
+        <li><span class="bullet-icon">☩</span><span>Elijah's first prayer in <a class="vlink" href="https://www.bible.com/bible/3034/1KI.19" target="_blank" rel="noopener">1 Kings 19</a> is "I have had enough; take my life," and God's first answer is not a sermon but a meal and a long sleep.</span></li>
         <li><span class="bullet-icon">☩</span><span>He runs to Horeb, the same mountain where Moses had asked to see God's glory, and gets a "soft whisper" instead of the fire and earthquake he was apparently expecting.</span></li>
         <li><span class="bullet-icon">☩</span><span>God's first words after the silence are not "you failed me" but a question gentle enough to slip past the prophet's defenses: "What are you doing here, Elijah?"</span></li>
         <li><span class="bullet-icon">☩</span><span>The pattern of crisis-prayer in this chapter is consistent: tenderness before truth, food before theology, whisper before commission.</span></li>
@@ -722,7 +751,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Same Mountain Moses Climbed</div>
       <p>Elijah ran for forty days and forty nights and stopped at Horeb. The Hebrew Bible has another name for that mountain. It is called Sinai. Moses had stood there four hundred years before this morning, asking the LORD to "show me Your glory," and God had answered by hiding Moses in a cleft of the rock and passing by with His goodness while the prophet looked at the back of where He had been. Now Elijah arrives at the same mountain, walks into a cave (the language is suggestive of the same cleft), and waits for God to pass by. The geography is not coincidence. The runaway prophet is retracing the route of his greatest predecessor, and he is going there to ask the oldest question a tired servant of God knows how to ask: are You really still here?</p>
-      <p>The political backdrop is just as specific. Ahab, the king Elijah was running from, had married Jezebel, a Phoenician princess who imported the cult of Baal into the northern kingdom and underwrote it with state money. The king "did more to provoke the LORD God of Israel to anger" than any king before him, as <a class="vlink" href="https://www.bible.com/bible/1713/1KI.16.33" target="_blank">1 Kings 16:33</a> puts it. Elijah was the LORD's lone public counterweight, and the day before this story he had stood on Mount Carmel and watched fire fall from heaven on a sopping-wet altar in front of the entire nation. Twenty-four hours later, after the showdown described in <a class="vlink" href="https://www.bible.com/bible/1713/1KI.18" target="_blank">1 Kings 18</a>, Jezebel sent a single threatening sentence by messenger and the man who had outrun the king's chariot from Carmel to Jezreel ran the other direction into the wilderness and asked to die. The collapse after the high is one of the oldest patterns in the spiritual life. Elijah did not know it had a name. He just knew his legs would not stop running.</p>
+      <p>The political backdrop is just as specific. Ahab, the king Elijah was running from, had married Jezebel, a Phoenician princess who imported the cult of Baal into the northern kingdom and underwrote it with state money. The king "did more to provoke the LORD God of Israel to anger" than any king before him, as <a class="vlink" href="https://www.bible.com/bible/3034/1KI.16.33" target="_blank" rel="noopener">1 Kings 16:33</a> puts it. Elijah was the LORD's lone public counterweight, and the day before this story he had stood on Mount Carmel and watched fire fall from heaven on a sopping-wet altar in front of the entire nation. Twenty-four hours later, after the showdown described in <a class="vlink" href="https://www.bible.com/bible/3034/1KI.18" target="_blank" rel="noopener">1 Kings 18</a>, Jezebel sent a single threatening sentence by messenger and the man who had outrun the king's chariot from Carmel to Jezreel ran the other direction into the wilderness and asked to die. The collapse after the high is one of the oldest patterns in the spiritual life. Elijah did not know it had a name. He just knew his legs would not stop running.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -735,29 +764,33 @@ if ('serviceWorker' in navigator) {
 
       <p>Watch what happens when a prophet collapses. The story of Elijah at Horeb is a careful sequence, and the order matters as much as anything else. God does not begin with the question He eventually asks. He does not begin with the commission He eventually gives. He begins with food and water and a long sleep under a desert shrub, and only after the prophet's body has been put back together does the conversation start. What follows is not a theology of suffering. It is a chapter that shows you what a tender Father does when one of His own arrives at the end of his strength.</p>
 
+<!-- BSB_BLOCK: 1 Kings 19:1-18 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b811556e802121f207134fffeda7ef7a9d9a446737a730240f441fa5d5cab816 | footnotes-stripped:4 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Kings 19:1-18</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1KI.19.1-18" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1KI.19.1-18" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Ahab told Jezebel everything that Elijah had done and how he had killed all the prophets with the sword. So Jezebel sent a messenger to Elijah, saying, 'May the gods punish me and do so severely if I don't make your life like the life of one of them by this time tomorrow!' Then Elijah became afraid and immediately ran for his life. When he came to Beer-sheba that belonged to Judah, he left his servant there, but he went on a day's journey into the wilderness. He sat down under a broom tree and prayed that he might die. He said, 'I have had enough! LORD, take my life, for I'm no better than my fathers.' Then he lay down and slept under the broom tree. Suddenly, an angel touched him. The angel told him, 'Get up and eat.' Then he looked, and there at his head was a loaf of bread baked over hot stones, and a jug of water. So he ate and drank and lay down again. Then the angel of the LORD returned for a second time and touched him. He said, 'Get up and eat, or the journey will be too much for you.' So he got up, ate, and drank. Then on the strength from that food, he walked forty days and forty nights to Horeb, the mountain of God. He entered a cave there and spent the night. Suddenly, the word of the LORD came to him, and he said to him, 'What are you doing here, Elijah?' He replied, 'I have been very zealous for the LORD God of Armies, but the Israelites have abandoned your covenant, torn down your altars, and killed your prophets with the sword. I alone am left, and they're looking for me to take my life.' Then he said, 'Go out and stand on the mountain in the LORD's presence.' At that moment, the LORD passed by. A great and mighty wind was tearing at the mountains and was shattering cliffs before the LORD, but the LORD was not in the wind. After the wind there was an earthquake, but the LORD was not in the earthquake. After the earthquake there was a fire, but the LORD was not in the fire. And after the fire there was a voice, a soft whisper. When Elijah heard it, he wrapped his face in his mantle, went out, and stood at the entrance of the cave. Suddenly, a voice came to him and said, 'What are you doing here, Elijah?' 'I have been very zealous for the LORD God of Armies,' he replied, 'but the Israelites have abandoned your covenant, torn down your altars, and killed your prophets with the sword. I alone am left, and they're looking for me to take my life.' Then the LORD said to him, 'Go and return by the way you came to the Wilderness of Damascus. When you arrive, you are to anoint Hazael as king over Aram. You are to anoint Jehu son of Nimshi as king over Israel and Elisha son of Shaphat from Abel-meholah as prophet in your place. Then Jehu will put to death whoever escapes the sword of Hazael, and Elisha will put to death whoever escapes the sword of Jehu. But I will leave seven thousand in Israel, every knee that has not bowed to Baal and every mouth that has not kissed him.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Read the chapter slowly and watch the order. Elijah arrives, prays the worst prayer of his life, and falls asleep. There is no rebuke. There is no theology. An angel touches him and says one thing: "Get up and eat." That is the first miraculous intervention in the recovery of the man who had just watched fire fall from heaven. Bread baked over hot stones, a jug of water, and permission to lie back down. The same scene happens twice in <a class="vlink" href="https://www.bible.com/bible/1713/1KI.19.5" target="_blank">1 Kings 19:5-6</a>. God's pastoral diagnosis was not "your faith is weak." It was "you are exhausted, you have not eaten, and you are alone in the desert." The food and the second sleep come before any conversation about purpose.</p>
-          <p>The forty-day walk noted in <a class="vlink" href="https://www.bible.com/bible/1713/1KI.19.8" target="_blank">1 Kings 19:8</a> is the next quiet detail. Forty days and forty nights to Horeb is the same number of days Moses spent on the mountain, the same number Israel wandered in the wilderness for each year of unbelief, the same number Jesus would later fast in the desert before His own ministry began. Elijah walks the road of his fathers with bread and water in his stomach, and the slow pilgrimage is itself a kind of healing.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>Now Ahab told Jezebel everything that Elijah had done and how he had killed all the prophets with the sword. <sup class="verse-number" aria-label="Verse 2">2</sup>So Jezebel sent a messenger to Elijah, saying, “May the gods deal with me, and ever so severely, if by this time tomorrow I have not made your life like the lives of those you killed!” <sup class="verse-number" aria-label="Verse 3">3</sup>And Elijah was afraid and ran for his life. When he came to Beersheba in Judah, he left his servant there, <sup class="verse-number" aria-label="Verse 4">4</sup>while he himself went a day’s journey into the wilderness. He sat down under a broom tree and prayed that he might die. “I have had enough, LORD,” he said. “Take my life, for I am no better than my fathers.” <sup class="verse-number" aria-label="Verse 5">5</sup>Then he lay down under the broom tree and fell asleep. Suddenly an angel touched him and said, “Get up and eat.” <sup class="verse-number" aria-label="Verse 6">6</sup>And he looked around, and there by his head was a cake of bread baked over hot coals, and a jar of water. So he ate and drank and lay down again. <sup class="verse-number" aria-label="Verse 7">7</sup>A second time the angel of the LORD returned and touched him, saying, “Get up and eat, or the journey will be too much for you.” <sup class="verse-number" aria-label="Verse 8">8</sup>So he got up and ate and drank. And strengthened by that food, he walked forty days and forty nights until he reached Horeb, the mountain of God. <sup class="verse-number" aria-label="Verse 9">9</sup>There Elijah entered a cave and spent the night. And the word of the LORD came to him, saying, “What are you doing here, Elijah?” <sup class="verse-number" aria-label="Verse 10">10</sup>“I have been very zealous for the LORD, the God of Hosts,” he replied, “but the Israelites have forsaken Your covenant, torn down Your altars, and killed Your prophets with the sword. I am the only one left, and they are seeking my life as well.” <sup class="verse-number" aria-label="Verse 11">11</sup>Then the LORD said, “Go out and stand on the mountain before the LORD. Behold, the LORD is about to pass by.” And a great and mighty wind tore into the mountains and shattered the rocks before the LORD, but the LORD was not in the wind. After the wind there was an earthquake, but the LORD was not in the earthquake. <sup class="verse-number" aria-label="Verse 12">12</sup>After the earthquake there was a fire, but the LORD was not in the fire. And after the fire came a still, small voice. <sup class="verse-number" aria-label="Verse 13">13</sup>When Elijah heard it, he wrapped his face in his cloak and went out and stood at the mouth of the cave. Suddenly a voice came to him and said, “What are you doing here, Elijah?” <sup class="verse-number" aria-label="Verse 14">14</sup>“I have been very zealous for the LORD, the God of Hosts,” he replied, “but the Israelites have forsaken Your covenant, torn down Your altars, and killed Your prophets with the sword. I am the only one left, and they are seeking my life as well.” <sup class="verse-number" aria-label="Verse 15">15</sup>Then the LORD said to him, “Go back by the way you came, and go to the Desert of Damascus. When you arrive, you are to anoint Hazael as king over Aram. <sup class="verse-number" aria-label="Verse 16">16</sup>You are also to anoint Jehu son of Nimshi as king over Israel and Elisha son of Shaphat from Abel-meholah to succeed you as prophet. <sup class="verse-number" aria-label="Verse 17">17</sup>Then Jehu will put to death whoever escapes the sword of Hazael, and Elisha will put to death whoever escapes the sword of Jehu. <sup class="verse-number" aria-label="Verse 18">18</sup>Nevertheless, I have reserved seven thousand in Israel—all whose knees have not bowed to Baal and whose mouths have not kissed him.”</div>
+<div class="verse-commentary">
+          <p>Read the chapter slowly and watch the order. Elijah arrives, prays the worst prayer of his life, and falls asleep. There is no rebuke. There is no theology. An angel touches him and says one thing: "Get up and eat." That is the first miraculous intervention in the recovery of the man who had just watched fire fall from heaven. Bread baked over hot stones, a jug of water, and permission to lie back down. The same scene happens twice in <a class="vlink" href="https://www.bible.com/bible/3034/1KI.19.5" target="_blank" rel="noopener">1 Kings 19:5-6</a>. God's pastoral diagnosis was not "your faith is weak." It was "you are exhausted, you have not eaten, and you are alone in the desert." The food and the second sleep come before any conversation about purpose.</p>
+          <p>The forty-day walk noted in <a class="vlink" href="https://www.bible.com/bible/3034/1KI.19.8" target="_blank" rel="noopener">1 Kings 19:8</a> is the next quiet detail. Forty days and forty nights to Horeb is the same number of days Moses spent on the mountain, the same number Israel wandered in the wilderness for each year of unbelief, the same number Jesus would later fast in the desert before His own ministry began. Elijah walks the road of his fathers with bread and water in his stomach, and the slow pilgrimage is itself a kind of healing.</p>
           <p>Then comes the moment everyone remembers. The wind tears the cliffs. The earthquake shakes the mountain. The fire roars. And the LORD is in none of them. After the spectacle there is a sound the Hebrew calls a <em>qol demamah daqqah</em>, a voice of "thin silence," "soft whisper," "still small voice." It is the same mountain where God once thundered the Ten Words and shook the whole assembly with smoke. The LORD has not changed His address. He has only changed His volume. Elijah needs the whisper because the man under the juniper is not the man on Carmel. The same Father knows which voice to use, and He uses both.</p>
           <p>The question, when it finally comes, is gentle enough to be devastating: "What are you doing here, Elijah?" The prophet answers honestly, and his honesty is wrong on the facts (seven thousand had not bent the knee to Baal), but God does not correct him in the moment. He listens. He restates the question after the wind and earthquake and fire have stopped, and He listens again. Only then does He commission. Anoint a king over Aram, anoint a king over Israel, anoint a prophet to take your place. The prophet who wanted to die is sent to ordain a successor. The seven thousand reveal that Elijah was never as alone as despair had told him. Crisis prayer in this chapter is met with food, sleep, walking, silence, a question, listening, and a commission, in that order. The most pastoral chapter in the Old Testament is not in a wisdom book. It is in the historical books, where a tired prophet pours out his worst and finds out that the God of fire is also the God of soft whispers.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Kings 19:8 | 19:8 That is, Mount Sinai, or possibly a mountain in the range containing Mount Sinai -->
+      <!-- BSB_FOOTNOTE: 1 Kings 19:10 | 19:10 Cited in Romans 11:3; here and in verse 14 -->
+      <!-- BSB_FOOTNOTE: 1 Kings 19:16 | 19:16 Or grandson; see 2 Kings 9:14. -->
+      <!-- BSB_FOOTNOTE: 1 Kings 19:18 | 19:18 Cited in Romans 11:4 -->
 
+<!-- BSB_BLOCK: Isaiah 55:8-9 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:f279e84b71c7c019cbb3b0a598b730b1aa95fd2e2d3efd653ade824ddd3bbdd0 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Isaiah 55:8-9</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ISA.55.8-9" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ISA.55.8-9" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"'For my thoughts are not your thoughts, and your ways are not my ways.' This is the LORD's declaration. 'For as heaven is higher than earth, so my ways are higher than your ways, and my thoughts than your thoughts.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 8">8</sup>“For My thoughts are not your thoughts, neither are your ways My ways,” declares the LORD. <sup class="verse-number" aria-label="Verse 9">9</sup>“For as the heavens are higher than the earth, so My ways are higher than your ways and My thoughts than your thoughts.</div>
+<div class="verse-commentary">
           <p>Elijah expected another fire-from-heaven moment. He had set the precedent on Carmel; surely the LORD would meet his crisis the same way He had met the prophets of Baal. Instead Elijah got a whisper. Isaiah names the principle Elijah had to learn the hard way. God's thoughts are not ours, and His ways are not ours, and the gap between heaven and earth is the size of the gap between the way we expect Him to answer and the way He actually does.</p>
           <p>This does not mean God is unpredictable. It means He is consistent in ways we do not always see in advance. Elijah needed bread and rest before he needed a word, and only the LORD knew that. We tend to know what we want; God knows what we need. The Carmel-to-Horeb story is the difference between those two diagnoses. When prayer is met with what looks like silence, the most likely explanation is not that God has stopped speaking but that He is speaking on a frequency we have not yet been quiet enough to pick up.</p>
         </div>
@@ -786,7 +819,7 @@ if ('serviceWorker' in navigator) {
       <div class="section-heading">The Field Manual Starts With Bread</div>
       <p>After hurricanes, earthquakes, refugee crises, and mass-casualty events, the first wave of trained responders does something specific. The World Health Organization, the International Federation of the Red Cross, and the Sphere Standards (the global benchmark for humanitarian response) all teach the same protocol now. It is called Psychological First Aid, or PFA, and its three operative verbs, drilled into field manuals on every continent, are "Look, Listen, Link." Look at safety and basic needs first. Listen to what the person is actually saying without forcing them to talk. Link them to practical resources: water, food, a warm blanket, a way to contact loved ones. Therapy comes later. Sometimes much later. Sometimes never, because the basics often turn out to be enough.</p>
       <p>The recent research is filling in why this works. A 2025 mixed-method study in BMC Nursing evaluating PFA training for disaster nursing found that responders who completed the training showed measurable gains in self-efficacy, perspective-taking, and perceived disaster competence, alongside a drop in the personal-distress dimension of empathy that often disables a caregiver mid-crisis. A 2024 integrative review of twenty empirical studies on PFA after trauma reported positive effects on anxiety, adaptive functioning, and coping in the immediate aftermath. The protocol does not treat trauma the way an outpatient therapist treats anxiety. It restores the conditions under which a brain can begin to heal itself. Sleep. Food. A jacket if it is cold. A face that does not flinch when someone says they are not okay. International humanitarian organizations have now made PFA the floor for any disaster mental health response.</p>
-      <p>Three thousand years before any of this was published, an angel touched a sleeping prophet's shoulder under a juniper bush and said one thing first: "Get up and eat." Bread baked over hot stones, a jug of water, and permission to lie back down. No sermon. No diagnosis. No theology. The international protocol our world has converged on, in the wake of every modern disaster, is the protocol the LORD invented in <a class="vlink" href="https://www.bible.com/bible/1713/1KI.19" target="_blank">1 Kings 19</a>. Tenderness is not a delay before the real work of recovery. In the first thirty minutes after the finish line, tenderness is the work.</p>
+      <p>Three thousand years before any of this was published, an angel touched a sleeping prophet's shoulder under a juniper bush and said one thing first: "Get up and eat." Bread baked over hot stones, a jug of water, and permission to lie back down. No sermon. No diagnosis. No theology. The international protocol our world has converged on, in the wake of every modern disaster, is the protocol the LORD invented in <a class="vlink" href="https://www.bible.com/bible/3034/1KI.19" target="_blank" rel="noopener">1 Kings 19</a>. Tenderness is not a delay before the real work of recovery. In the first thirty minutes after the finish line, tenderness is the work.</p>
     </div>
 
     <!-- 7. CHRIST CONNECTION -->
@@ -796,7 +829,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>The broom tree shows up again. In Gethsemane, Jesus prayed three times that the cup might pass, sweat falling from Him like drops of blood, asking the Father whether there was any other way. He had just come from a meal with His friends, and He was about to walk into the worst night any human being has ever endured. Luke alone tells us that "an angel from heaven appeared to him, strengthening him" (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.22.43" target="_blank">Luke 22:43</a>). The same God who sent an angel to feed Elijah under the juniper sent an angel to strengthen His Son under the olive trees. Crisis prayer was not invented under a broom tree; it was perfected in a garden. Christ took the Elijah pattern (the running, the exhaustion, the asking, the angel, the food, the long obedient walk) and finished it on a hill where the silence after the cry was finally broken with resurrection. The "soft whisper" Elijah heard at Horeb has a name now. It is the Word made flesh, who speaks gently because gentleness is His nature, and whose voice can be heard by anyone tired enough to be quiet.</p>
+      <p>The broom tree shows up again. In Gethsemane, Jesus prayed three times that the cup might pass, sweat falling from Him like drops of blood, asking the Father whether there was any other way. He had just come from a meal with His friends, and He was about to walk into the worst night any human being has ever endured. Luke alone tells us that "an angel from heaven appeared to him, strengthening him" (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.22.43" target="_blank" rel="noopener">Luke 22:43</a>). The same God who sent an angel to feed Elijah under the juniper sent an angel to strengthen His Son under the olive trees. Crisis prayer was not invented under a broom tree; it was perfected in a garden. Christ took the Elijah pattern (the running, the exhaustion, the asking, the angel, the food, the long obedient walk) and finished it on a hill where the silence after the cry was finally broken with resurrection. The "soft whisper" Elijah heard at Horeb has a name now. It is the Word made flesh, who speaks gently because gentleness is His nature, and whose voice can be heard by anyone tired enough to be quiet.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -833,22 +866,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1KI.19.1-18" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Kings+19:1-18&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -877,8 +930,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -887,18 +942,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -906,6 +965,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -925,6 +985,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

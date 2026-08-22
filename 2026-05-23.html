@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -371,6 +377,25 @@ if ('serviceWorker' in navigator) {
     color: var(--text-verse);
     margin-bottom: 8px;
     font-weight: 400;
+  }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
   }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
@@ -507,49 +532,6 @@ if ('serviceWorker' in navigator) {
     opacity: 0.7;
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -570,6 +552,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -588,8 +612,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -740,7 +769,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">Connection to Last Week</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Last week ended on <a class="vlink" href="https://www.bible.com/bible/1713/REV.14.12" target="_blank">Revelation 14:12</a> and the four words at the back of the verse, <em>ten pistin Iesou</em>, the faith of Jesus. We held that phrase like a coin in our pocket all week. But that verse has six words at the front of it we have not yet read together. The saints "keep the commands of God." Last week's faith does not sit alone in that sentence. It sits next to the law. So this week opens the other half of the pair we already know the second half of. What does it mean to keep the commands of God when the only people who can read them accurately are the ones standing under the gospel that has already saved them? The week before us is the law and the gospel held in the same hand.</p>
+      <p>Last week ended on <a class="vlink" href="https://www.bible.com/bible/3034/REV.14.12" target="_blank" rel="noopener">Revelation 14:12</a> and the four words at the back of the verse, <em>ten pistin Iesou</em>, the faith of Jesus. We held that phrase like a coin in our pocket all week. But that verse has six words at the front of it we have not yet read together. The saints "keep the commands of God." Last week's faith does not sit alone in that sentence. It sits next to the law. So this week opens the other half of the pair we already know the second half of. What does it mean to keep the commands of God when the only people who can read them accurately are the ones standing under the gospel that has already saved them? The week before us is the law and the gospel held in the same hand.</p>
     </div>
 
     <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
@@ -763,19 +792,17 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
+<!-- BSB_BLOCK: Psalms 119:93-94 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:9fdefbac482968938faa76369b15004b9ba70bd0c8caf20ae04ca2e4be357070 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
-          <div class="verse-ref">Psalm 119:93-94</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/PSA.119.93-94" target="_blank">☩ Open in Bible App</a>
+          <div class="verse-ref">Psalms 119:93-94</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.119.93-94" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"I will never forget Your precepts, for by them You have given me life. I am Yours, save me; for I have sought Your precepts."</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"I will never forget your precepts, for you have given me life through them. I am yours; save me, for I have studied your precepts."</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Two short verses out of one hundred seventy-six, and they carry the whole logic of the week. "Your precepts" is one word in Hebrew, <em>piqqudim</em>, and it means something close to "things You have placed in my charge," a deposit entrusted to a person who is expected to keep watch over it. The verb behind "have given me life" is <em>chayah</em>, the Hebrew word for being brought back to life, restored, kept alive when death was already in the room. We met it six weeks ago at Isaiah 57:15, where the same God revives the spirit of the lowly. The psalmist is not saying God's precepts are intellectually interesting. He is saying they are the reason his lungs still move. The verb behind "sought" or "studied" is <em>darash</em>, the same diligent inquiry word the psalm reaches for again and again, the language of a person digging because the dig is worth his life.</p>
-          <p>This is the man whose pen sings the song the rest of the week is going to weigh. Six daily texts have been laid out around his confession. <a class="vlink" href="https://www.bible.com/bible/1713/JDG.14" target="_blank">Judges 14</a> hands us Samson, the man who knew the precepts and still walked into the riddle, the wedding, the lion, and the woman who took the secret out of his mouth. <a class="vlink" href="https://www.bible.com/bible/1713/MRK.9.42-48" target="_blank">Mark 9:42-48</a> hands us Jesus speaking with the urgency of a surgeon: cut off the hand that traps you. <a class="vlink" href="https://www.bible.com/bible/1713/ROM.3.20" target="_blank">Romans 3:20</a> hands us Paul saying that the law was never the cure but the diagnosis, the lamp God hung in the room so we could see what was already there. <a class="vlink" href="https://www.bible.com/bible/1713/MAT.5.17-18" target="_blank">Matthew 5:17-18</a> hands us Jesus on the side of a hill insisting that not one jot or tittle of the law will drop out of the story. <a class="vlink" href="https://www.bible.com/bible/1713/ROM.3.28" target="_blank">Romans 3:28</a> hands us Paul announcing the rescue that the law itself could never give. <a class="vlink" href="https://www.bible.com/bible/1713/MAT.7.24-29" target="_blank">Matthew 7:24-29</a> closes the week with two builders, two foundations, and one storm that comes for both.</p>
-          <p>Notice that the Memory Text already carries both halves of what is coming. "Your precepts" and "save me" sit inside the same breath of the same psalmist. He is not picking between them. He is leaning on both at once. The law has kept him alive. The Lord he calls Owner is the One who will save him. This week is going to keep proving that those two sentences belong on the same page. The wound is real, the lamp is needed, and the Surgeon has already arrived. <a class="vlink" href="https://www.bible.com/bible/1713/ISA.59.2" target="_blank">Isaiah 59:2</a> names the wound clearly (our sins have built a wall between us and God), and the cross is the place that wall came down. By Wednesday it will be obvious that the law and the gospel were never two competing systems but two faces of one God, and by Thursday Jesus is going to ask whether we are not just hearing the words but doing them, the way a builder digs to bedrock before he ever pours a foundation.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 93">93</sup>I will never forget Your precepts, for by them You have revived me. <sup class="verse-number" aria-label="Verse 94">94</sup>I am Yours; save me, for I have sought Your precepts.</div>
+<div class="verse-commentary">
+          <p>Two short verses out of one hundred seventy-six, and they carry the whole logic of the week. "Your precepts" is one word in Hebrew, <em>piqqudim</em>, and it means something close to "things You have placed in my charge," a deposit entrusted to a person who is expected to keep watch over it. The verb behind "have revived me" is <em>chayah</em>, the Hebrew word for being brought back to life, restored, kept alive when death was already in the room. We met it six weeks ago at Isaiah 57:15, where the same God revives the spirit of the lowly. The psalmist is not saying God's precepts are intellectually interesting. He is saying they are the reason his lungs still move. The verb behind "sought" or "studied" is <em>darash</em>, the same diligent inquiry word the psalm reaches for again and again, the language of a person digging because the dig is worth his life.</p>
+          <p>This is the man whose pen sings the song the rest of the week is going to weigh. Six daily texts have been laid out around his confession. <a class="vlink" href="https://www.bible.com/bible/3034/JDG.14" target="_blank" rel="noopener">Judges 14</a> hands us Samson, the man who knew the precepts and still walked into the riddle, the wedding, the lion, and the woman who took the secret out of his mouth. <a class="vlink" href="https://www.bible.com/bible/3034/MRK.9.42-48" target="_blank" rel="noopener">Mark 9:42-48</a> hands us Jesus speaking with the urgency of a surgeon: cut off the hand that traps you. <a class="vlink" href="https://www.bible.com/bible/3034/ROM.3.20" target="_blank" rel="noopener">Romans 3:20</a> hands us Paul saying that the law was never the cure but the diagnosis, the lamp God hung in the room so we could see what was already there. <a class="vlink" href="https://www.bible.com/bible/3034/MAT.5.17-18" target="_blank" rel="noopener">Matthew 5:17-18</a> hands us Jesus on the side of a hill insisting that not one jot or tittle of the law will drop out of the story. <a class="vlink" href="https://www.bible.com/bible/3034/ROM.3.28" target="_blank" rel="noopener">Romans 3:28</a> hands us Paul announcing the rescue that the law itself could never give. <a class="vlink" href="https://www.bible.com/bible/3034/MAT.7.24-29" target="_blank" rel="noopener">Matthew 7:24-29</a> closes the week with two builders, two foundations, and one storm that comes for both.</p>
+          <p>Notice that the Memory Text already carries both halves of what is coming. "Your precepts" and "save me" sit inside the same breath of the same psalmist. He is not picking between them. He is leaning on both at once. The law has kept him alive. The Lord he calls Owner is the One who will save him. This week is going to keep proving that those two sentences belong on the same page. The wound is real, the lamp is needed, and the Surgeon has already arrived. <a class="vlink" href="https://www.bible.com/bible/3034/ISA.59.2" target="_blank" rel="noopener">Isaiah 59:2</a> names the wound clearly (our sins have built a wall between us and God), and the cross is the place that wall came down. By Wednesday it will be obvious that the law and the gospel were never two competing systems but two faces of one God, and by Thursday Jesus is going to ask whether we are not just hearing the words but doing them, the way a builder digs to bedrock before he ever pours a foundation.</p>
         </div>
       </div>
     </div>
@@ -815,7 +842,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="action-box action-box-sabbath">
-        Take an index card or sticky note and write <a class="vlink" href="https://www.bible.com/bible/1713/PSA.119.93-94" target="_blank">Psalm 119:93-94</a> on it in your own handwriting (either the NKJV we just read or the CSB underneath it). Tape it where your eyes will land on it twice today and at least three times tomorrow before Sunday opens (the bathroom mirror, the dashboard, the kitchen counter, the inside of your wallet). Each time you read it, ask one question: "What part of God's precepts has kept me alive this year that I have stopped thanking Him for?" Carry the card into the rest of the week. The next six days are going to weigh the law and the gospel together, and this verse is the heartbeat underneath the whole conversation.
+        Take an index card or sticky note and write <a class="vlink" href="https://www.bible.com/bible/3034/PSA.119.93-94" target="_blank" rel="noopener">Psalm 119:93-94</a> on it in your own handwriting (the BSB passage we just read). Tape it where your eyes will land on it twice today and at least three times tomorrow before Sunday opens (the bathroom mirror, the dashboard, the kitchen counter, the inside of your wallet). Each time you read it, ask one question: "What part of God's precepts has kept me alive this year that I have stopped thanking Him for?" Carry the card into the rest of the week. The next six days are going to weigh the law and the gospel together, and this verse is the heartbeat underneath the whole conversation.
       </div>
     </div>
 
@@ -841,22 +868,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/PSA.119.93-94" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Psalm+119:93-94&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -885,8 +932,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -895,18 +944,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -914,6 +967,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -933,6 +987,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

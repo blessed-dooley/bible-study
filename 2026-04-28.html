@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -469,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -532,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -550,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -648,16 +685,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/bible-study/sw.js')
-      .catch(function(err) { console.log('SW registration failed:', err); });
-  });
-}
-</script>
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -735,28 +762,35 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Joshua stood on the east bank of the Jordan with Moses freshly buried, Jericho watching from the far side of the water, and a generation of Israelites waiting to see whether the silence after Moses meant God had stopped speaking. God's first words to the new leader were not military. They were literary. Keep the Book on your mouth. Do not let it depart. The man who would lead Israel into the land was handed a scroll before he was handed a sword, and told to mutter it day and night until the words came out of him without thinking. The <a class="vlink" href="https://www.bible.com/bible/1713/PSA.119.105" target="_blank">Word that lights the next step</a> is not theoretical. It walks a leader into the next foot of ground.</p>
+      <p>Joshua stood on the east bank of the Jordan with Moses freshly buried, Jericho watching from the far side of the water, and a generation of Israelites waiting to see whether the silence after Moses meant God had stopped speaking. God's first words to the new leader were not military. They were literary. Keep the Book on your mouth. Do not let it depart. The man who would lead Israel into the land was handed a scroll before he was handed a sword, and told to mutter it day and night until the words came out of him without thinking. The <a class="vlink" href="https://www.bible.com/bible/3034/PSA.119.105" target="_blank" rel="noopener">Word that lights the next step</a> is not theoretical. It walks a leader into the next foot of ground.</p>
 
       <!-- ANCHOR: Joshua 1:8 -->
+<!-- BSB_BLOCK: Joshua 1:8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:84a6d5644049e5d6de31f9e0afe8a703f6ecf149672cea730a993deafa45ff4b | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Joshua 1:8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JOS.1.8" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JOS.1.8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"This book of instruction must not depart from your mouth; you are to meditate on it day and night so that you may carefully observe everything written in it. For then you will prosper and succeed in whatever you do."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">Joshua had just taken over from Moses. The older leader was dead, the river was high, the city of Jericho was watching from across the water, and an entire generation of Israelites was looking at Joshua to see whether the silence after Moses meant God had stopped speaking. God's first words to him are not military. They are literary. Keep the Book on your mouth. Do not let it depart.<br><br>The Hebrew word for "meditate" here is <em>hagah</em>, and it is not a quiet mental exercise. <em>Hagah</em> is the word used for a lion growling over a kill, for a dove cooing, for a person muttering under the breath. It is noise you make with your own mouth, not thought you hold in the head. God is telling Joshua to keep the words of the Torah on his lips all day, murmuring them while he walks, whispering them while he waits, rehearsing them under his breath while the armies muster. The body is a better memorizer than the mind, and the mouth is the shortcut that gets the page into the bones.<br><br>Notice the logic: "meditate on it day and night so that you may carefully observe everything written in it." <em>Hagah</em> is not the destination. Obedience is the destination. The muttering is how the obedience becomes possible, because the tongue rehearses the word until the hand is ready to act on it. This is why writing, saying, and hearing the Bible change what mere silent reading cannot. A passage read three times is a visitor. A passage muttered under the breath for a week is a roommate. One will leave with the day. The other will still be there when the pressure of noon arrives and a choice has to be made. Deep Bible study is not a technique for retaining information. It is the lifelong slow conversion of the mouth into the language of the book, so that by the time the moment comes to obey, the right words are already there.</div>
+        <div class="verse-text">This Book of the Law must not depart from your mouth; meditate on it day and night, so that you may be careful to do everything written in it. For then you will prosper and succeed in all you do.</div>
+<div class="verse-commentary">
+          <p>Joshua had just taken over from Moses. The older leader was dead, the river was high, the city of Jericho was watching from across the water, and an entire generation of Israelites was looking at Joshua to see whether the silence after Moses meant God had stopped speaking. God's first words to him are not military. They are literary. Keep the Book on your mouth. Do not let it depart.</p>
+          <p>The Hebrew word for "meditate" here is <em>hagah</em>, and it is not a quiet mental exercise. <em>Hagah</em> is the word used for a lion growling over a kill, for a dove cooing, for a person muttering under the breath. It is noise you make with your own mouth, not thought you hold in the head. God is telling Joshua to keep the words of the Torah on his lips all day, murmuring them while he walks, whispering them while he waits, rehearsing them under his breath while the armies muster. The body is a better memorizer than the mind, and the mouth is the shortcut that gets the page into the bones.</p>
+          <p>Notice the logic: "meditate on it day and night, so that you may be careful to do everything written in it." <em>Hagah</em> is not the destination. Obedience is the destination. The muttering is how the obedience becomes possible, because the tongue rehearses the word until the hand is ready to act on it. This is why writing, saying, and hearing the Bible change what mere silent reading cannot. A passage read three times is a visitor. A passage muttered under the breath for a week is a roommate. One will leave with the day. The other will still be there when the pressure of noon arrives and a choice has to be made. Deep Bible study is not a technique for retaining information. It is the lifelong slow conversion of the mouth into the language of the book, so that by the time the moment comes to obey, the right words are already there.</p>
+        </div>
       </div>
 
       <!-- SUPPORTING: Psalm 119:18 -->
+<!-- BSB_BLOCK: Psalms 119:18 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:e5e78fb33b138d8aba3d02a1140576f2602d72679457b64b425ebdbed2358924 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
-          <div class="verse-ref">Psalm 119:18</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/PSA.119.18" target="_blank">☩ Open in Bible App</a>
+          <div class="verse-ref">Psalms 119:18</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.119.18" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Open my eyes so that I may contemplate wondrous things from your instruction."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">Deep study does not begin with the Bible. It begins with the prayer in front of the Bible. The psalmist assumes he could stare at the open page for a year and miss everything unless God first did something to his vision. The Hebrew verb for "open" is <em>galah</em>, to uncover, to reveal what was already there but veiled.<br><br>That word lands on a specific quiet truth: the wonder is not waiting to be added to the text. It is already in the text and waiting for a reader whose eyes can catch it. Scripture is not a field you crop; it is a seam you discover. So the first move of every deep reading is to stop and ask. "Lord, open my eyes." It is a two-second prayer, but it changes the entire temperature of the page. The Spirit who authored the book is the only Teacher who can show a reader what the book actually says. Nobody opens their own eyes; they ask.</div>
+        <div class="verse-text">Open my eyes that I may see wondrous things from Your law.</div>
+<div class="verse-commentary">
+          <p>Deep study does not begin with the Bible. It begins with the prayer in front of the Bible. The psalmist assumes he could stare at the open page for a year and miss everything unless God first did something to his vision. The Hebrew verb for "open" is <em>galah</em>, to uncover, to reveal what was already there but veiled.</p>
+          <p>That word lands on a specific quiet truth: the wonder is not waiting to be added to the text. It is already in the text and waiting for a reader whose eyes can catch it. Scripture is not a field you crop; it is a seam you discover. So the first move of every deep reading is to stop and ask. "Lord, open my eyes." It is a two-second prayer, but it changes the entire temperature of the page. The Spirit who authored the book is the only Teacher who can show a reader what the book actually says. Nobody opens their own eyes; they ask.</p>
+        </div>
       </div>
     </div>
 
@@ -830,22 +864,51 @@ if ('serviceWorker' in navigator) {
   </div>
 
     <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/JOS.1.8" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Joshua+1:8&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/bible-study/sw.js')
+    .then(reg => console.log('SW registered:', reg.scope))
+    .catch(err => console.log('SW registration failed:', err));
+}
+</script>
+
 <!-- Firebase SDK for push notifications -->
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>

@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -380,6 +413,16 @@
     padding-top: 14px;
     border-top: 1px solid var(--border);
     font-weight: 300;
+  }
+  .verse-commentary p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-soft);
+    font-weight: 300;
+    margin: 0 0 14px 0;
+  }
+  .verse-commentary p:last-child {
+    margin-bottom: 0;
   }
 
   /* ── ACCENT SECTIONS ── */
@@ -459,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -522,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -540,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -638,8 +685,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -706,7 +751,7 @@
       </div>
       <div class="section-heading">Who Gets to Stand Where</div>
       <p>The Jerusalem temple was not a single room. It was a series of nested courts, each one more exclusive than the last, and where you stood was a public declaration of your spiritual status. The outermost Court of the Gentiles was open to everyone. Inside that stood the Court of Women, the farthest point women could go. Beyond that was the Court of Israel, reserved for ritually clean Jewish men. Then came the Court of the Priests, and finally the Holy Place and the Holy of Holies, where only the high priest entered once a year. Proximity to God's presence was physically regulated. The closer you stood, the holier you were assumed to be.</p>
-      <p>Against this backdrop, Jesus tells a story about two men who went up to the temple to pray. The Pharisee "stood by himself" (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.18.11" target="_blank">Luke 18:11</a>). The Greek phrase <em>pros heauton</em> can mean "about himself" or "to himself," and both readings work: he was praying about his own excellence while standing apart from the contamination of lesser men. The tax collector, by contrast, stood "far off" and would not even raise his eyes to heaven. In the temple's spatial theology, the Pharisee occupied the privileged ground. The tax collector knew he did not belong there. Jesus' verdict demolished the entire system: the man at the back went home justified. The man at the front did not.</p>
+      <p>Against this backdrop, Jesus tells a story about two men who went up to the temple to pray. The Pharisee "stood by himself" (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.18.11" target="_blank" rel="noopener">Luke 18:11</a>). The Greek phrase <em>pros heauton</em> can mean "about himself" or "to himself," and both readings work: he was praying about his own excellence while standing apart from the contamination of lesser men. The tax collector, by contrast, stood "far off" and would not even raise his eyes to heaven. In the temple's spatial theology, the Pharisee occupied the privileged ground. The tax collector knew he did not belong there. Jesus' verdict demolished the entire system: the man at the back went home justified. The man at the front did not.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -717,48 +762,54 @@
         <div class="section-title-line"></div>
       </div>
 
-      <p>Jesus targeted this parable at a specific audience: people who "trusted in themselves that they were righteous and looked down on everyone else" (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.18.9" target="_blank">Luke 18:9</a>). He was not warning against external sins but against the internal conviction that you have already arrived. The three passages today work together to show the progression: what pride looks like when it prays (Luke 18), what honesty looks like when it confesses (1 John 1:9), and what God actually does with both postures (1 Peter 5:5).</p>
+      <p>Jesus targeted this parable at a specific audience: people who "trusted in their own righteousness and viewed others with contempt" (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.18.9" target="_blank" rel="noopener">Luke 18:9</a>). He was not warning against external sins but against the internal conviction that you have already arrived. The three passages today work together to show the progression: what pride looks like when it prays (Luke 18), what honesty looks like when it confesses (1 John 1:9), and what God actually does with both postures (1 Peter 5:5).</p>
 
       <!-- ANCHOR: Luke 18:9-14 -->
+<!-- BSB_BLOCK: Luke 18:9-14 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:1a36e9829c45a4965fcdca2e043d085480f0cf8737ca420bfab9b4a5ee0c4b87 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Luke 18:9-14</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/LUK.18.9-14" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/LUK.18.9-14" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"He also told this parable to some who trusted in themselves that they were righteous and looked down on everyone else: 'Two men went up to the temple to pray, one a Pharisee and the other a tax collector. The Pharisee was standing and praying like this about himself: "God, I thank you that I'm not like other people—greedy, unrighteous, adulterers, or even like this tax collector. I fast twice a week; I give a tenth of everything I get." But the tax collector, standing far off, would not even raise his eyes to heaven but kept striking his chest and saying, "God, have mercy on me, a sinner!" I tell you, this one went down to his home justified rather than the other, because everyone who exalts himself will be humbled, but the one who humbles himself will be exalted.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">The Pharisee's prayer is remarkable for what it is not. He does not ask God for anything. He does not confess anything. He does not acknowledge any need. His prayer is a performance review submitted to the Almighty, and the Pharisee has given himself excellent marks. Notice the structure: he thanks God, but only for what he himself has accomplished. His "gratitude" is a thin wrapper around self-congratulation. And his measuring stick is not God's character but other people: "I'm not like other people." This is the core mechanism of pride. It does not measure itself against holiness; it measures itself against whoever happens to be standing nearby and comes away feeling superior.
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 9">9</sup>To some who trusted in their own righteousness and viewed others with contempt, He also told this parable: <sup class="verse-number" aria-label="Verse 10">10</sup><span class="words-of-jesus">“Two men went up to the temple to pray. One was a Pharisee and the other a tax collector.</span> <sup class="verse-number" aria-label="Verse 11">11</sup><span class="words-of-jesus">The Pharisee stood by himself and prayed, ‘God, I thank You that I am not like other men—swindlers, evildoers, adulterers—or even like this tax collector.</span> <sup class="verse-number" aria-label="Verse 12">12</sup><span class="words-of-jesus">I fast twice a week and pay tithes of all that I acquire.’</span> <sup class="verse-number" aria-label="Verse 13">13</sup><span class="words-of-jesus">But the tax collector stood at a distance, unwilling even to lift up his eyes to heaven. Instead, he beat his breast and said, ‘God, have mercy on me, a sinner!’</span> <sup class="verse-number" aria-label="Verse 14">14</sup><span class="words-of-jesus">I tell you, this man, rather than the Pharisee, went home justified. For everyone who exalts himself will be humbled, but the one who humbles himself will be exalted.”</span></div>
+<div class="verse-commentary">
+          <p>The Pharisee's prayer is remarkable for what it is not. He does not ask God for anything. He does not confess anything. He does not acknowledge any need. His prayer is a performance review submitted to the Almighty, and the Pharisee has given himself excellent marks. Notice the structure: he thanks God, but only for what he himself has accomplished. His "gratitude" is a thin wrapper around self-congratulation. And his measuring stick is not God's character but other people: "I am not like other men." This is the core mechanism of pride. It does not measure itself against holiness; it measures itself against whoever happens to be standing nearby and comes away feeling superior.
 
 The tax collector's prayer, by contrast, contains just seven words in the Greek: <em>ho theos, hilastheti moi to hamartolo</em>. "God, be merciful to me, the sinner." The word <em>hilastheti</em> (from <em>hilaskomai</em>) is deeply significant. It does not simply mean "be nice to me." It carries the weight of propitiation, of atonement, of a sacrifice that covers guilt. The tax collector is not just asking for general kindness. He is pleading for the kind of mercy that only a substitutionary sacrifice can provide. He knows exactly what he deserves, and he throws himself on God's provision.
 
-Jesus' verdict is devastating: <em>dedikaiomenos</em>, "justified," "declared righteous." The tax collector went home with a right standing before God. The Pharisee went home with his self-assessment intact but nothing from heaven to show for it. The parable ends with the same principle from Saturday's memory text (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.14.11" target="_blank">Luke 14:11</a>): everyone who exalts himself will be humbled, and the one who humbles himself will be exalted. The upside-down kingdom that Jesus teaches is the opposite of what we expect. It is only the person who knows themselves to be a sinner that Christ can save. Self-knowledge that leads to honest confession is not weakness; it is the only doorway to justification.
+Jesus' verdict is devastating: <em>dedikaiomenos</em>, "justified," "declared righteous." The tax collector went home with a right standing before God. The Pharisee went home with his self-assessment intact but nothing from heaven to show for it. The parable ends with the same principle from Saturday's memory text (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.14.11" target="_blank" rel="noopener">Luke 14:11</a>): everyone who exalts himself will be humbled, and the one who humbles himself will be exalted. The upside-down kingdom that Jesus teaches is the opposite of what we expect. It is only the person who knows themselves to be a sinner that Christ can save. Self-knowledge that leads to honest confession is not weakness; it is the only doorway to justification.
 
-And what happens on the other side of that doorway? Jesus also counseled His followers to take the lowest seat and let the host elevate them in his own time (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.14.8-10" target="_blank">Luke 14:8-10</a>). The closer we draw to Christ, the more clearly we see our own sinfulness. That is not discouragement; that is evidence of proximity. When you feel furthest from deserving God's presence, you may be closer to Him than you have ever been.</div>
+And what happens on the other side of that doorway? Jesus also counseled His followers to take the lowest seat and let the host elevate them in his own time (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.14.8-10" target="_blank" rel="noopener">Luke 14:8-10</a>). The closer we draw to Christ, the more clearly we see our own sinfulness. That is not discouragement; that is evidence of proximity. When you feel furthest from deserving God's presence, you may be closer to Him than you have ever been.</p>
+        </div>
       </div>
+      <!-- BSB_FOOTNOTE: Luke 18:11 | 18:11 Or stood and prayed to himself -->
 
-      <!-- SUPPORTING: 1 John 1:9 (NKJV + CSB dual) -->
+      
+<!-- BSB_BLOCK: 1 John 1:9 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:63483951baa9b0adc587a65347a3d4e18390201ac7cb01f4a40017a071f5d4df | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 John 1:9</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1JN.1.9" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1JN.1.9" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"If we confess our sins, He is faithful and just to forgive us our sins and to cleanse us from all unrighteousness."</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"If we confess our sins, he is faithful and righteous to forgive us our sins and to cleanse us from all unrighteousness."</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">This verse is the tax collector's prayer answered in doctrinal form. John does not say "if we explain our sins" or "if we minimize our sins" or "if we compare our sins favorably to someone else's." The word is <em>confess</em>: to say the same thing about our sin that God says. And the promise is anchored not in our emotional state but in God's character: He is faithful (He will not break His word) and righteous (His forgiveness is legally grounded in the cross, not in a decision to look the other way). Confession requires exactly the kind of self-knowledge the Pharisee refused to practice. It requires seeing ourselves as we actually are, not as we compare to others. But when that honest seeing leads to honest confession, God's response is not condemnation. It is complete cleansing.</div>
+        <div class="verse-text">If we confess our sins, He is faithful and just to forgive us our sins and to cleanse us from all unrighteousness.</div>
+<div class="verse-commentary">
+          <p>This verse is the tax collector's prayer answered in doctrinal form. John does not say "if we explain our sins" or "if we minimize our sins" or "if we compare our sins favorably to someone else's." The word is <em>confess</em>: to say the same thing about our sin that God says. And the promise is anchored not in our emotional state but in God's character: He is faithful (He will not break His word) and righteous (His forgiveness is legally grounded in the cross, not in a decision to look the other way). Confession requires exactly the kind of self-knowledge the Pharisee refused to practice. It requires seeing ourselves as we actually are, not as we compare to others. But when that honest seeing leads to honest confession, God's response is not condemnation. It is complete cleansing.</p>
+        </div>
       </div>
 
       <!-- SUPPORTING: 1 Peter 5:5 -->
+<!-- BSB_BLOCK: 1 Peter 5:5 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:37ff571f02112c16286db0298e592a147aeb1553fa56894ac08247bd3bf71841 | footnotes-stripped:1 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Peter 5:5</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1PE.5.5" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1PE.5.5" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"In the same way, you who are younger, be subject to the elders. All of you clothe yourselves with humility toward one another, because God resists the proud but gives grace to the humble."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">Peter's language could not be more direct. The Greek word <em>antitassomai</em> ("resists") is a military term: it means to arrange battle lines against an enemy. God does not simply disapprove of pride. He actively sets Himself against it. This is not passive disappointment; it is opposition. The proud person is fighting God, whether they realize it or not. And the word "clothe" (<em>egkomboomai</em>) is equally vivid: it refers to tying on a servant's apron, the garment of someone who has come to work, not to be served. Peter is telling every believer, regardless of age or status, to put on humility the way a servant puts on a work apron. It is a deliberate, visible choice, and it is the precondition for receiving grace.</div>
+        <div class="verse-text">Young men, in the same way, submit yourselves to your elders. And all of you, clothe yourselves with humility toward one another, because, “God opposes the proud, but gives grace to the humble.”</div>
+<div class="verse-commentary">
+          <p>Peter's language could not be more direct. The Greek word <em>antitassomai</em> ("resists") is a military term: it means to arrange battle lines against an enemy. God does not simply disapprove of pride. He actively sets Himself against it. This is not passive disappointment; it is opposition. The proud person is fighting God, whether they realize it or not. And the word "clothe" (<em>egkomboomai</em>) is equally vivid: it refers to tying on a servant's apron, the garment of someone who has come to work, not to be served. Peter is telling every believer, regardless of age or status, to put on humility the way a servant puts on a work apron. It is a deliberate, visible choice, and it is the precondition for receiving grace.</p>
+        </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Peter 5:5 | 5:5 Proverbs 3:34 (see also LXX) -->
 
     </div>
 
@@ -831,22 +882,42 @@ And what happens on the other side of that doorway? Jesus also counseled His fol
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/LUK.18.9-14" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Luke+18:9-14&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

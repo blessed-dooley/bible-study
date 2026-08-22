@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -619,7 +648,7 @@ if ('serviceWorker' in navigator) {
     white-space: nowrap;
   }
 
-  /* ── DEEPER QUESTIONS ── */
+  /* LEGACY DEEPER QUESTIONS: retained only so archived Friday bodies can still be reassembled */
   .dq-block {
     margin: 28px 0;
     padding: 0;
@@ -773,78 +802,66 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Sanctuary at the Center of Every Room</div>
       <p>Every scene the week walked through was already happening inside the architecture of one building. The Hebrew word for the tabernacle Moses built at Sinai is <em>mishkan</em>, "dwelling place," the portable sanctuary that traveled with Israel through the wilderness and was later replaced by Solomon's stone temple in Jerusalem. The sanctuary was a teaching diagram in three dimensions. An outer court with an altar where the animal died for the worshiper. An inner Holy Place where the priest stood between the people and the throne. A Most Holy Place behind a curtain where God's glory rested over the ark, the same mercy seat from which He spoke Exodus 34's seven-word self-introduction in another generation. Once a year on the Day of Atonement (<em>Yom Kippur</em>), the high priest entered the Most Holy with blood, and the sins of the people for the year were "lifted" (the verb is <em>nose</em> again, the same verb Exodus 34:7 used) onto a scapegoat that carried them away into the wilderness.</p>
-      <p>Hebrews tells us that whole sanctuary was a copy of a heavenly one (<a class="vlink" href="https://www.bible.com/bible/1713/HEB.8.5" target="_blank">Hebrews 8:5</a>), and that Christ is now the High Priest there, ministering on our behalf with the blood of a sacrifice He offered once for all. Every garment the week named (Adam's tunic of skin in Eden, Joshua's festal robe in Zechariah, the wedding garment in Matthew 22, the fine linen in Revelation 19) is the same robe in different rooms of the same sanctuary. The repentance Tuesday named is the worshiper crossing the outer court. The forgiveness Wednesday named is the High Priest entering the Most Holy. The robe Thursday named is the garment the worshiper is given at the door because the High Priest's blood has already been poured at the altar. Hosea's agricultural metaphor sits in this same architecture. The hard soil of our hearts is the outer court; the rain of righteousness is what falls from the inner sanctuary onto the prepared ground.</p>
+      <p>Hebrews tells us that whole sanctuary was a copy of a heavenly one (<a class="vlink" href="https://www.bible.com/bible/3034/HEB.8.5" target="_blank" rel="noopener">Hebrews 8:5</a>), and that Christ is now the High Priest there, ministering on our behalf with the blood of a sacrifice He offered once for all. Every garment the week named (Adam's tunic of skin in Eden, Joshua's festal robe in Zechariah, the wedding garment in Matthew 22, the fine linen in Revelation 19) is the same robe in different rooms of the same sanctuary. The repentance Tuesday named is the worshiper crossing the outer court. The forgiveness Wednesday named is the High Priest entering the Most Holy. The robe Thursday named is the garment the worshiper is given at the door because the High Priest's blood has already been poured at the altar. Hosea's agricultural metaphor sits in this same architecture. The hard soil of our hearts is the outer court; the rain of righteousness is what falls from the inner sanctuary onto the prepared ground.</p>
     </div>
 
-    <!-- 3. DEEPER QUESTIONS -->
+    <!-- 3. WHAT THIS WEEK CLARIFIES -->
     <div class="section">
       <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Deeper Questions</span>
+        <span class="section-emoji">💡</span>
+        <span class="section-title">What This Week Clarifies</span>
         <div class="section-title-line"></div>
       </div>
 
-      <p>Three questions to carry into the rest of the day and into our conversations with one another. Each lands on a verse the week has put in our hands. Read them slowly. Answer them honestly. The good part Mary chose on Sunday is still on offer this afternoon.</p>
+      <p>Put the six days in one room and they raise a few honest tensions. A week about repentance opened on a woman who was not doing anything wrong. The God who tears and prunes turned out to move people by kindness. And the freest forgiveness in the Bible arrived wearing an if. Each of these has an answer the week already built. Here are the three, one at a time.</p>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">1</span>
-          <div class="dq-question">"Lead us not into temptation, but deliver us from evil" (Matt. 6:13). Jesus specifically taught His disciples to pray this way. How regularly do you pray for protection against temptation and sin?</div>
+      <div class="section-heading">Nothing Was Wrong in Martha's Kitchen</div>
+      <p>Sunday made a strange opening move for a week about repentance. Martha was not sinning. Her kitchen was full of love and her hands were busy serving Jesus's own dinner. Yet this is the room where the week began its call to turn around, a good woman doing good work, and it chose that room on purpose.</p>
+
+<!-- BSB_BLOCK: Isaiah 64:6 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:a5244fb1fed007a98b187008d87336f4999ec13cab819762965221b7b1dd550b | footnotes-stripped:1 | poetry:flattened -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Isaiah 64:6</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ISA.64.6" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
+        <div class="verse-text">Each of us has become like something unclean, and all our righteous acts are like filthy rags; we all wither like a leaf, and our iniquities carry us away like the wind.</div>
+        <div class="verse-commentary">
+          <p>Isaiah explains the choice of room. When he puts our righteous acts on the scale, the rags he names are not the sins we already regret. They are the good things, the clean house, the ironed shirt, the bread in the oven for guests. None of it is bad, and that was never his point. The point is what all of it cannot do. Our best days still cannot dress us for God, which is why repentance does not start with a list of crimes. It starts with sight, the one second the iron goes down and we see what our striving has actually been wearing. The week gave that sight a follow-up, because the same prophet watched God wrap a bride in a robe she did not sew. We supply the rags. He supplies the robe.</p>
+        </div>
+      </div>
+      <!-- BSB_FOOTNOTE: Isaiah 64:6 | 64:6 Or like a stained menstrual garment -->
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Matthew 6:13</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.6.13" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"And do not bring us into temptation, but deliver us from the evil one."</div>
+      <div class="section-heading">The Hand That Tears Is the Hand That Bandages</div>
+      <p>The week did not soften what God does with sin. The Spirit convicts like a lawyer laying out evidence. The Gardener carries a pruning knife. Hosea's people are told plainly that God has torn. Set beside all of that, Paul's claim sounds almost out of place. What leads a person to repentance, he says, is not the pressure of any of it. It is kindness.</p>
 
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>The word for "temptation" here also means a test or a trial, and the word for "deliver" is a strong one, the kind you'd use for being hauled out of a pit or dragged off a battlefield. Jesus puts them together on purpose. Following Him was never a promise that you'd stop being tempted. It was the promise that there's Someone to call when you are. And He put this line in the present tense, which means He expects you to pray it more than once, on the same daily breath as "give us this day our daily bread." Hosea said the same thing in farm language. In <a class="vlink" href="https://www.bible.com/bible/1713/HOS.10.12" target="_blank">Hosea 10:12</a> he tells people to "break up your unplowed ground," the picture of taking a blade to dirt that has gone hard over the winter so the next batch of seed can actually take root. Praying this prayer is the plowing. The rain that follows is the Spirit's work. Real protection from temptation isn't a life with no trials. It's keeping the soil of your heart soft enough that when the rain comes, the seed still grows.</p>
-          </div>
+<!-- BSB_BLOCK: Romans 2:4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:18045b5eb580de560048826f1e2986e48e9a674df5d9a3daf204e493560997e2 | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Romans 2:4</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.2.4" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">Or do you disregard the riches of His kindness, tolerance, and patience, not realizing that God’s kindness leads you to repentance?</div>
+        <div class="verse-commentary">
+          <p>The week resolved this by watching how the conviction actually arrives. The Helper Jesus promised is not a voice on a loudspeaker announcing our failure to the room. He is the teacher who crosses the floor while the music keeps playing and corrects with a touch at the shoulder, the Friend called alongside, standing with the accused instead of across from him. So the exposing, the pruning, and the tearing are not the opposite of the kindness. They are the kindness, doing the only kind of cutting a healer does, the cut that closes. Hosea said it first. The hand that tears is the hand that binds up, and it wounds only for the healing's sake. Nobody is shamed into turning around. We are loved into it, by a patience that holds the door open one more year.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">2</span>
-          <div class="dq-question">How would you explain the precious gift of Christ's robe of righteousness to a non-Christian or a new believer?</div>
+      <div class="section-heading">The If Was Never a Price Tag</div>
+      <p>The Memory Text hangs the whole week on a conditional. If we confess, He forgives. Read quickly, that if sounds like a fee at the window, as though the forgiveness the cross already paid for still costs one payment of sorrow at the door. The week kept insisting the gift is free, and then kept repeating a sentence with a condition at the front of it.</p>
+
+<!-- BSB_BLOCK: 1 John 1:9 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:63483951baa9b0adc587a65347a3d4e18390201ac7cb01f4a40017a071f5d4df | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">1 John 1:9</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1JN.1.9" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Philippians 2:12-13</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/PHP.2.12-13" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Therefore, my dear friends, just as you have always obeyed, so now, not only in my presence but even more in my absence, work out your own salvation with fear and trembling. For it is God who is working in you both to will and to work according to his good purpose."</div>
-
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Paul sets a command next to its reason. Verse 12 says work out your own salvation with fear and trembling. Verse 13 immediately tells you how that's even possible: it's God working in you, both the wanting and the doing. Look at that. Even your desire to change is something He is producing in you. Even the follow-through is His work. The "fear and trembling" isn't an employee scared of getting fired. It's the reverence of someone handling a priceless robe that was woven on a different hill. And that's the simplest way to explain the "robe of righteousness" to someone who's never heard the phrase. It isn't a sticker God slaps over your record while you keep secretly sewing fig leaves underneath. It's His own life being lived out through yours, the wanting and the working both. When Paul says Christ presents the church to Himself "without spot or wrinkle" (<a class="vlink" href="https://www.bible.com/bible/1713/EPH.5.27" target="_blank">Ephesians 5:27</a>), that beauty is His, not ours. The outfit we wear to the wedding is the very thing He wore to the cross, and even the desire to put it on that you woke up with this morning was already His gift.</p>
-          </div>
+        <div class="verse-text">If we confess our sins, He is faithful and just to forgive us our sins and to cleanse us from all unrighteousness.</div>
+        <div class="verse-commentary">
+          <p>The week's answer is that confession does not buy anything. It receives. Confessing means saying the same thing about our sin that God says about it, not a softer word, and John's two names for God in this verse are courtroom names. He is faithful and just to forgive, not lenient and easygoing, because the price was paid somewhere else, at the cross. That is why the if never functions as a fee. It functions like the open hand at the door of the banquet, where the robe was already bought, already sized, already hanging, and the only remaining question was whether the guest would let the King put it on him. Confession is how a person stops stitching leaves and holds still long enough to be dressed.</p>
+          <p>That is the healing the week held up from two sides. Our side is small on purpose, a sin said out loud and a body turned around. His side is everything else, the lifted iniquity, the emptied ledger, the robe provided at the door. A week that opened beside smashed tablets and a smoking calf ends inside a wedding hall, and nothing about that journey was earned along the way. The seven words God spoke on the mountain still hold. Confession is just the moment we finally agree with them.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">3</span>
-          <div class="dq-question">How does Christ's robe of righteousness connect to the message of the sanctuary, which is all about God forgiving and cleansing the repentant sinner?</div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Deuteronomy 4:3-4</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/DEU.4.3-4" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Your eyes have seen what the LORD did at Baal-peor, for the LORD your God destroyed every one of you who followed Baal-peor. But you who remained faithful to the LORD your God are all alive today."</div>
-
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Moses is giving his farewell sermon, and he points back to a disaster. At a place called Baal-Peor, a chunk of Israel chased after other gods, and twenty-four thousand people died in the plague that followed. Moses says one Hebrew word marks the difference between the ones who died and the ones still standing: <em>dabaq</em>, "you who held fast." It's a word for sticking tight, like tar on skin or a vine gripping a trellis. And here's the tender surprise. It's the same word used in <a class="vlink" href="https://www.bible.com/bible/1713/GEN.2.24" target="_blank">Genesis 2:24</a> for a husband who leaves his parents and "holds fast to his wife." The whole relationship with God was always meant to be a marriage, and holding fast to Him is the language of staying faithful to a spouse. That's the connection the third question is after. The sanctuary was the building where God's people came to be received and forgiven: the altar where the substitute died, the priest who stood between them and God, the presence behind the curtain. The robe of righteousness is what walks back out of that building onto the worshiper, and Christ turns out to be all of it at once, the sacrifice, the priest, the presence, and the Bridegroom waiting at the door. We wear the robe when we hold fast to Him.</p>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- 4. STILL SPEAKING (merged Street Level + Today's World) -->
@@ -877,7 +894,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="action-box">
-        Between now and Sabbath dinner, find one trusted person (spouse, friend, small-group brother or sister) and tell them one of two things. Either the sentence Tuesday's <em>Parakletos</em> named in your chest this week, with the concrete turn you took on the back of it. Or the question of the week that you still have not gotten an answer to (the one of God's seven Hebrew descriptors you are having the hardest time believing). Do not recap the week. Speak from your own kitchen. Then ask them to do the same in return. The robe at the door is for both of you. James says we confess our sins to one another and pray for one another, "so that you may be healed" (<a class="vlink" href="https://www.bible.com/bible/1713/JAS.5.16" target="_blank">James 5:16</a>); this is one of the rare practices the Bible names by its outcome. Walk into next week with at least one other person who knows what God did in yours.
+        Between now and Sabbath dinner, find one trusted person (spouse, friend, small-group brother or sister) and tell them one of two things. Either the sentence Tuesday's <em>Parakletos</em> named in your chest this week, with the concrete turn you took on the back of it. Or the question of the week that you still have not gotten an answer to (the one of God's seven Hebrew descriptors you are having the hardest time believing). Do not recap the week. Speak from your own kitchen. Then ask them to do the same in return. The robe at the door is for both of you. James says we confess our sins to one another and pray for one another, "so that you may be healed" (<a class="vlink" href="https://www.bible.com/bible/3034/JAS.5.16" target="_blank" rel="noopener">James 5:16</a>); this is one of the rare practices the Bible names by its outcome. Walk into next week with at least one other person who knows what God did in yours.
       </div>
     </div>
 
@@ -893,22 +910,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/HOS.10.12" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Hosea+10:12&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -937,8 +974,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -947,18 +986,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -966,6 +1009,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -985,6 +1029,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

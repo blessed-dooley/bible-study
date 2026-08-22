@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -625,7 +648,7 @@ if ('serviceWorker' in navigator) {
     white-space: nowrap;
   }
 
-  /* ── DEEPER QUESTIONS ── */
+  /* LEGACY DEEPER QUESTIONS: retained only so archived Friday bodies can still be reassembled */
   .dq-block {
     margin: 28px 0;
     padding: 0;
@@ -781,85 +804,59 @@ if ('serviceWorker' in navigator) {
       <p>Step back and take in the whole landscape this week walked through. A Roman world where the cross was so shameful that respectable people would not say the word. A Greek world where eloquence was entertainment and a traveling speaker could draw a crowd like a star athlete. A Jewish world aching for a warrior Messiah who would break Rome, not be broken by it. And a little church in Corinth made up mostly of the people all that grandeur looked straight past, slaves and tradesmen and women with no titles. Into the middle of it Paul set one unspeakable thing, a crucified Messiah, and refused to move it or dress it up. Every force in that world said the message was too shameful, too foolish, too weak to survive. It did more than survive. It outlasted the empire that invented the cross, and it is still standing here, being read on a screen two thousand years later.</p>
     </div>
 
-    <!-- 3. DEEPER QUESTIONS -->
+    <!-- 3. WHAT THIS WEEK CLARIFIES -->
     <div class="section">
       <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Deeper Questions</span>
+        <span class="section-emoji">💡</span>
+        <span class="section-title">What This Week Clarifies</span>
         <div class="section-title-line"></div>
       </div>
 
-      <p>These four questions are worth more than a quick answer. Sit with them, maybe with someone else, and let them press on the places where the cross still asks something of you.</p>
+      <p>Six days at the foot of one cross leave a few tensions pulled tight. Three deserve a slower look before Sabbath opens, and the week has already done the work of resolving them.</p>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">1</span>
-          <div class="dq-question">In the Garden of Gethsemane, Jesus prayed, "My Father, if it is possible, let this cup pass from me." What does that prayer reveal about the immense price He paid on the cross?</div>
+      <div class="section-heading">The Power Leaks Out Through the Polish</div>
+      <p>Sunday handed us a strange refusal. Paul walked into a city that treated its speakers like celebrities, carrying the one message he most needed people to believe, and he deliberately left his best rhetorical tools at home. Every instinct says the opposite. Precious things get our best packaging. The better the news, the better the presentation it deserves.</p>
+
+<!-- BSB_BLOCK: 1 Corinthians 1:17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:8d1f15805eaed1da7727ade5fd02c1caf042a8654347400760fba31489cc6b2d | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">1 Corinthians 1:17</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.17" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Matthew 26:39</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.26.39" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Going a little farther, he fell facedown and prayed, 'My Father, if it is possible, let this cup pass from me. Yet not as I will, but as you will.'"</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>We sometimes picture Jesus walking to the cross with serene, untroubled calm, as if being divine made it easy. Gethsemane shatters that picture. Hours before the nails, He is facedown in the dirt, sweating, begging the Father for any other way. The cup He dreads is not only the physical agony of crucifixion. It is bearing the full weight of the world's sin and the judgment that came with it, the one thing that would tear Him from His Father's side. That He asked for it to pass tells us how real the cost was. That He still prayed "yet not as I will, but as you will" tells us He paid it anyway. The price of your salvation was never small to Him. He counted it, dreaded it, and chose you straight through it.</p>
-          </div>
+        <div class="verse-text">For Christ did not send me to baptize, but to preach the gospel, not with words of wisdom, lest the cross of Christ be emptied of its power.</div>
+<div class="verse-commentary">
+          <p>The verse explains the refusal. Clever words do not add power to the cross. They empty it, and Sunday gave us the picture behind Paul's warning, a full cup of God's power drained by a slow leak nobody notices. Decoration is not neutral. It moves the room's attention from the message to the messenger, the way a singer can bury a beloved anthem under vocal runs until the crowd walks out praising the voice and humming nothing. So Paul sang it straight. A city that graded speakers for sport heard one plain sentence about a crucified Savior, with nothing impressive wrapped around it to take the credit. He was not lowering his standards. He was guarding the cup.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">2</span>
-          <div class="dq-question">Paul says, "God's foolishness is wiser than human wisdom." In what ways is God's wisdom so different from our own?</div>
+      <div class="section-heading">God Turned Down Both Wish Lists</div>
+      <p>Wednesday laid the two wish lists on the table. Jews wanted a sign from heaven, the kind of power display that settles arguments. Greeks wanted a wisdom elegant enough to satisfy the mind. Any sensible messenger would have led with one or the other. God declined both orders and sent a crucified Messiah, the one answer guaranteed to offend every audience at once.</p>
+
+<!-- BSB_BLOCK: 1 Corinthians 1:22-23 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:35cfafe7722d24b93fd5fb7cff509f7c361b53c91d525a9ca936d31854100b4b | footnotes-stripped:1 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">1 Corinthians 1:22-23</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.22-23" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">1 Corinthians 1:25</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.1.25" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"For God's foolishness is wiser than human wisdom, and God's weakness is stronger than human strength."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Human wisdom is forever asking how to win, how to climb, how to come out on top. God's wisdom did the opposite of all of it. It chose to come down, to serve, to lose, to die, and in doing so it accomplished what all our cleverness never could. Our wisdom would never have drawn up a rescue plan that ran through a cross, because our wisdom is built to avoid exactly that kind of loss. That is the difference. We measure wisdom by what it gains. God measured it by what love was willing to give up. What looks like foolishness from below is simply wisdom operating on a scale and toward an end we are too small to see. The cross is not God dumbing Himself down to our level. It is God reaching deeper than our minds can follow.</p>
-          </div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 22">22</sup>Jews demand signs and Greeks search for wisdom, <sup class="verse-number" aria-label="Verse 23">23</sup>but we preach Christ crucified, a stumbling block to Jews and foolishness to Gentiles,</div>
+<div class="verse-commentary">
+          <p>The week's answer is that both wish lists carried the same fine print. A Messiah who performed on demand would have left the audience in the judge's seat, grading God against their expectations and approving Him only when He flattered them. Rescue on those terms would have crowned the very pride that was sinking us. So God sent a stumbling block instead. Even Jesus' closest friends tripped over it, three plain predictions of the cross that would not fit any slot their minds had ready, and they needed an empty tomb before the words made sense. The offense was never a failure of messaging. It was the rescue refusing to flatter what it came to heal. And the stone they tripped on turned out to be a doorway, forgiveness announced to the whole room and light carried to the ends of the earth (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.13.47" target="_blank" rel="noopener">Acts 13:47</a>).</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Corinthians 1:23 | 1:23 BYZ and TR to Greeks -->
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">3</span>
-          <div class="dq-question">A crucified Christ was a stumbling block to the Jews and foolishness to the Greeks. What truths that we still hold today land the same way on modern ears, and why?</div>
-        </div>
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">1 Corinthians 1:23</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.1.23" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"but we preach Christ crucified, a stumbling block to the Jews and foolishness to the Gentiles,"</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Paul's world tripped over the cross itself. Ours tends to trip over what surrounds it. That we are sinners who cannot fix ourselves offends a culture sure that people are basically fine. That there is one way to God offends a world that prizes having many. That a loving God would let His Son die, that forgiveness runs through blood, that real freedom comes through surrender, all of it still sounds backward to the modern ear, the same way a crucified Messiah did to Corinth. The temptation in every age is identical, to sand down the offensive edges until the message goes down easy and saves no one. Paul's example says keep the hard truth and trust it. The parts of the gospel the world finds most offensive are often the very parts it most needs to hear.</p>
-          </div>
-        </div>
-      </div>
+      <div class="section-heading">The Wisdom They Were Chasing Had a Face</div>
+      <p>By Thursday the week had swung a wrecking ball through nearly everything Corinth called smart. God promises to frustrate the intelligent, fills His church with people no recruiter would chase, and calls the world's best thinking foolish. Follow that trail far enough and it starts to sound like God has a quarrel with the mind itself.</p>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">4</span>
-          <div class="dq-question">Paul says the person without the Spirit cannot receive the things of God. So how do we talk about Jesus to people like that in a way that reaches their hearts, and where do our actions come in?</div>
+<!-- BSB_BLOCK: 1 Corinthians 1:30 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:7cbeb6b1e58d3219d28b888dd4b330c199e05a0cd55d1f8e373fa325471c362e | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">1 Corinthians 1:30</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.30" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">1 Corinthians 2:14</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.2.14" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"But the person without the Spirit does not receive what comes from God's Spirit, because it is foolishness to him; he is not able to understand it since it is evaluated spiritually."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>This verse could scare us into silence, but it should really take the pressure off. If understanding the gospel came down to clever enough arguments, then a hard heart would just be a debate we lost. Paul says it is not like that. The natural mind cannot receive the things of the Spirit by reasoning alone, which means no one was ever argued into the kingdom, and we do not have to win to be faithful. That frees us to do the things that actually soften a closed heart, to live a life that makes the gospel believable, to love people who cannot yet love God, to stay patient, and to pray for the one thing only God's Spirit can do, give sight to the blind. We plant and water with our words and our lives. God gives the growth. Our job is faithfulness, not results.</p>
-          </div>
+        <div class="verse-text">It is because of Him that you are in Christ Jesus, who has become for us wisdom from God: our righteousness, holiness, and redemption.</div>
+<div class="verse-commentary">
+          <p>The week's target was never the mind. Tuesday showed what God actually tears down, the self-rescuing wisdom that was quietly dismantling the people who trusted it, the kind He destroys because it was destroying us. Thursday showed what He hands back. Paul does not say Christ teaches wisdom from a safe distance. He says Christ became wisdom for us, then unpacks the gift into three things no argument has ever produced. A guilty record declared right. A life being remade toward holiness. A captive bought back and walked home free. That is wisdom doing what wisdom was always for, and it comes the way a trade comes to an apprentice, by belonging to the Master and standing close. The week never asked us to stop thinking. It asked us to stop expecting our thinking to do a Savior's job.</p>
         </div>
       </div>
 
@@ -912,22 +909,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.1.18-31" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+1:18-31&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

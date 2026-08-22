@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -735,53 +758,58 @@ if ('serviceWorker' in navigator) {
 
       <p>There is so much to look forward to: a world with no more death, no more goodbyes, no more hospital waiting rooms. But today's reading keeps gently redirecting our wonder away from the gifts and toward the Giver. Every blessing of eternity, it turns out, is really a description of one Person, the Lamb, who is at once the One we will worship, the One we follow, and the Shepherd who never stops leading us home.</p>
 
+<!-- BSB_BLOCK: Isaiah 25:8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b5f6d63fd3ea75858b366a5256c1aa9c540ffd9804fd57030425ba6ee4797a04 | footnotes-stripped:2 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Isaiah 25:8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ISA.25.8" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ISA.25.8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"When he has swallowed up death once and for all, the Lord GOD will wipe away the tears from every face and remove his people's disgrace from the whole earth, for the LORD has spoken."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Start with the blessing everyone longs for. Isaiah promises a day when God will "swallow up death once and for all," the same promise John echoes in the new earth where there is no more death or grief or crying or pain (<a class="vlink" href="https://www.bible.com/bible/1713/REV.21.4" target="_blank">Revelation 21:4</a>). But notice how personal the picture is. God does not just abolish death by decree from a distance. He kneels down and "will wipe away the tears from every face," the way a parent wipes a crying child's cheeks with their own thumb. The end of suffering is not described as a policy change. It is described as the tenderest gesture one person can make toward another. Even the biggest blessing of eternity, the death of death itself, comes to us through the hands of a Person who gets close enough to touch our faces.</p>
+        <div class="verse-text">He will swallow up death forever. The Lord GOD will wipe away the tears from every face and remove the disgrace of His people from the whole earth. For the LORD has spoken.</div>
+<div class="verse-commentary">
+          <p>Start with the blessing everyone longs for. Isaiah promises a day when God will "swallow up death once and for all," the same promise John echoes in the new earth where there is no more death or grief or crying or pain (<a class="vlink" href="https://www.bible.com/bible/3034/REV.21.4" target="_blank" rel="noopener">Revelation 21:4</a>). But notice how personal the picture is. God does not just abolish death by decree from a distance. He kneels down and "will wipe away the tears from every face," the way a parent wipes a crying child's cheeks with their own thumb. The end of suffering is not described as a policy change. It is described as the tenderest gesture one person can make toward another. Even the biggest blessing of eternity, the death of death itself, comes to us through the hands of a Person who gets close enough to touch our faces.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Isaiah 25:8 | 25:8 Or He will swallow up death in victory; cited in 1 Corinthians 15:54 -->
+      <!-- BSB_FOOTNOTE: Isaiah 25:8 | 25:8 Cited in Revelation 7:17 and Revelation 21:4 -->
 
+<!-- BSB_BLOCK: Revelation 5:12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c6ab6fbb2374fdd369a80447ff31679bfa31eeee962f76075843f1f4ceb35b6f | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Revelation 5:12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/REV.5.12" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/REV.5.12" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"They said with a loud voice: Worthy is the Lamb who was slaughtered to receive power and riches and wisdom and strength and honor and glory and blessing!"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>This is the song of heaven, and it is worth noticing what it praises Him for. Not "worthy is the Lamb who is strong," but "worthy is the Lamb who was slaughtered." The wounds are not hidden in glory; they are the reason for the worship. The word John uses for the Lamb all through Revelation is the Greek <em>arnion</em>, a tender little word, almost "little lamb," and he uses it of the One seated on the throne of the universe. That is the deliberate shock of the whole book: ultimate power wearing the form of ultimate gentleness, the slain made supreme. The greatest blessing of heaven will be standing in that throng and finally getting to thank Him out loud, in person, for what He did on a fallen earth. Every other joy of eternity is a wave; this is the ocean.</p>
+        <div class="verse-text">In a loud voice they were saying: “Worthy is the Lamb who was slain, to receive power and riches and wisdom and strength and honor and glory and blessing!”</div>
+<div class="verse-commentary">
+          <p>This is the song of heaven, and it is worth noticing what it praises Him for. Not "worthy is the Lamb who is strong," but "Worthy is the Lamb who was slain." The wounds are not hidden in glory; they are the reason for the worship. The word John uses for the Lamb all through Revelation is the Greek <em>arnion</em>, a tender little word, almost "little lamb," and he uses it of the One seated on the throne of the universe. That is the deliberate shock of the whole book: ultimate power wearing the form of ultimate gentleness, the slain made supreme. The greatest blessing of heaven will be standing in that throng and finally getting to thank Him out loud, in person, for what He did on a fallen earth. Every other joy of eternity is a wave; this is the ocean.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Revelation 14:4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:2cfbdaffe5640325c7da15ae9e6684827d6b7f4942f1ee22eafa9ba47782782a | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Revelation 14:4</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/REV.14.4" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/REV.14.4" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"These are the ones who have not defiled themselves with women, since they remained virgins. These are the ones who follow the Lamb wherever he goes. They were redeemed from humanity as the firstfruits for God and the Lamb."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>The first line uses the Bible's old picture of faithfulness, where loving God with an undivided heart is "purity" and chasing other gods is "adultery"; it is the same bride-language from yesterday, describing people whose devotion has not been split. But the heart of the verse is the middle sentence: "These are the ones who follow the Lamb wherever He goes." It was John the Baptist who first called Jesus "the Lamb of God" (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.1.36" target="_blank">John 1:36</a>), and the moment two of his disciples heard it, they simply got up and followed Jesus (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.1.37" target="_blank">John 1:37</a>). That is the whole Christian life in one motion. And here is the sober, hopeful catch: following the Lamb "wherever He goes" in heaven is just the continuation of following Him here. Heaven is not where we suddenly start wanting to be near Him. It is where the following we began on earth finally has no obstacles left.</p>
+        <div class="verse-text">These are the ones who have not been defiled with women, for they are virgins. They follow the Lamb wherever He goes. They have been redeemed from among men as firstfruits to God and to the Lamb.</div>
+<div class="verse-commentary">
+          <p>The first line uses the Bible's old picture of faithfulness, where loving God with an undivided heart is "purity" and chasing other gods is "adultery"; it is the same bride-language from yesterday, describing people whose devotion has not been split. But the heart of the verse is the middle sentence: "They follow the Lamb wherever He goes." It was John the Baptist who first called Jesus "the Lamb of God" (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.1.36" target="_blank" rel="noopener">John 1:36</a>), and the moment two of his disciples heard it, they simply got up and followed Jesus (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.1.37" target="_blank" rel="noopener">John 1:37</a>). That is the whole Christian life in one motion. And here is the sober, hopeful catch: following the Lamb "wherever He goes" in heaven is just the continuation of following Him here. Heaven is not where we suddenly start wanting to be near Him. It is where the following we began on earth finally has no obstacles left.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Revelation 7:17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:97a2c97cc8fc64c6462e7caba169a5dfc3839f34b2ca810dfb301fa75bf5b9ff | footnotes-stripped:3 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Revelation 7:17</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/REV.7.17" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/REV.7.17" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"for the Lamb who is at the center of the throne will shepherd them; he will guide them to springs of the waters of life, and God will wipe away every tear from their eyes."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Here is the image that holds the whole day together, and it is gloriously mixed on purpose: "the Lamb... will shepherd them." The Lamb is the Shepherd. The One who was led to slaughter is the One who now leads the flock. And catch that He keeps shepherding in heaven; the leading does not stop when the journey is over. We will still be following Him to ever-fresh springs, still being guided, forever moving deeper into His presence rather than settling into a static reward. The defining mark of His people in that world is simple: His name on their foreheads (<a class="vlink" href="https://www.bible.com/bible/1713/REV.22.4" target="_blank">Revelation 22:4</a>), meaning we belong to Him and our minds are finally, fully fixed on Him. The same gentle voice we have been straining to hear through the hard times will be the voice we follow to the water, and the hand that wipes the last tear will be a scarred one.</p>
+        <div class="verse-text">For the Lamb in the center of the throne will be their shepherd. ‘He will lead them to springs of living water,’ and ‘God will wipe away every tear from their eyes.’”</div>
+<div class="verse-commentary">
+          <p>Here is the image that holds the whole day together, and it is gloriously mixed on purpose: "the Lamb... will shepherd them." The Lamb is the Shepherd. The One who was led to slaughter is the One who now leads the flock. And catch that He keeps shepherding in heaven; the leading does not stop when the journey is over. We will still be following Him to ever-fresh springs, still being guided, forever moving deeper into His presence rather than settling into a static reward. The defining mark of His people in that world is simple: His name on their foreheads (<a class="vlink" href="https://www.bible.com/bible/3034/REV.22.4" target="_blank" rel="noopener">Revelation 22:4</a>), meaning we belong to Him and our minds are finally, fully fixed on Him. The same gentle voice we have been straining to hear through the hard times will be the voice we follow to the water, and the hand that wipes the last tear will be a scarred one.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Revelation 7:17 | 7:17 See Psalm 23:1. -->
+      <!-- BSB_FOOTNOTE: Revelation 7:17 | 7:17 Isaiah 49:10 -->
+      <!-- BSB_FOOTNOTE: Revelation 7:17 | 7:17 Isaiah 25:8 -->
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -852,22 +880,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/REV.14.4" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Revelation+14:4&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

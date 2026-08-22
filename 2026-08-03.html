@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -733,57 +756,57 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Paul has been arguing since yesterday that the gifts share one Source, and now he needs a picture big enough to hold one and many at the same time. He does not reach for an army, a machine, or an org chart. He reaches for the thing breathing under every reader's tunic (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.12-31" target="_blank">1 Corinthians 12:12-31</a>). A body. It is the most democratic image in the world, owned equally by the slave and the senator, and Paul spends twenty verses letting it preach. By the end, the question is no longer why are we so different. It is how a body this different stays this alive.</p>
+      <p>Paul has been arguing since yesterday that the gifts share one Source, and now he needs a picture big enough to hold one and many at the same time. He does not reach for an army, a machine, or an org chart. He reaches for the thing breathing under every reader's tunic (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.12-31" target="_blank" rel="noopener">1 Corinthians 12:12-31</a>). A body. It is the most democratic image in the world, owned equally by the slave and the senator, and Paul spends twenty verses letting it preach. By the end, the question is no longer why are we so different. It is how a body this different stays this alive.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 12:12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:ed7c900ab79daf2bd6da3cda0cbd946208cf4bdc0becb453202355f360ed1e1d | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 12:12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.12.12" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.12.12" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For just as the body is one and has many parts, and all the parts of that body, though many, are one body, so also is Christ."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>The Greek word running through this chapter is <em>melos</em>, a limb, a living body part, and it lets Paul hold two truths together without strain. The body is genuinely one. The parts are genuinely many. Nobody looks at a hand and a foot and panics about the contradiction, because a body is simply what oneness with variety looks like. But the sentence saves its shock for the last three words. Paul does not say, so also is the church. He says, so also is Christ. The church is not a club that admires Jesus from a distance. It is His body, and we were placed into it, Jew and Greek, slave and free, all baptized by one Spirit into one body and given the same Spirit to drink (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.13" target="_blank">1 Corinthians 12:13</a>). Membership was never a metaphor.</p>
+        <div class="verse-text">The body is a unit, though it is composed of many parts. And although its parts are many, they all form one body. So it is with Christ.</div>
+<div class="verse-commentary">
+          <p>The Greek word running through this chapter is <em>melos</em>, a limb, a living body part, and it lets Paul hold two truths together without strain. The body is genuinely one. The parts are genuinely many. Nobody looks at a hand and a foot and panics about the contradiction, because a body is simply what oneness with variety looks like. But the sentence saves its shock for the last three words. Paul does not say, so also is the church. He says, so also is Christ. The church is not a club that admires Jesus from a distance. It is His body, and we were placed into it, Jew and Greek, slave and free, all baptized by one Spirit into one body and given the same Spirit to drink (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.13" target="_blank" rel="noopener">1 Corinthians 12:13</a>). Membership was never a metaphor.</p>
         </div>
       </div>
 
-      <p>Then Paul does something almost playful. He lets the body parts talk. A foot resigns because it is not a hand, an ear because it is not an eye (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.15-20" target="_blank">1 Corinthians 12:15-20</a>), and Paul answers with a question a child could grade. If the whole body were an eye, where would the hearing be (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.17" target="_blank">1 Corinthians 12:17</a>)? The body is not one part but many (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.14" target="_blank">1 Corinthians 12:14</a>), yet the many remain one body (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.20" target="_blank">1 Corinthians 12:20</a>), because one and the same Spirit breathes through all of them (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.11" target="_blank">1 Corinthians 12:11</a>). And the argument cuts both directions. The eye cannot look down at the hand and say, I do not need you (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.21-26" target="_blank">1 Corinthians 12:21-26</a>). The feet depend on the eyes to see the road. The eyes depend on the hands to touch anything at all. Independence is a speech only a corpse can finish.</p>
+      <p>Then Paul does something almost playful. He lets the body parts talk. A foot resigns because it is not a hand, an ear because it is not an eye (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.15-20" target="_blank" rel="noopener">1 Corinthians 12:15-20</a>), and Paul answers with a question a child could grade. If the whole body were an eye, where would the hearing be (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.17" target="_blank" rel="noopener">1 Corinthians 12:17</a>)? The body is not one part but many (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.14" target="_blank" rel="noopener">1 Corinthians 12:14</a>), yet the many remain one body (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.20" target="_blank" rel="noopener">1 Corinthians 12:20</a>), because one and the same Spirit breathes through all of them (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.11" target="_blank" rel="noopener">1 Corinthians 12:11</a>). And the argument cuts both directions. The eye cannot look down at the hand and say, I do not need you (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.21-26" target="_blank" rel="noopener">1 Corinthians 12:21-26</a>). The feet depend on the eyes to see the road. The eyes depend on the hands to touch anything at all. Independence is a speech only a corpse can finish.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 12:18 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:118e0814a3a6a42f0c523203099a908cc194df8421d11eceadd4a4b336ad17aa | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 12:18</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.12.18" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.12.18" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"But as it is, God has arranged each one of the parts in the body just as he wanted."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>God has arranged. Two words that move every gift conversation from the mirror to the throne. Your place in the body was not a career outcome or an accident of temperament. It was arrangement, deliberate and personal, just as He wanted. And watch where His arranging attention concentrates. The parts that seem weaker are actually indispensable (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.22" target="_blank">1 Corinthians 12:22</a>), and the parts we consider less honorable get dressed with greater honor (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.23" target="_blank">1 Corinthians 12:23</a>), the way a body wraps and guards exactly what is most vulnerable. God aims extra dignity at the members most likely to be overlooked. So the real question is not whether you were given a good position. It is whether you trust the Arranger. Somebody in your congregation is a load-bearing wall wearing work clothes. God put them there on purpose.</p>
+        <div class="verse-text">But in fact, God has arranged the members of the body, every one of them, according to His design.</div>
+<div class="verse-commentary">
+          <p>God has arranged. Two words that move every gift conversation from the mirror to the throne. Your place in the body was not a career outcome or an accident of temperament. It was arrangement, deliberate and personal, just as He wanted. And watch where His arranging attention concentrates. The parts that seem weaker are actually indispensable (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.22" target="_blank" rel="noopener">1 Corinthians 12:22</a>), and the parts we consider less honorable get dressed with greater honor (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.23" target="_blank" rel="noopener">1 Corinthians 12:23</a>), the way a body wraps and guards exactly what is most vulnerable. God aims extra dignity at the members most likely to be overlooked. So the real question is not whether you were given a good position. It is whether you trust the Arranger. Somebody in your congregation is a load-bearing wall wearing work clothes. God put them there on purpose.</p>
         </div>
       </div>
 
-      <p>Why does unity through diversity matter this much to God? Because the church is meant to resemble Him. Father, Son, and Spirit are distinct Persons, never dissolved into sameness, working in perfect concert through every gift (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.4-6" target="_blank">1 Corinthians 12:4-6</a>), equipping the church and sending it out on mission (<a class="vlink" href="https://www.bible.com/bible/1713/EPH.4.11-13" target="_blank">Ephesians 4:11-13</a>). Uniformity could never picture that God. Only a diverse body moving as one can.</p>
+      <p>Why does unity through diversity matter this much to God? Because the church is meant to resemble Him. Father, Son, and Spirit are distinct Persons, never dissolved into sameness, working in perfect concert through every gift (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.4-6" target="_blank" rel="noopener">1 Corinthians 12:4-6</a>), equipping the church and sending it out on mission (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.4.11-13" target="_blank" rel="noopener">Ephesians 4:11-13</a>). Uniformity could never picture that God. Only a diverse body moving as one can.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 12:26 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:0c3478aa8506459bae05f4f47f996ae09f1871a440fa1609ecb52df6e1f7e920 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 12:26</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.12.26" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.12.26" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"So if one member suffers, all the members suffer with it; if one member is honored, all the members rejoice with it."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Here is the proof that Paul's body is no cold diagram. It has nerve endings. When a hammer meets a thumb, the whole person says ow, not the thumb, and when the race is won, the runner gets the medal, not the legs. God wired His church with that same shared nervous system, so that there would be no division in the body and the members would carry the same concern for one another (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.25" target="_blank">1 Corinthians 12:25</a>). A church where one member's job loss, hospital bill, or quiet depression registers nowhere else is not a body yet. It is a crowd. And a church where one member's good news makes forty other people glad has learned Christ's anatomy. Pain that travels proves the parts are attached. So does joy.</p>
+        <div class="verse-text">If one part suffers, every part suffers with it; if one part is honored, every part rejoices with it.</div>
+<div class="verse-commentary">
+          <p>Here is the proof that Paul's body is no cold diagram. It has nerve endings. When a hammer meets a thumb, the whole person says ow, not the thumb, and when the race is won, the runner gets the medal, not the legs. God wired His church with that same shared nervous system, so that there would be no division in the body and the members would carry the same concern for one another (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.25" target="_blank" rel="noopener">1 Corinthians 12:25</a>). A church where one member's job loss, hospital bill, or quiet depression registers nowhere else is not a body yet. It is a crowd. And a church where one member's good news makes forty other people glad has learned Christ's anatomy. Pain that travels proves the parts are attached. So does joy.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 12:31 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:324d33939b5d928e85aad20128f79b04bd330faa1862dfc9a7698633ed922ea9 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 12:31</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.12.31" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.12.31" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"But desire the greater gifts. And I will show you an even better way."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>The chapter ends on a hinge. After dismantling Corinth's gift rankings, Paul says desire the greater gifts, and before anyone can ask which gifts qualify, he changes the subject on purpose. I will show you an even better way. Tomorrow that way gets its own chapter, and it will redefine greater from the inside out. For now, spread out the inventories Scripture offers. Wisdom, knowledge, faith, healing, miracles, prophecy, discernment, tongues (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.8-10" target="_blank">1 Corinthians 12:8-10</a>), apostles, teachers, helping, leading (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.28" target="_blank">1 Corinthians 12:28</a>), serving, encouraging, giving, showing mercy (<a class="vlink" href="https://www.bible.com/bible/1713/ROM.12.6-8" target="_blank">Romans 12:6-8</a>), evangelists and shepherds (<a class="vlink" href="https://www.bible.com/bible/1713/EPH.4.11" target="_blank">Ephesians 4:11</a>). The lists overlap but never match, because none of them was meant to be the last word. The Spirit's catalog is open. What every gift is for, practiced wisely and with love, is the only settled question.</p>
+        <div class="verse-text">But eagerly desire the greater gifts. And now I will show you the most excellent way.</div>
+<div class="verse-commentary">
+          <p>The chapter ends on a hinge. After dismantling Corinth's gift rankings, Paul says desire the greater gifts, and before anyone can ask which gifts qualify, he changes the subject on purpose. I will show you an even better way. Tomorrow that way gets its own chapter, and it will redefine greater from the inside out. For now, spread out the inventories Scripture offers. Wisdom, knowledge, faith, healing, miracles, prophecy, discernment, tongues (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.8-10" target="_blank" rel="noopener">1 Corinthians 12:8-10</a>), apostles, teachers, helping, leading (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.28" target="_blank" rel="noopener">1 Corinthians 12:28</a>), serving, encouraging, giving, showing mercy (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.12.6-8" target="_blank" rel="noopener">Romans 12:6-8</a>), evangelists and shepherds (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.4.11" target="_blank" rel="noopener">Ephesians 4:11</a>). The lists overlap but never match, because none of them was meant to be the last word. The Spirit's catalog is open. What every gift is for, practiced wisely and with love, is the only settled question.</p>
         </div>
       </div>
     </div>
@@ -820,7 +843,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>So also is Christ. Paul had a reason to write those words instead of so also is the church, and he learned it face down on the Damascus road. The risen Jesus did not ask, why are you persecuting My people. He asked, why are you persecuting Me (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.9.4" target="_blank">Acts 9:4</a>). Touch the body and you have touched the Head. Every sympathy this chapter demands of us, Christ already practices, and when one member suffers, He suffers first and nearest. He earned that nearness the hard way. The eternal Son took a body, hands, feet, eyes, a back that could be flogged, and at the cross He let Himself be treated as the part the world called most dishonorable, stripped and shamed outside the city, so that every overlooked member could be clothed with honor. The church has a Head who knows from the inside what it costs to be a body. He is not managing His people from a distance. He is living through every limb He owns.</p>
+      <p>So also is Christ. Paul had a reason to write those words instead of so also is the church, and he learned it face down on the Damascus road. The risen Jesus did not ask, why are you persecuting My people. He asked, why are you persecuting Me (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.9.4" target="_blank" rel="noopener">Acts 9:4</a>). Touch the body and you have touched the Head. Every sympathy this chapter demands of us, Christ already practices, and when one member suffers, He suffers first and nearest. He earned that nearness the hard way. The eternal Son took a body, hands, feet, eyes, a back that could be flogged, and at the cross He let Himself be treated as the part the world called most dishonorable, stripped and shamed outside the city, so that every overlooked member could be clothed with honor. The church has a Head who knows from the inside what it costs to be a body. He is not managing His people from a distance. He is living through every limb He owns.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -857,22 +880,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.12.12-31" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+12:12-31&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

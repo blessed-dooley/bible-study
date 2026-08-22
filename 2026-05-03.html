@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -722,7 +751,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Statesman Who Outlasted the Empires</div>
       <p>Picture the floorplan of Daniel's room in Babylon. It is the second story of a residence prominent enough that the windows can be seen from the street. The window facing southwest, toward the rubble of Solomon's temple seven hundred miles away, is the one that mattered. He opens it three times a day even after the king signs an edict that turns the open window into a death sentence. The watchers below have been waiting for years to find one fault in him. They will not find a moral failure, so they go after his religion.</p>
-      <p>Daniel was deported to Babylon around 605 BC, somewhere between fifteen and eighteen years old. By the time we meet him in chapter six, he has watched four kings (Nebuchadnezzar, Belshazzar, Darius, and Cyrus on the way) and lived through the takeover that ended the Babylonian empire entirely. The cities he has seen burn, the gods he has watched topple, the courts he has navigated, none of it scrambled the schedule. The Bible's repeated descriptors of him read less like a résumé and more like the scent rising off a lifetime of hours at the open window: a teenager who refused to defile himself with the king's diet in <a class="vlink" href="https://www.bible.com/bible/1713/DAN.1.8" target="_blank">Daniel 1:8</a> and was given understanding in dreams in <a class="vlink" href="https://www.bible.com/bible/1713/DAN.1.17" target="_blank">Daniel 1:17</a>; an interpreter in whom the Spirit of the holy God was visible to four different kings in <a class="vlink" href="https://www.bible.com/bible/1713/DAN.4.9" target="_blank">Daniel 4:9</a>, <a class="vlink" href="https://www.bible.com/bible/1713/DAN.4.18" target="_blank">Daniel 4:18</a>, and <a class="vlink" href="https://www.bible.com/bible/1713/DAN.5.14" target="_blank">Daniel 5:14</a>; an old man called "greatly beloved" by Heaven itself in <a class="vlink" href="https://www.bible.com/bible/1713/DAN.9.23" target="_blank">Daniel 9:23</a> and <a class="vlink" href="https://www.bible.com/bible/1713/DAN.10.11" target="_blank">Daniel 10:11</a>. The character was forged before it was tested.</p>
+      <p>Daniel was deported to Babylon around 605 BC, somewhere between fifteen and eighteen years old. By the time we meet him in chapter six, he has watched four kings (Nebuchadnezzar, Belshazzar, Darius, and Cyrus on the way) and lived through the takeover that ended the Babylonian empire entirely. The cities he has seen burn, the gods he has watched topple, the courts he has navigated, none of it scrambled the schedule. The Bible's repeated descriptors of him read less like a résumé and more like the scent rising off a lifetime of hours at the open window: a teenager who refused to defile himself with the king's diet in <a class="vlink" href="https://www.bible.com/bible/3034/DAN.1.8" target="_blank" rel="noopener">Daniel 1:8</a> and was given understanding in dreams in <a class="vlink" href="https://www.bible.com/bible/3034/DAN.1.17" target="_blank" rel="noopener">Daniel 1:17</a>; an interpreter in whom the Spirit of the holy God was visible to four different kings in <a class="vlink" href="https://www.bible.com/bible/3034/DAN.4.9" target="_blank" rel="noopener">Daniel 4:9</a>, <a class="vlink" href="https://www.bible.com/bible/3034/DAN.4.18" target="_blank" rel="noopener">Daniel 4:18</a>, and <a class="vlink" href="https://www.bible.com/bible/3034/DAN.5.14" target="_blank" rel="noopener">Daniel 5:14</a>; an old man called "greatly beloved" by Heaven itself in <a class="vlink" href="https://www.bible.com/bible/3034/DAN.9.23" target="_blank" rel="noopener">Daniel 9:23</a> and <a class="vlink" href="https://www.bible.com/bible/3034/DAN.10.11" target="_blank" rel="noopener">Daniel 10:11</a>. The character was forged before it was tested.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -735,34 +764,30 @@ if ('serviceWorker' in navigator) {
 
       <p>By the time the king signs the death decree in chapter six, Daniel has been praying with the window open for somewhere north of fifty years. The schedule is older than the threat. Two prayers in particular sit at opposite ends of his life and the same testimony runs through both: a man with a quiet, abiding connection with God learns to talk to Him about everything. The thanksgiving in chapter two and the kneeling in chapter six are not different practices. They are the same conversation in two different rooms.</p>
 
+<!-- BSB_BLOCK: Daniel 2:20-23 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:e722870807a05749cb1e90e5ffdafe415425544c1cff30e772ee999727f2961f | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Daniel 2:20-23</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/DAN.2.20-23" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/DAN.2.20-23" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Daniel answered and said: 'Blessed be the name of God forever and ever, for wisdom and might are His. And He changes the times and the seasons; He removes kings and raises up kings; He gives wisdom to the wise and knowledge to those who have understanding. He reveals deep and secret things; He knows what is in the darkness, and light dwells with Him. I thank You and praise You, O God of my fathers; You have given me wisdom and might, and have now made known to me what we asked of You, for You have made known to us the king's matter.'"</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"Daniel said: May the name of God be praised forever and ever, for wisdom and power belong to him. He changes the times and seasons; he removes kings and establishes kings. He gives wisdom to the wise and knowledge to those who have understanding. He reveals the deep and hidden things; he knows what is in the darkness, and light dwells with him. I offer thanks and praise to you, God of my ancestors, because you have given me wisdom and power. And now you have let me know what we asked of you, for you have let us know the king's mystery."</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>This is what Daniel sounds like before the danger has fully passed. King Nebuchadnezzar has decreed that every wise man in Babylon will be executed unless someone can not only interpret his dream but tell him what the dream was. Daniel has gathered his three friends and asked them to plead for mercy with him in <a class="vlink" href="https://www.bible.com/bible/1713/DAN.2.18" target="_blank">Daniel 2:18</a>. God has answered by giving him the dream and its meaning in a night vision. The natural human move would be to run to the king with the answer before someone changed his mind. Daniel runs in the other direction. He stops and sings.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 20">20</sup>and declared: “Blessed be the name of God forever and ever, for wisdom and power belong to Him. <sup class="verse-number" aria-label="Verse 21">21</sup>He changes the times and seasons; He removes kings and establishes them. He gives wisdom to the wise and knowledge to the discerning. <sup class="verse-number" aria-label="Verse 22">22</sup>He reveals the deep and hidden things; He knows what lies in darkness, and light dwells with Him. <sup class="verse-number" aria-label="Verse 23">23</sup>To You, O God of my fathers, I give thanks and praise, because You have given me wisdom and power. And now You have made known to me what we have requested, for You have made known to us the dream of the king.”</div>
+<div class="verse-commentary">
+          <p>This is what Daniel sounds like before the danger has fully passed. King Nebuchadnezzar has decreed that every wise man in Babylon will be executed unless someone can not only interpret his dream but tell him what the dream was. Daniel has gathered his three friends and asked them to plead for mercy with him in <a class="vlink" href="https://www.bible.com/bible/3034/DAN.2.18" target="_blank" rel="noopener">Daniel 2:18</a>. God has answered by giving him the dream and its meaning in a night vision. The natural human move would be to run to the king with the answer before someone changed his mind. Daniel runs in the other direction. He stops and sings.</p>
           <p>The Aramaic word behind "blessed" (*berakh*) means literally to bend the knee. Daniel is bowing in his thanksgiving even before he stands to speak in court. He thanks God for two things first, and the order is telling. He blesses God for who He is (wisdom and might belong to Him; He changes times and seasons; He removes kings and raises up kings) before he thanks God for what He just received (the dream's meaning). The personal favor is third in the list, which is exactly the right place for it. He is thanking the God who outranks Nebuchadnezzar in front of an audience that knows only Nebuchadnezzar.</p>
-          <p>Notice what "wise men" meant in this culture. Daniel had been one of the official wise men of Babylon since the king's selection program described in <a class="vlink" href="https://www.bible.com/bible/1713/DAN.1.20" target="_blank">Daniel 1:20</a>, where he and his three friends emerged ten times wiser than the rest. He had survived Arioch's sword in <a class="vlink" href="https://www.bible.com/bible/1713/DAN.2.14" target="_blank">Daniel 2:14</a> only because he asked for the time the king refused to give. By <a class="vlink" href="https://www.bible.com/bible/1713/DAN.2.21" target="_blank">Daniel 2:21</a> and <a class="vlink" href="https://www.bible.com/bible/1713/DAN.2.23" target="_blank">Daniel 2:23</a>, Daniel is calling that wisdom by its right name, a gift that belongs to God. By <a class="vlink" href="https://www.bible.com/bible/1713/DAN.2.48" target="_blank">Daniel 2:48</a>, he is the second-most powerful man in the empire and still has the same posture: knees bent inside the title. The position never changed.</p>
+          <p>Notice what "wise men" meant in this culture. Daniel had been one of the official wise men of Babylon since the king's selection program described in <a class="vlink" href="https://www.bible.com/bible/3034/DAN.1.20" target="_blank" rel="noopener">Daniel 1:20</a>, where he and his three friends emerged ten times wiser than the rest. He had survived Arioch's sword in <a class="vlink" href="https://www.bible.com/bible/3034/DAN.2.14" target="_blank" rel="noopener">Daniel 2:14</a> only because he asked for the time the king refused to give. By <a class="vlink" href="https://www.bible.com/bible/3034/DAN.2.21" target="_blank" rel="noopener">Daniel 2:21</a> and <a class="vlink" href="https://www.bible.com/bible/3034/DAN.2.23" target="_blank" rel="noopener">Daniel 2:23</a>, Daniel is calling that wisdom by its right name, a gift that belongs to God. By <a class="vlink" href="https://www.bible.com/bible/3034/DAN.2.48" target="_blank" rel="noopener">Daniel 2:48</a>, he is the second-most powerful man in the empire and still has the same posture: knees bent inside the title. The position never changed.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Daniel 6:10-11 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:9f7dfb638a703dd38c5e4cc78e7d1393de6916febe0bdc460f3cbdeafa2c5fda | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Daniel 6:10-11</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/DAN.6.10-11" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/DAN.6.10-11" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Now when Daniel knew that the writing was signed, he went home. And in his upper room, with his windows open toward Jerusalem, he knelt down on his knees three times that day, and prayed and gave thanks before his God, as was his custom since early days. Then these men assembled and found Daniel praying and making supplication before his God."</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"When Daniel learned that the document had been signed, he went into his house. The windows in its upstairs room opened toward Jerusalem, and three times a day he got down on his knees, prayed, and gave thanks to his God, just as he had done before. Then these men went together and found Daniel petitioning and imploring his God."</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 10">10</sup>Now when Daniel learned that the document had been signed, he went into his house, where the windows of his upper room opened toward Jerusalem, and three times a day he got down on his knees, prayed, and gave thanks to his God, just as he had done before. <sup class="verse-number" aria-label="Verse 11">11</sup>Then these men went as a group and found Daniel petitioning and imploring his God.</div>
+<div class="verse-commentary">
           <p>Sixty years separate this prayer from the one in chapter two. Daniel is no longer a teenager in a wisdom academy. He is a senior official under three different empires, and the latest king has signed an edict that bans private prayer to anyone except the king himself for thirty days. Daniel learns that the document has been signed. The next sentence does not say he debated. It says he went home.</p>
-          <p>What Daniel does next is the practice of fifty years before it is a defiance. He climbs the stairs to the upper room. He opens the windows, which are already cracked. He kneels, which is the position he prays in three times a day every day, and has been since he was a young man. The line that splits the universe is the small phrase, "as was his custom since early days." Daniel is not breaking out a special prayer for a special threat. He is doing what he was already doing. His character has been described in <a class="vlink" href="https://www.bible.com/bible/1713/DAN.6.3" target="_blank">Daniel 6:3</a> as having an "excellent spirit" the king was about to promote, and in <a class="vlink" href="https://www.bible.com/bible/1713/DAN.6.4" target="_blank">Daniel 6:4</a> as having no error or fault that anyone could find. Character so settled that political enemies trying to take him down had to invent a religious crime to catch him in <a class="vlink" href="https://www.bible.com/bible/1713/DAN.6.5-9" target="_blank">Daniel 6:5-9</a>. The window did not become brave on the day of the edict. The window had been brave for fifty years. Anyone who is praying because today is hard is praying late. Daniel is praying because today is Tuesday.</p>
+          <p>What Daniel does next is the practice of fifty years before it is a defiance. He climbs the stairs to the upper room. He opens the windows, which are already cracked. He kneels, which is the position he prays in three times a day every day, and has been since he was a young man. The line that splits the universe is the small phrase, "just as he had done before." Daniel is not breaking out a special prayer for a special threat. He is doing what he was already doing. His character has been described in <a class="vlink" href="https://www.bible.com/bible/3034/DAN.6.3" target="_blank" rel="noopener">Daniel 6:3</a> as having an "excellent spirit" the king was about to promote, and in <a class="vlink" href="https://www.bible.com/bible/3034/DAN.6.4" target="_blank" rel="noopener">Daniel 6:4</a> as having no error or fault that anyone could find. Character so settled that political enemies trying to take him down had to invent a religious crime to catch him in <a class="vlink" href="https://www.bible.com/bible/3034/DAN.6.5-9" target="_blank" rel="noopener">Daniel 6:5-9</a>. The window did not become brave on the day of the edict. The window had been brave for fifty years. Anyone who is praying because today is hard is praying late. Daniel is praying because today is Tuesday.</p>
         </div>
       </div>
     </div>
@@ -837,22 +862,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/DAN.2.20-23" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Daniel+2:20-23&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -867,6 +912,7 @@ if ('serviceWorker' in navigator) {
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 <script>
+// Push notification opt-in
 (function() {
   var firebaseConfig = {
     apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
@@ -877,8 +923,13 @@ if ('serviceWorker' in navigator) {
     appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
     measurementId: "G-BY2BM5HTX4"
   };
+
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
+
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
+
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -886,32 +937,51 @@ if ('serviceWorker' in navigator) {
   function setCookie(name, value) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') { initFirebaseAndRegister(); return; }
+
+  // If already opted in, silently ensure token is current
+  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
+    initFirebaseAndRegister();
+    return;
+  }
+
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
+
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
+
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
     setCookie('dbs_notif', 'yes');
     initFirebaseAndRegister();
   };
+
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
     setCookie('dbs_notif', 'no');
   };
+
   function initFirebaseAndRegister() {
     try {
       if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
       var messaging = firebase.messaging();
       var db = firebase.firestore();
+
       navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({ vapidKey: VAPID_KEY, serviceWorkerRegistration: swReg });
+        return messaging.getToken({
+          vapidKey: VAPID_KEY,
+          serviceWorkerRegistration: swReg
+        });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,
@@ -919,8 +989,12 @@ if ('serviceWorker' in navigator) {
             userAgent: navigator.userAgent.substring(0, 100)
           }, { merge: true });
         }
-      }).catch(function(err) { console.log('Notification setup error:', err); });
-    } catch(e) { console.log('Firebase init error:', e); }
+      }).catch(function(err) {
+        console.log('Notification setup error:', err);
+      });
+    } catch(e) {
+      console.log('Firebase init error:', e);
+    }
   }
 })();
 </script>

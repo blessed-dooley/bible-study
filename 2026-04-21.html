@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -469,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -532,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -550,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -648,16 +685,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/bible-study/sw.js')
-      .catch(function(err) { console.log('SW registration failed:', err); });
-  });
-}
-</script>
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -723,8 +750,8 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="section-heading">The Prayer Before Pilate</div>
-      <p>John 17 is the longest recorded prayer of Jesus. The disciples hear it in an upper room, probably somewhere late on the night of Passover, likely with the bread and wine still on the table and Judas already gone into the night. Within hours Jesus will be arrested in a garden, dragged through two religious hearings and two civil ones, and stood in front of a cynical Roman governor named Pontius Pilate. At the height of that trial, Pilate will shrug a line that has echoed ever since. "What is truth?" (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.18.38" target="_blank">John 18:38</a>). He does not wait for an answer. He turns and walks outside.</p>
-      <p>That moment is why John 17 is placed where it is. Before the question gets asked, Jesus answers it. He does not answer Pilate. He answers His Father. "Sanctify them by the truth; your word is truth" (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.17.17" target="_blank">John 17:17</a>). The Greek noun is <em>aletheia</em>, built from the prefix <em>a-</em> (not) and the root <em>lethe</em> (hiddenness, forgetting). Literally, "un-hiddenness." Truth is what is left when all concealment is stripped away. In the ancient Greek world, <em>lethe</em> was the mythic river of forgetting in the underworld; drink from it and you lost everything. <em>Aletheia</em> is its opposite. What is real. What stays when the haze burns off. In 2017 a Time magazine cover asked "Is Truth Dead?" It was the same question, two thousand years later, printed on slicker paper. Jesus answered it before the question was invented, and the answer was not an idea. It was a prayer.</p>
+      <p>John 17 is the longest recorded prayer of Jesus. The disciples hear it in an upper room, probably somewhere late on the night of Passover, likely with the bread and wine still on the table and Judas already gone into the night. Within hours Jesus will be arrested in a garden, dragged through two religious hearings and two civil ones, and stood in front of a cynical Roman governor named Pontius Pilate. At the height of that trial, Pilate will shrug a line that has echoed ever since. "What is truth?" (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.18.38" target="_blank" rel="noopener">John 18:38</a>). He does not wait for an answer. He turns and walks outside.</p>
+      <p>That moment is why John 17 is placed where it is. Before the question gets asked, Jesus answers it. He does not answer Pilate. He answers His Father. "Sanctify them by the truth; your word is truth" (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.17.17" target="_blank" rel="noopener">John 17:17</a>). The Greek noun is <em>aletheia</em>, built from the prefix <em>a-</em> (not) and the root <em>lethe</em> (hiddenness, forgetting). Literally, "un-hiddenness." Truth is what is left when all concealment is stripped away. In the ancient Greek world, <em>lethe</em> was the mythic river of forgetting in the underworld; drink from it and you lost everything. <em>Aletheia</em> is its opposite. What is real. What stays when the haze burns off. In 2017 a Time magazine cover asked "Is Truth Dead?" It was the same question, two thousand years later, printed on slicker paper. Jesus answered it before the question was invented, and the answer was not an idea. It was a prayer.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -737,14 +764,14 @@ if ('serviceWorker' in navigator) {
 
       <p>The anchor today is Jesus' prayer in John 17:17. Supporting passages press in from two directions. Psalm 12 and Proverbs 30 show us how the ancient writers described the purity of God's word and the danger of adding to it. Paul and David, speaking across centuries, describe what happens when Scripture is received the way it was meant to be received, not as human opinion but as the word of God at work. Together these verses build a single claim. Truth exists, God has spoken it, and the Bible is where that speech lives.</p>
 
+<!-- BSB_BLOCK: John 17:17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:299fa5cd8f7a2362ce8ee6e178d0952746b09f85ae488dffe0794398f599376d | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">John 17:17</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.17.17" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.17.17" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Sanctify them by the truth; your word is truth."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><span class="words-of-jesus">Sanctify them by the truth; Your word is truth.</span></div>
+<div class="verse-commentary">
         <p>Eight words in English. Seven in Greek. And a claim so large it re-centers the universe. Jesus is not praying that His disciples will have access to truth. He is praying that they will be formed by truth, and He identifies exactly where that truth is located. Your word is truth.</p>
 
 <p>Look at each piece. "Sanctify" (<em>hagiazon</em>) is the verb for setting something apart for God's use, making it holy. Jesus is asking God to do that to the disciples, and He is naming the tool God will use to do it. Not Jesus' memory. Not the coming Spirit alone. Not the disciples' sincere feelings. The tool is the <em>logos</em>, the word. Then the sentence lands. <em>Your word is truth</em>. Not "your word contains truth," as if other sources contained it too and the Bible had its share. Not "your word reveals truth," as if truth were something above the word that the word pointed to. The predicate is identity. Your word <em>is</em> truth.</p>
@@ -754,27 +781,30 @@ if ('serviceWorker' in navigator) {
 <p>The practical force for us is this. Every season hands us ten competing voices telling us what is real, and every one of those voices is louder than the Bible. The algorithm. The news cycle. The therapy culture. The loudest person in our family. Our own feelings, which feel like the most reliable narrator we have until they disagree with each other by Thursday. Jesus does not ask His Father to reduce the noise. He asks His Father to sanctify His people through one particular voice. That voice is on your shelf. If it is truth, and everything else is a candidate, the question is not which one feels most compelling. The question is which one is being allowed to have the last word.</p></div>
       </div>
 
+<!-- BSB_BLOCK: Psalms 12:6 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b78b8b6772afd5cb362073f7d83e3a61207916e86195eb4ae7f5ca5f34440152 | footnotes-stripped:1 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
-          <div class="verse-ref">Psalm 12:6</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/PSA.12.6" target="_blank">☩ Open in Bible App</a>
+          <div class="verse-ref">Psalms 12:6</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.12.6" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"The words of the Lord are pure words, like silver refined in an earthen furnace, purified seven times."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">The words of the LORD are flawless, like silver refined in a furnace, like gold purified sevenfold.</div>
+<div class="verse-commentary">
         <p>David reaches for a specific picture. Metal in the fire. The Hebrew imagery is deliberate. Silver was heated in a clay crucible and the impurities rose to the surface as dross, which was skimmed off. Seven times purified meant the metal had been through that burn-and-skim cycle until there was nothing left to burn off. That is what David says God's words are. Not nearly true. Not mostly reliable. Tested, tested, tested, tested, tested, tested, tested, and what is left is only the thing itself.</p>
 
-<p>Agur, the writer of <a class="vlink" href="https://www.bible.com/bible/1713/PRO.30.5-6" target="_blank">Proverbs 30:5-6</a>, picks up the same refined-silver image and adds the warning: "Every word of God is pure; he is a shield to those who take refuge in him. Don't add to his words, or he will rebuke you, and you will be proved a liar." The impulse to "improve" God's words by adding our own preferences on the edges has been around as long as there have been readers. It is always done in sincere tones and usually with good intent. It always ends the same way. "You will be proved a liar." Not because a reader raised a dishonest question, but because what was added could not survive the same furnace the original came through. The Bible does not need our improvements. It needs our ears.</p></div>
+<p>Agur, the writer of <a class="vlink" href="https://www.bible.com/bible/3034/PRO.30.5-6" target="_blank" rel="noopener">Proverbs 30:5-6</a>, picks up the same refined-silver image and adds the warning: "Every word of God is pure; he is a shield to those who take refuge in him. Don't add to his words, or he will rebuke you, and you will be proved a liar." The impulse to "improve" God's words by adding our own preferences on the edges has been around as long as there have been readers. It is always done in sincere tones and usually with good intent. It always ends the same way. "You will be proved a liar." Not because a reader raised a dishonest question, but because what was added could not survive the same furnace the original came through. The Bible does not need our improvements. It needs our ears.</p></div>
       </div>
+      <!-- BSB_FOOTNOTE: Psalms 12:6 | 12:6 Probable reading; MT like silver refined in a furnace of clay, purified sevenfold -->
 
+<!-- BSB_BLOCK: 1 Thessalonians 2:13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:84047c326535495f787ad35a1f04e9ad9d72febecd4efe7a091b44184d3679be | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Thessalonians 2:13</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1TH.2.13" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1TH.2.13" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"This is why we constantly thank God, because when you received the word of God that you heard from us, you welcomed it not as a human message, but as it truly is, the word of God, which also works effectively in you who believe."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">Paul tells the Thessalonians that when they received the message as the word of God rather than a human opinion, the word began to "work effectively" in them. The Greek verb is <em>energeitai</em>, the same root behind Hebrews 4:12's "effective" and behind our English word energy. Scripture only does its full work when it is received for what it is. The same thread runs through <a class="vlink" href="https://www.bible.com/bible/1713/EPH.1.13" target="_blank">Ephesians 1:13</a>, where Paul calls the gospel "the word of truth" and the instrument by which the Holy Spirit seals believers to God, and through <a class="vlink" href="https://www.bible.com/bible/1713/PSA.33.4" target="_blank">Psalm 33:4</a>: "the word of the Lord is right, and all his work is trustworthy." Three voices, one claim. The posture you bring to the Book determines what the Book is free to do. Treat it as human advice and it will feel like human advice. Receive it as the word of God and it will begin to work on you with the power of the One who breathed it.</div>
+        <div class="verse-text">And we continually thank God because, when you received the word of God that you heard from us, you accepted it not as the word of men, but as it truly is, the word of God, which is also now at work in you who believe.</div>
+<div class="verse-commentary">
+          <p>Paul tells the Thessalonians that when they received the message as the word of God rather than a human opinion, the word began to "work effectively" in them. The Greek verb is <em>energeitai</em>, the same root behind Hebrews 4:12's "effective" and behind our English word energy. Scripture only does its full work when it is received for what it is. The same thread runs through <a class="vlink" href="https://www.bible.com/bible/3034/EPH.1.13" target="_blank" rel="noopener">Ephesians 1:13</a>, where Paul calls the gospel "the word of truth" and the instrument by which the Holy Spirit seals believers to God, and through <a class="vlink" href="https://www.bible.com/bible/3034/PSA.33.4" target="_blank" rel="noopener">Psalm 33:4</a>: "the word of the Lord is right, and all his work is trustworthy." Three voices, one claim. The posture you bring to the Book determines what the Book is free to do. Treat it as human advice and it will feel like human advice. Receive it as the word of God and it will begin to work on you with the power of the One who breathed it.</p>
+        </div>
       </div>
     </div>
 
@@ -810,7 +840,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Here is where every line of today meets its source. Jesus does not say, "I know the truth." He does not say, "I teach the truth." He says, "I am the truth" (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.14.6" target="_blank">John 14:6</a>). Truth is not, first, a concept to be agreed with. It is a Person to be known. Every doctrine in Scripture is true because He is who He is. Every promise in Scripture is reliable because His character does not shift. "Jesus Christ is the same yesterday, today, and forever" (<a class="vlink" href="https://www.bible.com/bible/1713/HEB.13.8" target="_blank">Hebrews 13:8</a>). That is why the Bible has never needed to update itself to match new centuries. The One it testifies about is not aging. To read Scripture is to meet the One <em>aletheia</em>, the un-hidden One, the Truth who has nothing left to conceal from those who come close. Pilate asked "What is truth?" and walked away from the Answer standing right in front of him. May we not make the same mistake this morning.</p>
+      <p>Here is where every line of today meets its source. Jesus does not say, "I know the truth." He does not say, "I teach the truth." He says, "I am the truth" (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.14.6" target="_blank" rel="noopener">John 14:6</a>). Truth is not, first, a concept to be agreed with. It is a Person to be known. Every doctrine in Scripture is true because He is who He is. Every promise in Scripture is reliable because His character does not shift. "Jesus Christ is the same yesterday, today, and forever" (<a class="vlink" href="https://www.bible.com/bible/3034/HEB.13.8" target="_blank" rel="noopener">Hebrews 13:8</a>). That is why the Bible has never needed to update itself to match new centuries. The One it testifies about is not aging. To read Scripture is to meet the One <em>aletheia</em>, the un-hidden One, the Truth who has nothing left to conceal from those who come close. Pilate asked "What is truth?" and walked away from the Answer standing right in front of him. May we not make the same mistake this morning.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -847,23 +877,51 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/JHN.17.17" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=John+17:17&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/bible-study/sw.js')
+    .then(reg => console.log('SW registered:', reg.scope))
+    .catch(err => console.log('SW registration failed:', err));
+}
+</script>
+
 <!-- Firebase SDK for push notifications -->
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>

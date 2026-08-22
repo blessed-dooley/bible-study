@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -625,7 +648,7 @@ if ('serviceWorker' in navigator) {
     white-space: nowrap;
   }
 
-  /* ── DEEPER QUESTIONS ── */
+  /* LEGACY DEEPER QUESTIONS: retained only so archived Friday bodies can still be reassembled */
   .dq-block {
     margin: 28px 0;
     padding: 0;
@@ -782,95 +805,62 @@ if ('serviceWorker' in navigator) {
       <p>And in the middle of all that, a borrowed living room filled up each week with a dock worker, a patron, a slave, a seamstress, each one carrying something the Spirit had handed them. Every pressure of the city followed them through the door, the ranking, the volume, the hunger to be impressive. Paul's three chapters were written for exactly that room, and his remedy was not a better performance. It was a body, knit by love, speaking to be understood, testing every voice, building one house. The church did not need to out-shout Corinth. It needed to out-love it. That was true of one living room in AD 55. It has stayed true of every room the church has met in since.</p>
     </div>
 
-    <!-- 3. DEEPER QUESTIONS -->
+    <!-- 3. WHAT THIS WEEK CLARIFIES -->
     <div class="section">
       <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Deeper Questions</span>
+        <span class="section-emoji">💡</span>
+        <span class="section-title">What This Week Clarifies</span>
         <div class="section-title-line"></div>
       </div>
 
-      <p>Four questions the week leaves on the table. Take them into Sabbath, a journal, or a slow conversation with people you trust, and give them room to work.</p>
+      <p>Set the six studies side by side and three pairs of truths seem to pull against each other. The Spirit alone decides who gets which gift, yet wanting more is commanded. A room humming with gifts gets handed house rules. The God who still speaks tells His church to test every voice that claims Him. None of the three is a contradiction. Each is the week finishing a thought, and each rewards one slow look before Sabbath.</p>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">1</span>
-          <div class="dq-question">Why is prophecy more important than tongues when the tongues are not interpreted? Walk back through Paul's argument and put his reasoning in your own words.</div>
+      <div class="section-heading">The Signed List Still Says Want More</div>
+      <p>Sunday closed every argument about who earned what. The Spirit hands out the gifts exactly as He decides, and complaining about yours criticizes His judgment. Then Monday's chapter ended with a command that sounds like the opposite. Eagerly desire the greater gifts. The week seems to fix the list with one hand and stir up wanting with the other.</p>
+
+<!-- BSB_BLOCK: 1 Corinthians 12:31 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:324d33939b5d928e85aad20128f79b04bd330faa1862dfc9a7698633ed922ea9 | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">1 Corinthians 12:31</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.12.31" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">1 Corinthians 14:5</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.14.5" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"I wish all of you spoke in other tongues, but even more that you prophesied. The person who prophesies is greater than the person who speaks in tongues, unless he interprets so that the church may be built up."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Notice that Paul's ranking is not about the gifts themselves. It is about direction. An uninterpreted tongue travels upward and inward, real praise that blesses the speaker and leaves every listener outside the conversation. Prophecy travels outward, God's voice arriving in words the room can absorb, strengthening, encouraging, consoling. Retrace the whole argument (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.14" target="_blank">1 Corinthians 14</a>) and one measuring stick appears in verse after verse. Who got built? Words nobody understands build nobody, however real the gift behind them, which is why Paul keeps score in construction, not in volume.</p>
-            <p>Then catch the little word that dissolves the whole hierarchy. Unless. The moment an interpreter turns sound into meaning, the tongue builds the church too, and the greater-than sign disappears. So the ranking was never a verdict on which gift God prefers. It is a verdict on what God is after in worship, a house going up, a stranger who can walk in and understand, a body taller at the end of the service than it was at the start. Any gift aimed at that target is great. Any gift aimed at itself is just sound.</p>
-          </div>
+        <div class="verse-text">But eagerly desire the greater gifts. And now I will show you the most excellent way.</div>
+<div class="verse-commentary">
+          <p>Both sentences are Paul, and the week taught the difference between them. What the Spirit settles is who carries which gift. What the command stirs is a different kind of wanting, aimed at the body instead of the mirror. Corinth desired gifts the way it desired bronze, something bright for the shelf, and that wanting really does argue with the Giver. But a church can also want more the way a family wants a longer table, asking boldly for whatever would let it feed more people. That desire trusts the Spirit's judgment instead of second-guessing it. Paul then tips his hand about the word greater. The most excellent way is about to redefine it from the inside, which is why the gift he moves to the front on Thursday is the one that does the most building. The Spirit signs the distribution. Love writes the wish list.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">2</span>
-          <div class="dq-question">Scripture says the gifts run until the body reaches full stature, and Revelation marks God's last-day people by the testimony of Jesus. What blessings come to a church through a true prophetic voice? And what are the challenges of receiving that gift well, neither despising it nor letting it stand above the Bible?</div>
-        </div>
+      <div class="section-heading">Order Is the Sound of a House Going Up</div>
+      <p>The week opened in a living room humming with gifts, everyone arriving with something, a hymn, a teaching, a prayer in another tongue. It closed with what reads like a set of meeting rules. Two or at most three. Each in turn. Someone must interpret. A reader can feel the temperature drop, as if Paul heard the fire and reached for a clipboard.</p>
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Revelation 19:10</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/REV.19.10" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Then I fell at his feet to worship him, but he said to me, 'Don't do that! I am a fellow servant with you and your brothers and sisters who hold firmly to the testimony of Jesus. Worship God, because the testimony of Jesus is the spirit of prophecy.'"</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Count the blessings first, because they are real. A people who believe God still speaks are a people who can be corrected in time instead of too late, comforted with more than platitudes, and steered when the road forks. The end-time church is identified exactly this way, keeping God's commandments and holding the testimony of Jesus (<a class="vlink" href="https://www.bible.com/bible/1713/REV.12.17" target="_blank">Revelation 12:17</a>), a family still being talked to. Prophetic guidance at its truest does what Thursday's verse promised, it strengthens what is buckling, encourages what is flagging, consoles what is grieving, and it keeps a whole people facing Jesus when a thousand louder voices call sideways.</p>
-            <p>The challenges are just as real. A church can despise the gift, boxing up every word from God it did not vote on. Or it can idolize the gift, quoting the messenger more than the Master, treating a lamp as if it were the sun. The angel in this verse refuses both errors with one command. Worship God. Every true prophetic voice is a fellow servant, tested by Scripture, never seated above it, and aimed entirely at Jesus. Held that way, the gift stays what it was given to be. Light for the road, pointing home.</p>
-          </div>
+<!-- BSB_BLOCK: 1 Corinthians 14:26 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:9bd2d8f2334621ba339706d5dd55ba3bba2538ffc3ce0cf4fac14ae0ae797c05 | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">1 Corinthians 14:26</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.14.26" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">What then shall we say, brothers? When you come together, everyone has a psalm or a teaching, a revelation, a tongue, or an interpretation. All of these must be done to build up the church.</div>
+<div class="verse-commentary">
+          <p>Hold the two halves of the sentence together and the worry answers itself. The first half keeps every promise the living room made. Everyone still arrives carrying something, a psalm, a teaching, a revelation, and Paul does not shorten the list by a single item. The second half is the test at the door, and it asks nothing about polish or volume. It asks whether the wall is taller when you sit down. Wednesday showed what fails that test, true words filling a room and landing on no one, a visitor backing out the door convinced the church is out of its mind. So the house rules are not Paul cooling the fire. They are the hearth. Flame loose on the floor burns a house down. The same flame, given a hearth, warms every person in the room. Order is where the heat finally reaches somebody.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">3</span>
-          <div class="dq-question">Think of three to five people who genuinely love you. How do you know their love is true? And what does your answer tell you about why Paul planted a whole chapter on love in the middle of his discussion of spiritual gifts?</div>
-        </div>
+      <div class="section-heading">The Test Begins With the Word Beloved</div>
+      <p>Thursday made two claims that sit awkwardly in the same pew. God still speaks, and His gifts stay until the building is finished. And every voice claiming His name must be tested. Most of us quietly pick one, swallowing every confident word because doubting feels like unbelief, or waving the whole gift away because fakes have burned us.</p>
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">1 Corinthians 13:4-7</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.13.4-7" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Love is patient, love is kind. Love does not envy, is not boastful, is not arrogant, is not rude, is not self-seeking, is not irritable, and does not keep a record of wrongs. Love finds no joy in unrighteousness but rejoices in the truth. It bears all things, believes all things, hopes all things, endures all things."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Make the list and study it. The people on it probably never told you they loved you in a press release. You know because of verbs. They showed up at the hospital. They answered at midnight. They heard the worst thing you ever did and stayed. They could have kept score and tore up the card instead. Your certainty about their love is built entirely out of Paul's fifteen verbs practiced over time, which tells you something important. Nobody on earth is argued into feeling loved. We are behaved into it.</p>
-            <p>Now the second question answers itself. Why does the love chapter sit between the gift chapters? Because gifts land differently from people whose love you trust. The same correction that heals from a friend wounds from a stranger. The same sermon that feeds from a shepherd grates from a performer. Corinth wanted power without the verbs, impact without the patience, and Paul knew the math never works. The people who shaped your soul were not necessarily the most gifted people you ever met. They were the ones who loved you. That is not a coincidence. That is the design.</p>
-          </div>
+<!-- BSB_BLOCK: 1 John 4:1-3 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:47adca3f5c29c4cc75d770cdfdbda47f14cfbbc4cf922820fe99f1f69a283624 | footnotes-stripped:1 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">1 John 4:1-3</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1JN.4.1-3" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>Beloved, do not believe every spirit, but test the spirits to see whether they are from God. For many false prophets have gone out into the world. <sup class="verse-number" aria-label="Verse 2">2</sup>By this you will know the Spirit of God: Every spirit that confesses that Jesus Christ has come in the flesh is from God, <sup class="verse-number" aria-label="Verse 3">3</sup>and every spirit that does not confess Jesus is not from God. This is the spirit of the antichrist, which you have heard is coming and which is already in the world at this time.</div>
+<div class="verse-commentary">
+          <p>John answers with his opening word. Beloved. The command to test the spirits is family language, not a memo from the fraud department. It is the same instinct that gathers a household at the kitchen table to agree on a code word before any desperate call ever comes. Those families are not cynics. They plan the question precisely because the next voice on the line might really be their son, and because counterfeits have learned to wear the voices they love. Testing and treasuring are one motion. That is why Thursday could hand us four tests without once telling us to stop listening. The words come true. The message agrees with what God already said. The life confesses Christ. The fruit feeds somebody. A church that weighs every voice is not doubting that God speaks. It is guarding the line He speaks on.</p>
+          <p>And the weighing carries a tell that settles most calls quickly. A voice truly sent from the Father's house is never offended that you checked. Tomorrow the room fills again, hymns and teachings and gifts arriving in every pair of hands, and the week has already said what to do with all of it. Want what builds. Take your turn. Test whatever claims His name, with love in your posture and the Book open on your lap. The Giver is not nervous about the checking. He wrote the tests, and He signed the list.</p>
         </div>
       </div>
-
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">4</span>
-          <div class="dq-question">However important love is, why must it not be the only criterion for judging whether someone is speaking truth and is worthy of being listened to?</div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">1 John 4:1-3</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/1JN.4.1-3" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Dear friends, do not believe every spirit, but test the spirits to see if they are from God, because many false prophets have gone out into the world. This is how you know the Spirit of God: Every spirit that confesses that Jesus Christ has come in the flesh is from God, but every spirit that does not confess Jesus is not from God. This is the spirit of the antichrist, which you have heard is coming; even now it is already in the world."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Warmth can be manufactured. That is the uncomfortable fact behind John's warning. Jesus said wolves arrive dressed in wool (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.7.15" target="_blank">Matthew 7:15</a>), and every generation has met teachers who felt loving, sounded loving, maybe even meant to be loving, and led people somewhere false. Feeling loved by a voice verifies nothing about the voice's map. A kind person can be sincerely wrong, and a predator can be convincingly kind. If love were the only test, the gentlest liar in the room would always win.</p>
-            <p>So Scripture puts two hands on every message. The open heart and the open Book. Test the spirits, John says, and notice he says it to dear friends, in the same letter that insists God is love. Truth and love were never rivals. Love without truth dissolves into niceness that cannot protect anyone, and truth without love hardens into a club. The week gave us both hands on purpose, fifteen verbs on Tuesday, four tests on Thursday. A church that only embraces gets deceived. A church that only examines goes cold. Jesus, full of grace and truth, requires His people to hold both.</p>
-          </div>
-        </div>
-      </div>
+      <!-- BSB_FOOTNOTE: 1 John 4:3 | 4:3 BYZ and TR that Jesus Christ has come in the flesh -->
 
     </div>
 
@@ -883,8 +873,8 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Names at the End of the Movie</div>
       <p>Stay in your seat when the movie ends sometime. The screen fills with names, hundreds of them, scrolling faster than anyone can read. Gaffers. Riggers. Drivers. The person who kept track of the hero's scarf between takes so the story would not fall apart. You were moved twenty minutes ago because every one of those people did their job, and almost none of them will ever be recognized in a grocery store. The faces on the poster did not make the film. The credits did.</p>
-      <p>The church has always run on credits. One member is a ready speaker, another writes, another prays like the room changes when they start, another sings, another can walk a teenager through a hard verse in plain words, another just shows up with a truck on moving day. The same God works all of it in each person (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.6" target="_blank">1 Corinthians 12:6</a>), which means nobody gets to despise the supposedly lesser gifts, least of all in the mirror. Folding your hands because you think you can do no mighty work is not modesty. It is a body volunteering to be shorter one limb. The week's cure for both pride and shrinking is the same motion, eyes off yourself, eyes on your Leader, then do what you can, in meekness, sincerity, and love.</p>
-      <p>And do it together, because none of us carries enough alone. God works through other minds than ours on purpose, and the gifts were designed to blend, like voices, like ingredients, like crew departments, for the building up of the body of Christ (<a class="vlink" href="https://www.bible.com/bible/1713/EPH.4.12" target="_blank">Ephesians 4:12</a>). There will be obstacles. There always are, on every set, in every church. We meet them the way a body does, unitedly, hand in hand. The story God is telling will roll credits longer than anyone expects, and no name on that scroll will have been filler. Bring what you carry. The house is still going up.</p>
+      <p>The church has always run on credits. One member is a ready speaker, another writes, another prays like the room changes when they start, another sings, another can walk a teenager through a hard verse in plain words, another just shows up with a truck on moving day. The same God works all of it in each person (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.6" target="_blank" rel="noopener">1 Corinthians 12:6</a>), which means nobody gets to despise the supposedly lesser gifts, least of all in the mirror. Folding your hands because you think you can do no mighty work is not modesty. It is a body volunteering to be shorter one limb. The week's cure for both pride and shrinking is the same motion, eyes off yourself, eyes on your Leader, then do what you can, in meekness, sincerity, and love.</p>
+      <p>And do it together, because none of us carries enough alone. God works through other minds than ours on purpose, and the gifts were designed to blend, like voices, like ingredients, like crew departments, for the building up of the body of Christ (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.4.12" target="_blank" rel="noopener">Ephesians 4:12</a>). There will be obstacles. There always are, on every set, in every church. We meet them the way a body does, unitedly, hand in hand. The story God is telling will roll credits longer than anyone expects, and no name on that scroll will have been filler. Bring what you carry. The house is still going up.</p>
     </div>
 
     <!-- 5. CHRIST AT THE CENTER OF THE WEEK -->
@@ -921,22 +911,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.14.1" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+14:1&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -735,46 +764,48 @@ if ('serviceWorker' in navigator) {
 
       <p>A mother whose daughter is at home in torment is following a Rabbi down a dirt road, refusing to stop. The disciples are getting embarrassed by her. The Rabbi is silent at first, then crisp, then finally seems to insult her with a proverb about house dogs. And the woman, instead of breaking, picks up the proverb, turns it, and hands it back to Him as a comeback so sharp the gospel writers preserved it word for word. What Jesus says next is the highest verbal praise in the gospels for anyone outside His inner circle. "Woman, great is your faith." This is the heart of today's question. What was He seeing in her that her neighbors, her ethnicity, her gender, and even her own pain were obscuring?</p>
 
+<!-- BSB_BLOCK: Matthew 15:21-28 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:82ebcb919a289a23e257067af6b8af38add57e59adbfc14e98d800f66fa5d948 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Matthew 15:21-28</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.15.21-28" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.15.21-28" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"When Jesus left there, he withdrew to the area of Tyre and Sidon. Just then a Canaanite woman from that region came and kept crying out, 'Have mercy on me, Lord, Son of David! My daughter is severely tormented by a demon.' Jesus did not say a word to her. His disciples approached him and urged him, 'Send her away because she's crying out after us.' He replied, 'I was sent only to the lost sheep of the house of Israel.' But she came, knelt before him, and said, 'Lord, help me!' He answered, 'It isn't right to take the children's bread and throw it to the dogs.' 'Yes, Lord,' she said, 'yet even the dogs eat the crumbs that fall from their masters' table.' Then Jesus replied to her, 'Woman, your faith is great. Let it be done for you as you want.' And from that moment her daughter was healed."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 21">21</sup>Leaving that place, Jesus withdrew to the district of Tyre and Sidon. <sup class="verse-number" aria-label="Verse 22">22</sup>And a Canaanite woman from that region came to Him, crying out, “Lord, Son of David, have mercy on me! My daughter is miserably possessed by a demon.” <sup class="verse-number" aria-label="Verse 23">23</sup>But Jesus did not answer a word. So His disciples came and urged Him, “Send her away, for she keeps crying out after us.” <sup class="verse-number" aria-label="Verse 24">24</sup>He answered, <span class="words-of-jesus">“I was sent only to the lost sheep of the house of Israel.”</span> <sup class="verse-number" aria-label="Verse 25">25</sup>The woman came and knelt before Him. “Lord, help me!” she said. <sup class="verse-number" aria-label="Verse 26">26</sup>But Jesus replied, <span class="words-of-jesus">“It is not right to take the children’s bread and toss it to the dogs.”</span> <sup class="verse-number" aria-label="Verse 27">27</sup>“Yes, Lord,” she said, “even the dogs eat the crumbs that fall from their master’s table.” <sup class="verse-number" aria-label="Verse 28">28</sup><span class="words-of-jesus">“O woman,”</span> Jesus answered, <span class="words-of-jesus">“your faith is great! Let it be done for you as you desire.”</span> And her daughter was healed from that very hour.</div>
+<div class="verse-commentary">
           <p>The woman gets two titles in the text and they do not match. Matthew calls her a Canaanite, the loaded ancient name for the people who were supposed to be driven out under Joshua. Mark's parallel calls her a Syrophoenician, the contemporary first-century label. Matthew chose the older word on purpose. He wanted his Jewish readers to feel the impossible distance between this mother and the kingdom Jesus had come to announce. Then he wanted them to watch her cross it.</p>
           <p>The proverb Jesus quotes back at her in verse 26 has thrown more readers off this passage than any other line in the gospels. Two details unlock it. The Greek word for "dogs" here is <em>kynaria</em>, the diminutive form. Not the scavenger street dog of pagan insult, but the small house dog that lives under the family table. Jesus is not calling her vermin; He is using a household image. And the woman hears the room He has just placed her inside. "Yes, Lord, yet even the dogs eat the crumbs that fall from their masters' table." She has just claimed standing inside the household. Her theological reflex is faster than the disciples'. She knows that crumbs from this Table are enough.</p>
           <p>The phrase Jesus uses to commend her is striking. <em>Megale sou he pistis.</em> "Great is your faith." It is one of only two times in all four gospels Jesus says this to anyone. The other is the centurion two chapters earlier. Both recipients are Gentiles. Both are people first-century Israel would have classified as outsiders. And in both cases the faith Jesus praises is not eloquent theology; it is the refusal to let go of who He is. The centurion holds Him to His authority. This woman holds Him to His character. Each one takes Jesus at His word more readily than the disciples have done in three years of following Him.</p>
           <p>What Jesus saw in her, the rest of the road party missed. They saw a noisy foreign woman who would not go away. He saw a faith that already knew He was the Master of the table and that one crumb of His attention would be enough for what she needed. The most disclosing line in the passage is not her comeback; it is His marveling. The Son of God, who needs no testimony from any man because He knows what is in man, the same Person who saw through the Pharisees on the shore the day before, looks at her and says aloud, "Your faith is great." He was not flattering her. He was reading her.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Matthew 15:27 | 15:27 Or puppies -->
 
+<!-- BSB_BLOCK: Luke 7:1-10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:776e23dadb35dd51209f36d2f217b3637ec0f6304a3311f7c8817ceb69818db9 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Luke 7:1-10</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/LUK.7.1-10" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/LUK.7.1-10" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"When he had concluded saying all this in the hearing of the people, he entered Capernaum. A centurion's servant, who was highly valued by him, was sick and about to die. When the centurion heard about Jesus, he sent some Jewish elders to him, requesting him to come and save the life of his servant. When they reached Jesus, they pleaded with him earnestly, saying, 'He is worthy for you to grant this, because he loves our nation and has built us a synagogue.' Jesus went with them, and when he was not far from the house, the centurion sent friends to tell him, 'Lord, don't trouble yourself, since I am not worthy to have you come under my roof. That is why I didn't even consider myself worthy to come to you. But say the word, and my servant will be healed. For I too am a man placed under authority, having soldiers under my command. I say to this one, "Go," and he goes; and to another, "Come," and he comes; and to my servant, "Do this!" and he does it.' Jesus heard this and was amazed at him, and turning to the crowd following him, he said, 'I tell you, I have not found so great a faith even in Israel.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>When Jesus had concluded His discourse in the hearing of the people, He went to Capernaum. <sup class="verse-number" aria-label="Verse 2">2</sup>There a highly valued servant of a centurion was sick and about to die. <sup class="verse-number" aria-label="Verse 3">3</sup>When the centurion heard about Jesus, he sent some Jewish elders to ask Him to come and heal his servant. <sup class="verse-number" aria-label="Verse 4">4</sup>They came to Jesus and pleaded with Him earnestly, “This man is worthy to have You grant this, <sup class="verse-number" aria-label="Verse 5">5</sup>for he loves our nation and has built our synagogue.” <sup class="verse-number" aria-label="Verse 6">6</sup>So Jesus went with them. But when He was not far from the house, the centurion sent friends with the message: “Lord, do not trouble Yourself, for I am not worthy to have You come under my roof. <sup class="verse-number" aria-label="Verse 7">7</sup>That is why I did not consider myself worthy to come to You. But just say the word, and my servant will be healed. <sup class="verse-number" aria-label="Verse 8">8</sup>For I myself am a man under authority, with soldiers under me. I tell one to go, and he goes, and another to come, and he comes. I tell my servant to do something, and he does it.” <sup class="verse-number" aria-label="Verse 9">9</sup>When Jesus heard this, He marveled at the centurion. Turning to the crowd following Him, He said, <span class="words-of-jesus">“I tell you, not even in Israel have I found such great faith.”</span> <sup class="verse-number" aria-label="Verse 10">10</sup>And when the messengers returned to the house, they found the servant in good health.</div>
+<div class="verse-commentary">
           <p>The centurion never speaks to Jesus in person. The whole conversation happens through two sets of messengers and one set of soldiers' instincts about chain of command. He cannot bring himself to face the Rabbi directly, which the elders read as humility, and which Jesus reads as faith. The pivot point in the story is the centurion's logic. He has spent his career inside an authority structure. He gives a one-word order and a hundred men obey. He has not seen anything Jesus has done at close range. But he has inferred from rumor what kind of authority Jesus must have over the spirit world and the body's diseases, and his inference is exact. "Say the word, and my servant will be healed."</p>
-          <p>Jesus is "amazed." The Greek is <em>thaumazo</em>, the verb used when the disciples are stunned at His miracles and now used of His response to this man. In all four gospels, this is one of only two times the Bible says Jesus marveled. The other is in <a class="vlink" href="https://www.bible.com/bible/1713/MRK.4.40" target="_blank">Mark 4:40</a>, where in a different boat on a different evening He looks at His own disciples in the middle of a storm and asks, "Why are you so afraid? Do you still have no faith?" The verbs are the mirror image of each other. Outside the camp, Jesus marvels at faith. Inside the camp, He marvels at the absence of it. Today's pairing of these two stories is not accidental. It is the deliberate point. The label "religious insider" guarantees nothing. The label "Gentile outsider" forfeits nothing. The eyes that read faith are the same eyes in both rooms.</p>
+          <p>Jesus is "amazed." The Greek is <em>thaumazo</em>, the verb used when the disciples are stunned at His miracles and now used of His response to this man. In all four gospels, this is one of only two times the Bible says Jesus marveled. The other is in <a class="vlink" href="https://www.bible.com/bible/3034/MRK.4.40" target="_blank" rel="noopener">Mark 4:40</a>, where in a different boat on a different evening He looks at His own disciples in the middle of a storm and asks, "Why are you so afraid? Do you still have no faith?" The verbs are the mirror image of each other. Outside the camp, Jesus marvels at faith. Inside the camp, He marvels at the absence of it. Today's pairing of these two stories is not accidental. It is the deliberate point. The label "religious insider" guarantees nothing. The label "Gentile outsider" forfeits nothing. The eyes that read faith are the same eyes in both rooms.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Mark 9:24 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:be6993207cae038814c3990b8c6533c088ef9a92b4ef0a34a1cf9632bb72a828 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Mark 9:24</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MRK.9.24" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MRK.9.24" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Immediately the father of the boy cried out, 'I do believe; help my unbelief!'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">Immediately the boy’s father cried out, “I do believe; help my unbelief!”</div>
+<div class="verse-commentary">
           <p>This is the most honest prayer in the gospels, and it comes out of the mouth of a father whose son has been tormented since childhood and just had a seizure at Jesus' feet. The man has already brought the boy to the disciples and the disciples could not help him. He is running on years of disappointment and an hour of fresh humiliation. And Jesus says to him, "Everything is possible for the one who believes." The father's response is six words long in English and seven words in Greek. <em>Pisteuo; boethei mou te apistia.</em> "I believe; help my unbelief."</p>
-          <p>The two words at the heart of the prayer are <em>pistis</em>'s verb (<em>pisteuo</em>, "I believe") and its negated form (<em>apistia</em>, "unbelief"). The father confesses both at the same time. He is not pretending his faith is bigger than it is, and he is not pretending it does not exist at all. He is bringing the mixture honestly into the open. And Jesus does not turn him away for the honesty. He casts the demon out and gives the son back to him, alive. The verse that records this exchange in the gospel of John, <a class="vlink" href="https://www.bible.com/bible/1713/JHN.2.23-25" target="_blank">John 2:23-25</a>, says Jesus would not entrust Himself to people who believed in His miracles superficially "because He knew what was in man." He sees through performance. But He also sees through honesty. The faith He could read in the centurion at a distance, in the Canaanite mother in pagan country, and in this father in front of a screaming boy, was a faith that did not pretend. He reads ours the same way.</p>
+          <p>The two words at the heart of the prayer are <em>pistis</em>'s verb (<em>pisteuo</em>, "I believe") and its negated form (<em>apistia</em>, "unbelief"). The father confesses both at the same time. He is not pretending his faith is bigger than it is, and he is not pretending it does not exist at all. He is bringing the mixture honestly into the open. And Jesus does not turn him away for the honesty. He casts the demon out and gives the son back to him, alive. The verse that records this exchange in the gospel of John, <a class="vlink" href="https://www.bible.com/bible/3034/JHN.2.23-25" target="_blank" rel="noopener">John 2:23-25</a>, says Jesus would not entrust Himself to people who believed in His miracles superficially "because He knew what was in man." He sees through performance. But He also sees through honesty. The faith He could read in the centurion at a distance, in the Canaanite mother in pagan country, and in this father in front of a screaming boy, was a faith that did not pretend. He reads ours the same way.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Mark 9:24 | 9:24 BYZ and TR cried out with tears -->
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -845,22 +876,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/MAT.15.21-28" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Matthew+15:21-28&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -889,8 +940,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -899,18 +952,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -918,6 +975,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -937,6 +995,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

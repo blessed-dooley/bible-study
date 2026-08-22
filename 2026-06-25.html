@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -735,51 +758,52 @@ if ('serviceWorker' in navigator) {
 
       <p>It is no accident that the Bible ends with an invitation rather than an instruction. After all the prophecy and the warnings and the visions of the end, the last thing God wants ringing in our ears is a single open-armed word: come. Today's reading gathers that word from across the whole of Scripture, from a tired crowd in Galilee to a thirsty marketplace in Isaiah to the final sentence John ever wrote, and shows that the invitation has always been the same, and it is still open to you right now.</p>
 
+<!-- BSB_BLOCK: Matthew 11:28-30 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c8b4f6e6c4167a11cdc86e94f77fe1ac40ffb3b342f2d61d67968c5a5c501392 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Matthew 11:28-30</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.11.28-30" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.11.28-30" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Come to me, all of you who are weary and burdened, and I will give you rest. Take up my yoke and learn from me, because I am lowly and humble in heart, and you will find rest for your souls. For my yoke is easy and my burden is light."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Notice who is invited: not the impressive, the qualified, or the rested, but "all of you who are weary and burdened." The requirement to come to Jesus is simply to be tired enough to need Him. He does not say "get your act together and then come." He says come as you are, carrying what you are carrying. And what He offers is not a vacation but a trade: His yoke for ours. A yoke is what harnesses an animal to its work, so this is not the end of all effort; it is the end of carrying the load alone. He gets in the harness beside us, and because He is "lowly and humble in heart," walking with Him turns out to be lighter than walking without Him ever was. The first thing the King says to the exhausted is not "try harder." It is "come and rest."</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 28">28</sup><span class="words-of-jesus">Come to Me, all you who are weary and burdened, and I will give you rest.</span> <sup class="verse-number" aria-label="Verse 29">29</sup><span class="words-of-jesus">Take My yoke upon you and learn from Me, for I am gentle and humble in heart, and you will find rest for your souls.</span> <sup class="verse-number" aria-label="Verse 30">30</sup><span class="words-of-jesus">For My yoke is easy and My burden is light.”</span></div>
+<div class="verse-commentary">
+          <p>Notice who is invited: not the impressive, the qualified, or the rested, but "All you who are weary and burdened." The requirement to come to Jesus is simply to be tired enough to need Him. He does not say "get your act together and then come." He says come as you are, carrying what you are carrying. And what He offers is not a vacation but a trade: His yoke for ours. A yoke is what harnesses an animal to its work, so this is not the end of all effort; it is the end of carrying the load alone. He gets in the harness beside us, and because He is "gentle and humble in heart," walking with Him turns out to be lighter than walking without Him ever was. The first thing the King says to the exhausted is not "try harder." It is "come and rest."</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Isaiah 55:1-3 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:1a6f553a92fe064d0fcc1e8bc3e57afb4ea2e5ea9b085072494eacf787fbff3c | footnotes-stripped:1 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Isaiah 55:1-3</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ISA.55.1-3" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ISA.55.1-3" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Come, everyone who is thirsty, come to the water; and you without silver, come, buy, and eat! Come, buy wine and milk without silver and without cost! Why do you spend silver on what is not food, and your wages on what does not satisfy? Listen carefully to me, and eat what is good, and you will enjoy the choicest of foods. Pay attention and come to me; listen, so that you will live."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Four times in three verses God says "come," like a vendor who will not stop calling until the thirsty turn their heads. And then He asks the question that exposes how we actually live: "Why do you spend silver on what is not food, and your wages on what does not satisfy?" We pour our money, hours, and hope into things that never fill us, and all the while the one thing that would is being offered for free. This is the open secret of grace. We keep trying to pay for what cannot be bought and ignoring what is being given away. The invitation is not "earn your way to the water." It is "stop paying for sand and come drink." Real life with God is on the house, and the only thing that keeps us from it is the strange pride that would rather buy than receive.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>“Come, all you who are thirsty, come to the waters; and you without money, come, buy, and eat! Come, buy wine and milk without money and without cost! <sup class="verse-number" aria-label="Verse 2">2</sup>Why spend money on that which is not bread, and your labor on that which does not satisfy? Listen carefully to Me, and eat what is good, and your soul will delight in the richest of foods. <sup class="verse-number" aria-label="Verse 3">3</sup>Incline your ear and come to Me; listen, so that your soul may live. I will make with you an everlasting covenant—My loving devotion promised to David.</div>
+<div class="verse-commentary">
+          <p>Four times in three verses God says "come," like a vendor who will not stop calling until the thirsty turn their heads. And then He asks the question that exposes how we actually live: "Why spend money on that which is not bread, and your labor on that which does not satisfy?" We pour our money, hours, and hope into things that never fill us, and all the while the one thing that would is being offered for free. This is the open secret of grace. We keep trying to pay for what cannot be bought and ignoring what is being given away. The invitation is not "earn your way to the water." It is "stop paying for sand and come drink." Real life with God is on the house, and the only thing that keeps us from it is the strange pride that would rather buy than receive.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Isaiah 55:3 | 55:3 Cited in Acts 13:34 -->
 
+<!-- BSB_BLOCK: Revelation 22:17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:2180084ab4c62234b2202f65fee95a49794a83e31f243546ca0864be4426df8b | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Revelation 22:17</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/REV.22.17" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/REV.22.17" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Both the Spirit and the bride say, 'Come!' Let anyone who hears, say, 'Come!' Let the one who is thirsty come. Let the one who desires take the water of life freely."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Here, near the last lines of the Bible, the invitation becomes a chorus. The Greek word is <em>erchou</em>, simply "come!", and it ripples outward: the Spirit says it, the bride (that is the church, all of us) says it, then everyone who hears it is told to turn and say it to the next person. Grace is not a private well; the moment you drink, you become one more voice calling "come." And the door stays scandalously wide: "let the one who is thirsty come... take the water of life freely." No vetting, no fee, no fine print. The same God who drew you to Himself in the first place (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.6.44" target="_blank">John 6:44</a>) has promised that anyone who actually comes, He "will never cast out" (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.6.37" target="_blank">John 6:37</a>). The arms are open. The water is free. The only response left is to come and to love Him back with everything we are (<a class="vlink" href="https://www.bible.com/bible/1713/DEU.6.5" target="_blank">Deuteronomy 6:5</a>).</p>
+        <div class="verse-text">The Spirit and the bride say, “Come!” Let the one who hears say, “Come!” And let the one who is thirsty come, and the one who desires the water of life drink freely.</div>
+<div class="verse-commentary">
+          <p>Here, near the last lines of the Bible, the invitation becomes a chorus. The Greek word is <em>erchou</em>, simply "come!", and it ripples outward: the Spirit says it, the bride (that is the church, all of us) says it, then everyone who hears it is told to turn and say it to the next person. Grace is not a private well; the moment you drink, you become one more voice calling "come." And the door stays scandalously wide: "let the one who is thirsty come... let the one who desires the water of life drink freely." No vetting, no fee, no fine print. The same God who drew you to Himself in the first place (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.6.44" target="_blank" rel="noopener">John 6:44</a>) has promised that anyone who actually comes, He "will never cast out" (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.6.37" target="_blank" rel="noopener">John 6:37</a>). The arms are open. The water is free. The only response left is to come and to love Him back with everything we are (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.6.5" target="_blank" rel="noopener">Deuteronomy 6:5</a>).</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Revelation 22:20 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:618daf57bc729cb75e7daf340fd2800eb86ea75a8ecb4bcc0730b2195d714eb0 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Revelation 22:20</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/REV.22.20" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/REV.22.20" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"He who testifies about these things says, 'Yes, I am coming soon.' Amen! Come, Lord Jesus!"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Watch the invitation turn around and point both ways. All week Jesus has been saying "come" to us. Now, in the last words of the Bible, He makes a promise: "Yes, I am coming soon." And the response of His people, the final prayer of the whole book, is the same word handed back to Him: "Come, Lord Jesus!" That is the entire relationship in two short lines. He invites us to come to Him; He pledges to come to us; and we, longing, ask Him to hurry. And how soon is soon? From our side of the grave, sooner than it sounds. For everyone who falls asleep in Him, the very next thing they will know is His face. We do not see clearly yet; right now it is like looking in a dim, ancient mirror (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.13.12" target="_blank">1 Corinthians 13:12</a>). But then, face to face. Do not grow weary in the waiting. Keep the desire alive. He is coming soon.</p>
+        <div class="verse-text">He who testifies to these things says, <span class="words-of-jesus">“Yes, I am coming soon.”</span> Amen. Come, Lord Jesus!</div>
+<div class="verse-commentary">
+          <p>Watch the invitation turn around and point both ways. All week Jesus has been saying "come" to us. Now, in the last words of the Bible, He makes a promise: "Yes, I am coming soon." And the response of His people, the final prayer of the whole book, is the same word handed back to Him: "Come, Lord Jesus!" That is the entire relationship in two short lines. He invites us to come to Him; He pledges to come to us; and we, longing, ask Him to hurry. And how soon is soon? From our side of the grave, sooner than it sounds. For everyone who falls asleep in Him, the very next thing they will know is His face. We do not see clearly yet; right now it is like looking in a dim, ancient mirror (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.12" target="_blank" rel="noopener">1 Corinthians 13:12</a>). But then, face to face. Do not grow weary in the waiting. Keep the desire alive. He is coming soon.</p>
         </div>
       </div>
     </div>
@@ -815,7 +839,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>The water is free to us only because it was unbearably expensive to Him. On the cross, Jesus cried "I thirst," and was handed sour wine on a sponge. The One who shouts "come, everyone who thirsts" went thirsty Himself, so that the invitation could be free for the rest of us. That is why "take the water of life freely" is not cheap. It is the most costly gift in the universe, marked down to nothing by the blood of the Giver. And the same Jesus who paid it is the One promising "I am coming soon." The invitation and the return are held in the same scarred hands. He came the first time as the Lamb to make the water free; He is coming the second time as the King to take His thirsty people home. Between those two comings stands one open door and one word echoing down the centuries to you, today: come.</p>
+      <p>The water is free to us only because it was unbearably expensive to Him. On the cross, Jesus cried "I thirst," and was handed sour wine on a sponge. The One who shouts "come, everyone who thirsts" went thirsty Himself, so that the invitation could be free for the rest of us. That is why "let the one who desires the water of life drink freely" is not cheap. It is the most costly gift in the universe, marked down to nothing by the blood of the Giver. And the same Jesus who paid it is the One promising "I am coming soon." The invitation and the return are held in the same scarred hands. He came the first time as the Lamb to make the water free; He is coming the second time as the King to take His thirsty people home. Between those two comings stands one open door and one word echoing down the centuries to you, today: come.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -852,22 +876,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/REV.22.17" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Revelation+22:17&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

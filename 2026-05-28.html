@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -735,14 +764,14 @@ if ('serviceWorker' in navigator) {
 
       <p>Three texts sit in front of us this morning: the closing image of the Sermon on the Mount, the warning that comes just before it, and one verse from a different gospel that tells us what real knowing looks like. Take them in that order and the day's title (Knowing and Doing) starts doing its own teaching.</p>
 
+<!-- BSB_BLOCK: Matthew 7:24-29 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:3d06bff8f1fbc68631fe9b922fe3898eb33ac916d1e6b72821d67d06cb6b835e | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Matthew 7:24-29</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.7.24-29" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.7.24-29" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Therefore, everyone who hears these words of mine and acts on them will be like a wise man who built his house on the rock. The rain fell, the rivers rose, and the winds blew and pounded that house. Yet it didn't collapse, because its foundation was on the rock. But everyone who hears these words of mine and doesn't act on them will be like a foolish man who built his house on the sand. The rain fell, the rivers rose, and the winds blew and pounded that house, and it collapsed. It collapsed with a great crash. When Jesus had finished saying these things, the crowds were astonished at his teaching, because he was teaching them like one who had authority, and not like their scribes."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 24">24</sup><span class="words-of-jesus">Therefore everyone who hears these words of Mine and acts on them is like a wise man who built his house on the rock.</span> <sup class="verse-number" aria-label="Verse 25">25</sup><span class="words-of-jesus">The rain fell, the torrents raged, and the winds blew and beat against that house; yet it did not fall, because its foundation was on the rock.</span> <sup class="verse-number" aria-label="Verse 26">26</sup><span class="words-of-jesus">But everyone who hears these words of Mine and does not act on them is like a foolish man who built his house on sand.</span> <sup class="verse-number" aria-label="Verse 27">27</sup><span class="words-of-jesus">The rain fell, the torrents raged, and the winds blew and beat against that house, and it fell—and great was its collapse!”</span> <sup class="verse-number" aria-label="Verse 28">28</sup>When Jesus had finished saying these things, the crowds were astonished at His teaching, <sup class="verse-number" aria-label="Verse 29">29</sup>because He taught as one who had authority, and not as their scribes.</div>
+<div class="verse-commentary">
           <p>The two builders hear exactly the same words. That is the part of the parable most readers miss on the first pass. Jesus does not separate them by intelligence, by access, by background, by zeal at church, or by quantity of teaching received. He separates them by one Greek verb. <em>Poieo</em>, "to do." The wise builder is the one who "hears and does" (<em>akouei... kai poiei</em>). The foolish builder is the one who "hears and does not do" (<em>akouei... kai me poion</em>). Same lecture. Same Sermon. Same Teacher. One went home and obeyed the next morning. The other went home and told his family how good the sermon was.</p>
           <p>The rock in the image is <em>petra</em> in Greek, the same word Jesus uses three chapters later (Matt. 16:18) when He names Peter and declares the church will be built on this rock. The rock is not a metaphor for ideology; it is the surface that holds when everything above it is being shaken. The digging-down-to-bedrock work is the work of obedience, the small, daily, unglamorous matter of doing the thing Jesus just said. Forgiving the person we were going to keep score against. Saying the apology we owed last week. Putting the phone down at the dinner table. Closing the tab. Calling the parent. The rain does not ask whether we knew the right answer. The rain asks what the foundation actually is.</p>
           <p>The Greek verb behind the foolish house's collapse is striking. <em>Epesen</em> ("it fell"), in the aorist tense, used elsewhere of Jericho's wall falling, of Babylon falling in Revelation. The collapse is total and instantaneous. The narrator then adds three Greek words that have echoed for two thousand years. <em>Megale he ptosis autes</em>: "great was the fall of it." The house was up. The house was finished. The house looked the same as the other one to the visitor walking by in the dry season. And then the storm came, and the only thing that mattered was the question no one could see from the street: what was underneath. Hearing without doing produces a house that looks identical to a built-on-bedrock life. Right up until the rain falls.</p>
@@ -750,29 +779,29 @@ if ('serviceWorker' in navigator) {
         </div>
       </div>
 
+<!-- BSB_BLOCK: Matthew 7:21 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:2f9c68f918dc032434288eb3a5c2c21cdac8bda73d226d6a932f18f9f47a5844 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Matthew 7:21</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.7.21" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.7.21" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Not everyone who says to me, 'Lord, Lord,' will enter the kingdom of heaven, but the one who does the will of my Father in heaven."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><span class="words-of-jesus">Not everyone who says to Me, ‘Lord, Lord,’ will enter the kingdom of heaven, but only he who does the will of My Father in heaven.</span></div>
+<div class="verse-commentary">
           <p>This is the verse three verses before the wise and foolish builders, and the two readings belong together. The doubled "Lord, Lord" is the most reverent address in first-century Greek. <em>Kyrie kyrie</em>, vocative, with the doubling that intensifies sincerity. The people Jesus has in mind in this verse are not the indifferent, the hostile, or the half-Christian. They are the very pious. They have shown up. They have used the correct address. They have, in the next two verses, prophesied and cast out demons and done many works in His name. And Jesus says, "I never knew you."</p>
-          <p>Notice what Jesus does <em>not</em> say. He does not say "you never knew me." He says, "I never knew you." The Greek verb is <em>ginosko</em>, the same relational-knowing verb we met five weeks ago in John 17:3 (and we will meet again in two verses here). Jesus is not denying their facts about Him. He is denying that the relationship ever ran in the other direction. The line that decides the difference is the second half of the verse: "the one who <em>does</em> the will of my Father in heaven." The Greek word behind "will" is <em>thelema</em>, the same noun that crossed Jesus's lips in Gethsemane last week, "not as I will but as You will." The Father's will is what Jesus did all the way to the cross. The Father's will is what He is asking us to do in the small, daily room we are standing in this morning.</p>
+          <p>Notice what Jesus does <em>not</em> say. He does not say "you never knew me." He says, "I never knew you." The Greek verb is <em>ginosko</em>, the same relational-knowing verb we met five weeks ago in John 17:3 (and we will meet again in two verses here). Jesus is not denying their facts about Him. He is denying that the relationship ever ran in the other direction. The line that decides the difference is the second half of the verse: "only he who <em>does</em> the will of My Father in heaven." The Greek word behind "will" is <em>thelema</em>, the same noun that crossed Jesus's lips in Gethsemane last week, "not as I will but as You will." The Father's will is what Jesus did all the way to the cross. The Father's will is what He is asking us to do in the small, daily room we are standing in this morning.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: John 17:3 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:69fa1efa9b527b68d65cd8075290c3979fec523b68e38ade19a323120f5846f1 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">John 17:3</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.17.3" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.17.3" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"This is eternal life: that they may know you, the only true God, and the one you have sent, Jesus Christ."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><span class="words-of-jesus">Now this is eternal life, that they may know You, the only true God, and Jesus Christ, whom You have sent.</span></div>
+<div class="verse-commentary">
           <p>Jesus prays this verse in the upper room on the night before His arrest, just minutes after the foot-washing. He has been talking to the Father about His followers and He pauses to define eternal life for them. The definition is not a quantity. It is not a duration. It is not a list of doctrines. Eternal life is to <em>know</em>. The Greek verb is <em>ginosko</em>, the same relational-knowing verb we met earlier this quarter when this exact verse was the Memory Text of an entire week. The Hebrew equivalent is <em>yada</em>, the same verb the Hebrew Bible reaches for when it talks about marital intimacy and covenant friendship. This is not the knowing of a witness on a stand reciting facts. It is the knowing of a husband and a wife after thirty years.</p>
-          <p>Place John 17:3 next to Matthew 7:21 and the week's title finally clicks together. The "knowing" that matters is the kind that is being shaped by doing. The "doing" that matters is the kind that is being shaped by knowing. The two are inseparable, like the two ventricles of one heart pumping the same blood. The God who could be destroyed because of a lack of knowledge in <a class="vlink" href="https://www.bible.com/bible/1713/HOS.4.1" target="_blank">Hosea 4:1</a>, who told an exiled Israel they were "destroyed for lack of knowledge" in <a class="vlink" href="https://www.bible.com/bible/1713/HOS.4.6" target="_blank">Hosea 4:6</a>, who watched them "play the harlot" without restraint in <a class="vlink" href="https://www.bible.com/bible/1713/HOS.4.10" target="_blank">Hosea 4:10</a>, was never speaking of a deficit of information. He was speaking of a deficit of intimacy that broke into a deficit of obedience. The cure for both is the same cure, and His name is the One the Father sent.</p>
+          <p>Place John 17:3 next to Matthew 7:21 and the week's title finally clicks together. The "knowing" that matters is the kind that is being shaped by doing. The "doing" that matters is the kind that is being shaped by knowing. The two are inseparable, like the two ventricles of one heart pumping the same blood. The God who could be destroyed because of a lack of knowledge in <a class="vlink" href="https://www.bible.com/bible/3034/HOS.4.1" target="_blank" rel="noopener">Hosea 4:1</a>, who told an exiled Israel they were "destroyed for lack of knowledge" in <a class="vlink" href="https://www.bible.com/bible/3034/HOS.4.6" target="_blank" rel="noopener">Hosea 4:6</a>, who watched them "play the harlot" without restraint in <a class="vlink" href="https://www.bible.com/bible/3034/HOS.4.10" target="_blank" rel="noopener">Hosea 4:10</a>, was never speaking of a deficit of information. He was speaking of a deficit of intimacy that broke into a deficit of obedience. The cure for both is the same cure, and His name is the One the Father sent.</p>
         </div>
       </div>
     </div>
@@ -846,22 +875,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/MAT.7.24-29" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Matthew+7:24-29&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -890,8 +939,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -900,18 +951,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -919,6 +974,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -938,6 +994,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

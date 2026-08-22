@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -380,6 +413,16 @@
     padding-top: 14px;
     border-top: 1px solid var(--border);
     font-weight: 300;
+  }
+  .verse-commentary p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-soft);
+    font-weight: 300;
+    margin: 0 0 14px 0;
+  }
+  .verse-commentary p:last-child {
+    margin-bottom: 0;
   }
 
   /* ── ACCENT SECTIONS ── */
@@ -459,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -522,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -540,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -638,8 +685,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -694,7 +739,7 @@
         <span class="section-title">Connection to Yesterday</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Yesterday's Sabbath opener framed the question driving this entire week: who is the God we're trying to know? We saw that Jesus Himself defined eternal life as knowing God personally, not just knowing about Him (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.17.3" target="_blank">John 17:3</a>). Today we pick up the next thread: if knowing God is that important, what has gone wrong with humanity's picture of Him, and where do we go to get it corrected?</p>
+      <p>Yesterday's Sabbath opener framed the question driving this entire week: who is the God we're trying to know? We saw that Jesus Himself defined eternal life as knowing God personally, not just knowing about Him (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.17.3" target="_blank" rel="noopener">John 17:3</a>). Today we pick up the next thread: if knowing God is that important, what has gone wrong with humanity's picture of Him, and where do we go to get it corrected?</p>
     </div>
 
     <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
@@ -706,7 +751,7 @@
       </div>
       <div class="section-heading">The Original Character Assassination</div>
       <p>The serpent in Genesis 3 does not open with a theological argument. He opens with a question. That detail matters more than most readers realize. In the rhetoric of the ancient world, the most devastating way to undermine authority was not a frontal assault but a carefully planted seed of doubt. You didn't accuse a king of evil; you wondered aloud whether his motives were really as noble as they appeared. The question format invited the listener to do the accusing themselves, which made the conclusion feel like their own idea rather than someone else's manipulation.</p>
-      <p>This is exactly the serpent's technique. "Did God really say...?" is not a request for information. It's a reframing device. By slightly exaggerating God's command ("You can't eat from <em>any</em> tree?"), the serpent paints God as restrictive, withholding, paranoid. Eve corrects the exaggeration, but the frame has already shifted. The conversation is no longer about God's generosity in giving them every other tree in the garden. It's about the one restriction. And from that foothold, the serpent builds his case: God is hiding something. God is protecting His own interests. God is not who you think He is.</p>
+      <p>This is exactly the serpent's technique. "Did God really say...?" is not a request for information. It's a reframing device. By slightly exaggerating God's command ("You must not eat from <em>any</em> tree?"), the serpent paints God as restrictive, withholding, paranoid. Eve corrects the exaggeration, but the frame has already shifted. The conversation is no longer about God's generosity in giving them every other tree in the garden. It's about the one restriction. And from that foothold, the serpent builds his case: God is hiding something. God is protecting His own interests. God is not who you think He is.</p>
       <p>What's striking is that this strategy has never changed. Every distortion of God's character since Eden has followed the same pattern: take one true thing (God did set a boundary), twist the motive behind it (He must be keeping something good from you), and let the lie grow from there.</p>
     </div>
 
@@ -721,52 +766,59 @@
       <p>Today's anchor passage is Genesis 3:1-5, the first recorded attempt to distort God's character. But the study also surveys the Bible's own answer to that distortion: a sweeping catalog of God's attributes, from His omnipotence and justice to His mercy, grace, and eternal faithfulness. We'll walk through the anchor passage first, then let several key attribute passages speak as correctives to the lies that started in Eden.</p>
 
       <!-- ANCHOR: Genesis 3:1-5 -->
+<!-- BSB_BLOCK: Genesis 3:1-5 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:331c3e8a1b4da0c0d891836cf4a5a9b82a4c9c4c8f0fa32177ad7678cd4c1a4c | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Genesis 3:1-5</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/GEN.3.1-5" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/GEN.3.1-5" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Now the serpent was the most cunning of all the wild animals that the LORD God had made. He said to the woman, 'Did God really say, "You can't eat from any tree in the garden"?' The woman said to the serpent, 'We may eat the fruit from the trees in the garden. But about the fruit of the tree in the middle of the garden, God said, "You must not eat it or touch it, or you will die."' 'No! You will not die,' the serpent said to the woman. 'In fact, God knows that when you eat it your eyes will be opened and you will be like God, knowing good and evil.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>The serpent's attack unfolds in three precise moves, and understanding them helps us recognize the same strategy today. First, he questions God's word: "Did God really say...?" This plants doubt about whether God has actually communicated clearly. Second, he contradicts God's word directly: "No! You will not die." This is a flat denial of the consequence God had promised, turning God into either a liar or someone who uses empty threats to control people. Third, and most devastatingly, he attacks God's motive: "God knows that when you eat it your eyes will be opened." The implication is that God is threatened by human potential, that He set the boundary not out of love but out of self-interest.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>Now the serpent was more crafty than any beast of the field that the LORD God had made. And he said to the woman, “Did God really say, ‘You must not eat from any tree in the garden?’” <sup class="verse-number" aria-label="Verse 2">2</sup>The woman answered the serpent, “We may eat the fruit of the trees of the garden, <sup class="verse-number" aria-label="Verse 3">3</sup>but about the fruit of the tree in the middle of the garden, God has said, ‘You must not eat of it or touch it, or you will die.’” <sup class="verse-number" aria-label="Verse 4">4</sup>“You will not surely die,” the serpent told the woman. <sup class="verse-number" aria-label="Verse 5">5</sup>“For God knows that in the day you eat of it, your eyes will be opened and you will be like God, knowing good and evil.”</div>
+<div class="verse-commentary">
+          <p>The serpent's attack unfolds in three precise moves, and understanding them helps us recognize the same strategy today. First, he questions God's word: "Did God really say...?" This plants doubt about whether God has actually communicated clearly. Second, he contradicts God's word directly: "You will not surely die." This is a flat denial of the consequence God had promised, turning God into either a liar or someone who uses empty threats to control people. Third, and most devastatingly, he attacks God's motive: "God knows that in the day you eat of it, your eyes will be opened." The implication is that God is threatened by human potential, that He set the boundary not out of love but out of self-interest.</p>
           <p>Notice what the serpent does <em>not</em> do. He does not deny God's existence. He does not argue against the concept of a Creator. He takes for granted that God is real and then systematically redefines who that God is. The Hebrew word used for the serpent's craftiness is <em>arum</em>, which can mean shrewd or prudent in a neutral sense but here carries the weight of calculated deception. The serpent is not confused about God; he is deliberately constructing a false version of God for Eve to react to. And this is still the primary way people end up with a distorted picture of their Creator: not through atheism, but through a subtly rewritten version of His character.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Genesis 3:1 | 3:1 Hebrew nachash, translated in this chapter as serpent, is translated in most cases as snake. -->
 
       <p>The Bible's answer to this distortion is not a single proof text but a whole-Bible portrait. From Genesis to Revelation, God reveals His character through action, invitation, and self-description. Here are three passages that directly counter the serpent's three lies.</p>
 
       <!-- SUPPORTING: Romans 2:4 -->
+<!-- BSB_BLOCK: Romans 2:4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:18045b5eb580de560048826f1e2986e48e9a674df5d9a3daf204e493560997e2 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Romans 2:4</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ROM.2.4" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.2.4" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Or do you despise the riches of his kindness, restraint, and patience, not recognizing that God's kindness is intended to lead you to repentance?"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">The serpent painted God as restrictive and withholding. Paul paints the opposite picture: God is rich in kindness, restraint, and patience. The Greek word for kindness here, <em>chr&#275;stot&#275;s</em>, describes a goodness that actively benefits others at cost to itself. God's boundaries are not walls built to keep us from something good; they are guardrails built by someone whose kindness is specifically designed to lead us toward life. Every attribute on the Bible's list of God's character, from His justice (<a class="vlink" href="https://www.bible.com/bible/1713/ISA.30.18" target="_blank">Isaiah 30:18</a>) to His mercy (<a class="vlink" href="https://www.bible.com/bible/1713/DEU.7.9" target="_blank">Deuteronomy 7:9</a>) to His wisdom (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.2.7" target="_blank">1 Corinthians 2:7</a>) and grace (<a class="vlink" href="https://www.bible.com/bible/1713/2CO.12.9" target="_blank">2 Corinthians 12:9</a>), orbits this same center: God acts for our benefit, not His own.</div>
+        <div class="verse-text">Or do you disregard the riches of His kindness, tolerance, and patience, not realizing that God’s kindness leads you to repentance?</div>
+<div class="verse-commentary">
+          <p>The serpent painted God as restrictive and withholding. Paul paints the opposite picture: God is rich in kindness, restraint, and patience. The Greek word for kindness here, <em>chr&#275;stot&#275;s</em>, describes a goodness that actively benefits others at cost to itself. God's boundaries are not walls built to keep us from something good; they are guardrails built by someone whose kindness is specifically designed to lead us toward life. Every attribute on the Bible's list of God's character, from His justice (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.30.18" target="_blank" rel="noopener">Isaiah 30:18</a>) to His mercy (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.7.9" target="_blank" rel="noopener">Deuteronomy 7:9</a>) to His wisdom (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.2.7" target="_blank" rel="noopener">1 Corinthians 2:7</a>) and grace (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.12.9" target="_blank" rel="noopener">2 Corinthians 12:9</a>), orbits this same center: God acts for our benefit, not His own.</p>
+        </div>
       </div>
 
       <!-- SUPPORTING: Jeremiah 29:11 -->
+<!-- BSB_BLOCK: Jeremiah 29:11 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:31e057ee9c4afde0cc9129075b8a8e132147d22259b916661a79f7dae53c3c73 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Jeremiah 29:11</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JER.29.11" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JER.29.11" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"'For I know the plans I have for you'&#8212;this is the LORD's declaration&#8212;'plans for your well-being, not for disaster, to give you a future and a hope.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">The serpent's second lie was that God was hiding something, that His real agenda would harm Eve. Jeremiah delivers God's own declaration to a people in exile, a people who had every reason to wonder whether God had abandoned them. And His message is unmistakable: I know the plans I have for you, and they are for your well-being. The Hebrew word <em>shalom</em> behind "well-being" carries more weight than the English translation suggests; it means wholeness, completeness, flourishing. God is not a deity protecting His power by keeping humanity small. He is a Father whose plans are aimed at our flourishing, even when we can't see the full picture yet. This is the direct opposite of what the serpent claimed in Eden.</div>
+        <div class="verse-text">For I know the plans I have for you, declares the LORD, plans to prosper you and not to harm you, to give you a future and a hope.</div>
+<div class="verse-commentary">
+          <p>The serpent's second lie was that God was hiding something, that His real agenda would harm Eve. Jeremiah delivers God's own declaration to a people in exile, a people who had every reason to wonder whether God had abandoned them. And His message is unmistakable: I know the plans I have for you, and they are for your well-being. The Hebrew word <em>shalom</em> behind "well-being" carries more weight than the English translation suggests; it means wholeness, completeness, flourishing. God is not a deity protecting His power by keeping humanity small. He is a Father whose plans are aimed at our flourishing, even when we can't see the full picture yet. This is the direct opposite of what the serpent claimed in Eden.</p>
+        </div>
       </div>
 
       <!-- SUPPORTING: John 11:25 -->
+<!-- BSB_BLOCK: John 11:25 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:509567230fed177a4f5dca57a0ac7143d56146bb448886ec25e40b2f2a43c94e | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">John 11:25</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.11.25" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.11.25" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Jesus said to her, 'I am the resurrection and the life. The one who believes in me, even if he dies, will live.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">The serpent's third lie was the most brazen: "You will not die." He promised that ignoring God's word would carry no real consequence, that death was an empty threat. John 11:25 reveals the truth on the other side of that lie. Death is real. It entered the world exactly as God warned. But God did not leave us there. Jesus stands at a tomb and declares that He Himself is the resurrection and the life, that death does not get the final word. The difference between the serpent's promise and Christ's promise is everything: the serpent said death wouldn't happen; Jesus says death happened, and He defeated it. One is a lie that pretends the problem doesn't exist. The other is a rescue that faces the problem head-on. This is the God the Bible reveals: omnipotent enough to conquer death (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.11.25" target="_blank">John 11:25</a>), sovereign over all things (<a class="vlink" href="https://www.bible.com/bible/1713/PSA.47.8" target="_blank">Psalm 47:8</a>), eternal in nature (<a class="vlink" href="https://www.bible.com/bible/1713/DEU.33.27" target="_blank">Deuteronomy 33:27</a>), and willing to forgive the very creatures who believed the lie about Him (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.6.14" target="_blank">Matthew 6:14</a>).</div>
+        <div class="verse-text">Jesus said to her, <span class="words-of-jesus">“I am the resurrection and the life. Whoever believes in Me will live, even though he dies.</span></div>
+<div class="verse-commentary">
+          <p>The serpent's third lie was the most brazen: "You will not surely die." He promised that ignoring God's word would carry no real consequence, that death was an empty threat. John 11:25 reveals the truth on the other side of that lie. Death is real. It entered the world exactly as God warned. But God did not leave us there. Jesus stands at a tomb and declares that He Himself is the resurrection and the life, that death does not get the final word. The difference between the serpent's promise and Christ's promise is everything: the serpent said death wouldn't happen; Jesus says death happened, and He defeated it. One is a lie that pretends the problem doesn't exist. The other is a rescue that faces the problem head-on. This is the God the Bible reveals: omnipotent enough to conquer death (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.11.25" target="_blank" rel="noopener">John 11:25</a>), sovereign over all things (<a class="vlink" href="https://www.bible.com/bible/3034/PSA.47.8" target="_blank" rel="noopener">Psalm 47:8</a>), eternal in nature (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.33.27" target="_blank" rel="noopener">Deuteronomy 33:27</a>), and willing to forgive the very creatures who believed the lie about Him (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.6.14" target="_blank" rel="noopener">Matthew 6:14</a>).</p>
+        </div>
       </div>
     </div>
 
@@ -791,7 +843,7 @@
       </div>
       <div class="section-heading">False Stories Still Travel Faster</div>
       <p>In 2025, a study from Georgia State University's Robinson College of Business confirmed what researchers at MIT had documented years earlier: false information spreads significantly faster than the truth on social media, reaching people roughly six times more quickly. The Georgia State team found that emotional cues, not accuracy, are what drive people to share content. We don't pass along what's true; we pass along what <em>feels</em> true, what triggers surprise, outrage, or fear.</p>
-      <p>The parallel to Genesis 3 is almost too precise. The serpent's strategy was never about evidence. It was about emotional framing. "Did God really say?" appeals to suspicion. "You will not die" appeals to the desire for reassurance. "God knows you'll become like Him" appeals to ambition. Each move targets a feeling, not a fact. And the result is exactly what the modern research predicts: the distorted version of God's character spreads faster, sticks harder, and is more emotionally satisfying than the truth, at least in the short term.</p>
+      <p>The parallel to Genesis 3 is almost too precise. The serpent's strategy was never about evidence. It was about emotional framing. "Did God really say?" appeals to suspicion. "You will not surely die" appeals to the desire for reassurance. "God knows you'll become like Him" appeals to ambition. Each move targets a feeling, not a fact. And the result is exactly what the modern research predicts: the distorted version of God's character spreads faster, sticks harder, and is more emotionally satisfying than the truth, at least in the short term.</p>
       <p>This is why the Bible's invitation to know God through Scripture is not optional. Without it, we will inevitably build our picture of God from whatever emotional narratives happen to be circulating around us. The only corrective is going back to the source.</p>
     </div>
 
@@ -802,7 +854,7 @@
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Every lie the serpent told in Eden finds its answer in Jesus. The serpent said God is withholding good things from you. Jesus came and "did not consider equality with God as something to be exploited" but "emptied himself" for us (<a class="vlink" href="https://www.bible.com/bible/1713/PHP.2.6-7" target="_blank">Philippians 2:6-7</a>). The serpent said God can't be trusted. Jesus proved trustworthy to the point of death on a cross. The serpent said death isn't real. Jesus walked into death, stayed three days, and walked out the other side holding the keys.</p>
+      <p>Every lie the serpent told in Eden finds its answer in Jesus. The serpent said God is withholding good things from you. Jesus came and "did not consider equality with God as something to be exploited" but "emptied himself" for us (<a class="vlink" href="https://www.bible.com/bible/3034/PHP.2.6-7" target="_blank" rel="noopener">Philippians 2:6-7</a>). The serpent said God can't be trusted. Jesus proved trustworthy to the point of death on a cross. The serpent said death isn't real. Jesus walked into death, stayed three days, and walked out the other side holding the keys.</p>
       <p>If you want to know what God is really like, look at Jesus. He healed the people religion had written off. He touched the ones everyone else avoided. He wept at a friend's grave even though He knew He was about to raise him. He forgave the soldiers who drove the nails. This is the clearer picture of God that the Bible offers: not a distant power broker protecting His interests, but a Father who gave everything to bring His children home.</p>
     </div>
 
@@ -840,22 +892,42 @@
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/GEN.3.1-5" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Genesis+3:1-5&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <a class="footer-archive" href="index.html">&#8592; Home</a>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
+    <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

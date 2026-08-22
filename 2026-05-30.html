@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -371,6 +377,25 @@ if ('serviceWorker' in navigator) {
     color: var(--text-verse);
     margin-bottom: 8px;
     font-weight: 400;
+  }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
   }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
@@ -507,49 +532,6 @@ if ('serviceWorker' in navigator) {
     opacity: 0.7;
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -570,6 +552,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -588,8 +612,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -740,7 +769,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">Connection to Last Week</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Last week closed with two builders, one storm, and the doing of the Father's will as the verb that separated the wise house from the wrecked one. <em>Poieo</em>. The doing was the diagnostic. But the Sermon on the Mount never said the wise builder would not slip, and the whole canon that is honest about who we are knows that even a builder who has dug to bedrock will need to come back. <em>Salah</em>, the Hebrew verb the Old Testament uses only of God forgiving (we heard Daniel cry it at the close of his prayer three weeks ago in <a class="vlink" href="https://www.bible.com/bible/1713/DAN.9.19" target="_blank">Daniel 9:19</a>), walks straight to the center of the room this week. Last week's <em>poieo</em> was the verb the storm sorted by. This week's two verbs are the ones that meet the builder on the morning after the storm. Repentance is the human side. Forgiveness is the divine side. The cross is where they meet.</p>
+      <p>Last week closed with two builders, one storm, and the doing of the Father's will as the verb that separated the wise house from the wrecked one. <em>Poieo</em>. The doing was the diagnostic. But the Sermon on the Mount never said the wise builder would not slip, and the whole canon that is honest about who we are knows that even a builder who has dug to bedrock will need to come back. <em>Salah</em>, the Hebrew verb the Old Testament uses only of God forgiving (we heard Daniel cry it at the close of his prayer three weeks ago in <a class="vlink" href="https://www.bible.com/bible/3034/DAN.9.19" target="_blank" rel="noopener">Daniel 9:19</a>), walks straight to the center of the room this week. Last week's <em>poieo</em> was the verb the storm sorted by. This week's two verbs are the ones that meet the builder on the morning after the storm. Repentance is the human side. Forgiveness is the divine side. The cross is where they meet.</p>
     </div>
 
     <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
@@ -752,7 +781,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">At the Foot of the Mountain</div>
       <p>The covenant was six weeks old. Israel had walked through the Red Sea on a Wednesday, eaten the first manna on a Thursday, watched Mount Sinai catch fire under the voice of God at the end of the same month, and stood at the base of the mountain swearing aloud (Exod 24:7) that everything the LORD had spoken they would do. Then Moses went up the mountain to receive the tablets, and forty days passed, and the people decided he was dead. Aaron, the high priest in waiting, melted their gold earrings, fashioned a calf, built an altar, and called for a festival to the LORD. By the time Moses came down with the two stone tablets in his hands, the camp was in full pagan worship of the very God who had just brought them out. He smashed the tablets at the base of the mountain. The book of Exodus calls what happened at that altar covenant adultery on the wedding night.</p>
-      <p>What happens in the next three chapters is the most theologically loaded sequence in the entire Old Testament. In <a class="vlink" href="https://www.bible.com/bible/1713/EXO.32" target="_blank">Exodus 32</a> the calf is ground to powder, scattered on water, and made to be drunk. Moses' "blot me out of Your book" intercession is recorded on the page beside it. In <a class="vlink" href="https://www.bible.com/bible/1713/EXO.33" target="_blank">Exodus 33</a> the LORD says He will not go up with this people but will send an angel ahead, and Moses asks the question every betrayer has wanted to ask: show me Your glory. And in <a class="vlink" href="https://www.bible.com/bible/1713/EXO.34" target="_blank">Exodus 34</a> God answers it. New tablets are cut, the man climbs the mountain a second time, and the LORD walks past him in the cleft of the rock saying His own name in seven Hebrew words. The Bible's own working definition of who God is comes from a chapter set inside the worst betrayal Israel ever committed. The rest of the canon will keep quoting it. Psalm 86, Psalm 103, Psalm 145, Joel, Jonah, Nahum, Nehemiah will all reach back to <a class="vlink" href="https://www.bible.com/bible/1713/EXO.34.6-7" target="_blank">Exodus 34:6-7</a> as if it were the family motto. The hardest day in Israel's history is the day God told the world His name.</p>
+      <p>What happens in the next three chapters is the most theologically loaded sequence in the entire Old Testament. In <a class="vlink" href="https://www.bible.com/bible/3034/EXO.32" target="_blank" rel="noopener">Exodus 32</a> the calf is ground to powder, scattered on water, and made to be drunk. Moses' "blot me out of Your book" intercession is recorded on the page beside it. In <a class="vlink" href="https://www.bible.com/bible/3034/EXO.33" target="_blank" rel="noopener">Exodus 33</a> the LORD says He will not go up with this people but will send an angel ahead, and Moses asks the question every betrayer has wanted to ask: show me Your glory. And in <a class="vlink" href="https://www.bible.com/bible/3034/EXO.34" target="_blank" rel="noopener">Exodus 34</a> God answers it. New tablets are cut, the man climbs the mountain a second time, and the LORD walks past him in the cleft of the rock saying His own name in seven Hebrew words. The Bible's own working definition of who God is comes from a chapter set inside the worst betrayal Israel ever committed. The rest of the canon will keep quoting it. Psalm 86, Psalm 103, Psalm 145, Joel, Jonah, Nahum, Nehemiah will all reach back to <a class="vlink" href="https://www.bible.com/bible/3034/EXO.34.6-7" target="_blank" rel="noopener">Exodus 34:6-7</a> as if it were the family motto. The hardest day in Israel's history is the day God told the world His name.</p>
     </div>
 
     <!-- 4. THIS WEEK'S MEMORY TEXT -->
@@ -763,18 +792,16 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
+<!-- BSB_BLOCK: 1 John 1:9 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:63483951baa9b0adc587a65347a3d4e18390201ac7cb01f4a40017a071f5d4df | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 John 1:9</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1JN.1.9" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1JN.1.9" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"If we confess our sins, He is faithful and just to forgive us our sins and to cleanse us from all unrighteousness."</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"If we confess our sins, he is faithful and righteous to forgive us our sins and to cleanse us from all unrighteousness."</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">If we confess our sins, He is faithful and just to forgive us our sins and to cleanse us from all unrighteousness.</div>
+<div class="verse-commentary">
           <p>One short sentence, written by a fisherman near the end of his life, to people who had started acting like the message of Jesus didn't need to mention sin anymore. The Greek word behind "confess" is <em>homologeo</em>, and it literally means to say the same thing. Confessing sin means calling it what God calls it, not a softer word, not a fancy word, the same word. And notice the two words John picks for how God responds: faithful and just. Not "kind," not "easygoing." Those are courtroom words. God doesn't forgive us by looking the other way on justice. He forgives us because the bill was already paid somewhere else, at the cross. Confession doesn't earn the forgiveness, it just receives what the cross already bought, and the verse promises God washes us all the way clean.</p>
-          <p>The six days this week are arranged around that one sentence. <a class="vlink" href="https://www.bible.com/bible/1713/ISA.61.10" target="_blank">Isaiah 61:10</a> gives us a bride dressed in a robe of righteousness, centuries before there's a wedding to wear it to. <a class="vlink" href="https://www.bible.com/bible/1713/HOS.6" target="_blank">Hosea 6</a> is a prophet calling an unfaithful people home, talking like a doctor instead of a judge ("Come, let us return to the LORD"). <a class="vlink" href="https://www.bible.com/bible/1713/ACT.3.18-19" target="_blank">Acts 3:18-19</a> is Peter telling the same crowd that had Jesus killed that turning back brings "times of refreshing from the Lord." <a class="vlink" href="https://www.bible.com/bible/1713/EXO.34.1-10" target="_blank">Exodus 34:1-10</a> is God saying His own name out loud in the middle of Israel's worst betrayal. <a class="vlink" href="https://www.bible.com/bible/1713/ROM.6.23" target="_blank">Romans 6:23</a> puts the paycheck of sin next to the free gift of God in one line. And <a class="vlink" href="https://www.bible.com/bible/1713/MAT.22.1-14" target="_blank">Matthew 22:1-14</a> closes the week with a king throwing a wedding feast and one guest who couldn't be bothered to put on the robe the king was handing out at the door.</p>
+          <p>The six days this week are arranged around that one sentence. <a class="vlink" href="https://www.bible.com/bible/3034/ISA.61.10" target="_blank" rel="noopener">Isaiah 61:10</a> gives us a bride dressed in a robe of righteousness, centuries before there's a wedding to wear it to. <a class="vlink" href="https://www.bible.com/bible/3034/HOS.6" target="_blank" rel="noopener">Hosea 6</a> is a prophet calling an unfaithful people home, talking like a doctor instead of a judge ("Come, let us return to the LORD"). <a class="vlink" href="https://www.bible.com/bible/3034/ACT.3.18-19" target="_blank" rel="noopener">Acts 3:18-19</a> is Peter telling the same crowd that had Jesus killed that turning back brings "times of refreshing from the Lord." <a class="vlink" href="https://www.bible.com/bible/3034/EXO.34.1-10" target="_blank" rel="noopener">Exodus 34:1-10</a> is God saying His own name out loud in the middle of Israel's worst betrayal. <a class="vlink" href="https://www.bible.com/bible/3034/ROM.6.23" target="_blank" rel="noopener">Romans 6:23</a> puts the paycheck of sin next to the free gift of God in one line. And <a class="vlink" href="https://www.bible.com/bible/3034/MAT.22.1-14" target="_blank" rel="noopener">Matthew 22:1-14</a> closes the week with a king throwing a wedding feast and one guest who couldn't be bothered to put on the robe the king was handing out at the door.</p>
         </div>
       </div>
     </div>
@@ -814,7 +841,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="action-box action-box-sabbath">
-        Read <a class="vlink" href="https://www.bible.com/bible/1713/EXO.34.6-7" target="_blank">Exodus 34:6-7</a> aloud once today, slowly, and underline (in your physical Bible or on a card you carry through the week) the seven words the LORD uses to describe Himself: merciful, gracious, slow to anger, abounding in steadfast love, abounding in truth, keeping mercy, forgiving. Then write <a class="vlink" href="https://www.bible.com/bible/1713/1JN.1.9" target="_blank">1 John 1:9</a> on the same card and tape it where your eyes will land on it each morning before Sunday. Ask one question every time you read the card: "What part of the week ahead am I quietly hoping God will be a different God than the one who named Himself in Exodus 34?" Carry the card into the week. The next six days are going to test whether we actually believe the name He gave to Moses inside the worst betrayal Israel ever committed, and this verse is the heartbeat underneath the whole conversation.
+        Read <a class="vlink" href="https://www.bible.com/bible/3034/EXO.34.6-7" target="_blank" rel="noopener">Exodus 34:6-7</a> aloud once today, slowly, and underline (in your physical Bible or on a card you carry through the week) the seven words the LORD uses to describe Himself: merciful, gracious, slow to anger, abounding in steadfast love, abounding in truth, keeping mercy, forgiving. Then write <a class="vlink" href="https://www.bible.com/bible/3034/1JN.1.9" target="_blank" rel="noopener">1 John 1:9</a> on the same card and tape it where your eyes will land on it each morning before Sunday. Ask one question every time you read the card: "What part of the week ahead am I quietly hoping God will be a different God than the one who named Himself in Exodus 34?" Carry the card into the week. The next six days are going to test whether we actually believe the name He gave to Moses inside the worst betrayal Israel ever committed, and this verse is the heartbeat underneath the whole conversation.
       </div>
     </div>
 
@@ -840,22 +867,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1JN.1.9" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+John+1:9&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -884,8 +931,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -894,18 +943,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -913,6 +966,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -932,6 +986,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -469,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -532,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -550,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -648,16 +685,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/bible-study/sw.js')
-      .catch(function(err) { console.log('SW registration failed:', err); });
-  });
-}
-</script>
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -735,39 +762,50 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Watch two iron blades pressed together hard enough to make sparks. Neither one stays the same. Both of them leave the bench sharper than they arrived, because sharpness is not something a blade can do to itself alone. That is the picture Solomon reached for when he tried to describe what serious believers do to each other at close range, and it is the picture the Servant in Isaiah 50 steps into when he confesses that the useful tongue he carries for the weary did not start in his mouth. It started in his ear. Paul called this shared devotion a <a class="vlink" href="https://www.bible.com/bible/1713/PHP.3.14" target="_blank">long press toward the goal</a>, and Jesus named its destination with the same words He used for eternal life itself: <a class="vlink" href="https://www.bible.com/bible/1713/JHN.17.3" target="_blank">knowing the Father</a>, and knowing Him together.</p>
+      <p>Watch two iron blades pressed together hard enough to make sparks. Neither one stays the same. Both of them leave the bench sharper than they arrived, because sharpness is not something a blade can do to itself alone. That is the picture Solomon reached for when he tried to describe what serious believers do to each other at close range, and it is the picture the Servant in Isaiah 50 steps into when he confesses that the useful tongue he carries for the weary did not start in his mouth. It started in his ear. Paul called this shared devotion a <a class="vlink" href="https://www.bible.com/bible/3034/PHP.3.14" target="_blank" rel="noopener">long press toward the goal</a>, and Jesus named its destination with the same words He used for eternal life itself: <a class="vlink" href="https://www.bible.com/bible/3034/JHN.17.3" target="_blank" rel="noopener">knowing the Father</a>, and knowing Him together.</p>
 
       <!-- ANCHOR: Isaiah 50:4 -->
+<!-- BSB_BLOCK: Isaiah 50:4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:449d09c31764af5d48929f649509aa64560fb7158fe80d57e2d07cc5ab880440 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Isaiah 50:4</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ISA.50.4" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ISA.50.4" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"The Lord GOD has given me the tongue of those who are instructed to know how to sustain the weary with a word. He awakens me each morning; he awakens my ear to listen like those being instructed."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">This is the third of the four Servant Songs, a passage that describes the coming Messiah and, in the process, describes every disciple who walks with Him. Notice the direction of traffic. The servant does not begin with the tongue. The servant begins with the ear. God "awakens" his ear each morning, and the awakened ear is what eventually produces the useful tongue.<br><br>The Hebrew phrase translated "the tongue of those who are instructed" is <em>leshon limmudim</em>, which literally means "the tongue of the taught ones," the tongue of students who have sat under a teacher long enough that the teacher's words have reshaped their mouths. This tongue is not natively eloquent. It is trained. It has listened. It has been formed by repeated exposure to a voice that knows what it is saying. And the purpose of the training is targeted: "to sustain the weary with a word." Not to impress anyone. Not to win arguments. Not to perform expertise. One specific function, which is to put a life-giving word under the elbow of a tired person who is about to give up.<br><br>This verse is the hidden architecture of the "double blessing." The weary neighbor at work, the discouraged spouse at dinner, the teenager who is slipping, the friend whose marriage is unraveling, the coworker whose mother just died, the delivery driver at the door: these are the weary, and every single one of them is within reach of a believer whose ear has been awakened that morning. What God whispers to an attentive student at dawn is what that student will carry in the tongue at noon. The morning is not self-care. It is preparation for somebody else. The Word is received vertically, so that it can be passed horizontally, and the same passage that sustained you at sunrise can sustain a weary human being before bed. That is what the week has been building toward. Not a fuller you. A useful you.</div>
+        <div class="verse-text">The Lord GOD has given Me the tongue of discipleship, to sustain the weary with a word. He awakens Me morning by morning; He awakens My ear to listen as a disciple.</div>
+<div class="verse-commentary">
+          <p>This is the third of the four Servant Songs, a passage that describes the coming Messiah and, in the process, describes every disciple who walks with Him. Notice the direction of traffic. The servant does not begin with the tongue. The servant begins with the ear. God "awakens" his ear each morning, and the awakened ear is what eventually produces the useful tongue.</p>
+          <p>The Hebrew phrase translated "the tongue of discipleship" is <em>leshon limmudim</em>, which literally means "the tongue of the taught ones," the tongue of students who have sat under a teacher long enough that the teacher's words have reshaped their mouths. This tongue is not natively eloquent. It is trained. It has listened. It has been formed by repeated exposure to a voice that knows what it is saying. And the purpose of the training is targeted: "to sustain the weary with a word." Not to impress anyone. Not to win arguments. Not to perform expertise. One specific function, which is to put a life-giving word under the elbow of a tired person who is about to give up.</p>
+          <p>This verse is the hidden architecture of the "double blessing." The weary neighbor at work, the discouraged spouse at dinner, the teenager who is slipping, the friend whose marriage is unraveling, the coworker whose mother just died, the delivery driver at the door: these are the weary, and every single one of them is within reach of a believer whose ear has been awakened that morning. What God whispers to an attentive student at dawn is what that student will carry in the tongue at noon. The morning is not self-care. It is preparation for somebody else. The Word is received vertically, so that it can be passed horizontally, and the same passage that sustained you at sunrise can sustain a weary human being before bed. That is what the week has been building toward. Not a fuller you. A useful you.</p>
+        </div>
       </div>
 
       <!-- SUPPORTING: Proverbs 27:17 -->
+<!-- BSB_BLOCK: Proverbs 27:17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:bc4c917b59c914caaf50e3127b950d0255beba325f9b9f089a7c2c94b63f55a9 | footnotes-stripped:1 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Proverbs 27:17</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/PRO.27.17" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PRO.27.17" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Iron sharpens iron, and one person sharpens another."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">The Hebrew sentence is even sharper than the English. The verb <em>chadad</em> means to be pointed, to have an edge, to cut clean. It is metallurgy vocabulary. Iron does not get sharp by sitting in a box. It gets sharp by being pressed against another piece of iron, with enough friction that sparks fly off both sides at once.<br><br>Shared Bible study is exactly that kind of friction. A reader alone can protect a misreading for decades because nothing pushes against it. A reader with a friend who loves them enough to disagree will lose the misreading in an afternoon. The sharpening is mutual; both blades leave the session more useful than they started. That is why even the Christian with thirty years of private devotion still needs one honest companion to bring the chapter to. The blade sitting in the drawer alone is duller today than it was yesterday.</div>
+        <div class="verse-text">As iron sharpens iron, so one man sharpens another.</div>
+<div class="verse-commentary">
+          <p>The Hebrew sentence is even sharper than the English. The verb <em>chadad</em> means to be pointed, to have an edge, to cut clean. It is metallurgy vocabulary. Iron does not get sharp by sitting in a box. It gets sharp by being pressed against another piece of iron, with enough friction that sparks fly off both sides at once.</p>
+          <p>Shared Bible study is exactly that kind of friction. A reader alone can protect a misreading for decades because nothing pushes against it. A reader with a friend who loves them enough to disagree will lose the misreading in an afternoon. The sharpening is mutual; both blades leave the session more useful than they started. That is why even the Christian with thirty years of private devotion still needs one honest companion to bring the chapter to. The blade sitting in the drawer alone is duller today than it was yesterday.</p>
+        </div>
       </div>
+      <!-- BSB_FOOTNOTE: Proverbs 27:17 | 27:17 Hebrew sharpens the face of another or sharpens the countenance of a friend -->
 
       <!-- SUPPORTING: Ecclesiastes 4:9-10 -->
+<!-- BSB_BLOCK: Ecclesiastes 4:9-10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:6ca566a2ca28a1191a8d1060a661eb4526c5459de53ae615fc77f91854522f1e | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Ecclesiastes 4:9-10</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ECC.4.9-10" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ECC.4.9-10" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Two are better than one because they have a good reward for their efforts. For if either falls, his companion can lift him up; but pity the one who falls without another to lift him up."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">The preacher in Ecclesiastes is not a sentimental man. He has just finished watching the vanity of wealth, labor, and status with his eyes open. His verdict on the solo life is clinical: two are better than one. Not emotionally better. Structurally better. The math of a spiritual life includes falling, and a fall without a companion close by is much harder to recover from than a fall inside a friendship that is already watching.<br><br>Apply this to Bible study and the force of the verse sharpens. Every serious reader eventually falls. They fall into a misunderstanding, a discouragement, a season of dryness, a misapplication, a prideful reading that would have embarrassed them if they had heard themselves out loud. A companion who is also reading the Book hears it. A companion can say, "I don't think that's what that chapter is doing." A companion can pray when the pages have gone silent for two weeks. The Bible's own wisdom refuses to treat the solo reader as the standard; it treats the pair as the baseline and the solo as the exposure.</div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 9">9</sup>Two are better than one, because they have a good return for their labor. <sup class="verse-number" aria-label="Verse 10">10</sup>For if one falls down, his companion can lift him up; but pity the one who falls without another to help him up!</div>
+<div class="verse-commentary">
+          <p>The preacher in Ecclesiastes is not a sentimental man. He has just finished watching the vanity of wealth, labor, and status with his eyes open. His verdict on the solo life is clinical: two are better than one. Not emotionally better. Structurally better. The math of a spiritual life includes falling, and a fall without a companion close by is much harder to recover from than a fall inside a friendship that is already watching.</p>
+          <p>Apply this to Bible study and the force of the verse sharpens. Every serious reader eventually falls. They fall into a misunderstanding, a discouragement, a season of dryness, a misapplication, a prideful reading that would have embarrassed them if they had heard themselves out loud. A companion who is also reading the Book hears it. A companion can say, "I don't think that's what that chapter is doing." A companion can pray when the pages have gone silent for two weeks. The Bible's own wisdom refuses to treat the solo reader as the standard; it treats the pair as the baseline and the solo as the exposure.</p>
+        </div>
       </div>
     </div>
 
@@ -841,22 +879,51 @@ if ('serviceWorker' in navigator) {
   </div>
 
     <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/ISA.50.4" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Isaiah+50:4&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/bible-study/sw.js')
+    .then(reg => console.log('SW registered:', reg.scope))
+    .catch(err => console.log('SW registration failed:', err));
+}
+</script>
+
 <!-- Firebase SDK for push notifications -->
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>

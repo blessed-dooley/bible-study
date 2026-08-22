@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -722,7 +745,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Parade Everyone Cheered Ended With the Condemned</div>
       <p>When a Roman general won a great victory, the city threw him a triumph, one of the grandest spectacles the ancient world could stage. He rode through Rome in gold and purple, wagons of plunder rolling behind him, the streets packed and roaring. But the parade had a back end nobody envied. At the very rear, in chains, came the conquered enemies, the captured kings and soldiers, dragged along as living proof of the victory. And for many of them, the parade route ended at the arena or the executioner. The front of the procession was pure glory. The back was a death sentence performed for a cheering crowd.</p>
-      <p>Paul deliberately puts himself at the back. When he says God has displayed the apostles "in last place, like men condemned to die," this Roman parade is the picture in his head, the doomed captives at the tail of the triumph, the part of the show the crowd came to watch die. And here is the scandal he presses on Corinth. They pictured themselves near the front, robed and reigning, and they wanted leaders who matched that fantasy. Paul says the true apostles are marching at the back with the condemned, and that is exactly what makes them look like their Lord, who was Himself paraded to a cross while a crowd looked on. In Corinth everyone wanted the front of the parade. In Christ the glory was waiting at the back.</p>
+      <p>Paul deliberately puts himself at the back. When he says God has displayed the apostles "at the end of the procession, like prisoners appointed for death," this Roman parade is the picture in his head, the doomed captives at the tail of the triumph, the part of the show the crowd came to watch die. And here is the scandal he presses on Corinth. They pictured themselves near the front, robed and reigning, and they wanted leaders who matched that fantasy. Paul says the true apostles are marching at the back with the condemned, and that is exactly what makes them look like their Lord, who was Himself paraded to a cross while a crowd looked on. In Corinth everyone wanted the front of the parade. In Christ the glory was waiting at the back.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -733,41 +756,41 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Paul has just said a real leader is a steward, not a star. Now he shows the price tag on that kind of life, and it is not a stage. It is a cross-shaped existence. He insists that God Himself sets the standard for Christian leadership, not the applause of a crowd (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.4.1-5" target="_blank">1 Corinthians 4:1-5</a>), and he points out that even Jesus, during His time on earth, handed every scrap of glory back to the Father (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.17.4" target="_blank">John 17:4</a>). Then Paul does the one thing no self-promoter would ever do. He builds his entire credibility not on his triumphs but on his scars, and quietly dares the Corinthians to notice which résumé actually looks like the crucified One they claim to follow.</p>
+      <p>Paul has just said a real leader is a steward, not a star. Now he shows the price tag on that kind of life, and it is not a stage. It is a cross-shaped existence. He insists that God Himself sets the standard for Christian leadership, not the applause of a crowd (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.4.1-5" target="_blank" rel="noopener">1 Corinthians 4:1-5</a>), and he points out that even Jesus, during His time on earth, handed every scrap of glory back to the Father (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.17.4" target="_blank" rel="noopener">John 17:4</a>). Then Paul does the one thing no self-promoter would ever do. He builds his entire credibility not on his triumphs but on his scars, and quietly dares the Corinthians to notice which résumé actually looks like the crucified One they claim to follow.</p>
 
+<!-- BSB_BLOCK: 2 Corinthians 11:23-28 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:661f68062e054b6fd96b94a700710f1085a1a8574673f5bd3b3a7f4f32dc34fc | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">2 Corinthians 11:23-28</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/2CO.11.23-28" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.11.23-28" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Are they servants of Christ? I'm talking like a madman—I'm a better one: with far more labors, many more imprisonments, far worse beatings, near death many times. Five times I received the forty lashes minus one from the Jews. Three times I was beaten with rods. Once I received a stoning. Three times I was shipwrecked. I have spent a night and a day in the open sea. On frequent journeys, I faced dangers from rivers, dangers from robbers, dangers from my own people, dangers from Gentiles, dangers in the city, dangers in the wilderness, dangers at sea, and dangers among false brothers; toil and hardship, many sleepless nights, hunger and thirst, often without food, cold, and without clothing. Not to mention other things, there is the daily pressure on me: my concern for all the churches."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 23">23</sup>Are they servants of Christ? (I am speaking as if I were out of my mind.) I am so much more: in harder labor, in more imprisonments, in worse beatings, in frequent danger of death. <sup class="verse-number" aria-label="Verse 24">24</sup>Five times I received from the Jews the forty lashes minus one. <sup class="verse-number" aria-label="Verse 25">25</sup>Three times I was beaten with rods, once I was stoned, three times I was shipwrecked. I spent a night and a day in the open sea. <sup class="verse-number" aria-label="Verse 26">26</sup>In my frequent journeys, I have been in danger from rivers and from bandits, in danger from my countrymen and from the Gentiles, in danger in the city and in the country, in danger on the sea and among false brothers, <sup class="verse-number" aria-label="Verse 27">27</sup>in labor and toil and often without sleep, in hunger and thirst and often without food, in cold and exposure. <sup class="verse-number" aria-label="Verse 28">28</sup>Apart from these external trials, I face daily the pressure of my concern for all the churches.</div>
+<div class="verse-commentary">
           <p>Watch what Paul brags about. In a culture where leaders advertised their honors, their wealth, and their winning streak, Paul lists his beatings. Five floggings, three rods, a stoning, three shipwrecks, a night and a day adrift in open water. Hunger, cold, sleeplessness, constant danger. And then, as if it weighs more than all the rest, the daily pressure of worry for the churches he loves. This is not a man fishing for sympathy. He is redrawing the whole idea of what proves a ministry is real. The Corinthians wanted leaders who looked victorious. Paul says the marks of a true servant of Christ are the wounds he took while following a crucified Lord. His credentials are his scars. The most Christlike thing on his résumé is everything the world would file under failure.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Colossians 1:24 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:0b23eb9428a977f59f4985045e8b6fe5b9996d96c0070b6d28bf79463051039b | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Colossians 1:24</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/COL.1.24" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/COL.1.24" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Now I rejoice in my sufferings for you, and I am completing in my flesh what is lacking in Christ's afflictions for his body, that is, the church."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">Now I rejoice in my sufferings for you, and I fill up in my flesh what is lacking in regard to Christ’s afflictions for the sake of His body, which is the church.</div>
+<div class="verse-commentary">
           <p>Stranger still, Paul says he rejoices in all of it. Not grits his teeth through it. Rejoices. He can even speak of "completing what is lacking in Christ's afflictions" for the sake of the church, and he does not mean the cross fell short of paying for sin, because that work was finished. He means the love that poured out on the cross keeps pouring out through people willing to suffer to carry it to others. Paul's pain was never meaningless. It was the shape love takes when it actually costs something. When a shepherd bleeds for the flock, the flock sees in flesh and blood what Jesus did for them all. This is why suffering, not status, is the real trademark of ministry. Anyone can chase applause. Only love will bleed.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 4:9-13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:504f80df79f0e4980719ae42db7c19ab3fa81b0d780fa67409b582b2b05341dd | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 4:9-13</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.4.9-13" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.4.9-13" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For I think God has displayed us, the apostles, in last place, like men condemned to die: We have become a spectacle to the world, both to angels and to people. We are fools for Christ, but you are wise in Christ! We are weak, but you are strong! You are distinguished, but we are dishonored! Up to the present hour we are both hungry and thirsty; we are poorly clothed, roughly treated, homeless; we labor, working with our own hands. When we are reviled, we bless; when we are persecuted, we endure it; when we are slandered, we respond graciously. Even now, we are like the scum of the earth, like everyone's garbage."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Then Paul turns the whole thing into theater, on purpose. He says God has put the apostles on display like prisoners at the very end of a Roman parade, the condemned marched out last to die in the arena. The word he uses is <em>theatron</em>, a spectacle, a public theater show, the source of our word "theater." The whole world, he says, is watching the apostles be humiliated. Meanwhile he skewers the Corinthians' self-image with heavy irony, picturing them as rich, reigning kings while the men who brought them the gospel go hungry, beaten, homeless, and slandered, treated like the filth scraped off the world (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.4.8" target="_blank">1 Corinthians 4:8</a>). Sit in that contrast. They imagined they had already arrived, and the apostles were being counted as garbage. Underneath the whole mess Paul names the actual disease, pride (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.4.6" target="_blank">1 Corinthians 4:6</a>), the very root the factions had grown from. A church chasing thrones had stopped recognizing the cross even when it walked through the door.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 9">9</sup>For it seems to me that God has displayed us apostles at the end of the procession, like prisoners appointed for death. We have become a spectacle to the whole world, to angels as well as to men. <sup class="verse-number" aria-label="Verse 10">10</sup>We are fools for Christ, but you are wise in Christ. We are weak, but you are strong. You are honored, but we are dishonored. <sup class="verse-number" aria-label="Verse 11">11</sup>To this very hour we are hungry and thirsty, we are poorly clothed, we are brutally treated, we are homeless. <sup class="verse-number" aria-label="Verse 12">12</sup>We work hard with our own hands. When we are vilified, we bless; when we are persecuted, we endure it; <sup class="verse-number" aria-label="Verse 13">13</sup>when we are slandered, we answer gently. Up to this moment we have become the scum of the earth, the refuse of the world.</div>
+<div class="verse-commentary">
+          <p>Then Paul turns the whole thing into theater, on purpose. He says God has put the apostles on display like prisoners at the very end of a Roman parade, the condemned marched out last to die in the arena. The word he uses is <em>theatron</em>, a spectacle, a public theater show, the source of our word "theater." The whole world, he says, is watching the apostles be humiliated. Meanwhile he skewers the Corinthians' self-image with heavy irony, picturing them as rich, reigning kings while the men who brought them the gospel go hungry, beaten, homeless, and slandered, treated like the filth scraped off the world (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.4.8" target="_blank" rel="noopener">1 Corinthians 4:8</a>). Sit in that contrast. They imagined they had already arrived, and the apostles were being counted as garbage. Underneath the whole mess Paul names the actual disease, pride (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.4.6" target="_blank" rel="noopener">1 Corinthians 4:6</a>), the very root the factions had grown from. A church chasing thrones had stopped recognizing the cross even when it walked through the door.</p>
         </div>
       </div>
     </div>
@@ -841,22 +864,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/2CO.11.23-28" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=2+Corinthians+11:23-28&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

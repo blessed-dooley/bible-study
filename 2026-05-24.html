@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -722,7 +751,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">Timnah, Five Miles Down the Hill</div>
       <p>The opening verse of Judges 14 says Samson "went down to Timnah," and the verb is doing more than describing geography. Timnah sat on the southern edge of the Sorek Valley, only five or six miles west of Samson's hometown of Zorah, but it was downhill in every sense. Samson's family lived in the hill country of Dan, the part of Israel's allotment that had never been fully cleared of Philistines. Timnah was a Philistine settlement next door, close enough to see from the family roof and just culturally far enough away to feel exotic. The Philistines were the Iron Age sea-people who had locked Israel's economy in a vise for a generation. The previous chapter has just told us that the Spirit of the LORD began to stir Samson while he was still a teenager and that he had been set apart from the womb as a Nazirite, the only person in the Bible whose lifelong vow was declared before his birth.</p>
-      <p>To "go down to Timnah" was to walk five miles in the wrong direction. Not a foreign mission trip, not a strategic dating decision, but a young man walking out of the world his calling had been pressed into and toward the very nation he was supposed to be delivering Israel from. The narrator slips in a small parenthetical at <a class="vlink" href="https://www.bible.com/bible/1713/JDG.14.4" target="_blank">verse four</a> that the LORD was using even this for His purposes, the Bible's standard reminder that God is not surprised by our distractions. But that note does not soften the diagnosis of what Samson is doing. He is being pulled downhill, on his own legs, by his own eyes, for his own reasons. <a class="vlink" href="https://www.bible.com/bible/1713/JDG.16" target="_blank">Judges chapter sixteen</a> will eventually show us where the downhill walk ends, in a stone-floored Philistine temple with the supports of the building leaning against his back. The first move toward that ending was the casual stroll to a town five miles off the map of his calling.</p>
+      <p>To "go down to Timnah" was to walk five miles in the wrong direction. Not a foreign mission trip, not a strategic dating decision, but a young man walking out of the world his calling had been pressed into and toward the very nation he was supposed to be delivering Israel from. The narrator slips in a small parenthetical at <a class="vlink" href="https://www.bible.com/bible/3034/JDG.14.4" target="_blank" rel="noopener">verse four</a> that the LORD was using even this for His purposes, the Bible's standard reminder that God is not surprised by our distractions. But that note does not soften the diagnosis of what Samson is doing. He is being pulled downhill, on his own legs, by his own eyes, for his own reasons. <a class="vlink" href="https://www.bible.com/bible/3034/JDG.16" target="_blank" rel="noopener">Judges chapter sixteen</a> will eventually show us where the downhill walk ends, in a stone-floored Philistine temple with the supports of the building leaning against his back. The first move toward that ending was the casual stroll to a town five miles off the map of his calling.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -733,48 +762,49 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Open <a class="vlink" href="https://www.bible.com/bible/1713/JDG.14" target="_blank">Judges 14</a> and the first verb in the chapter is "went down," and what Samson is going down to is a five-mile change in the trajectory of his entire life. He sees a Philistine woman in Timnah and demands her as a wife. He overrules his parents. He walks through a vineyard a Nazirite was forbidden to touch. He scrapes honey out of a lion's carcass a Nazirite was forbidden to touch. He hosts a wedding <em>mishteh</em>, in Hebrew literally a "drinking-place" a Nazirite was forbidden to host. None of those steps looks like a catastrophe at the time. Each looks like a reasonable accommodation to a normal life. Two chapters later the slow drift becomes the moment everything snaps. Samson is on Delilah's lap and his mouth is moving.</p>
+      <p>Open <a class="vlink" href="https://www.bible.com/bible/3034/JDG.14" target="_blank" rel="noopener">Judges 14</a> and the first verb in the chapter is "went down," and what Samson is going down to is a five-mile change in the trajectory of his entire life. He sees a Philistine woman in Timnah and demands her as a wife. He overrules his parents. He walks through a vineyard a Nazirite was forbidden to touch. He scrapes honey out of a lion's carcass a Nazirite was forbidden to touch. He hosts a wedding <em>mishteh</em>, in Hebrew literally a "drinking-place" a Nazirite was forbidden to host. None of those steps looks like a catastrophe at the time. Each looks like a reasonable accommodation to a normal life. Two chapters later the slow drift becomes the moment everything snaps. Samson is on Delilah's lap and his mouth is moving.</p>
 
+<!-- BSB_BLOCK: Judges 16:17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:63c1dcf9c516274bbd387c0b7962a82dbb558f2a20d1189ae7bfdaec9f2d71c3 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Judges 16:17</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JDG.16.17" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JDG.16.17" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"He told her the whole truth and said to her, 'My hair has never been cut, because I am a Nazirite to God from my mother's womb. If I am shaved, my strength will leave me, and I will become weak and be like any other man.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>The narrator has been stacking verbs all the way. The first three verses of chapter fourteen put four of them in front of us: <em>went down</em>, <em>saw</em>, <em>told</em>, <em>told</em>. The seeing verb is <em>ra'ah</em>, the same verb at the head of the trouble in <a class="vlink" href="https://www.bible.com/bible/1713/GEN.3.6" target="_blank">Genesis 3:6</a> ("the woman saw that the tree was good for food") and in <a class="vlink" href="https://www.bible.com/bible/1713/2SA.11.2" target="_blank">2 Samuel 11:2</a> ("David from the roof saw a woman bathing"). Three of Israel's most famous downfalls open with the same Hebrew verb of looking. Samson's overrule of his parents lands on the slipperiest sentence in the chapter, <em>yashar hi b'einay</em>, "she is right in my eyes," the same idiom <a class="vlink" href="https://www.bible.com/bible/1713/JDG.21.25" target="_blank">Judges 21:25</a> will use as the diagnosis of a whole nation that has lost its center. Two chapters later Samson is still using the same eyes and the same mouth, but he is no longer in Timnah. He saw a prostitute in Gaza (<a class="vlink" href="https://www.bible.com/bible/1713/JDG.16.1" target="_blank">Judges 16:1</a>), he loved a woman in the Valley of Sorek (<a class="vlink" href="https://www.bible.com/bible/1713/JDG.16.4" target="_blank">Judges 16:4</a>), Delilah nagged him until he was worn down to the point of death (<a class="vlink" href="https://www.bible.com/bible/1713/JDG.16.16" target="_blank">Judges 16:16</a>), and then "he told her everything." The eye opened the door at fourteen. The mouth surrenders the key at sixteen.</p>
-          <p>Notice the phrase Samson uses for what he is giving away. "I am a Nazirite to God from my mother's womb." He still knows the precept. He still remembers the vow. He has not become a theological skeptic. He has just become someone for whom the precept does not load-bear anything anymore. The hair on his head has become a relic of a younger self, a story he tells at dinner parties, a fact about him rather than the central reality of his life. The vow has not been broken yet at the moment of these words. It is about to be. But the breaking is already finished inside him. The scissors only need to catch up to the heart.</p>
+        <div class="verse-text">Samson told her all that was in his heart: “My hair has never been cut, because I have been a Nazirite to God from my mother’s womb. If I am shaved, my strength will leave me, and I will become as weak as any other man.”</div>
+<div class="verse-commentary">
+          <p>The narrator has been stacking verbs all the way. The first three verses of chapter fourteen put four of them in front of us: <em>went down</em>, <em>saw</em>, <em>told</em>, <em>told</em>. The seeing verb is <em>ra'ah</em>, the same verb at the head of the trouble in <a class="vlink" href="https://www.bible.com/bible/3034/GEN.3.6" target="_blank" rel="noopener">Genesis 3:6</a> ("the woman saw that the tree was good for food") and in <a class="vlink" href="https://www.bible.com/bible/3034/2SA.11.2" target="_blank" rel="noopener">2 Samuel 11:2</a> ("David from the roof saw a woman bathing"). Three of Israel's most famous downfalls open with the same Hebrew verb of looking. Samson's overrule of his parents lands on the slipperiest sentence in the chapter, <em>yashar hi b'einay</em>, "she is right in my eyes," the same idiom <a class="vlink" href="https://www.bible.com/bible/3034/JDG.21.25" target="_blank" rel="noopener">Judges 21:25</a> will use as the diagnosis of a whole nation that has lost its center. Two chapters later Samson is still using the same eyes and the same mouth, but he is no longer in Timnah. He saw a prostitute in Gaza (<a class="vlink" href="https://www.bible.com/bible/3034/JDG.16.1" target="_blank" rel="noopener">Judges 16:1</a>), he loved a woman in the Valley of Sorek (<a class="vlink" href="https://www.bible.com/bible/3034/JDG.16.4" target="_blank" rel="noopener">Judges 16:4</a>), Delilah nagged him until he was worn down to the point of death (<a class="vlink" href="https://www.bible.com/bible/3034/JDG.16.16" target="_blank" rel="noopener">Judges 16:16</a>), and then "he told her everything." The eye opened the door at fourteen. The mouth surrenders the key at sixteen.</p>
+          <p>Notice the phrase Samson uses for what he is giving away. "I have been a Nazirite to God from my mother’s womb." He still knows the precept. He still remembers the vow. He has not become a theological skeptic. He has just become someone for whom the precept does not load-bear anything anymore. The hair on his head has become a relic of a younger self, a story he tells at dinner parties, a fact about him rather than the central reality of his life. The vow has not been broken yet at the moment of these words. It is about to be. But the breaking is already finished inside him. The scissors only need to catch up to the heart.</p>
           <p>This is the warning the book of Judges keeps planting in our path. Sin in the Bible is rarely a single dramatic act of rebellion. It is usually the slow inside-out hollowing of a person whose precepts have quietly become preferences. Samson did not stop being a Nazirite at Delilah's couch. He stopped being a Nazirite the first morning he decided his own eyes were the final court on what was right in the world. Yesterday's Memory Text said the psalmist would "never forget Your precepts." The man on Delilah's lap has not forgotten his. He has just stopped letting it form him.</p>
           <p>Sin does not start when the hair is cut. It starts at the first look that decides not to look away.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Mark 1:35 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:9d283c63b971430705e29c475c708316ba2da376b062e761c21b49cfc6ca3f27 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Mark 1:35</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MRK.1.35" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MRK.1.35" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Very early in the morning, while it was still dark, he got up, went out, and made his way to a deserted place; and there he was praying."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>The opposite verb. Where Samson "went down" toward what his eyes wanted, the gospel writer Mark hands us a parallel sentence with a different direction. Jesus "got up," "went out," and "made his way" to a deserted place. The Greek noun behind "deserted place" is <em>eremos topos</em>, the same lonely-place language we walked into four weeks ago when this verse anchored a different week. The same Mark, the same sentence, applied here as the answer to the question this morning is asking. How do you not become Samson? You build the move Jesus built. Before the day got its hands on Him, before the crowd in Capernaum could find Him, before the disciples knew He was awake, He had already located the door no one was about to open and put Himself behind it.</p>
-          <p>The other gospel writers tell us this was not a single quirky morning. Luke notes that Jesus "often withdrew to deserted places and prayed" (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.5.16" target="_blank">Luke 5:16</a>) and records the all-night prayer on the mountain before He named the Twelve (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.6.12" target="_blank">Luke 6:12</a>). Matthew records the lakeshore retreat after the death of John the Baptist (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.14.23" target="_blank">Matthew 14:23</a>). John tells us He was "tired" at a Samaritan well at the sixth hour (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.4.6" target="_blank">John 4:6</a>). The pattern is overwhelming. The Son of God built His operating system around scheduled, unspectacular withdrawal to be with His Father. The crowd never set His schedule. His Father did.</p>
+        <div class="verse-text">Early in the morning, while it was still dark, Jesus got up and went out to a solitary place to pray.</div>
+<div class="verse-commentary">
+          <p>The opposite verb. Where Samson "went down" toward what his eyes wanted, the gospel writer Mark hands us a parallel sentence with a different direction. Jesus "got up," "went out," and "slipped out" to a deserted place. The Greek noun behind "deserted place" is <em>eremos topos</em>, the same lonely-place language we walked into four weeks ago when this verse anchored a different week. The same Mark, the same sentence, applied here as the answer to the question this morning is asking. How do you not become Samson? You build the move Jesus built. Before the day got its hands on Him, before the crowd in Capernaum could find Him, before the disciples knew He was awake, He had already located the door no one was about to open and put Himself behind it.</p>
+          <p>The other gospel writers tell us this was not a single quirky morning. Luke notes that Jesus "often withdrew to deserted places and prayed" (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.5.16" target="_blank" rel="noopener">Luke 5:16</a>) and records the all-night prayer on the mountain before He named the Twelve (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.6.12" target="_blank" rel="noopener">Luke 6:12</a>). Matthew records the lakeshore retreat after the death of John the Baptist (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.14.23" target="_blank" rel="noopener">Matthew 14:23</a>). John tells us He was "tired" at a Samaritan well at the sixth hour (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.4.6" target="_blank" rel="noopener">John 4:6</a>). The pattern is overwhelming. The Son of God built His operating system around scheduled, unspectacular withdrawal to be with His Father. The crowd never set His schedule. His Father did.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Matthew 6:33 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c5478b70ed22a94754ec269cd83322f879568008f9e6639e6359d75a3c34b64d | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Matthew 6:33</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.6.33" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.6.33" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"But seek first the kingdom of God and his righteousness, and all these things will be provided for you."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><span class="words-of-jesus">But seek first the kingdom of God and His righteousness, and all these things will be added unto you.</span></div>
+<div class="verse-commentary">
           <p>Matthew 6:33 sits inside the Sermon on the Mount, the same hill we will climb to on Thursday. Jesus has just spent twenty verses naming the worries that run our brains all day (food, clothes, shelter, tomorrow) and then drops a single sentence on top of them. "Seek first." The Greek verb is <em>zeteo</em>, present imperative, the "keep on seeking" mode we met three weeks back in the "ask, seek, knock" of the Lord's Prayer week. First, not as a chronological line item but as a priority structure. The order in your morning is the order in your life. Whatever gets the first hour gets the day. Whatever gets the day gets the year.</p>
-          <p>The promise on the end of the verse is easy to miss. "All these things will be provided for you." Not "you will have to skip them." Not "everything will collapse while you pray." The provision is added. Samson tried to grab everything at once and ended with nothing. Jesus says the kingdom first, and the kitchen table is full when you sit down to it. The seeking-first move is not an austerity program. It is the rope God lowers to people whose eyes have been pulled where their feet should not go. Even the Risen Christ, speaking from glory in <a class="vlink" href="https://www.bible.com/bible/1713/REV.3.14-22" target="_blank">Revelation 3:14-22</a>, says it bluntly to a church that thinks it is fine: "I rebuke and discipline those I love. So be zealous and repent." The apathy that lets the door stay closed is the apathy Jesus is standing on the other side of, knocking.</p>
+          <p>The promise on the end of the verse is easy to miss. "All these things will be added unto you." Not "you will have to skip them." Not "everything will collapse while you pray." The provision is added. Samson tried to grab everything at once and ended with nothing. Jesus says the kingdom first, and the kitchen table is full when you sit down to it. The seeking-first move is not an austerity program. It is the rope God lowers to people whose eyes have been pulled where their feet should not go. Even the Risen Christ, speaking from glory in <a class="vlink" href="https://www.bible.com/bible/3034/REV.3.14-22" target="_blank" rel="noopener">Revelation 3:14-22</a>, says it bluntly to a church that thinks it is fine: "I rebuke and discipline those I love. So be zealous and repent." The apathy that lets the door stay closed is the apathy Jesus is standing on the other side of, knocking.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Matthew 6:33 | 6:33 SBL, WH, and NE seek first His kingdom; see also Luke 12:31. -->
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -846,22 +876,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/JDG.16.17" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Judges+16:17&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -890,8 +940,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -900,18 +952,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -919,6 +975,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -938,6 +995,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

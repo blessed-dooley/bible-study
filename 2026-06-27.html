@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -513,49 +532,6 @@ if ('serviceWorker' in navigator) {
     opacity: 0.7;
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -576,6 +552,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -594,8 +612,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -755,7 +778,7 @@ if ('serviceWorker' in navigator) {
       <p>That history shaped the people in a particular way. Everyone there was new money. There were no founding families, no inherited pedigree, none of the quiet confidence that comes from simply belonging. What you had instead was a whole population with something to prove, climbing, comparing, elbowing for status, and showing off whatever they had. Hold that picture, because the church Paul planted will catch the very same fever. Who follows the more impressive teacher, who has the flashier spiritual gift, whose wisdom wins the argument. The cracks running through Corinth would run straight through its church, and that is exactly the wound these two letters were written to heal.</p>
     </div>
 
-    <!-- 4. THIS WEEK'S MEMORY TEXT (dual translation, NRSV + CSB) -->
+    
     <div class="section">
       <div class="section-label">
         <span class="section-emoji">📖</span>
@@ -763,18 +786,16 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
+<!-- BSB_BLOCK: Acts 18:9-10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:68f9f12cf72b0c021f46473c50be4598b0dc30825cce66a10eb1f76470b5cd72 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Acts 18:9-10</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ACT.18.9-10" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ACT.18.9-10" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"One night the Lord said to Paul in a vision, 'Do not be afraid, but speak and do not be silent; for I am with you, and no one will lay a hand on you to harm you, for there are many in this city who are my people.' "</div>
-        <div class="verse-translation">New Revised Standard Version · NRSV</div>
-        <div class="verse-text-alt">"The Lord said to Paul in a night vision, 'Don't be afraid, but keep on speaking and don't be silent. For I am with you, and no one will lay a hand on you to hurt you, because I have many people in this city.' "</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 9">9</sup>One night the Lord spoke to Paul in a vision: <span class="words-of-jesus">“Do not be afraid; keep on speaking; do not be silent.</span> <sup class="verse-number" aria-label="Verse 10">10</sup><span class="words-of-jesus">For I am with you and no one will lay a hand on you, because I have many people in this city.”</span></div>
+<div class="verse-commentary">
           <p>Picture Paul near the end of his rope. He has been run out of one city after another, beaten and mocked, and now in Corinth the synagogue has turned on him too. One night, when he is ready to pack up and leave, Jesus shows up in a vision. Do not be afraid. Keep speaking. Do not go silent. And then the promise that changes everything, that He is with Paul and already has many people in this city. The word translated "people" is the Greek <em>laos</em>, which the Bible normally saves for Israel, God's own covenant nation. Here Jesus spends it on a city full of pagans who have not believed yet. He calls them His before they are converted. The people Paul is afraid of turn out to be the very people God is already claiming.</p>
-          <p>That one promise sets the table for everything we read this week. We watch Paul introduce himself as an apostle called by God's will and not his own ambition (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.1" target="_blank">1 Corinthians 1:1</a>, <a class="vlink" href="https://www.bible.com/bible/1713/GAL.1.1" target="_blank">Galatians 1:1</a>). We follow him from the philosophers of Athens (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.17.16-34" target="_blank">Acts 17:16-34</a>) into the crowded markets of Corinth, see the moral chaos his letter would later confront (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.5.9-11" target="_blank">1 Corinthians 5:9-11</a>), watch God meet him in the dark with this strange night-time courage (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.18.4-10" target="_blank">Acts 18:4-10</a>), and feel the tears behind the letters he sent (<a class="vlink" href="https://www.bible.com/bible/1713/2CO.2.4" target="_blank">2 Corinthians 2:4</a>). One frightened missionary, one steadying voice, and a whole city already full of people who belonged to God before they ever knew His name.</p>
+          <p>That one promise sets the table for everything we read this week. We watch Paul introduce himself as an apostle called by God's will and not his own ambition (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.1" target="_blank" rel="noopener">1 Corinthians 1:1</a>, <a class="vlink" href="https://www.bible.com/bible/3034/GAL.1.1" target="_blank" rel="noopener">Galatians 1:1</a>). We follow him from the philosophers of Athens (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.17.16-34" target="_blank" rel="noopener">Acts 17:16-34</a>) into the crowded markets of Corinth, see the moral chaos his letter would later confront (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.9-11" target="_blank" rel="noopener">1 Corinthians 5:9-11</a>), watch God meet him in the dark with this strange night-time courage (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.18.4-10" target="_blank" rel="noopener">Acts 18:4-10</a>), and feel the tears behind the letters he sent (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.2.4" target="_blank" rel="noopener">2 Corinthians 2:4</a>). One frightened missionary, one steadying voice, and a whole city already full of people who belonged to God before they ever knew His name.</p>
         </div>
       </div>
     </div>
@@ -790,7 +811,7 @@ if ('serviceWorker' in navigator) {
         <li><span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> Paul, a God-called Apostle of Jesus. Before we look at the church's problems, we look at the man God sent, and learn that his authority came from a call he did not give himself.</span></li>
         <li><span class="bullet-icon">☩</span><span><span class="day-label">Monday:</span> From Athens to Corinth. We trace Paul's road from the lecture halls of Athens to the docks of Corinth and find the one thing he refused to leave behind.</span></li>
         <li><span class="bullet-icon">☩</span><span><span class="day-label">Tuesday:</span> The City of Corinth. We walk the streets Paul walked, past the temples and the marketplace, to feel the exact pressures the gospel had to survive.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Wednesday:</span> "Many in This City." Opposition rises, Paul wavers, and God answers a discouraged servant with a promise that there are more of His people here than he can see.</span></li>
+        <li><span class="bullet-icon">☩</span><span><span class="day-label">Wednesday:</span> "Many People in This City." Opposition rises, Paul wavers, and God answers a discouraged servant with a promise that there are more of His people here than he can see.</span></li>
         <li><span class="bullet-icon">☩</span><span><span class="day-label">Thursday:</span> Paul's Letters to the Corinthians. We discover that behind these famous letters is a pastor's aching heart, writing through tears to people he could not stop loving.</span></li>
         <li class="friday-item"><span class="bullet-icon">☩</span><span><span class="day-label">Friday:</span> Further Thought &amp; Discussion. The week lands on one question: how do we stay faithful in a culture that wants to shape us into its own image?</span></li>
       </ul>
@@ -840,22 +861,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/ACT.18.9-10" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Acts+18:9-10&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

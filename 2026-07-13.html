@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -735,39 +758,39 @@ if ('serviceWorker' in navigator) {
 
       <p>So what does Paul actually want in place of the factions? His words sound almost impossible at first, that a church full of different people would be "united in the same mind and the same judgment." It sounds like he is asking everyone to become identical. He is not. Read him closely and you find something far better than uniformity, a real unity that runs underneath our differences because it is anchored in one shared Lord. The center of the church was never meant to be a personality. It is a Person, and everything Paul says here is working to move Christ back to the middle where He belongs.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 1:10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:ea9a80cba53831fc76a92c273e21a0ac50a9429335d6d2cccfadb676ea92f393 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 1:10</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.1.10" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.10" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Now I appeal to you, brothers and sisters, in the name of our Lord Jesus Christ, that all of you agree in what you say, that there be no divisions among you, and that you be united with the same understanding and the same conviction."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">I appeal to you, brothers, in the name of our Lord Jesus Christ, that all of you agree together, so that there may be no divisions among you and that you may be united in mind and conviction.</div>
+<div class="verse-commentary">
           <p>Here is the verse the whole week keeps circling. Notice what Paul is and is not asking for. The Greek word behind "united" is <em>katartizo</em>, the word for mending a torn fishing net, setting a broken bone, or easing a dislocated joint back into place. It does not mean grinding everyone down until they think and sound the same. It means taking something fractured and restoring it to working order. Paul is not after a church of clones. He is after a church that functions, where people who disagree about a hundred smaller things are still set solidly on the same foundation. And that phrase "the same mind and the same conviction" is not about matching opinions on every subject. It is about one settled agreement underneath everything else, that Jesus is Lord and all the rest bends to Him. Unity is not everyone becoming the same. It is everyone facing the same direction.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 1:9 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:61173d9e560a633841c1d8f07e54256546ed6f6261e31ad441a12feaa4c01755 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 1:9</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.1.9" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.9" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"God is faithful; you were called by him into fellowship with his Son, Jesus Christ our Lord."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>This is the ground the whole appeal stands on. God did not call the Corinthians into the Paul movement or the Apollos movement. He called them into fellowship with His Son. And notice that Paul cannot stop calling Jesus "Lord." In just the opening lines of the letter he repeats it over and over (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.2" target="_blank">1 Corinthians 1:2</a>, <a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.7" target="_blank">1 Corinthians 1:7</a>, <a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.8" target="_blank">1 Corinthians 1:8</a>), driving the point home before he ever touches the quarrels. Every believer in that fractured church already possessed the one thing that could unite them. They belonged to the same Lord. They had simply let smaller loyalties crowd Him toward the edge of the room. Paul's cure is not complicated. Put Christ back in the center, and the factions lose their oxygen.</p>
+        <div class="verse-text">God, who has called you into fellowship with His Son Jesus Christ our Lord, is faithful.</div>
+<div class="verse-commentary">
+          <p>This is the ground the whole appeal stands on. God did not call the Corinthians into the Paul movement or the Apollos movement. He called them into fellowship with His Son. And notice that Paul cannot stop calling Jesus "Lord." In just the opening lines of the letter he repeats it over and over (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.2" target="_blank" rel="noopener">1 Corinthians 1:2</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.7" target="_blank" rel="noopener">1 Corinthians 1:7</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.8" target="_blank" rel="noopener">1 Corinthians 1:8</a>), driving the point home before he ever touches the quarrels. Every believer in that fractured church already possessed the one thing that could unite them. They belonged to the same Lord. They had simply let smaller loyalties crowd Him toward the edge of the room. Paul's cure is not complicated. Put Christ back in the center, and the factions lose their oxygen.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 12:27 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b5e5ed98d0ec8ab28f1d6156f6f5a189cf4f65e24b742777ee60629ab0f592c6 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 12:27</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.12.27" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.12.27" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Now you are the body of Christ, and individual members of it."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Paul's favorite picture for the church is a body. Not a crowd of look-alikes, but a body, where an eye and a foot and an ear are wildly different and every one of them is needed, and not one of them works alone. That is a unity with room for difference built right into it. It also explains why the factions were so deadly. A body divided against itself is not a body anymore, it is just scattered parts. And remember how they joined this body in the first place. Not one of them was baptized into Paul (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.13" target="_blank">1 Corinthians 1:13</a>). Every one of them was baptized into the name of the Father, the Son, and the Holy Spirit (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.28.19" target="_blank">Matthew 28:19</a>). They were stamped as Christ's from the very start. The heartbreak in Corinth was a body full of members who kept acting like they belonged to different owners, when they had all been claimed by the same Lord.</p>
+        <div class="verse-text">Now you are the body of Christ, and each of you is a member of it.</div>
+<div class="verse-commentary">
+          <p>Paul's favorite picture for the church is a body. Not a crowd of look-alikes, but a body, where an eye and a foot and an ear are wildly different and every one of them is needed, and not one of them works alone. That is a unity with room for difference built right into it. It also explains why the factions were so deadly. A body divided against itself is not a body anymore, it is just scattered parts. And remember how they joined this body in the first place. Not one of them was baptized into Paul (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.13" target="_blank" rel="noopener">1 Corinthians 1:13</a>). Every one of them was baptized into the name of the Father, the Son, and the Holy Spirit (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.28.19" target="_blank" rel="noopener">Matthew 28:19</a>). They were stamped as Christ's from the very start. The heartbreak in Corinth was a body full of members who kept acting like they belonged to different owners, when they had all been claimed by the same Lord.</p>
         </div>
       </div>
     </div>
@@ -841,22 +864,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.1.10" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+1:10&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

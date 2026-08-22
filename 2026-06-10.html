@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -717,11 +740,12 @@ if ('serviceWorker' in navigator) {
     <div class="section section-context">
       <div class="section-label">
         <span class="section-emoji">🗺️</span>
-        <span class="section-title">They Had Bet Everything on a Different Ending</span>
+        <span class="section-title">Historical &amp; Cultural Context</span>
         <div class="section-title-line"></div>
       </div>
+      <div class="section-heading">They Had Bet Everything on a Different Ending</div>
       <p>First-century Judea was full of men who looked, for a while, like the one who would finally throw out the Romans. Crowds gathered, hopes rose, and then Rome did what Rome always did. It arrested the leader, executed him in public, and scattered his followers. When these two say they were "hoping he was the one about to redeem Israel," that is the language they mean. Redemption was political and military. It meant the boot of the empire lifted off their necks, the throne of David restored, the nation free. They had staked their futures on Jesus being that man.</p>
-      <p>And then He was crucified. To a first-century Jew, that did not just mean their leader had died. It meant He had been publicly cursed and decisively defeated, because crucifixion was Rome's way of saying this man and his cause are finished. A crucified Messiah was a contradiction in terms, like a drowned lifeguard. So these two are not only grieving a friend. They are walking away from a worldview that collapsed on Friday, doing the math every disappointed believer does, counting the days since it all fell apart. "It's the third day," they say, not knowing they have just named the most important sentence of the week without realizing what it means.</p>
+      <p>And then He was crucified. To a first-century Jew, that did not just mean their leader had died. It meant He had been publicly cursed and decisively defeated, because crucifixion was Rome's way of saying this man and his cause are finished. A crucified Messiah was a contradiction in terms, like a drowned lifeguard. So these two are not only grieving a friend. They are walking away from a worldview that collapsed on Friday, doing the math every disappointed believer does, counting the days since it all fell apart. "it is the third day," they say, not knowing they have just named the most important sentence of the week without realizing what it means.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -734,17 +758,18 @@ if ('serviceWorker' in navigator) {
 
       <p>Luke gives us a risen Jesus who is in no hurry to be recognized. He draws near, asks an honest question, and then does something surprising with two people whose faith has just been shattered. He lets them talk first, and listens to the whole sad story, before He says a word to fix it.</p>
 
+<!-- BSB_BLOCK: Luke 24:13-27 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:40a10335c187852aea55be50f471d626e827cd46d171f10c01fac7c5add02f82 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Luke 24:13-27</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/LUK.24.13-27" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/LUK.24.13-27" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Now that same day two of them were on their way to a village called Emmaus, which was about seven miles from Jerusalem. Together they were discussing everything that had taken place. And while they were discussing and arguing, Jesus himself came near and began to walk along with them. But they were prevented from recognizing him. Then he asked them, 'What is this dispute that you're having with each other as you are walking?' And they stopped walking and looked discouraged. The one named Cleopas answered him, 'Are you the only visitor in Jerusalem who doesn't know the things that happened there in these days?' 'What things?' he asked them. So they said to him, 'The things concerning Jesus of Nazareth, who was a prophet powerful in action and speech before God and all the people, and how our chief priests and leaders handed him over to be sentenced to death, and they crucified him. But we were hoping that he was the one who was about to redeem Israel. Besides all this, it's the third day since these things happened. Moreover, some women from our group astounded us. They arrived early at the tomb, and when they didn't find his body, they came and reported that they had seen a vision of angels who said he was alive. Some of those who were with us went to the tomb and found it just as the women had said, but they didn't see him.' He said to them, 'How foolish and slow you are to believe all that the prophets have spoken! Wasn't it necessary for the Messiah to suffer these things and enter into his glory?' And beginning with Moses and all the Prophets, he interpreted for them the things concerning himself in all the Scriptures."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>The whole story turns on one phrase, "we were hoping." Their hope is in the past tense. It is a thing they used to have, buried in a tomb three days ago. And notice that they recite the facts almost perfectly. He was a powerful prophet, the leaders killed Him, it is the third day, the tomb is empty, the women saw angels. Every piece of the resurrection is in their hands, and they are still walking the wrong way, depressed, because they have the facts without the framework to read them. So Jesus does not start with comfort. He starts with Scripture, walking them back through Moses and the Prophets to show that a suffering Messiah was never the failure of the plan. It was the plan. Their setback had a chapter and verse, and they had simply never read it as good news. Moments later, when He broke bread at their table, their eyes were opened and they recognized Him, and they ran the seven miles back to Jerusalem in the dark to tell the others the Lord had really risen (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.24.33-35" target="_blank">Luke 24:33-35</a>).</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 13">13</sup>That same day two of them were going to a village called Emmaus, about seven miles from Jerusalem. <sup class="verse-number" aria-label="Verse 14">14</sup>They were talking with each other about everything that had happened. <sup class="verse-number" aria-label="Verse 15">15</sup>And as they talked and deliberated, Jesus Himself came up and walked along with them. <sup class="verse-number" aria-label="Verse 16">16</sup>But their eyes were kept from recognizing Him. <sup class="verse-number" aria-label="Verse 17">17</sup>He asked them, <span class="words-of-jesus">“What are you discussing so intently as you walk along?”</span> They stood still, with sadness on their faces. <sup class="verse-number" aria-label="Verse 18">18</sup>One of them, named Cleopas, asked Him, “Are You the only visitor to Jerusalem who does not know the things that have happened there in recent days?” <sup class="verse-number" aria-label="Verse 19">19</sup><span class="words-of-jesus">“What things?”</span> He asked. “The events involving Jesus of Nazareth,” they answered. “This man was a prophet, powerful in speech and action before God and all the people. <sup class="verse-number" aria-label="Verse 20">20</sup>Our chief priests and rulers delivered Him up to the sentence of death, and they crucified Him. <sup class="verse-number" aria-label="Verse 21">21</sup>But we were hoping He was the One who would redeem Israel. And besides all this, it is the third day since these things took place. <sup class="verse-number" aria-label="Verse 22">22</sup>Furthermore, some of our women astounded us. They were at the tomb early this morning, <sup class="verse-number" aria-label="Verse 23">23</sup>but they did not find His body. They came and told us they had seen a vision of angels, who said that Jesus was alive. <sup class="verse-number" aria-label="Verse 24">24</sup>Then some of our companions went to the tomb and found it just as the women had described. But Him they did not see.” <sup class="verse-number" aria-label="Verse 25">25</sup>Then Jesus said to them, <span class="words-of-jesus">“O foolish ones, and slow of heart to believe all that the prophets have spoken!</span> <sup class="verse-number" aria-label="Verse 26">26</sup><span class="words-of-jesus">Was it not necessary for the Christ to suffer these things and then to enter His glory?”</span> <sup class="verse-number" aria-label="Verse 27">27</sup>And beginning with Moses and all the Prophets, He explained to them what was written in all the Scriptures about Himself.</div>
+<div class="verse-commentary">
+          <p>The whole story turns on one phrase, "we were hoping." Their hope is in the past tense. It is a thing they used to have, buried in a tomb three days ago. And notice that they recite the facts almost perfectly. He was a powerful prophet, the leaders killed Him, it is the third day, the tomb is empty, the women saw angels. Every piece of the resurrection is in their hands, and they are still walking the wrong way, depressed, because they have the facts without the framework to read them. So Jesus does not start with comfort. He starts with Scripture, walking them back through Moses and the Prophets to show that a suffering Messiah was never the failure of the plan. It was the plan. Their setback had a chapter and verse, and they had simply never read it as good news. Moments later, when He broke bread at their table, their eyes were opened and they recognized Him, and they ran the seven miles back to Jerusalem in the dark to tell the others the Lord had really risen (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.24.33-35" target="_blank" rel="noopener">Luke 24:33-35</a>).</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Luke 24:13 | 24:13 Greek being sixty stadia in distance; that is, approximately 6.9 miles or 11.1 kilometers -->
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -789,7 +814,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="action-box">
-        Do for someone else what Jesus did on that road. Spend a few minutes today in the passages that walk people through suffering, Paul learning contentment in any circumstance (<a class="vlink" href="https://www.bible.com/bible/1713/PHP.4.4-13" target="_blank">Philippians 4:4-13</a>), James on counting trials as joy and the blessing for those who endure (<a class="vlink" href="https://www.bible.com/bible/1713/JAS.1.2-4" target="_blank">James 1:2-4</a>, <a class="vlink" href="https://www.bible.com/bible/1713/JAS.1.12" target="_blank">James 1:12</a>), and Paul on God's grace being sufficient and His power perfected in weakness (<a class="vlink" href="https://www.bible.com/bible/1713/2CO.12.9-10" target="_blank">2 Corinthians 12:9-10</a>). Write down three things you could actually say to someone facing a setback right now, and keep in mind that God comforts us so that we can comfort others (<a class="vlink" href="https://www.bible.com/bible/1713/2CO.1.4" target="_blank">2 Corinthians 1:4</a>). Then send one of them to a real person today.
+        Do for someone else what Jesus did on that road. Spend a few minutes today in the passages that walk people through suffering, Paul learning contentment in any circumstance (<a class="vlink" href="https://www.bible.com/bible/3034/PHP.4.4-13" target="_blank" rel="noopener">Philippians 4:4-13</a>), James on counting trials as joy and the blessing for those who endure (<a class="vlink" href="https://www.bible.com/bible/3034/JAS.1.2-4" target="_blank" rel="noopener">James 1:2-4</a>, <a class="vlink" href="https://www.bible.com/bible/3034/JAS.1.12" target="_blank" rel="noopener">James 1:12</a>), and Paul on God's grace being sufficient and His power perfected in weakness (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.12.9-10" target="_blank" rel="noopener">2 Corinthians 12:9-10</a>). Write down three things you could actually say to someone facing a setback right now, and keep in mind that God comforts us so that we can comfort others (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.1.4" target="_blank" rel="noopener">2 Corinthians 1:4</a>). Then send one of them to a real person today.
       </div>
     </div>
 
@@ -815,22 +840,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/LUK.24.13-27" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Luke+24:13-27&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

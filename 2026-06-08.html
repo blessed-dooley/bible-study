@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -735,15 +758,15 @@ if ('serviceWorker' in navigator) {
 
       <p>Mark sets her story inside another emergency. Jesus is already on His way to a dying girl, with the girl's father, a synagogue leader named Jairus, pulling Him forward and a crowd crushing in on every side. The woman has to interrupt the most important errand on the street just to reach the hem. Watch how Jesus treats the interruption.</p>
 
+<!-- BSB_BLOCK: Mark 5:21-34 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:3cd7b407e999a6f7e6e1e5d5eff1231419d968659513b062396218fc4e02c2ef | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Mark 5:21-34</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MRK.5.21-34" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MRK.5.21-34" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"When Jesus had crossed over again by boat to the other side, a large crowd gathered around him while he was by the sea. One of the synagogue leaders, named Jairus, came, and when he saw Jesus, he fell at his feet and pleaded with him earnestly, 'My little daughter is dying. Come and lay your hands on her so that she can get well and live.' So Jesus went with him, and a large crowd was following and pressing against him. Now a woman suffering from bleeding for twelve years had endured much under many physicians. She had spent everything she had and was not helped at all. On the contrary, she became worse. Having heard about Jesus, she came up behind him in the crowd and touched his clothing. For she said, 'If I just touch his clothes, I'll be made well.' Instantly her flow of blood ceased, and she sensed in her body that she was healed of her affliction. Immediately Jesus realized that power had gone out from him. He turned around in the crowd and said, 'Who touched my clothes?' His disciples said to him, 'You see the crowd pressing against you, and yet you say, "Who touched me?"' But he was looking around to see who had done this. The woman, with fear and trembling, knowing what had happened to her, came and fell down before him and told him the whole truth. 'Daughter,' he said to her, 'your faith has saved you. Go in peace and be healed from your affliction.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>A whole crowd was pressing against Jesus, shoulder to shoulder, jostling Him the entire walk. Only one touch drew anything out of Him. The difference was not the force of the grip but the faith behind it. The word translated "saved you" is the Greek <em>sozo</em>, and it carries both meanings at once, to be healed and to be rescued, the body mended and the whole person made safe. That is why Jesus refuses to let her slip away healed but anonymous. He stops the parade, not to shame the unclean woman who touched Him without permission, but to look her in the face and give her a name in public, "daughter." Twelve years of feeling like a contamination, ended with one family word. Her story is the memory text in flesh, the long affliction that produced an endurance that finally produced a hope brave enough to reach (<a class="vlink" href="https://www.bible.com/bible/1713/ROM.5.3-5" target="_blank">Romans 5:3-5</a>).</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 21">21</sup>When Jesus had again crossed by boat to the other side, a large crowd gathered around Him beside the sea. <sup class="verse-number" aria-label="Verse 22">22</sup>A synagogue leader named Jairus arrived, and seeing Jesus, he fell at His feet <sup class="verse-number" aria-label="Verse 23">23</sup>and pleaded with Him urgently, “My little daughter is near death. Please come and place Your hands on her, so that she will be healed and live.” <sup class="verse-number" aria-label="Verse 24">24</sup>So Jesus went with him, and a large crowd followed and pressed around Him. <sup class="verse-number" aria-label="Verse 25">25</sup>And a woman was there who had suffered from bleeding for twelve years. <sup class="verse-number" aria-label="Verse 26">26</sup>She had borne much agony under the care of many physicians and had spent all she had, but to no avail. Instead, her condition had only grown worse. <sup class="verse-number" aria-label="Verse 27">27</sup>When the woman heard about Jesus, she came up through the crowd behind Him and touched His cloak. <sup class="verse-number" aria-label="Verse 28">28</sup>For she kept saying, “If only I touch His garments, I will be healed.” <sup class="verse-number" aria-label="Verse 29">29</sup>Immediately her bleeding stopped, and she sensed in her body that she was healed of her affliction. <sup class="verse-number" aria-label="Verse 30">30</sup>At once Jesus was aware that power had gone out from Him. Turning to the crowd, He asked, <span class="words-of-jesus">“Who touched My garments?”</span> <sup class="verse-number" aria-label="Verse 31">31</sup>His disciples answered, “You can see the crowd pressing in on You, and yet You ask, <span class="words-of-jesus">‘Who touched Me?’</span>” <sup class="verse-number" aria-label="Verse 32">32</sup>But He kept looking around to see who had done this. <sup class="verse-number" aria-label="Verse 33">33</sup>Then the woman, knowing what had happened to her, came and fell down before Him trembling in fear, and she told Him the whole truth. <sup class="verse-number" aria-label="Verse 34">34</sup><span class="words-of-jesus">“Daughter,”</span> said Jesus, <span class="words-of-jesus">“your faith has healed you. Go in peace and be free of your affliction.”</span></div>
+<div class="verse-commentary">
+          <p>A whole crowd was pressing against Jesus, shoulder to shoulder, jostling Him the entire walk. Only one touch drew anything out of Him. The difference was not the force of the grip but the faith behind it. The word translated "saved you" is the Greek <em>sozo</em>, and it carries both meanings at once, to be healed and to be rescued, the body mended and the whole person made safe. That is why Jesus refuses to let her slip away healed but anonymous. He stops the parade, not to shame the unclean woman who touched Him without permission, but to look her in the face and give her a name in public, "daughter." Twelve years of feeling like a contamination, ended with one family word. Her story is the memory text in flesh, the long affliction that produced an endurance that finally produced a hope brave enough to reach (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.5.3-5" target="_blank" rel="noopener">Romans 5:3-5</a>).</p>
         </div>
       </div>
     </div>
@@ -779,7 +802,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Everywhere else in Leviticus, contact with the unclean runs one direction. Touch the leper, the corpse, the bleeding, and their uncleanness flows into you. You go home defiled and wait until evening. When this woman grabbed His hem, the current ran backward. His wholeness flowed into her faster than her defilement could flow into Him. That is the whole gospel in a single touch. Jesus does not keep a safe distance from what is broken in us. He lets it reach Him, He absorbs it, and He sends His own cleanness back down the line. He would do it on the largest possible scale at the cross, taking every kind of uncleanness into His own body so that the people who touch Him by faith walk away made well. And to every worn-out person who comes weary and heavy-laden, He still says, come to Me, and I will give you rest (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.11.28-29" target="_blank">Matthew 11:28-29</a>).</p>
+      <p>Everywhere else in Leviticus, contact with the unclean runs one direction. Touch the leper, the corpse, the bleeding, and their uncleanness flows into you. You go home defiled and wait until evening. When this woman grabbed His hem, the current ran backward. His wholeness flowed into her faster than her defilement could flow into Him. That is the whole gospel in a single touch. Jesus does not keep a safe distance from what is broken in us. He lets it reach Him, He absorbs it, and He sends His own cleanness back down the line. He would do it on the largest possible scale at the cross, taking every kind of uncleanness into His own body so that the people who touch Him by faith walk away made well. And to every worn-out person who comes weary and heavy-laden, He still says, come to Me, and I will give you rest (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.11.28-29" target="_blank" rel="noopener">Matthew 11:28-29</a>).</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -816,22 +839,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/MRK.5.21-34" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Mark+5:21-34&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

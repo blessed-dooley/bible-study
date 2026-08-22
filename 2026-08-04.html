@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -733,54 +756,55 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Picture the reader in Corinth reaching the end of the gift lists, pen ready to tally which members hold the greater gifts. Then the page turns and the scoring sheet dissolves. Paul suspends the catalog and writes the most famous chapter he ever produced (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.13.1-7" target="_blank">1 Corinthians 13:1-7</a>), and Peter, writing to scattered churches years later, will press the same claim from another direction (<a class="vlink" href="https://www.bible.com/bible/1713/1PE.4.8-11" target="_blank">1 Peter 4:8-11</a>). Between them the question changes shape. Not which gift is greatest, but what makes any gift worth anything at all.</p>
+      <p>Picture the reader in Corinth reaching the end of the gift lists, pen ready to tally which members hold the greater gifts. Then the page turns and the scoring sheet dissolves. Paul suspends the catalog and writes the most famous chapter he ever produced (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.1-7" target="_blank" rel="noopener">1 Corinthians 13:1-7</a>), and Peter, writing to scattered churches years later, will press the same claim from another direction (<a class="vlink" href="https://www.bible.com/bible/3034/1PE.4.8-11" target="_blank" rel="noopener">1 Peter 4:8-11</a>). Between them the question changes shape. Not which gift is greatest, but what makes any gift worth anything at all.</p>
 
-      <p>Paul begins by running Corinth's favorite gifts at full volume with the love removed. Tongues first, the congregation's showpiece, a real gift the Spirit really gives (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.10" target="_blank">1 Corinthians 12:10</a>), listed among God's own appointments (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.28" target="_blank">1 Corinthians 12:28</a>) and never expected of everyone (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.30" target="_blank">1 Corinthians 12:30</a>). Crank it to angelic registers with love subtracted and Paul hears only the city's bronze, a resounding gong, a clanging cymbal (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.13.1" target="_blank">1 Corinthians 13:1</a>). Expensive sound. Nothing inside.</p>
+      <p>Paul begins by running Corinth's favorite gifts at full volume with the love removed. Tongues first, the congregation's showpiece, a real gift the Spirit really gives (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.10" target="_blank" rel="noopener">1 Corinthians 12:10</a>), listed among God's own appointments (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.28" target="_blank" rel="noopener">1 Corinthians 12:28</a>) and never expected of everyone (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.30" target="_blank" rel="noopener">1 Corinthians 12:30</a>). Crank it to angelic registers with love subtracted and Paul hears only the city's bronze, a resounding gong, a clanging cymbal (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.1" target="_blank" rel="noopener">1 Corinthians 13:1</a>). Expensive sound. Nothing inside.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 13:2 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:561f6fa8a1073a3e8f8adcbbf7db275ad6b59af900aef72e30f53156ef710757 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 13:2</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.13.2" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.13.2" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"If I have the gift of prophecy and understand all mysteries and all knowledge, and if I have all faith so that I can move mountains but do not have love, I am nothing."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Paul keeps raising the stakes on himself. Prophecy, the gift he will call the one to desire most. All mysteries, all knowledge, the very word of knowledge the Spirit distributes (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.8" target="_blank">1 Corinthians 12:8</a>). Then faith, the most basic gift of all (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.9" target="_blank">1 Corinthians 12:9</a>), inflated to its absolute ceiling, faith that relocates mountains. Every item on the list is good. Every item comes from God. And the verdict on the whole loveless pile is two words long. I am nothing. Notice Paul does not say I accomplish nothing. He says I am nothing, because gifts describe what a person can do, and love describes what a person is. Subtract love and there is no remainder. The gift inventory was never the measure of the man.</p>
+        <div class="verse-text">If I have the gift of prophecy and can fathom all mysteries and all knowledge, and if I have absolute faith so as to move mountains, but have not love, I am nothing.</div>
+<div class="verse-commentary">
+          <p>Paul keeps raising the stakes on himself. Prophecy, the gift he will call the one to desire most. All mysteries, all knowledge, the very word of knowledge the Spirit distributes (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.8" target="_blank" rel="noopener">1 Corinthians 12:8</a>). Then faith, the most basic gift of all (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.9" target="_blank" rel="noopener">1 Corinthians 12:9</a>), inflated to its absolute ceiling, faith that relocates mountains. Every item on the list is good. Every item comes from God. And the verdict on the whole loveless pile is two words long. I am nothing. Notice Paul does not say I accomplish nothing. He says I am nothing, because gifts describe what a person can do, and love describes what a person is. Subtract love and there is no remainder. The gift inventory was never the measure of the man.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 13:4-7 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:0e9dc8f7826c8de2c3b444349df0554c95f46c1e8645834aaa343304504143e6 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 13:4-7</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.13.4-7" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.13.4-7" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Love is patient, love is kind. Love does not envy, is not boastful, is not arrogant, is not rude, is not self-seeking, is not irritable, and does not keep a record of wrongs. Love finds no joy in unrighteousness but rejoices in the truth. It bears all things, believes all things, hopes all things, endures all things."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 4">4</sup>Love is patient, love is kind. It does not envy, it does not boast, it is not proud. <sup class="verse-number" aria-label="Verse 5">5</sup>It is not rude, it is not self-seeking, it is not easily angered, it keeps no account of wrongs. <sup class="verse-number" aria-label="Verse 6">6</sup>Love takes no pleasure in evil, but rejoices in the truth. <sup class="verse-number" aria-label="Verse 7">7</sup>It bears all things, believes all things, hopes all things, endures all things.</div>
+<div class="verse-commentary">
           <p>Read it again and count what is missing. No feelings. In Paul's language these are fifteen verbs, seven things love keeps doing and eight things love refuses to do, and the first one sets the tone. The Greek verb behind patient is <em>makrothymeō</em>, to have a long fuse, to take a long time to reach the boiling point. Love waits well, works kindly, celebrates the truth, carries what is heavy, keeps trusting, keeps hoping, outlasts everything. And love declines a whole catalog of satisfying behaviors, the envying, the boasting, the sharp reply, the score kept in the drawer for later. Nothing here requires talent. All of it requires practice. Which means love is not so much something we feel as something we do until it becomes who we are. Corinth measured spirituality in volume. This list measures it in verbs.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Peter 4:8-11 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:82c88c849bedea9cfd8205557b48d6fe1677b16496a368682b18500b55b681c1 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Peter 4:8-11</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1PE.4.8-11" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1PE.4.8-11" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Above all, maintain constant love for one another, since love covers a multitude of sins. Be hospitable to one another without complaining. Just as each one has received a gift, use it to serve others, as good stewards of the varied grace of God. If anyone speaks, let it be as one who speaks God's words; if anyone serves, let it be from the strength God provides, so that God may be glorified through Jesus Christ in everything. To him be the glory and the power forever and ever. Amen."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 8">8</sup>Above all, love one another deeply, because love covers over a multitude of sins. <sup class="verse-number" aria-label="Verse 9">9</sup>Show hospitality to one another without complaining. <sup class="verse-number" aria-label="Verse 10">10</sup>As good stewards of the manifold grace of God, each of you should use whatever gift he has received to serve one another. <sup class="verse-number" aria-label="Verse 11">11</sup>If anyone speaks, he should speak as one conveying the words of God. If anyone serves, he should serve with the strength God provides, so that in all things God may be glorified through Jesus Christ, to whom be the glory and the power forever and ever. Amen.</div>
+<div class="verse-commentary">
           <p>Peter never sat in Corinth's living room, and he lands on the same conclusion. Above all, love, and then the gifts, in that order. His picture of a gift is a steward's household key, something entrusted, never owned, held for the good of everyone under the roof. Varied grace, he calls it, God's generosity showing up in more shades than any one person can carry, which is why every believer received a serving assignment. Speak as if handling God's own words. Serve from God's own strength. And notice where the whole passage drains. Not toward the gifted, toward the glory of God through Jesus Christ. Last week's compass just reappeared in Peter's handwriting. Gifts spent in love make God look like who He is.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Peter 4:8 | 4:8 See Proverbs 10:12 -->
 
+<!-- BSB_BLOCK: 1 Corinthians 13:13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:6ebd2f2a031201d6cc0c21331b51f913557595d0092a65fca83b04e8df7ab6d1 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 13:13</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.13.13" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.13.13" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Now these three remain: faith, hope, and love, but the greatest of these is love."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">And now these three remain: faith, hope, and love; but the greatest of these is love.</div>
+<div class="verse-commentary">
           <p>It matters where this chapter sits. Paul placed the love chapter deliberately between the gift lists and the gift corrections, the calm center of a storm about tongues and prophecy, because love is the key to using any gift wisely. Love is not one gift among many. It is the channel every gift travels to reach its purpose, the reason a word of knowledge builds instead of bruises, the reason serving refreshes instead of resents. And at the very end Paul holds up the three things that survive when everything else is finished, faith, hope, and love, and crowns one of them. Faith will someday become sight. Hope will someday be fulfilled. Love has no someday. It is the only thing we practice now that we will still be doing in eternity. The greatest gift is the one that never has to end.</p>
         </div>
       </div>
@@ -855,22 +879,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.13.1-7" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+13:1-7&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

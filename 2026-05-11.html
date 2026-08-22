@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -696,8 +725,8 @@ if ('serviceWorker' in navigator) {
       </div>
       <p class="tldr-hook">A barren woman stood at the door of a roadside shrine for so many years that the priest mistook her silent prayer for drunkenness, and the Bible recorded the misunderstanding because most of us have lived through it ourselves.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span><span>Hannah's prayer in <a class="vlink" href="https://www.bible.com/bible/1713/1SA.1" target="_blank">1 Samuel 1</a> is the Memory Text in narrative form: she literally tells Eli, "I have been pouring out my heart before the LORD."</span></li>
-        <li><span class="bullet-icon">☩</span><span>The "ask and you will receive" promise of <a class="vlink" href="https://www.bible.com/bible/1713/MAT.7.7" target="_blank">Matthew 7:7</a> has a partner verse in <a class="vlink" href="https://www.bible.com/bible/1713/1JN.5.14" target="_blank">1 John 5:14</a>, and the partner is doing most of the heavy lifting: "if we ask anything according to His will, He hears us."</span></li>
+        <li><span class="bullet-icon">☩</span><span>Hannah's prayer in <a class="vlink" href="https://www.bible.com/bible/3034/1SA.1" target="_blank" rel="noopener">1 Samuel 1</a> is the Memory Text in narrative form: she literally tells Eli, "I have been pouring out my heart before the LORD."</span></li>
+        <li><span class="bullet-icon">☩</span><span>The "ask and you will receive" promise of <a class="vlink" href="https://www.bible.com/bible/3034/MAT.7.7" target="_blank" rel="noopener">Matthew 7:7</a> has a partner verse in <a class="vlink" href="https://www.bible.com/bible/3034/1JN.5.14" target="_blank" rel="noopener">1 John 5:14</a>, and the partner is doing most of the heavy lifting: "if we ask anything according to His will, He hears us."</span></li>
         <li><span class="bullet-icon">☩</span><span>The Bible's counsel for unanswered prayer is a long checklist of heart conditions, but the chapter underneath all of them is our picture of God Himself.</span></li>
         <li><span class="bullet-icon">☩</span><span>A distorted picture of God produces a distorted prayer life. Search the Scripture for the real Father, and our prayers stop sounding like demands and start sounding like trust.</span></li>
       </ul>
@@ -722,7 +751,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">Bitter of Soul at Shiloh</div>
       <p>Shiloh in 1100 BC was not yet the temple. It was a rough hill town in the central highlands where the tabernacle had stood since Joshua's day, a tent covered in skins, wooden posts driven into the dirt, an altar in front of it. Eli the high priest sat at the doorpost on a chair, watching the worshippers come and go. The whole shrine was small enough that a priest could read a woman's lips from across the courtyard. There was no soaring nave, no soft music, no liturgical hush. There were sheep being slaughtered, fires for the burnt offerings, the smell of roasting meat, and the noise of pilgrims who had walked days to get there.</p>
-      <p>Hannah arrived from a polygamous household in the hill country of Ephraim. Her husband loved her; her rival, Peninnah, had several children and never let her forget it. The Hebrew of <a class="vlink" href="https://www.bible.com/bible/1713/1SA.1.10" target="_blank">1 Samuel 1:10</a> calls her <em>marat naphesh</em>, "bitter of soul," the same kind of phrase used elsewhere of people who have lost their children to slavery or war. Barrenness in covenant Israel was not just personal grief; it carried the cultural weight of covenant failure, lost inheritance, social shame, and the year-after-year reminder at every harvest festival that she was the one without arms full. She had been praying for years, and on this particular pilgrimage she stayed at the doorpost long enough that her prayer ran out of words. The Hebrew tells us her lips were moving, but her voice could not be heard. Eli watched her mouth and assumed she was drunk. The priest of Israel had misdiagnosed the most important prayer in the temple that year, and the LORD answered her anyway.</p>
+      <p>Hannah arrived from a polygamous household in the hill country of Ephraim. Her husband loved her; her rival, Peninnah, had several children and never let her forget it. The Hebrew of <a class="vlink" href="https://www.bible.com/bible/3034/1SA.1.10" target="_blank" rel="noopener">1 Samuel 1:10</a> calls her <em>marat naphesh</em>, "bitter of soul," the same kind of phrase used elsewhere of people who have lost their children to slavery or war. Barrenness in covenant Israel was not just personal grief; it carried the cultural weight of covenant failure, lost inheritance, social shame, and the year-after-year reminder at every harvest festival that she was the one without arms full. She had been praying for years, and on this particular pilgrimage she stayed at the doorpost long enough that her prayer ran out of words. The Hebrew tells us her lips were moving, but her voice could not be heard. Eli watched her mouth and assumed she was drunk. The priest of Israel had misdiagnosed the most important prayer in the temple that year, and the LORD answered her anyway.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -733,49 +762,47 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Saturday's Memory Text gave us one verb. Hannah is the verb at full volume. When Eli accuses her of being drunk, she answers him with the exact phrase that has been carrying us since the weekend: "I have been pouring out my heart before the LORD." Same Hebrew word as <a class="vlink" href="https://www.bible.com/bible/1713/PSA.62.8" target="_blank">Psalm 62:8</a>. Same posture. Same Father. The promise verses Jesus and John leave behind are the air this scene breathes; the Bible's counsel for unanswered prayer is the longer hallway it leads to. We start with the woman at the doorpost, then pick up the promises behind her.</p>
+      <p>Saturday's Memory Text gave us one verb. Hannah is the verb at full volume. When Eli accuses her of being drunk, she answers him with the exact phrase that has been carrying us since the weekend: "I have been pouring out my heart before the LORD." Same Hebrew word as <a class="vlink" href="https://www.bible.com/bible/3034/PSA.62.8" target="_blank" rel="noopener">Psalm 62:8</a>. Same posture. Same Father. The promise verses Jesus and John leave behind are the air this scene breathes; the Bible's counsel for unanswered prayer is the longer hallway it leads to. We start with the woman at the doorpost, then pick up the promises behind her.</p>
 
+<!-- BSB_BLOCK: 1 Samuel 1:10-17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:6690291ff39f094be1c5a0e9420aec73e8b0e130deee98b45c8274b65af33d31 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Samuel 1:10-17</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1SA.1.10-17" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1SA.1.10-17" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Deeply hurt, Hannah prayed to the LORD and wept with many tears. Making a vow, she pleaded, 'LORD of Armies, if you will take notice of your servant's affliction, remember and not forget me, and give your servant a son, I will give him to the LORD all the days of his life, and his hair will never be cut.' While she continued praying in the LORD's presence, Eli watched her mouth. Hannah was praying silently, and though her lips were moving, her voice could not be heard. Eli thought she was drunk and scolded her, 'How long are you going to be drunk? Get rid of your wine!' 'No, my lord,' Hannah replied. 'I am a woman with a broken heart. I haven't had any wine or beer; I've been pouring out my heart before the LORD. Don't think of me as a wicked woman; I've been praying from the depth of my anguish and resentment.' Eli responded, 'Go in peace, and may the God of Israel grant the request you've made of him.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Hannah's prayer has three features that turn out to be a small school of unanswered prayer all by themselves. First, it is honest. She prays "from the depth of my anguish and resentment," not from a polished script. The Hebrew word translated "resentment" is <em>kaas</em>, a word the Old Testament uses for the kind of anger that simmers over time. She is not pretending she is not angry. She is bringing the anger to the only Father who can do anything with it.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 10">10</sup>In her bitter distress, Hannah prayed to the LORD and wept with many tears. <sup class="verse-number" aria-label="Verse 11">11</sup>And she made a vow, saying, “O LORD of Hosts, if only You will look upon the affliction of Your maidservant and remember me, not forgetting Your maidservant but giving her a son, then I will dedicate him to the LORD all the days of his life, and no razor shall ever touch his head.” <sup class="verse-number" aria-label="Verse 12">12</sup>As Hannah kept on praying before the LORD, Eli watched her mouth. <sup class="verse-number" aria-label="Verse 13">13</sup>Hannah was praying in her heart, and though her lips were moving, her voice could not be heard. So Eli thought she was drunk <sup class="verse-number" aria-label="Verse 14">14</sup>and said to her, “How long will you be drunk? Put away your wine!” <sup class="verse-number" aria-label="Verse 15">15</sup>“No, my lord,” Hannah replied. “I am a woman troubled in spirit. I have not had any wine or strong drink, but I have poured out my soul before the LORD. <sup class="verse-number" aria-label="Verse 16">16</sup>Do not take your servant for a wicked woman, for all this time I have been praying out of the depth of my anguish and grief.” <sup class="verse-number" aria-label="Verse 17">17</sup>“Go in peace,” Eli replied, “and may the God of Israel grant the petition you have asked of Him.”</div>
+<div class="verse-commentary">
+          <p>Hannah's prayer has three features that turn out to be a small school of unanswered prayer all by themselves. First, it is honest. She prays "out of the depth of my anguish and grief," not from a polished script. The Hebrew word translated "resentment" is <em>kaas</em>, a word the Old Testament uses for the kind of anger that simmers over time. She is not pretending she is not angry. She is bringing the anger to the only Father who can do anything with it.</p>
           <p>Second, her prayer is a vow. She does not ask for the son and stop there. She offers the son back to the LORD before she has him. Her prayer trusts that what God gives her will be safer in His hands than in hers. Crisis prayer that survives years has a way of clarifying what we are actually asking for and why. Hannah comes to the doorpost asking for a child to fix her grief; she leaves having handed the child over to God before the child even exists.</p>
-          <p>Third, her prayer is misread by the most senior religious figure in the room, and she does not give up. Eli misdiagnoses her, scolds her, and embarrasses her in public. She corrects him gently and keeps praying. Most of us, after a year of unanswered prayer, would have walked away from a priest who told us to put our wine down. Hannah does not. She goes home, eats, sleeps, and "she was no longer despondent" (the very next verse). The answer has not arrived yet. The peace has. The Hebrew word she used in her own defense is <em>shaphak</em>, the same verb the Memory Text used. Hannah is what <a class="vlink" href="https://www.bible.com/bible/1713/PSA.62.8" target="_blank">Psalm 62:8</a> looks like when the years start to add up.</p>
+          <p>Third, her prayer is misread by the most senior religious figure in the room, and she does not give up. Eli misdiagnoses her, scolds her, and embarrasses her in public. She corrects him gently and keeps praying. Most of us, after a year of unanswered prayer, would have walked away from a priest who told us to put our wine down. Hannah does not. She goes home, eats, sleeps, and "she was no longer despondent" (the very next verse). The answer has not arrived yet. The peace has. The Hebrew word she used in her own defense is <em>shaphak</em>, the same verb the Memory Text used. Hannah is what <a class="vlink" href="https://www.bible.com/bible/3034/PSA.62.8" target="_blank" rel="noopener">Psalm 62:8</a> looks like when the years start to add up.</p>
           <p>The chapter ends with Samuel's birth, but the moral of the chapter is older than the answer. The LORD heard the silent woman before the priest understood what she was doing. Sometimes the prayers that look unanswered have already been answered in a register the watching world cannot pick up. The peace travels first. The yes follows in its own time.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Matthew 7:7 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:e98cf6867be0e9599b5eda417af3e441589ad994c903dd2c73d6f8cc705b2147 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Matthew 7:7</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.7.7" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.7.7" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Ask, and it will be given to you. Seek, and you will find. Knock, and the door will be opened to you."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><span class="words-of-jesus">Ask, and it will be given to you; seek, and you will find; knock, and the door will be opened to you.</span></div>
+<div class="verse-commentary">
           <p>This is one of the most quoted promises in the Sermon on the Mount and one of the most misquoted. The Greek verbs Jesus uses (<em>aiteo</em>, <em>zeteo</em>, <em>krouo</em>) are all in the present-imperative tense, which in Greek carries the force of "keep on asking, keep on seeking, keep on knocking." Jesus is not promising that one prayer will receive one immediate answer. He is promising that sustained, persistent asking does not bounce off the ceiling.</p>
-          <p>The escalation is also deliberate. Asking is verbal. Seeking implies movement, getting up and looking. Knocking implies arriving at a door and being willing to wait in front of it. The promise widens in proportion to the effort. Hannah's prayer was a present-tense, three-verb prayer. She kept asking. She kept seeking. She kept knocking at the doorpost of the tabernacle until the priest mistook her for drunk. The promise of <a class="vlink" href="https://www.bible.com/bible/1713/MAT.7.7" target="_blank">Matthew 7:7</a> was hers before Jesus said it out loud, because the same Father who would inspire it had been listening to her practice it.</p>
+          <p>The escalation is also deliberate. Asking is verbal. Seeking implies movement, getting up and looking. Knocking implies arriving at a door and being willing to wait in front of it. The promise widens in proportion to the effort. Hannah's prayer was a present-tense, three-verb prayer. She kept asking. She kept seeking. She kept knocking at the doorpost of the tabernacle until the priest mistook her for drunk. The promise of <a class="vlink" href="https://www.bible.com/bible/3034/MAT.7.7" target="_blank" rel="noopener">Matthew 7:7</a> was hers before Jesus said it out loud, because the same Father who would inspire it had been listening to her practice it.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 John 5:14 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:17dc1d08fc9914f6334c4cecdabb05a322e1d95c7688ab90484f730eb160652a | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 John 5:14</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1JN.5.14" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1JN.5.14" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Now this is the confidence that we have in Him, that if we ask anything according to His will, He hears us."</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"This is the confidence we have before him: If we ask anything according to his will, he hears us."</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>If <a class="vlink" href="https://www.bible.com/bible/1713/MAT.7.7" target="_blank">Matthew 7:7</a> is the promise, this is the partner verse that prevents the promise from becoming magic. John adds five words: "according to His will." The word for "will" here is the Greek <em>thelema</em>, the same word Jesus used in Gethsemane when He said "not my will, but yours, be done." Prayer is not a vending machine into which we put requests and out of which we expect outcomes. Prayer is a conversation in which our wills get bent toward His, slowly, over time, until our deepest asking and His deepest will are saying the same word.</p>
-          <p>That is what the Bible's counsel for unanswered prayer is actually doing under the surface. Several lines of biblical counsel run through this point. Pray "Your will be done" first, before our requests in <a class="vlink" href="https://www.bible.com/bible/1713/MAT.6.10" target="_blank">Matthew 6:10</a>; ask according to His will rather than ours in <a class="vlink" href="https://www.bible.com/bible/1713/1JN.5.14-15" target="_blank">1 John 5:14-15</a>; check our motives in <a class="vlink" href="https://www.bible.com/bible/1713/PRO.16.2" target="_blank">Proverbs 16:2</a> and <a class="vlink" href="https://www.bible.com/bible/1713/JAS.4.3" target="_blank">James 4:3</a>; refuse to harbor a cherished sin that closes God's ear in <a class="vlink" href="https://www.bible.com/bible/1713/PSA.66.18" target="_blank">Psalm 66:18</a>, <a class="vlink" href="https://www.bible.com/bible/1713/1PE.3.12" target="_blank">1 Peter 3:12</a>, and <a class="vlink" href="https://www.bible.com/bible/1713/PRO.15.29" target="_blank">Proverbs 15:29</a>; abide in Christ and His Word so that our asking grows out of His mind in <a class="vlink" href="https://www.bible.com/bible/1713/JHN.15.7" target="_blank">John 15:7</a>; ask in faith rather than doubt in <a class="vlink" href="https://www.bible.com/bible/1713/HEB.11.6" target="_blank">Hebrews 11:6</a>, <a class="vlink" href="https://www.bible.com/bible/1713/JAS.1.6" target="_blank">James 1:6</a>, <a class="vlink" href="https://www.bible.com/bible/1713/MRK.11.24" target="_blank">Mark 11:24</a>, and <a class="vlink" href="https://www.bible.com/bible/1713/MAT.21.22" target="_blank">Matthew 21:22</a>; come humbly rather than proudly in <a class="vlink" href="https://www.bible.com/bible/1713/JAS.4.6" target="_blank">James 4:6</a> and <a class="vlink" href="https://www.bible.com/bible/1713/1PE.5.6" target="_blank">1 Peter 5:6</a>; persevere instead of stopping in <a class="vlink" href="https://www.bible.com/bible/1713/1TH.5.17-18" target="_blank">1 Thessalonians 5:17-18</a>; and forgive others, because unforgiveness is its own kind of clenched fist when we are trying to receive in <a class="vlink" href="https://www.bible.com/bible/1713/MRK.11.25-26" target="_blank">Mark 11:25-26</a>.</p>
-          <p>Underneath the whole list is a confidence: God sees what we cannot. <a class="vlink" href="https://www.bible.com/bible/1713/ROM.8.28" target="_blank">Romans 8:28</a> tells us He works all things together for our good. <a class="vlink" href="https://www.bible.com/bible/1713/EPH.3.20" target="_blank">Ephesians 3:20</a> says He is able to do "above and beyond all that we ask or think." <a class="vlink" href="https://www.bible.com/bible/1713/JER.29.11-13" target="_blank">Jeremiah 29:11-13</a>, written to exiles in Babylon who had stopped expecting an answer, promises plans for welfare and not for harm. And sometimes, as Paul learned with his thorn in <a class="vlink" href="https://www.bible.com/bible/1713/2CO.12.9" target="_blank">2 Corinthians 12:9</a>, the answer is not the removal of the thing but a deeper experience of grace that makes us strong in the place we asked Him to take from us. That is also a yes. It is just answering a deeper question than the one we asked. <a class="vlink" href="https://www.bible.com/bible/1713/PSA.62.8" target="_blank">Psalm 62:8</a>, which we have been pouring through all week, sits underneath all of it. Trust first; then pour.</p>
+        <div class="verse-text">And this is the confidence that we have before Him: If we ask anything according to His will, He hears us.</div>
+<div class="verse-commentary">
+          <p>If <a class="vlink" href="https://www.bible.com/bible/3034/MAT.7.7" target="_blank" rel="noopener">Matthew 7:7</a> is the promise, this is the partner verse that prevents the promise from becoming magic. John adds five words: "according to His will." The word for "will" here is the Greek <em>thelema</em>, the same word Jesus used in Gethsemane when He said "not my will, but yours, be done." Prayer is not a vending machine into which we put requests and out of which we expect outcomes. Prayer is a conversation in which our wills get bent toward His, slowly, over time, until our deepest asking and His deepest will are saying the same word.</p>
+          <p>That is what the Bible's counsel for unanswered prayer is actually doing under the surface. Several lines of biblical counsel run through this point. Pray "Your will be done" first, before our requests in <a class="vlink" href="https://www.bible.com/bible/3034/MAT.6.10" target="_blank" rel="noopener">Matthew 6:10</a>; ask according to His will rather than ours in <a class="vlink" href="https://www.bible.com/bible/3034/1JN.5.14-15" target="_blank" rel="noopener">1 John 5:14-15</a>; check our motives in <a class="vlink" href="https://www.bible.com/bible/3034/PRO.16.2" target="_blank" rel="noopener">Proverbs 16:2</a> and <a class="vlink" href="https://www.bible.com/bible/3034/JAS.4.3" target="_blank" rel="noopener">James 4:3</a>; refuse to harbor a cherished sin that closes God's ear in <a class="vlink" href="https://www.bible.com/bible/3034/PSA.66.18" target="_blank" rel="noopener">Psalm 66:18</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1PE.3.12" target="_blank" rel="noopener">1 Peter 3:12</a>, and <a class="vlink" href="https://www.bible.com/bible/3034/PRO.15.29" target="_blank" rel="noopener">Proverbs 15:29</a>; abide in Christ and His Word so that our asking grows out of His mind in <a class="vlink" href="https://www.bible.com/bible/3034/JHN.15.7" target="_blank" rel="noopener">John 15:7</a>; ask in faith rather than doubt in <a class="vlink" href="https://www.bible.com/bible/3034/HEB.11.6" target="_blank" rel="noopener">Hebrews 11:6</a>, <a class="vlink" href="https://www.bible.com/bible/3034/JAS.1.6" target="_blank" rel="noopener">James 1:6</a>, <a class="vlink" href="https://www.bible.com/bible/3034/MRK.11.24" target="_blank" rel="noopener">Mark 11:24</a>, and <a class="vlink" href="https://www.bible.com/bible/3034/MAT.21.22" target="_blank" rel="noopener">Matthew 21:22</a>; come humbly rather than proudly in <a class="vlink" href="https://www.bible.com/bible/3034/JAS.4.6" target="_blank" rel="noopener">James 4:6</a> and <a class="vlink" href="https://www.bible.com/bible/3034/1PE.5.6" target="_blank" rel="noopener">1 Peter 5:6</a>; persevere instead of stopping in <a class="vlink" href="https://www.bible.com/bible/3034/1TH.5.17-18" target="_blank" rel="noopener">1 Thessalonians 5:17-18</a>; and forgive others, because unforgiveness is its own kind of clenched fist when we are trying to receive in <a class="vlink" href="https://www.bible.com/bible/3034/MRK.11.25-26" target="_blank" rel="noopener">Mark 11:25-26</a>.</p>
+          <p>Underneath the whole list is a confidence: God sees what we cannot. <a class="vlink" href="https://www.bible.com/bible/3034/ROM.8.28" target="_blank" rel="noopener">Romans 8:28</a> tells us He works all things together for our good. <a class="vlink" href="https://www.bible.com/bible/3034/EPH.3.20" target="_blank" rel="noopener">Ephesians 3:20</a> says He is able to do "above and beyond all that we ask or think." <a class="vlink" href="https://www.bible.com/bible/3034/JER.29.11-13" target="_blank" rel="noopener">Jeremiah 29:11-13</a>, written to exiles in Babylon who had stopped expecting an answer, promises plans for welfare and not for harm. And sometimes, as Paul learned with his thorn in <a class="vlink" href="https://www.bible.com/bible/3034/2CO.12.9" target="_blank" rel="noopener">2 Corinthians 12:9</a>, the answer is not the removal of the thing but a deeper experience of grace that makes us strong in the place we asked Him to take from us. That is also a yes. It is just answering a deeper question than the one we asked. <a class="vlink" href="https://www.bible.com/bible/3034/PSA.62.8" target="_blank" rel="noopener">Psalm 62:8</a>, which we have been pouring through all week, sits underneath all of it. Trust first; then pour.</p>
         </div>
       </div>
     </div>
@@ -803,7 +830,7 @@ if ('serviceWorker' in navigator) {
       <div class="section-heading">Life in the Tension of Waiting</div>
       <p>One of the most studied groups of long-term waiters in modern medicine is women navigating infertility. A 2025 qualitative meta-synthesis pulled findings from dozens of studies across multiple continents and identified six themes that emerged again and again from the interviews. One was named with a phrase Hannah herself could have used: "life in the tension of waiting and hope." A 2025 paper in the <em>Journal of Psychosomatic Obstetrics and Gynaecology</em> titled "It's like having a second job" captured the durational quality of the waiting from the inside. Years pass. Cycles repeat. Pregnancy announcements at family gatherings keep arriving. The patient discovers that the test result and the next appointment are only the surface of what she is doing.</p>
       <p>What the research keeps surfacing is that the women who flourish in long waiting are not the ones who deny the pain. They are the ones who develop two specific resources: meaning-based coping (interpreting the season as part of a larger story rather than only as an absence), and active partner communication (the willingness to keep talking openly with the person closest to them rather than going silent). A 2025 mediation analysis in the journal <em>Healthcare</em> found that meaning-based coping had a measurable indirect effect on psychological resilience, larger than several other coping styles tested. Resilience, in the data, was not the same thing as being numb. It was being able to hold the hope and the pain at the same time, inside a story bigger than either.</p>
-      <p>That is what Hannah's "I have been pouring out my heart before the LORD" sounds like in clinical language. The peace did not arrive when Samuel did. The peace arrived inside the waiting itself, when she handed the unanswered prayer to the only Father who could carry it. The Hebrew of <a class="vlink" href="https://www.bible.com/bible/1713/1SA.1" target="_blank">1 Samuel 1</a> keeps her case in the temple at Shiloh, but the modern research has confirmed her instinct in the data. The change comes earlier than the answer. The peace travels first. The yes follows in its own time.</p>
+      <p>That is what Hannah's "I have been pouring out my heart before the LORD" sounds like in clinical language. The peace did not arrive when Samuel did. The peace arrived inside the waiting itself, when she handed the unanswered prayer to the only Father who could carry it. The Hebrew of <a class="vlink" href="https://www.bible.com/bible/3034/1SA.1" target="_blank" rel="noopener">1 Samuel 1</a> keeps her case in the temple at Shiloh, but the modern research has confirmed her instinct in the data. The change comes earlier than the answer. The peace travels first. The yes follows in its own time.</p>
     </div>
 
     <!-- 7. CHRIST CONNECTION -->
@@ -824,7 +851,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="action-box">
-        Today, name one prayer you have been praying for a long time without an answer. Write it down on the same paper you tucked into your Bible on Sabbath. Now write underneath it the line Hannah added before she had her answer: "I will give him to the LORD all the days of his life." Add your version. Tell the Father, in writing, what you would do with the thing if He gave it to you, and offer it back to Him before it arrives. If He says yes, it will be safer in His hands. If He says wait, the peace can come before the answer.
+        Today, name one prayer you have been praying for a long time without an answer. Write it down on the same paper you tucked into your Bible on Sabbath. Now write underneath it the line Hannah added before she had her answer: "then I will dedicate him to the LORD all the days of his life." Add your version. Tell the Father, in writing, what you would do with the thing if He gave it to you, and offer it back to Him before it arrives. If He says yes, it will be safer in His hands. If He says wait, the peace can come before the answer.
       </div>
     </div>
 
@@ -850,22 +877,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1SA.1.10-17" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Samuel+1:10-17&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -894,8 +941,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -904,18 +953,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -923,6 +976,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -942,6 +996,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

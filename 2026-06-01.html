@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -722,7 +751,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Prophet Whose Own House Was the Script</div>
       <p>Hosea ben Beeri preached in the northern kingdom of Israel in the middle of the eighth century BC, the same decades as Amos and Isaiah and Micah, in the years just before Assyria came down from the north and finished the ten tribes. The political surface of Samaria looked prosperous; under it, the country had been quietly running on Baal worship and adultery with foreign treaty gods for two generations. The first sentence God speaks to Hosea is not "go preach." It is "go marry a woman who will not be faithful to you." Gomer, the prophet's wife in chapters one through three, leaves him repeatedly and is bought back at the slave market. By the time we reach the sermons in chapters four through fourteen, Hosea is using his own house as the lens through which to read his nation's marriage to God.</p>
-      <p>That is the air <a class="vlink" href="https://www.bible.com/bible/1713/HOS.6" target="_blank">Hosea 6</a> is written into. "Come, let us return to the LORD." The Hebrew verb is <em>shuv</em>, the Old Testament's primary word for repentance, the verb of physical turning that gets used a hundred times of Israel turning back to God and several times of Gomer being asked to come back to her husband. Hosea is not reading the call out of a manual. He is saying the same line to his nation that he has had to say across his own kitchen. The next sentence is the most striking diagnosis in the chapter: "He has torn, but He will heal us." The same hand that wounded is the hand that bandages, because the wound was always for the healing's sake. The Greek-speaking church will hear an echo of this when Paul's word for the Spirit's work in our chest arrives. The <em>Parakletos</em> who exposes the wound is the One who has already arranged the bandage.</p>
+      <p>That is the air <a class="vlink" href="https://www.bible.com/bible/3034/HOS.6" target="_blank" rel="noopener">Hosea 6</a> is written into. "Come, let us return to the LORD." The Hebrew verb is <em>shuv</em>, the Old Testament's primary word for repentance, the verb of physical turning that gets used a hundred times of Israel turning back to God and several times of Gomer being asked to come back to her husband. Hosea is not reading the call out of a manual. He is saying the same line to his nation that he has had to say across his own kitchen. The next sentence is the most striking diagnosis in the chapter: "He has torn, but He will heal us." The same hand that wounded is the hand that bandages, because the wound was always for the healing's sake. The Greek-speaking church will hear an echo of this when Paul's word for the Spirit's work in our chest arrives. The <em>Parakletos</em> who exposes the wound is the One who has already arranged the bandage.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -735,42 +764,39 @@ if ('serviceWorker' in navigator) {
 
       <p>The anchor today is not a passage about repentance in the abstract. It is Jesus on the night before the cross, naming the Person who is going to produce repentance inside His followers after He is gone. The Upper Room Discourse runs four chapters (John 14 through 17), and the long stretch about the Spirit lands on a verb that sets the rest of the week's emotional shape. The Spirit's first job, the one Jesus lists first, is to expose. From there we will sit with Hosea's "let us return," with the gift of the Spirit in Luke 11, with the vine in John 15, and with the warning in Ephesians 4 that we can grieve the One whose work the rest of these verses describe.</p>
 
+<!-- BSB_BLOCK: John 16:8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:91a27691c1cc86a4ca421a474211baabfe52b360653409c95ea2cab679bb958f | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">John 16:8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.16.8" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.16.8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"When he comes, he will convict the world about sin, righteousness, and judgment."</div>
-
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><span class="words-of-jesus">And when He comes, He will convict the world in regard to sin and righteousness and judgment:</span></div>
+<div class="verse-commentary">
           <p>When Jesus says the Spirit will "convict" the world, the word isn't about making us feel like dirt. It's a courtroom word, the kind a lawyer uses when he lays the evidence on the table so the room finally sees what was there all along. The Spirit shows us three things, in order: our sin, then what real righteousness is, then the fact that the case against evil is already closed. Notice what's missing from the list: shame. Shame says "you're wrong, go hide." The Spirit says "this is wrong, and let me show you what I've already done about it." Jesus had been calling this same Spirit the <em>Parakletos</em>, a Greek word for the friend who stands next to the accused in court, on his side, not against him. So the One who makes us look hard at what we did is the very One who came to stand with us. The husband at the kitchen table feeling that second wave isn't being accused. He's being helped.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Ephesians 4:30 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:9c3d8d26f3426b19d7054d00ce7d1b6d09802b7b4aab9bae11987f2d52f367e4 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Ephesians 4:30</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/EPH.4.30" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/EPH.4.30" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"And don't grieve God's Holy Spirit. You were sealed by him for the day of redemption."</div>
-
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">And do not grieve the Holy Spirit of God, in whom you were sealed for the day of redemption.</div>
+<div class="verse-commentary">
           <p>"Don't grieve the Holy Spirit" uses the same word the Bible uses for mourning someone you love who has died. That tells you something huge. The Spirit isn't a force or a battery you drain down. He's a Person, and He can be hurt the way a loyal friend is hurt when you lie to his face at the dinner table. Paul spells out what does the hurting in the verses right around this one: cruel words, bitterness, anger, name-calling. So the husband who threw the cutting line and then defended it grieved the Spirit twice, once with the word and once with the excuse. But look at the second half of the verse. We were "sealed for the day of redemption," the picture of a king pressing his ring into hot wax to stamp a letter as his own. The Spirit you grieve in the morning is not the Spirit who walks out by the afternoon. He has marked you as His, and His grief is the ache of a love that refuses to give up on you.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: John 15:4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:fb3e348521a5df9dc7f96de1eab4ed8bd29128117e50d0d73edeba121f627734 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">John 15:4</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.15.4" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.15.4" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Remain in me, and I in you. Just as a branch is unable to produce fruit by itself unless it remains on the vine, neither can you unless you remain in me."</div>
-
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Jesus says "remain in me" four times in two verses. The point is simple. A branch doesn't grow grapes by gritting its teeth and trying harder. It grows them by staying joined to the vine. Repentance works the same way. It isn't a self-improvement plan you run on willpower. It's letting yourself get reconnected to the trunk after the wind has bent you away from it. And even the strength to ask for that help is a gift. In <a class="vlink" href="https://www.bible.com/bible/1713/LUK.11.13" target="_blank">Luke 11:13</a> Jesus says the Father gives the Holy Spirit to anyone who simply asks. We're not the gardener. We're not even the one doing the grafting. We're the branch, and the branch's first move is just asking to be put back.</p>
+        <div class="verse-text"><span class="words-of-jesus">Remain in Me, and I will remain in you. Just as no branch can bear fruit by itself unless it remains in the vine, neither can you bear fruit unless you remain in Me.</span></div>
+<div class="verse-commentary">
+          <p>Jesus says "remain in me" four times in two verses. The point is simple. A branch doesn't grow grapes by gritting its teeth and trying harder. It grows them by staying joined to the vine. Repentance works the same way. It isn't a self-improvement plan you run on willpower. It's letting yourself get reconnected to the trunk after the wind has bent you away from it. And even the strength to ask for that help is a gift. In <a class="vlink" href="https://www.bible.com/bible/3034/LUK.11.13" target="_blank" rel="noopener">Luke 11:13</a> Jesus says the Father gives the Holy Spirit to anyone who simply asks. We're not the gardener. We're not even the one doing the grafting. We're the branch, and the branch's first move is just asking to be put back.</p>
         </div>
       </div>
     </div>
@@ -798,7 +824,7 @@ if ('serviceWorker' in navigator) {
       <div class="section-heading">Two Emotions, One Goal</div>
       <p>In May 2025 the journal <em>Behavioral Sciences</em> published an experimental study by Rania Semaan of the American University of Sharjah called "Shame Withdraws, Guilt Corrects." The experiment took two emotions that look identical from the outside, both negative, both arising in the moment a person sees their own failure, and ran them through the same goal-pursuit task. Participants higher in shame-proneness and primed with shame chose to violate their stated goal: they reached for the indulgence they had said they would skip, and reported feeling worse about themselves while they did it. Participants higher in guilt-proneness and primed with guilt did the opposite. They refrained from the purchase, exercised self-control, and stayed pointed at the goal they had set for the morning.</p>
       <p>The paper's argument is in its title. Shame <em>withdraws</em>. It steps back from the goal, from the room, from the relationship, because it is attached to the whole self ("I am bad"). Guilt <em>corrects</em>. It stays in the room and modifies the next action, because it is attached to a specific behavior ("I did something I should not have done"). The same dance class, the same slipped step, two different shoulder-tap effects. One leaves the floor. One picks back up at bar nine.</p>
-      <p>That distinction is the whole architecture of the <em>Parakletos</em>. The Helper does not stand at the front of the room and announce who is out of step. He walks past at shoulder height and shows the gap, and the next eight bars are different. Repentance under His hand is guilt, not shame; correction, not withdrawal. <a class="vlink" href="https://www.bible.com/bible/1713/HOS.6" target="_blank">Hosea 6</a> promises God will tear and then bind up; the binding up begins the same morning the tearing begins, because the One holding up the gap is the same One who has already paid to close it.</p>
+      <p>That distinction is the whole architecture of the <em>Parakletos</em>. The Helper does not stand at the front of the room and announce who is out of step. He walks past at shoulder height and shows the gap, and the next eight bars are different. Repentance under His hand is guilt, not shame; correction, not withdrawal. <a class="vlink" href="https://www.bible.com/bible/3034/HOS.6" target="_blank" rel="noopener">Hosea 6</a> promises God will tear and then bind up; the binding up begins the same morning the tearing begins, because the One holding up the gap is the same One who has already paid to close it.</p>
     </div>
 
     <!-- 7. CHRIST CONNECTION -->
@@ -819,7 +845,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="action-box">
-        Sometime today, ask Him out loud. Use <a class="vlink" href="https://www.bible.com/bible/1713/LUK.11.13" target="_blank">Luke 11:13</a> as your warrant: "Father, You said You give the Holy Spirit to those who ask. I am asking. Show me what You see in me that I have not been willing to see this week." Then sit for one full minute. Do not pre-load the answer. Let the <em>Parakletos</em> name what He names. Write one sentence on a piece of paper about what came up, and put the paper somewhere you will see it tomorrow. That sentence is the seed of Tuesday's lesson.
+        Sometime today, ask Him out loud. Use <a class="vlink" href="https://www.bible.com/bible/3034/LUK.11.13" target="_blank" rel="noopener">Luke 11:13</a> as your warrant: "Father, You said You give the Holy Spirit to those who ask. I am asking. Show me what You see in me that I have not been willing to see this week." Then sit for one full minute. Do not pre-load the answer. Let the <em>Parakletos</em> name what He names. Write one sentence on a piece of paper about what came up, and put the paper somewhere you will see it tomorrow. That sentence is the seed of Tuesday's lesson.
       </div>
     </div>
 
@@ -845,22 +871,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/JHN.16.8" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=John+16:8&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -889,8 +935,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -899,18 +947,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -918,6 +970,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -937,6 +990,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

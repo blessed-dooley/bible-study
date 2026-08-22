@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -733,45 +756,47 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Paul has been circling the idol-meat question for two chapters. Today he lands, inside the same sweep of warning we entered yesterday (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.10.5-22" target="_blank">1 Corinthians 10:5-22</a>), and his first word on arrival is flee. Then he does something remarkable for a man drawing a hard line. He reasons with them, sensible people that you are, judge for yourselves, as he takes the meat question back up (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.10.14-22" target="_blank">1 Corinthians 10:14-22</a>). The argument he builds runs through the communion table, because you cannot understand what is wrong with the demons' table until you understand what actually happens at the Lord's.</p>
+      <p>Paul has been circling the idol-meat question for two chapters. Today he lands, inside the same sweep of warning we entered yesterday (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.5-22" target="_blank" rel="noopener">1 Corinthians 10:5-22</a>), and his first word on arrival is flee. Then he does something remarkable for a man drawing a hard line. He reasons with them, sensible people that you are, judge for yourselves, as he takes the meat question back up (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.14-22" target="_blank" rel="noopener">1 Corinthians 10:14-22</a>). The argument he builds runs through the communion table, because you cannot understand what is wrong with the demons' table until you understand what actually happens at the Lord's.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 10:16 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:0cbe7cb96af877dc25776e119f923fab0b4b6e78ecf8da6a23f224e371a54f65 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 10:16</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.10.16" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.10.16" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"The cup of blessing that we bless, is it not a sharing in the blood of Christ? The bread that we break, is it not a sharing in the body of Christ?"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Here is Paul's theology of the Lord's Supper in two questions, and the key word in both is <em>koinonia</em>, Greek for a sharing, a participation, a common life, the word behind "communion." Communion is not a memorial service for an absent friend. Something happens at that table. The cup and the bread are a real participation in Christ, fellowship with a living Host, and because everyone shares one loaf, the sharers become one body with each other too (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.10.17" target="_blank">1 Corinthians 10:17</a>). Hold onto that logic, because Paul is about to run it in reverse. If eating at the Lord's table joins you to the Lord, then eating at a god's table is not a neutral social engagement either. Tables join people to hosts. That is what tables are for.</p>
+        <div class="verse-text">Is not the cup of blessing that we bless a participation in the blood of Christ? And is not the bread that we break a participation in the body of Christ?</div>
+<div class="verse-commentary">
+          <p>Here is Paul's theology of the Lord's Supper in two questions, and the key word in both is <em>koinonia</em>, Greek for a sharing, a participation, a common life, the word behind "communion." Communion is not a memorial service for an absent friend. Something happens at that table. The cup and the bread are a real participation in Christ, fellowship with a living Host, and because everyone shares one loaf, the sharers become one body with each other too (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.17" target="_blank" rel="noopener">1 Corinthians 10:17</a>). Hold onto that logic, because Paul is about to run it in reverse. If eating at the Lord's table joins you to the Lord, then eating at a god's table is not a neutral social engagement either. Tables join people to hosts. That is what tables are for.</p>
         </div>
       </div>
 
-      <p>Be clear about what Paul is not saying, because he is careful here. Meat that started at an altar and ended up at the market stall is just meat, and believers may buy it with a clean conscience, exactly as he argued when the issue first came up (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.8.1-13" target="_blank">1 Corinthians 8:1-13</a>). The idol has no reality to contaminate anything (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.8.4" target="_blank">1 Corinthians 8:4</a>). But participating in the pagan ceremony itself is a different act entirely (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.10.20-21" target="_blank">1 Corinthians 10:20-21</a>). What pagans sacrifice, Paul says, they sacrifice to demons, and I do not want you to be participants with demons (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.10.20" target="_blank">1 Corinthians 10:20</a>). He is standing on the song of Moses, which said Israel sacrificed to demons when it chased other gods (<a class="vlink" href="https://www.bible.com/bible/1713/DEU.32.17" target="_blank">Deuteronomy 32:17</a>). The statue is hollow. What collects the worship behind it is not.</p>
+      <p>Be clear about what Paul is not saying, because he is careful here. Meat that started at an altar and ended up at the market stall is just meat, and believers may buy it with a clean conscience, exactly as he argued when the issue first came up (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.8.1-13" target="_blank" rel="noopener">1 Corinthians 8:1-13</a>). The idol has no reality to contaminate anything (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.8.4" target="_blank" rel="noopener">1 Corinthians 8:4</a>). But participating in the pagan ceremony itself is a different act entirely (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.20-21" target="_blank" rel="noopener">1 Corinthians 10:20-21</a>). What pagans sacrifice, Paul says, they sacrifice to demons, and I do not want you to be participants with demons (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.20" target="_blank" rel="noopener">1 Corinthians 10:20</a>). He is standing on the song of Moses, which said Israel sacrificed to demons when it chased other gods (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.32.17" target="_blank" rel="noopener">Deuteronomy 32:17</a>). The statue is hollow. What collects the worship behind it is not.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 10:21 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:94224e113e106a4c5d0fb8f10ac3122917811e046346667733d06015392a2e7e | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 10:21</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.10.21" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.10.21" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"You cannot drink the cup of the Lord and the cup of demons. You cannot share in the Lord's table and the table of demons."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Cannot, in this sentence, is not about physical possibility. Plenty of Corinthians were managing both tables on the same calendar. Paul means the two acts annihilate each other, the way a wedding ring and an affair cannot both be true of the same marriage. Jesus had said it in His own way, no one can serve two masters (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.6.24" target="_blank">Matthew 6:24</a>). And Paul knows exactly which nerve this touches, asking whether we are provoking the Lord to jealousy (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.10.22" target="_blank">1 Corinthians 10:22</a>). God's jealousy is not insecurity. It is the fierce, faithful love of a covenant partner who will not smile politely while His beloved sets a second table. Then the closing question, quiet and enormous. Are we stronger than He? It has one honest answer.</p>
+        <div class="verse-text">You cannot drink the cup of the Lord and the cup of demons too; you cannot partake in the table of the Lord and the table of demons too.</div>
+<div class="verse-commentary">
+          <p>Cannot, in this sentence, is not about physical possibility. Plenty of Corinthians were managing both tables on the same calendar. Paul means the two acts annihilate each other, the way a wedding ring and an affair cannot both be true of the same marriage. Jesus had said it in His own way, no one can serve two masters (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.6.24" target="_blank" rel="noopener">Matthew 6:24</a>). And Paul knows exactly which nerve this touches, asking whether we are provoking the Lord to jealousy (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.22" target="_blank" rel="noopener">1 Corinthians 10:22</a>). God's jealousy is not insecurity. It is the fierce, faithful love of a covenant partner who will not smile politely while His beloved sets a second table. Then the closing question, quiet and enormous. Are we stronger than He? It has one honest answer.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Deuteronomy 6:4-5 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:5aeb7290543fab326813db324a38f6d4e11be5889b48b011f9a07e9d29cea45f | footnotes-stripped:2 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Deuteronomy 6:4-5</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/DEU.6.4-5" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/DEU.6.4-5" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Listen, Israel: The Lord our God, the Lord is one. Love the Lord your God with all your heart, with all your soul, and with all your strength."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>This is the bedrock under the whole argument. Paul's one-God creed from earlier in the letter grew straight out of this soil (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.8.4-6" target="_blank">1 Corinthians 8:4-6</a>), and notice again how the ancient prayer moves. First the fact, the Lord is one. Then, without a breath, the command to love Him with everything you have (<a class="vlink" href="https://www.bible.com/bible/1713/DEU.6.5" target="_blank">Deuteronomy 6:5</a>). Total love is the only security system that actually works against idolatry, because idols do not break in. They move into vacancies. And when Jesus was asked for the greatest command, He recited this prayer and then stapled a second line to it, love your neighbor as yourself (<a class="vlink" href="https://www.bible.com/bible/1713/MRK.12.31" target="_blank">Mark 12:31</a>), quoting words God had already given Moses (<a class="vlink" href="https://www.bible.com/bible/1713/LEV.19.18" target="_blank">Leviticus 19:18</a>). A heart fully spent on God and neighbor has no vacancy left to rent. Idolatry dies of starvation in a house that full.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 4">4</sup>Hear, O Israel: The LORD our God, the LORD is One. <sup class="verse-number" aria-label="Verse 5">5</sup>And you shall love the LORD your God with all your heart and with all your soul and with all your strength.</div>
+<div class="verse-commentary">
+          <p>This is the bedrock under the whole argument. Paul's one-God creed from earlier in the letter grew straight out of this soil (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.8.4-6" target="_blank" rel="noopener">1 Corinthians 8:4-6</a>), and notice again how the ancient prayer moves. First the fact, the Lord is one. Then, without a breath, the command to love Him with everything you have (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.6.5" target="_blank" rel="noopener">Deuteronomy 6:5</a>). Total love is the only security system that actually works against idolatry, because idols do not break in. They move into vacancies. And when Jesus was asked for the greatest command, He recited this prayer and then stapled a second line to it, love your neighbor as yourself (<a class="vlink" href="https://www.bible.com/bible/3034/MRK.12.31" target="_blank" rel="noopener">Mark 12:31</a>), quoting words God had already given Moses (<a class="vlink" href="https://www.bible.com/bible/3034/LEV.19.18" target="_blank" rel="noopener">Leviticus 19:18</a>). A heart fully spent on God and neighbor has no vacancy left to rent. Idolatry dies of starvation in a house that full.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Deuteronomy 6:4 | 6:4 Or The LORD our God is One LORD or The LORD is our God, the LORD is One or The LORD is our God, the LORD alone; cited in Mark 12:29 -->
+      <!-- BSB_FOOTNOTE: Deuteronomy 6:5 | 6:5 Cited in Matthew 22:37, Mark 12:30, and Luke 10:27 -->
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -807,7 +832,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Look closely at what Paul calls the communion cup, the cup of blessing. It did not start out that way. In Gethsemane, Jesus knelt over a different cup and asked three times whether it could pass from Him (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.26.39" target="_blank">Matthew 26:39</a>). That cup held the judgment our idolatries earned, every table we set for other gods, every loyalty we split. He drank it to the bottom. That is why the cup He hands us holds only blessing. The exchange happened in the dark, His portion for ours. And it tells you everything about the difference between the two tables in today's reading. Every idol's table runs on the same economics, it feeds on its worshipers, taking their money, their devotion, their years, and returning hunger. At the Lord's table the economics run backward. The Host is the meal. His body, His blood, His life handed across the table to people who brought nothing but appetite. Demons consume their guests. Jesus feeds His. That is the whole difference, and it is everything.</p>
+      <p>Look closely at what Paul calls the communion cup, the cup of blessing. It did not start out that way. In Gethsemane, Jesus knelt over a different cup and asked three times whether it could pass from Him (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.26.39" target="_blank" rel="noopener">Matthew 26:39</a>). That cup held the judgment our idolatries earned, every table we set for other gods, every loyalty we split. He drank it to the bottom. That is why the cup He hands us holds only blessing. The exchange happened in the dark, His portion for ours. And it tells you everything about the difference between the two tables in today's reading. Every idol's table runs on the same economics, it feeds on its worshipers, taking their money, their devotion, their years, and returning hunger. At the Lord's table the economics run backward. The Host is the meal. His body, His blood, His life handed across the table to people who brought nothing but appetite. Demons consume their guests. Jesus feeds His. That is the whole difference, and it is everything.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -844,22 +869,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.10.5-22" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+10:5-22&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -733,43 +756,46 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Paul keeps saying the cross is the power of God to those being saved (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.18" target="_blank">1 Corinthians 1:18</a>). Power to do what, exactly? Today two short verses answer that, one from Paul and one from Peter, and they are worth slowing all the way down on. Remember the danger Paul named, that clever words can quietly drain the cross of its power (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.17" target="_blank">1 Corinthians 1:17</a>). So before he says one more thing about wisdom and foolishness, he shows us the actual rescue, the concrete work Jesus did on the cross that no human cleverness could have pulled off.</p>
+      <p>Paul keeps saying the cross is the power of God to those being saved (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.18" target="_blank" rel="noopener">1 Corinthians 1:18</a>). Power to do what, exactly? Today two short verses answer that, one from Paul and one from Peter, and they are worth slowing all the way down on. Remember the danger Paul named, that clever words can quietly drain the cross of its power (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.17" target="_blank" rel="noopener">1 Corinthians 1:17</a>). So before he says one more thing about wisdom and foolishness, he shows us the actual rescue, the concrete work Jesus did on the cross that no human cleverness could have pulled off.</p>
 
+<!-- BSB_BLOCK: Colossians 1:20 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:0ef9b993c4ba0a6ad7903ce5c7633f677ee39ba52e04109199a62f8492ddadc7 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Colossians 1:20</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/COL.1.20" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/COL.1.20" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"and through him to reconcile everything to himself, whether things on earth or things in heaven, by making peace through his blood, shed on the cross."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Start with the sheer size of what the cross repaired. Paul does not say Jesus smoothed over a misunderstanding. He says God reconciled everything to Himself, the whole fractured creation, by making peace through the blood of the cross. Reconcile is a relationship word. It means two parties who were at war are brought back together, the hostility ended, the bond restored. And notice how the peace was made. Not by God lowering His standards or pretending the offense did not matter, but by Jesus absorbing the entire cost in His own body. Everything we are handed in Christ, a clean record, a restored standing, a way home, flows out of this one act (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.30" target="_blank">1 Corinthians 1:30</a>). The cross is where the war between us and God ended, and He is the one who paid for the peace.</p>
+        <div class="verse-text">and through Him to reconcile to Himself all things, whether things on earth or things in heaven, by making peace through the blood of His cross.</div>
+<div class="verse-commentary">
+          <p>Start with the sheer size of what the cross repaired. Paul does not say Jesus smoothed over a misunderstanding. He says God reconciled everything to Himself, the whole fractured creation, by making peace through the blood of the cross. Reconcile is a relationship word. It means two parties who were at war are brought back together, the hostility ended, the bond restored. And notice how the peace was made. Not by God lowering His standards or pretending the offense did not matter, but by Jesus absorbing the entire cost in His own body. Everything we are handed in Christ, a clean record, a restored standing, a way home, flows out of this one act (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.30" target="_blank" rel="noopener">1 Corinthians 1:30</a>). The cross is where the war between us and God ended, and He is the one who paid for the peace.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Peter 2:24 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:3512b810333757a5f15857cb7c6bc8414ea3b8808386186ff16c3cea58fcc76b | footnotes-stripped:2 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Peter 2:24</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1PE.2.24" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1PE.2.24" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"He himself bore our sins in his body on the tree, so that, having died to sins, we might live for righteousness. By his wounds you have been healed."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Peter says the same thing in even more personal terms. He himself bore our sins in His body. Not a symbol, not a gesture, but the actual weight of our wrongdoing laid on Jesus and carried up to the cross. There is an exchange happening here that sits at the very heart of the gospel. Our sin went onto Him, so that His righteousness could become the life we now live toward. And then the line that undoes you. By His wounds you have been healed. The very injuries that should have been ours, the punishment we had earned, became the medicine that makes us well. The wages of sin really are death, but the gift of God is life (<a class="vlink" href="https://www.bible.com/bible/1713/ROM.6.23" target="_blank">Romans 6:23</a>). This is why Paul keeps insisting that salvation is something we receive and never something we pull off. It is God who saves the ones who simply believe (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.21" target="_blank">1 Corinthians 1:21</a>).</p>
+        <div class="verse-text">He Himself bore our sins in His body on the tree, so that we might die to sin and live to righteousness. “By His stripes you are healed.”</div>
+<div class="verse-commentary">
+          <p>Peter says the same thing in even more personal terms. He himself bore our sins in His body. Not a symbol, not a gesture, but the actual weight of our wrongdoing laid on Jesus and carried up to the cross. There is an exchange happening here that sits at the very heart of the gospel. Our sin went onto Him, so that His righteousness could become the life we now live toward. And then the line that undoes you. By His wounds you have been healed. The very injuries that should have been ours, the punishment we had earned, became the medicine that makes us well. The wages of sin really are death, but the gift of God is life (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.6.23" target="_blank" rel="noopener">Romans 6:23</a>). This is why Paul keeps insisting that salvation is something we receive and never something we pull off. It is God who saves the ones who simply believe (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.21" target="_blank" rel="noopener">1 Corinthians 1:21</a>).</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Peter 2:24 | 2:24 Isaiah 53:4 (see also LXX) -->
+      <!-- BSB_FOOTNOTE: 1 Peter 2:24 | 2:24 Isaiah 53:5 -->
 
+<!-- BSB_BLOCK: 1 Corinthians 1:19 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:2b3cb9896956c0471f6a4b3318f429eae1d063836094c3b4d62e0db6c83f950c | footnotes-stripped:1 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 1:19</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.1.19" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.19" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For it is written, I will destroy the wisdom of the wise, and I will set aside the intelligence of the intelligent."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Paul backs all of this with a hard word from the Old Testament. God says He will destroy the wisdom of the wise. The Greek verb behind "perishing" back in verse 18 is <em>apollymi</em>, and it carries the sense of being ruined or destroyed, even self-destroyed. The same word describes a thief who comes only to kill and to destroy (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.10.10" target="_blank">John 10:10</a>). Here is the sober point. The people who reject the cross are not neutral bystanders who happen to disagree. They are perishing, quietly dismantling themselves by gripping a wisdom that was never able to save them. God quoting Isaiah (<a class="vlink" href="https://www.bible.com/bible/1713/ISA.29.14" target="_blank">Isaiah 29:14</a>) is not Him picking a fight with smart people. It is Him promising to tear down the proud self-reliance that was already tearing us apart. He destroys the thing that is destroying us.</p>
+        <div class="verse-text">For it is written: “I will destroy the wisdom of the wise; the intelligence of the intelligent I will frustrate.”</div>
+<div class="verse-commentary">
+          <p>Paul backs all of this with a hard word from the Old Testament. God says He will destroy the wisdom of the wise. The Greek verb behind "perishing" back in verse 18 is <em>apollymi</em>, and it carries the sense of being ruined or destroyed, even self-destroyed. The same word describes a thief who comes only to kill and to destroy (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.10.10" target="_blank" rel="noopener">John 10:10</a>). Here is the sober point. The people who reject the cross are not neutral bystanders who happen to disagree. They are perishing, quietly dismantling themselves by gripping a wisdom that was never able to save them. God quoting Isaiah (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.29.14" target="_blank" rel="noopener">Isaiah 29:14</a>) is not Him picking a fight with smart people. It is Him promising to tear down the proud self-reliance that was already tearing us apart. He destroys the thing that is destroying us.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Corinthians 1:19 | 1:19 Isaiah 29:14 (see also LXX) -->
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -841,22 +867,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/COL.1.20" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Colossians+1:20&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -380,6 +413,16 @@
     padding-top: 14px;
     border-top: 1px solid var(--border);
     font-weight: 300;
+  }
+  .verse-commentary p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-soft);
+    font-weight: 300;
+    margin: 0 0 14px 0;
+  }
+  .verse-commentary p:last-child {
+    margin-bottom: 0;
   }
 
   /* ── ACCENT SECTIONS ── */
@@ -459,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -522,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -540,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -638,8 +685,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -707,7 +752,7 @@
       <div class="section-heading">The Word That Stopped Isaiah Cold</div>
       <p>The Hebrew word for holy is <em>qadosh</em>, and it meant something fundamentally different to an Israelite than it did to the nations around them. In most ancient Near Eastern religions, "holy" was essentially a category label for things connected to the divine realm: holy places, holy objects, holy rituals. It described proximity to spiritual power, not moral character. A Canaanite temple could be "holy" while hosting practices that were deeply immoral by any standard. Holiness and goodness were not the same thing.</p>
       <p>Israel's use of <em>qadosh</em> broke that framework entirely. When the Bible calls God holy, it means He is utterly, completely, irreducibly good. Not just powerful, not just other, not just separate from ordinary life, but morally perfect in a way that has no parallel, no exception, and no shadow. The triple repetition in Isaiah's vision, "Holy, holy, holy," was not repetition for emphasis the way we might use it. In Hebrew, repeating a word three times was the grammatical superlative, the strongest possible statement the language could make. There is no fourth level. When the seraphim cry "Holy, holy, holy," they are declaring that God's moral perfection is as absolute as language can express.</p>
-      <p>This is why Isaiah's reaction was not awe in the pleasant sense. It was undoing. "Woe is me, for I am ruined!" he cried (<a class="vlink" href="https://www.bible.com/bible/1713/ISA.6.5" target="_blank">Isaiah 6:5</a>). He didn't just feel small; he felt exposed. That's what real holiness does. It doesn't condemn from above; it reveals what's true, and the truth about the gap between God's character and ours is overwhelming when you see it clearly.</p>
+      <p>This is why Isaiah's reaction was not awe in the pleasant sense. It was undoing. "Woe is me, for I am ruined!" he cried (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.6.5" target="_blank" rel="noopener">Isaiah 6:5</a>). He didn't just feel small; he felt exposed. That's what real holiness does. It doesn't condemn from above; it reveals what's true, and the truth about the gap between God's character and ours is overwhelming when you see it clearly.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -721,63 +766,69 @@
       <p>Today's study examines four passages that describe God's holiness from different angles: a command that roots holiness in God's own nature, a declaration of His uniqueness, a portrait of His paradoxical closeness, and a vision of His holiness being displayed to the whole world. Together, they build a composite picture of what holiness actually means. We'll then close with the response that holiness draws from those who witness it.</p>
 
       <!-- Leviticus 20:26 -->
+<!-- BSB_BLOCK: Leviticus 20:26 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:f92cd6d9fbbd56f9c7e2f708339d69b53c155d5c88d1c41b481319b88bf9ae01 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Leviticus 20:26</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/LEV.20.26" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/LEV.20.26" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"You are to be holy to me because I, the LORD, am holy, and I have set you apart from the nations to be mine."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">This is the foundational logic of biblical holiness: God's people are called to be holy <em>because</em> God is holy. The standard is not an abstract moral code handed down from a distance; it flows directly from God's own character. The Hebrew construction here ties Israel's identity ("set you apart") to God's nature ("I am holy"). Holiness is not a behavior God demands for its own sake; it is an invitation to reflect who He actually is. Every moral standard in Scripture traces back to this verse's logic: God is like this, therefore His people are called to become like this.</div>
+        <div class="verse-text">You are to be holy to Me because I, the LORD, am holy, and I have set you apart from the nations to be My own.</div>
+<div class="verse-commentary">
+          <p>This is the foundational logic of biblical holiness: God's people are called to be holy <em>because</em> God is holy. The standard is not an abstract moral code handed down from a distance; it flows directly from God's own character. The Hebrew construction here ties Israel's identity ("set you apart") to God's nature ("I am holy"). Holiness is not a behavior God demands for its own sake; it is an invitation to reflect who He actually is. Every moral standard in Scripture traces back to this verse's logic: God is like this, therefore His people are called to become like this.</p>
+        </div>
       </div>
 
       <!-- 1 Samuel 2:2 -->
+<!-- BSB_BLOCK: 1 Samuel 2:2 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:fd52a4db2ae5bd86a9e605d019f862f1821cfb1f73fb70a32e0c477694aabdc5 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Samuel 2:2</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1SA.2.2" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1SA.2.2" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"There is no one holy like the LORD. There is no one besides you! And there is no rock like our God."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">Hannah's song makes a claim of absolute uniqueness. "No one holy <em>like</em> the LORD" is not saying God is the holiest being on a spectrum; it is saying He occupies a category by Himself. The word "rock" (<em>tsur</em> in Hebrew) conveys immovable stability, something you can build your life on without fear of it shifting. Hannah connects holiness to reliability: because God is perfectly holy, He is perfectly trustworthy. His goodness is not a mood; it is bedrock.</div>
+        <div class="verse-text">There is no one holy like the LORD. Indeed, there is no one besides You! And there is no Rock like our God.</div>
+<div class="verse-commentary">
+          <p>Hannah's song makes a claim of absolute uniqueness. "No one holy <em>like</em> the LORD" is not saying God is the holiest being on a spectrum; it is saying He occupies a category by Himself. The word "rock" (<em>tsur</em> in Hebrew) conveys immovable stability, something you can build your life on without fear of it shifting. Hannah connects holiness to reliability: because God is perfectly holy, He is perfectly trustworthy. His goodness is not a mood; it is bedrock.</p>
+        </div>
       </div>
 
       <!-- Isaiah 57:15 (anchor — deepest treatment) -->
+<!-- BSB_BLOCK: Isaiah 57:15 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:8ab832c8c2534578476c085223af76d7097c7dd97c533a843bd64e2fefb732bf | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Isaiah 57:15</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ISA.57.15" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ISA.57.15" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For the High and Exalted One, who lives forever, whose name is Holy, says this: 'I live in a high and holy place, and with the oppressed and lowly of spirit, to revive the spirit of the lowly and revive the heart of the oppressed.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>This may be the single most stunning verse about God's holiness in all of Scripture, because it holds two truths in tension that seem like they should be impossible to combine. God is "High and Exalted," dwelling in a "high and holy place," His very name is Holy. And this same God lives "with the oppressed and lowly of spirit." Not despite His holiness but because of it.</p>
+        <div class="verse-text">For thus says the One who is high and lifted up, who inhabits eternity, whose name is Holy: “I dwell in a high and holy place, and with the oppressed and humble in spirit, to restore the spirit of the lowly and revive the heart of the contrite.</div>
+<div class="verse-commentary">
+          <p>This may be the single most stunning verse about God's holiness in all of Scripture, because it holds two truths in tension that seem like they should be impossible to combine. God is "One who is high and lifted up," dwelling in a "high and holy place," His very name is Holy. And this same God lives "with the oppressed and humble in spirit." Not despite His holiness but because of it.</p>
           <p>Most people assume holiness creates distance: the holier God is, the further away He must be from broken, messy human beings. Isaiah 57:15 demolishes that assumption. God's holiness is not a wall; it is the reason He can be trusted when He draws near to the hurting. A God who was powerful but not holy might exploit the vulnerable. A God who was compassionate but not holy might lack the ability to actually restore them. But a God who is both high and holy and simultaneously present with the crushed? That is a God who comes to revive, not to condemn. The Hebrew word for "revive" here, <em>chayah</em>, means to bring back to life, to restore vitality. God's holiness is not cold or clinical; it is the very quality that makes His healing safe.</p>
         </div>
       </div>
 
       <!-- Ezekiel 38:23 -->
+<!-- BSB_BLOCK: Ezekiel 38:23 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:5cca120703b6c1ce8b878d7973deaa841ce80df9fa4427018bf77e4896a48cbf | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Ezekiel 38:23</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/EZK.38.23" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/EZK.38.23" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"I will display my greatness and holiness, and will reveal myself in the sight of many nations. Then they will know that I am the LORD."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">Ezekiel's prophecy points forward to a time when God's holiness will no longer be a matter of faith or debate. He will display it. The verb "display" (<em>gadal</em>) means to make great, to magnify, to make visible what was previously unseen. God's holiness has always been true, but a day is coming when every nation will see it clearly. This verse gives holiness an eschatological dimension: it is not just what God is, but what the entire world will one day recognize Him to be.</div>
+        <div class="verse-text">I will magnify and sanctify Myself, and I will reveal Myself in the sight of many nations. Then they will know that I am the LORD.</div>
+<div class="verse-commentary">
+          <p>Ezekiel's prophecy points forward to a time when God's holiness will no longer be a matter of faith or debate. He will display it. The verb "display" (<em>gadal</em>) means to make great, to magnify, to make visible what was previously unseen. God's holiness has always been true, but a day is coming when every nation will see it clearly. This verse gives holiness an eschatological dimension: it is not just what God is, but what the entire world will one day recognize Him to be.</p>
+        </div>
       </div>
 
-      <!-- Revelation 4:8 (dual translation, NKJV + CSB) -->
+      
+<!-- BSB_BLOCK: Revelation 4:8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:212e35eee2e738a88bf3b7d6c515f9bc854101e6183dbbeee7de0f408495db64 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Revelation 4:8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/REV.4.8" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/REV.4.8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"The four living creatures, each having six wings, were full of eyes around and within. And they do not rest day or night, saying: 'Holy, holy, holy, Lord God Almighty, Who was and is and is to come!'"</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"Each of the four living creatures had six wings; they were covered with eyes around and inside. Day and night they never stop, saying, Holy, holy, holy, Lord God, the Almighty, who was, who is, and who is to come."</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">The living creatures in Revelation echo the seraphim of Isaiah's vision, and their song has not changed. Day and night, without ceasing, they declare the same truth: holy, holy, holy. These beings, who are closer to God's throne than any other created entity, who see Him more clearly than anyone else in the universe, and their unending response is not boredom or familiarity. It is endless declaration of His holiness. This tells us something important: God's holiness is not a concept you master and move past. It is an infinite reality that the beings who know God best are still discovering, still responding to, still overwhelmed by. Moses, Isaiah, Ezekiel, Daniel, John, every person in Scripture who came into God's unfiltered presence had the same instinct: fall down, hide their face, remove their shoes. Not because God was threatening them, but because holiness reveals the truth about the distance between who God is and who we are. And paradoxically, that revelation is the beginning of the bridge, not the end of it.</div>
+        <div class="verse-text">And each of the four living creatures had six wings and was covered with eyes all around and within. Day and night they never stop saying: “Holy, Holy, Holy, is the Lord God Almighty, who was and is and is to come!”</div>
+<div class="verse-commentary">
+          <p>The living creatures in Revelation echo the seraphim of Isaiah's vision, and their song has not changed. Day and night, without ceasing, they declare the same truth: holy, holy, holy. These beings, who are closer to God's throne than any other created entity, who see Him more clearly than anyone else in the universe, and their unending response is not boredom or familiarity. It is endless declaration of His holiness. This tells us something important: God's holiness is not a concept you master and move past. It is an infinite reality that the beings who know God best are still discovering, still responding to, still overwhelmed by. Moses, Isaiah, Ezekiel, Daniel, John, every person in Scripture who came into God's unfiltered presence had the same instinct: fall down, hide their face, remove their shoes. Not because God was threatening them, but because holiness reveals the truth about the distance between who God is and who we are. And paradoxically, that revelation is the beginning of the bridge, not the end of it.</p>
+        </div>
       </div>
     </div>
 
@@ -813,7 +864,7 @@
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Here is the paradox at the heart of the gospel: the God whose holiness made Isaiah cry "I am ruined!" chose to enter a world ruined by sin. Jesus is holiness with skin on, the High and Exalted One who fulfilled Isaiah 57:15 literally by living with the oppressed and lowly of spirit. He touched lepers, ate with tax collectors, welcomed prostitutes, and forgave His executioners. He never once compromised His holiness to do it. Instead, His holiness is what made those encounters transformative rather than transactional.</p>
+      <p>Here is the paradox at the heart of the gospel: the God whose holiness made Isaiah cry "I am ruined!" chose to enter a world ruined by sin. Jesus is holiness with skin on, the High and Exalted One who fulfilled Isaiah 57:15 literally by living with the oppressed and humble in spirit. He touched lepers, ate with tax collectors, welcomed prostitutes, and forgave His executioners. He never once compromised His holiness to do it. Instead, His holiness is what made those encounters transformative rather than transactional.</p>
       <p>When the holy God draws near to sinners through Jesus, He does not lower the standard; He meets the standard on our behalf. The cross is where God's absolute holiness and His absolute love converge. He could not ignore sin, because He is holy. He would not abandon sinners, because He is love. So He absorbed the cost Himself. That is holiness in action: not a wall keeping us out, but a door opened at infinite cost to let us in.</p>
     </div>
 
@@ -851,22 +902,42 @@
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/ISA.57.15" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Isaiah+57:15&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <a class="footer-archive" href="index.html">&#8592; Home</a>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
+    <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

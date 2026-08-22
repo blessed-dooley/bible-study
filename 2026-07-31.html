@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -625,7 +648,7 @@ if ('serviceWorker' in navigator) {
     white-space: nowrap;
   }
 
-  /* ── DEEPER QUESTIONS ── */
+  /* LEGACY DEEPER QUESTIONS: retained only so archived Friday bodies can still be reassembled */
   .dq-block {
     margin: 28px 0;
     padding: 0;
@@ -782,93 +805,59 @@ if ('serviceWorker' in navigator) {
       <p>And Paul, astonishingly, never tells them to find one. No separate market, no Christian quarter, no wall. The church stayed at the city's tables, ate the city's food, kept the city's friendships. What changed was the aim. One God, loved entirely, glorified in the smallest verbs, and one neighbor, guarded even at the cost of a steak. The believers' defense was never distance. It was direction. Corinth's gods came bundled with everything, and the church answered by bundling everything, eating, drinking, whatever you do, with the glory of the God who is actually there. The week leaves us the same assignment in a different city.</p>
     </div>
 
-    <!-- 3. DEEPER QUESTIONS -->
+    <!-- 3. WHAT THIS WEEK CLARIFIES -->
     <div class="section">
       <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Deeper Questions</span>
+        <span class="section-emoji">💡</span>
+        <span class="section-title">What This Week Clarifies</span>
         <div class="section-title-line"></div>
       </div>
 
-      <p>Four questions the week leaves on the table. Take them on a Sabbath walk, into a journal, or around a meal with people you trust, and give them room to work.</p>
+      <p>Walk back through the six studies and the week keeps saying two things at once. The idol is nothing, and the table is deadly serious. The rights are real, and Paul will not collect them. The privileges were enormous, and the desert is still full of graves. Each pair sounds like a contradiction until the week's compass is laid over it. All three deserve a settled answer before Sabbath.</p>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">1</span>
-          <div class="dq-question">The behavior of a mature Christian can sometimes inhibit the growth of an immature one. Where does that actually happen among us? And why is loving God above all, and the other as yourself, the only real way through the challenge?</div>
+      <div class="section-heading">An Empty Statue Can Still Host a Dinner</div>
+      <p>Sunday handed the confident crowd a complete victory on doctrine. An idol is nothing at all in the world, and Paul signed his name under their slogan. Then Wednesday walked into the temple dining room and called the dinner demonic. A reader can finish the week unsure which Paul to believe, the one who emptied the statue or the one who named the host.</p>
+
+<!-- BSB_BLOCK: 1 Corinthians 10:21 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:94224e113e106a4c5d0fb8f10ac3122917811e046346667733d06015392a2e7e | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">1 Corinthians 10:21</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.10.21" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">1 Corinthians 8:9</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.8.9" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"But be careful that this right of yours in no way becomes a stumbling block to the weak."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>The mechanism is almost always invisible to the mature person, because nothing they are doing is wrong. A seasoned believer's settled conscience lets them handle things a newer believer cannot yet handle, an entertainment choice, a glass at the wedding, a relaxed take on a standard, a joke about the rules they once kept nervously. The trouble is that maturity is always being watched by people who have the freedom without the formation. The strong man's liberty becomes the weak man's permission slip, and the weak man's conscience gets coached right past its own alarms. Nobody sinned on purpose. Somebody still got hurt.</p>
-            <p>This is why no rulebook can solve it. A list long enough to cover every situation, every conscience, and every watching eye has never been written. The only thing that scales is love. Loving God above all makes His glory the goal instead of my satisfaction, and loving the other as myself makes his footing my business instead of his problem. The mature question stops being what am I allowed to do. It becomes what happens to the person beside me if I do it. Freedom that has not learned to ask that second question is not maturity yet. It is just age.</p>
-          </div>
+        <div class="verse-text">You cannot drink the cup of the Lord and the cup of demons too; you cannot partake in the table of the Lord and the table of demons too.</div>
+<div class="verse-commentary">
+          <p>Both are the same Paul, and the week showed the hinge. The statue is an object, and the supper is an act. Meat is just matter, which is why the market stall and the neighbor's dinner party stayed open all week. Worship is never just matter, because tables join people to hosts. That was the wonder of the communion cup on Wednesday, a real participation in a living Lord, and the same current runs in reverse at any altar. What is nothing on the shelf can still be somebody's feast, and what collects the devotion behind it is not nothing. So the week's ruling holds both truths without a seam. Eat the meat with a clean conscience. Refuse the seat with a clear head. The idol cannot make your food unclean. It can only ask for your loyalty, and loyalty is the one thing that cannot be split.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">2</span>
-          <div class="dq-question">What are some idols that even Christians end up worshiping if we are not careful? What good things do we turn into gods? And how do you know when something you care greatly about has crossed the line?</div>
-        </div>
+      <div class="section-heading">The Open Hand Was Part of the Sermon</div>
+      <p>Monday spent most of its space proving Paul's rights were real. Soldiers eat from the army's budget, the ox eats the grain it treads, and the Lord Himself prescribed that preachers live from the gospel. Then Paul refused to collect, and the refusal can look like false modesty, or worse, like quiet disobedience to the very command he had just quoted.</p>
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Matthew 6:24</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.6.24" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"No one can serve two masters, since either he will hate one and love the other, or he will be devoted to one and despise the other. You cannot serve both God and money."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Good things make the best idols, because nobody guards against a blessing. Family can do it. Work can do it. Health, a ministry, a doctrine we are proud of being right about, a phone, a body, a savings goal, a child. None of these asks for worship. They just quietly collect it, first attention in the morning, final anxiety at night, the deciding vote in every choice, until a good gift is functioning as a god and still photographing well in our testimony. The rich young ruler's idol was a good thing too. That is what made it invisible to him.</p>
-            <p>Jesus gives the diagnostic in this verse, and it is not a feeling but a rivalry. Two masters eventually make you resent one of them. So watch for the resentment. When prayer starts feeling like an interruption of the real thing, the real thing has a name. Watch what you check like a pulse, what sets your mood, what you cannot put down when God asks. And run the week's simplest test. Try, out loud, to do the thing for the glory of God. An idol chokes on that sentence. A gift says amen to it.</p>
-          </div>
+<!-- BSB_BLOCK: 1 Corinthians 9:12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:188dda3319554e9ee73e25434efa39488086394fe9d98b796bb7e1bce995f7a8 | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">1 Corinthians 9:12</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.9.12" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">If others have this right to your support, shouldn’t we have it all the more? But we did not exercise this right. Instead, we put up with anything rather than hinder the gospel of Christ.</div>
+<div class="verse-commentary">
+          <p>The week untangled this by asking what the right is for. Support exists so the gospel can run, which is why the command stands and why churches still live by it. But Corinth heard every paid voice as a pitch, and a fee would have been one more string in a city strung with patronage. So Paul obeyed the command's purpose by waiving its benefit, absorbing the cost in early mornings and calloused hands so the message would look as free as it is. That is not disobedience. It is the command read all the way down. A waiver only carries weight when the claim is valid, which is why he proved the claim first. The rights were real. The gospel simply outranked them, and everyone in Corinth could see that nobody was paying the tentmaker to say what he said.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">3</span>
-          <div class="dq-question">Paul disciplined his body and brought it under strict control so that after preaching to others he would not be disqualified. Based on this week, what can actually disqualify a person as a carrier of the gospel?</div>
-        </div>
+      <div class="section-heading">The Graves and the Door Are in the Same Chapter</div>
+      <p>Tuesday set the week's hardest photograph next to its gentlest promise. A whole rescued nation, baptized in the sea and fed from heaven, lies buried in the desert, and the confident are told to be careful. Two verses later God is faithfully building exits into every temptation. Warning and comfort arrive in the same breath, and it is tempting to hear only whichever one your temperament prefers.</p>
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">1 Corinthians 9:27</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.9.27" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Instead, I discipline my body and bring it under strict control, so that after preaching to others, I myself will not be disqualified."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Corinth hosted the Isthmian games, so the church knew exactly what Paul's picture meant. Athletes swore an oath of months of training before they could even enter, and the disqualifications that stung most were never about talent. They were about training broken, rules ignored, a body indulged in the offseason. Paul says he treats his own appetites like an athlete treats the offseason, strict, watchful, aimed at the prize, because he knows something we forget. The messenger can lose the right to be heard while the message is still true.</p>
-            <p>Line up the week and you can write the disqualification list yourself. Not weak knowledge, and not a thin resume. A freedom that keeps flattening the weak. Rights that outrank the mission. The confidence that thinks it stands. A seat kept at a second table. A good thing gripped so hard it has become a god. None of these unsays the gospel, but each one makes it unbelievable from that mouth, and every believer carries the message somewhere. The world has always been willing to forgive a preacher's poverty. It has never forgiven a preacher owned by his own appetites.</p>
-          </div>
+<!-- BSB_BLOCK: 1 Corinthians 10:13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:6d380fa85abe8aeb35d96eb1b00ac651e406658eda79c4664ff17291eb68f779 | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">1 Corinthians 10:13</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.10.13" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-      </div>
-
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">4</span>
-          <div class="dq-question">Paul spends a whole chapter on the dangers of idolatry and then gives the command at its simplest, flee from idolatry. Why is idolatry so bad?</div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">1 Corinthians 10:14</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.10.14" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"So then, my dear friends, flee from idolatry."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Notice the tenderness wrapped around the command, my dear friends. Paul is not scolding. He is pulling people he loves away from something he understands better than they do. Idolatry is bad, first, because of what it takes from God. His glory is not transferable (<a class="vlink" href="https://www.bible.com/bible/1713/ISA.42.8" target="_blank">Isaiah 42:8</a>), and every idol is a diversion of trust, love, and praise that belong to the One who paid for us. It is covenant betrayal, which is why Scripture keeps reaching for the language of jealousy and marriage rather than the language of rule-breaking. Idolatry is not a violated policy. It is a wounded love.</p>
-            <p>And it is bad, second, because of what it does to the worshiper. This week showed us the economics. The Lord's table feeds His guests, and every other table feeds on them. Idols take attention, money, appetite, years, and pay out hunger, because you slowly become what you worship, and a person shaped by an empty thing ends up empty. That is why the command is flee rather than manage, the same verb this letter used for immorality. Some powers are not for negotiating. You do not stand near an idol to prove your strength. You run, and you run somewhere, to the table where the Host has scars on His hands and bread in them.</p>
-          </div>
+        <div class="verse-text">No temptation has seized you except what is common to man. And God is faithful; He will not let you be tempted beyond what you can bear. But when you are tempted, He will also provide an escape, so that you can stand up under it.</div>
+<div class="verse-commentary">
+          <p>The week's answer is that the warning and the promise are aimed at two postures, not two kinds of people. The warning targets the one who thinks he is standing, because thinking so is how watching stops. The promise targets the one who knows he is tempted, because despair is how reaching stops. Most of us are both people before lunch. So Paul parked the promise directly after the graves on purpose. Sober was never meant to curdle into hopeless, and hope was never meant to relax into coasting. The God who preserved Israel's story, graves included, is the same God who draws the fire exits before the building goes up. Nobody in that desert fell for lack of a door. The graves teach the cost of walking past one. The promise says there will always be one to take.</p>
+          <p>That is a good word to carry into Sabbath. The week began with a compass, everything aimed at the glory of God, and it ends with a floor plan, every room already built with a way out. Walk into the weekend holding both. Eat with gratitude, keep your seat at one table, leave a right uncollected for somebody's sake, and when the old pull comes, take the door. He is faithful. He drew it before the room existed.</p>
         </div>
       </div>
 
@@ -921,22 +910,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.10.31" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+10:31&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

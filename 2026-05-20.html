@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -733,47 +762,47 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Hebrews 11 is the chapter every other chapter on faith in the Bible borrows from. It opens with a definition we already met on Sabbath in <a class="vlink" href="https://www.bible.com/bible/1713/HEB.11.1" target="_blank">Hebrews 11:1</a>, the title deed and the courtroom evidence. It moves immediately to creation itself, then plants the chapter's hinge in verse 6 (without faith it is impossible to please God), and then rolls forty more verses of names. Today's reading lives inside the chapter from end to end. The three verse-blocks below (verses 6, 3, and the New Testament's tightest summary of the same posture in 2 Corinthians 5:7) walk us through the chapter's argument and then hand us a sentence we can carry into Thursday.</p>
+      <p>Hebrews 11 is the chapter every other chapter on faith in the Bible borrows from. It opens with a definition we already met on Sabbath in <a class="vlink" href="https://www.bible.com/bible/3034/HEB.11.1" target="_blank" rel="noopener">Hebrews 11:1</a>, the title deed and the courtroom evidence. It moves immediately to creation itself, then plants the chapter's hinge in verse 6 (without faith it is impossible to please God), and then rolls forty more verses of names. Today's reading lives inside the chapter from end to end. The three verse-blocks below (verses 6, 3, and the New Testament's tightest summary of the same posture in 2 Corinthians 5:7) walk us through the chapter's argument and then hand us a sentence we can carry into Thursday.</p>
 
+<!-- BSB_BLOCK: Hebrews 11:6 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:f107d11659e6782236155b66191f6e226d5befdac2e07bcc61fb551684db1df4 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Hebrews 11:6</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/HEB.11.6" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/HEB.11.6" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Now without faith it is impossible to please God, since the one who draws near to him must believe that he exists and that he rewards those who seek him."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>This is the most quoted verse in the chapter and arguably the most weight-bearing. The writer's claim is double. Without faith it is impossible to please God. And: the one who draws near to Him must believe two things. He exists. He rewards those who seek Him. Existence and character. That is the bare-minimum content of faith in the Bible's grammar. Not seventeen doctrinal positions. Not perfect theology. Two convictions. He is real. He responds to people who go looking for Him.</p>
-          <p>The Greek participle behind "the one who draws near" is <em>proserchomenon</em>, and we have seen it before. Last week's Thursday on prayer used it in <a class="vlink" href="https://www.bible.com/bible/1713/HEB.11.6" target="_blank">Hebrews 11:6</a> as the altar-approach word, the verb used in the Greek Old Testament for the priest stepping toward the altar in the temple. Hebrews 11:6 is not describing casual curiosity about God. It is describing approach. Drawing near. The kind of move you make when you have decided you are not just thinking about Him; you are walking toward Him. And the writer says you cannot make that move without the two convictions in your pocket. If He is not real, you are walking toward nothing. If He does not reward seekers, you are walking toward Someone indifferent. The chapter's heroes had both pockets full.</p>
+        <div class="verse-text">And without faith it is impossible to please God. For anyone who approaches Him must believe that He exists and that He rewards those who earnestly seek Him.</div>
+<div class="verse-commentary">
+          <p>This is the most quoted verse in the chapter and arguably the most weight-bearing. The writer's claim is double. Without faith it is impossible to please God. And: anyone who approaches Him to Him must believe two things. He exists. He rewards those who seek Him. Existence and character. That is the bare-minimum content of faith in the Bible's grammar. Not seventeen doctrinal positions. Not perfect theology. Two convictions. He is real. He responds to people who go looking for Him.</p>
+          <p>The Greek participle behind "anyone who approaches Him" is <em>proserchomenon</em>, and we have seen it before. Last week's Thursday on prayer used it in <a class="vlink" href="https://www.bible.com/bible/3034/HEB.11.6" target="_blank" rel="noopener">Hebrews 11:6</a> as the altar-approach word, the verb used in the Greek Old Testament for the priest stepping toward the altar in the temple. Hebrews 11:6 is not describing casual curiosity about God. It is describing approach. Drawing near. The kind of move you make when you have decided you are not just thinking about Him; you are walking toward Him. And the writer says you cannot make that move without the two convictions in your pocket. If He is not real, you are walking toward nothing. If He does not reward seekers, you are walking toward Someone indifferent. The chapter's heroes had both pockets full.</p>
           <p>The word translated "rewards" is <em>misthapodotes</em>, a long Greek compound that literally means "payer-back of wages." The picture is a fair employer paying out at the end of the day. Hebrews uses it to picture God as the one who keeps an exact record and pays everything He has promised. Notice what the verse does not say. It does not say He rewards those who feel a lot or those who reason their way to certainty. It says He rewards those who <em>seek</em>. The verb is active. The reward is for the people who keep walking toward Him, like Abraham at seventy-five leaving Ur on a verbal promise, like Sarah at ninety opening her tent door to receive a son. The whole chapter is a list of people who took this verse at face value before the verse was written.</p>
-          <p>Notice also how this connects with what we have already seen this week. <a class="vlink" href="https://www.bible.com/bible/1713/MAT.17.20" target="_blank">Matthew 17:20</a>'s mustard seed becomes legible here. Faith does not need to be massive; it needs to be aimed at the right Person with the right two convictions in hand. <a class="vlink" href="https://www.bible.com/bible/1713/MRK.9.24" target="_blank">Mark 9:24</a>'s father is a verse-6 case study. He had both convictions, mixed with honest unbelief, and brought them to Jesus anyway. The verse does not require purity. It requires direction.</p>
+          <p>Notice also how this connects with what we have already seen this week. <a class="vlink" href="https://www.bible.com/bible/3034/MAT.17.20" target="_blank" rel="noopener">Matthew 17:20</a>'s mustard seed becomes legible here. Faith does not need to be massive; it needs to be aimed at the right Person with the right two convictions in hand. <a class="vlink" href="https://www.bible.com/bible/3034/MRK.9.24" target="_blank" rel="noopener">Mark 9:24</a>'s father is a verse-6 case study. He had both convictions, mixed with honest unbelief, and brought them to Jesus anyway. The verse does not require purity. It requires direction.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Hebrews 11:3 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:a86fca145fa264e5a2c0a232459a594694240e99e5911dcb6be5abe1f0284c96 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Hebrews 11:3</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/HEB.11.3" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/HEB.11.3" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"By faith we understand that the universe was created by the word of God, so that what is seen was made from things that are not visible."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">By faith we understand that the universe was formed at God’s command, so that what is seen was not made out of what was visible.</div>
+<div class="verse-commentary">
           <p>Before the chapter lists a single human example, the writer plants a claim about reading the world. The universe was framed by the word of God. Every atom of what we see was made from what we cannot see, namely, the spoken word and the prior thought of the Creator. This is faith working at its most foundational layer, beneath the level of any specific prayer or any specific decision. To say that anything exists is, in the Bible's grammar, already a faith move.</p>
-          <p>The Greek verb behind "understand" is <em>nooumen</em>, the verb of mental perception, the same root that gives us "noetic" in English. The writer is not saying faith is the absence of reason. The writer is saying faith is the form of reason that gets the picture right when the picture includes God. <a class="vlink" href="https://www.bible.com/bible/1713/ROM.10.17" target="_blank">Romans 10:17</a> works on the same wavelength: faith comes by hearing, and hearing by the word of Christ. The Word that called the worlds into being is the Word that calls faith into being in us. The universe and the believer are made the same way, by the speech of God to silence, calling something where there was nothing.</p>
+          <p>The Greek verb behind "understand" is <em>nooumen</em>, the verb of mental perception, the same root that gives us "noetic" in English. The writer is not saying faith is the absence of reason. The writer is saying faith is the form of reason that gets the picture right when the picture includes God. <a class="vlink" href="https://www.bible.com/bible/3034/ROM.10.17" target="_blank" rel="noopener">Romans 10:17</a> works on the same wavelength: faith comes by hearing, and hearing by the word of Christ. The Word that called the worlds into being is the Word that calls faith into being in us. The universe and the believer are made the same way, by the speech of God to silence, calling something where there was nothing.</p>
           <p>This verse also presses on the modern objection that faith is the opposite of science. The chapter says the opposite. Faith is what makes coherent the very enterprise of looking at the world and expecting it to make sense. The Person whose word holds atoms together is the Person whose word holds Hebrews 11 together. The witnesses on the wall did not need a microscope to know that the molecules of their tents and their bread and their bones had been spoken into being by the same Voice they were trusting on the road. They simply read both kinds of evidence with the same eyes.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 2 Corinthians 5:7 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:f2f7d731b2e7ee0605deb2abe7091607396bad125b375efa5a50008494a3a46b | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">2 Corinthians 5:7</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/2CO.5.7" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.5.7" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For we walk by faith, not by sight."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">For we walk by faith, not by sight.</div>
+<div class="verse-commentary">
           <p>Five English words, two Greek prepositional phrases, one of the most quoted lines in the New Testament. Paul writes this from the middle of a passage about why we keep going as believers even when our outer self is wasting away. The Greek behind "by faith" is <em>dia pisteos</em>; "by sight" is <em>dia eidous</em>. The first is the kind of seeing we have already met all week (the title deed, the cloud of witnesses, the marketplace loyalty); the second is the kind of seeing that requires the eye to confirm the data on the spot. Paul's claim is that the believer's normal mode of locomotion is the first, not the second.</p>
-          <p>This sentence is the bridge from <a class="vlink" href="https://www.bible.com/bible/1713/HEB.11.7-40" target="_blank">Hebrews 11:7-40</a>'s long roll call to our week. Every name in the cloud walked this way. Noah walked by faith for a hundred years before a drop fell. Abraham walked by faith from Ur to Canaan and never owned the land in his lifetime. Moses walked by faith out of an Egyptian palace into a wilderness. The prophets walked by faith into prisons and out of caves. And we are not asked to be more than they were. We are asked to walk in the same direction, on a shorter road, with a more visible Cross at the front of the line. <a class="vlink" href="https://www.bible.com/bible/1713/PHP.2.12-16" target="_blank">Philippians 2:12-16</a> says to work out our salvation with fear and trembling, the way a person walks by faith on a path they have not yet seen the end of. The five virgins in <a class="vlink" href="https://www.bible.com/bible/1713/MAT.25.8" target="_blank">Matthew 25:8</a> who tried to borrow oil at midnight discovered the one thing you cannot borrow: someone else's walk. And <a class="vlink" href="https://www.bible.com/bible/1713/LUK.17.5" target="_blank">Luke 17:5</a> is the disciples' honest prayer at the start of every such walk: "Lord, increase our faith." Today's verse hands us the verb that can carry that prayer. Walk. By faith. Not by sight.</p>
+          <p>This sentence is the bridge from <a class="vlink" href="https://www.bible.com/bible/3034/HEB.11.7-40" target="_blank" rel="noopener">Hebrews 11:7-40</a>'s long roll call to our week. Every name in the cloud walked this way. Noah walked by faith for a hundred years before a drop fell. Abraham walked by faith from Ur to Canaan and never owned the land in his lifetime. Moses walked by faith out of an Egyptian palace into a wilderness. The prophets walked by faith into prisons and out of caves. And we are not asked to be more than they were. We are asked to walk in the same direction, on a shorter road, with a more visible Cross at the front of the line. <a class="vlink" href="https://www.bible.com/bible/3034/PHP.2.12-16" target="_blank" rel="noopener">Philippians 2:12-16</a> says to work out our salvation with fear and trembling, the way a person walks by faith on a path they have not yet seen the end of. The five virgins in <a class="vlink" href="https://www.bible.com/bible/3034/MAT.25.8" target="_blank" rel="noopener">Matthew 25:8</a> who tried to borrow oil at midnight discovered the one thing you cannot borrow: someone else's walk. And <a class="vlink" href="https://www.bible.com/bible/3034/LUK.17.5" target="_blank" rel="noopener">Luke 17:5</a> is the disciples' honest prayer at the start of every such walk: "Lord, increase our faith." Today's verse hands us the verb that can carry that prayer. Walk. By faith. Not by sight.</p>
         </div>
       </div>
     </div>
@@ -846,22 +875,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/HEB.11.6" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Hebrews+11:6&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -890,8 +939,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -900,18 +951,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -919,6 +974,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -938,6 +994,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

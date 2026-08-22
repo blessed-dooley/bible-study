@@ -7,8 +7,9 @@
 <meta name="study-title" content="Further Thought &amp; Discussion">
 <meta name="study-series" content="Growing in a Relationship with God · Lesson 1, Reality Check · Part 7 of 7">
 
-<!-- Open Graph -->
+<!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
+<meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Further Thought &amp; Discussion">
 <meta property="og:description" content="Growing in a Relationship with God · Lesson 1, Reality Check · Part 7 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-04-03.html">
@@ -16,10 +17,24 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Growing in a Relationship with God · Lesson 1, Reality Check · Part 7 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a1a1a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -221,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -233,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -357,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -373,6 +413,16 @@
     padding-top: 14px;
     border-top: 1px solid var(--border);
     font-weight: 300;
+  }
+  .verse-commentary p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-soft);
+    font-weight: 300;
+    margin: 0 0 14px 0;
+  }
+  .verse-commentary p:last-child {
+    margin-bottom: 0;
   }
 
   /* ── ACCENT SECTIONS ── */
@@ -452,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -515,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -533,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -594,7 +648,7 @@
     white-space: nowrap;
   }
 
-  /* ── DEEPER QUESTIONS ── */
+  /* LEGACY DEEPER QUESTIONS: retained only so archived Friday bodies can still be reassembled */
   .dq-block {
     margin: 28px 0;
     padding: 0;
@@ -690,20 +744,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#1a1a1a">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Bible Study">
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/bible-study/sw.js')
-      .catch(function(err) { console.log('SW registration failed:', err); });
-  });
-}
-</script>
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -738,8 +778,8 @@ if ('serviceWorker' in navigator) {
       <p class="tldr-hook">This week asked one uncomfortable question and then spent six days answering it: What is your relationship with God actually like right now?</p>
       <ul class="week-review-list">
         <li><span class="bullet-icon">☩</span><span><span class="day-label">Sabbath:</span> Reality Check. The week opened with the memory text from John 15:4 and established the stakes: before we can grow, we have to honestly assess where we stand. Are we connected to the Vine, or just near it?</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> Knowing God. We began with the foundation: relationship with God starts with knowing who He actually is, not who we imagine Him to be. True knowledge of God reshapes everything.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Monday:</span> Yearning for More. We explored the soul's deep hunger for God, the restlessness that Augustine described and the Psalms gave voice to: we were made for communion with our Creator, and nothing else satisfies.</span></li>
+        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> Our Condition. Jesus' letter to Laodicea named the danger of lukewarm faith: the church felt rich and self-sufficient but could not see that it was poor, blind, and naked. The hardest part of healing was admitting the diagnosis.</span></li>
+        <li><span class="bullet-icon">☩</span><span><span class="day-label">Monday:</span> Rebuke, Repent, and Reward. Jesus revealed that His hard diagnosis came from love, then stood at the door and offered repentance, restored fellowship, and a place at His table. He knocks rather than forcing the handle.</span></li>
         <li><span class="bullet-icon">☩</span><span><span class="day-label">Tuesday:</span> Everlasting Love. God's pursuing love was the focus, from Eden through Jeremiah to Revelation. He has always been the One who initiates, and His love predates our response.</span></li>
         <li><span class="bullet-icon">☩</span><span><span class="day-label">Wednesday:</span> Abide. Jesus' Vine and Branches discourse in John 15 revealed the single word that defines our side of the relationship: remain. Ten repetitions. No ambiguity.</span></li>
         <li><span class="bullet-icon">☩</span><span><span class="day-label">Thursday:</span> Linked to the Vine. The Holy Spirit is the sap that flows from the Vine into the branches. We cannot produce fruit through effort; we receive it through the Spirit's indwelling presence.</span></li>
@@ -754,76 +794,59 @@ if ('serviceWorker' in navigator) {
       <p>The first-century world Jesus spoke into was full of people who had religion without relationship. The Pharisees had meticulous rule-keeping but no joy. The Laodicean church had wealth and respectability but Jesus was standing outside knocking. What this week revealed is that the ancient problem and the modern problem are the same: proximity to God is not the same as connection to God. The branch can be physically attached to the vine and still be hydraulically isolated, still producing no fruit, still slowly drying out from the inside. The reality check Jesus calls for is not about religious activity. It is about the sap.</p>
     </div>
 
-    <!-- DEEPER QUESTIONS -->
+    <!-- 3. WHAT THIS WEEK CLARIFIES -->
     <div class="section">
-      <div class="section-label"><span class="section-emoji">📖</span><span class="section-title">Deeper Questions</span><div class="section-title-line"></div></div>
+      <div class="section-label">
+        <span class="section-emoji">💡</span>
+        <span class="section-title">What This Week Clarifies</span>
+        <div class="section-title-line"></div>
+      </div>
 
-      <p>These four questions are designed to move from reflection to action. They start with your past, move through your present, expand to your community, and land on your personal choices. Take your time with each one. Honesty here is more valuable than comfort.</p>
+      <p>Reality Check is a bruising name for a week, and this one earned it. Lukewarm, wretched, and blind were the opening words, dinner and a throne were the closing offers, and a Vine ran through the middle of everything. Three tensions deserve honest answers before Sabbath comes.</p>
 
-      <!-- QUESTION 1 -->
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">1</span>
-          <div class="dq-question">Reflect back over your life. Can you identify any life events that have lulled you into a Laodicean spiritual condition? What events have drawn you closer to God?</div>
+      <div class="section-heading">The Hard Words Are the Knock</div>
+      <p>The letter to Laodicea swings between two extremes with almost no warning. Lukewarm faith turns the stomach of the Amen, and a few verses later the same voice proposes dinner. Either this church makes Him sick or He wants to sit at their table, and the letter insists on both.</p>
+
+<!-- BSB_BLOCK: Revelation 3:19 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:dacae6c747112da12cdf7125920c4bb13f5ef897d8a741e49565aac5c54d1c28 | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Revelation 3:19</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/REV.3.19" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-
-        <div class="verse-block">
-          <div class="verse-header"><div class="verse-ref">Revelation 3:15-17</div><a class="bible-btn" href="https://www.bible.com/bible/1713/REV.3.15" target="_blank">☩ Open in Bible App</a></div>
-          <div class="verse-text">"I know your works, that you are neither cold nor hot. I wish that you were cold or hot. So, because you are lukewarm, and neither hot nor cold, I am going to vomit you out of my mouth. For you say, 'I'm rich; I have become wealthy and need nothing,' and you don't realize that you are wretched, pitiful, poor, blind, and naked."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">The Laodicean condition is terrifying precisely because the person in it does not know they are in it. They say "I need nothing." They believe they are spiritually healthy. The Greek word for "lukewarm" (<em>chliaros</em>, χλιαρός) appears only here in the entire New Testament, describing something neither refreshing (cold) nor useful (hot). What lulls us into this condition? Usually the same things that lulled Laodicea: comfort, success, routine, the gradual replacement of desperate dependence on God with self-sufficient religiosity. Meanwhile, the events that tend to draw us closer to God are often the ones we would never choose: loss, failure, illness, crisis. Not because God causes suffering, but because suffering strips away the illusion that we can manage life on our own and forces us back to the Vine.</div>
+        <div class="verse-text"><span class="words-of-jesus">Those I love I rebuke and discipline. Therefore be earnest and repent.</span></div>
+<div class="verse-commentary">
+          <p>This is the hinge the whole letter turns on, and the week kept coming back to it. The rebuke is not the opposite of the dinner invitation. It is the reason for it. The Greek behind discipline is a parenting word, the correction given to a child too loved to be left sleepwalking, and the week's plainest picture was the check engine light. The light is not the enemy of the car. It is the mercy that comes on before the engine seizes. A coach who never corrects is not kind, only indifferent, and staying silent about a fixable problem is abandonment with good manners. So the severity and the affection are one motion. He names wretched, pitiful, poor, blind, and naked precisely because He intends to supply gold, garments, and salve from His own hand. Nobody rebukes a church they have written off. The hard words are love refusing to whisper.</p>
         </div>
       </div>
 
-      <!-- QUESTION 2 -->
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">2</span>
-          <div class="dq-question">Abiding in Christ means a constant receiving of His Spirit. How often do you pray for the Holy Spirit? What might change if you received the Holy Spirit every day?</div>
-        </div>
+      <div class="section-heading">There Is No Third Kind of Branch</div>
+      <p>Laodicea had built a life in the middle. Not hostile to Jesus, not on fire, just comfortable, funded, and busy, a faith running on reserve power. Most of us know that neighborhood. The week's most unsettling move was to walk through it and take the middle ground off the map.</p>
 
-        <div class="verse-block">
-          <div class="verse-header"><div class="verse-ref">Luke 11:13</div><a class="bible-btn" href="https://www.bible.com/bible/1713/LUK.11.13" target="_blank">☩ Open in Bible App</a></div>
-          <div class="verse-text">"If you then, who are evil, know how to give good gifts to your children, how much more will the heavenly Father give the Holy Spirit to those who ask him?"</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">The spiritual life was never meant to be a life of unreserved surrender sustained by occasional bursts of inspiration. It was designed to run on a constant receiving of the Spirit, the way a vine branch constantly draws sap. The channel of communication must be open continually between the believer and God. Yet most of us treat the Holy Spirit's presence as something we received once at baptism rather than something we need to ask for daily. Jesus' promise in Luke 11:13 is in the present tense: the Father gives (keeps giving) the Spirit to those who ask (keep asking). What would change? Everything that is currently running on willpower would begin running on divine power. The obedience that feels like drudgery would start to feel like the natural fruit of a living connection. The joy that seems elusive would become the daily reality Jesus promised in <a class="vlink" href="https://www.bible.com/bible/1713/JHN.15.11" target="_blank">John 15:11</a>.</div>
+<!-- BSB_BLOCK: John 15:6-8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:d453c7b6c34477e031e3263801f34b8996450f22d7f6e99dfd5dab4b53017a7b | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">John 15:6-8</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.15.6-8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-      </div>
-
-      <!-- QUESTION 3 -->
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">3</span>
-          <div class="dq-question">What might change if we, as a church, were to pray for the Holy Spirit more earnestly and more regularly?</div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header"><div class="verse-ref">Acts 2:1-4</div><a class="bible-btn" href="https://www.bible.com/bible/1713/ACT.2.1" target="_blank">☩ Open in Bible App</a></div>
-          <div class="verse-text">"When the day of Pentecost had arrived, they were all together in one place. Suddenly a sound like that of a violent rushing wind came from heaven, and it filled the whole house where they were sitting. They saw tongues like flames of fire that separated and rested on each one of them. Then they were all filled with the Holy Spirit and began to speak in different tongues, as the Spirit enabled them."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">The early church was not born out of a strategic plan, a building campaign, or a marketing initiative. It was born when 120 people prayed earnestly and the Spirit fell. What followed was explosive: 3,000 baptisms in a single day, radical generosity, fearless witness, and a community so compelling that people were drawn to it without being recruited. The question is not whether God is willing to pour out His Spirit on the church today. The question is whether the church is willing to pray with the same desperation and unity that filled that upper room. Most church decline is not a strategy problem; it is a Spirit problem. When a congregation collectively asks for the Holy Spirit with genuine hunger, the same God who answered at Pentecost answers still. What would change? The same things that changed in Acts 2: boldness, unity, generosity, joy, and an irresistible witness to the world.</div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 6">6</sup><span class="words-of-jesus">If anyone does not remain in Me, he is like a branch that is thrown away and withers. Such branches are gathered up, thrown into the fire, and burned.</span> <sup class="verse-number" aria-label="Verse 7">7</sup><span class="words-of-jesus">If you remain in Me and My words remain in you, ask whatever you wish, and it will be done for you.</span> <sup class="verse-number" aria-label="Verse 8">8</sup><span class="words-of-jesus">This is to My Father’s glory, that you bear much fruit, proving yourselves to be My disciples.</span></div>
+<div class="verse-commentary">
+          <p>Jesus counts the outcomes, and there are two. A branch remains and bears much fruit, or it lets go and withers, and no vineyard on earth has ever grown a third kind. That is not a threat. It is botany. A branch is either drawing sap this moment or drying this moment, whatever its leaves look like from the road. Laodicea's own plumbing preached the same sermon, since hot water heals and cold water refreshes but the tepid water that reached the city only nauseated. And the middle carries one more danger the week refused to soften. It numbs. A church can coast so smoothly it never notices the engine dying, which is why "you do not realize" was the sharpest phrase in the whole diagnosis. The honest mirror is not cruelty. Losing the imaginary middle is how the real choice comes back into view.</p>
         </div>
       </div>
 
-      <!-- QUESTION 4 -->
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">4</span>
-          <div class="dq-question">Be brutally, even painfully, frank with yourself over your relationship with God. What conscious choices do you need to make in order to have the closeness with Him that He wants but that you hinder?</div>
-        </div>
+      <div class="section-heading">The Branch Does Not Push the Sap</div>
+      <p>One demand could crush a reader by Friday. Burn hot, bear fruit, remain, repent, overcome. Yet the same week said a branch cannot force sap through its own veins, and that apart from the Vine we can do nothing. The assignment sounds like willpower, and willpower is exactly the offline, reserve-battery living the week diagnosed.</p>
 
-        <div class="verse-block">
-          <div class="verse-header"><div class="verse-ref">Revelation 3:20</div><a class="bible-btn" href="https://www.bible.com/bible/1713/REV.3.20" target="_blank">☩ Open in Bible App</a></div>
-          <div class="verse-text">"See! I stand at the door and knock. If anyone hears my voice and opens the door, I will come in to him and eat with him, and he with me."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">This is the most searingly personal question of the week, and it comes with the most tender verse in Scripture. Jesus is not standing at the door of a building; He is standing at the door of a heart. And He is not demanding entry; He is knocking. The word "hinder" in the question is crucial. God wants closeness. He is the One pursuing. He is the One knocking. If there is distance, it is because we have placed something between ourselves and the open door: a habit we refuse to release, a wound we refuse to bring to Him, a schedule so packed that there is no room for stillness, a grudge we are nursing, or simply the comfortable numbness of Laodicean routine. The conscious choices this question asks about are not about adding more religious activity. They are about removing whatever is blocking the door. What is it for you? Name it honestly. Then open the door. He is already there, waiting to come in and share a meal with you.</div>
+<!-- BSB_BLOCK: Luke 11:13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:bae9f188e57a34aec632a73210f2e8049eac6297772a9eddc1525da069318c4e | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Luke 11:13</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/LUK.11.13" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-
-        <div class="verse-block">
-          <div class="verse-header"><div class="verse-ref">John 15:4-5</div><a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.15.4" target="_blank">☩ Open in Bible App</a></div>
-          <div class="verse-text">"Remain in me, and I in you. Just as a branch is unable to produce fruit by itself unless it remains on the vine, neither can you unless you remain in me. I am the vine; you are the branches. The one who remains in me and I in him produces much fruit, because you can do nothing without me."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">This is the verse that launched the entire week, and it is the verse that closes it. Every question we have explored, every tension we have named, every moment of honest self-assessment, comes back to this: remain. The choice is not complicated. It is simply continuous. Stay connected. Let the sap flow. Stop trying to produce fruit through effort and start receiving it through relationship. The conscious choice Jesus asks for is not a heroic act of spiritual athleticism. It is the daily, hourly, moment-by-moment decision to stay attached to the Vine and let Him do what only He can do.</div>
+        <div class="verse-text"><span class="words-of-jesus">So if you who are evil know how to give good gifts to your children, how much more will your Father in heaven give the Holy Spirit to those who ask Him!”</span></div>
+<div class="verse-commentary">
+          <p>Jesus ends the tension with a gift. The temperature, the fruit, the power to overcome, none of it is generated by the branch, because the Father gives the Holy Spirit, the living sap, to anyone who asks. Thursday's vineyard science made the direction of flow unmistakable. A dormant winter bud sits sealed off from the vine, looking dead, unable to reconnect itself, and reconnection is not something the bud performs. The vine pushes life upward from the roots and rebuilds the channel from the inside. Our verbs all week were the small, receivable kind. Ask. Open. Remain. His verbs carry the power. Give, flow, raise the dead. Even the door in Laodicea obeys the same rule, because the one thing this pursuing love will not do is turn the handle for us. He knocks. We open. The sap does the rest.</p>
+          <p>Which brings the week back to its envelope. Sabbath asked for an honest guess at what Jesus would write in a letter to us, sealed and set aside. Six days later that guess can be measured against the real thing, a letter that diagnoses without flinching, loves without conditions, knocks without forcing, and offers His own gold, His own garments, His own Spirit. The reality check turned out to be a mercy, not an ambush. Tomorrow is Sabbath, and the practice below asks one more honest question with the pen still in hand. However the temperature reads tonight, the Vine is already pushing sap toward every branch that stays put and asks. Open the envelope. Then open the door.</p>
         </div>
       </div>
 
@@ -840,7 +863,7 @@ if ('serviceWorker' in navigator) {
     <!-- CHRIST AT THE CENTER -->
     <div class="section section-christ">
       <div class="section-label"><span class="section-emoji">✝️</span><span class="section-title">Christ at the Center of the Week</span><div class="section-title-line"></div></div>
-      <p>Every day this week pointed to the same Person. On Sabbath, He was the standard against which we measured our reality. On Sunday, He was the God worth knowing. On Monday, He was the One our souls were yearning for. On Tuesday, He was the pursuing Lover who called out in the garden and drew us with everlasting love. On Wednesday, He was the true Vine who said "remain in me" ten times because He knew we needed to hear it that many. On Thursday, He was the One who sent the Spirit, the living sap, so that every dry branch could come back to life.</p>
+      <p>Every day this week pointed to the same Person. On Sabbath, He was the standard against which we measured our reality. On Sunday, He was the Amen whose diagnosis exposed Laodicea's true condition. On Monday, He was the loving Reprover who knocked at the door and offered a place at His table. On Tuesday, He was the pursuing Lover who called out in the garden and drew us with everlasting love. On Wednesday, He was the true Vine who said "remain in me" ten times because He knew we needed to hear it that many. On Thursday, He was the One who sent the Spirit, the living sap, so that every dry branch could come back to life.</p>
       <p>Before we can start growing in a relationship with God, we first have to pause and consider what our current relationship with Him is actually like. If it is Laodicean, if our branches are not flourishing, if we feel spiritually dry and disconnected, Jesus has the perfect solution for our condition. It is not a program. It is not a formula. It is a Person. Abide in Him. Let the Spirit flow. The fruit will come. It always does when the branch stays connected to the Vine.</p>
     </div>
 
@@ -860,22 +883,50 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/JHN.15.1-11" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=John+15%3A1-11&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
 
+
+  <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/bible-study/sw.js')
+    .then(reg => console.log('SW registered:', reg.scope))
+    .catch(err => console.log('SW registration failed:', err));
+}
+</script>
 
 <!-- Firebase SDK for push notifications -->
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>

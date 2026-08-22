@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -733,44 +756,44 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Two men from one congregation stand at the same butcher's stall. One drops the temple-discounted cut into his basket without a second thought, because an idol is a block of stone. The other walks away with his heart pounding, because that meat used to be his worship. Paul answers both of them in one sustained argument (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.8.1-13" target="_blank">1 Corinthians 8:1-13</a>), and he refuses to start where they started. They asked about food. He starts with a slogan the confident crowd loved to quote, and with what their confidence was doing to the man beside them. The whole chapter (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.8" target="_blank">1 Corinthians 8</a>) hangs on that reversal.</p>
+      <p>Two men from one congregation stand at the same butcher's stall. One drops the temple-discounted cut into his basket without a second thought, because an idol is a block of stone. The other walks away with his heart pounding, because that meat used to be his worship. Paul answers both of them in one sustained argument (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.8.1-13" target="_blank" rel="noopener">1 Corinthians 8:1-13</a>), and he refuses to start where they started. They asked about food. He starts with a slogan the confident crowd loved to quote, and with what their confidence was doing to the man beside them. The whole chapter (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.8" target="_blank" rel="noopener">1 Corinthians 8</a>) hangs on that reversal.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 8:2 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:aea89fc00d3ae65ece90bd86fc3eb4d8a684c6c45e865381222388544f7b654c | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 8:2</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.8.2" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.8.2" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"If anyone thinks he knows anything, he does not yet know it as he ought to know it."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>The confident crowd had a slogan, we all have knowledge (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.8.1" target="_blank">1 Corinthians 8:1</a>), and Paul quotes it back with an edge, because he has watched what that knowledge does when it works alone. His word for it is <em>physioo</em>, Greek for puffing something up, inflating it like a bellows. Air makes a thing bigger without making it stronger. Then comes this verse, and it lands like a needle. Whoever thinks his knowing is finished has not yet learned what knowing is for. The partner line completes the reversal, the one who loves God is known by Him (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.8.3" target="_blank">1 Corinthians 8:3</a>). Paul flips the whole direction of the verb. The goal was never to master facts about God. It was to be known by Him, and that kind of knowing arrives through love. Facts you can stack. Being known you can only receive.</p>
+        <div class="verse-text">The one who thinks he knows something does not yet know as he ought to know.</div>
+<div class="verse-commentary">
+          <p>The confident crowd had a slogan, we all have knowledge (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.8.1" target="_blank" rel="noopener">1 Corinthians 8:1</a>), and Paul quotes it back with an edge, because he has watched what that knowledge does when it works alone. His word for it is <em>physioo</em>, Greek for puffing something up, inflating it like a bellows. Air makes a thing bigger without making it stronger. Then comes this verse, and it lands like a needle. Whoever thinks his knowing is finished has not yet learned what knowing is for. The partner line completes the reversal, the one who loves God is known by Him (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.8.3" target="_blank" rel="noopener">1 Corinthians 8:3</a>). Paul flips the whole direction of the verb. The goal was never to master facts about God. It was to be known by Him, and that kind of knowing arrives through love. Facts you can stack. Being known you can only receive.</p>
         </div>
       </div>
 
-      <p>Paul is not going soft on idolatry. The church's first council ruled that Gentile converts should keep away from food polluted by idols (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.15.20" target="_blank">Acts 15:20</a>), put it in the letter it mailed across the empire (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.15.29" target="_blank">Acts 15:29</a>), and was still standing on that instruction years later (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.21.25" target="_blank">Acts 21:25</a>). The risen Jesus Himself confronts two churches for eating idol food under the spell of false teachers (<a class="vlink" href="https://www.bible.com/bible/1713/REV.2.14" target="_blank">Revelation 2:14</a>; <a class="vlink" href="https://www.bible.com/bible/1713/REV.2.20" target="_blank">Revelation 2:20</a>). Scripture never shrugs at idolatry. What Paul is treating in Corinth is a different wound. The presenting problem was not secret Baal worship. It was believers swinging a true idea like a blunt instrument, and the injury list was growing.</p>
+      <p>Paul is not going soft on idolatry. The church's first council ruled that Gentile converts should keep away from food polluted by idols (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.15.20" target="_blank" rel="noopener">Acts 15:20</a>), put it in the letter it mailed across the empire (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.15.29" target="_blank" rel="noopener">Acts 15:29</a>), and was still standing on that instruction years later (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.21.25" target="_blank" rel="noopener">Acts 21:25</a>). The risen Jesus Himself confronts two churches for eating idol food under the spell of false teachers (<a class="vlink" href="https://www.bible.com/bible/3034/REV.2.14" target="_blank" rel="noopener">Revelation 2:14</a>; <a class="vlink" href="https://www.bible.com/bible/3034/REV.2.20" target="_blank" rel="noopener">Revelation 2:20</a>). Scripture never shrugs at idolatry. What Paul is treating in Corinth is a different wound. The presenting problem was not secret Baal worship. It was believers swinging a true idea like a blunt instrument, and the injury list was growing.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 8:4-6 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c3e4ebfd751dcb62ed5f23e19f9d2fd437557661db8af0b95c1e0b203bc1dc79 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 8:4-6</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.8.4-6" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.8.4-6" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"About eating food sacrificed to idols, then, we know that 'an idol is nothing in the world,' and that 'there is no God but one.' For even if there are so-called gods, whether in heaven or on earth—as there are many 'gods' and many 'lords'—yet for us there is one God, the Father. All things are from him, and we exist for him. And there is one Lord, Jesus Christ. All things are through him, and we exist through him."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Notice that Paul agrees with the strong on every point of doctrine. One God the Father, one Lord Jesus Christ, and every so-called god in between is an empty costume. Behind his words you can hear the oldest prayer in Israel's memory, the one recited every morning and every evening, the Lord our God, the Lord is one (<a class="vlink" href="https://www.bible.com/bible/1713/DEU.6.4" target="_blank">Deuteronomy 6:4</a>). But that prayer never stops at counting gods. Its very next breath is a command to love Him with all your heart, soul, and strength (<a class="vlink" href="https://www.bible.com/bible/1713/DEU.6.4-5" target="_blank">Deuteronomy 6:4-5</a>). Moses welded knowing and loving into a single sentence, and Paul refuses to break the weld. A creed that stops at the correct count has memorized half a prayer. For Moses and for Paul alike, knowledge that does not turn into love is worthless.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 4">4</sup>So about eating food sacrificed to idols: We know that an idol is nothing at all in the world, and that there is no God but one. <sup class="verse-number" aria-label="Verse 5">5</sup>For even if there are so-called gods, whether in heaven or on earth (as there are many so-called gods and lords), <sup class="verse-number" aria-label="Verse 6">6</sup>yet for us there is but one God, the Father, from whom all things came and for whom we exist. And there is but one Lord, Jesus Christ, through whom all things came and through whom we exist.</div>
+<div class="verse-commentary">
+          <p>Notice that Paul agrees with the strong on every point of doctrine. One God the Father, one Lord Jesus Christ, and every so-called god in between is an empty costume. Behind his words you can hear the oldest prayer in Israel's memory, the one recited every morning and every evening, the Lord our God, the Lord is one (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.6.4" target="_blank" rel="noopener">Deuteronomy 6:4</a>). But that prayer never stops at counting gods. Its very next breath is a command to love Him with all your heart, soul, and strength (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.6.4-5" target="_blank" rel="noopener">Deuteronomy 6:4-5</a>). Moses welded knowing and loving into a single sentence, and Paul refuses to break the weld. A creed that stops at the correct count has memorized half a prayer. For Moses and for Paul alike, knowledge that does not turn into love is worthless.</p>
         </div>
       </div>
 
-      <p>The camps even had nicknames. The confident called themselves the strong, a label Paul has already handed back with a raised eyebrow earlier in this letter (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.4.10" target="_blank">1 Corinthians 4:10</a>), and their case was tidy. An idol is nothing, so the meat is nothing, so the right to eat is obvious (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.8.4" target="_blank">1 Corinthians 8:4</a>). The people Paul calls weak were mostly newer believers whose consciences still carried the temples' fingerprints. He sides with the strong on paper and then spends the rest of the chapter standing in front of the weak. Be careful, he warns, that this right of yours never becomes a stumbling block (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.8.9" target="_blank">1 Corinthians 8:9</a>).</p>
+      <p>The camps even had nicknames. The confident called themselves the strong, a label Paul has already handed back with a raised eyebrow earlier in this letter (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.4.10" target="_blank" rel="noopener">1 Corinthians 4:10</a>), and their case was tidy. An idol is nothing, so the meat is nothing, so the right to eat is obvious (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.8.4" target="_blank" rel="noopener">1 Corinthians 8:4</a>). The people Paul calls weak were mostly newer believers whose consciences still carried the temples' fingerprints. He sides with the strong on paper and then spends the rest of the chapter standing in front of the weak. Be careful, he warns, that this right of yours never becomes a stumbling block (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.8.9" target="_blank" rel="noopener">1 Corinthians 8:9</a>).</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 8:9-12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:f1521a9618c4eb805347b6e400db85c19d69bcd9b56d8c48c7c7a0617ca779ac | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 8:9-12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.8.9-12" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.8.9-12" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"But be careful that this right of yours in no way becomes a stumbling block to the weak. For if someone sees you, the one who has knowledge, dining in an idol's temple, won't his weak conscience be encouraged to eat food offered to idols? So the weak person, the brother or sister for whom Christ died, is ruined by your knowledge. Now when you sin like this against brothers and sisters and wound their weak conscience, you are sinning against Christ."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 9">9</sup>Be careful, however, that your freedom does not become a stumbling block to the weak. <sup class="verse-number" aria-label="Verse 10">10</sup>For if someone with a weak conscience sees you who are well informed eating in an idol’s temple, will he not be encouraged to eat food sacrificed to idols? <sup class="verse-number" aria-label="Verse 11">11</sup>So this weak brother, for whom Christ died, is destroyed by your knowledge. <sup class="verse-number" aria-label="Verse 12">12</sup>By sinning against your brothers in this way and wounding their weak conscience, you sin against Christ.</div>
+<div class="verse-commentary">
           <p>Walk the chain Paul builds, link by link. A newer believer sees you reclining at a temple banquet. Your example coaches his conscience right past its own alarm bells. He eats, not out of settled faith but out of borrowed confidence, and something inside him tears. Paul refuses to let the damage stay abstract. The person your freedom flattened is the brother or sister for whom Christ died. Then comes the sentence that should stop every argument in the room mid-word. Wounding a weak conscience is not a breach of etiquette. It is sin against Christ Himself. The strong were sure they were winning a debate. Paul tells them they were wounding their Savior with the trophy.</p>
         </div>
       </div>
@@ -808,7 +831,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Paul hides the day's thunderbolt in a subordinate clause, the brother or sister for whom Christ died. That is the price tag he hangs around the neck of the weakest conscience in the room. And it changes the whole conversation about knowledge, because Jesus knew more than anyone who ever walked this earth. He knew the scholars were misreading the Sabbath, knew His disciples were slow, knew Peter would fold before the rooster finished. He never once used what He knew to flatten a limping faith. A bruised reed He would not break (<a class="vlink" href="https://www.bible.com/bible/1713/ISA.42.3" target="_blank">Isaiah 42:3</a>). He taught in stories farmers could climb inside. He washed feet He knew would run. At the cross, perfect knowledge and perfect love finally did the same thing at the same moment, and the thing they did was die for the weak. So the shaky believer beside you is not an obstacle to your freedom. He is the reason your Savior has scars. Treat him accordingly.</p>
+      <p>Paul hides the day's thunderbolt in a subordinate clause, the brother or sister for whom Christ died. That is the price tag he hangs around the neck of the weakest conscience in the room. And it changes the whole conversation about knowledge, because Jesus knew more than anyone who ever walked this earth. He knew the scholars were misreading the Sabbath, knew His disciples were slow, knew Peter would fold before the rooster finished. He never once used what He knew to flatten a limping faith. A bruised reed He would not break (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.42.3" target="_blank" rel="noopener">Isaiah 42:3</a>). He taught in stories farmers could climb inside. He washed feet He knew would run. At the cross, perfect knowledge and perfect love finally did the same thing at the same moment, and the thing they did was die for the weak. So the shaky believer beside you is not an obstacle to your freedom. He is the reason your Savior has scars. Treat him accordingly.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -845,22 +868,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.8.1-13" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+8:1-13&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

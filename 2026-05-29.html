@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -619,7 +648,7 @@ if ('serviceWorker' in navigator) {
     white-space: nowrap;
   }
 
-  /* ── DEEPER QUESTIONS ── */
+  /* LEGACY DEEPER QUESTIONS: retained only so archived Friday bodies can still be reassembled */
   .dq-block {
     margin: 28px 0;
     padding: 0;
@@ -776,122 +805,63 @@ if ('serviceWorker' in navigator) {
       <p>The Sermon on the Mount and the Decalogue at Sinai are not two laws. They are one law spoken by one Voice through two different microphones. On Sinai the Voice was in fire and smoke and the trembling of a mountain. On the southern slope of the Galilean hills the same Voice was sitting on a stone bench at the edge of a meadow. The audience in both places heard the same God say the same things, with the cross now visible between them as the bridge that makes living the second sermon possible for people who could not live the first one on their own. By the end of this week we have walked the full distance from Exodus 20 to Matthew 7, and the surprise has been how short the distance really is. The law was always pointing at the Person who would fill it. The Person has come.</p>
     </div>
 
-    <!-- 3. DEEPER QUESTIONS -->
+    <!-- 3. WHAT THIS WEEK CLARIFIES -->
     <div class="section">
       <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Deeper Questions</span>
+        <span class="section-emoji">💡</span>
+        <span class="section-title">What This Week Clarifies</span>
         <div class="section-title-line"></div>
       </div>
 
-      <p>Five questions to carry the week into the next week. Take them slowly. The answers do not need to be performed; they need to be honest.</p>
+      <p>A week that walks from Sinai to a Galilean hillside leaves a reader holding a few live tensions. The most precept-rich man in Israel ended up blind between two pillars. The verse that sounds like the law's failure turns out to be its job description. And a gospel of faith apart from works still closed the week on a verb of doing. The week built its own answers as it went. Three of them deserve a slow second look.</p>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">1</span>
-          <div class="dq-question">How does popular culture view sin? How should our church respond?</div>
+      <div class="section-heading">Samson Could Recite the Vow He Was Breaking</div>
+      <p>Sabbath's Memory Text made a large claim. The precepts revive. They keep a man alive. Then Sunday introduced the man who had more precepts than anyone in Israel, a Nazirite set apart before his own birth, and watched him explain his vow, word for word, from Delilah's lap. Samson never lost the information. The precept that was supposed to give life did not save him, and the week owed us an explanation.</p>
+
+<!-- BSB_BLOCK: Psalms 119:93-94 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:9fdefbac482968938faa76369b15004b9ba70bd0c8caf20ae04ca2e4be357070 | footnotes-stripped:0 | poetry:flattened -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Psalms 119:93-94</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.119.93-94" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Matthew 5:17</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.5.17" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Don't think that I came to abolish the Law or the Prophets. I did not come to abolish but to fulfill."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>The cultural air we breathe has been gradually rewriting "sin" for a generation. The word itself has been turned into a punch line on cereal boxes and dessert menus and bedroom-furniture commercials. The categories the Bible names plainly (lying, adultery, greed, contempt, idolatry) get re-narrated as "personality," "authenticity," "self-expression," "trauma response," anything except what Sabbath morning's Hebrew cabinet called them.</p>
-            <p>The church's response to this is not to match the culture's volume in reverse, scolding it from the sidewalk. The church's response is to live and to speak the news Jesus spoke on the hillside in the verse above. The Bible's standard has not been abolished. It has been fulfilled in a Person, and the same Person is offering His fulfillment to anyone who comes by faith. Cultural Christianity that softens the diagnosis ends up with no gospel to offer; cultural Christianity that hardens the diagnosis ends up with no Christ in the room. Both miss the verse. Jesus came neither to demolish the standard nor to leave us stranded under it.</p>
-          </div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 93">93</sup>I will never forget Your precepts, for by them You have revived me. <sup class="verse-number" aria-label="Verse 94">94</sup>I am Yours; save me, for I have sought Your precepts.</div>
+        <div class="verse-commentary">
+          <p>Set the two men side by side and the difference is not knowledge. It is weight. Samson's vow had become a fact about him, a story from his childhood, a relic on the side of his head that no longer carried any load. The psalmist talks about the same precepts the way a man under siege talks about the floor holding him up. He digs in them like his life depends on the digging, and look where his hope actually lands. He does not ask the precepts to rescue him. He tells God he belongs to Him, and he asks his Owner for the saving. That is the week's first clarification. The law gives life to the person who leans his weight on it and on the God behind it. Kept at arm's length, the same vow is just hair.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">2</span>
-          <div class="dq-question">When have you seen firsthand how sin destroys relationships with God and with others?</div>
+      <div class="section-heading">An X-Ray Never Healed Anyone</div>
+      <p>Tuesday put the week's hardest sentence on the table. No one will be justified by works of the law. For people raised to think of commandment keeping as the whole point, that lands like a demotion. The longest psalm in the Bible sings one hundred seventy-six verses to a law that apparently cannot save the singer, and Jesus still insisted not one stroke of it would pass away. A law that permanent, and that powerless to justify, needs its actual job named.</p>
+
+<!-- BSB_BLOCK: Romans 3:20 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:f2ba3dba1051e0b9e84528b98e9d574a8d03366f0e10affd1b7e69fc39658db2 | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Romans 3:20</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.3.20" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Matthew 5:18</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.5.18" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"For truly I tell you, until heaven and earth pass away, not the smallest letter or one stroke of a letter will pass away from the law until all things are accomplished."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>The verse Jesus speaks right after the abolish-or-fulfill line is the one most people skip past. Not the smallest letter. Not one stroke of a letter. The Greek refers to the <em>iota</em> (smallest letter in the alphabet) and the <em>keraia</em> (the tiny serif that distinguishes one Hebrew letter from another). Jesus is telling us that every commandment, every clause, every small mark of the law has weight and matters. Which is the reason the consequences of sin are not exaggerated when we feel them.</p>
-            <p>This question asks us to bring honest examples to the table. The marriage that ended over a sin one of the spouses kept treating as a minor preference. The friendship that broke when a betrayal was finally named. The parent who could not look at the child without flinching after the words that should never have been said. The church that fractured over a secret. None of those losses is the universe overreacting. They are the smallest letter and the stroke of a letter doing what Jesus said they would do. Sin is never just an interior matter. It always travels.</p>
-          </div>
+        <div class="verse-text">Therefore no one will be justified in His sight by works of the law. For the law merely brings awareness of sin.</div>
+        <div class="verse-commentary">
+          <p>The week named the job with pictures. The law is the X-ray that resolves a vague ache into a tumor with a location. It is the tuning fork holding one true note in the air so the piano can hear how far it has drifted. It is the building code that explains why the rubble fell, when fate alone explains nothing. None of those tools fixes what it finds, and nobody calls them failures for it, because naming is their whole assignment. Without the law, sin is weather, a background condition we shrug at. With it, sin has a name, an address, and a Surgeon already on the way. The law does not save. It makes us savable, and a diagnosis this accurate is not condemnation. It is the first mercy.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">3</span>
-          <div class="dq-question">Has obedience to God's law been easy or hard in your life? What factors have contributed to this?</div>
-        </div>
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Matthew 5:17</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.5.17" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Don't think that I came to abolish the Law or the Prophets. I did not come to abolish but to fulfill."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>The honest answer for most people is some of both, and the factors are usually less mysterious than we make them. Obedience is hard in seasons when our love for Jesus has gone quiet, when we are running on yesterday's fuel, when we are isolated from believers who know us, when we have stopped attending to the means God uses to feed faith (Word, prayer, the Sabbath, the table, confession, the body of Christ). Obedience tends to feel surprisingly possible in seasons when those means are running through us at normal pressure.</p>
-            <p>The verse above is the reframe that makes the question bearable. Jesus has already filled the law full of His own obedience on our behalf. The strength to obey is no longer the strength of our own willpower fighting a uphill. It is the strength of the One whose obedience has been credited to our account, now living inside us by the Spirit, expressing itself as the daily obedience the rescued life grows. When obedience feels especially hard, the diagnostic is rarely "I need more willpower." It is usually "I have drifted from the One whose fulfilling life is the source of mine." Come back to Him before the willpower conversation starts.</p>
-          </div>
-        </div>
-      </div>
+      <div class="section-heading">Saved Without Works, Sorted by Doing</div>
+      <p>Wednesday and Thursday look, at first, like a contradiction in back-to-back days. Wednesday announced that a person is justified by faith apart from works of the law. Thursday ended the same Sermon on the Mount with two builders separated by nothing except doing, and pious people saying Lord, Lord being turned away at the door. The week put the freest verse in Paul and the most demanding parable in Matthew a day apart, and it did not blink.</p>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">4</span>
-          <div class="dq-question">How can we, as people whose name shows how seriously we take the law, avoid the trap of legalism, or of depending on our law-keeping to save us? On the day of judgment, what are we going to rely on to stand in front of a holy and perfect God? Our law-keeping, or Jesus' perfect righteousness in our stead?</div>
+<!-- BSB_BLOCK: John 14:15 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:7531e3fcd0396da6996e4ef23aef58958a1f251d06a04ecd0185f6de2c39c8aa | footnotes-stripped:1 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">John 14:15</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.14.15" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Matthew 5:18</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.5.18" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"For truly I tell you, until heaven and earth pass away, not the smallest letter or one stroke of a letter will pass away from the law until all things are accomplished."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Run the thought experiment honestly. Stand in the courtroom. The Judge is holy. The bar is the law Jesus refused to relax even one letter of. What do you place on the table as your case for standing? Your Sabbath-keeping? Your dietary obedience? Your offerings? Your years of service? Any one of those is a good thing in its place, but none of them survives a single second under the bar of <em>not one stroke of a letter</em>. The law Jesus refused to lower will measure every line of our record, and our record will be found short.</p>
-            <p>What we place on the table, then, is not our record but His. Jesus's perfect obedience to every stroke of every letter, His "all things accomplished" completed at the cross, is the only case any of us has worth presenting. Our keeping flows out of His; it does not earn anything in front of the Judge. The way to avoid legalism is not to lower the bar; that just produces a softer false gospel. The way to avoid legalism is to look at the bar honestly, look at our own life honestly, and then look at the One who stood under the bar for us, and to rest the entire weight of our case on Him. The law-keeping we then do is the family resemblance of a rescued people, not the entrance fee of an applying one.</p>
-          </div>
+        <div class="verse-text"><span class="words-of-jesus">If you love Me, you will keep My commandments.</span></div>
+        <div class="verse-commentary">
+          <p>This sentence from the upper room is the hinge the week hung both days on. Jesus does not say keep My commandments so that I will love you. The direction never runs that way. Love comes first, and the keeping grows out of it as naturally as the next heartbeat. The grammar itself is less a command than a forecast. Where love for Him is real, obedience follows. So Wednesday stands. Nothing we do buys the verdict, because the obedience that satisfied the law was His. And Thursday stands beside it. The doing Jesus watches for is not a payment plan. It is the pulse of a heart that actually knows Him, which is why the verdict that chills the Lord, Lord crowd is not you never worked. It is "I never knew you."</p>
+          <p>That is where the week lands. The law Jesus filled to the brim comes back to us not as a ladder but as a love language. The psalmist sang to it because it kept him alive. Samson recited his and went down to Timnah. The wise builder does the words because he loves the One who said them. What we heard this week is finished. What we do with it starts now.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: John 14:15 | 14:15 Or If you love Me, keep -->
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">5</span>
-          <div class="dq-question">How can knowledge (or the lack of knowledge) impact someone's relationship with God?</div>
-        </div>
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Proverbs 24:3</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/PRO.24.3" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"A house is built by wisdom, and it is established by understanding."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>The Hebrew nouns here are <em>chokmah</em> (wisdom, skill in living) and <em>tevunah</em> (understanding, the ability to discern the shape of a thing). The picture is the architect and the foreman at the construction site, the two complementary kinds of knowing that together raise a structure that will last. A house with no <em>chokmah</em> is built on bad design; a house with no <em>tevunah</em> is built without the discernment to spot the cracks. Solomon, who wrote much of Proverbs and built the Jerusalem temple, knew the engineering vocabulary at first hand.</p>
-            <p>Knowledge in the Bible is never abstract data. It is the kind of seeing that builds the house of a life that will hold. Hosea named the absence of knowledge as the reason Israel was being destroyed (the Hosea 4 verses from yesterday's reading). Yesterday's John 17:3 said eternal life <em>is</em> knowing God and Jesus Christ whom He sent. The lack of knowledge that wounds the relationship with God is not the absence of facts; it is the absence of the relational, embodied, daily, lived-in kind of knowing that lets the Father shape the actual shape of our days.</p>
-          </div>
-        </div>
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Proverbs 24:13-14</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/PRO.24.13-14" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Eat honey, my son, for it is good, and the honeycomb is sweet to your palate; realize that wisdom is the same for you. If you find it, you have a future, and your hope will not be dashed."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Solomon ends the same chapter with one of the loveliest images in the whole book. Wisdom on the palate is honey on the tongue. The Hebrew noun for "palate" is <em>chek</em>, the same word Psalm 119:103 uses to say the Word was sweeter than honey to the psalmist's mouth. The honey Solomon names here is not a metaphor for vague pleasant feelings about godly knowledge. It is the actual taste of a person whose interior life has been formed by reading God's words slowly, repeating them, carrying them, loving them.</p>
-            <p>The promise on the end is what makes the verse a gift. "If you find it, you have a future, and your hope will not be dashed." The relational knowing that comes through the Word is a future-securing knowledge. It does not just answer this morning's question; it builds the foundation that the storm of Thursday's Sermon-on-the-Mount parable could not collapse. The lack of knowledge that wrecks a relationship with God is the lack of this kind of sustained, sweet, daily palate-feeding. The presence of it builds a house that holds.</p>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- 4. STILL SPEAKING -->
@@ -941,22 +911,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/MAT.5.17" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Matthew+5:17-18&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -985,8 +975,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -995,18 +987,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -1014,6 +1010,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -1033,6 +1030,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

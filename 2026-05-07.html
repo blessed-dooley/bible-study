@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -721,8 +750,8 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="section-heading">The Forty-Day Floor</div>
-      <p>The Bible repeatedly notes that Moses prayed lying on the floor for forty days and forty nights at a time. Twice. Once after the calf, again after the spies came back from the promised land with a report that scared the nation into mutiny. The detail is almost easy to miss because we are accustomed to forty-day fasts in Bible stories, but the floor matters. Moses did not retreat to a comfortable chair. He prostrated himself on the dirt outside the tent of meeting, and the only food in the room was the prayer. <a class="vlink" href="https://www.bible.com/bible/1713/DEU.9.25" target="_blank">Deuteronomy 9:25</a> describes one of those vigils with a single word: prostrate. <a class="vlink" href="https://www.bible.com/bible/1713/DEU.10.10" target="_blank">Deuteronomy 10:10</a> tells us the second one ended with God listening and refusing to destroy them. Forty days at a time, multiple times across forty years, all of it for a people who would not have done the same for him.</p>
-      <p>Moses' prayer life was relentless from the first crisis to the last. When the water at Marah was bitter, he cried out and the wood went into the water in <a class="vlink" href="https://www.bible.com/bible/1713/EXO.15.25" target="_blank">Exodus 15:25</a>. When the people thirsted, he cried out and water came from the rock in <a class="vlink" href="https://www.bible.com/bible/1713/EXO.17.2-6" target="_blank">Exodus 17:2-6</a>. When leadership broke him, he prayed God would just kill him in <a class="vlink" href="https://www.bible.com/bible/1713/NUM.11.11-15" target="_blank">Numbers 11:11-15</a>, and then he asked an honest math question about how to feed two million people in <a class="vlink" href="https://www.bible.com/bible/1713/NUM.11.21-22" target="_blank">Numbers 11:21-22</a>. When the spies came back terrified, he stood between God's anger and the camp's mutiny in <a class="vlink" href="https://www.bible.com/bible/1713/NUM.14.11-15" target="_blank">Numbers 14:11-15</a>. By the time we arrive at our anchor passage, Moses' prayer life is a bridge the nation has been crossing for years without realizing it.</p>
+      <p>The Bible repeatedly notes that Moses prayed lying on the floor for forty days and forty nights at a time. Twice. Once after the calf, again after the spies came back from the promised land with a report that scared the nation into mutiny. The detail is almost easy to miss because we are accustomed to forty-day fasts in Bible stories, but the floor matters. Moses did not retreat to a comfortable chair. He prostrated himself on the dirt outside the tent of meeting, and the only food in the room was the prayer. <a class="vlink" href="https://www.bible.com/bible/3034/DEU.9.25" target="_blank" rel="noopener">Deuteronomy 9:25</a> describes one of those vigils with a single word: prostrate. <a class="vlink" href="https://www.bible.com/bible/3034/DEU.10.10" target="_blank" rel="noopener">Deuteronomy 10:10</a> tells us the second one ended with God listening and refusing to destroy them. Forty days at a time, multiple times across forty years, all of it for a people who would not have done the same for him.</p>
+      <p>Moses' prayer life was relentless from the first crisis to the last. When the water at Marah was bitter, he cried out and the wood went into the water in <a class="vlink" href="https://www.bible.com/bible/3034/EXO.15.25" target="_blank" rel="noopener">Exodus 15:25</a>. When the people thirsted, he cried out and water came from the rock in <a class="vlink" href="https://www.bible.com/bible/3034/EXO.17.2-6" target="_blank" rel="noopener">Exodus 17:2-6</a>. When leadership broke him, he prayed God would just kill him in <a class="vlink" href="https://www.bible.com/bible/3034/NUM.11.11-15" target="_blank" rel="noopener">Numbers 11:11-15</a>, and then he asked an honest math question about how to feed two million people in <a class="vlink" href="https://www.bible.com/bible/3034/NUM.11.21-22" target="_blank" rel="noopener">Numbers 11:21-22</a>. When the spies came back terrified, he stood between God's anger and the camp's mutiny in <a class="vlink" href="https://www.bible.com/bible/3034/NUM.14.11-15" target="_blank" rel="noopener">Numbers 14:11-15</a>. By the time we arrive at our anchor passage, Moses' prayer life is a bridge the nation has been crossing for years without realizing it.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -735,29 +764,29 @@ if ('serviceWorker' in navigator) {
 
       <p>The most astonishing prayer in the Old Testament is two verses long. Moses has come down from Sinai with the Ten Commandments. He has watched the people dance around a calf made from melted earrings. He has ground the calf to powder, made the people drink it, ordered three thousand executions, and then walked back up the mountain alone to confess. The God who had just been ready to start the nation over with Moses' descendants instead listens to Moses ask Him to do something else.</p>
 
+<!-- BSB_BLOCK: Exodus 32:31-32 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b8284aa66bd1dc04bed13392ce687d8a2116179c3189ac53c88e9f5be6ff729b | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Exodus 32:31-32</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/EXO.32.31-32" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/EXO.32.31-32" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"So Moses returned to the LORD and said, 'Oh, these people have committed a grave sin; they have made a god of gold for themselves. Now if you would only forgive their sin. But if not, please erase me from the book you have written.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 31">31</sup>So Moses returned to the LORD and said, “Oh, what a great sin these people have committed! They have made gods of gold for themselves. <sup class="verse-number" aria-label="Verse 32">32</sup>Yet now, if You would only forgive their sin.... But if not, please blot me out of the book that You have written.”</div>
+<div class="verse-commentary">
           <p>Read those two verses again. Moses does not minimize the sin. He calls it grave. He does not excuse anyone. He does not say the people meant well, or that the calf was a misunderstanding, or that Aaron was just trying to keep the peace. The intercession works because the honesty works. Moses asks God to forgive the people, and then, if forgiveness is not on the table, asks God to erase him along with them. Substitution is being whispered in the Old Testament long before the cross is built.</p>
-          <p>The Hebrew verb behind "erase me" is *machah*, the same word God had warned Moses He would use to blot out idolaters from His record in <a class="vlink" href="https://www.bible.com/bible/1713/EXO.32.9-14" target="_blank">Exodus 32:9-14</a> ("Now leave me alone, so that my anger can burn against them"). Moses heard the word and answered with the same word, only he asked God to apply it to him. *Machah* literally means to wipe, to erase by abrasion, the action of dragging a wet cloth across a tablet until the writing is gone. Moses is saying, if You wipe them, wipe me first.</p>
-          <p>There is a long thread behind this prayer. Earlier in <a class="vlink" href="https://www.bible.com/bible/1713/EXO.33.13" target="_blank">Exodus 33:13</a> Moses had asked, "show me your ways," because his job description required him to be in step with God's mercy. Yet he had also reminded God of the love that grounded the covenant in <a class="vlink" href="https://www.bible.com/bible/1713/DEU.7.8" target="_blank">Deuteronomy 7:8</a> and of God's leading in the wilderness in <a class="vlink" href="https://www.bible.com/bible/1713/DEU.8.2" target="_blank">Deuteronomy 8:2</a>. The book Moses asks to be erased from is not a metaphor; it is the Lord's living register of His covenant people. Moses is offering to be cut off from God's family in order to keep the family. God's answer in the next verse is gracious and firm: He will not strike Moses' name out. But the offer has been made, and the Bible records it because the Bible knows it points toward Someone who would not have to make the offer hypothetically.</p>
+          <p>The Hebrew verb behind "erase me" is *machah*, the same word God had warned Moses He would use to blot out idolaters from His record in <a class="vlink" href="https://www.bible.com/bible/3034/EXO.32.9-14" target="_blank" rel="noopener">Exodus 32:9-14</a> ("Now leave me alone, so that my anger can burn against them"). Moses heard the word and answered with the same word, only he asked God to apply it to him. *Machah* literally means to wipe, to erase by abrasion, the action of dragging a wet cloth across a tablet until the writing is gone. Moses is saying, if You wipe them, wipe me first.</p>
+          <p>There is a long thread behind this prayer. Earlier in <a class="vlink" href="https://www.bible.com/bible/3034/EXO.33.13" target="_blank" rel="noopener">Exodus 33:13</a> Moses had asked, "show me your ways," because his job description required him to be in step with God's mercy. Yet he had also reminded God of the love that grounded the covenant in <a class="vlink" href="https://www.bible.com/bible/3034/DEU.7.8" target="_blank" rel="noopener">Deuteronomy 7:8</a> and of God's leading in the wilderness in <a class="vlink" href="https://www.bible.com/bible/3034/DEU.8.2" target="_blank" rel="noopener">Deuteronomy 8:2</a>. The book Moses asks to be erased from is not a metaphor; it is the Lord's living register of His covenant people. Moses is offering to be cut off from God's family in order to keep the family. God's answer in the next verse is gracious and firm: He will not strike Moses' name out. But the offer has been made, and the Bible records it because the Bible knows it points toward Someone who would not have to make the offer hypothetically.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Exodus 34:6 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:e21be0379bba8a0f8e28d9c673c96f47ca39c91afbd3f2bb50cd80686c19aa09 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Exodus 34:6</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/EXO.34.6" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/EXO.34.6" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"The LORD passed in front of him and proclaimed: The LORD &mdash; the LORD is a compassionate and gracious God, slow to anger and abounding in faithful love and truth,"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>After the calf, Moses had asked God to show him His glory, and the answer turned out to be a name. God's *kavod* is not light or thunder; it is character. He proclaims His own name out loud while Moses crouches in the cleft of the rock, and the words "compassionate, gracious, slow to anger, abounding in faithful love and truth" are the doctrinal source code Moses prays from for the rest of his life. Every intercession he offers afterward is grounded in this self-disclosure. Moses prays as he does because he has been told, by God's own mouth, what kind of God he is talking to. We have been told the same. Whoever knows this name as Moses came to know it can pray with the same boldness, the same patience under "no" answers in <a class="vlink" href="https://www.bible.com/bible/1713/DEU.3.23-29" target="_blank">Deuteronomy 3:23-29</a>, and the same persistence Jesus would later commend in the parable of the widow in <a class="vlink" href="https://www.bible.com/bible/1713/LUK.18.1-8" target="_blank">Luke 18:1-8</a>. The shape of Moses' prayer life is a portrait of the God who taught him to pray.</p>
+        <div class="verse-text">Then the LORD passed in front of Moses and called out: “The LORD, the LORD God, is compassionate and gracious, slow to anger, abounding in loving devotion and faithfulness,</div>
+<div class="verse-commentary">
+          <p>After the calf, Moses had asked God to show him His glory, and the answer turned out to be a name. God's *kavod* is not light or thunder; it is character. He proclaims His own name out loud while Moses crouches in the cleft of the rock, and the words "compassionate, gracious, slow to anger, abounding in faithful love and truth" are the doctrinal source code Moses prays from for the rest of his life. Every intercession he offers afterward is grounded in this self-disclosure. Moses prays as he does because he has been told, by God's own mouth, what kind of God he is talking to. We have been told the same. Whoever knows this name as Moses came to know it can pray with the same boldness, the same patience under "no" answers in <a class="vlink" href="https://www.bible.com/bible/3034/DEU.3.23-29" target="_blank" rel="noopener">Deuteronomy 3:23-29</a>, and the same persistence Jesus would later commend in the parable of the widow in <a class="vlink" href="https://www.bible.com/bible/3034/LUK.18.1-8" target="_blank" rel="noopener">Luke 18:1-8</a>. The shape of Moses' prayer life is a portrait of the God who taught him to pray.</p>
         </div>
       </div>
     </div>
@@ -795,7 +824,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Moses said, "blot me out," and God said no, because the man who would actually be blotted out was already in the family tree, on a long descending arc that would end on a Roman cross. When Jesus cried out in the ninth hour, "My God, my God, why have you forsaken me?" the question Moses had only offered hypothetically was being answered for real. The book of life had a name lifted from it. The wet cloth of judgment dragged across the page. Three days later, the name was written back in, and so was every name that trusts the Substitute. Moses was a foreshadow. Christ is the substance. Today the High Priest of <a class="vlink" href="https://www.bible.com/bible/1713/EXO.32.31-32" target="_blank">Exodus 32:31-32</a>'s shape, who already lives to make intercession for us, prays the prayer Moses could only sketch. Every believer's name in the book is held there by His blood.</p>
+      <p>Moses said, "blot me out," and God said no, because the man who would actually be blotted out was already in the family tree, on a long descending arc that would end on a Roman cross. When Jesus cried out in the ninth hour, "My God, my God, why have you forsaken me?" the question Moses had only offered hypothetically was being answered for real. The book of life had a name lifted from it. The wet cloth of judgment dragged across the page. Three days later, the name was written back in, and so was every name that trusts the Substitute. Moses was a foreshadow. Christ is the substance. Today the High Priest of <a class="vlink" href="https://www.bible.com/bible/3034/EXO.32.31-32" target="_blank" rel="noopener">Exodus 32:31-32</a>'s shape, who already lives to make intercession for us, prays the prayer Moses could only sketch. Every believer's name in the book is held there by His blood.</p>
     </div>
 
     <!-- 8. PERSONAL APPLICATION CHALLENGE -->
@@ -832,22 +861,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/EXO.32.31-32" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Exodus+32:31-32&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -862,6 +911,7 @@ if ('serviceWorker' in navigator) {
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 <script>
+// Push notification opt-in
 (function() {
   var firebaseConfig = {
     apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
@@ -872,8 +922,13 @@ if ('serviceWorker' in navigator) {
     appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
     measurementId: "G-BY2BM5HTX4"
   };
+
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
+
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
+
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -881,32 +936,51 @@ if ('serviceWorker' in navigator) {
   function setCookie(name, value) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') { initFirebaseAndRegister(); return; }
+
+  // If already opted in, silently ensure token is current
+  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
+    initFirebaseAndRegister();
+    return;
+  }
+
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
+
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
+
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
     setCookie('dbs_notif', 'yes');
     initFirebaseAndRegister();
   };
+
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
     setCookie('dbs_notif', 'no');
   };
+
   function initFirebaseAndRegister() {
     try {
       if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
       var messaging = firebase.messaging();
       var db = firebase.firestore();
+
       navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({ vapidKey: VAPID_KEY, serviceWorkerRegistration: swReg });
+        return messaging.getToken({
+          vapidKey: VAPID_KEY,
+          serviceWorkerRegistration: swReg
+        });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,
@@ -914,8 +988,12 @@ if ('serviceWorker' in navigator) {
             userAgent: navigator.userAgent.substring(0, 100)
           }, { merge: true });
         }
-      }).catch(function(err) { console.log('Notification setup error:', err); });
-    } catch(e) { console.log('Firebase init error:', e); }
+      }).catch(function(err) {
+        console.log('Notification setup error:', err);
+      });
+    } catch(e) {
+      console.log('Firebase init error:', e);
+    }
   }
 })();
 </script>

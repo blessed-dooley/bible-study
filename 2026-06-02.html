@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -722,7 +751,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The First Word in the Public Story of Jesus</div>
       <p>Israel had not heard a prophet for somewhere around four centuries when a man in camel hair walked out of the Judean wilderness, set up next to the Jordan River about fifteen miles east of Jerusalem, and began doing two things first-century Jews did not expect to see together. He preached. And he baptized. The preaching word was old. The baptizing word was the problem. Ritual immersion in a <em>mikveh</em> existed all over Jewish life (every observant Jew immersed before festival days, after childbirth, after contact with the dead), and Gentile converts were required to immerse when they entered the covenant. What John was doing was different. He was telling Jewish people, fully inside the covenant, that their religion was not enough on its own. They needed to come into the river the same way a Gentile would, as if they were starting their relationship with God from the beginning.</p>
-      <p>That was scandalous, and the temple knew it. The Pharisees came down to ask him what he thought he was doing. John's answer, recorded in <a class="vlink" href="https://www.bible.com/bible/1713/MAT.3.1-2" target="_blank">Matthew 3:1-2</a>, was one imperative verb: <em>metanoeite</em>. Then Jesus walked down to the same river, asked to be baptized, and a few weeks later began His own ministry in Galilee with the same word. <a class="vlink" href="https://www.bible.com/bible/1713/MRK.1.14-15" target="_blank">Mark 1:14-15</a> records it: "The time is fulfilled, and the kingdom of God is at hand. Repent and believe in the gospel." The first public sentence of the gospel from both directions was the same imperative. Repentance is not a footnote tucked at the back of the Christian message. It is the doorway. By the time Peter is preaching in Solomon's portico after the resurrection (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.24.46-47" target="_blank">Luke 24:46-47</a> says Jesus Himself laid down the pattern in the upper room: that "repentance for the forgiveness of sins should be preached in His name to all nations"), the inaugural word has become the worldwide one.</p>
+      <p>That was scandalous, and the temple knew it. The Pharisees came down to ask him what he thought he was doing. John's answer, recorded in <a class="vlink" href="https://www.bible.com/bible/3034/MAT.3.1-2" target="_blank" rel="noopener">Matthew 3:1-2</a>, was one imperative verb: <em>metanoeite</em>. Then Jesus walked down to the same river, asked to be baptized, and a few weeks later began His own ministry in Galilee with the same word. <a class="vlink" href="https://www.bible.com/bible/3034/MRK.1.14-15" target="_blank" rel="noopener">Mark 1:14-15</a> records it: "The time is fulfilled, and the kingdom of God is at hand. Repent and believe in the gospel." The first public sentence of the gospel from both directions was the same imperative. Repentance is not a footnote tucked at the back of the Christian message. It is the doorway. By the time Peter is preaching in Solomon's portico after the resurrection (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.24.46-47" target="_blank" rel="noopener">Luke 24:46-47</a> says Jesus Himself laid down the pattern in the upper room: that "repentance for the forgiveness of sins should be preached in His name to all nations"), the inaugural word has become the worldwide one.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -735,42 +764,39 @@ if ('serviceWorker' in navigator) {
 
       <p>Peter is preaching the second sermon of the church on Solomon's portico after the lame man at the Beautiful Gate has been healed in the name of Jesus. The crowd is large; the priests are coming. The anchor today is the two sentences Peter says about repentance in front of that crowd, the kindness clause Paul writes to the Romans about what powers it, and the warning Jesus pairs with the gospel of John's vine. Three angles on one Greek verb. By the close of the section we will see why both John in the Jordan and Jesus in Galilee opened with the same word.</p>
 
+<!-- BSB_BLOCK: Acts 3:18-19 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:33dd7268ac09d985079b45cfdbf59d313acfd090f1895cf2ac27bcb7fa4a8bac | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Acts 3:18-19</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ACT.3.18-19" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ACT.3.18-19" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"But what God predicted through the mouth of all the prophets&mdash;that his Messiah would suffer&mdash;he has fulfilled in this way. Therefore repent and turn back, so that your sins may be wiped out, that seasons of refreshing may come from the presence of the Lord."</div>
-
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 18">18</sup>But in this way God has fulfilled what He foretold through all the prophets, saying that His Christ would suffer. <sup class="verse-number" aria-label="Verse 19">19</sup>Repent, then, and turn back, so that your sins may be wiped away,</div>
+<div class="verse-commentary">
           <p>Peter uses two action words back to back. First, change your mind. Then, turn around, the word a ship's pilot uses to swing the boat onto a new heading. That's the two-part shape of repentance: honestly admitting what's wrong, then actually walking a different direction. And Peter knew the route, because this is the same man who had denied Jesus three times and still found his way back. Look at what's waiting on the other side of the turn. Your sins get "wiped out," the way you erase ink off a page or stamp a debt paid in full. And then come "times of refreshing," a Greek word, <em>anapsyxis</em>, that shows up only once in the whole New Testament and means the cool breath you finally take at the top of a long hill. Notice the order, too. Christ suffered, therefore repent. The repentance doesn't pay for your sin, because the cross already did that. Repentance is just the open hand reaching out for what's already been bought.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Romans 2:4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:18045b5eb580de560048826f1e2986e48e9a674df5d9a3daf204e493560997e2 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Romans 2:4</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ROM.2.4" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.2.4" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Or do you despise the riches of his kindness, restraint, and patience, not understanding that God's kindness is intended to lead you to repentance?"</div>
-
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>The word Paul uses for God's "kindness" here isn't mild niceness. It's kindness that costs the giver something, kindness with skin in the game. Paul stacks two more words next to it: God holding back a hand that has every right to come down, and God being "long-tempered," the exact opposite of a short fuse. Then the sentence does something beautiful. That kindness "leads" us to repentance, and the word for leads is the one a shepherd uses to gently guide the flock, not the prod a driver jabs them with. So the thing that actually turns us around isn't fear or shame. It's getting to experience how kind God is. <a class="vlink" href="https://www.bible.com/bible/1713/REV.3.19" target="_blank">Revelation 3:19</a> says Jesus corrects the people He loves and tells a lukewarm church to turn back, so the discipline and the love are the same thing. And <a class="vlink" href="https://www.bible.com/bible/1713/2PE.3.9" target="_blank">2 Peter 3:9</a> says the Lord isn't slow about His promise, He's patient, "not wanting any to perish." What looks like God being slow is really God holding the door open one more year.</p>
+        <div class="verse-text">Or do you disregard the riches of His kindness, tolerance, and patience, not realizing that God’s kindness leads you to repentance?</div>
+<div class="verse-commentary">
+          <p>The word Paul uses for God's "kindness" here isn't mild niceness. It's kindness that costs the giver something, kindness with skin in the game. Paul stacks two more words next to it: God holding back a hand that has every right to come down, and God being "long-tempered," the exact opposite of a short fuse. Then the sentence does something beautiful. That kindness "leads" us to repentance, and the word for leads is the one a shepherd uses to gently guide the flock, not the prod a driver jabs them with. So the thing that actually turns us around isn't fear or shame. It's getting to experience how kind God is. <a class="vlink" href="https://www.bible.com/bible/3034/REV.3.19" target="_blank" rel="noopener">Revelation 3:19</a> says Jesus corrects the people He loves and tells a lukewarm church to turn back, so the discipline and the love are the same thing. And <a class="vlink" href="https://www.bible.com/bible/3034/2PE.3.9" target="_blank" rel="noopener">2 Peter 3:9</a> says the Lord isn't slow about His promise, He's patient, "not wanting any to perish." What looks like God being slow is really God holding the door open one more year.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: John 15:2 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:5d7cb2d6d3fac4a4b164a3dc89f43c78769b1ad9b412346545d529da7652bf71 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">John 15:2</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.15.2" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.15.2" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Every branch in me that does not produce fruit he removes, and he prunes every branch that produces fruit so that it will produce more fruit."</div>
-
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Here Jesus shows a second tool in the Gardener's hand: the pruning knife. Pruning sounds harsh, but it's the careful cut a grower makes on a healthy branch so it will grow even more fruit, and in Greek the word for pruning is a close cousin of the word for "clean." Pruning is cleansing. Repentance is the moment we let the Gardener cut away whatever is keeping us from becoming what we could be. The fruit He's after is named a few verses later, a life that points other people to the Father (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.15.8" target="_blank">John 15:8</a>). John the Baptist used the same picture, telling people to "bear fruit that proves your repentance" (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.3.8" target="_blank">Matthew 3:8</a>). And Paul boiled the whole thing down to "repentance toward God and faith in our Lord Jesus" (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.20.21" target="_blank">Acts 20:21</a>), two things that are really one motion, like the two chambers of a single heart. The shears are kind, and the cutting brings life, which is exactly how the first church described it: God "granted repentance that leads to life" (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.11.18" target="_blank">Acts 11:18</a>). <a class="vlink" href="https://www.bible.com/bible/1713/1JN.1.9" target="_blank">1 John 1:9</a> says it in even fewer words.</p>
+        <div class="verse-text"><span class="words-of-jesus">He cuts off every branch in Me that bears no fruit, and every branch that does bear fruit, He prunes to make it even more fruitful.</span></div>
+<div class="verse-commentary">
+          <p>Here Jesus shows a second tool in the Gardener's hand: the pruning knife. Pruning sounds harsh, but it's the careful cut a grower makes on a healthy branch so it will grow even more fruit, and in Greek the word for pruning is a close cousin of the word for "clean." Pruning is cleansing. Repentance is the moment we let the Gardener cut away whatever is keeping us from becoming what we could be. The fruit He's after is named a few verses later, a life that points other people to the Father (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.15.8" target="_blank" rel="noopener">John 15:8</a>). John the Baptist used the same picture, telling people to "bear fruit that proves your repentance" (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.3.8" target="_blank" rel="noopener">Matthew 3:8</a>). And Paul boiled the whole thing down to "repentance toward God and faith in our Lord Jesus" (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.20.21" target="_blank" rel="noopener">Acts 20:21</a>), two things that are really one motion, like the two chambers of a single heart. The shears are kind, and the cutting brings life, which is exactly how the first church described it: God "granted repentance that leads to life" (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.11.18" target="_blank" rel="noopener">Acts 11:18</a>). <a class="vlink" href="https://www.bible.com/bible/3034/1JN.1.9" target="_blank" rel="noopener">1 John 1:9</a> says it in even fewer words.</p>
         </div>
       </div>
     </div>
@@ -798,7 +824,7 @@ if ('serviceWorker' in navigator) {
       <div class="section-heading">The Argument That Moved Recidivism</div>
       <p>In May 2025 the journal <em>Psychosocial Intervention</em> published a systematic review and meta-analysis by Pinto e Silva, Gouveia, Santirso, Cunha, and Caridade at the University of Minho in Portugal, pooling twenty-two studies on a counseling method called motivational interviewing (MI) and its use with people sentenced for intimate partner violence, violent crime, sexual offenses, drug offenses, and driving offenses. Sample sizes ran from twenty-five to five hundred and twenty-eight across the studies. The treatment was strikingly modest, between one and six conversations with a trained interviewer. The question the meta-analysis asked is the question this Tuesday is asking: when a person needs to stop doing something they have been doing, what actually moves the verb?</p>
       <p>The results read like Acts 3:19 in clinical English. MI sessions, the style of counseling that refuses to confront and instead draws out the client's own reasons for change, increased session attendance and reduced dropout compared with the older directive approaches. More importantly, the meta-analysis found a statistically significant reduction in official recidivism for the MI groups. People who had been ordered into the room by a judge did better, often after one to six conversations, when the conversation took the kindness route into the turn instead of the shouting one.</p>
-      <p>Paul made the same observation in <a class="vlink" href="https://www.bible.com/bible/1713/ROM.2.4" target="_blank">Romans 2:4</a> with no clinical trials to lean on. The kindness of God leads us to repentance. The 2025 forensic data is a small academic footnote to a sentence God has been speaking out of the Old Testament for three thousand years. Without the harshness, the plow makes its headland turn cleanly and the next furrow opens straight ahead. The voice in the cab is the one that matters.</p>
+      <p>Paul made the same observation in <a class="vlink" href="https://www.bible.com/bible/3034/ROM.2.4" target="_blank" rel="noopener">Romans 2:4</a> with no clinical trials to lean on. The kindness of God leads us to repentance. The 2025 forensic data is a small academic footnote to a sentence God has been speaking out of the Old Testament for three thousand years. Without the harshness, the plow makes its headland turn cleanly and the next furrow opens straight ahead. The voice in the cab is the one that matters.</p>
     </div>
 
     <!-- 7. CHRIST CONNECTION -->
@@ -845,22 +871,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/ACT.3.18-19" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Acts+3:18-19&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -889,8 +935,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -899,18 +947,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -918,6 +970,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -937,6 +990,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

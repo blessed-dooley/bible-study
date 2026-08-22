@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -717,10 +740,11 @@ if ('serviceWorker' in navigator) {
     <div class="section section-context">
       <div class="section-label">
         <span class="section-emoji">🗺️</span>
-        <span class="section-title">Job Wanted It Carved in Stone</span>
+        <span class="section-title">Historical &amp; Cultural Context</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Job's speeches are full of courtroom language. He talks like a man building a legal case, demanding a hearing, calling for witnesses, insisting he could win if he could only get God in front of a judge. So when he says he wishes his words were "inscribed in stone forever by an iron stylus and lead," he is not being poetic. In the ancient world, the most permanent record a person could make was to have words chiseled into rock and the cut letters filled with molten lead so they would never weather away. Kings did it to record victories. Plaintiffs did it to make a testimony that could outlast their own death and could not be quietly erased by the powerful.</p>
+      <div class="section-heading">Job Wanted It Carved in Stone</div>
+      <p>Job's speeches are full of courtroom language. He talks like a man building a legal case, demanding a hearing, calling for witnesses, insisting he could win if he could only get God in front of a judge. So when he says he wishes his words were "inscribed in a book, by an iron stylus on lead, or chiseled in stone forever," he is not being poetic. In the ancient world, the most permanent record a person could make was to have words chiseled into rock and the cut letters filled with molten lead so they would never weather away. Kings did it to record victories. Plaintiffs did it to make a testimony that could outlast their own death and could not be quietly erased by the powerful.</p>
       <p>That is what Job wants for one sentence. He is afraid he will die before he is vindicated, so he wishes his claim of innocence cut into stone where it will stand after he is gone. And then, reaching for the legal word for the family member whose job was to buy back a relative sold into debt, to avenge his blood, to stand up in court and defend his name, Job says he has a "Redeemer," a kinsman-defender who lives. The Hebrew word is <em>go'el</em>, and it names the relative legally bound to step in when you cannot save yourself. Job cannot see God anywhere, but he stakes everything on the conviction that somewhere he has a Defender who will eventually stand up.</p>
     </div>
 
@@ -732,29 +756,33 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Job has already lost everything. Messengers arrived almost on top of each other with news of raiders and fire (<a class="vlink" href="https://www.bible.com/bible/1713/JOB.1.14-17" target="_blank">Job 1:14-17</a>), and then a wind that collapsed the house on all ten of his children (<a class="vlink" href="https://www.bible.com/bible/1713/JOB.1.18-19" target="_blank">Job 1:18-19</a>), and after that his own body broke out in sores (<a class="vlink" href="https://www.bible.com/bible/1713/JOB.2.7" target="_blank">Job 2:7</a>). His wife told him to curse God and die (<a class="vlink" href="https://www.bible.com/bible/1713/JOB.2.9" target="_blank">Job 2:9</a>). Three friends came and sat with him in silence for seven days (<a class="vlink" href="https://www.bible.com/bible/1713/JOB.2.13" target="_blank">Job 2:13</a>), then broke that silence to argue, speech after speech, that his suffering proved his guilt (<a class="vlink" href="https://www.bible.com/bible/1713/JOB.8" target="_blank">Job 8</a>, <a class="vlink" href="https://www.bible.com/bible/1713/JOB.11" target="_blank">Job 11</a>, <a class="vlink" href="https://www.bible.com/bible/1713/JOB.15" target="_blank">Job 15</a>), that this was simply "the place of one who does not know God" (<a class="vlink" href="https://www.bible.com/bible/1713/JOB.18.21" target="_blank">Job 18:21</a>). His first response had already become famous, that the Lord gave and the Lord has taken away, and blessed be His name (<a class="vlink" href="https://www.bible.com/bible/1713/JOB.1.21" target="_blank">Job 1:21</a>). Now, deeper into the dark, he says something even braver.</p>
+      <p>Job has already lost everything. Messengers arrived almost on top of each other with news of raiders and fire (<a class="vlink" href="https://www.bible.com/bible/3034/JOB.1.14-17" target="_blank" rel="noopener">Job 1:14-17</a>), and then a wind that collapsed the house on all ten of his children (<a class="vlink" href="https://www.bible.com/bible/3034/JOB.1.18-19" target="_blank" rel="noopener">Job 1:18-19</a>), and after that his own body broke out in sores (<a class="vlink" href="https://www.bible.com/bible/3034/JOB.2.7" target="_blank" rel="noopener">Job 2:7</a>). His wife told him to curse God and die (<a class="vlink" href="https://www.bible.com/bible/3034/JOB.2.9" target="_blank" rel="noopener">Job 2:9</a>). Three friends came and sat with him in silence for seven days (<a class="vlink" href="https://www.bible.com/bible/3034/JOB.2.13" target="_blank" rel="noopener">Job 2:13</a>), then broke that silence to argue, speech after speech, that his suffering proved his guilt (<a class="vlink" href="https://www.bible.com/bible/3034/JOB.8" target="_blank" rel="noopener">Job 8</a>, <a class="vlink" href="https://www.bible.com/bible/3034/JOB.11" target="_blank" rel="noopener">Job 11</a>, <a class="vlink" href="https://www.bible.com/bible/3034/JOB.15" target="_blank" rel="noopener">Job 15</a>), that this was simply "the place of one who does not know God" (<a class="vlink" href="https://www.bible.com/bible/3034/JOB.18.21" target="_blank" rel="noopener">Job 18:21</a>). His first response had already become famous, that the Lord gave and the Lord has taken away, and blessed be His name (<a class="vlink" href="https://www.bible.com/bible/3034/JOB.1.21" target="_blank" rel="noopener">Job 1:21</a>). Now, deeper into the dark, he says something even braver.</p>
 
+<!-- BSB_BLOCK: Job 19:23-27 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:3653e5130e2c9d4cf11bae94952c83985950a22b3941b745d8af205071702a5e | footnotes-stripped:4 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Job 19:23-27</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JOB.19.23-27" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JOB.19.23-27" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"I wish that my words were written down, that they were recorded on a scroll or were inscribed in stone forever by an iron stylus and lead! But I know that my Redeemer lives, and at the end he will stand on the dust. Even after my skin has been destroyed, yet I will see God in my flesh. I will see him myself; my eyes will look at him, and not as a stranger. My heart longs within me."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>This is the high point of the whole book, and it comes out of the lowest moment. Job has no evidence things will improve. His body is failing, his friends have turned prosecutor, and God has not said a word. Yet he reaches past all of it to a certainty deeper than his circumstances. His Defender lives, and one day will "stand on the dust," a phrase that pictures a witness rising in court to give the final word. Even more startling, Job expects to see this for himself, in his own body, after his skin has been destroyed. From inside total ruin he is describing a hope that survives the grave. He does not feel any of it. He has decided to know it anyway, and that decision is the bravest sentence in the book.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 23">23</sup>I wish that my words were recorded and inscribed in a book, <sup class="verse-number" aria-label="Verse 24">24</sup>by an iron stylus on lead, or chiseled in stone forever. <sup class="verse-number" aria-label="Verse 25">25</sup>But I know that my Redeemer lives, and in the end He will stand upon the earth. <sup class="verse-number" aria-label="Verse 26">26</sup>Even after my skin has been destroyed, yet in my flesh I will see God. <sup class="verse-number" aria-label="Verse 27">27</sup>I will see Him for myself; my eyes will behold Him, and not as a stranger. How my heart yearns within me!</div>
+<div class="verse-commentary">
+          <p>This is the high point of the whole book, and it comes out of the lowest moment. Job has no evidence things will improve. His body is failing, his friends have turned prosecutor, and God has not said a word. Yet he reaches past all of it to a certainty deeper than his circumstances. His Defender lives, and one day will "stand upon the earth," a phrase that pictures a witness rising in court to give the final word. Even more startling, Job expects to see this for himself, in his own body, after his skin has been destroyed. From inside total ruin he is describing a hope that survives the grave. He does not feel any of it. He has decided to know it anyway, and that decision is the bravest sentence in the book.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Job 19:25 | 19:25 Or Vindicator -->
+      <!-- BSB_FOOTNOTE: Job 19:25 | 19:25 Or on my grave -->
+      <!-- BSB_FOOTNOTE: Job 19:26 | 19:26 Or without my flesh -->
+      <!-- BSB_FOOTNOTE: Job 19:27 | 19:27 Hebrew my kidneys yearn -->
 
+<!-- BSB_BLOCK: Job 23:8-12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:cf68018af71af050523bfd1e404987272b35514c829f6b47cbbb37fdf04dfbd0 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Job 23:8-12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JOB.23.8-12" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JOB.23.8-12" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"If I go east, he is not there, and if I go west, I cannot perceive him. When he is at work to the north, I cannot see him; when he turns south, I cannot find him. Yet he knows the way I have taken; when he has tested me, I will emerge as pure gold. My feet have followed in his tracks; I have kept to his way and not turned aside. I have not departed from the command of his lips; I have treasured the words from his mouth more than my daily food."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Notice the honesty. Job names the absence in every compass direction, east, west, north, south, and admits he cannot locate God in any of them. This is not a man pretending the silence does not hurt. But then he flips it. God may be invisible to Job, but Job is not invisible to God, "he knows the way I have taken." And so Job does the only thing left to do when feeling has run out. He keeps walking the path, keeps treasuring God's words "more than my daily food," and trusts that the testing is not destruction but refining, that he will come out the far side as gold. That is the memory text in Job's mouth, the affliction working its slow way toward proven character and a hope that holds (<a class="vlink" href="https://www.bible.com/bible/1713/ROM.5.3-5" target="_blank">Romans 5:3-5</a>). The same confidence Paul would later put in plain terms, that our momentary troubles are doing eternal work we cannot yet see (<a class="vlink" href="https://www.bible.com/bible/1713/2CO.4.16-18" target="_blank">2 Corinthians 4:16-18</a>).</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 8">8</sup>If I go east, He is not there, and if I go west, I cannot find Him. <sup class="verse-number" aria-label="Verse 9">9</sup>When He is at work in the north, I cannot behold Him; when He turns to the south, I cannot see Him. <sup class="verse-number" aria-label="Verse 10">10</sup>Yet He knows the way I have taken; when He has tested me, I will come forth as gold. <sup class="verse-number" aria-label="Verse 11">11</sup>My feet have followed in His tracks; I have kept His way without turning aside. <sup class="verse-number" aria-label="Verse 12">12</sup>I have not departed from the command of His lips; I have treasured the words of His mouth more than my daily bread.</div>
+<div class="verse-commentary">
+          <p>Notice the honesty. Job names the absence in every compass direction, east, west, north, south, and admits he cannot locate God in any of them. This is not a man pretending the silence does not hurt. But then he flips it. God may be invisible to Job, but Job is not invisible to God, "he knows the way I have taken." And so Job does the only thing left to do when feeling has run out. He keeps walking the path, keeps treasuring God's words "more than my daily bread," and trusts that the testing is not destruction but refining, that he will come out the far side as gold. That is the memory text in Job's mouth, the affliction working its slow way toward proven character and a hope that holds (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.5.3-5" target="_blank" rel="noopener">Romans 5:3-5</a>). The same confidence Paul would later put in plain terms, that our momentary troubles are doing eternal work we cannot yet see (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.4.16-18" target="_blank" rel="noopener">2 Corinthians 4:16-18</a>).</p>
         </div>
       </div>
     </div>
@@ -768,7 +796,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The House in the Dark</div>
       <p>The power cuts out in the middle of the night and you need to get from your bed to the kids' room. There is not one thing you can see. But your feet already know this house. Your hand finds the door frame exactly where it has always been, you count the stairs without counting, you turn at the landing without thinking, because your body has walked this path a thousand times in the light. You are not navigating by sight anymore. You are trusting a route that is in you deeper than your eyes go.</p>
-      <p>That is exactly what Job did when he admitted he could not find God in any direction, east or west, north or south, and then kept walking God's way anyway. The darkness had taken his sight of God, but it had not moved a single wall. The path was right where it had always been. So Job did the only faithful thing left to do in the dark. He kept his feet on the road he already knew, treasuring God's words "more than my daily food," precisely on the days he could feel nothing at all. And notice the sentence that holds the whole thing up. It is not "I can see Him." It is "He knows the way I have taken." You can be completely blind in the hallway and still be fully known by the One who built the house. Keep walking the path you learned in the light. It has not moved.</p>
+      <p>That is exactly what Job did when he admitted he could not find God in any direction, east or west, north or south, and then kept walking God's way anyway. The darkness had taken his sight of God, but it had not moved a single wall. The path was right where it had always been. So Job did the only faithful thing left to do in the dark. He kept his feet on the road he already knew, treasuring God's words "more than my daily bread," precisely on the days he could feel nothing at all. And notice the sentence that holds the whole thing up. It is not "I can see Him." It is "He knows the way I have taken." You can be completely blind in the hallway and still be fully known by the One who built the house. Keep walking the path you learned in the light. It has not moved.</p>
     </div>
 
     <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
@@ -827,22 +855,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/JOB.19.23-27" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Job+19:23-27&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

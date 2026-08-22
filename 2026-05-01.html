@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -469,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -532,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -550,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -611,7 +648,7 @@
     white-space: nowrap;
   }
 
-  /* ── DEEPER QUESTIONS ── */
+  /* LEGACY DEEPER QUESTIONS: retained only so archived Friday bodies can still be reassembled */
   .dq-block {
     margin: 28px 0;
     padding: 0;
@@ -707,16 +744,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/bible-study/sw.js')
-      .catch(function(err) { console.log('SW registration failed:', err); });
-  });
-}
-</script>
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -778,67 +805,58 @@ if ('serviceWorker' in navigator) {
       <p>The week has placed us inside that long chain. Whatever time you chose, whatever chair you picked, whatever pen you used, whatever friend you texted, whatever verse you read out loud before bed, you were doing something older than electricity. You were doing what faithful readers have always done, and you were discovering what they always discover: the Bible does not open itself to the person who demands it; it opens to the person who sits down with it, quietly, again and again, until the old habit becomes a new appetite.</p>
     </div>
 
-    <!-- 3. DEEPER QUESTIONS -->
+    <!-- 3. WHAT THIS WEEK CLARIFIES -->
     <div class="section">
       <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Deeper Questions</span>
+        <span class="section-emoji">💡</span>
+        <span class="section-title">What This Week Clarifies</span>
         <div class="section-title-line"></div>
       </div>
 
-      <p>Three questions to sit with this weekend. Do not rush them. Take one per sitting, write your answer in the notebook you used earlier in the week, and if you can, bring the answers to one of the conversations you started on Wednesday. The questions are meant to be chewed on, not checked off.</p>
+      <p>Six days of unglamorous practice leave behind a few honest tensions, the kind a reader feels but rarely says out loud. The week already answered them. Three of those answers are worth hearing slowly before a new week starts.</p>
 
-      <!-- DQ1: Attitude -->
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">1</span>
-          <div class="dq-question">What attitude do you usually bring to the Bible when you open it, and why does humility turn out to be the one posture the Word actually responds to?</div>
+      <div class="section-heading">The Seed Was Never the Problem</div>
+      <p>Sabbath set down a promise with no loophole in it. The Word that goes out of God's mouth does not come back empty. Then the week handed us five days of assignments, an earlier alarm, a chosen chair, a pen, a friend, a slow third reading, as if everything depended on us after all. Held side by side, the promise and the homework look like they are pulling in opposite directions. A Word that cannot fail should not need my calendar.</p>
+
+<!-- BSB_BLOCK: Isaiah 55:11 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:85e7bb4751c14773f436dabb0ba1999ac0de8460c64faa420363d77f6182b738 | footnotes-stripped:0 | poetry:flattened -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Isaiah 55:11</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ISA.55.11" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Isaiah 66:2</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/ISA.66.2" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"My hand made all these things, and so they all came into being. This is the LORD's declaration. I will look favorably on this kind of person: one who is humble, submissive in spirit, and trembles at my word."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">The God who holds the galaxies in one hand names the three-word combination that gets His attention: humble, submissive, and trembling at His Word. The Hebrew verb for "tremble," <em>chared</em>, is a physical reaction, not a polite agreement. It means to shake slightly in the presence of something more real than you. Humility at the open Bible is not a pose; it is the honest acknowledgment that the Book on your lap is alive, and the life inside it is older and heavier than you. The reader who arrives bored will stay bored. The reader who arrives trembling will be met. The prideful reader never sees God inside the pages because pride is the one lens through which He cannot be seen.</div>
+        <div class="verse-text">so My word that proceeds from My mouth will not return to Me empty, but it will accomplish what I please, and it will prosper where I send it.</div>
+<div class="verse-commentary">
+          <p>Read the promise closely and the homework starts to make sense. The Word accomplishes what God pleases and prospers where He sends it. Nothing in the verse depends on the reader's talent, and nothing in the week ever pretended otherwise. Sabbath said it in one line. The problem is never the seed, only the ground. An earlier alarm does not add one ounce of power to Scripture. Neither does the chair, the pen, or the friend across the table. What they do is move us into the path of the rain, the way a farmer cannot make a single drop fall but can absolutely decide what his field is doing when it lands. The five practices are not a way of helping God's Word work. They are a way of standing where it is already working. The promise carries the power. The practices just show up for it.</p>
         </div>
       </div>
 
-      <!-- DQ2: Opinions to lay aside -->
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">2</span>
-          <div class="dq-question">Are there opinions you have been carrying into the Bible that you need to lay down at the door (favorite interpretations, political commitments, preferred verses that comfort you and avoided ones that press), and how might you begin praying about them this weekend?</div>
-        </div>
+      <div class="section-heading">The Deserted Place Feeds a Crowded Table</div>
+      <p>The week seemed to give two opposite commands. Sunday and Monday sent us away from people, into the dark hour and the deserted place (<a class="vlink" href="https://www.bible.com/bible/3034/MRK.1.35" target="_blank" rel="noopener">Mark 1:35</a>), behind a door nobody else can open. Wednesday turned around and called the solo reader the rarest kind in the whole story, and said a private Bible cannot ask us the questions we most need to hear. Follow both instructions at face value and you end up dizzy, told to leave the room and stay at the table in the same breath.</p>
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Isaiah 55:8-9</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/ISA.55.8-9" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">""For my thoughts are not your thoughts, and your ways are not my ways." This is the LORD's declaration. "For as heaven is higher than earth, so my ways are higher than your ways, and my thoughts than your thoughts.""</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">This sits three verses before the memory text of the week. Before Isaiah promises that God's Word will not return empty, he warns that God's Word does not come shaped like our thinking. The gap between His thoughts and ours is the altitude between earth and heaven. That is an uncomfortable altitude. It means most of the work of serious Bible study is the slow submission of our pre-formed theories to a text that will correct them. The passages we keep coming back to are often the ones that already agree with us; the passages we skip are the ones that would change us. Weekend prayer that names the specific chapters you have been avoiding is the beginning of the repair. God does not require us to arrive at the Book with perfect opinions. He requires us to arrive with opinions loose enough that His can replace them.</div>
+<!-- BSB_BLOCK: Isaiah 50:4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:449d09c31764af5d48929f649509aa64560fb7158fe80d57e2d07cc5ab880440 | footnotes-stripped:0 | poetry:flattened -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Isaiah 50:4</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ISA.50.4" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">The Lord GOD has given Me the tongue of discipleship, to sustain the weary with a word. He awakens Me morning by morning; He awakens My ear to listen as a disciple.</div>
+<div class="verse-commentary">
+          <p>Isaiah saw the two commands as one circuit. Look at the traffic pattern inside the verse. The ear is awakened first, morning by morning, in the quiet where only the Teacher is talking. The tongue comes second, and it exists for one job, to sustain the weary with a word. Wednesday named the direction plainly. The Word is received vertically so that it can be passed horizontally. That is why the deserted place and the shared table never compete. The dark morning is where the sustaining word gets loaded. The conversation at noon is where it gets delivered. A believer who only ever sits alone is a full warehouse with no truck, and a believer who only ever talks is a truck that never gets loaded. The week was not contradicting itself. It was drawing the whole route.</p>
         </div>
       </div>
 
-      <!-- DQ3: Originality as stumbling block -->
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">3</span>
-          <div class="dq-question">How can the hunger for something "new and innovative" in Bible interpretation become a stumbling block in a person's walk with God, and what keeps a serious reader anchored to the old meaning the text has always carried?</div>
-        </div>
+      <div class="section-heading">Nothing Is Wrong with the Honey</div>
+      <p>Thursday made the week's boldest claim, that the Book on the table actually tastes sweeter than honey. Plenty of honest readers wince at that verse. They have kept the morning time, sat in the chosen chair, copied the verse out by hand, and the reading still tastes like nothing much, the way water does. It would be easy to hear the psalmist's honey and conclude that the sweetness is reserved for a different kind of Christian.</p>
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">2 Timothy 4:3-4</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/2TI.4.3-4" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"For the time will come when people will not tolerate sound doctrine, but according to their own desires, will multiply teachers for themselves because they have an itch to hear what they want to hear. They will turn away from hearing the truth and will turn aside to myths."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">Paul's diagnosis is surgical. People will not reject Scripture outright; they will just keep shopping for teachers until they find the one whose interpretation scratches the itch they brought in. The Greek phrase <em>knethomenoi ten akoen</em>, "having their ears tickled," describes a listener who goes from teacher to teacher in search of novelty. Originality becomes a stumbling block the moment it outranks fidelity to the plain meaning of the text. The antidote is the week's practice in miniature: stay with one chapter long enough to hear what it has always been saying, read it alongside one honest companion who will push back if the reading is bending toward your preference, and trust that the ancient meaning of the Book is still the meaning most likely to save you. The excitement of a new angle is almost always a poor substitute for the older truth the text has been carrying for three thousand years.</div>
+<!-- BSB_BLOCK: Psalms 119:103-104 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:ae578eb3beca85bdc691801be39b1d92f790716d4358bac568d7ef12a9590401 | footnotes-stripped:0 | poetry:flattened -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Psalms 119:103-104</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.119.103-104" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 103">103</sup>How sweet are Your words to my taste—sweeter than honey in my mouth! <sup class="verse-number" aria-label="Verse 104">104</sup>I gain understanding from Your precepts; therefore I hate every false way.</div>
+<div class="verse-commentary">
+          <p>The week's answer is patient. Taste is not a verdict you pass on the honey. It is a capacity that grows in the mouth that keeps chewing. Thursday walked it out with a runner who hated the alarm for eight weeks and then, on a skipped morning, discovered the run had quietly become a hunger. The psalmist is on the far side of the same slow change. His verse is a testimony, not an entrance requirement. The week also named the real thief. A palate flooded all day with louder, cheaper flavors stops registering the quiet one, and that says nothing about the honey and everything about the diet. So Thursday's prayer asked for exactly the right thing. Not a different Bible. A different palate. Duty is not the enemy of delight. It is the road delight arrives on.</p>
         </div>
       </div>
 
@@ -891,23 +909,51 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/ISA.55.11" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Isaiah+55:11&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/bible-study/sw.js')
+    .then(reg => console.log('SW registered:', reg.scope))
+    .catch(err => console.log('SW registration failed:', err));
+}
+</script>
+
 <!-- Firebase SDK for push notifications -->
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>

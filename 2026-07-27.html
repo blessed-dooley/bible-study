@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -722,7 +745,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Hand That Paid You Owned Your Voice</div>
       <p>In Paul's world, a public teacher had two respectable funding models, and both came with a leash. He could charge fees the way the traveling professionals did, which meant shaping the product to keep customers happy. Or he could land a wealthy patron, move into the great house, eat at the great table, and become part of the household's glory. That second arrangement had a price everyone understood. The philosopher on retainer flattered his host, laughed at his jokes, trimmed his lectures to fit the room. Money in that culture was never just money. It was a thread, and the person holding the other end could pull. Corinth, a city built by freedmen who had clawed their way up the patronage ladder, knew exactly how the game worked.</p>
-      <p>Which is why Paul's third option scandalized people. The apostle to the Gentiles rented bench space in a leather shop and made tents with his own scarred hands (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.18.3" target="_blank">Acts 18:3</a>). Manual labor was slave's work in the eyes of Corinth's upwardly mobile, an embarrassment in an apostle's resume. Paul wore the embarrassment like a uniform. No fee meant no customer to please. No patron meant no strings on the message. When he stood up to preach the crucified Messiah, every listener in the room knew one thing for certain. Nobody was paying him to say it.</p>
+      <p>Which is why Paul's third option scandalized people. The apostle to the Gentiles rented bench space in a leather shop and made tents with his own scarred hands (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.18.3" target="_blank" rel="noopener">Acts 18:3</a>). Manual labor was slave's work in the eyes of Corinth's upwardly mobile, an embarrassment in an apostle's resume. Paul wore the embarrassment like a uniform. No fee meant no customer to please. No patron meant no strings on the message. When he stood up to preach the crucified Messiah, every listener in the room knew one thing for certain. Nobody was paying him to say it.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -733,43 +756,46 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>The light comes up over the workbench before it reaches the harbor, and the apostle is already cutting leather. He has seen the risen Lord. He has planted this very church. And he is doing slave's work for bench rent, on purpose. In today's passage Paul finally explains the strangest line item in his ministry (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.9.1-6" target="_blank">1 Corinthians 9:1-6</a>). He is not defensive about his rights. He lists them, proves them, and then shows Corinth his open hand, because the confident crowd from yesterday needed to see what laying down a right actually looks like when it costs something.</p>
+      <p>The light comes up over the workbench before it reaches the harbor, and the apostle is already cutting leather. He has seen the risen Lord. He has planted this very church. And he is doing slave's work for bench rent, on purpose. In today's passage Paul finally explains the strangest line item in his ministry (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.1-6" target="_blank" rel="noopener">1 Corinthians 9:1-6</a>). He is not defensive about his rights. He lists them, proves them, and then shows Corinth his open hand, because the confident crowd from yesterday needed to see what laying down a right actually looks like when it costs something.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 9:4-6 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:7c46e1ea71d07c5671b50c29a8cb7bafb08076ebb21a4b425db197a9a5254507 | footnotes-stripped:3 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 9:4-6</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.9.4-6" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.9.4-6" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Don't we have the right to eat and drink? Don't we have the right to be accompanied by a believing wife like the other apostles, the Lord's brothers, and Cephas? Or do only Barnabas and I have no right to refrain from working?"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Three questions, three entitlements. The word Paul keeps using is <em>exousia</em>, Greek for a right or authority, something genuinely owed to you, and he is not being theoretical. The right to eat and drink (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.9.4" target="_blank">1 Corinthians 9:4</a>) meant financial support, a minister living from the ministry. The right to a believing wife (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.9.5" target="_blank">1 Corinthians 9:5</a>) meant the church funding a ministry couple's travel, as it did for others. The right to refrain from working (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.9.6" target="_blank">1 Corinthians 9:6</a>) meant not needing a second job to survive. Every other apostle drew on these. Paul establishes that the rights are real precisely because he is about to waive them, and a waiver only means something when the claim is valid.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 4">4</sup>Have we no right to food and to drink? <sup class="verse-number" aria-label="Verse 5">5</sup>Have we no right to take along a believing wife, as do the other apostles and the Lord’s brothers and Cephas? <sup class="verse-number" aria-label="Verse 6">6</sup>Or are Barnabas and I the only apostles who must work for a living?</div>
+<div class="verse-commentary">
+          <p>Three questions, three entitlements. The word Paul keeps using is <em>exousia</em>, Greek for a right or authority, something genuinely owed to you, and he is not being theoretical. The right to eat and drink (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.4" target="_blank" rel="noopener">1 Corinthians 9:4</a>) meant financial support, a minister living from the ministry. The right to a believing wife (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.5" target="_blank" rel="noopener">1 Corinthians 9:5</a>) meant the church funding a ministry couple's travel, as it did for others. The right to refrain from working (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.6" target="_blank" rel="noopener">1 Corinthians 9:6</a>) meant not needing a second job to survive. Every other apostle drew on these. Paul establishes that the rights are real precisely because he is about to waive them, and a waiver only means something when the claim is valid.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Corinthians 9:5 | 9:5 Literally take along a sister—a wife— -->
+      <!-- BSB_FOOTNOTE: 1 Corinthians 9:5 | 9:5 That is, Peter -->
+      <!-- BSB_FOOTNOTE: 1 Corinthians 9:6 | 9:6 Literally Or is it only Barnabas and I who do not have authority not to work? -->
 
-      <p>Each of those rights had faces attached. Priscilla and Aquila traveled as a married ministry team (<a class="vlink" href="https://www.bible.com/bible/1713/ROM.16.3" target="_blank">Romans 16:3</a>), and so did Andronicus and Junia (<a class="vlink" href="https://www.bible.com/bible/1713/ROM.16.7" target="_blank">Romans 16:7</a>). Paul happened to be unmarried (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.7.8" target="_blank">1 Corinthians 7:8</a>), but the door was open, and the church would have carried them both. As for working, his partner Barnabas was the man who once sold a field and laid the money at the apostles' feet (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.4.36-37" target="_blank">Acts 4:36-37</a>), generous to the bone and still earning his own bread. These were not men who could not collect. They were men who chose not to.</p>
+      <p>Each of those rights had faces attached. Priscilla and Aquila traveled as a married ministry team (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.16.3" target="_blank" rel="noopener">Romans 16:3</a>), and so did Andronicus and Junia (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.16.7" target="_blank" rel="noopener">Romans 16:7</a>). Paul happened to be unmarried (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.7.8" target="_blank" rel="noopener">1 Corinthians 7:8</a>), but the door was open, and the church would have carried them both. As for working, his partner Barnabas was the man who once sold a field and laid the money at the apostles' feet (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.4.36-37" target="_blank" rel="noopener">Acts 4:36-37</a>), generous to the bone and still earning his own bread. These were not men who could not collect. They were men who chose not to.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 9:14 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:61f77e27401ce3058a926a4a21069adce00bab827e19e736ac612d380f7933eb | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 9:14</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.9.14" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.9.14" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"In the same way, the Lord has commanded that those who preach the gospel should earn their living by the gospel."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Paul argues the point like a lawyer stacking exhibits. Soldiers eat from the army's budget, vineyard workers eat the grapes, the ox treading grain gets to eat the grain, and if ministers sow spiritual seed, reaping material support is only fair (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.9.7-11" target="_blank">1 Corinthians 9:7-11</a>). If other teachers in Corinth drew support, Paul had a stronger claim than any of them (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.9.11-12" target="_blank">1 Corinthians 9:11-12</a>). Then he closes the case with the highest authority there is. The Lord Himself commanded it, the same principle Scripture states as the worker being worthy of his wages (<a class="vlink" href="https://www.bible.com/bible/1713/1TI.5.18" target="_blank">1 Timothy 5:18</a>). Supporting gospel workers is not a loophole or a favor. It is Jesus' own design. Hold that firmly, because it makes what Paul does next astonishing.</p>
+        <div class="verse-text">In the same way, the Lord has prescribed that those who preach the gospel should receive their living from the gospel.</div>
+<div class="verse-commentary">
+          <p>Paul argues the point like a lawyer stacking exhibits. Soldiers eat from the army's budget, vineyard workers eat the grapes, the ox treading grain gets to eat the grain, and if ministers sow spiritual seed, reaping material support is only fair (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.7-11" target="_blank" rel="noopener">1 Corinthians 9:7-11</a>). If other teachers in Corinth drew support, Paul had a stronger claim than any of them (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.11-12" target="_blank" rel="noopener">1 Corinthians 9:11-12</a>). Then he closes the case with the highest authority there is. The Lord Himself commanded it, the same principle Scripture states as the worker being worthy of his wages (<a class="vlink" href="https://www.bible.com/bible/3034/1TI.5.18" target="_blank" rel="noopener">1 Timothy 5:18</a>). Supporting gospel workers is not a loophole or a favor. It is Jesus' own design. Hold that firmly, because it makes what Paul does next astonishing.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 9:12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:188dda3319554e9ee73e25434efa39488086394fe9d98b796bb7e1bce995f7a8 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 9:12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.9.12" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.9.12" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"If others have this right to receive benefits from you, don't we even more? Nevertheless, we have not made use of this right; instead, we endure everything so that we will not hinder the gospel of Christ."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Nevertheless. The entire chapter pivots on that one word. Paul wins the argument and then declines the winnings, and he tells us exactly why. In Corinth, taking the money would have tied strings to the message, made him one more hired voice in a city full of them, given every cynic a reason to plug their ears. So he absorbs the cost in his own body, the early mornings, the calloused hands, the lean weeks, and offers himself as a living example of self-denial for the sake of others (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.9.1-18" target="_blank">1 Corinthians 9:1-18</a>). The goal was never martyrdom for its own sake. He became all things to all people to win as many as possible, so that they may be saved (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.9.19-23" target="_blank">1 Corinthians 9:19-23</a>). The gospel was free. Paul made sure it looked free.</p>
+        <div class="verse-text">If others have this right to your support, shouldn’t we have it all the more? But we did not exercise this right. Instead, we put up with anything rather than hinder the gospel of Christ.</div>
+<div class="verse-commentary">
+          <p>Nevertheless. The entire chapter pivots on that one word. Paul wins the argument and then declines the winnings, and he tells us exactly why. In Corinth, taking the money would have tied strings to the message, made him one more hired voice in a city full of them, given every cynic a reason to plug their ears. So he absorbs the cost in his own body, the early mornings, the calloused hands, the lean weeks, and offers himself as a living example of self-denial for the sake of others (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.1-18" target="_blank" rel="noopener">1 Corinthians 9:1-18</a>). The goal was never martyrdom for its own sake. He became all things to all people to win as many as possible, so that they may be saved (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.19-23" target="_blank" rel="noopener">1 Corinthians 9:19-23</a>). The gospel was free. Paul made sure it looked free.</p>
         </div>
       </div>
     </div>
@@ -806,7 +832,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Paul's list of unclaimed rights is a photocopy, and the original hangs in Bethlehem, Nazareth, and Jerusalem. Though He was rich, for your sake He became poor, so that by His poverty you might become rich (<a class="vlink" href="https://www.bible.com/bible/1713/2CO.8.9" target="_blank">2 Corinthians 8:9</a>). Jesus had the right to be worshiped without interruption, and He took a feeding trough. He had the right to a home, and foxes ended up better housed than He was (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.8.20" target="_blank">Matthew 8:20</a>). In the garden He named the right most of us would have used, twelve legions of angels a single word away (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.26.53" target="_blank">Matthew 26:53</a>), and He left the word unsaid. The Son of Man did not come to be served but to serve, and to give His life as a ransom for many (<a class="vlink" href="https://www.bible.com/bible/1713/MRK.10.45" target="_blank">Mark 10:45</a>). Every unclaimed right of Jesus became a claimed sinner. That is the arithmetic of the cross, and Paul was just doing the same math with a smaller number.</p>
+      <p>Paul's list of unclaimed rights is a photocopy, and the original hangs in Bethlehem, Nazareth, and Jerusalem. Though He was rich, for your sake He became poor, so that by His poverty you might become rich (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.9" target="_blank" rel="noopener">2 Corinthians 8:9</a>). Jesus had the right to be worshiped without interruption, and He took a feeding trough. He had the right to a home, and foxes ended up better housed than He was (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.8.20" target="_blank" rel="noopener">Matthew 8:20</a>). In the garden He named the right most of us would have used, twelve legions of angels a single word away (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.26.53" target="_blank" rel="noopener">Matthew 26:53</a>), and He left the word unsaid. The Son of Man did not come to be served but to serve, and to give His life as a ransom for many (<a class="vlink" href="https://www.bible.com/bible/3034/MRK.10.45" target="_blank" rel="noopener">Mark 10:45</a>). Every unclaimed right of Jesus became a claimed sinner. That is the arithmetic of the cross, and Paul was just doing the same math with a smaller number.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -843,22 +869,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.9.1-6" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+9:1-6&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

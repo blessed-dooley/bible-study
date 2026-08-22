@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -722,7 +745,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Shepherd Who Whistles</div>
       <p>At a watering hole in the Judean hills, two or three flocks would crowd together at midday until nobody could tell whose sheep were whose. The shepherds never worried. When it was time to move, each one gave his own call, a piped note, a particular whistle, a cry the flock had heard since lambing season, and out of the woolly chaos his own sheep would separate themselves and follow him. Travelers in the Middle East described the scene for centuries with the same astonishment. Nobody sorts the sheep. The call sorts the sheep.</p>
-      <p>Zechariah prophesied around 520 BC to a Jerusalem that felt like an un-sorted flock. A remnant had returned from Babylon two decades earlier, but the city was half-built, the temple was a construction site, and most of God's people were still scattered across the empire from Egypt to Assyria, settled into foreign neighborhoods, raising children who had never seen Judah. Into that discouragement <a class="vlink" href="https://www.bible.com/bible/1713/ZEC.10" target="_blank">Zechariah 10</a> speaks a promise built on the watering-hole scene every hearer knew: "I will whistle for them and gather them, for I have redeemed them." Not round them up. Not drag them home. Whistle, the way a shepherd calls sheep that know him, and they will come from the far countries the way they once followed him out of the noon-day crowd. God's method for bringing back the scattered has never been force. It is a call they recognize, from a Shepherd they remember.</p>
+      <p>Zechariah prophesied around 520 BC to a Jerusalem that felt like an un-sorted flock. A remnant had returned from Babylon two decades earlier, but the city was half-built, the temple was a construction site, and most of God's people were still scattered across the empire from Egypt to Assyria, settled into foreign neighborhoods, raising children who had never seen Judah. Into that discouragement <a class="vlink" href="https://www.bible.com/bible/3034/ZEC.10" target="_blank" rel="noopener">Zechariah 10</a> speaks a promise built on the watering-hole scene every hearer knew: "I will whistle for them and gather them, for I have redeemed them." Not round them up. Not drag them home. Whistle, the way a shepherd calls sheep that know him, and they will come from the far countries the way they once followed him out of the noon-day crowd. God's method for bringing back the scattered has never been force. It is a call they recognize, from a Shepherd they remember.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -733,40 +756,40 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Be honest about your own story for a moment. There was a season when your heart wandered or cooled, a valley when you were lukewarm for longer than you would like to admit. What brought you back? Hold your answer next to today's anchor, <a class="vlink" href="https://www.bible.com/bible/1713/ZEC.10" target="_blank">Zechariah 10</a>, where God promises to strengthen, save, restore, and gather His scattered people "because I have compassion on them," as though He had never turned them away. Then watch that whole chapter happen to one fisherman, and hear what it asks of us.</p>
+      <p>Be honest about your own story for a moment. There was a season when your heart wandered or cooled, a valley when you were lukewarm for longer than you would like to admit. What brought you back? Hold your answer next to today's anchor, <a class="vlink" href="https://www.bible.com/bible/3034/ZEC.10" target="_blank" rel="noopener">Zechariah 10</a>, where God promises to strengthen, save, restore, and gather His scattered people "because I have compassion on them," as though He had never turned them away. Then watch that whole chapter happen to one fisherman, and hear what it asks of us.</p>
 
+<!-- BSB_BLOCK: Luke 22:31-32 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:48a2112a78683ca987e7bc48f28531941fa9ee344f511e1ef5db7fe87c12c46e | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Luke 22:31-32</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/LUK.22.31-32" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/LUK.22.31-32" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Simon, Simon, look out. Satan has asked to sift you like wheat. But I have prayed for you that your faith may not fail. And you, when you have turned back, strengthen your brothers."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 31">31</sup><span class="words-of-jesus">Simon, Simon, Satan has asked to sift all of you like wheat.</span> <sup class="verse-number" aria-label="Verse 32">32</sup><span class="words-of-jesus">But I have prayed for you, Simon, that your faith will not fail. And when you have turned back, strengthen your brothers.”</span></div>
+<div class="verse-commentary">
           <p>Hours before Peter's worst night, Jesus already knows everything: the courtyard, the servant girl, the rooster, all three denials. The Greek word for "sift," <em>siniazo</em>, pictures grain thrown violently against a screen until everything comes apart, and that is exactly what is coming for Peter's confidence. But look at what Jesus does with His foreknowledge. He does not build a fence around Peter, and He does not write him off. He prays for him, in advance, by name. And then He says "when you have turned back," not "if." Jesus speaks about the wanderer's return as settled fact while the wandering is still in the future. That is how heaven talks about your loved one. Our prayers for them are not wishful thinking thrown at the ceiling. They are joining a prayer Jesus started first.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: John 21:15-17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:6cc738dce5308e4bcb3217b573ed5584f91c4606243107761ade1312c61d36fd | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">John 21:15-17</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.21.15-17" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.21.15-17" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"When they had eaten breakfast, Jesus asked Simon Peter, 'Simon, son of John, do you love me more than these?' 'Yes, Lord,' he said to him, 'you know that I love you.' 'Feed my lambs,' he told him. A second time he asked him, 'Simon, son of John, do you love me?' 'Yes, Lord,' he said to him, 'you know that I love you.' 'Shepherd my sheep,' he told him. He asked him the third time, 'Simon, son of John, do you love me?' Peter was grieved that he asked him the third time, 'Do you love me?' He said, 'Lord, you know everything; you know that I love you.' 'Feed my sheep,' Jesus said."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Watch how Jesus treats a wanderer who has just come back. No lecture. No probation period. No "we need to talk about what happened." He cooks breakfast on a charcoal fire, the same kind of fire Peter denied Him beside, and asks one question three times, once for each denial, not to rub it in but to let Peter overwrite each failure with love spoken out loud. Then, astonishingly, He puts the flock in the failure's hands. Feed My lambs. Shepherd My sheep. Jesus restores Peter not just to forgiveness but to usefulness, exactly as <a class="vlink" href="https://www.bible.com/bible/1713/LUK.22.32" target="_blank">Luke 22:32</a> promised: when you have turned back, strengthen your brothers. If someone you love comes back from the far country, this is the template. Breakfast, not interrogation. A future, not a file of their past.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 15">15</sup>When they had finished eating, Jesus asked Simon Peter, <span class="words-of-jesus">“Simon son of John, do you love Me more than these?”</span> “Yes, Lord,” he answered, “You know I love You.” Jesus replied, <span class="words-of-jesus">“Feed My lambs.”</span> <sup class="verse-number" aria-label="Verse 16">16</sup>Jesus asked a second time, <span class="words-of-jesus">“Simon son of John, do you love Me?”</span> “Yes, Lord,” he answered, “You know I love You.” Jesus told him, <span class="words-of-jesus">“Shepherd My sheep.”</span> <sup class="verse-number" aria-label="Verse 17">17</sup>Jesus asked a third time, <span class="words-of-jesus">“Simon son of John, do you love Me?”</span> Peter was deeply hurt that Jesus had asked him a third time, <span class="words-of-jesus">“Do you love Me?”</span> “Lord, You know all things,” he replied. “You know I love You.” Jesus said to him, <span class="words-of-jesus">“Feed My sheep.</span></div>
+<div class="verse-commentary">
+          <p>Watch how Jesus treats a wanderer who has just come back. No lecture. No probation period. No "we need to talk about what happened." He cooks breakfast on a charcoal fire, the same kind of fire Peter denied Him beside, and asks one question three times, once for each denial, not to rub it in but to let Peter overwrite each failure with love spoken out loud. Then, astonishingly, He puts the flock in the failure's hands. Feed My lambs. Shepherd My sheep. Jesus restores Peter not just to forgiveness but to usefulness, exactly as <a class="vlink" href="https://www.bible.com/bible/3034/LUK.22.32" target="_blank" rel="noopener">Luke 22:32</a> promised: when you have turned back, strengthen your brothers. If someone you love comes back from the far country, this is the template. Breakfast, not interrogation. A future, not a file of their past.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Ephesians 3:17-19 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:bbc419da5ce25585e2fe5717e5e2098ffcb5f20f89ca5f65d423d9c71a8ff12f | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Ephesians 3:17-19</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/EPH.3.17-19" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/EPH.3.17-19" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"and that Christ may dwell in your hearts through faith. I pray that you, being rooted and firmly established in love, may be able to comprehend with all the saints what is the length and width, height and depth of God's love, and to know Christ's love that surpasses knowledge, so that you may be filled with all the fullness of God."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 17">17</sup>so that Christ may dwell in your hearts through faith. Then you, being rooted and grounded in love, <sup class="verse-number" aria-label="Verse 18">18</sup>will have power, together with all the saints, to comprehend the length and width and height and depth <sup class="verse-number" aria-label="Verse 19">19</sup>of the love of Christ, and to know this love that surpasses knowledge, that you may be filled with all the fullness of God.</div>
+<div class="verse-commentary">
           <p>Here is where our part becomes possible. Paul prays that believers would be rooted in a love so big it takes four dimensions to measure and still "surpasses knowledge," and that we would be filled with God's own fullness. That filling is what the wanderer in your life actually needs to see, because the frustration, sadness, and judgment we naturally feel toward them will leak out unless something else is filling us first. This is why living from the overflow of daily time with your Savior is not optional in this work. People who have rejected every argument can still be undone by a peace that passes understanding and a love that will not let go. The most persuasive case for the gospel has never been a debate point. It is a life so warmed through by His love that people want to stand near it.</p>
         </div>
       </div>
@@ -804,7 +827,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>The whistling Shepherd of <a class="vlink" href="https://www.bible.com/bible/1713/ZEC.10" target="_blank">Zechariah 10</a> has a face. Jesus said His sheep "hear his voice... and the sheep follow him because they know his voice" (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.10.3-4" target="_blank">John 10:3-4</a>), and then He went out and proved how far the Shepherd will walk to gather one stray. He prayed for Peter before the fall. He turned and looked at him with love in the courtyard at the worst moment of the denial. He sent the women on resurrection morning with a message addressed to "the disciples and Peter," two words that must have hit that broken man like sunrise. And He built a fire on a beach and gave His wanderer back his calling. Every move in that sequence is the gospel in miniature, because every one of us was the sheep He came back for. When we keep loving our wanderers with that kind of patient, unforced, future-giving love, we are not just hoping they return. We are making the Shepherd's whistle audible in a voice they already trust.</p>
+      <p>The whistling Shepherd of <a class="vlink" href="https://www.bible.com/bible/3034/ZEC.10" target="_blank" rel="noopener">Zechariah 10</a> has a face. Jesus said His sheep "hear his voice... and the sheep follow him because they know his voice" (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.10.3-4" target="_blank" rel="noopener">John 10:3-4</a>), and then He went out and proved how far the Shepherd will walk to gather one stray. He prayed for Peter before the fall. He turned and looked at him with love in the courtyard at the worst moment of the denial. He sent the women on resurrection morning with a message addressed to "the disciples and Peter," two words that must have hit that broken man like sunrise. And He built a fire on a beach and gave His wanderer back his calling. Every move in that sequence is the gospel in miniature, because every one of us was the sheep He came back for. When we keep loving our wanderers with that kind of patient, unforced, future-giving love, we are not just hoping they return. We are making the Shepherd's whistle audible in a voice they already trust.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -841,22 +864,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/ZEC.10" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Zechariah+10&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

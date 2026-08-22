@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -619,7 +648,7 @@ if ('serviceWorker' in navigator) {
     white-space: nowrap;
   }
 
-  /* ── DEEPER QUESTIONS ── */
+  /* LEGACY DEEPER QUESTIONS: retained only so archived Friday bodies can still be reassembled */
   .dq-block {
     margin: 28px 0;
     padding: 0;
@@ -775,120 +804,62 @@ if ('serviceWorker' in navigator) {
       <p>Step back from the week and look at the map. Enoch's address is somewhere on the antediluvian plain east of Eden, in the seventh generation from Adam, with the world rolling toward judgment. Moses' is the slope of Sinai and the courtyard of the tent of meeting, with two million ex-slaves camped below. Daniel's is an upper-story room in Babylon, fifty years into exile, with the rubble of Solomon's temple seven hundred miles to the southwest. Three different millennia, three different cultures, three different empires (or none at all). The conversation is the same conversation. The Person on the other side of it is the same Person. Prayer in the Old Testament is not a method that evolved; it is a friendship that adjusted its address every time the geography of God's people changed. From Enoch's footpath to Daniel's upstairs window to a Galilean carpenter's pre-dawn hillside, the line keeps unbroken. By the time we sit down with our coffee and our Bibles this morning, the conversation has been running for several thousand years, and the seat across from us has never been empty.</p>
     </div>
 
-    <!-- 3. DEEPER QUESTIONS -->
+    <!-- 3. WHAT THIS WEEK CLARIFIES -->
     <div class="section">
       <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Deeper Questions</span>
+        <span class="section-emoji">💡</span>
+        <span class="section-title">What This Week Clarifies</span>
         <div class="section-title-line"></div>
       </div>
 
-      <p>Three questions for the table this Sabbath. They will land differently for each person, and that is the point. The week introduced three teachers; this section asks how we are sitting in their classroom.</p>
+      <p>The week's three teachers do not sit quietly side by side. Set Daniel's schedule against Enoch's unbroken road, or Moses' boldest prayer against the God who refused it, and real tensions start to hum. Three of them are worth walking through before the week lets out.</p>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">1</span>
-          <div class="dq-question">Would you describe prayer as beautiful or burdensome? What has contributed to your perspective?</div>
+      <div class="section-heading">The Window Never Competed with the Road</div>
+      <p>Sunday and Tuesday can read like rival schools. Daniel prays by the clock, three fixed appointments a day, knees on a known floor. Enoch keeps no appointments at all, just three hundred years of walking in which the conversation never has to stop (<a class="vlink" href="https://www.bible.com/bible/3034/GEN.5.22-24" target="_blank" rel="noopener">Genesis 5:22-24</a>). Put them side by side and the fixed schedule starts to look like the beginner's version, the starter kit for people who have not yet learned to pray without stopping.</p>
+
+<!-- BSB_BLOCK: Daniel 6:10-11 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:9f7dfb638a703dd38c5e4cc78e7d1393de6916febe0bdc460f3cbdeafa2c5fda | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Daniel 6:10-11</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/DAN.6.10-11" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Psalm 116:1-2</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/PSA.116.1-2" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"I love the LORD because he has heard my appeal for mercy. Because he has turned his ear to me, I will call out to him as long as I live."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>The Memory Text answers the question by smuggling in a third option: prayer is what survivors do. The psalmist is not a beautiful person describing a beautiful practice. He is someone who almost did not get to keep his life and discovered, in that almost-loss, that an Ear had been bent toward him the whole time. The shift from burdensome to beautiful in most lives is not a feeling-shift; it is a posture-shift. We pray differently after we have been heard once. The whole week's curriculum is about people who had been heard often enough that the practice no longer needed to be defended.</p>
-          </div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Hebrews 4:16</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/HEB.4.16" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Therefore, let us approach the throne of grace with boldness, so that we may receive mercy and find grace to help us in time of need."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>If prayer feels burdensome, the description of the throne is worth re-reading. It is a throne of grace, not a throne of inspection. The verb behind "approach" was used in Greco-Roman culture for citizens petitioning a magistrate, but the qualifier "with boldness" (*parresia*) is the word for free speech. Hebrews is telling readers who have been treating prayer like a tax form that the room is not a tax office. The boldness is the point. So is the help. Anyone who has been carrying prayer as duty for a long time can hear this verse as a permission slip.</p>
-          </div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 10">10</sup>Now when Daniel learned that the document had been signed, he went into his house, where the windows of his upper room opened toward Jerusalem, and three times a day he got down on his knees, prayed, and gave thanks to his God, just as he had done before. <sup class="verse-number" aria-label="Verse 11">11</sup>Then these men went as a group and found Daniel petitioning and imploring his God.</div>
+<div class="verse-commentary">
+          <p>The verse saves its weight for the quiet phrase "just as he had done before." The kneeling that stared down the lions was not a technique Daniel needed to outgrow once his walking matured. It was the trellis the whole vine grew on. Fifty years of morning, noon, and evening had worn the path between his upper room and heaven so smooth that courage could travel it on a Tuesday's notice. Enoch's road makes the same claim from the other direction. Three hundred years of walking is not the absence of habit. It is habit soaked all the way through a life. The week is not offering a beginner track and an advanced track. The window is how the road gets built, one kept appointment at a time, until the appointments dissolve into company.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">2</span>
-          <div class="dq-question">There are so many insightful messages in the writings about prayer studied this week. Which thought particularly resonates with you?</div>
-        </div>
+      <div class="section-heading">Second Prize Was the Promised Land</div>
+      <p>Most prayer lists look a lot like the offer God put on the table after the golden calf. Safe travel. Protection from enemies. A land flowing with milk and honey. An angel to clear the way. Everything the nation had been asking for since Egypt was in the package, and one thing was not. God's own presence would stay behind. Moses had every reason to sign.</p>
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Philippians 4:6-7</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/PHP.4.6-7" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Don't worry about anything, but in everything, through prayer and petition with thanksgiving, present your requests to God. And the peace of God, which surpasses all understanding, will guard your hearts and minds in Christ Jesus."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Paul wrote this from a Roman jail cell. The detail matters because the phrase "don't worry about anything" reads differently when the man writing it has every reason to worry. He is not telling readers to deny what is hard; he is naming the substitute. The Greek for "petition" (*deesis*) is the word used for asking from a position of need, and "thanksgiving" (*eucharistia*) is the word used at meals when the food has just arrived. The two words sit side by side because biblical prayer holds them together. Bring God your honest requests. Bring Him also gratitude for the meal that is already on the table. The peace that follows is not the absence of trouble; it is a guard posted at the door of the heart while the trouble is still outside.</p>
-          </div>
+<!-- BSB_BLOCK: Exodus 33:15-23 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:bbd0af1ed86f296778655c38005a9b8e577a06355b4ed49a109e5cf47d48906a | footnotes-stripped:1 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Exodus 33:15-23</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/EXO.33.15-23" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 15">15</sup>“If Your Presence does not go with us,” Moses replied, “do not lead us up from here. <sup class="verse-number" aria-label="Verse 16">16</sup>For how then can it be known that Your people and I have found favor in Your sight, unless You go with us? How else will we be distinguished from all the other people on the face of the earth?” <sup class="verse-number" aria-label="Verse 17">17</sup>So the LORD said to Moses, “I will do this very thing you have asked, for you have found favor in My sight, and I know you by name.” <sup class="verse-number" aria-label="Verse 18">18</sup>Then Moses said, “Please show me Your glory.” <sup class="verse-number" aria-label="Verse 19">19</sup>“I will cause all My goodness to pass before you,” the LORD replied, “and I will proclaim My name—the LORD—in your presence. I will have mercy on whom I have mercy, and I will have compassion on whom I have compassion.” <sup class="verse-number" aria-label="Verse 20">20</sup>But He added, “You cannot see My face, for no one can see Me and live.” <sup class="verse-number" aria-label="Verse 21">21</sup>The LORD continued, “There is a place near Me where you are to stand upon a rock, <sup class="verse-number" aria-label="Verse 22">22</sup>and when My glory passes by, I will put you in a cleft of the rock and cover you with My hand until I have passed by. <sup class="verse-number" aria-label="Verse 23">23</sup>Then I will take My hand away, and you will see My back; but My face must not be seen.”</div>
+<div class="verse-commentary">
+          <p>Moses answered with one of the boldest sentences in the whole week, and it is not the famous one about the book. "If Your Presence does not go with us, do not lead us up from here." He is turning down an entire answered prayer because the Answerer is not inside it. Wednesday named the order plainly. The promised land was second prize. The Person was the prize. That order rearranges a prayer list fast. The gifts on the table were real and good, and Moses was not wrong to want them. He had simply spent enough hours in the tent of meeting to know which item was the treasure. Watch how God replies. "I will do this very thing you have asked, for you have found favor in My sight, and I know you by name." The conversation was the prize, and the conversation said yes.</p>
+        </div>
+      </div>
+      <!-- BSB_FOOTNOTE: Exodus 33:19 | 33:19 Cited in Romans 9:15 -->
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">1 Peter 5:7</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/1PE.5.7" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"casting all your cares on him, because he cares about you."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Eleven words in English, twelve in Greek, and a whole theology of prayer. The verb "casting" (*epirripto*) is muscular; it is what fishermen do with a heavy net, what porters do when they unload a load. Prayer here is an action of throwing, not a soft sigh. The reason given is the reason: because He cares. The verse does not say "because He is powerful," though He is, or "because He owes you," though He doesn't. The reason a believer can hand off the load is that the One catching it is interested in the catcher, not just the cargo. He is not indifferent to the sorrows or the small things. The hairs on a believer's head are numbered by the same hand that holds up worlds, and that hand is gentle.</p>
-          </div>
+      <div class="section-heading">The Mercy Was Older Than the Prayer</div>
+      <p>Thursday's mountain scene is easy to misread. Moses argues, reminds God of His own covenant promises, and finally lays his own name on the table, and it can look like a servant wrestling mercy out of a reluctant King. Read that way, intercession becomes a contest of leverage, and the pray-er with the most to offer wins. The week does not leave the scene there.</p>
+
+<!-- BSB_BLOCK: Exodus 34:6 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:e21be0379bba8a0f8e28d9c673c96f47ca39c91afbd3f2bb50cd80686c19aa09 | footnotes-stripped:0 | poetry:flattened -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Exodus 34:6</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/EXO.34.6" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">Then the LORD passed in front of Moses and called out: “The LORD, the LORD God, is compassionate and gracious, slow to anger, abounding in loving devotion and faithfulness,</div>
+<div class="verse-commentary">
+          <p>The name God proclaims from the cloud settles the misreading. Compassionate and gracious, slow to anger, abounding in loving devotion and faithfulness. That is not a concession Moses extracted. It is who God already was before Moses climbed the first step, and Thursday called it the source code Moses prayed from for the rest of his life. Intercession never talks God into mercy. It climbs inside the mercy that is already moving and gives it a name to land on. Even the famous refusal proves the point. God would not blot out Moses, not because the offer asked too much, but because a better Substitute was already on the way. The prayer was a sketch. The cross was the substance.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">3</span>
-          <div class="dq-question">Of the three Bible characters studied this week (Daniel, Enoch, and Moses), whose prayer life do you most relate to, and why?</div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Daniel 6:10</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/DAN.6.10" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"When Daniel learned that the document had been signed, he went into his house. The windows in its upstairs room opened toward Jerusalem, and three times a day he got down on his knees, prayed, and gave thanks to his God, just as he had done before."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>If Daniel is your teacher, the lesson is the schedule. Prayer that is not on a calendar tends to be the prayer that gets skipped. Daniel's three appointments a day were old enough that the lions were a non-event compared to the importance of keeping them. Find one consistent time tomorrow and put it on the same line of your day for the next three months.</p>
-          </div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Genesis 5:24</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/GEN.5.24" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Enoch walked with God; then he was not there, because God took him."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>If Enoch is your teacher, the lesson is the walking. Prayer is not only sit-down conversation; it is a low hum of communion that survives traffic, dishes, and a tired Wednesday afternoon. Most days, you will not have the schedule Daniel had or the platform Moses had. You will have ordinary motion. Enoch did the whole job from there. The walked-with-God person does not have a louder prayer life; they have a longer one.</p>
-          </div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Exodus 33:11</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/EXO.33.11" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"The LORD would speak with Moses face to face, just as a man speaks with his friend, then Moses would return to the camp. His assistant, the young man Joshua son of Nun, would not leave the inside of the tent."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>If Moses is your teacher, the lesson is the intercession. Moses' prayer life had names on it. He knew the people he was carrying, and he carried them in front of God by name, including the ones who had hurt him. This is the most pastoral of the three patterns. If your seat in life is a leadership seat (parent, mentor, supervisor, teacher, elder), Moses is your teacher whether you want him to be or not. Take the names with you when you go to pray.</p>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- 4. STILL SPEAKING -->
@@ -936,22 +907,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/PSA.116.1-2" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Psalm+116:1-2&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -966,6 +957,7 @@ if ('serviceWorker' in navigator) {
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 <script>
+// Push notification opt-in
 (function() {
   var firebaseConfig = {
     apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
@@ -976,8 +968,13 @@ if ('serviceWorker' in navigator) {
     appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
     measurementId: "G-BY2BM5HTX4"
   };
+
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
+
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
+
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -985,32 +982,51 @@ if ('serviceWorker' in navigator) {
   function setCookie(name, value) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') { initFirebaseAndRegister(); return; }
+
+  // If already opted in, silently ensure token is current
+  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
+    initFirebaseAndRegister();
+    return;
+  }
+
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
+
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
+
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
     setCookie('dbs_notif', 'yes');
     initFirebaseAndRegister();
   };
+
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
     setCookie('dbs_notif', 'no');
   };
+
   function initFirebaseAndRegister() {
     try {
       if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
       var messaging = firebase.messaging();
       var db = firebase.firestore();
+
       navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({ vapidKey: VAPID_KEY, serviceWorkerRegistration: swReg });
+        return messaging.getToken({
+          vapidKey: VAPID_KEY,
+          serviceWorkerRegistration: swReg
+        });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,
@@ -1018,8 +1034,12 @@ if ('serviceWorker' in navigator) {
             userAgent: navigator.userAgent.substring(0, 100)
           }, { merge: true });
         }
-      }).catch(function(err) { console.log('Notification setup error:', err); });
-    } catch(e) { console.log('Firebase init error:', e); }
+      }).catch(function(err) {
+        console.log('Notification setup error:', err);
+      });
+    } catch(e) {
+      console.log('Firebase init error:', e);
+    }
   }
 })();
 </script>

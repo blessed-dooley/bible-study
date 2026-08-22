@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -735,53 +758,54 @@ if ('serviceWorker' in navigator) {
 
       <p>Matthew gives us one sentence that explains how Jesus kept going through the endless days of preaching, healing, and being needed: He saw the crowds and felt it in His gut. Matthew 9:36 anchors the day because everything else hangs on what moved Him. From there the texts trace the same energy through Jeremiah's burning bones, then watch it stop, every single time, at the door of the human will. A hen spreads her wings over a city that says no. Power and restraint, in the same heart.</p>
 
+<!-- BSB_BLOCK: Matthew 9:36 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:22856c5468b0c3d92b537db8fb8f6074cb4b03d9a97130bce383136172e7120c | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Matthew 9:36</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.9.36" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.9.36" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"When he saw the crowds, he felt compassion for them, because they were distressed and dejected, like sheep without a shepherd."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>The Greek word behind "felt compassion" is <em>splanchnizomai</em>, and it literally means to be moved in your inward parts, your stomach, your gut. This is not polite sympathy from a distance. It is the physical ache you feel when you see a child lost in a parking lot. That ache is what drove Jesus' relentless labor, and Paul says the same force is meant to drive ours: "the love of Christ compels us" (<a class="vlink" href="https://www.bible.com/bible/1713/2CO.5.14" target="_blank">2 Corinthians 5:14</a>). Notice what the crowds looked like to Him. Not projects. Not numbers. Sheep without a shepherd, weary and scattered. When we look at the faces in our own crowded days and feel nothing, the problem is not our schedule. It is our eyes.</p>
+        <div class="verse-text">When He saw the crowds, He was moved with compassion for them, because they were harassed and helpless, like sheep without a shepherd.</div>
+<div class="verse-commentary">
+          <p>The Greek word behind "felt compassion" is <em>splanchnizomai</em>, and it literally means to be moved in your inward parts, your stomach, your gut. This is not polite sympathy from a distance. It is the physical ache you feel when you see a child lost in a parking lot. That ache is what drove Jesus' relentless labor, and Paul says the same force is meant to drive ours: "the love of Christ compels us" (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.5.14" target="_blank" rel="noopener">2 Corinthians 5:14</a>). Notice what the crowds looked like to Him. Not projects. Not numbers. Sheep without a shepherd, weary and scattered. When we look at the faces in our own crowded days and feel nothing, the problem is not our schedule. It is our eyes.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Jeremiah 20:9 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:cf870abd1079063e51a64e8898a28968525c72a096dd77e0aa411bee931cc053 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Jeremiah 20:9</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JER.20.9" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JER.20.9" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"I say, 'I won't mention him or speak any longer in his name.' But his message becomes a fire burning in my heart, shut up in my bones. I become tired of holding it in, and I cannot prevail."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">If I say, “I will not mention Him or speak any more in His name,” His message becomes a fire burning in my heart, shut up in my bones, and I become weary of holding it in, and I cannot prevail.</div>
+<div class="verse-commentary">
           <p>Jeremiah had every reason to quit. He had just been beaten and locked in stocks for preaching, and this verse is him trying to resign. He cannot do it. The word of God in him behaves like banked coals in his skeleton, and holding it in is more exhausting than letting it out. That is what witnessing feels like when it is real. It is not a quota you grudgingly fill. It is a fire you cannot comfortably contain. Peter and John said the same thing to the council, that they were unable to stop speaking about what they had seen and heard. If sharing God has come to feel like pure obligation, the honest first prayer is not "give me courage" but "Lord, relight the fire."</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Matthew 23:37 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:09e36768c89934240c053997974c33933675177a7802c06d5a1da376bed4158e | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Matthew 23:37</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.23.37" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.23.37" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Jerusalem, Jerusalem, who kills the prophets and stones those who are sent to her. How often I wanted to gather your children together, as a hen gathers her chicks under her wings, but you were not willing!"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Here is the fire and the restraint in one cry. Jesus stands over the city that will kill Him within the week, and the image He reaches for is a mother hen spreading her wings in a barnyard fire. How often I wanted. But you were not willing. He does not say "so I will make you." The God who never forced Adam and Eve away from the tree (<a class="vlink" href="https://www.bible.com/bible/1713/GEN.2.16-17" target="_blank">Genesis 2:16-17</a>), never forced anyone onto the ark (<a class="vlink" href="https://www.bible.com/bible/1713/GEN.7.1" target="_blank">Genesis 7:1</a>), and never forced Israel to stay in covenant (<a class="vlink" href="https://www.bible.com/bible/1713/DEU.4.29-31" target="_blank">Deuteronomy 4:29-31</a>) will not start coercing now. Instead He met needs first, healing and feeding whole regions (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.4.23-25" target="_blank">Matthew 4:23-25</a>), and then invited. The urge to pressure, corner, or punish someone into truth never comes from heaven. The disposition to force a conscience is the enemy's signature, not Christ's. And yet the wings stay spread. He never gives up on us.</p>
+        <div class="verse-text"><span class="words-of-jesus">O Jerusalem, Jerusalem, who kills the prophets and stones those sent to her, how often I have longed to gather your children together, as a hen gathers her chicks under her wings, but you were unwilling!</span></div>
+<div class="verse-commentary">
+          <p>Here is the fire and the restraint in one cry. Jesus stands over the city that will kill Him within the week, and the image He reaches for is a mother hen spreading her wings in a barnyard fire. How often I wanted. But you were not willing. He does not say "so I will make you." The God who never forced Adam and Eve away from the tree (<a class="vlink" href="https://www.bible.com/bible/3034/GEN.2.16-17" target="_blank" rel="noopener">Genesis 2:16-17</a>), never forced anyone onto the ark (<a class="vlink" href="https://www.bible.com/bible/3034/GEN.7.1" target="_blank" rel="noopener">Genesis 7:1</a>), and never forced Israel to stay in covenant (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.4.29-31" target="_blank" rel="noopener">Deuteronomy 4:29-31</a>) will not start coercing now. Instead He met needs first, healing and feeding whole regions (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.4.23-25" target="_blank" rel="noopener">Matthew 4:23-25</a>), and then invited. The urge to pressure, corner, or punish someone into truth never comes from heaven. The disposition to force a conscience is the enemy's signature, not Christ's. And yet the wings stay spread. He never gives up on us.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 2 Peter 3:18 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:7d53be55e25790fd39998917514e7d29f52c85d4e5284cf2860d04757a2dcd97 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">2 Peter 3:18</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/2PE.3.18" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/2PE.3.18" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"But grow in the grace and knowledge of our Lord and Savior Jesus Christ. To him be the glory both now and to the day of eternity."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Peter's last recorded sentence is a growth chart. Grace and knowledge, both of them growing, both of them centered on a Person. This is where the unforced power actually comes from in daily life, because nobody can leak what they are not full of. A believer who is growing, even slowly, has something fresh to tell. A believer who stopped growing years ago has only a stale story and a set of opinions, and people can tell the difference in about a minute. The overcomers in Revelation conquer the enemy "by the blood of the Lamb and by the word of their testimony" (<a class="vlink" href="https://www.bible.com/bible/1713/REV.12.11" target="_blank">Revelation 12:11</a>). Your testimony is simply your growth, told out loud. Keep growing and the witnessing largely takes care of itself.</p>
+        <div class="verse-text">But grow in the grace and knowledge of our Lord and Savior Jesus Christ. To Him be the glory both now and to the day of eternity. Amen.</div>
+<div class="verse-commentary">
+          <p>Peter's last recorded sentence is a growth chart. Grace and knowledge, both of them growing, both of them centered on a Person. This is where the unforced power actually comes from in daily life, because nobody can leak what they are not full of. A believer who is growing, even slowly, has something fresh to tell. A believer who stopped growing years ago has only a stale story and a set of opinions, and people can tell the difference in about a minute. The overcomers in Revelation conquer the enemy "by the blood of the Lamb and by the word of their testimony" (<a class="vlink" href="https://www.bible.com/bible/3034/REV.12.11" target="_blank" rel="noopener">Revelation 12:11</a>). Your testimony is simply your growth, told out loud. Keep growing and the witnessing largely takes care of itself.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 2 Peter 3:18 | 3:18 NE, WH, and NA do not include Amen. -->
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -853,22 +877,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/MAT.9.36" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Matthew+9:36&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

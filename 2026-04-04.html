@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -380,6 +413,16 @@
     padding-top: 14px;
     border-top: 1px solid var(--border);
     font-weight: 300;
+  }
+  .verse-commentary p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-soft);
+    font-weight: 300;
+    margin: 0 0 14px 0;
+  }
+  .verse-commentary p:last-child {
+    margin-bottom: 0;
   }
 
   /* ── ACCENT SECTIONS ── */
@@ -489,49 +532,6 @@
     opacity: 0.7;
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -552,6 +552,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -570,8 +612,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -668,8 +715,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -748,16 +793,16 @@
         <div class="section-title-line"></div>
       </div>
 
+<!-- BSB_BLOCK: John 17:3 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:69fa1efa9b527b68d65cd8075290c3979fec523b68e38ade19a323120f5846f1 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">John 17:3</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.17.3" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.17.3" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"And this is eternal life, that they may know You, the only true God, and Jesus Christ whom You have sent."</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"This is eternal life: that they may know you, the only true God, and the one you have sent&#8212;Jesus Christ."</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">This is Jesus's own definition of eternal life, spoken in His final prayer before the cross. Notice what He does not say. He does not define eternal life as living forever, going to heaven, or even believing the right doctrines. He defines it as <em>knowing</em>. The Greek word here is <em>gin&#333;sk&#333;</em>, which carries the weight of personal, experiential knowledge, not mere intellectual awareness. It's the difference between reading someone's biography and sitting across the table from them. Jesus is telling us that the entire point of salvation, the reason He came, the reason the cross was necessary, is so that broken human beings could enter into a real, firsthand, ongoing relationship with the living God. This verse anchors the whole week: everything we study about God's holiness, His love, His creative power, and His incarnation is not theology for theology's sake. It is an invitation into the kind of knowing that Jesus says <em>is</em> eternal life.</div>
+        <div class="verse-text"><span class="words-of-jesus">Now this is eternal life, that they may know You, the only true God, and Jesus Christ, whom You have sent.</span></div>
+<div class="verse-commentary">
+          <p>This is Jesus's own definition of eternal life, spoken in His final prayer before the cross. Notice what He does not say. He does not define eternal life as living forever, going to heaven, or even believing the right doctrines. He defines it as <em>knowing</em>. The Greek word here is <em>gin&#333;sk&#333;</em>, which carries the weight of personal, experiential knowledge, not mere intellectual awareness. It's the difference between reading someone's biography and sitting across the table from them. Jesus is telling us that the entire point of salvation, the reason He came, the reason the cross was necessary, is so that broken human beings could enter into a real, firsthand, ongoing relationship with the living God. This verse anchors the whole week: everything we study about God's holiness, His love, His creative power, and His incarnation is not theology for theology's sake. It is an invitation into the kind of knowing that Jesus says <em>is</em> eternal life.</p>
+        </div>
       </div>
     </div>
 
@@ -786,7 +831,7 @@
         <div class="section-title-line"></div>
       </div>
       <p>Here is the question that will build all week long: if God is holy, if God is love, if God is the Creator of everything, how could we ever truly know Someone that vast? The Bible's answer is breathtaking in its simplicity. We know God because God made Himself knowable. And He did it in the most unexpected way imaginable: He became one of us.</p>
-      <p>Every attribute we'll study this week, holiness, love, creative power, finds its fullest expression not in a theological textbook but in a Person. Jesus did not just teach us about God's character; He <em>is</em> God's character in human form. When Philip asked, "Lord, show us the Father," Jesus replied, "The one who has seen me has seen the Father" (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.14.9" target="_blank">John 14:9</a>). The week builds toward Thursday's study, "Immanuel, God With Us," because that is where every thread converges: the holy, loving, creating God didn't stay at a distance. He moved into the neighborhood. And that changes everything about how we know Him.</p>
+      <p>Every attribute we'll study this week, holiness, love, creative power, finds its fullest expression not in a theological textbook but in a Person. Jesus did not just teach us about God's character; He <em>is</em> God's character in human form. When Philip asked, "Lord, show us the Father," Jesus replied, "The one who has seen me has seen the Father" (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.14.9" target="_blank" rel="noopener">John 14:9</a>). The week builds toward Thursday's study, "Immanuel, God With Us," because that is where every thread converges: the holy, loving, creating God didn't stay at a distance. He moved into the neighborhood. And that changes everything about how we know Him.</p>
     </div>
 
     <!-- 7. APPLICATION (action-box-sabbath, "BEFORE SUNDAY") -->
@@ -823,22 +868,42 @@
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/JHN.17.3" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=John+17:3&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <a class="footer-archive" href="index.html">&#8592; Home</a>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
+    <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

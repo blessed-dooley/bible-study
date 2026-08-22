@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -733,52 +756,52 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>The story moves fast here, from rejection to breakthrough to a private moment of fear. Paul preaches in the synagogue until the hostility boils over, then turns to the Gentiles, and against all odds the church grows, even pulling in the synagogue's own leader (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.18.4-8" target="_blank">Acts 18:4-8</a>). But success and opposition together can be their own kind of exhausting, and that is exactly when God shows up. Watch the human cost of ministry and the divine encouragement that meets it.</p>
+      <p>The story moves fast here, from rejection to breakthrough to a private moment of fear. Paul preaches in the synagogue until the hostility boils over, then turns to the Gentiles, and against all odds the church grows, even pulling in the synagogue's own leader (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.18.4-8" target="_blank" rel="noopener">Acts 18:4-8</a>). But success and opposition together can be their own kind of exhausting, and that is exactly when God shows up. Watch the human cost of ministry and the divine encouragement that meets it.</p>
 
+<!-- BSB_BLOCK: Acts 18:6 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:ee6c9d1cef71c642ce81e14bcba2a2774a617f96291c03239104d5d4908b5c08 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Acts 18:6</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ACT.18.6" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ACT.18.6" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"When they resisted and blasphemed, he shook out his clothes and told them, 'Your blood is on your own heads! I am innocent. From now on I will go to the Gentiles.' "</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">But when they opposed and insulted him, he shook out his garments and told them, “Your blood be on your own heads! I am innocent of it. From now on I will go to the Gentiles.”</div>
+<div class="verse-commentary">
           <p>This is what rejection looked like for Paul, up close. The people he loved most, his own kin, did not just disagree. They resisted and blasphemed, mocking the name of Jesus to his face. Shaking out his clothes was a deliberate, dramatic act, the same kind of gesture Jesus described when He told His followers to shake the dust off their feet. It said, in effect, I have done my part, and what you do with it is now on you, not me. There is grief in this, but also a clean release. Paul does not rage and he does not collapse. He hands the responsibility back to them and keeps moving toward the people who will listen. Sometimes faithfulness means staying. Sometimes it means setting down what is not yours to carry and walking through the next open door.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Acts 18:8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:02cf8ee41fff3c7e8fa919add3e870482b734f5bd237d0b0abadf351b6998b99 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Acts 18:8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ACT.18.8" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ACT.18.8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Crispus, the leader of the synagogue, believed in the Lord, along with his whole household. Many of the Corinthians, when they heard, believed and were baptized."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Right on the heels of that painful scene comes a stunning turn. The very leader of the synagogue that opposed Paul, a man with everything to lose, believes. And he is not alone. Many Corinthians hear, believe, and are baptized. This is the gospel doing exactly what God promised His word would do, never returning to Him empty but always accomplishing what He sent it for (<a class="vlink" href="https://www.bible.com/bible/1713/ISA.55.11" target="_blank">Isaiah 55:11</a>). Notice the pairing. The same season that brought blasphemy and rejection also brought a respected leader and a crowd of new believers into the kingdom. Opposition and harvest were happening at the same time, in the same place. Paul could see both, and it is worth asking which one he felt more in his body at the end of a long day. The next verses suggest the fear was winning.</p>
+        <div class="verse-text">Crispus, the synagogue leader, and his whole household believed in the Lord. And many of the Corinthians who heard the message believed and were baptized.</div>
+<div class="verse-commentary">
+          <p>Right on the heels of that painful scene comes a stunning turn. The very leader of the synagogue that opposed Paul, a man with everything to lose, believes. And he is not alone. Many Corinthians hear, believe, and are baptized. This is the gospel doing exactly what God promised His word would do, never returning to Him empty but always accomplishing what He sent it for (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.55.11" target="_blank" rel="noopener">Isaiah 55:11</a>). Notice the pairing. The same season that brought blasphemy and rejection also brought a respected leader and a crowd of new believers into the kingdom. Opposition and harvest were happening at the same time, in the same place. Paul could see both, and it is worth asking which one he felt more in his body at the end of a long day. The next verses suggest the fear was winning.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Acts 18:9-10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:68f9f12cf72b0c021f46473c50be4598b0dc30825cce66a10eb1f76470b5cd72 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Acts 18:9-10</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ACT.18.9-10" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ACT.18.9-10" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"The Lord said to Paul in a night vision, 'Don't be afraid, but keep on speaking and don't be silent. For I am with you, and no one will lay a hand on you to hurt you, because I have many people in this city.' "</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>God does not rebuke Paul for being afraid. He meets it. The command to stop fearing and keep speaking comes wrapped in three reasons, and they build. I am with you. No one will harm you. And then the one that changes everything, that God already has many people in this city. Paul was bracing himself against a crowd of enemies, and Jesus tells him the crowd is full of future believers Paul has not even met yet. This was the same man who later admitted he had come to Corinth "in weakness, in fear, and in much trembling" (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.2.3" target="_blank">1 Corinthians 2:3</a>). The bold apostle was scared, and God's answer was not a pep talk about Paul's courage. It was a fact about Corinth. The harvest was guaranteed because the people were already His (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.18.10" target="_blank">Acts 18:10</a>).</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 9">9</sup>One night the Lord spoke to Paul in a vision: <span class="words-of-jesus">“Do not be afraid; keep on speaking; do not be silent.</span> <sup class="verse-number" aria-label="Verse 10">10</sup><span class="words-of-jesus">For I am with you and no one will lay a hand on you, because I have many people in this city.”</span></div>
+<div class="verse-commentary">
+          <p>God does not rebuke Paul for being afraid. He meets it. The command to stop fearing and keep speaking comes wrapped in three reasons, and they build. I am with you. No one will harm you. And then the one that changes everything, that God already has many people in this city. Paul was bracing himself against a crowd of enemies, and Jesus tells him the crowd is full of future believers Paul has not even met yet. This was the same man who later admitted he had come to Corinth "in weakness, in fear, and in much trembling" (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.2.3" target="_blank" rel="noopener">1 Corinthians 2:3</a>). The bold apostle was scared, and God's answer was not a pep talk about Paul's courage. It was a fact about Corinth. The harvest was guaranteed because the people were already His (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.18.10" target="_blank" rel="noopener">Acts 18:10</a>).</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Isaiah 41:10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:0a0c34b82cae8fd8e71fb9afd2135a63d0d44a5ae0e3cc679a51d047dd585601 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Isaiah 41:10</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ISA.41.10" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ISA.41.10" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Do not fear, for I am with you; do not be afraid, for I am your God. I will strengthen you; I will help you; I will hold on to you with my righteous right hand."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">Do not fear, for I am with you; do not be afraid, for I am your God. I will strengthen you; I will surely help you; I will uphold you with My righteous right hand.</div>
+<div class="verse-commentary">
           <p>What God told Paul in Corinth, He had been telling His people for centuries. This promise to a frightened, exiled nation reads like the script behind the night vision. Same opening, "do not fear." Same anchor, "I am with you." The Hebrew behind "I will strengthen you" is <em>amats</em>, which means to make firm, to brace, to put steel into someone who is about to buckle. It is not a soft word. It is what you do to a sagging beam or a shaking knee. God does not just tell the afraid to feel better. He promises to do the strengthening Himself, to grip them with His own right hand so they cannot be swept away. Paul's vision was not a one-time favor. It was God being exactly who He has always been to the people who serve Him scared.</p>
         </div>
       </div>
@@ -852,22 +875,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/ACT.18.9-10" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Acts+18:9-10&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

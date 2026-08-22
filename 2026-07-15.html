@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -733,33 +756,34 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Two pictures sit at the heart of today, and together they take the whole competition apart. First Paul tells the Corinthians how to think about their leaders, not as headliners but as servants and stewards. Then he shows them where a posture like that even comes from, the mind of Christ Himself, who held the highest status in the universe and spent all of it going down. Put the two side by side and the factions look absurd. Just before this Paul had branded the Corinthians' quarreling a mark of spiritual infancy, the worldly behavior of people still lining up behind rival names and boasting that they belonged to Paul or to Apollos (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.3.1-4" target="_blank">1 Corinthians 3:1-4</a>). You cannot rank servants the way Corinth was ranking them, and you cannot scramble for status while following a Master who emptied Himself. Watch Paul move from the job description of a leader to the heart of the Leader who defines the whole thing.</p>
+      <p>Two pictures sit at the heart of today, and together they take the whole competition apart. First Paul tells the Corinthians how to think about their leaders, not as headliners but as servants and stewards. Then he shows them where a posture like that even comes from, the mind of Christ Himself, who held the highest status in the universe and spent all of it going down. Put the two side by side and the factions look absurd. Just before this Paul had branded the Corinthians' quarreling a mark of spiritual infancy, the worldly behavior of people still lining up behind rival names and boasting that they belonged to Paul or to Apollos (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.3.1-4" target="_blank" rel="noopener">1 Corinthians 3:1-4</a>). You cannot rank servants the way Corinth was ranking them, and you cannot scramble for status while following a Master who emptied Himself. Watch Paul move from the job description of a leader to the heart of the Leader who defines the whole thing.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 4:1-2 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b2169154444d1c4a8ec579db82240981dc7ec0fb96bfdfecb401fdc84b2474c3 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 4:1-2</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.4.1-2" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.4.1-2" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"A person should think of us in this way: as servants of Christ and managers of the mysteries of God. In this regard, it is required that managers be found faithful."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>So then, men ought to regard us as servants of Christ and stewards of the mysteries of God. <sup class="verse-number" aria-label="Verse 2">2</sup>Now it is required of stewards that they be found faithful.</div>
+<div class="verse-commentary">
           <p>Paul hands the church a whole new way to see the people they were so busy ranking. Not celebrities. Servants and managers. The word for manager is <em>oikonomos</em>, the household steward, the trusted servant who ran a wealthy master's entire estate, and the word behind our "economy." He carried the keys and the accounts and real authority, and still he owned none of it. Everything he managed belonged to someone else. That, Paul says, is the job. Leaders are stewards handed the mysteries of God to pass along faithfully, not treasure to hoard and not a fan base to build. And look at the single thing actually required of a steward. Not brilliance, not charisma, not a bigger crowd than the steward next door. Faithfulness to the Master. Rank the servants against each other and you have missed the entire point. There is only one Owner, and none of it was ever yours to fight over.</p>
         </div>
       </div>
 
-      <p>So where does a servant heart like that even come from? Paul has already dropped the astonishing claim that we have the mind of Christ (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.2.16" target="_blank">1 Corinthians 2:16</a>). Now he shows that mind in full motion, in maybe the most breathtaking description of downward movement ever written.</p>
+      <p>So where does a servant heart like that even come from? Paul has already dropped the astonishing claim that we have the mind of Christ (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.2.16" target="_blank" rel="noopener">1 Corinthians 2:16</a>). Now he shows that mind in full motion, in maybe the most breathtaking description of downward movement ever written.</p>
 
+<!-- BSB_BLOCK: Philippians 2:5-8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:8714d87a0097735de7a8f865ea8606c73b9b29a6ef027da6f90626e07033d358 | footnotes-stripped:1 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Philippians 2:5-8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/PHP.2.5-8" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PHP.2.5-8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Adopt the same attitude as that of Christ Jesus, who, existing in the form of God, did not consider equality with God as something to be exploited. Instead he emptied himself by assuming the form of a servant, taking on the likeness of humanity. And when he had come as a man, he humbled himself by becoming obedient to the point of death—even to death on a cross."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Here is the mind that heals a divided church. Jesus began with the highest status there is, equal with God, and He refused to clutch it. He let it go. He emptied Himself, took the nature of a servant, and kept descending, all the way down to a criminal's cross. Trace it as a straight line and it is dizzying. From the throne of heaven, to a servant's place, to a Roman execution, there was no bottom Jesus was unwilling to reach. And Paul aims this directly at the quarreling. He tells the Philippians, who had their own divisions simmering, to count others more important than themselves and to watch out for one another's interests (<a class="vlink" href="https://www.bible.com/bible/1713/PHP.2.1-4" target="_blank">Philippians 2:1-4</a>). That is what the mind of Christ does inside a real church. It quits asking who is greatest and starts asking whom it can serve. You cannot climb over other believers while wearing the mind of a Savior who climbed down for them.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 5">5</sup>Let this mind be in you which was also in Christ Jesus: <sup class="verse-number" aria-label="Verse 6">6</sup>Who, existing in the form of God, did not consider equality with God something to be grasped, <sup class="verse-number" aria-label="Verse 7">7</sup>but emptied Himself, taking the form of a servant, being made in human likeness. <sup class="verse-number" aria-label="Verse 8">8</sup>And being found in appearance as a man, He humbled Himself and became obedient to death—even death on a cross.</div>
+<div class="verse-commentary">
+          <p>Here is the mind that heals a divided church. Jesus began with the highest status there is, equal with God, and He refused to clutch it. He let it go. He emptied Himself, took the nature of a servant, and kept descending, all the way down to a criminal's cross. Trace it as a straight line and it is dizzying. From the throne of heaven, to a servant's place, to a Roman execution, there was no bottom Jesus was unwilling to reach. And Paul aims this directly at the quarreling. He tells the Philippians, who had their own divisions simmering, to count others more important than themselves and to watch out for one another's interests (<a class="vlink" href="https://www.bible.com/bible/3034/PHP.2.1-4" target="_blank" rel="noopener">Philippians 2:1-4</a>). That is what the mind of Christ does inside a real church. It quits asking who is greatest and starts asking whom it can serve. You cannot climb over other believers while wearing the mind of a Savior who climbed down for them.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Philippians 2:6 | 2:6 Or something to be exploited -->
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -831,22 +855,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.4.1-2" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+4:1-2&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

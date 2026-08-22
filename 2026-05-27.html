@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -735,46 +764,47 @@ if ('serviceWorker' in navigator) {
 
       <p>Two single sentences from two different writers, side by side, give us the whole hinge of the Christian gospel. Jesus on the hillside in Matthew. Paul in the Roman house churches in Romans. Then a third line from the same Jesus on the night before He died, the line that tells us what the rescued life actually looks like. Three sentences. The law and the gospel, held in the same hand at last.</p>
 
+<!-- BSB_BLOCK: Matthew 5:17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:128ca3127414e8b7bbd4c604630b1098d39dabee79a34925c44f1e248e79a951 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Matthew 5:17</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.5.17" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.5.17" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Don't think that I came to abolish the Law or the Prophets. I did not come to abolish but to fulfill."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><span class="words-of-jesus">Do not think that I have come to abolish the Law or the Prophets. I have not come to abolish them, but to fulfill them.</span></div>
+<div class="verse-commentary">
           <p>Two Greek verbs in one sentence. <em>Kataluo</em> on the negative side is the verb for demolishing a structure, the kind of word a soldier would use when he was about to take down a wall. <em>Pleroo</em> on the positive side is the verb for filling a container completely, the kind of word a host would use when he poured wine until it reached the lip of the cup. Jesus is not just saying "I am not against the law." He is saying "I am the filling the law has been waiting for." The Old Testament's hundreds of commandments and prophecies were a series of empty cups arranged on a long table; the Son of God walked up to the table in Galilee and started filling them.</p>
           <p>That single verb <em>pleroo</em> is doing the heaviest theological work in the verse. It points in three directions at once. Backward, to Jesus's perfect obedience to the law in every breath of His thirty-three years (He never once stepped outside the lane line; He <em>filled</em> every commandment completely). Forward, to the cross, where the law's verdict against our lawlessness was honored against His body (He <em>filled</em> the law's penalty all the way to the bottom of the cup). And outward, to us, because the obedience He earned and the penalty He absorbed are credited to people who could not have produced either. The law has not been demolished. The law has been emptied of its power to condemn us and refilled with the Son who satisfied it.</p>
           <p>This is why the sentence is good news rather than terrifying news. The law that named our sin yesterday was always pointing forward to the Person who would do for us what we could not do. The hillside in Galilee is the room where the law finally meets the One it was waiting for. The next verse Jesus speaks (5:18) is even sharper: not one stroke of a Hebrew letter will pass away from the law until everything is accomplished. The law is permanent. It is also fulfilled. Those two sentences are friends, not enemies.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Romans 3:28 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:1d5ebe3c526e7e17f967c11c1a28122bf695f3591112fa39b81082383f9d6ffa | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Romans 3:28</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ROM.3.28" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.3.28" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For we conclude that a person is justified by faith apart from the works of the law."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">For we maintain that a man is justified by faith apart from works of the law.</div>
+<div class="verse-commentary">
           <p>Paul drops the news in seventeen English words. The Greek is even more compact: <em>logizometha gar dikaiousthai pistei anthropon choris ergon nomou</em>. The verb <em>logizometha</em> is the bookkeeping verb, "we credit to the account." The verb <em>dikaiousthai</em> is the verb the courtroom uses when a judge pronounces the defendant in the right. The two prepositions do the rest of the work. <em>Pistei</em>, "by faith," names the channel. <em>Choris ergon nomou</em>, "apart from works of law," shuts the other door. Whatever we have been bringing to the Judge as our case for standing, Paul is telling us we can leave it in the hallway. The Judge has already heard the case He needed to hear, and the case was His Son's life and death on our behalf.</p>
-          <p>Four more verses around this one say the same thing in a different voice. <a class="vlink" href="https://www.bible.com/bible/1713/ROM.4.13-16" target="_blank">Romans 4:13-16</a> walks back to Abraham and says the promise came to him before the law was given, so the inheritance is by promise and not by works. <a class="vlink" href="https://www.bible.com/bible/1713/GAL.2.16" target="_blank">Galatians 2:16</a> repeats the formula three times in a single verse to make sure no one misses it: not by works of the law, but by faith in Jesus Christ. <a class="vlink" href="https://www.bible.com/bible/1713/GAL.3.13" target="_blank">Galatians 3:13</a> says Christ redeemed us from the curse of the law by becoming the curse for us. <a class="vlink" href="https://www.bible.com/bible/1713/PHP.3.9" target="_blank">Philippians 3:9</a> names Paul's own exchange: a righteousness of his own from the law, traded for the righteousness from God that comes by faith. Five verses, one verdict. Justification was never something we could afford to buy. It is the gift the Surgeon paid for so we could walk out of the operating room alive.</p>
+          <p>Four more verses around this one say the same thing in a different voice. <a class="vlink" href="https://www.bible.com/bible/3034/ROM.4.13-16" target="_blank" rel="noopener">Romans 4:13-16</a> walks back to Abraham and says the promise came to him before the law was given, so the inheritance is by promise and not by works. <a class="vlink" href="https://www.bible.com/bible/3034/GAL.2.16" target="_blank" rel="noopener">Galatians 2:16</a> repeats the formula three times in a single verse to make sure no one misses it: not by works of the law, but by faith in Jesus Christ. <a class="vlink" href="https://www.bible.com/bible/3034/GAL.3.13" target="_blank" rel="noopener">Galatians 3:13</a> says Christ redeemed us from the curse of the law by becoming the curse for us. <a class="vlink" href="https://www.bible.com/bible/3034/PHP.3.9" target="_blank" rel="noopener">Philippians 3:9</a> names Paul's own exchange: a righteousness of his own from the law, traded for the righteousness from God that comes by faith. Five verses, one verdict. Justification was never something we could afford to buy. It is the gift the Surgeon paid for so we could walk out of the operating room alive.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: John 14:15 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:7531e3fcd0396da6996e4ef23aef58958a1f251d06a04ecd0185f6de2c39c8aa | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">John 14:15</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.14.15" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.14.15" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"If you love me, you will keep my commands."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><span class="words-of-jesus">If you love Me, you will keep My commandments.</span></div>
+<div class="verse-commentary">
           <p>Jesus says this sentence in the upper room on the night before He dies, after washing the disciples' feet and before praying the longest recorded prayer of His life. The sentence is small. Its architecture is enormous. The "if" is a real conditional; the Greek does not soften it. The "you will keep" is a future indicative; Jesus is not commanding obedience so much as predicting it. Where genuine love for Him lives, kept commandments are the natural growth.</p>
           <p>This is the verse that holds law and gospel together without collapsing either. Salvation is not by keeping the commandments (Romans 3:28 closed that door fifteen minutes ago in our reading). But the saved life is not commandment-free either (Matthew 5:17 closed that door fifteen minutes before that). The bridge between the two doors is in this verse. We do not obey to earn what Jesus has already given us. We obey because we love the One who gave it, and because His Spirit now lives in us as the energy that makes obedience possible. The lawless life and the legalistic life look like opposite sins, but they share one root: a heart that has not yet been melted by love for Jesus. When the heart melts, the law is not a burden anymore. It is a love language.</p>
           <p>The law and the gospel are not two systems. They are two beats of one heart.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: John 14:15 | 14:15 Or If you love Me, keep -->
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -846,22 +876,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/MAT.5.17" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Matthew+5:17&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -890,8 +940,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -900,18 +952,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -919,6 +975,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -938,6 +995,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

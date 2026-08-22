@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -722,7 +751,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Disciple's Posture That Was Not Hers To Take</div>
       <p>Bethany sits about two miles east of Jerusalem on the back slope of the Mount of Olives, the last village a traveler from the Jordan Valley passes before climbing the ridge into the holy city. It is so close to Jerusalem that Pilgrim crowds at Passover often slept there because the city itself was full. Bethany is where Jesus stayed when He came to Jerusalem for the festivals, in the house of Lazarus and his two sisters, the household John's gospel will later record as "the one Jesus loved." Hosting Jesus was not a small thing. When the rabbi arrived He almost always arrived with the twelve, and likely more, and the female head of the household was responsible for everything between the door and the table. Martha is doing in Luke 10 what every woman in first-century Judea was raised to do. The expectations were not Martha's invention; they were the air she breathed.</p>
-      <p>What Mary is doing is the cultural scandal. Sitting at a rabbi's feet is the disciple's posture. It is what Paul says he did "at the feet of Gamaliel" in <a class="vlink" href="https://www.bible.com/bible/1713/ACT.22.3" target="_blank">Acts 22:3</a>, the formal academic phrase for studying for the rabbinate. First-century rabbinic culture did not seat women in that posture. The training was male, the seminary was male, the floor was male. Mary takes the floor anyway. Martha's complaint is not just about dishes; it is about a sister who has crossed a social line. Jesus answers her in the gentlest way, but He does not move Mary off the floor. The good part He commends is the disciple's part, and He has just authorized a woman to take it.</p>
+      <p>What Mary is doing is the cultural scandal. Sitting at a rabbi's feet is the disciple's posture. It is what Paul says he did "at the feet of Gamaliel" in <a class="vlink" href="https://www.bible.com/bible/3034/ACT.22.3" target="_blank" rel="noopener">Acts 22:3</a>, the formal academic phrase for studying for the rabbinate. First-century rabbinic culture did not seat women in that posture. The training was male, the seminary was male, the floor was male. Mary takes the floor anyway. Martha's complaint is not just about dishes; it is about a sister who has crossed a social line. Jesus answers her in the gentlest way, but He does not move Mary off the floor. The good part He commends is the disciple's part, and He has just authorized a woman to take it.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -735,42 +764,40 @@ if ('serviceWorker' in navigator) {
 
       <p>The morning the woman in our opening scene has been having is the morning Martha had two thousand years ago. Today walks through the kitchen with her and watches the moment her hand stops moving. Then it walks her, and us, through the verses that name what just happened and offer the only trade that can answer it. These verses set the Martha story next to Isaiah's image of our best efforts on the divine scale and Isaiah's image of the robe God Himself provides. The order is not accidental. Vision first. Then the exchange.</p>
 
+<!-- BSB_BLOCK: Luke 10:41-42 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:fe65e7bff5b282835d65c11bde33c3c1d2df074e7fa9f71bdd66667c5acbaac5 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Luke 10:41-42</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/LUK.10.41-42" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/LUK.10.41-42" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"The Lord answered her, 'Martha, Martha, you are worried and upset about many things, but one thing is necessary. Mary has made the right choice, and it will not be taken away from her.'"</div>
-
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Jesus says her name twice, the way you'd repeat someone's name softly right before you tell them something hard but kind. He's not mad at Martha. Her kitchen was full of love. But He sees what she can't. The Greek word Luke uses for what Mary chose is <em>meris</em>, and it means the best portion of food, the plate you set in front of the guest of honor. Mary picked the best thing on the table, and it was just being close to Him. Martha gets called "distracted" in <a class="vlink" href="https://www.bible.com/bible/1713/LUK.10.40" target="_blank">Luke 10:40</a>, a word that means she's being pulled in circles, yanked every direction while the one thing that actually mattered was sitting in the next room. That's where repentance starts. Not with some sin Martha was committing, because she wasn't, but with the gap she couldn't see until Jesus pointed right at it. You put the dishes down, look at your own week, and you see it too.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 41">41</sup><span class="words-of-jesus">“Martha, Martha,”</span> the Lord replied, <span class="words-of-jesus">“you are worried and upset about many things.</span> <sup class="verse-number" aria-label="Verse 42">42</sup><span class="words-of-jesus">But only one thing is necessary. Mary has chosen the good portion, and it will not be taken away from her.”</span></div>
+<div class="verse-commentary">
+          <p>Jesus says her name twice, the way you'd repeat someone's name softly right before you tell them something hard but kind. He's not mad at Martha. Her kitchen was full of love. But He sees what she can't. The Greek word Luke uses for what Mary chose is <em>meris</em>, and it means the best portion of food, the plate you set in front of the guest of honor. Mary picked the best thing on the table, and it was just being close to Him. Martha gets called "distracted" in <a class="vlink" href="https://www.bible.com/bible/3034/LUK.10.40" target="_blank" rel="noopener">Luke 10:40</a>, a word that means she's being pulled in circles, yanked every direction while the one thing that actually mattered was sitting in the next room. That's where repentance starts. Not with some sin Martha was committing, because she wasn't, but with the gap she couldn't see until Jesus pointed right at it. You put the dishes down, look at your own week, and you see it too.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Isaiah 64:6 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:a5244fb1fed007a98b187008d87336f4999ec13cab819762965221b7b1dd550b | footnotes-stripped:1 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Isaiah 64:6</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ISA.64.6" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ISA.64.6" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"All of us have become like something unclean, and all our righteous acts are like a polluted garment; all of us wither like a leaf, and our iniquities carry us away like the wind."</div>
-
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">Each of us has become like something unclean, and all our righteous acts are like filthy rags; we all wither like a leaf, and our iniquities carry us away like the wind.</div>
+<div class="verse-commentary">
           <p>When the prophet says even our best behavior looks like "filthy rags," he's not talking about the sins we already feel bad about. He means our good stuff, the things we're proud of. The clean house. The ironed shirt. The banana bread baking for the people coming over. He grabs the strongest word Hebrew has for something filthy, and his point isn't that doing good is bad. It's that trying to use our good works to earn our way to God just doesn't work. He says we "dry up like a leaf," brittle and ready to blow away in the next gust of wind. Sunday morning is the morning we finally admit he's right, because the very next verse is about to show us what God has been holding onto the whole time.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Isaiah 64:6 | 64:6 Or like a stained menstrual garment -->
 
+<!-- BSB_BLOCK: Isaiah 61:10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:6b32d8053047ee0110298d7acda7a723551c6f757edbc977d53a1a0c7e3657a8 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Isaiah 61:10</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ISA.61.10" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ISA.61.10" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"I rejoice greatly in the LORD, I exult in my God; for he has clothed me with garments of salvation and wrapped me in a robe of righteousness, as a groom wears a turban and as a bride adorns herself with her jewels."</div>
-
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Look at who's doing the work in this verse. God clothes her, God wraps her. The bride doesn't pick the fabric, sew the seams, or get it fitted. She just finds herself already dressed, in a robe that back then meant royalty and priesthood. It was a sign of rank, and it was simply handed to her. Zechariah watched this same thing happen to a real man. The high priest Joshua is standing in court in filthy clothes, and the angel says, "Take off his filthy clothes," then tells him, "I'm going to dress you in fine clothes" (<a class="vlink" href="https://www.bible.com/bible/1713/ZEC.3.4" target="_blank">Zechariah 3:4</a>). John saw the final version of this up in heaven, a huge crowd in white robes that had been "washed in the blood of the Lamb" (<a class="vlink" href="https://www.bible.com/bible/1713/REV.7.14" target="_blank">Revelation 7:14</a>). For a thousand years the Bible keeps showing the same picture. We don't make the robe. We're given it. By Thursday it shows up at a wedding, where the King Himself hands out the garment at the door.</p>
+        <div class="verse-text">I will rejoice greatly in the LORD, my soul will exult in my God; for He has clothed me with garments of salvation and wrapped me in a robe of righteousness, as a bridegroom wears a priestly headdress, as a bride adorns herself with her jewels.</div>
+<div class="verse-commentary">
+          <p>Look at who's doing the work in this verse. God clothes her, God wraps her. The bride doesn't pick the fabric, sew the seams, or get it fitted. She just finds herself already dressed, in a robe that back then meant royalty and priesthood. It was a sign of rank, and it was simply handed to her. Zechariah watched this same thing happen to a real man. The high priest Joshua is standing in court in filthy clothes, and the angel says, "Take off his filthy clothes," then tells him, "I'm going to dress you in fine clothes" (<a class="vlink" href="https://www.bible.com/bible/3034/ZEC.3.4" target="_blank" rel="noopener">Zechariah 3:4</a>). John saw the final version of this up in heaven, a huge crowd in white robes that had been "washed in the blood of the Lamb" (<a class="vlink" href="https://www.bible.com/bible/3034/REV.7.14" target="_blank" rel="noopener">Revelation 7:14</a>). For a thousand years the Bible keeps showing the same picture. We don't make the robe. We're given it. By Thursday it shows up at a wedding, where the King Himself hands out the garment at the door.</p>
         </div>
       </div>
     </div>
@@ -819,7 +846,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="action-box">
-        Pick one ten-minute window today, before the sun goes down, and sit. Phone in another room. Bible on your lap or in your hands. Read <a class="vlink" href="https://www.bible.com/bible/1713/ISA.61.10" target="_blank">Isaiah 61:10</a> aloud, then <a class="vlink" href="https://www.bible.com/bible/1713/ISA.64.6" target="_blank">Isaiah 64:6</a> aloud, in that order. Do not fix anything in your day during the window. Do not plan tomorrow. Sit at His feet like Mary did, and let the two verses do their slow trade in your chest. If tears come, do not interrupt them. <a class="vlink" href="https://www.bible.com/bible/1713/PSA.53.2" target="_blank">Psalm 53:2</a> says God looks down to see who has any understanding, who is seeking Him. Today let Him find you sitting still.
+        Pick one ten-minute window today, before the sun goes down, and sit. Phone in another room. Bible on your lap or in your hands. Read <a class="vlink" href="https://www.bible.com/bible/3034/ISA.61.10" target="_blank" rel="noopener">Isaiah 61:10</a> aloud, then <a class="vlink" href="https://www.bible.com/bible/3034/ISA.64.6" target="_blank" rel="noopener">Isaiah 64:6</a> aloud, in that order. Do not fix anything in your day during the window. Do not plan tomorrow. Sit at His feet like Mary did, and let the two verses do their slow trade in your chest. If tears come, do not interrupt them. <a class="vlink" href="https://www.bible.com/bible/3034/PSA.53.2" target="_blank" rel="noopener">Psalm 53:2</a> says God looks down to see who has any understanding, who is seeking Him. Today let Him find you sitting still.
       </div>
     </div>
 
@@ -845,22 +872,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/LUK.10.41-42" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Luke+10:41-42&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -889,8 +936,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -899,18 +948,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -918,6 +971,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -937,6 +991,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

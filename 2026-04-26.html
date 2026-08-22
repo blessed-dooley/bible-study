@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -469,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -532,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -550,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -648,16 +685,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/bible-study/sw.js')
-      .catch(function(err) { console.log('SW registration failed:', err); });
-  });
-}
-</script>
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -735,39 +762,49 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>A grapevine in a vineyard never strains. The branch does not wake up on Tuesday and decide it will produce grapes that week; it simply stays on the trunk, and the sap does the rest. That picture is why Jesus reached for it on the night before His arrest. When He told His disciples to remain in Him, He was not handing them a new assignment. He was describing a connection they already had and asking whether they would live consciously inside it. The psalmist called this rhythm <a class="vlink" href="https://www.bible.com/bible/1713/PSA.37.4" target="_blank">delight</a>. The Bereans lived it by <a class="vlink" href="https://www.bible.com/bible/1713/ACT.17.11" target="_blank">examining the Scriptures</a> daily. The first cost of conscious abiding is time, which is why today starts there.</p>
+      <p>A grapevine in a vineyard never strains. The branch does not wake up on Tuesday and decide it will produce grapes that week; it simply stays on the trunk, and the sap does the rest. That picture is why Jesus reached for it on the night before His arrest. When He told His disciples to remain in Him, He was not handing them a new assignment. He was describing a connection they already had and asking whether they would live consciously inside it. The psalmist called this rhythm <a class="vlink" href="https://www.bible.com/bible/3034/PSA.37.4" target="_blank" rel="noopener">delight</a>. The Bereans lived it by <a class="vlink" href="https://www.bible.com/bible/3034/ACT.17.11" target="_blank" rel="noopener">examining the Scriptures</a> daily. The first cost of conscious abiding is time, which is why today starts there.</p>
 
       <!-- ANCHOR: John 15:4-5 -->
+<!-- BSB_BLOCK: John 15:4-5 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:da1f1dfd5774081e4cdc3e211442f4187d3ef7d69fd6a2ca37bb7eb4d8db38eb | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">John 15:4-5</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.15.4-5" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.15.4-5" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Remain in me, and I in you. Just as a branch is unable to produce fruit by itself unless it remains on the vine, neither can you unless you remain in me. I am the vine; you are the branches. The one who remains in me and I in him produces much fruit, because you can do nothing without me."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">The Greek word behind "remain" is <em>meno</em>. It appears eleven times in the first eleven verses of John 15, which should make any reader slow down. <em>Meno</em> is a stationary verb. It means to stay, to dwell, to keep living in a place you already are. It is the word you would use for a guest who never quite moves out, a tenant who has signed a lease for life, a branch that has no plans to relocate. It is not the word you would use for a visit.<br><br>That single word undoes the way most of us think about Bible reading. Abiding is not a tighter schedule. It is not fifteen minutes better spent. It is the acknowledgment that we were already attached to this Vine before we ever cracked the book and that the question is whether we will live consciously in the connection we already have. The branch on a grapevine does not strain to produce fruit. It does not wake up each morning and announce, "Today I will grow grapes." It stays connected, and the sap does the work.<br><br>Which is why Jesus makes the shocking claim at the end: "you can do nothing without me." He does not say you will accomplish less. He says you will accomplish nothing at all that lasts into eternity. The entire visible output of a Christian life, every act of patience with the rude customer, every honest word in the marriage, every gentle answer to the teenager who pushed the wrong button, every quiet prayer for the coworker who makes life hard, is sap from a Vine we have been conscious of for long enough that morning to hear ourselves breathing near Him. Time given to the Bible is not a task on the list. It is the trellis that keeps the branch close enough to the Vine for the sap to flow. Stop abiding and the fruit does not fail quickly. It just fails quietly.</div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 4">4</sup><span class="words-of-jesus">Remain in Me, and I will remain in you. Just as no branch can bear fruit by itself unless it remains in the vine, neither can you bear fruit unless you remain in Me.</span> <sup class="verse-number" aria-label="Verse 5">5</sup><span class="words-of-jesus">I am the vine and you are the branches. The one who remains in Me, and I in him, will bear much fruit. For apart from Me you can do nothing.</span></div>
+<div class="verse-commentary">
+          <p>The Greek word behind "remain" is <em>meno</em>. It appears eleven times in the first eleven verses of John 15, which should make any reader slow down. <em>Meno</em> is a stationary verb. It means to stay, to dwell, to keep living in a place you already are. It is the word you would use for a guest who never quite moves out, a tenant who has signed a lease for life, a branch that has no plans to relocate. It is not the word you would use for a visit.</p>
+          <p>That single word undoes the way most of us think about Bible reading. Abiding is not a tighter schedule. It is not fifteen minutes better spent. It is the acknowledgment that we were already attached to this Vine before we ever cracked the book and that the question is whether we will live consciously in the connection we already have. The branch on a grapevine does not strain to produce fruit. It does not wake up each morning and announce, "Today I will grow grapes." It stays connected, and the sap does the work.</p>
+          <p>Which is why Jesus makes the shocking claim at the end: "apart from Me you can do nothing." He does not say you will accomplish less. He says you will accomplish nothing at all that lasts into eternity. The entire visible output of a Christian life, every act of patience with the rude customer, every honest word in the marriage, every gentle answer to the teenager who pushed the wrong button, every quiet prayer for the coworker who makes life hard, is sap from a Vine we have been conscious of for long enough that morning to hear ourselves breathing near Him. Time given to the Bible is not a task on the list. It is the trellis that keeps the branch close enough to the Vine for the sap to flow. Stop abiding and the fruit does not fail quickly. It just fails quietly.</p>
+        </div>
       </div>
 
       <!-- SUPPORTING: Psalm 46:10 -->
+<!-- BSB_BLOCK: Psalms 46:10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:9dff3fe69b7b83de9ecc7e76e1cebf8278a1cf778160c66bacd408125c515cf2 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
-          <div class="verse-ref">Psalm 46:10</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/PSA.46.10" target="_blank">☩ Open in Bible App</a>
+          <div class="verse-ref">Psalms 46:10</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.46.10" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Stop fighting, and know that I am God, exalted among the nations, exalted on the earth."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">The older English translations render the first command as "Be still." The Hebrew is sharper. <em>Raphah</em> means to let go, to drop your hands, to sink down, to quit striving. It is what a clenched fist does when it finally unclenches. The psalm is not suggesting a meditation posture. It is ordering a cease-fire.<br><br>Notice the sequence: stop, and then know. The knowing comes second. The Hebrew mind did not separate quietness from knowledge the way modern readers do. You cannot know God while you are still running, arguing, juggling, defending, scrolling. The first condition of knowledge is surrender of the hands. That is why fifteen minutes in the morning before the day's traffic begins is worth more than sixty minutes stolen in the middle of the emergency. The emergency still owns you at minute sixty. The stillness at sunrise owns nothing at all, which is exactly what makes God reachable inside it.</div>
+        <div class="verse-text">“Be still and know that I am God; I will be exalted among the nations, I will be exalted over the earth.”</div>
+<div class="verse-commentary">
+          <p>The older English translations render the first command as "Be still." The Hebrew is sharper. <em>Raphah</em> means to let go, to drop your hands, to sink down, to quit striving. It is what a clenched fist does when it finally unclenches. The psalm is not suggesting a meditation posture. It is ordering a cease-fire.</p>
+          <p>Notice the sequence: stop, and then know. The knowing comes second. The Hebrew mind did not separate quietness from knowledge the way modern readers do. You cannot know God while you are still running, arguing, juggling, defending, scrolling. The first condition of knowledge is surrender of the hands. That is why fifteen minutes in the morning before the day's traffic begins is worth more than sixty minutes stolen in the middle of the emergency. The emergency still owns you at minute sixty. The stillness at sunrise owns nothing at all, which is exactly what makes God reachable inside it.</p>
+        </div>
       </div>
 
       <!-- SUPPORTING: Jeremiah 29:13 -->
+<!-- BSB_BLOCK: Jeremiah 29:13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:68f1f2a039472b08ae6f27199b978881a0dab71bc8943b06de15c5d3060bbaa4 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Jeremiah 29:13</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JER.29.13" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JER.29.13" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"You will seek me and find me when you search for me with all your heart."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">Jeremiah spoke this promise to the same exiles who would later treasure the words of Isaiah 55. They were not asking how to find God in a bookstore; they were asking how to find Him in Babylon, on the other side of the wreckage. The answer came with a condition: whole-heart searching.<br><br>The Hebrew phrase <em>bekhol-levavkha</em> means something closer to "from the whole center of you." The heart in Hebrew is not the feelings; it is the control room where the will, the mind, and the affections all meet. God is not promising to be found by the person who squeezes Him into a margin. He is promising to be found by the person whose search has moved from the margin to the middle of the page. Time is how that shift shows up in a calendar. A quarter-hearted search produces a quarter-hearted answer, which is usually mistaken for God being absent. He is not absent. He is waiting for the whole of you to actually turn.</div>
+        <div class="verse-text">You will seek Me and find Me when you search for Me with all your heart.</div>
+<div class="verse-commentary">
+          <p>Jeremiah spoke this promise to the same exiles who would later treasure the words of Isaiah 55. They were not asking how to find God in a bookstore; they were asking how to find Him in Babylon, on the other side of the wreckage. The answer came with a condition: whole-heart searching.</p>
+          <p>The Hebrew phrase <em>bekhol-levavkha</em> means something closer to "from the whole center of you." The heart in Hebrew is not the feelings; it is the control room where the will, the mind, and the affections all meet. God is not promising to be found by the person who squeezes Him into a margin. He is promising to be found by the person whose search has moved from the margin to the middle of the page. Time is how that shift shows up in a calendar. A quarter-hearted search produces a quarter-hearted answer, which is usually mistaken for God being absent. He is not absent. He is waiting for the whole of you to actually turn.</p>
+        </div>
       </div>
     </div>
 
@@ -841,22 +878,51 @@ if ('serviceWorker' in navigator) {
   </div>
 
     <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/JHN.15.4-5" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=John+15:4-5&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/bible-study/sw.js')
+    .then(reg => console.log('SW registered:', reg.scope))
+    .catch(err => console.log('SW registration failed:', err));
+}
+</script>
+
 <!-- Firebase SDK for push notifications -->
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>

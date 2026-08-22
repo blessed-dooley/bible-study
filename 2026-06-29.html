@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -733,52 +756,52 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Trace the road with him. Driven out of Berea, hurried down to Athens, then sending word back for Timothy and Silas to catch up (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.17.13-15" target="_blank">Acts 17:13-15</a>), Paul preaches to the philosophers and gets a shrug (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.17.16-34" target="_blank">Acts 17:16-34</a>). Then he travels on to Corinth, finds work, and settles in for what will become a year and a half of ministry (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.18.1-11" target="_blank">Acts 18:1-11</a>). Somewhere between the applause of Athens and the grind of Corinth, Paul makes a choice about what he will and will not do with the gospel, and he tells us about it years later in his own words.</p>
+      <p>Trace the road with him. Driven out of Berea, hurried down to Athens, then sending word back for Timothy and Silas to catch up (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.17.13-15" target="_blank" rel="noopener">Acts 17:13-15</a>), Paul preaches to the philosophers and gets a shrug (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.17.16-34" target="_blank" rel="noopener">Acts 17:16-34</a>). Then he travels on to Corinth, finds work, and settles in for what will become a year and a half of ministry (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.18.1-11" target="_blank" rel="noopener">Acts 18:1-11</a>). Somewhere between the applause of Athens and the grind of Corinth, Paul makes a choice about what he will and will not do with the gospel, and he tells us about it years later in his own words.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 2:2 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b9a795c493756bf71cf915b67c01c844ca6e3f70cc18854d226d31ce77a08f45 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 2:2</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.2.2" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.2.2" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"I decided to know nothing among you except Jesus Christ and him crucified."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">For I resolved to know nothing while I was with you except Jesus Christ and Him crucified.</div>
+<div class="verse-commentary">
           <p>This is one of the boldest sentences Paul ever wrote, and the city it was written to makes it bolder. Corinth worshiped cleverness and success, and a crucified man was the opposite of both. Crucifixion was Rome's tool for humiliating slaves and rebels. To build your whole message on a crucified Savior was, by every worldly measure, a marketing disaster. Yet Paul deliberately narrows his focus down to that one scandal. The phrase "him crucified" is a single word in Greek, <em>estauromenon</em>, and it sits in a tense that means a finished action with permanent results. Paul does not preach a Jesus who was once crucified and has moved on. He preaches the forever-crucified One, the risen Lord who still bears the marks, whose lowest moment is the very center of His glory. After Athens, Paul refuses to trim the offensive part to win a hearing. He plants his flag on the part the world calls foolish.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Acts 18:5 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:37a3914ca8614c6c273eeb693c0972c7767b28ef528203acbb8d6deea02a8c98 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Acts 18:5</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ACT.18.5" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ACT.18.5" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"When Silas and Timothy arrived from Macedonia, Paul devoted himself to preaching the word and testified to the Jews that Jesus is the Messiah."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>For a while in Corinth, Paul had been splitting his time, making tents during the week and reasoning in the synagogue on the Sabbath. Then Silas and Timothy show up, almost certainly carrying a gift from the Macedonian churches that freed him from the workbench. The moment the financial pressure lifts, Luke says Paul "devoted himself" wholly to the word. He poured himself into one thing, testifying that Jesus is the Messiah. Following his usual pattern, he started in the synagogue, his custom in every new city (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.17.1-2" target="_blank">Acts 17:1-2</a>), and when the resistance there grew fierce, he turned to the Gentiles (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.18.4-6" target="_blank">Acts 18:4-6</a>). He did not drift through Corinth. He dug in, eventually staying a year and a half, far longer than his stops in Athens or Berea (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.18.11" target="_blank">Acts 18:11</a>).</p>
+        <div class="verse-text">And when Silas and Timothy came down from Macedonia, Paul devoted himself fully to the word, testifying to the Jews that Jesus is the Christ.</div>
+<div class="verse-commentary">
+          <p>For a while in Corinth, Paul had been splitting his time, making tents during the week and reasoning in the synagogue on the Sabbath. Then Silas and Timothy show up, almost certainly carrying a gift from the Macedonian churches that freed him from the workbench. The moment the financial pressure lifts, Luke says Paul "devoted himself" wholly to the word. He poured himself into one thing, testifying that Jesus is the Messiah. Following his usual pattern, he started in the synagogue, his custom in every new city (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.17.1-2" target="_blank" rel="noopener">Acts 17:1-2</a>), and when the resistance there grew fierce, he turned to the Gentiles (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.18.4-6" target="_blank" rel="noopener">Acts 18:4-6</a>). He did not drift through Corinth. He dug in, eventually staying a year and a half, far longer than his stops in Athens or Berea (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.18.11" target="_blank" rel="noopener">Acts 18:11</a>).</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Romans 1:16 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b1375ccb14369cada76aaf0ececdc190b21ecb925828a78ff72614277a35df6f | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Romans 1:16</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ROM.1.16" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.1.16" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For I am not ashamed of the gospel, because it is the power of God for salvation to everyone who believes, first to the Jew, and also to the Greek."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Here is the conviction underneath the Corinth decision. Paul is "not ashamed" of the gospel, and that is not a man working up his courage. It is a man who has done the math and concluded the message itself carries the power, not the messenger's polish. Notice his order, "first to the Jew, and also to the Greek." That is why he keeps starting in the synagogue even when it keeps getting him thrown out. It was a deliberate strategy, not a habit, the same one he names when he tells a hostile crowd that the word of God had to be offered to them first (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.13.46" target="_blank">Acts 13:46</a>). Paul never softened the gospel to make it acceptable, because he was convinced the unsoftened version was the only one with the power to actually save anybody.</p>
+        <div class="verse-text">I am not ashamed of the gospel, because it is the power of God for salvation to everyone who believes, first to the Jew, then to the Greek.</div>
+<div class="verse-commentary">
+          <p>Here is the conviction underneath the Corinth decision. Paul is "not ashamed" of the gospel, and that is not a man working up his courage. It is a man who has done the math and concluded the message itself carries the power, not the messenger's polish. Notice his order, "first to the Jew, then to the Greek." That is why he keeps starting in the synagogue even when it keeps getting him thrown out. It was a deliberate strategy, not a habit, the same one he names when he tells a hostile crowd that the word of God had to be offered to them first (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.13.46" target="_blank" rel="noopener">Acts 13:46</a>). Paul never softened the gospel to make it acceptable, because he was convinced the unsoftened version was the only one with the power to actually save anybody.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Acts 1:8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:baea54e720a41978c07a7979db5bb641504aa295d4caff1e83cbbcc1f1ccd201 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Acts 1:8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ACT.1.8" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ACT.1.8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"But you will receive power when the Holy Spirit has come on you, and you will be my witnesses in Jerusalem, in all Judea and Samaria, and to the ends of the earth."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><span class="words-of-jesus">But you will receive power when the Holy Spirit comes upon you, and you will be My witnesses in Jerusalem, and in all Judea and Samaria, and to the ends of the earth.”</span></div>
+<div class="verse-commentary">
           <p>Step back and the whole journey makes sense. Jesus had handed His followers a map that moved outward in rings, from Jerusalem to the ends of the earth, and Paul was living it one hard mile at a time. Athens and Corinth were dots on that map, the gospel pressing west into Greece. But look at the promise attached to the marching orders. The power to do this was never going to be Paul's eloquence or stamina. It was the Holy Spirit. That is the quiet answer to why a lonely, underfunded preacher kept going after a city shrugged him off. He was not the engine. He was a witness, and the One who sent him supplied the power. The mission belonged to God, and so did the fuel for it.</p>
         </div>
       </div>
@@ -852,22 +875,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/ACT.18.1-11" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Acts+18:1-11&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -733,20 +756,23 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>With whom are you sharing Jesus? Not in theory, but on your actual street, in your actual week? God calls every believer into this work, and He backs the call with the Sabbath promise of an instructed tongue that knows "a word in season" for the weary (<a class="vlink" href="https://www.bible.com/bible/1713/ISA.50.4" target="_blank">Isaiah 50:4</a>). Today's anchor, 1 Peter 3:8-15, shows what that looks like stitched into ordinary relationships, and it ends with the verse this whole day turns on: be ready to explain your hope.</p>
+      <p>With whom are you sharing Jesus? Not in theory, but on your actual street, in your actual week? God calls every believer into this work, and He backs the call with the Sabbath promise of an instructed tongue that knows "a word in season" for the weary (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.50.4" target="_blank" rel="noopener">Isaiah 50:4</a>). Today's anchor, 1 Peter 3:8-15, shows what that looks like stitched into ordinary relationships, and it ends with the verse this whole day turns on: be ready to explain your hope.</p>
 
+<!-- BSB_BLOCK: 1 Peter 3:8-15 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:8528cdd2a660f5eab7dc49f386c1561715b794a9fc53fdbf773efcd0488fbd1c | footnotes-stripped:3 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Peter 3:8-15</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1PE.3.8-15" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1PE.3.8-15" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Finally, all of you be like-minded and sympathetic, love one another, and be compassionate and humble, not paying back evil for evil or insult for insult but, on the contrary, giving a blessing, since you were called for this, so that you may inherit a blessing. For the one who wants to love life and to see good days, let him keep his tongue from evil and his lips from speaking deceit, and let him turn away from evil and do what is good. Let him seek peace and pursue it, because the eyes of the Lord are on the righteous and his ears are open to their prayer. But the face of the Lord is against those who do what is evil. Who then will harm you if you are devoted to what is good? But even if you should suffer for righteousness, you are blessed. Do not fear them or be intimidated, but in your hearts regard Christ the Lord as holy, ready at any time to give a defense to anyone who asks you for a reason for the hope that is in you."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Notice the order Peter builds. Seven verses of character come before one verse of speech. Sympathy, love, compassion, humility, blessing the people who insult you, seeking peace: that is the soil, and the famous "give a defense" verse (<a class="vlink" href="https://www.bible.com/bible/1713/1PE.3.15" target="_blank">1 Peter 3:15</a>) only grows out of it. The Greek word behind "defense" is <em>apologia</em>, the speech a defendant gave in court to explain himself, but Peter lifts the word out of the courtroom and hands it to ordinary believers for conversations at the kitchen door. The hope-explanation Peter describes is an answer "to anyone who asks," which quietly assumes the believer's life has been strange enough, in the loveliest way, to provoke the question. And he immediately adds how the answer must come, "with gentleness and reverence" (<a class="vlink" href="https://www.bible.com/bible/1713/1PE.3.16" target="_blank">1 Peter 3:16</a>). No steamrolling. No scorekeeping. A set-apart heart, a noticeable life, a gentle answer.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 8">8</sup>Finally, all of you, be like-minded and sympathetic, love as brothers, be tenderhearted and humble. <sup class="verse-number" aria-label="Verse 9">9</sup>Do not repay evil with evil or insult with insult, but with blessing, because to this you were called so that you may inherit a blessing. <sup class="verse-number" aria-label="Verse 10">10</sup>For, “Whoever would love life and see good days must keep his tongue from evil and his lips from deceitful speech. <sup class="verse-number" aria-label="Verse 11">11</sup>He must turn from evil and do good; he must seek peace and pursue it. <sup class="verse-number" aria-label="Verse 12">12</sup>For the eyes of the Lord are on the righteous, and His ears are inclined to their prayer. But the face of the Lord is against those who do evil.” <sup class="verse-number" aria-label="Verse 13">13</sup>Who can harm you if you are zealous for what is good? <sup class="verse-number" aria-label="Verse 14">14</sup>But even if you should suffer for what is right, you are blessed. “Do not fear what they fear; do not be shaken.” <sup class="verse-number" aria-label="Verse 15">15</sup>But in your hearts sanctify Christ as Lord. Always be prepared to give a defense to everyone who asks you the reason for the hope that is in you. But respond with gentleness and respect,</div>
+<div class="verse-commentary">
+          <p>Notice the order Peter builds. Seven verses of character come before one verse of speech. Sympathy, love, compassion, humility, blessing the people who insult you, seeking peace: that is the soil, and the famous "give a defense" verse (<a class="vlink" href="https://www.bible.com/bible/3034/1PE.3.15" target="_blank" rel="noopener">1 Peter 3:15</a>) only grows out of it. The Greek word behind "defense" is <em>apologia</em>, the speech a defendant gave in court to explain himself, but Peter lifts the word out of the courtroom and hands it to ordinary believers for conversations at the kitchen door. The hope-explanation Peter describes is an answer "to everyone who asks," which quietly assumes the believer's life has been strange enough, in the loveliest way, to provoke the question. And he immediately adds how the answer must come, "with gentleness and reverence" (<a class="vlink" href="https://www.bible.com/bible/3034/1PE.3.16" target="_blank" rel="noopener">1 Peter 3:16</a>). No steamrolling. No scorekeeping. A set-apart heart, a noticeable life, a gentle answer.</p>
           <p>From this soil grow the practical habits every believer can start this week. Build a real friendship over time and let warmth do the introducing (some call it friendship evangelism). Pray for the Holy Spirit to work on the person's heart, and for the right openings. Talk naturally about what God has actually done for you, or offer to pray for them when life hits hard. Connect them with the wider warmth of your church family, a meal, a small group, a study. Share one Bible promise that meets their actual need rather than a firehose of doctrine. When the time is right, invite a next step, without rushing and without stalling. And under all of it, keep growing yourself, because a character being shaped into His likeness is the most persuasive argument you will ever carry.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Peter 3:12 | 3:12 Psalm 34:12–16 (see also LXX) -->
+      <!-- BSB_FOOTNOTE: 1 Peter 3:14 | 3:14 Or “Do not fear their threats; do not be shaken.”Isaiah 8:12 -->
+      <!-- BSB_FOOTNOTE: 1 Peter 3:15 | 3:15 BYZ and TR But sanctify the Lord God in your hearts.This sentence may also be included with the quotation from the previous verse; see Isaiah 8:13. -->
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -758,7 +784,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Understudy's Knock</div>
       <p>An understudy learns an entire starring role for a night that may never come. Months of it. Every line, every cue, every mark on the stage floor, rehearsed in empty rooms while somebody else takes the bow eight shows a week. Then one evening at 6:40 the lead's voice is simply gone, and there is a knock on the dressing room door. You're on. Here is the thing about that knock. The timing belongs to someone else. You cannot schedule it, postpone it, or talk your way out of it, and you absolutely cannot start learning the part after you hear it. The only thing you ever controlled was whether the role was already in you when it came.</p>
-      <p>Peter's "ready at any time" works exactly like that. The question about your hope arrives on the asker's schedule, not yours. It shows up in a break room after a bad diagnosis, across a fence after a funeral, in the car line when a neighbor's marriage is quietly coming apart. There is no cramming at the kitchen door. Whatever comes out in that moment is what was already living in you, the hope you have actually rehearsed, the promise you hid in your heart months ago, the gentleness practiced across a thousand unwatched days. The knock picks the night. You pick, every quiet day before it, whether the part is learned.</p>
+      <p>Peter's "Always be prepared" works exactly like that. The question about your hope arrives on the asker's schedule, not yours. It shows up in a break room after a bad diagnosis, across a fence after a funeral, in the car line when a neighbor's marriage is quietly coming apart. There is no cramming at the kitchen door. Whatever comes out in that moment is what was already living in you, the hope you have actually rehearsed, the promise you hid in your heart months ago, the gentleness practiced across a thousand unwatched days. The knock picks the night. You pick, every quiet day before it, whether the part is learned.</p>
     </div>
 
     <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
@@ -771,7 +797,7 @@ if ('serviceWorker' in navigator) {
       <div class="section-heading">The Question Is Back on the Table</div>
       <!-- TODAYS_WORLD_SOURCES: Barna, "Belief in Jesus Rises" (66% commitment, +12 since 2021; Gen Z men +15 and Millennial men +19 since 2019): https://www.barna.com/research/belief-in-jesus-rises/ | Barna, young adults leading attendance rise against flat overall trends: https://www.barna.com/research/young-adults-lead-resurgence-in-church-attendance/ | Listening-without-judgment counsel: https://www.barna.com/research/no-faith-conversations/ -->
       <p>In 2025, the Barna Group's State of the Church project reported a number that caught nearly everyone off guard. Sixty-six percent of U.S. adults now say they have made a personal commitment to Jesus that still matters in their life, up twelve points since 2021, when the measure hit its lowest point in decades. The rise is being led by the last group anyone predicted: young men. Commitment jumped fifteen points among Gen Z men and nineteen points among Millennial men. Here is the wrinkle, though. Overall church attendance has stayed mostly flat, with young adults the main group bucking that trend, which means much of the new curiosity is stirring outside institutional doors. And when Barna asks spiritually open people what they actually want from a faith conversation, the answers keep circling the same thing: honesty about doubts, real listening, and no judgment.</p>
-      <p>Read those findings next to <a class="vlink" href="https://www.bible.com/bible/1713/1PE.3.15" target="_blank">1 Peter 3:15</a> and the letter feels like it was mailed this morning. Peter never told his people to build a more impressive institution. He told them to live lives strange enough to provoke the question and to keep a gentle answer ready, because the asking would come at kitchen doors, not temple gates. The data now describes exactly that world: millions quietly curious, waiting not for a better program but for an unhurried, unjudging answer from a familiar face. The knock is coming earlier than anyone scheduled it. The only variable Peter leaves in our hands is whether the part is learned.</p>
+      <p>Read those findings next to <a class="vlink" href="https://www.bible.com/bible/3034/1PE.3.15" target="_blank" rel="noopener">1 Peter 3:15</a> and the letter feels like it was mailed this morning. Peter never told his people to build a more impressive institution. He told them to live lives strange enough to provoke the question and to keep a gentle answer ready, because the asking would come at kitchen doors, not temple gates. The data now describes exactly that world: millions quietly curious, waiting not for a better program but for an unhurried, unjudging answer from a familiar face. The knock is coming earlier than anyone scheduled it. The only variable Peter leaves in our hands is whether the part is learned.</p>
     </div>
 
     <!-- 7. CHRIST CONNECTION -->
@@ -781,7 +807,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Every tip on today's list is a page from Jesus' own playbook. He built friendships across every line His culture drew, eating at tables respectable rabbis avoided, until "friend of sinners" became the insult His enemies reached for. He prayed all night for the people He would meet the next day. He shared one promise at a time, living water for a thirsty woman at a well, rest for the weary, bread for the hungry. He never rushed a next step, and He never let one drift either. And when <a class="vlink" href="https://www.bible.com/bible/1713/1PE.3.15" target="_blank">1 Peter 3:15</a> tells us to "regard Christ the Lord as holy" in our hearts before we ever open our mouths, it names the secret of the whole chapter, because the hope we are asked to explain is not an idea we defend. It is a Person we host. Set Him apart in your heart, and the answer at the kitchen door will take care of itself. The gentleness Peter requires is not a technique. It is what Christ in you actually sounds like.</p>
+      <p>Every tip on today's list is a page from Jesus' own playbook. He built friendships across every line His culture drew, eating at tables respectable rabbis avoided, until "friend of sinners" became the insult His enemies reached for. He prayed all night for the people He would meet the next day. He shared one promise at a time, living water for a thirsty woman at a well, rest for the weary, bread for the hungry. He never rushed a next step, and He never let one drift either. And when <a class="vlink" href="https://www.bible.com/bible/3034/1PE.3.15" target="_blank" rel="noopener">1 Peter 3:15</a> tells us to "sanctify Christ as Lord" in our hearts before we ever open our mouths, it names the secret of the whole chapter, because the hope we are asked to explain is not an idea we defend. It is a Person we host. Set Him apart in your heart, and the answer at the kitchen door will take care of itself. The gentleness Peter requires is not a technique. It is what Christ in you actually sounds like.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -818,22 +844,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1PE.3.8-15" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Peter+3:8-15&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

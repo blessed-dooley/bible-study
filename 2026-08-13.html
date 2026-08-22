@@ -378,6 +378,14 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
   .verse-text sup.verse-number,
   .verse-text-alt sup.verse-number {
     font-family: 'Nunito', sans-serif;
@@ -494,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -557,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -575,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -746,43 +758,45 @@ if ('serviceWorker' in navigator) {
 
       <p>Everything the Corinthians ranked each other by came stamped with a date they could not read. That is the quiet bombshell at the end of the love chapter. The gifts they treated as permanent trophies were temporary tools, issued for the church's construction season and scheduled for retirement the moment the work is done. Paul is not diminishing the gifts. He spent two chapters honoring them. He is measuring them against eternity, and against the one thing in the room that eternity will not touch.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 13:8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:25cbe721f63aa8c5cf961371a4010176bb09ca6465ced458b9968ad40597f821 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 13:8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.13.8" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.13.8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Love never ends. But as for prophecies, they will come to an end; as for tongues, they will cease; as for knowledge, it will come to an end."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>The Greek behind never ends is the verb <em>piptō</em>, to fall, and Paul puts it in the strongest form he has. Love never falls. Buildings fall, empires fall, and every gift on Corinth's trophy shelf will one day stand down, not because the gifts fail but because they finish. Prophecy is a flashlight for a dark road, unnecessary at sunrise. Tongues are for a church still gathering the nations. Knowledge, the partial kind we piece together now, retires the moment the full picture arrives, when the perfect comes and the partial goes (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.13.10" target="_blank">1 Corinthians 13:10</a>). The gifts cease only when the purpose they exist for is fulfilled. Love has no such clause in its contract, because love is not a tool for reaching the goal. Love is the goal. Scaffolding comes down. The building stays.</p>
+        <div class="verse-text">Love never fails. But where there are prophecies, they will cease; where there are tongues, they will be restrained; where there is knowledge, it will be dismissed.</div>
+<div class="verse-commentary">
+          <p>The Greek behind never ends is the verb <em>piptō</em>, to fall, and Paul puts it in the strongest form he has. Love never falls. Buildings fall, empires fall, and every gift on Corinth's trophy shelf will one day stand down, not because the gifts fail but because they finish. Prophecy is a flashlight for a dark road, unnecessary at sunrise. Tongues are for a church still gathering the nations. Knowledge, the partial kind we piece together now, retires the moment the full picture arrives, when the perfect comes and the partial goes (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.10" target="_blank" rel="noopener">1 Corinthians 13:10</a>). The gifts cease only when the purpose they exist for is fulfilled. Love has no such clause in its contract, because love is not a tool for reaching the goal. Love is the goal. Scaffolding comes down. The building stays.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 13:12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:8ec162ba363b92625988fdd3a4559857271b67e49ee6c870ef35a93a60553639 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 13:12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.13.12" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.13.12" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For now we see only a reflection as in a mirror, but then face to face. Now I know in part, but then I will know fully, as I am fully known."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">Now we see but a dim reflection as in a mirror; then we shall see face to face. Now I know in part; then I shall know fully, even as I am fully known.</div>
+<div class="verse-commentary">
           <p>Here is the timeline behind the whole day. Now, and then. Now is the bronze mirror, the dim tinted almost-image, and Paul includes himself in it. I know in part, says the man who wrote a third of the New Testament. Then is face to face, a phrase Scripture saves for its most staggering promises, and very soon it will be literal. We will see our Lord, not a reflection of Him, not a doctrine about Him, Him. And catch the last clause, because it is the best one. I will know fully, as I am fully known. We are not walking toward a stranger. We are walking toward Someone who has known us completely the whole time, through every day we understood so little, and loved us anyway. The mirror ends. The knowing does not. It finally runs both directions.</p>
         </div>
       </div>
 
-      <p>So what happens to faith and hope when sight arrives? In one sense they graduate. Faith, the walking-without-seeing kind (<a class="vlink" href="https://www.bible.com/bible/1713/2CO.5.7" target="_blank">2 Corinthians 5:7</a>), gives way to sight, and hope, which by definition waits for what it cannot yet see (<a class="vlink" href="https://www.bible.com/bible/1713/ROM.8.24" target="_blank">Romans 8:24</a>), finally holds what it waited for. Yet neither one simply vanishes. Faith as trust, the believing that God credited to Abraham as righteousness (<a class="vlink" href="https://www.bible.com/bible/1713/ROM.4.3" target="_blank">Romans 4:3</a>), and hope as the appetite for new delights in a new earth will mark the redeemed forever. Trusting and anticipating are what living creatures do with an infinite God. Still, Paul ranks them, and the reason is worth the whole chapter. Faith and hope are how creatures hold on to God. Love is what God is.</p>
+      <p>So what happens to faith and hope when sight arrives? In one sense they graduate. Faith, the walking-without-seeing kind (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.5.7" target="_blank" rel="noopener">2 Corinthians 5:7</a>), gives way to sight, and hope, which by definition waits for what it cannot yet see (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.8.24" target="_blank" rel="noopener">Romans 8:24</a>), finally holds what it waited for. Yet neither one simply vanishes. Faith as trust, the believing that God credited to Abraham as righteousness (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.4.3" target="_blank" rel="noopener">Romans 4:3</a>), and hope as the appetite for new delights in a new earth will mark the redeemed forever. Trusting and anticipating are what living creatures do with an infinite God. Still, Paul ranks them, and the reason is worth the whole chapter. Faith and hope are how creatures hold on to God. Love is what God is.</p>
 
+<!-- BSB_BLOCK: Romans 5:1-5 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:d734531a0d793e34334ef4bba3427da471b37ad2491d4b170465444f52b7dc8e | footnotes-stripped:2 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Romans 5:1-5</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ROM.5.1-5" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.5.1-5" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"<sup class="verse-number" aria-label="Verse 1">1</sup>Therefore, since we have been declared righteous by faith, we have peace with God through our Lord Jesus Christ. <sup class="verse-number" aria-label="Verse 2">2</sup>We have also obtained access through him by faith into this grace in which we stand, and we boast in the hope of the glory of God. <sup class="verse-number" aria-label="Verse 3">3</sup>And not only that, but we also boast in our afflictions, because we know that affliction produces endurance, <sup class="verse-number" aria-label="Verse 4">4</sup>endurance produces proven character, and proven character produces hope. <sup class="verse-number" aria-label="Verse 5">5</sup>This hope will not disappoint us, because God's love has been poured out in our hearts through the Holy Spirit who was given to us."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>The triad was never Paul's private signature for one letter. It is how the early church talked about the whole Christian life, faith and love in Ephesus (<a class="vlink" href="https://www.bible.com/bible/1713/EPH.1.15" target="_blank">Ephesians 1:15</a>) with eyes opened to hope (<a class="vlink" href="https://www.bible.com/bible/1713/EPH.1.18" target="_blank">Ephesians 1:18</a>), one body walking in one hope, one faith, one love (<a class="vlink" href="https://www.bible.com/bible/1713/EPH.4.1-5" target="_blank">Ephesians 4:1-5</a>), faith working through love while hope waits eagerly (<a class="vlink" href="https://www.bible.com/bible/1713/GAL.5.5-6" target="_blank">Galatians 5:5, 6</a>). And here in Romans the three are shown growing in real soil. Faith brings peace with God. Affliction, of all things, gets worked into endurance, character, and hope. Then the chain ends at its power source, God's love poured out in our hearts by the Spirit. The triad is not three separate achievements. It is one life, and love is the part of it that is most like God Himself (<a class="vlink" href="https://www.bible.com/bible/1713/1JN.4.8" target="_blank">1 John 4:8</a>).</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>Therefore, since we have been justified through faith, we have peace with God through our Lord Jesus Christ, <sup class="verse-number" aria-label="Verse 2">2</sup>through whom we have gained access by faith into this grace in which we stand. And we rejoice in the hope of the glory of God. <sup class="verse-number" aria-label="Verse 3">3</sup>Not only that, but we also rejoice in our sufferings, because we know that suffering produces perseverance; <sup class="verse-number" aria-label="Verse 4">4</sup>perseverance, character; and character, hope. <sup class="verse-number" aria-label="Verse 5">5</sup>And hope does not disappoint us, because God has poured out His love into our hearts through the Holy Spirit, whom He has given us.</div>
+<div class="verse-commentary">
+          <p>The triad was never Paul's private signature for one letter. It is how the early church talked about the whole Christian life, faith and love in Ephesus (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.1.15" target="_blank" rel="noopener">Ephesians 1:15</a>) with eyes opened to hope (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.1.18" target="_blank" rel="noopener">Ephesians 1:18</a>), one body walking in one hope, one faith, one love (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.4.1-5" target="_blank" rel="noopener">Ephesians 4:1-5</a>), faith working through love while hope waits eagerly (<a class="vlink" href="https://www.bible.com/bible/3034/GAL.5.5-6" target="_blank" rel="noopener">Galatians 5:5, 6</a>). And here in Romans the three are shown growing in real soil. Faith brings peace with God. Affliction, of all things, gets worked into endurance, character, and hope. Then the chain ends at its power source, God's love poured out in our hearts by the Spirit. The triad is not three separate achievements. It is one life, and love is the part of it that is most like God Himself (<a class="vlink" href="https://www.bible.com/bible/3034/1JN.4.8" target="_blank" rel="noopener">1 John 4:8</a>).</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Romans 5:1 | 5:1 Or let us have -->
+      <!-- BSB_FOOTNOTE: Romans 5:2 | 5:2 Or exult; also in verses 3 and 11 -->
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -854,22 +868,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.13.8-13" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+13:8-13&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

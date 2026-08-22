@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -625,7 +648,7 @@ if ('serviceWorker' in navigator) {
     white-space: nowrap;
   }
 
-  /* ── DEEPER QUESTIONS ── */
+  /* LEGACY DEEPER QUESTIONS: retained only so archived Friday bodies can still be reassembled */
   .dq-block {
     margin: 28px 0;
     padding: 0;
@@ -782,70 +805,59 @@ if ('serviceWorker' in navigator) {
       <p>That is what makes the Christian hope sound almost unbelievable against its own backdrop. The face you could be banished from, you will see forever. The home you could only hope your groom was building, is being built by the King Himself. The lamb that had to die again every single morning was replaced once and for all by a Lamb on the throne. And the water that cost a day's wages is now poured out free. The early believers did not invent a more cheerful philosophy. They announced that the things their world could never afford had been purchased outright by Someone else, and were being handed out at no charge to anyone who would come.</p>
     </div>
 
-    <!-- 3. DEEPER QUESTIONS -->
+    <!-- 3. WHAT THIS WEEK CLARIFIES -->
     <div class="section">
       <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Deeper Questions</span>
+        <span class="section-emoji">💡</span>
+        <span class="section-title">What This Week Clarifies</span>
         <div class="section-title-line"></div>
       </div>
 
-      <p>This is the last study of the whole quarter, so let these questions do double duty: not just closing one lesson on eternity, but gathering up thirteen weeks of growing closer to God. Sit with them slowly. They are less a quiz than a chance to put words to what you actually believe and what you most want to carry forward.</p>
+      <p>A quarter about knowing God ends with the promise of seeing Him, and even a hope that bright leaves real tensions behind. Three stand out, and the six studies behind us have already resolved every one of them.</p>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">1</span>
-          <div class="dq-question">Of all the glimpses of heaven this week gave us, which one stirred something deepest in you, and what does that longing tell you about where your heart already lives?</div>
+      <div class="section-heading">The Photograph Is Already Taken</div>
+      <p>Thirteen weeks of studying, praying, and trusting have not made anyone reading this perfect, and honesty requires saying so. The gap between the person you are and the person you were made to be has survived every resolution you have thrown at it. A quarter of growth ends with the growing unfinished.</p>
+
+<!-- BSB_BLOCK: 1 John 3:2 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:32a42aa79b36269c0917bb65240bcdf207832fa80e37cca9620189b7e3520e5f | footnotes-stripped:1 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">1 John 3:2</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1JN.3.2" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
+        <div class="verse-text">Beloved, we are now children of God, and what we will be has not yet been revealed. We know that when Christ appears, we will be like Him, for we will see Him as He is.</div>
+<div class="verse-commentary">
+          <p>The memory text answers by holding two facts in one breath. The first is settled, that we are God's children right now, adopted and not on probation. The second is honest, that what we will be has not yet appeared. Sabbath lingered on the Greek word behind revealed, phaneroo, the bringing of a hidden thing out into the open, like a photograph developing in a dark room. The image is already taken. And what finally develops it is not one more season of effort but a sight, seeing Him as He is, finishing the work in us that a lifetime of trying only started. So the quarter ends with the pressure moved off our performance. The growing was never going to complete itself in us. The seeing will complete it, and until then the unfinished places are simply film still in the developer.</p>
+        </div>
+      </div>
+      <!-- BSB_FOOTNOTE: 1 John 3:2 | 3:2 Literally when He appears or when it appears -->
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Revelation 22:4</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/REV.22.4" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"They will see his face, and his name will be on their foreheads."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>We were handed a gallery this week: a face to finally see, a city coming down like a bride, a Lamb who is also the Shepherd, water poured out free. Notice which image made your chest tighten, because longing is honest in a way that opinions are not. And notice that almost every picture in the gallery comes back to this one verse: "they will see his face." The streets and gates and tearless eyes are wonderful, but the homesickness underneath all of them is a homesickness for a Person. If the thing you most want about heaven is not a relief or a reward but Him, that desire did not come from nowhere. It is the pull of a relationship that has already begun, leaning toward the day it is complete.</p>
-          </div>
+      <div class="section-heading">Heaven Gives the Body Back</div>
+      <p>Sabbath opened among Roman tombstones that shrugged at the grave, in a world that pictured the dead as thin, forgetful shadows in a gray basement. A softer version of that picture still floats around today, the idea that forever means escaping the body and drifting on as a soul. Held up honestly, that promise feels more like a fading than a future.</p>
+
+<!-- BSB_BLOCK: Philippians 3:20-21 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c95b1e201b5089283e287ee3dd5eb877b1a5b984e4b5a5be67b8097a0df09eb2 | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Philippians 3:20-21</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PHP.3.20-21" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 20">20</sup>But our citizenship is in heaven, and we eagerly await a Savior from there, the Lord Jesus Christ, <sup class="verse-number" aria-label="Verse 21">21</sup>who, by the power that enables Him to subject all things to Himself, will transform our lowly bodies to be like His glorious body.</div>
+<div class="verse-commentary">
+          <p>Monday answered with Paul's word to a Roman colony. Our citizenship is in heaven, and the Savior we are craning our necks for does not come to collect ghosts. He comes to transform these bodies, the tired, aching, dying ones, and remake them in the likeness of His own glorious body. That is resurrection, the whole person restored, and it is why the week kept insisting the future is solid rather than misty. The voice that will empty the graves wakes sleepers, not shadows, and the living and the raised go up together as themselves. The same power that will bring every knee in the universe low is the power He will use gently to fix what is broken in you. Heaven was never the escape from the body. It is the day the body finally works the way He meant it to.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">2</span>
-          <div class="dq-question">Looking back over the whole quarter, what is the one thing you most want to remember in order to keep your relationship with God strong until you see Jesus face-to-face, and what would actually rest on you instead of Him if you forgot it?</div>
-        </div>
+      <div class="section-heading">Nobody Starts Following at the Gates</div>
+      <p>There is a comfortable assumption hiding under all this hope, that whatever our devotion looks like now, arrival will fix it, and the moment we reach glory we will suddenly become people who love being near Him. Wednesday quietly took that assumption apart. The redeemed are not described by where they arrived. They are described by what they kept doing.</p>
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Philippians 1:6</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/PHP.1.6" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"I am sure of this, that he who started a good work in you will carry it on to completion until the day of Christ Jesus."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Here is the safest thing to remember as the quarter closes, because it takes the weight off the one part of the relationship that was never strong enough to carry it: us. Paul does not say "if you keep it up, you will finish." He says God started the work, and God will finish it. The relationship we have been learning to grow all quarter was His idea before it was ours; He initiated it, and He will complete it. That does not make us passive, but it does change who is holding the rope. We grow in love and faith while we wait, but we rest the whole time in the righteousness of Christ, credited to us as a gift. Whatever else you carry out of this quarter, carry that. The good work in you is not yours to finish. It is His, and He does not abandon what He begins.</p>
-          </div>
+<!-- BSB_BLOCK: Revelation 14:4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:2cfbdaffe5640325c7da15ae9e6684827d6b7f4942f1ee22eafa9ba47782782a | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Revelation 14:4</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/REV.14.4" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-      </div>
-
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">3</span>
-          <div class="dq-question">Who in your life needs to hear about the hope of heaven, and what is one honest reason you have been putting off telling them (knowing you cannot share a hope you are not personally holding onto)?</div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Revelation 22:17</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/REV.22.17" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Both the Spirit and the bride say, 'Come!' Let anyone who hears, say, 'Come!' Let the one who is thirsty come. Let the one who desires take the water of life freely."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Look at the chain in this verse. The Spirit says "come," the bride says "come," and then "let anyone who hears, say, 'Come!'" The invitation is built to be passed on; the moment you drink, you become the next voice. But there is a quiet honesty tucked in here too. You cannot hand someone water from an empty cup. We can only invite people to a hope we are actually living in. So the question of who needs to hear is really two questions: who is thirsty around you, and is the well in your own life full enough that "come" sounds like good news when you say it? Name one person. Then notice that becoming a "come"-sayer is not a burden added to the gospel; it is simply what happens when the water of life is genuinely yours.</p>
-          </div>
+        <div class="verse-text">These are the ones who have not been defiled with women, for they are virgins. They follow the Lamb wherever He goes. They have been redeemed from among men as firstfruits to God and to the Lamb.</div>
+<div class="verse-commentary">
+          <p>The verse opens in the week's bride language, undivided devotion pictured as purity, and then names the redeemed by their gait. They follow the Lamb wherever He goes. Wednesday traced that motion back to its first occurrence, two disciples hearing "Look, the Lamb of God" and simply getting up to walk after Him. The week's picture for it was a cave guide's lamp. The trust that holds you through the tight, frightening stretch is built earlier, in the wide easy passages where following costs almost nothing, so that when the dark gets serious your feet already know what to do. That is what ordinary days are for. The small following we practice now is the same following that continues in glory, where the Lamb turns out to be the Shepherd, still leading His people to fresh springs. Heaven does not switch the following on. It takes the following we brought and clears every obstacle out of its way.</p>
         </div>
       </div>
 
@@ -881,7 +893,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="action-box">
-        Do two things this weekend to land the whole quarter. First, find the slip of paper from Sabbath, the fear with "we shall see Him" written across it, and thank God out loud that the One who began this good work in you will finish it. Second, do the thing question three asked for: name one person who needs the hope of heaven, and take one real step toward telling them, a text, a call, an invitation to talk. Not a sales pitch. Just one thirsty person, and you, passing along the "come" you have received.
+        Do two things this weekend to land the whole quarter. First, find the slip of paper from Sabbath, the fear with "we shall see Him" written across it, and thank God out loud that the One who began this good work in you will finish it. Second, name one person who needs the hope of heaven, and take one real step toward telling them, a text, a call, an invitation to talk. Not a sales pitch. Just one thirsty person, and you, passing along the "come" you have received.
       </div>
     </div>
 
@@ -897,22 +909,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/PHP.1.6" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Philippians+1:6&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

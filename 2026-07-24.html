@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -625,7 +648,7 @@ if ('serviceWorker' in navigator) {
     white-space: nowrap;
   }
 
-  /* ── DEEPER QUESTIONS ── */
+  /* LEGACY DEEPER QUESTIONS: retained only so archived Friday bodies can still be reassembled */
   .dq-block {
     margin: 28px 0;
     padding: 0;
@@ -782,73 +805,60 @@ if ('serviceWorker' in navigator) {
       <p>That is what makes his answer so striking. Paul never proposes moving the church out of Corinth. No compound, no retreat, no thicker walls. Instead he keeps pointing at what moved in when the gospel arrived, the Spirit of God, taking up residence in bodies and in a people. The church's defense against the city was never distance. It was occupancy. A temple does not stay clean because the neighborhood improved. It stays clean because Someone lives there. The question the week leaves behind is not how bad the culture is. It is who is at home in us.</p>
     </div>
 
-    <!-- 3. DEEPER QUESTIONS -->
+    <!-- 3. WHAT THIS WEEK CLARIFIES -->
     <div class="section">
       <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Deeper Questions</span>
+        <span class="section-emoji">💡</span>
+        <span class="section-title">What This Week Clarifies</span>
         <div class="section-title-line"></div>
       </div>
 
-      <p>Take these into the weekend, on a walk, over a meal, with people you trust. They are not quiz questions. They are the week asking to be lived.</p>
+      <p>An uncomfortable week leaves three knots worth untying on the way out. The church that refused to judge a scandal was quick to hire pagan judges. The kindest thing Paul did for a fallen man sounded like the cruelest thing. And chapters spent condemning misused bodies end by defending the body's honor. All three loosen under the same truth, that the house belongs to Someone. Untie them slowly before Sabbath.</p>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">1</span>
-          <div class="dq-question">Many believers in Corinth wanted the culture's approval so badly that they tolerated what even the culture condemned. Why is the hunger for the world's applause so dangerous to Christian identity? And what actually protects us from making the same trade?</div>
+      <div class="section-heading">God Keeps the Street. The Church Keeps the House.</div>
+      <p>The week caught the church failing in two directions at once. A scandal inside the family drew no judgment at all, only pride in how accepting everyone had become. A business dispute between brothers drew plenty of judgment, hired downtown from a pagan bench. And the modern reflex only tightens the knot, since most of us were raised to believe that judging is the one thing a loving church must never do.</p>
+
+<!-- BSB_BLOCK: 1 Corinthians 5:12-13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:ed0b0a52eb6300ffdf616dacdcbc612f0dfe5b1fc13d9ea4cbee6f6b6ae07aa7 | footnotes-stripped:1 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">1 Corinthians 5:12-13</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.5.12-13" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 12">12</sup>What business of mine is it to judge those outside the church? Are you not to judge those inside? <sup class="verse-number" aria-label="Verse 13">13</sup>God will judge those outside. “Expel the wicked man from among you.”</div>
+<div class="verse-commentary">
+          <p>Paul untangles it with a map. There are two jurisdictions, and each has its own judge. The world belongs to God, who will handle it in His own time, which is why the church is never sent out to police its city. The house belongs to the family, which is why a scandal inside it could not be filed under private matters, and why a quarrel between brothers should never have needed a pagan referee. Corinth had the map upside down, silent where it was responsible and loud where it was not. The modern reflex misreads the same map from the other side, treating every judgment as unloving. The week showed what that tolerance really was. It was warmth telling a man a lie. A church that tends its own house is not being harsh. It is being a family, and guarding the name on the door.</p>
+        </div>
+      </div>
+      <!-- BSB_FOOTNOTE: 1 Corinthians 5:13 | 5:13 Literally Expel the evil from among you; Deuteronomy 13:5, 17:7, 19:19, 21:21, 22:21, 22:24, and 24:7 -->
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">1 Corinthians 5:6</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.5.6" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Your boasting is not good. Don't you know that a little leaven leavens the whole batch of dough?"</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Behind the scandal sat something subtler than lust, a congregation's craving to be seen as enlightened, unbothered, impressively free. Approval is a quiet god. It never demands a statue, just small adjustments, a conviction softened here, a silence kept there, until a church has renamed its compromises sophistication. Paul's answer is the leaven picture. Influence spreads without asking permission. A community that feeds on the world's applause is being kneaded by it, and the dough never notices the yeast.</p>
-            <p>What protects us is not louder defiance. Corinth did not need a church that hated the city. It needed a church that grieved, with the humility of people who remembered what their rescue cost. The cross settles the approval question at the root, because a people already loved at infinite expense has nothing left to win from an audience. You cannot bribe someone whose treasure is somewhere else. The church that remembers whose verdict matters is free, both from the culture's scorn and, harder still, from its applause.</p>
-          </div>
+      <div class="section-heading">The Hard Verbs Were Building a Road Home</div>
+      <p>Monday's instructions still sound severe two thousand years later. Remove. Hand over. Do not even eat together. Set them next to everything Scripture says about grace and they feel like sentences that wandered in from a colder book, a church commanded to put a failing man out the very door it exists to hold open.</p>
+
+<!-- BSB_BLOCK: 2 Corinthians 2:5-10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c614cb249226a6b7d5ef9ed3e4b11cadc698cc8d31037eef32dc9ad6472b1827 | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">2 Corinthians 2:5-10</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.2.5-10" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 5">5</sup>Now if anyone has caused grief, he has not grieved me but all of you—to some degree, not to overstate it. <sup class="verse-number" aria-label="Verse 6">6</sup>The punishment imposed on him by the majority is sufficient for him. <sup class="verse-number" aria-label="Verse 7">7</sup>So instead, you ought to forgive and comfort him, so that he will not be overwhelmed by excessive sorrow. <sup class="verse-number" aria-label="Verse 8">8</sup>Therefore I urge you to reaffirm your love for him. <sup class="verse-number" aria-label="Verse 9">9</sup>My purpose in writing you was to see if you would stand the test and be obedient in everything. <sup class="verse-number" aria-label="Verse 10">10</sup>If you forgive anyone, I also forgive him. And if I have forgiven anything, I have forgiven it in the presence of Christ for your sake,</div>
+<div class="verse-commentary">
+          <p>Then a later letter shows the destination. Forgive. Comfort. Reaffirm your love. Paul is defending a repentant man, quite possibly this very man, from a church now slow to welcome him back. The letter never names him, so the possibility stays a possibility. What the passage settles is the design, not the man's identity. Discipline in God's house aims at forgiveness, comfort, reaffirmed love, and a place back at the family table, and correction that never planned a homecoming was never correction. That is the week's answer to the cold-book feeling. The removal was no verdict on a man's worth. It was the family refusing to let its warmth keep lying, the way a mother finally stops covering the overdrafts while the porch light stays on. The rescue clause sat inside the hardest verse from the start, so that his spirit may be saved. Whoever stood at that door one letter later, the church was being taught to open it.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">2</span>
-          <div class="dq-question">Paul's question, do you not know that your body is a temple of the Holy Spirit, closes a series of seven do-you-not-know questions running through these chapters, and every one of them expects the answer, of course we do. What do those seven questions reveal about what worried Paul most? And why should they worry us too?</div>
-        </div>
+      <div class="section-heading">The Gift Always Had an Address</div>
+      <p>After days of scandal, brothel logic, and appetite slogans, a reader could conclude the week's real enemy is the body itself, and part of Corinth drew exactly that conclusion, deciding holiness meant renouncing sex entirely, even inside marriage. Thursday refused the trade. The same chapters that shout flee turn around and defend desire's home with full reverence.</p>
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">1 Corinthians 6:19</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.6.19" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Don't you know that your body is a temple of the Holy Spirit who is in you, whom you have from God? You are not your own,"</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Count them and the pattern becomes a drumbeat. Don't you know that a little leaven works through the whole batch (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.5.6" target="_blank">1 Corinthians 5:6</a>)? That the saints will judge the world (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.2" target="_blank">1 Corinthians 6:2</a>), and even angels (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.3" target="_blank">1 Corinthians 6:3</a>)? That the unrighteous will not inherit the kingdom (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.9" target="_blank">1 Corinthians 6:9</a>)? That your bodies are members of Christ (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.15" target="_blank">1 Corinthians 6:15</a>)? That whoever joins a prostitute becomes one body with her (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.16" target="_blank">1 Corinthians 6:16</a>)? That your body is a temple? Seven times Paul asks the same rhetorical question, and the rhetoric cuts, because they did know. Every one of these truths had been taught, received, and shelved.</p>
-            <p>Paul's deepest worry was not ignorance. It was amnesia, truth that had stopped functioning. A church can hold perfect doctrine the way an attic holds furniture, present, dusty, unused. Every crisis this week, the scandal, the lawsuits, the brothel logic, traced back to something the church knew and did not live. That is why these questions should unsettle us more than any list of Corinth's sins. Most of us do not need new information. We need the old knowledge carried down from the attic and set back in the living room, where it decides what we do with our bodies, our money, our fights, and our tables.</p>
-          </div>
+<!-- BSB_BLOCK: Hebrews 13:4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:68c8de349a893c138a925bda7390c39bc1cd15591b3c99a4d666f14a7f8d906d | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Hebrews 13:4</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/HEB.13.4" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-      </div>
-
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">3</span>
-          <div class="dq-question">Marriage is from God, given in Eden and meant to be honored. In a time when many people around us consider it outdated, how can we show the world that marriage is really a gift straight from the garden, not a relic to outgrow?</div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Genesis 2:18-24</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/GEN.2.18-24" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Then the Lord God said, 'It is not good for the man to be alone. I will make a helper corresponding to him.' The Lord God formed out of the ground every wild animal and every bird of the sky, and brought each to the man to see what he would call it. And whatever the man called a living creature, that was its name. The man gave names to all the livestock, to the birds of the sky, and to every wild animal; but for the man no helper was found corresponding to him. So the Lord God caused a deep sleep to come over the man, and he slept. God took one of his ribs and closed the flesh at that place. Then the Lord God made the rib he had taken from the man into a woman and brought her to the man. And the man said: This one, at last, is bone of my bone and flesh of my flesh; this one will be called 'woman,' for she was taken from man. This is why a man leaves his father and mother and bonds with his wife, and they become one flesh."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Notice where this scene sits, before sin, before culture, before a single government, tradition, or wedding industry existed. God Himself diagnoses the first not-good in creation, a human being alone, and God Himself builds the answer and walks her to the man like a father down the aisle. Adam's response is history's first poem. Marriage is not a human invention that religions later blessed. It is God's own gift, given to the man and woman He made in His image (<a class="vlink" href="https://www.bible.com/bible/1713/GEN.1.27-28" target="_blank">Genesis 1:27-28</a>), with His fingerprints still on it, which is why Scripture keeps insisting it be honored by everyone (<a class="vlink" href="https://www.bible.com/bible/1713/HEB.13.4" target="_blank">Hebrews 13:4</a>).</p>
-            <p>So how do we commend it to a skeptical age? Mostly not by arguing. The world will not be persuaded that marriage is a gift by people who describe it like a sentence. It will be persuaded by marriages that visibly carry grace, spouses who still speak of each other with delight after thirty years, couples who repair instead of discard, families whose tables have room for the lonely. And by honesty, because Eden's gift in a fallen world takes grace to keep. Every faithful marriage is a quiet argument that covenant love exists. The world has seen plenty of weddings. What it is starving to see is faithfulness.</p>
-          </div>
+        <div class="verse-text">Marriage should be honored by all and the marriage bed kept undefiled, for God will judge the sexually immoral and adulterers.</div>
+<div class="verse-commentary">
+          <p>One verse holds both guardrails. Marriage can be dishonored by defiling it, and it can be dishonored by dismissing it, and Scripture refuses both because the design was never the problem. The week's diagnosis ran deeper than appetite. Corinth had learned from its philosophers to shrug at the body, and a shrugged-at body can be indulged or starved with equal logic. The gospel does neither. It moves in. A body that is a temple can never be garbage, and a desire God built into Eden can never be an intruder, only a gift that has one address. So flee and honor are not opposite instincts. They are one act of reverence, running from what would defile the temple and guarding the covenant that tells the truth about God. Honored by all means the single honor it and the married keep it, and God Himself stands watch at the door.</p>
+          <p>Carry that into the weekend gently. This week never asked anyone to fear their own skin. It asked them to remember who lives there. Keep the temple swept, keep the vows heavier than the feelings, and keep a seat open at the table for whoever needs to see that a clean house is a warm one. The Owner is not embarrassed by what He built. He paid for it with His Son.</p>
         </div>
       </div>
 
@@ -862,7 +872,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="section-heading">The Appetite Underneath Everything</div>
-      <p>Strip the week's crises down and you keep finding the same machinery, appetite trained until it rules. Paul saw the pattern in Israel's oldest cautionary tale. The people sat down to eat and drink before the golden calf (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.10.7" target="_blank">1 Corinthians 10:7</a>), a festival that began with feasting (<a class="vlink" href="https://www.bible.com/bible/1713/EXO.32.1-6" target="_blank">Exodus 32:1-6</a>) and slid straight into immorality (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.10.8" target="_blank">1 Corinthians 10:8</a>). He saw it again in Corinth, where his vice lists keep filing idolatry, drunkenness, greed, and sexual sin side by side (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.5.10-11" target="_blank">1 Corinthians 5:10-11</a>, <a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.9-10" target="_blank">1 Corinthians 6:9-10</a>). These are not unrelated failures. They are one river with many mouths, the self on the throne, feeding. Even our most respectable indulgences belong to the same family, because a will trained to obey the appetite in small things has already rehearsed its surrender in the large ones. Holiness and self-indulgence cannot share a house, and a body kept perpetually overfed, overstimulated, and jittery dulls the very faculties the Spirit works through.</p>
+      <p>Strip the week's crises down and you keep finding the same machinery, appetite trained until it rules. Paul saw the pattern in Israel's oldest cautionary tale. The people sat down to eat and drink before the golden calf (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.7" target="_blank" rel="noopener">1 Corinthians 10:7</a>), a festival that began with feasting (<a class="vlink" href="https://www.bible.com/bible/3034/EXO.32.1-6" target="_blank" rel="noopener">Exodus 32:1-6</a>) and slid straight into immorality (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.8" target="_blank" rel="noopener">1 Corinthians 10:8</a>). He saw it again in Corinth, where his vice lists keep filing idolatry, drunkenness, greed, and sexual sin side by side (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.10-11" target="_blank" rel="noopener">1 Corinthians 5:10-11</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.9-10" target="_blank" rel="noopener">1 Corinthians 6:9-10</a>). These are not unrelated failures. They are one river with many mouths, the self on the throne, feeding. Even our most respectable indulgences belong to the same family, because a will trained to obey the appetite in small things has already rehearsed its surrender in the large ones. Holiness and self-indulgence cannot share a house, and a body kept perpetually overfed, overstimulated, and jittery dulls the very faculties the Spirit works through.</p>
       <p>But the week's closing word is not try harder, and it is not eat less. It is occupancy. The self does not leave because we evict it. It leaves as Someone else moves in, the way darkness is not swept out of a room but displaced by dawn. When a person is emptied of self, every rival god carried out of the soul, the vacuum does not stay a vacuum. The Spirit of Christ fills it, and the faith that results works by love and washes the whole inner life clean. God is not whittling us down into joyless discipline. He is raising us up to His own high, pure standard, and His Spirit keeps patiently striving with us because, left to themselves, our natural cravings carry the seeds of death. The temple language was never about restriction. It was about glory. And the Owner ends the week asking the question He has been asking all along, gently. May I have the whole house?</p>
     </div>
 
@@ -900,22 +910,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.6.19-20" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+6:19-20&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

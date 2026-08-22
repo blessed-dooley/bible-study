@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -722,7 +751,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Tent Outside the Camp</div>
       <p>Picture the layout of the Sinai encampment in the days right after the golden calf. Twelve tribes camped in concentric squares around a center the priests still treat as holy. Off to the side, by Moses' own arrangement, stands a smaller tent, often called "the tent of meeting." When Moses goes to it, the people stand at their own tent doors and watch. A pillar of cloud descends and rests at the entrance. The whole nation can see Moses speak with God, and the text says God spoke to him "face to face, as one speaks to a friend." This is the address from which today's anchor passage is prayed.</p>
-      <p>The contrast with the rest of the nation is sharp. When God came down on Sinai with thunder and trumpet at Israel's first encounter with Him in <a class="vlink" href="https://www.bible.com/bible/1713/EXO.20.18-21" target="_blank">Exodus 20:18-21</a>, the people stood at a distance and asked Moses to talk to God for them. Moses was the only one willing to step into the cloud. By chapter thirty-three the nation has just bowed to a calf, the country has just lost three thousand men in the discipline that followed, and the only thing standing between the rest of Israel and the wilderness is the friendship between Moses and God. The "godly leader" of the day's title is not a job description. It is the inevitable shape of someone who has spent enough hours inside the cloud that the smell of it follows him back to the camp.</p>
+      <p>The contrast with the rest of the nation is sharp. When God came down on Sinai with thunder and trumpet at Israel's first encounter with Him in <a class="vlink" href="https://www.bible.com/bible/3034/EXO.20.18-21" target="_blank" rel="noopener">Exodus 20:18-21</a>, the people stood at a distance and asked Moses to talk to God for them. Moses was the only one willing to step into the cloud. By chapter thirty-three the nation has just bowed to a calf, the country has just lost three thousand men in the discipline that followed, and the only thing standing between the rest of Israel and the wilderness is the friendship between Moses and God. The "godly leader" of the day's title is not a job description. It is the inevitable shape of someone who has spent enough hours inside the cloud that the smell of it follows him back to the camp.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -735,30 +764,31 @@ if ('serviceWorker' in navigator) {
 
       <p>Two scenes today, both showing the same Moses. The first is the long conversation on the mountain, where he refuses an entire promised land if it does not come with God's presence. The second is a five-word prayer at ground level for the sister who had just publicly insulted him. The mountain conversation makes the valley prayer possible.</p>
 
+<!-- BSB_BLOCK: Exodus 33:15-23 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:bbd0af1ed86f296778655c38005a9b8e577a06355b4ed49a109e5cf47d48906a | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Exodus 33:15-23</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/EXO.33.15-23" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/EXO.33.15-23" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"'If your presence does not go,' Moses responded to him, 'don't make us go up from here. How will it be known that I and your people have found favor with you unless you go with us? I and your people will be distinguished by this from all the other people on the face of the earth.' The LORD answered Moses, 'I will do this very thing you have asked, for you have found favor with me, and I know you by name.' Then Moses said, 'Please, let me see your glory.' He said, 'I will cause all my goodness to pass in front of you, and I will proclaim the name "the LORD" before you. I will be gracious to whom I will be gracious, and I will have compassion on whom I will have compassion.' But he added, 'You cannot see my face, for humans cannot see me and live.' The LORD said, 'Here is a place near me. You are to stand on the rock, and when my glory passes by, I will put you in the crevice of the rock and cover you with my hand until I have passed by. Then I will take my hand away, and you will see my back, but my face will not be seen.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 15">15</sup>“If Your Presence does not go with us,” Moses replied, “do not lead us up from here. <sup class="verse-number" aria-label="Verse 16">16</sup>For how then can it be known that Your people and I have found favor in Your sight, unless You go with us? How else will we be distinguished from all the other people on the face of the earth?” <sup class="verse-number" aria-label="Verse 17">17</sup>So the LORD said to Moses, “I will do this very thing you have asked, for you have found favor in My sight, and I know you by name.” <sup class="verse-number" aria-label="Verse 18">18</sup>Then Moses said, “Please show me Your glory.” <sup class="verse-number" aria-label="Verse 19">19</sup>“I will cause all My goodness to pass before you,” the LORD replied, “and I will proclaim My name—the LORD—in your presence. I will have mercy on whom I have mercy, and I will have compassion on whom I have compassion.” <sup class="verse-number" aria-label="Verse 20">20</sup>But He added, “You cannot see My face, for no one can see Me and live.” <sup class="verse-number" aria-label="Verse 21">21</sup>The LORD continued, “There is a place near Me where you are to stand upon a rock, <sup class="verse-number" aria-label="Verse 22">22</sup>and when My glory passes by, I will put you in a cleft of the rock and cover you with My hand until I have passed by. <sup class="verse-number" aria-label="Verse 23">23</sup>Then I will take My hand away, and you will see My back; but My face must not be seen.”</div>
+<div class="verse-commentary">
           <p>God has just offered Moses a deal that any nation in the ancient Near East would have signed in a heartbeat. Take the people. Take the land flowing with milk and honey. Take an angelic escort to clear out the Canaanites in front of you. There is only one item missing from the package: God's own presence will not go up in the middle of it, because the people are stiff-necked and He cannot trust Himself not to consume them on the way. From a strategic standpoint the offer is generous. From Moses' standpoint it is unthinkable. The first words out of his mouth in our verses are essentially, then we are not going.</p>
-          <p>The Hebrew word for "presence" here is *panim*, the same word translated "face" three verses later. Moses is asking for the face of God to be present with the camp. He keeps the same word in his next request: "Please, let me see your glory" (Hebrew *kavod*, weight, the radiant heaviness of God's character made visible). He has had years of conversation in the tent of meeting; what he wants now is to see the One he has been talking to. God's answer is layered. Yes to "I will go with you." Yes to "I will let my goodness pass in front of you and proclaim my name." But no to the face itself, because no human in Moses' condition could survive the unmediated weight of *kavod*. Moses gets a cleft in the rock, a hand over his eyes, and a parting glimpse of God's back as the glory moves past.</p>
+          <p>The Hebrew word for "presence" here is *panim*, the same word translated "face" three verses later. Moses is asking for the face of God to be present with the camp. He keeps the same word in his next request: "Please show me Your glory" (Hebrew *kavod*, weight, the radiant heaviness of God's character made visible). He has had years of conversation in the tent of meeting; what he wants now is to see the One he has been talking to. God's answer is layered. Yes to "I will go with you." Yes to "I will let my goodness pass in front of you and proclaim my name." But no to the face itself, because no human in Moses' condition could survive the unmediated weight of *kavod*. Moses gets a cleft in the rock, a hand over his eyes, and a parting glimpse of God's back as the glory moves past.</p>
           <p>Read this commentary slowly. Moses turned down a country to keep the conversation. Anyone who has ever sat across the table from a friend who would walk away from a promotion to be with their family knows what this feels like. The promised land was second prize. The Person was the prize. By the next chapter Moses will be writing the new copy of the Ten Commandments while the radiance of *kavod* still glows on his own face. The mountain answers the camp.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Exodus 33:19 | 33:19 Cited in Romans 9:15 -->
 
+<!-- BSB_BLOCK: Numbers 12:13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b9374a42087f266286b657c9c55d27ecd9feb84395211464ab012bb6eafe016f | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Numbers 12:13</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/NUM.12.13" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/NUM.12.13" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Then Moses cried out to the LORD, 'God, please heal her!'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">So Moses cried out to the LORD, “O God, please heal her!”</div>
+<div class="verse-commentary">
           <p>The Hebrew is five words. *El na refa na lah*. "God, please, heal, please, her." The repeated *na* is the particle of urgent entreaty, the sound of someone leaning forward and not bothering to put together a polished sentence. Miriam, who is Moses' sister and one of his earliest defenders, has just publicly attacked his marriage and his unique authority before God. The cloud lifted, Moses' face was bypassed, and Miriam's skin turned the snow-white pallor of leprosy. Aaron begged Moses to do something. Moses prayed five words.</p>
-          <p>Notice what Moses did not do. He did not point out that he had been wronged. He did not stop and let the consequence ripen. He did not ask for an apology before he asked for a healing. He had spent enough time on the mountain that the moment his sister was suffering he could not sit on his hands. The same Moses had earlier interceded for Aaron, who had personally cast the calf and lied to Moses' face about it, in <a class="vlink" href="https://www.bible.com/bible/1713/EXO.32.1-14" target="_blank">Exodus 32:1-14</a> and again in <a class="vlink" href="https://www.bible.com/bible/1713/EXO.32.31-34" target="_blank">Exodus 32:31-34</a>, and Moses had specifically prayed for Aaron's life again in <a class="vlink" href="https://www.bible.com/bible/1713/DEU.9.20" target="_blank">Deuteronomy 9:20</a>. The pattern is consistent. The leader who knows the cleft of the rock loves quickly the people who hurt him. Jesus would later compress the principle into a single line in <a class="vlink" href="https://www.bible.com/bible/1713/MAT.5.44" target="_blank">Matthew 5:44</a>: love your enemies, pray for those who persecute you. Paul would echo it in <a class="vlink" href="https://www.bible.com/bible/1713/COL.3.13" target="_blank">Colossians 3:13</a>: forgive as the Lord has forgiven you. Moses simply lived it before the lines existed.</p>
+          <p>Notice what Moses did not do. He did not point out that he had been wronged. He did not stop and let the consequence ripen. He did not ask for an apology before he asked for a healing. He had spent enough time on the mountain that the moment his sister was suffering he could not sit on his hands. The same Moses had earlier interceded for Aaron, who had personally cast the calf and lied to Moses' face about it, in <a class="vlink" href="https://www.bible.com/bible/3034/EXO.32.1-14" target="_blank" rel="noopener">Exodus 32:1-14</a> and again in <a class="vlink" href="https://www.bible.com/bible/3034/EXO.32.31-34" target="_blank" rel="noopener">Exodus 32:31-34</a>, and Moses had specifically prayed for Aaron's life again in <a class="vlink" href="https://www.bible.com/bible/3034/DEU.9.20" target="_blank" rel="noopener">Deuteronomy 9:20</a>. The pattern is consistent. The leader who knows the cleft of the rock loves quickly the people who hurt him. Jesus would later compress the principle into a single line in <a class="vlink" href="https://www.bible.com/bible/3034/MAT.5.44" target="_blank" rel="noopener">Matthew 5:44</a>: love your enemies, pray for those who persecute you. Paul would echo it in <a class="vlink" href="https://www.bible.com/bible/3034/COL.3.13" target="_blank" rel="noopener">Colossians 3:13</a>: forgive as the Lord has forgiven you. Moses simply lived it before the lines existed.</p>
         </div>
       </div>
     </div>
@@ -833,22 +863,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/EXO.33.15-23" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Exodus+33:15-23&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -863,6 +913,7 @@ if ('serviceWorker' in navigator) {
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 <script>
+// Push notification opt-in
 (function() {
   var firebaseConfig = {
     apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
@@ -873,8 +924,13 @@ if ('serviceWorker' in navigator) {
     appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
     measurementId: "G-BY2BM5HTX4"
   };
+
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
+
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
+
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -882,32 +938,51 @@ if ('serviceWorker' in navigator) {
   function setCookie(name, value) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') { initFirebaseAndRegister(); return; }
+
+  // If already opted in, silently ensure token is current
+  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
+    initFirebaseAndRegister();
+    return;
+  }
+
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
+
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
+
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
     setCookie('dbs_notif', 'yes');
     initFirebaseAndRegister();
   };
+
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
     setCookie('dbs_notif', 'no');
   };
+
   function initFirebaseAndRegister() {
     try {
       if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
       var messaging = firebase.messaging();
       var db = firebase.firestore();
+
       navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({ vapidKey: VAPID_KEY, serviceWorkerRegistration: swReg });
+        return messaging.getToken({
+          vapidKey: VAPID_KEY,
+          serviceWorkerRegistration: swReg
+        });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,
@@ -915,8 +990,12 @@ if ('serviceWorker' in navigator) {
             userAgent: navigator.userAgent.substring(0, 100)
           }, { merge: true });
         }
-      }).catch(function(err) { console.log('Notification setup error:', err); });
-    } catch(e) { console.log('Firebase init error:', e); }
+      }).catch(function(err) {
+        console.log('Notification setup error:', err);
+      });
+    } catch(e) {
+      console.log('Firebase init error:', e);
+    }
   }
 })();
 </script>

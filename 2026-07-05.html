@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -733,28 +756,28 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Paul has just begged the Corinthians to stop splitting into factions, and now he tells them why their fights miss the point entirely. In <a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.17-31" target="_blank">1 Corinthians 1:17-31</a>, he plants his flag. He was sent to preach the cross, and he refuses to do it with the kind of polished eloquence that would turn the gospel into a performance. Watch how he frames everything around a single danger, that human cleverness can quietly empty the cross of the very power that makes it good news.</p>
+      <p>Paul has just begged the Corinthians to stop splitting into factions, and now he tells them why their fights miss the point entirely. In <a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.17-31" target="_blank" rel="noopener">1 Corinthians 1:17-31</a>, he plants his flag. He was sent to preach the cross, and he refuses to do it with the kind of polished eloquence that would turn the gospel into a performance. Watch how he frames everything around a single danger, that human cleverness can quietly empty the cross of the very power that makes it good news.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 1:17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:8d1f15805eaed1da7727ade5fd02c1caf042a8654347400760fba31489cc6b2d | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 1:17</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.1.17" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.17" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For Christ did not send me to baptize, but to preach the gospel—not with eloquent wisdom, so that the cross of Christ will not be emptied of its power."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Notice what Paul is and is not saying. He is not against baptism, and he is not against careful thinking. He is against anything that would make the cross depend on his own brilliance to land. The phrase "emptied of its power" is vivid in the original. The Greek verb is <em>kenoo</em>, which means to empty something out, to drain it until nothing is left, to render it pointless. Paul pictures the cross as a full cup of God's power and clever speech as a slow leak. Dress the message up enough, make it impressive enough, and people will leave admiring the messenger while the actual power drains away unnoticed. That is why the rest of the passage (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.18-31" target="_blank">1 Corinthians 1:18-31</a>) becomes a head-on collision between human wisdom and God's. The gospel never needed to borrow strength from our eloquence. It needs us to stop getting in its way.</p>
+        <div class="verse-text">For Christ did not send me to baptize, but to preach the gospel, not with words of wisdom, lest the cross of Christ be emptied of its power.</div>
+<div class="verse-commentary">
+          <p>Notice what Paul is and is not saying. He is not against baptism, and he is not against careful thinking. He is against anything that would make the cross depend on his own brilliance to land. The phrase "emptied of its power" is vivid in the original. The Greek verb is <em>kenoo</em>, which means to empty something out, to drain it until nothing is left, to render it pointless. Paul pictures the cross as a full cup of God's power and clever speech as a slow leak. Dress the message up enough, make it impressive enough, and people will leave admiring the messenger while the actual power drains away unnoticed. That is why the rest of the passage (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.18-31" target="_blank" rel="noopener">1 Corinthians 1:18-31</a>) becomes a head-on collision between human wisdom and God's. The gospel never needed to borrow strength from our eloquence. It needs us to stop getting in its way.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 2:2 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b9a795c493756bf71cf915b67c01c844ca6e3f70cc18854d226d31ce77a08f45 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 2:2</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.2.2" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.2.2" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"I decided to know nothing among you except Jesus Christ and him crucified."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">For I resolved to know nothing while I was with you except Jesus Christ and Him crucified.</div>
+<div class="verse-commentary">
           <p>A chapter later Paul says the same thing from the other direction. He did not arrive in Corinth with a buffet of impressive ideas and let the cross be one dish among many. He made a deliberate decision to know one thing and preach one thing, Jesus Christ and the fact that He was crucified. That is a stunning narrowing for a man who could have traded arguments with the philosophers all afternoon. He is not saying the cross was the limit of what he understood. He is saying it was the only thing worth building on. Everything else he might have said would have been scaffolding around this single, scandalous, load-bearing truth. Take Christ crucified out of the center, and the most brilliant sermon in the world is just noise.</p>
         </div>
       </div>
@@ -829,22 +852,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.1.17-31" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+1:17-31&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

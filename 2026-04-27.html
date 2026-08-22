@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -469,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -532,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -550,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -648,16 +685,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/bible-study/sw.js')
-      .catch(function(err) { console.log('SW registration failed:', err); });
-  });
-}
-</script>
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -735,39 +762,50 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Before the fishermen were awake, before the village dogs had stirred, Jesus was already outside. Mark gives us one sentence and three details: very early, while it was still dark, a deserted place. He does not say He slipped into a side room or prayed on the way. He left the building, walked past the town noise, and located the only kind of room whose door was guaranteed not to open until He was finished. Mary learned the same discipline from the other direction, refusing to leave <a class="vlink" href="https://www.bible.com/bible/1713/LUK.10.39-42" target="_blank">the spot at His feet</a> even when the kitchen was calling. If the Son of God needed a specific place, and His closest student picked hers and would not give it up, no servant of His is going to get by without one.</p>
+      <p>Before the fishermen were awake, before the village dogs had stirred, Jesus was already outside. Mark gives us one sentence and three details: very early, while it was still dark, a deserted place. He does not say He slipped into a side room or prayed on the way. He left the building, walked past the town noise, and located the only kind of room whose door was guaranteed not to open until He was finished. Mary learned the same discipline from the other direction, refusing to leave <a class="vlink" href="https://www.bible.com/bible/3034/LUK.10.39-42" target="_blank" rel="noopener">the spot at His feet</a> even when the kitchen was calling. If the Son of God needed a specific place, and His closest student picked hers and would not give it up, no servant of His is going to get by without one.</p>
 
       <!-- ANCHOR: Mark 1:35 -->
+<!-- BSB_BLOCK: Mark 1:35 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:9d283c63b971430705e29c475c708316ba2da376b062e761c21b49cfc6ca3f27 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Mark 1:35</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MRK.1.35" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MRK.1.35" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Very early in the morning, while it was still dark, he got up, went out, and made his way to a deserted place; and there he was praying."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">Mark is the shortest of the four Gospels, which means every sentence earns its keep. And this single sentence reveals the engine of the whole Jesus story. The day before had been one of the most exhausting of His public life: a crowd at the door from sundown to midnight, demons cast out, the sick brought one after another, Peter's own mother-in-law healed before dinner. He had every excuse to sleep in.<br><br>Instead, Mark says He got up "very early, while it was still dark," went out, and made His way to a deserted place. The Greek phrase behind "deserted place" is <em>eremos topos</em>. <em>Eremos</em> is the same word used for the wilderness where Israel wandered and where Jesus Himself was tempted. It means uninhabited, quiet, empty of people. Not "outside the house." Not "on the back porch." A specific kind of place, chosen because no one else would be there.<br><br>The choice reveals everything. He could have prayed in the house. He could have prayed on the way. He could have squeezed it in between demands. He chose instead to leave the building, walk far enough that the village noise fell off, and locate the only room whose door was guaranteed not to open until He was finished. His place was the hillside. His time was before anyone had lit a fire. His commitment was the extra effort of travel when fatigue still argued against it.<br><br>Then comes the last three words, which are easy to miss: "and there he was praying." The Greek imperfect tense lingers. It is not "He said a prayer." It is "He was praying," continuous, unhurried, unmeasured. What kept Him alive through three years of unrelenting pressure was not the charisma people saw in the daylight; it was the hidden hour they never got to watch. If the Son of God needed a place, the servant cannot get by without one.</div>
+        <div class="verse-text">Early in the morning, while it was still dark, Jesus got up and went out to a solitary place to pray.</div>
+<div class="verse-commentary">
+          <p>Mark is the shortest of the four Gospels, which means every sentence earns its keep. And this single sentence reveals the engine of the whole Jesus story. The day before had been one of the most exhausting of His public life: a crowd at the door from sundown to midnight, demons cast out, the sick brought one after another, Peter's own mother-in-law healed before dinner. He had every excuse to sleep in.</p>
+          <p>Instead, Mark says He got up "very early, while it was still dark," went out, and made His way to a deserted place. The Greek phrase behind "deserted place" is <em>eremos topos</em>. <em>Eremos</em> is the same word used for the wilderness where Israel wandered and where Jesus Himself was tempted. It means uninhabited, quiet, empty of people. Not "outside the house." Not "on the back porch." A specific kind of place, chosen because no one else would be there.</p>
+          <p>The choice reveals everything. He could have prayed in the house. He could have prayed on the way. He could have squeezed it in between demands. He chose instead to leave the building, walk far enough that the village noise fell off, and locate the only room whose door was guaranteed not to open until He was finished. His place was the hillside. His time was before anyone had lit a fire. His commitment was the extra effort of travel when fatigue still argued against it.</p>
+          <p>Then comes the purpose clause, which is easy to miss: "to pray." It names why He withdrew, not merely to escape noise, but to spend unhurried time with His Father. What kept Him alive through three years of unrelenting pressure was not the charisma people saw in the daylight; it was the hidden hour they never got to watch. If the Son of God needed a place, the servant cannot get by without one.</p>
+        </div>
       </div>
 
       <!-- SUPPORTING: Psalm 27:8 -->
+<!-- BSB_BLOCK: Psalms 27:8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:70b22e14cefaa3d76ed6110a85f311c668a932e6badff6a0a8e6bc378cb4dd99 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
-          <div class="verse-ref">Psalm 27:8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/PSA.27.8" target="_blank">☩ Open in Bible App</a>
+          <div class="verse-ref">Psalms 27:8</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.27.8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"My heart says this about you: "Seek his face." LORD, I will seek your face."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">David records a conversation between his own heart and himself. The heart speaks first, repeating what God has already said: "Seek His face." Then David answers: "LORD, I will seek your face." The Hebrew word for face is <em>paneh</em>. It does not mean the surface features; it means the whole presence, the turned-toward-you-ness of a person. To seek someone's face is not to lobby them for a favor. It is to want them, personally, looking at you.<br><br>That distinction changes everything about a devotional place. The chair in the corner is not a petition booth where you submit requests. It is the meeting point where you wait for the <em>paneh</em>, the face of God, to be present with yours. The work of a place is to make that waiting possible. Without one, every prayer begins to feel like a hurried email; with one, even the silence begins to feel like company.</div>
+        <div class="verse-text">My heart said, “Seek His face.” Your face, O LORD, I will seek.</div>
+<div class="verse-commentary">
+          <p>David records a conversation between his own heart and himself. The heart speaks first, repeating what God has already said: "Seek His face." Then David answers: "Your face, O LORD, I will seek." The Hebrew word for face is <em>paneh</em>. It does not mean the surface features; it means the whole presence, the turned-toward-you-ness of a person. To seek someone's face is not to lobby them for a favor. It is to want them, personally, looking at you.</p>
+          <p>That distinction changes everything about a devotional place. The chair in the corner is not a petition booth where you submit requests. It is the meeting point where you wait for the <em>paneh</em>, the face of God, to be present with yours. The work of a place is to make that waiting possible. Without one, every prayer begins to feel like a hurried email; with one, even the silence begins to feel like company.</p>
+        </div>
       </div>
 
       <!-- SUPPORTING: 1 Chronicles 16:11 -->
+<!-- BSB_BLOCK: 1 Chronicles 16:11 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:0ce10110ee736efbba1bfaa701133e25ccfc6ff0295fbfa123256672bb7bb95b | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Chronicles 16:11</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CH.16.11" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CH.16.11" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Search for the LORD and for his strength; seek his face always."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">The Hebrew word translated "always" is <em>tamid</em>. It shows up across the Old Testament for the "continual" burnt offering that smoked on the temple altar morning and evening, every day, without interruption. <em>Tamid</em> is not a burst of enthusiasm; it is the slow heartbeat of a habit that has been practiced long enough that it no longer requires willpower to keep.<br><br>A place is what turns a feeling into a <em>tamid</em>. The same chair, the same window, the same book open on the same table, morning after morning, is how a short obedience lengthens into a lifelong one. Feelings will come and go. The chair will not. By the time the feelings return, the place has already been doing the quiet work of keeping the soul within reach of its God. That is why the enemy never argues with your theology; he argues with your furniture. He just wants the chair empty.</div>
+        <div class="verse-text">Seek out the LORD and His strength; seek His face always.</div>
+<div class="verse-commentary">
+          <p>The Hebrew word translated "always" is <em>tamid</em>. It shows up across the Old Testament for the "continual" burnt offering that smoked on the temple altar morning and evening, every day, without interruption. <em>Tamid</em> is not a burst of enthusiasm; it is the slow heartbeat of a habit that has been practiced long enough that it no longer requires willpower to keep.</p>
+          <p>A place is what turns a feeling into a <em>tamid</em>. The same chair, the same window, the same book open on the same table, morning after morning, is how a short obedience lengthens into a lifelong one. Feelings will come and go. The chair will not. By the time the feelings return, the place has already been doing the quiet work of keeping the soul within reach of its God. That is why the enemy never argues with your theology; he argues with your furniture. He just wants the chair empty.</p>
+        </div>
       </div>
     </div>
 
@@ -841,22 +879,51 @@ if ('serviceWorker' in navigator) {
   </div>
 
     <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/MRK.1.35" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Mark+1:35&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/bible-study/sw.js')
+    .then(reg => console.log('SW registered:', reg.scope))
+    .catch(err => console.log('SW registration failed:', err));
+}
+</script>
+
 <!-- Firebase SDK for push notifications -->
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>

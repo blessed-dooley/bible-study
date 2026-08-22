@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -625,7 +648,7 @@ if ('serviceWorker' in navigator) {
     white-space: nowrap;
   }
 
-  /* ── DEEPER QUESTIONS ── */
+  /* LEGACY DEEPER QUESTIONS: retained only so archived Friday bodies can still be reassembled */
   .dq-block {
     margin: 28px 0;
     padding: 0;
@@ -761,12 +784,12 @@ if ('serviceWorker' in navigator) {
       </div>
       <p class="tldr-hook">From a Servant's awakened ear to a Shepherd's whistle, this week traced one unbroken truth. Sharing Him was never a performance for experts. It is love overflowing, unforced, all the way to the wanderer's road home.</p>
       <ul class="week-review-list">
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sabbath:</span> Share Him. The Servant of <a class="vlink" href="https://www.bible.com/bible/1713/ISA.50.4" target="_blank">Isaiah 50:4</a> showed us where words for the weary come from: an ear God wakes morning by morning. A sneering philosopher's complaint about wool-workers and cobblers revealed the church's secret, and ours.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> Out of the Overflow. On a Galilean hillside the risen Jesus wrapped the Great Commission in four "alls" and handed it to ordinary men, some still doubting. The council's only explanation for their boldness was that "they had been with Jesus."</span></li>
+        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sabbath:</span> Share Him. The Servant of <a class="vlink" href="https://www.bible.com/bible/3034/ISA.50.4" target="_blank" rel="noopener">Isaiah 50:4</a> showed us where words for the weary come from: an ear God wakes morning by morning. A sneering philosopher's complaint about wool-workers and cobblers revealed the church's secret, and ours.</span></li>
+        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> Out of the Overflow. On a Galilean hillside the risen Jesus wrapped the Great Commission in four "alls" and handed it to ordinary men, some still doubting. The council's only explanation for their boldness was that "These men had been with Jesus."</span></li>
         <li><span class="bullet-icon">☩</span><span><span class="day-label">Monday:</span> Unforced but With Power. The compassion that twisted Jesus' gut and the fire in Jeremiah's bones drive the witness, but the hen's spread wings over an unwilling city set the limit. God invites, feeds, and weeps. He never forces.</span></li>
         <li><span class="bullet-icon">☩</span><span><span class="day-label">Tuesday:</span> Tips for Sharing Jesus. Peter coached scattered believers to live lives strange enough, in the loveliest way, to provoke the question, and to be ready with a gentle thirty-second answer about hope when it comes.</span></li>
         <li><span class="bullet-icon">☩</span><span><span class="day-label">Wednesday:</span> A Wandering Child. Beside the deportation road, God answered Rachel's weeping with a sealed promise ("your children will return") and opened His own chest, a heart that churns and yearns for the wayward boy.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Thursday:</span> Bring Them Back. The God of <a class="vlink" href="https://www.bible.com/bible/1713/ZEC.10" target="_blank">Zechariah 10</a> whistles for His scattered ones like a shepherd at a watering hole, and Peter's story showed the method up close: prayed for before the fall, restored over breakfast, handed back his calling.</span></li>
+        <li><span class="bullet-icon">☩</span><span><span class="day-label">Thursday:</span> Bring Them Back. The God of <a class="vlink" href="https://www.bible.com/bible/3034/ZEC.10" target="_blank" rel="noopener">Zechariah 10</a> whistles for His scattered ones like a shepherd at a watering hole, and Peter's story showed the method up close: prayed for before the fall, restored over breakfast, handed back his calling.</span></li>
       </ul>
     </div>
 
@@ -782,109 +805,64 @@ if ('serviceWorker' in navigator) {
       <p>That is not a romantic accident. It is design. The faith spread along trade roads and across market stalls precisely because its evidence was portable: a neighbor whose peace held through a funeral, a freed slave who blessed the man who insulted him, a family whose door stayed open to a son who had shamed them. Rome could outlaw the meetings and burn the books. It had no tool for confiscating a quietly generous life lived two doors down. It still doesn't.</p>
     </div>
 
-    <!-- 3. DEEPER QUESTIONS -->
+    <!-- 3. WHAT THIS WEEK CLARIFIES -->
     <div class="section">
       <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Deeper Questions</span>
+        <span class="section-emoji">💡</span>
+        <span class="section-title">What This Week Clarifies</span>
         <div class="section-title-line"></div>
       </div>
 
-      <p>The week ends where every real conversation about witnessing has to end, with questions that step off the page and into your actual life. Take these slowly. Some of them will read your heart back to you, and that is what they are for. Talk them over with someone if you can, out loud, the way the early church did everything.</p>
+      <p>This week kept walking into the rooms where sharing Jesus feels hardest, a city that said no, a kitchen table with an empty chair, a courtyard after a denial. It left three tensions worth naming, and it also left the answers.</p>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">1</span>
-          <div class="dq-question">Why is love so foundational and essential for any kind of effective witnessing?</div>
+      <div class="section-heading">The Hen Never Becomes a Hawk</div>
+      <p>Monday set two fires side by side. Compassion twisted Jesus' gut at the sight of shepherdless crowds, and God's word burned in Jeremiah's bones until holding it in hurt more than speaking. Stakes like that seem to justify pressure. If a house is burning, you do not wait politely on the lawn. Urgency and restraint should not be able to live in the same heart.</p>
+
+<!-- BSB_BLOCK: Matthew 23:37 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:09e36768c89934240c053997974c33933675177a7802c06d5a1da376bed4158e | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Matthew 23:37</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.23.37" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">1 John 4:7-11</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/1JN.4.7-11" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Dear friends, let us love one another, because love is from God, and everyone who loves has been born of God and knows God. The one who does not love does not know God, because God is love. God's love was revealed among us in this way: God sent his one and only Son into the world so that we might live through him. Love consists in this: not that we loved God, but that he loved us and sent his Son to be the atoning sacrifice for our sins. Dear friends, if God loved us in this way, we also must love one another."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Run the week backward and love is load-bearing in every scene. The Commission runs on the God who "loved us and sent his Son" (<a class="vlink" href="https://www.bible.com/bible/1713/1JN.4.7-11" target="_blank">1 John 4:7-11</a>). Jesus' labor ran on the compassion that twisted His gut at the sight of shepherdless crowds (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.9.36" target="_blank">Matthew 9:36</a>). And here is the hard, freeing truth underneath the question: this love is not something we can grit our teeth and generate. John traces it to a source outside us, "we love because he first loved us" (<a class="vlink" href="https://www.bible.com/bible/1713/1JN.4.19" target="_blank">1 John 4:19</a>), so the supply line runs through time spent with Jesus, not through trying harder at people. Without it, witnessing becomes marketing, and people can smell the difference. With it, even a clumsy sentence carries weight no argument can match.</p>
-          </div>
+        <div class="verse-text"><span class="words-of-jesus">O Jerusalem, Jerusalem, who kills the prophets and stones those sent to her, how often I have longed to gather your children together, as a hen gathers her chicks under her wings, but you were unwilling!</span></div>
+<div class="verse-commentary">
+          <p>The verse holds both fires without letting either win. Jesus stands over the city that will kill Him inside a week, aching like a mother hen in a barnyard fire, and the whole gap between heaven's way and ours sits in two short clauses. How often I have longed. You were unwilling. He does not add that He will make them. The God who left the tree in reach, kept the ark's ramp open, and let Israel walk away will not start seizing consciences now, because a hand that grabs teaches the bird never to land again. Monday's history lesson said it plainly. Empires that command belief produce incense receipts, paperwork instead of love. So the wings stay spread, the needs get met first, the door stays unbarred. The urgency is real. It just refuses to become a trap.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">2</span>
-          <div class="dq-question">When have you found this to be true: that soul winning is linked to a personal and vibrant walk with God?</div>
+      <div class="section-heading">Leave Him Alone Was Never the Last Word</div>
+      <p>Wednesday did not hide the Bible's most frightening sentence about a wanderer. Ephraim is bonded to his idols, God says, so leave him alone. Anyone with an empty chair at the table has felt what those words seem to mean, that a person can drift far enough for heaven to close the file.</p>
+
+<!-- BSB_BLOCK: Jeremiah 31:20 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:987907295a07edbdc5fe240d2d6c462959f9c2ca4757a92847fabc8577f5b527 | footnotes-stripped:1 | poetry:flattened -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Jeremiah 31:20</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JER.31.20" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Acts 4:13</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/ACT.4.13" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"When they observed the boldness of Peter and John and realized that they were uneducated and untrained men, they were amazed and recognized that they had been with Jesus."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Nobody can leak what they are not full of. The council could find no explanation for two bold fishermen except that "they had been with Jesus" (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.4.13" target="_blank">Acts 4:13</a>), and Peter's last letter ends with the same engine: "grow in the grace and knowledge of our Lord" (<a class="vlink" href="https://www.bible.com/bible/1713/2PE.3.18" target="_blank">2 Peter 3:18</a>). The link runs both directions, and that is the part worth chewing on. The people most active in sharing Him tend to be the most spiritually alive, not only because vibrancy produces witness but because witness produces vibrancy. A faith that is busy being given away has no time to go stale, and temptation finds less open ground in a heart that is full of someone else's need. Think of a season when your own faith felt most awake. Were you giving it away at the time?</p>
-          </div>
+        <div class="verse-text">Is not Ephraim a precious son to Me, a delightful child? Though I often speak against him, I still remember him. Therefore My heart yearns for him; I have great compassion for him,” declares the LORD.</div>
+<div class="verse-commentary">
+          <p>The same Bible will not let that reading stand. Chapters after the leave-him-alone verse, God is still talking about Ephraim, still listening, and when the runaway finally mutters his regret in the far country the answer comes back, I have surely heard. Then this verse opens God's own chest. Wednesday pointed at the Hebrew word behind the yearning, hamah, a growl, a moan, the roar of a churning sea, rebuke and longing loud in the same heart at the same time. Letting the far country do its teaching was a stage in the pursuit, never the end of it. And the surrounding promise is sealed twice like a royal decree. The children will come back. The weeping mother is told to dry her eyes, the porch light stays lit, and the yearning outlasts every mile the wanderer walks.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Jeremiah 31:20 | 31:20 Hebrew My bowels yearn for him -->
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">3</span>
-          <div class="dq-question">Is there a baseline or basic understanding that is needed to share God with others? If so, what might this be?</div>
-        </div>
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">1 Peter 3:15</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/1PE.3.15" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"but in your hearts regard Christ the Lord as holy, ready at any time to give a defense to anyone who asks you for a reason for the hope that is in you."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>The week suggests the baseline is smaller and deeper than we fear. Not a theology degree. The rabbinic schools' graduates were the ones left baffled. The baseline is firsthand experience: something you have actually "seen and heard" (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.4.20" target="_blank">Acts 4:20</a>), a hope you can explain in thirty gentle seconds (<a class="vlink" href="https://www.bible.com/bible/1713/1PE.3.15" target="_blank">1 Peter 3:15</a>), and an ear God has been waking morning by morning (<a class="vlink" href="https://www.bible.com/bible/1713/ISA.50.4" target="_blank">Isaiah 50:4</a>). In other words, you need to know the Shepherd well enough that your description of Him sounds like the way He actually treats people. A witness does not need to know everything. A witness needs to have been there.</p>
-          </div>
-        </div>
-      </div>
+      <div class="section-heading">The Flock Goes to the Fisherman Who Failed</div>
+      <p>Thursday raised the question nobody plans for, what to do when the wanderer actually comes home. Instinct drafts a probation. There should be proof, an accounting, a long talk about what happened, and trust should be re-earned one careful month at a time. Heaven runs the reunion differently.</p>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">4</span>
-          <div class="dq-question">When it comes to giving a Bible study to a nonbeliever, where would you begin? What is your initial focus: proving certain doctrines or inviting someone to know Jesus?</div>
+<!-- BSB_BLOCK: John 21:15-17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:6cc738dce5308e4bcb3217b573ed5584f91c4606243107761ade1312c61d36fd | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">John 21:15-17</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.21.15-17" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Isaiah 55:11</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/ISA.55.11" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"so my word that comes from my mouth will not return to me empty, but it will accomplish what I please and will prosper in what I send it to do."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Begin with the Person, because that is where the Bible itself begins and ends. Doctrines matter. They are the architecture of truth. But architecture is for living in, and nobody falls in love with a floor plan. Jesus told the Bible experts of His day that the Scriptures testify about Him (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.5.39-40" target="_blank">John 5:39-40</a>), and eternal life is to know Him (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.17.3" target="_blank">John 17:3</a>). Open a Bible with a nonbeliever and your first job is an introduction, not a proof. Show them the Shepherd who whistles, the hen who spreads her wings, the Father whose insides churn for a wanderer, and let the doctrines unfold from inside that friendship the way they unfolded for the disciples.</p>
-            <p>And here is the verse to carry into every study you ever give. This was the promise that anchored Lesson 5, and it returns now at the close of the quarter's witnessing week: the Word does not come back empty-handed. Your job is faithful delivery, not guaranteed results. You can read a passage with a skeptical coworker, watch it apparently bounce off, and be completely wrong about what just happened, because the Word keeps working in rooms you cannot enter, on timelines you cannot see. The pressure was never yours to carry. He sent it. He will prosper it.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">5</span>
-          <div class="dq-question">Sing or listen to the words of the hymn "Redeemed!" and reflect on the ways you are proclaiming it.</div>
-        </div>
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Revelation 12:11</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/REV.12.11" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"They conquered him by the blood of the Lamb and by the word of their testimony; for they did not love their lives to the point of death."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Fanny Crosby was blind from infancy, and she spent her last decades doing mission work in the roughest neighborhoods of New York, where she wrote, "Redeemed, how I love to proclaim it! Redeemed by the blood of the Lamb." Notice the hymn does not say "how I love to possess it." The proclaiming is the joy. That is exactly the pattern of the overcomers who conquer "by the blood of the Lamb and by the word of their testimony" (<a class="vlink" href="https://www.bible.com/bible/1713/REV.12.11" target="_blank">Revelation 12:11</a>). Redemption received becomes redemption announced, or it goes quiet and grows stale. So take the question literally this weekend. Play the hymn. Sing it badly in the car. Then ask where, in an average week, anyone could hear you proclaim what you love to possess.</p>
-          </div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 15">15</sup>When they had finished eating, Jesus asked Simon Peter, <span class="words-of-jesus">“Simon son of John, do you love Me more than these?”</span> “Yes, Lord,” he answered, “You know I love You.” Jesus replied, <span class="words-of-jesus">“Feed My lambs.”</span> <sup class="verse-number" aria-label="Verse 16">16</sup>Jesus asked a second time, <span class="words-of-jesus">“Simon son of John, do you love Me?”</span> “Yes, Lord,” he answered, “You know I love You.” Jesus told him, <span class="words-of-jesus">“Shepherd My sheep.”</span> <sup class="verse-number" aria-label="Verse 17">17</sup>Jesus asked a third time, <span class="words-of-jesus">“Simon son of John, do you love Me?”</span> Peter was deeply hurt that Jesus had asked him a third time, <span class="words-of-jesus">“Do you love Me?”</span> “Lord, You know all things,” he replied. “You know I love You.” Jesus said to him, <span class="words-of-jesus">“Feed My sheep.</span></div>
+<div class="verse-commentary">
+          <p>Jesus builds the reunion around a charcoal fire, the same kind Peter denied Him beside, and cooks him breakfast. Then one question, asked three times, once for each denial, not to rub the failure in but to let love be spoken over every place it happened. And the ending is the scandal. Feed My lambs. The flock goes into the hands of the man with the most public collapse on his record, exactly as Jesus had prayed before the fall, when you have turned back, strengthen your brothers. When, not if. Restoration in this week never stopped at forgiveness. It kept going until the brought-back one was trusted with sheep, because a rescued wanderer is not a liability to be managed but a witness in training. Breakfast, not a court date. A future, not a file.</p>
         </div>
       </div>
 
     </div>
+
     <!-- 4. STILL SPEAKING (merged Street Level + Today's World) -->
     <div class="section">
       <div class="section-label">
@@ -895,7 +873,7 @@ if ('serviceWorker' in navigator) {
       <div class="section-heading">The Argument Nobody Can Block</div>
       <p>We live in the most heavily messaged moment in human history. The average person is hit with thousands of ads, pitches, and persuasion attempts every day, and we have responded by armoring up: ad blockers on the browser, skepticism toward institutions, a reflexive flinch at anything that smells like a sales funnel. Religious messaging gets filtered hardest of all. People assume an angle, because there usually is one. Every channel the modern world invented for spreading a message has a corresponding mute button.</p>
       <p>Except one. There is still no technology for blocking an unselfish life lived at close range. Nothing slips past a person's defenses like goodness with no angle, and the gospel's best argument has never changed: a believer whose everyday love cannot be explained any other way. The coworker who covers your shift without being asked and never mentions it. The neighbor whose marriage is visibly tender after thirty years. The friend who shows up at the hospital, and then shows up again. That kind of life slides under every filter, because it does not register as messaging at all. It registers as evidence.</p>
-      <p>And the labor itself carries a hidden gift, one this week kept circling. Jesus once told His disciples that His food was to do the will of the One who sent Him (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.4.34" target="_blank">John 4:34</a>), and people who join His work keep discovering the same strange nourishment. Helping someone find their way home feeds a place in you that nothing purchased ever reaches. The believers who give the love away are the ones in whom it stays warm. The witness, it turns out, was never just for the world's sake. It is how the witness stays alive.</p>
+      <p>And the labor itself carries a hidden gift, one this week kept circling. Jesus once told His disciples that His food was to do the will of the One who sent Him (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.4.34" target="_blank" rel="noopener">John 4:34</a>), and people who join His work keep discovering the same strange nourishment. Helping someone find their way home feeds a place in you that nothing purchased ever reaches. The believers who give the love away are the ones in whom it stays warm. The witness, it turns out, was never just for the world's sake. It is how the witness stays alive.</p>
     </div>
 
     <!-- 5. CHRIST AT THE CENTER OF THE WEEK -->
@@ -905,7 +883,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">Christ at the Center of the Week</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Every day this week, the One we were learning to share turned out to be the One doing the sharing. On Sabbath, the awakened ear and instructed tongue of <a class="vlink" href="https://www.bible.com/bible/1713/ISA.50" target="_blank">Isaiah 50</a> belonged to Him first, the Servant who learned words for the weary on His way to giving His back to those who struck Him. On Sunday, He wrapped His Commission in "I am with you always," so that no witness would ever knock on a door alone. On Monday, He was the compassion and the restraint in one heart, the hen spreading her wings over the city that would crucify Him, and the cross became the most compelling unforced argument in history. On Tuesday, He was the hope we are asked to explain, the Person we host, the gentleness in the answer. On Wednesday, His Father's churning, yearning heart for Ephraim put on sandals in the parable of the running father, and the Son walked into our far country to carry wanderers home. And on Thursday, He was the whistling Shepherd Himself, praying for Peter before the fall and cooking breakfast on the other side of it. We are not peddling a product this weekend. We are introducing people to a Person who has been introducing Himself all along.</p>
+      <p>Every day this week, the One we were learning to share turned out to be the One doing the sharing. On Sabbath, the awakened ear and instructed tongue of <a class="vlink" href="https://www.bible.com/bible/3034/ISA.50" target="_blank" rel="noopener">Isaiah 50</a> belonged to Him first, the Servant who learned words for the weary on His way to giving His back to those who struck Him. On Sunday, He wrapped His Commission in "I am with you always," so that no witness would ever knock on a door alone. On Monday, He was the compassion and the restraint in one heart, the hen spreading her wings over the city that would crucify Him, and the cross became the most compelling unforced argument in history. On Tuesday, He was the hope we are asked to explain, the Person we host, the gentleness in the answer. On Wednesday, His Father's churning, yearning heart for Ephraim put on sandals in the parable of the running father, and the Son walked into our far country to carry wanderers home. And on Thursday, He was the whistling Shepherd Himself, praying for Peter before the fall and cooking breakfast on the other side of it. We are not peddling a product this weekend. We are introducing people to a Person who has been introducing Himself all along.</p>
     </div>
 
     <!-- 6. WEEKEND PRACTICE -->
@@ -932,22 +910,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/ISA.55.11" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Isaiah+55:11&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

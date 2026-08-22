@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -733,31 +756,32 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>You can hear the factions before you see them. One corner of the room belongs to Paul, another swears by Apollos, a third lines up behind Cephas, and a fourth trumps everyone by claiming to belong to Christ, as if Jesus were the most exclusive club of all. Paul has already begged them to stop splitting apart (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.10" target="_blank">1 Corinthians 1:10</a>). Now he shows them how absurd their scorekeeping really is, and he does it by asking a question none of their heroes can survive. Did any of these men bleed for you? Watch him refuse to enjoy his own fan club, and watch how fast he changes the subject from himself back to the cross.</p>
+      <p>You can hear the factions before you see them. One corner of the room belongs to Paul, another swears by Apollos, a third lines up behind Cephas, and a fourth trumps everyone by claiming to belong to Christ, as if Jesus were the most exclusive club of all. Paul has already begged them to stop splitting apart (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.10" target="_blank" rel="noopener">1 Corinthians 1:10</a>). Now he shows them how absurd their scorekeeping really is, and he does it by asking a question none of their heroes can survive. Did any of these men bleed for you? Watch him refuse to enjoy his own fan club, and watch how fast he changes the subject from himself back to the cross.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 1:12-17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:dc633f19c79066f7e73ae52531234bba14019e3868a541c097682b31957d35a0 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 1:12-17</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.1.12-17" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.12-17" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"What I am saying is this: One of you says, 'I belong to Paul,' or 'I belong to Apollos,' or 'I belong to Cephas,' or 'I belong to Christ.' Is Christ divided? Was Paul crucified for you? Or were you baptized in Paul's name? I thank God that I baptized none of you except Crispus and Gaius, so that no one can say you were baptized in my name. I did, in fact, baptize the household of Stephanas; beyond that, I don't know if I baptized anyone else. For Christ did not send me to baptize, but to preach the gospel—not with eloquent wisdom, so that the cross of Christ will not be emptied of its power."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Paul lets them hear their own chant, then drops three questions like a hammer. Is Christ divided? Was Paul crucified for you? Were you baptized in Paul's name? The answer to each is obviously no, and each no dismantles a faction. The word underneath all of it is the Greek <em>schisma</em>, a tear or a split, the very word you would use for ripping a piece of cloth clean in two. That is what their team spirit was quietly doing to the body of Christ. Then Paul does something almost funny. He is relieved he baptized hardly any of them, because the last thing he wants is a single soul walking around thinking they belong to him. His job was never to build a following. It was to preach a cross, and a preacher who collects fans has buried the very thing he was sent to lift up. Read the slogans again and the tragedy is plain (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.12-27" target="_blank">1 Corinthians 1:12-27</a>).</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 12">12</sup>What I mean is this: Individuals among you are saying, “I follow Paul,” “I follow Apollos,” “I follow Cephas,” or “I follow Christ.” <sup class="verse-number" aria-label="Verse 13">13</sup>Is Christ divided? Was Paul crucified for you? Were you baptized into the name of Paul? <sup class="verse-number" aria-label="Verse 14">14</sup>I thank God that I did not baptize any of you except Crispus and Gaius, <sup class="verse-number" aria-label="Verse 15">15</sup>so no one can say that you were baptized into my name. <sup class="verse-number" aria-label="Verse 16">16</sup>Yes, I also baptized the household of Stephanas; beyond that I do not remember if I baptized anyone else. <sup class="verse-number" aria-label="Verse 17">17</sup>For Christ did not send me to baptize, but to preach the gospel, not with words of wisdom, lest the cross of Christ be emptied of its power.</div>
+<div class="verse-commentary">
+          <p>Paul lets them hear their own chant, then drops three questions like a hammer. Is Christ divided? Was Paul crucified for you? Were you baptized in Paul's name? The answer to each is obviously no, and each no dismantles a faction. The word underneath all of it is the Greek <em>schisma</em>, a tear or a split, the very word you would use for ripping a piece of cloth clean in two. That is what their team spirit was quietly doing to the body of Christ. Then Paul does something almost funny. He is relieved he baptized hardly any of them, because the last thing he wants is a single soul walking around thinking they belong to him. His job was never to build a following. It was to preach a cross, and a preacher who collects fans has buried the very thing he was sent to lift up. Read the slogans again and the tragedy is plain (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.12-27" target="_blank" rel="noopener">1 Corinthians 1:12-27</a>).</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Corinthians 1:12 | 1:12 That is, Peter -->
 
-      <p>This was not a rumor Paul went looking for. Word had reached him from Chloe's household that the church was consumed with rivalry (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.11" target="_blank">1 Corinthians 1:11</a>), and the fault lines ran everywhere. Believers were hauling one another before pagan judges to win petty disputes (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.1-3" target="_blank">1 Corinthians 6:1-3</a>), a thing Paul says should leave them ashamed (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.5" target="_blank">1 Corinthians 6:5</a>). Even the Lord's Supper had curdled into a place where the divisions showed, the well-off eating their fill while the poor went hungry (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.11.17-22" target="_blank">1 Corinthians 11:17-22</a>). None of it was harmless. Paul wants them to see that what they are calling loyalty keeps very dark company.</p>
+      <p>This was not a rumor Paul went looking for. Word had reached him from Chloe's household that the church was consumed with rivalry (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.11" target="_blank" rel="noopener">1 Corinthians 1:11</a>), and the fault lines ran everywhere. Believers were hauling one another before pagan judges to win petty disputes (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.1-3" target="_blank" rel="noopener">1 Corinthians 6:1-3</a>), a thing Paul says should leave them ashamed (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.5" target="_blank" rel="noopener">1 Corinthians 6:5</a>). Even the Lord's Supper had curdled into a place where the divisions showed, the well-off eating their fill while the poor went hungry (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.11.17-22" target="_blank" rel="noopener">1 Corinthians 11:17-22</a>). None of it was harmless. Paul wants them to see that what they are calling loyalty keeps very dark company.</p>
 
+<!-- BSB_BLOCK: Galatians 5:20 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:652b4cf3b59454999f919038733d0613e4c59eb118f47c6caa823492b4acd6ea | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Galatians 5:20</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/GAL.5.20" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/GAL.5.20" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"idolatry, sorcery, hatreds, strife, jealousy, outbursts of anger, selfish ambitions, dissensions, factions,"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Look at the neighborhood strife lives in. When Paul lists the works of the flesh, contention and factions show up wedged between idolatry and fits of rage, filed right alongside sorcery and jealousy as things that war against the Spirit. This is the same ugliness he keeps naming in the Corinthians' quarrels, and he drops it into vice list after vice list so no one can pretend it is a minor flaw (<a class="vlink" href="https://www.bible.com/bible/1713/ROM.1.29" target="_blank">Romans 1:29</a>, <a class="vlink" href="https://www.bible.com/bible/1713/ROM.13.13" target="_blank">Romans 13:13</a>, <a class="vlink" href="https://www.bible.com/bible/1713/2CO.12.20" target="_blank">2 Corinthians 12:20</a>). To Paul, a church that fights and cliques up is not merely awkward or immature in a harmless way. It is carnal, still ruled by the very flesh it was supposed to leave behind (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.3.3" target="_blank">1 Corinthians 3:3</a>). We like to rank sins and set "division" down near the harmless end. Paul sets it next to idolatry.</p>
+        <div class="verse-text">idolatry and sorcery; hatred, discord, jealousy, and rage; rivalries, divisions, factions,</div>
+<div class="verse-commentary">
+          <p>Look at the neighborhood strife lives in. When Paul lists the works of the flesh, contention and factions show up wedged between idolatry and fits of rage, filed right alongside sorcery and jealousy as things that war against the Spirit. This is the same ugliness he keeps naming in the Corinthians' quarrels, and he drops it into vice list after vice list so no one can pretend it is a minor flaw (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.1.29" target="_blank" rel="noopener">Romans 1:29</a>, <a class="vlink" href="https://www.bible.com/bible/3034/ROM.13.13" target="_blank" rel="noopener">Romans 13:13</a>, <a class="vlink" href="https://www.bible.com/bible/3034/2CO.12.20" target="_blank" rel="noopener">2 Corinthians 12:20</a>). To Paul, a church that fights and cliques up is not merely awkward or immature in a harmless way. It is carnal, still ruled by the very flesh it was supposed to leave behind (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.3.3" target="_blank" rel="noopener">1 Corinthians 3:3</a>). We like to rank sins and set "division" down near the harmless end. Paul sets it next to idolatry.</p>
         </div>
       </div>
     </div>
@@ -831,22 +855,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.1.12-17" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+1:12-17&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

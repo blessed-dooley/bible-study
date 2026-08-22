@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -513,49 +532,6 @@ if ('serviceWorker' in navigator) {
     opacity: 0.7;
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -576,6 +552,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -594,8 +612,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -755,7 +778,7 @@ if ('serviceWorker' in navigator) {
       <p>Now set Paul down in the middle of that world and listen to what he says. The cross is not Rome's filthiest secret. It is the power of God. To a Greek who prized wisdom, this was idiocy. To a Jew waiting for a conquering Messiah, a crucified one was almost blasphemy, since the Law itself called anyone hung on a tree cursed. Paul knew all of it. He walked into Corinth, a city desperate to look impressive, carrying the single most unimpressive message in the empire, and he refused to soften it. This whole week sits inside that scandal. Why would God choose the one symbol guaranteed to offend everyone, and then call it the wisest and strongest thing He ever did?</p>
     </div>
 
-    <!-- 4. THIS WEEK'S MEMORY TEXT (dual translation, NIV + CSB) -->
+    
     <div class="section">
       <div class="section-label">
         <span class="section-emoji">📖</span>
@@ -763,18 +786,16 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 1:18 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:aee5c9bbc55111b7385c1ab6387b3db3fc0bce0fdfb57d3a67643da082d0deab | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 1:18</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.1.18" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.18" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For the message of the cross is foolishness to those who are perishing, but to us who are being saved it is the power of God."</div>
-        <div class="verse-translation">New International Version · NIV</div>
-        <div class="verse-text-alt">"For the word of the cross is foolishness to those who are perishing, but it is the power of God to us who are being saved."</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">For the message of the cross is foolishness to those who are perishing, but to us who are being saved it is the power of God.</div>
+<div class="verse-commentary">
           <p>This one sentence is the hinge the whole week swings on. The same cross, the same message, lands two completely opposite ways depending on who is listening. To people on their way to ruin it sounds like nonsense. To people being rescued it is the raw power of God. That last phrase is the one to sit with. The Greek word Paul uses for power is <em>dynamis</em>, the word behind our "dynamite," the kind of force that actually does something. He does not say the cross teaches us about God's power or merely points to it. He says the cross is God's power, His rescue already at work in anyone who will trust it. The message never changes. What changes is which side of it you are standing on.</p>
-          <p>Hold that thought across everything we read this week. The letter opens with Paul greeting the church and thanking God for them even as they fracture (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.1-3" target="_blank">1 Corinthians 1:1-3</a>, <a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.4-9" target="_blank">1 Corinthians 1:4-9</a>), then pleading with them to stop splitting into rival camps and to look back to the cross (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.10-17" target="_blank">1 Corinthians 1:10-17</a>). We will watch him insist that he came to preach that cross and not to dress it up in clever speech (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.17-31" target="_blank">1 Corinthians 1:17-31</a>). We will see what the cross actually accomplished, the peace it made between God and us, the hostility it put to death, the record of our debt it erased, the obedience that carried Jesus all the way down into death, and the wounds by which we are healed (<a class="vlink" href="https://www.bible.com/bible/1713/COL.1.20" target="_blank">Colossians 1:20</a>, <a class="vlink" href="https://www.bible.com/bible/1713/EPH.2.16" target="_blank">Ephesians 2:16</a>, <a class="vlink" href="https://www.bible.com/bible/1713/COL.2.14" target="_blank">Colossians 2:14</a>, <a class="vlink" href="https://www.bible.com/bible/1713/PHP.2.8" target="_blank">Philippians 2:8</a>, <a class="vlink" href="https://www.bible.com/bible/1713/1PE.2.24" target="_blank">1 Peter 2:24</a>). We will stand in a synagogue as Paul traces the whole story of Israel straight to a crucified and risen Savior (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.13.16-47" target="_blank">Acts 13:16-47</a>). And we will hear him admit that he showed up in Corinth shaky and plain-spoken on purpose, so their faith would rest on God's power and not on his polish (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.2.1-5" target="_blank">1 Corinthians 2:1-5</a>). One message, the cross at the center of all of it.</p>
+          <p>Hold that thought across everything we read this week. The letter opens with Paul greeting the church and thanking God for them even as they fracture (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.1-3" target="_blank" rel="noopener">1 Corinthians 1:1-3</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.4-9" target="_blank" rel="noopener">1 Corinthians 1:4-9</a>), then pleading with them to stop splitting into rival camps and to look back to the cross (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.10-17" target="_blank" rel="noopener">1 Corinthians 1:10-17</a>). We will watch him insist that he came to preach that cross and not to dress it up in clever speech (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.17-31" target="_blank" rel="noopener">1 Corinthians 1:17-31</a>). We will see what the cross actually accomplished, the peace it made between God and us, the hostility it put to death, the record of our debt it erased, the obedience that carried Jesus all the way down into death, and the wounds by which we are healed (<a class="vlink" href="https://www.bible.com/bible/3034/COL.1.20" target="_blank" rel="noopener">Colossians 1:20</a>, <a class="vlink" href="https://www.bible.com/bible/3034/EPH.2.16" target="_blank" rel="noopener">Ephesians 2:16</a>, <a class="vlink" href="https://www.bible.com/bible/3034/COL.2.14" target="_blank" rel="noopener">Colossians 2:14</a>, <a class="vlink" href="https://www.bible.com/bible/3034/PHP.2.8" target="_blank" rel="noopener">Philippians 2:8</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1PE.2.24" target="_blank" rel="noopener">1 Peter 2:24</a>). We will stand in a synagogue as Paul traces the whole story of Israel straight to a crucified and risen Savior (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.13.16-47" target="_blank" rel="noopener">Acts 13:16-47</a>). And we will hear him admit that he showed up in Corinth shaky and plain-spoken on purpose, so their faith would rest on God's power and not on his polish (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.2.1-5" target="_blank" rel="noopener">1 Corinthians 2:1-5</a>). One message, the cross at the center of all of it.</p>
         </div>
       </div>
     </div>
@@ -814,7 +835,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="action-box action-box-sabbath">
-        Before Sunday, find one place where you are quietly trying to earn your way, proving you are smart enough, good enough, or impressive enough to deserve God or the people around you. Name it honestly. Then read <a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.18" target="_blank">1 Corinthians 1:18</a> slowly, out loud, and let it confront that effort. The cross means the most important thing about you was already settled by Someone else's strength, not yours. Carry that verse into the week and come back to it whenever the urge to perform flares up.
+        Before Sunday, find one place where you are quietly trying to earn your way, proving you are smart enough, good enough, or impressive enough to deserve God or the people around you. Name it honestly. Then read <a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.18" target="_blank" rel="noopener">1 Corinthians 1:18</a> slowly, out loud, and let it confront that effort. The cross means the most important thing about you was already settled by Someone else's strength, not yours. Carry that verse into the week and come back to it whenever the urge to perform flares up.
       </div>
     </div>
 
@@ -840,22 +861,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.1.18" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+1:18&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

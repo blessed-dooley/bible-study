@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -735,45 +764,44 @@ if ('serviceWorker' in navigator) {
 
       <p>It is morning on the western shore of the Sea of Galilee. The boat has just scraped into the sand at Dalmanutha, and Jesus is stepping out with the salt still drying on His robe. The evening before, He had fed five thousand men on the eastern shore from a single boy's lunch, and the disciples are still trying to digest what they saw. Now the Pharisees are already waiting on the beach, before His feet are dry, and they are asking Him for a sign from heaven. Mark says He sighed deeply in His spirit. That sigh is the doorway into today's question. Faith is not the absence of evidence; faith is what we do with the evidence we have already been given.</p>
 
+<!-- BSB_BLOCK: Mark 8:11-12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:e46f988fc72d662657c4e355a5a7d908f8fc27ca7fdc62a4317f6219b8faea00 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Mark 8:11-12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MRK.8.11-12" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MRK.8.11-12" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Then the Pharisees came out and began to dispute with Him, seeking from Him a sign from heaven, testing Him. But He sighed deeply in His spirit, and said, 'Why does this generation seek a sign? Assuredly, I say to you, no sign shall be given to this generation.'"</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"The Pharisees came and began to argue with him, demanding of him a sign from heaven to test him. Sighing deeply in his spirit, he said, 'Why does this generation demand a sign? Truly I tell you, no sign will be given to this generation.'"</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>The Greek verb behind "began to dispute" or "began to argue" is <em>syzeteo</em>, a word that means more than a casual exchange. It is the word used for sustained, contentious debate, the kind of argument that goes back and forth until somebody breaks. Mark is showing us that this was not an honest first inquiry. The Pharisees had come down to the shore with their objections already loaded, ready to challenge whatever He said. The phrase "to test Him" is <em>peirazo</em>, the same word used of the devil in the wilderness three years earlier. The Pharisees were not asking to be persuaded. They were running an experiment to see if He would fail.</p>
-          <p>Then Mark drops the verb that gives the verse its weight. Jesus "sighed deeply in His spirit." The Greek is <em>anastenazo</em>, and it appears nowhere else in the entire New Testament. It is a compound of <em>ana</em> (up) and <em>stenazo</em> (to groan), the sound of something pulled up out of the chest of a Man who has heard this request one time too many. The word echoes one we met last week. In <a class="vlink" href="https://www.bible.com/bible/1713/ROM.8.26-27" target="_blank">Romans 8:26-27</a> the Spirit groans, <em>stenagmoi alaletoi</em>, the prayers we cannot finish. Today the Son groans at the prayers we will not start. Same root, opposite posture. The Spirit groans the trust we cannot articulate; the Son groans the demand that would not be satisfied by any answer.</p>
-          <p>"No sign shall be given to this generation." This is one of the strongest "no" answers Jesus gives in the gospels, and it is given to the same religious leaders who had already seen Him calm a storm, raise a girl from her deathbed, multiply bread for five thousand people, and walk on the water in front of their best students. The refusal is not stinginess. It is mercy. Another sign would not have moved them. It would have given them one more datum to dismiss, one more anecdote to explain away, one more reason for the heart to harden. <a class="vlink" href="https://www.bible.com/bible/1713/MAT.8.11-12" target="_blank">Matthew 8:11-12</a> records Jesus saying that the kingdom would be opened to people coming from east and west to recline at the table with Abraham, while the official "sons of the kingdom" got thrown into the outer darkness. The Gentile centurion received the kingdom on first hearing; the religious experts spent two years interviewing the King and missed Him. The deciding factor was never the volume of evidence. It was the willingness to receive.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 11">11</sup>Then the Pharisees came and began to argue with Jesus, testing Him by demanding from Him a sign from heaven. <sup class="verse-number" aria-label="Verse 12">12</sup>Jesus sighed deeply in His spirit and said, <span class="words-of-jesus">“Why does this generation demand a sign? Truly I tell you, no sign will be given to this generation.”</span></div>
+<div class="verse-commentary">
+          <p>The Greek verb behind "began to argue" or "began to argue" is <em>syzeteo</em>, a word that means more than a casual exchange. It is the word used for sustained, contentious debate, the kind of argument that goes back and forth until somebody breaks. Mark is showing us that this was not an honest first inquiry. The Pharisees had come down to the shore with their objections already loaded, ready to challenge whatever He said. The phrase "to test Him" is <em>peirazo</em>, the same word used of the devil in the wilderness three years earlier. The Pharisees were not asking to be persuaded. They were running an experiment to see if He would fail.</p>
+          <p>Then Mark drops the verb that gives the verse its weight. Jesus "sighed deeply in His spirit." The Greek is <em>anastenazo</em>, and it appears nowhere else in the entire New Testament. It is a compound of <em>ana</em> (up) and <em>stenazo</em> (to groan), the sound of something pulled up out of the chest of a Man who has heard this request one time too many. The word echoes one we met last week. In <a class="vlink" href="https://www.bible.com/bible/3034/ROM.8.26-27" target="_blank" rel="noopener">Romans 8:26-27</a> the Spirit groans, <em>stenagmoi alaletoi</em>, the prayers we cannot finish. Today the Son groans at the prayers we will not start. Same root, opposite posture. The Spirit groans the trust we cannot articulate; the Son groans the demand that would not be satisfied by any answer.</p>
+          <p>"No sign will be given to this generation." This is one of the strongest "no" answers Jesus gives in the gospels, and it is given to the same religious leaders who had already seen Him calm a storm, raise a girl from her deathbed, multiply bread for five thousand people, and walk on the water in front of their best students. The refusal is not stinginess. It is mercy. Another sign would not have moved them. It would have given them one more datum to dismiss, one more anecdote to explain away, one more reason for the heart to harden. <a class="vlink" href="https://www.bible.com/bible/3034/MAT.8.11-12" target="_blank" rel="noopener">Matthew 8:11-12</a> records Jesus saying that the kingdom would be opened to people coming from east and west to recline at the table with Abraham, while the official "sons of the kingdom" got thrown into the outer darkness. The Gentile centurion received the kingdom on first hearing; the religious experts spent two years interviewing the King and missed Him. The deciding factor was never the volume of evidence. It was the willingness to receive.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Deuteronomy 8:2-3 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:50e1adab8708d77a03278c164f07add9ab2a2d404a5cdc02ed151ab436050001 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Deuteronomy 8:2-3</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/DEU.8.2-3" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/DEU.8.2-3" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Remember that the LORD your God led you on the entire journey these forty years in the wilderness, so that he might humble you and test you to know what was in your heart, whether or not you would keep his commands. He humbled you by letting you go hungry; then he gave you manna to eat, which you and your ancestors had not known, so that you might learn that man does not live on bread alone but on every word that comes from the mouth of the LORD."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Moses preaches this sermon on the east bank of the Jordan, with a generation of new Israelites in front of him whose parents had died in the wilderness for the very sin the Pharisees are repeating on the shore at Dalmanutha. They had asked for sign after sign. Then they had refused to be moved by the signs God gave. Moses' counter-instruction is a single verb. Remember. <a class="vlink" href="https://www.bible.com/bible/1713/DEU.4.7-10" target="_blank">Deuteronomy 4:7-10</a> presses the same verb on the parents: keep these things in your heart, teach them to your children, do not forget what your eyes have seen. The biblical pattern of faith is not the constant invention of new miracles for each generation. It is the disciplined remembering of what God has already done.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 2">2</sup>Remember that these forty years the LORD your God led you all the way in the wilderness, so that He might humble you and test you in order to know what was in your heart, whether or not you would keep His commandments. <sup class="verse-number" aria-label="Verse 3">3</sup>He humbled you, and in your hunger He gave you manna to eat, which neither you nor your fathers had known, so that you might understand that man does not live on bread alone, but on every word that comes from the mouth of the LORD.</div>
+<div class="verse-commentary">
+          <p>Moses preaches this sermon on the east bank of the Jordan, with a generation of new Israelites in front of him whose parents had died in the wilderness for the very sin the Pharisees are repeating on the shore at Dalmanutha. They had asked for sign after sign. Then they had refused to be moved by the signs God gave. Moses' counter-instruction is a single verb. Remember. <a class="vlink" href="https://www.bible.com/bible/3034/DEU.4.7-10" target="_blank" rel="noopener">Deuteronomy 4:7-10</a> presses the same verb on the parents: keep these things in your heart, teach them to your children, do not forget what your eyes have seen. The biblical pattern of faith is not the constant invention of new miracles for each generation. It is the disciplined remembering of what God has already done.</p>
           <p>The wilderness, Moses says, was a deliberate humbling. God let them go hungry on purpose, then fed them with bread they had never seen before. The point was not the bread. The point was the curriculum the bread was teaching. "Man does not live on bread alone but on every word that comes from the mouth of the LORD." The manna was the visible aid to an invisible truth: God's word is enough. The Pharisees on the beach at Dalmanutha had access to all forty years of that curriculum in their scrolls, plus the entire prophetic record, plus the Carpenter Himself standing in front of them. The sign they were demanding was not a sign they were missing. It was a sign they had already received and were declining to count.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Deuteronomy 8:3 | 8:3 Cited in Matthew 4:4 and Luke 4:4 -->
 
+<!-- BSB_BLOCK: John 20:29 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:eb0dc809e18bcf8da4d9fb0de36270c8fbbe0b2d8dc372eae104d34a55e87f61 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">John 20:29</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.20.29" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.20.29" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Jesus said, 'Because you have seen me, you have believed. Blessed are those who have not seen and yet believe.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">Jesus said to him, <span class="words-of-jesus">“Because you have seen Me, you have believed; blessed are those who have not seen and yet have believed.”</span></div>
+<div class="verse-commentary">
           <p>This is the line the Risen Jesus speaks to Thomas eight days after the resurrection, in the same upper room where the other disciples had seen Him. Thomas had refused to believe without seeing the wounds. Jesus, in mercy, showed him the wounds. And then He turned the camera on us. The blessing in this beatitude does not belong to the people in the room who had the visible proof. It belongs to the people in every century after them who would have to take Thomas's word for it and trust the testimony of others who had seen.</p>
-          <p>The next two verses (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.20.30-31" target="_blank">John 20:30-31</a>) tell us that John wrote his whole gospel for exactly this purpose: he assembled the signs Jesus did in front of witnesses, so that you may believe Jesus is the Christ and have life in His name. The Bible is not silent about signs. The Bible is full of them. The Pharisees on the shore wanted a fresh sign because they would not count the recorded ones; Thomas saw because he was already in the door and Jesus would not lose one of His own. But the beatitude is offered to us. Blessed are those who have not seen and yet believe, because the evidence has already been gathered, written down, and handed to us in the gospels. <a class="vlink" href="https://www.bible.com/bible/1713/HEB.11.1" target="_blank">Hebrews 11:1</a> says faith is the reality of what we hope for and the evidence of what we cannot see. Today's witness is that the evidence is already in our laps.</p>
+          <p>The next two verses (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.20.30-31" target="_blank" rel="noopener">John 20:30-31</a>) tell us that John wrote his whole gospel for exactly this purpose: he assembled the signs Jesus did in front of witnesses, so that you may believe Jesus is the Christ and have life in His name. The Bible is not silent about signs. The Bible is full of them. The Pharisees on the shore wanted a fresh sign because they would not count the recorded ones; Thomas saw because he was already in the door and Jesus would not lose one of His own. But the beatitude is offered to us. Blessed are those who have not seen and yet believe, because the evidence has already been gathered, written down, and handed to us in the gospels. <a class="vlink" href="https://www.bible.com/bible/3034/HEB.11.1" target="_blank" rel="noopener">Hebrews 11:1</a> says faith is the reality of what we hope for and the evidence of what we cannot see. Today's witness is that the evidence is already in our laps.</p>
         </div>
       </div>
     </div>
@@ -809,7 +837,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>The sigh of Jesus on the shore at Dalmanutha is one of the most disclosing sounds in the gospels. It is the same Voice that thundered out of Sinai in fire and cloud, now low and pained at the request for one more proof. The Pharisees wanted a sign on demand. He had already been the sign for two and a half years and they had not been paying attention. By the next chapter He will be telling His disciples that the real sign is on its way and they are not going to like the look of it. The Son of Man must suffer, be killed, and on the third day rise again. The greatest sign in human history would not arrive in a fireball over the temple. It would arrive in a wooden beam outside the city and a folded burial cloth in a borrowed tomb. The Pharisees got their sign in the end. The one they would not believe was a healing, a feeding, a walking on water; the one God ultimately gave them was a Man hanging on a cross at three in the afternoon, the sky going dark, the temple curtain tearing top to bottom on its own. And when His own disciples later asked Him on the Mount of Olives, "What will be the sign of Your coming and of the end of the age?" (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.24" target="_blank">Matthew 24</a>), His answer was not a checklist of celestial fireworks. It was wars and rumors of wars, persecutions and apostasies, a Word preached to every nation, and at the end the Son of Man appearing visibly in the clouds. The sign He gave His followers to watch for was steady endurance under pressure, not spectacle on demand. Faith, at the deepest level, is not the willingness to count miracles. Faith is the willingness to read the sign of the cross and let it tell us who God is.</p>
+      <p>The sigh of Jesus on the shore at Dalmanutha is one of the most disclosing sounds in the gospels. It is the same Voice that thundered out of Sinai in fire and cloud, now low and pained at the request for one more proof. The Pharisees wanted a sign on demand. He had already been the sign for two and a half years and they had not been paying attention. By the next chapter He will be telling His disciples that the real sign is on its way and they are not going to like the look of it. The Son of Man must suffer, be killed, and on the third day rise again. The greatest sign in human history would not arrive in a fireball over the temple. It would arrive in a wooden beam outside the city and a folded burial cloth in a borrowed tomb. The Pharisees got their sign in the end. The one they would not believe was a healing, a feeding, a walking on water; the one God ultimately gave them was a Man hanging on a cross at three in the afternoon, the sky going dark, the temple curtain tearing top to bottom on its own. And when His own disciples later asked Him on the Mount of Olives, "What will be the sign of Your coming and of the end of the age?" (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.24" target="_blank" rel="noopener">Matthew 24</a>), His answer was not a checklist of celestial fireworks. It was wars and rumors of wars, persecutions and apostasies, a Word preached to every nation, and at the end the Son of Man appearing visibly in the clouds. The sign He gave His followers to watch for was steady endurance under pressure, not spectacle on demand. Faith, at the deepest level, is not the willingness to count miracles. Faith is the willingness to read the sign of the cross and let it tell us who God is.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -846,22 +874,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/MRK.8.11-12" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Mark+8:11-12&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -890,8 +938,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -900,18 +950,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -919,6 +973,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -938,6 +993,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

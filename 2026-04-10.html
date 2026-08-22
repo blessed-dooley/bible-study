@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -380,6 +413,16 @@
     padding-top: 14px;
     border-top: 1px solid var(--border);
     font-weight: 300;
+  }
+  .verse-commentary p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-soft);
+    font-weight: 300;
+    margin: 0 0 14px 0;
+  }
+  .verse-commentary p:last-child {
+    margin-bottom: 0;
   }
 
   /* ── ACCENT SECTIONS ── */
@@ -459,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -522,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -540,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -601,7 +648,7 @@
     white-space: nowrap;
   }
 
-  /* ── DEEPER QUESTIONS ── */
+  /* LEGACY DEEPER QUESTIONS: retained only so archived Friday bodies can still be reassembled */
   .dq-block {
     margin: 28px 0;
     padding: 0;
@@ -697,8 +744,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -760,135 +805,63 @@
       <p>This week traced that portrait one attribute at a time: holiness on Monday, love on Tuesday, creative power on Wednesday, incarnate presence on Thursday. Each day added a dimension. But the week's arc was not a catalog; it was a narrative. The attributes are not separate bullet points on a divine resume. They are facets of one character, and that character is most fully visible in one Person. The ancient world tried to know its gods through ritual, sacrifice, and divination. Israel was told to know its God through relationship. And then God made that relationship as close as it could possibly get: He moved in.</p>
     </div>
 
-    <!-- 3. DEEPER QUESTIONS -->
+    <!-- 3. WHAT THIS WEEK CLARIFIES -->
     <div class="section">
       <div class="section-label">
-        <span class="section-emoji">&#128214;</span>
-        <span class="section-title">Deeper Questions</span>
+        <span class="section-emoji">💡</span>
+        <span class="section-title">What This Week Clarifies</span>
         <div class="section-title-line"></div>
       </div>
 
-      <p>This week covered an enormous amount of ground: from the serpent's lies in Eden to the incarnation in Bethlehem, from the meaning of holiness to the nature of divine love. The questions below are invitations to sit with what landed hardest, to push into what is still unsettled, and to let the week's truths shape something real in your life.</p>
+      <p>This week made claims big enough to need a second look. The same God whose holiness undid a prophet says, "Know Me." The same God our newest telescopes cannot outrun knelt in the dust and breathed into a man's nostrils. Three tensions from the week deserve to be resolved before Sabbath.</p>
 
-      <!-- QUESTION 1 -->
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">1</span>
-          <div class="dq-question">As you consider the attributes of God that you studied this week, which one has most impacted your understanding of God?</div>
+      <div class="section-heading">One Face Settles Every Rumor About God</div>
+      <p>Sunday exposed a problem as old as Eden. Since the serpent's first question, every human picture of God has been retouched by somebody, a harsh teacher, a parent who used God as a threat, a movie scorekeeper in the sky. The week promised a clearer picture, and the worry lands close to home. Even a corrected picture is still being viewed through the same fog.</p>
+
+<!-- BSB_BLOCK: John 14:9 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:74735c2564d3b4341587a2c53112e71134675a4bcbb8aa494378e45236a92b1d | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">John 14:9</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.14.9" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Psalm 145:3</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/PSA.145.3" target="_blank">&#9769; Open in Bible App</a>
-          </div>
-          <div class="verse-text">"The LORD is great and is highly praised; his greatness is unsearchable."</div>
-          <div class="verse-translation">Christian Standard Bible &middot; CSB</div>
-          <div class="verse-commentary">The word "unsearchable" is the key. David is not saying God is unknowable; he is saying God is inexhaustible. You can study His holiness, His love, His creative power, and His presence for a lifetime and still find yourself standing at the edge of something vast. That is not a problem. That is the invitation. The attribute that reshaped your picture of God this week is not the final word; it is a doorway. The more you learn about who He is, the more there is to discover, because He is not a concept to master but a Person to know.</div>
+        <div class="verse-text">Jesus replied, <span class="words-of-jesus">“Philip, I have been with you all this time, and still you do not know Me? Anyone who has seen Me has seen the Father. How can you say, ‘Show us the Father’?</span></div>
+<div class="verse-commentary">
+          <p>The week's answer to a distorted picture is not a better argument. It is a Person standing in the room. Philip wanted a definitive look at the Father, and Jesus' reply relocates the whole search. The undistorted original has been eating, healing, weeping, and forgiving right in front of him. Thursday put it plainly. Jesus is the complete, unfiltered revelation of who God is, and Sunday's three lies die in His presence one by one. Withholding, said the serpent. He emptied Himself instead (<a class="vlink" href="https://www.bible.com/bible/3034/PHP.2.5-8" target="_blank" rel="noopener">Philippians 2:5-8</a>). Untrustworthy, said the serpent. He proved trustworthy all the way to a cross. Death is an empty threat, said the serpent. He walked into death and walked back out of it. The cover version loses its grip the way a cover song does, by long exposure to the original recording. Look at Jesus long enough and the rumor cannot survive the resemblance.</p>
         </div>
       </div>
 
-      <!-- QUESTION 2 -->
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">2</span>
-          <div class="dq-question">What other attributes of God could you study to deepen and strengthen your relationship with Him?</div>
-        </div>
+      <div class="section-heading">The High and Holy Place Has a Ground Floor</div>
+      <p>Monday's evidence looked discouraging on its face. Every person in Scripture who met God's unfiltered holiness hit the floor. Isaiah's first words in the throne room were a cry of ruin. If seeing God clearly undoes the people who see Him best, then wanting to know Him better starts to sound like walking toward a fire without protection.</p>
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Romans 11:33</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/ROM.11.33" target="_blank">&#9769; Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Oh, the depth of the riches and the wisdom and the knowledge of God! How unsearchable his judgments and untraceable his ways!"</div>
-          <div class="verse-translation">Christian Standard Bible &middot; CSB</div>
-          <div class="verse-commentary">Paul's exclamation here comes after eleven chapters of wrestling with God's plan for humanity. It is not a dismissal ("we can never figure God out") but a celebration ("there is always more"). This week covered holiness, love, creative power, and incarnate presence. But God's character also includes His faithfulness, His mercy, His justice, His patience, His wisdom, and His sovereignty. Each one is another window into who He is. The question is not which attribute is most important; it is which one you need most right now. Where is your picture of God still fuzzy? That is where to look next.</div>
+<!-- BSB_BLOCK: Isaiah 57:15 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:8ab832c8c2534578476c085223af76d7097c7dd97c533a843bd64e2fefb732bf | footnotes-stripped:0 | poetry:flattened -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Isaiah 57:15</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ISA.57.15" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">For thus says the One who is high and lifted up, who inhabits eternity, whose name is Holy: “I dwell in a high and holy place, and with the oppressed and humble in spirit, to restore the spirit of the lowly and revive the heart of the contrite.</div>
+<div class="verse-commentary">
+          <p>Read the addresses in this verse slowly. The One who inhabits eternity names two dwelling places, the high and holy place and the company of the crushed. Monday's argument was that the second address follows from the first. Holiness means there is no corruption in Him at all, no hidden motive, no dark side, and a Being like that can be trusted at point-blank range. The week made it concrete with an unlocked phone. God already holds full access to every hidden thing in us, and His perfect character is the reason total exposure becomes relief instead of nightmare. That is why the falling down was never the end of the story. Thursday showed the same holiness with skin on, touching lepers and eating with outcasts without once being contaminated. The gap that makes us fall is real. He crosses it to revive, not to condemn.</p>
         </div>
       </div>
 
-      <!-- QUESTION 3 -->
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">3</span>
-          <div class="dq-question">With a family member or friend, read or listen to Steps to Christ, chapter 1, and discuss it together. What new insights about God's character and Jesus has this chapter made you think about?</div>
-        </div>
+      <div class="section-heading">Bigger Than the Sky, Closer Than Your Breath</div>
+      <p>One math problem hung over the whole week. The subject is infinite and the student is not. Wednesday's Creator speaks galaxies into place and keeps outrunning our best telescopes. Sabbath still handed us the assignment of knowing Him, and knowing an ocean sounds impossible for a creature holding a cup.</p>
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Romans 1:20</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/ROM.1.20" target="_blank">&#9769; Open in Bible App</a>
-          </div>
-          <div class="verse-text">"For his invisible attributes, that is, his eternal power and divine nature, have been clearly seen since the creation of the world, being understood through what he has made."</div>
-          <div class="verse-translation">Christian Standard Bible &middot; CSB</div>
-          <div class="verse-commentary">The first chapter of <em>Steps to Christ</em> opens with the natural world as evidence of God's love: flowers, birds, sunsets, the intricate beauty woven into creation. Paul makes the same move here: God's invisible character is made visible through what He has made. The chapter expands from nature to Scripture to the cross, building a case that everything in existence is God trying to show us who He is. Reading it with someone else adds a dimension you cannot get alone, because another person will notice what you miss. Their question, their surprise, their pushback becomes part of how God reveals Himself to you through community.</div>
+<!-- BSB_BLOCK: Acts 17:27-28 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:3945c7a7d94a0e04095cacdb3b6f04de781e1d9441aba9b2cc74eedb9b9af5c1 | footnotes-stripped:2 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Acts 17:27-28</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ACT.17.27-28" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 27">27</sup>God intended that they would seek Him and perhaps reach out for Him and find Him, though He is not far from each one of us. <sup class="verse-number" aria-label="Verse 28">28</sup>‘For in Him we live and move and have our being.’ As some of your own poets have said, ‘We are His offspring.’</div>
+<div class="verse-commentary">
+          <p>Paul stands in Athens and gathers the whole week into two sentences. The Creator of everything is "not far from each one of us." We live and move inside His sustaining presence the way we live inside air, which means the distance we feared was never the real situation. And the week kept insisting that knowing Him was never a math problem to begin with. The knowing Jesus called eternal life (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.17.3" target="_blank" rel="noopener">John 17:3</a>) is the knowing of a Person across a table, not the mastery of a subject. Wednesday held the two scales together in one picture, the Architect of skylines happily building a birdhouse with His child, because the point of both projects was always the relationship. A God small enough to finish would be a God too small to hold you. His size is not the obstacle to knowing Him. It is the guarantee that the knowing never runs dry.</p>
+          <p>That turns the week's ending into a beginning. The paper from Sabbath, the one holding an honest before-picture of God, is waiting to be unfolded, and the practice below sets it beside everything six days have shown, the holiness that makes Him safe, the love that moved first, the hands in the dust, the name Immanuel. Some of the old picture will not survive the comparison, which is the point. Then comes the best part of an infinite subject. Tomorrow is Sabbath, a whole day for sitting across the table from Him, and there is a Gospel portrait still waiting to be read. Eternity itself will not exhaust who He is. The knowing continues.</p>
         </div>
       </div>
-
-      <!-- QUESTION 4 -->
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">4</span>
-          <div class="dq-question">Many people have a distorted picture of God, which Jesus came to correct. What can you do to share a clear, accurate picture of God's character to those in your sphere of influence?</div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">2 Corinthians 4:6</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/2CO.4.6" target="_blank">&#9769; Open in Bible App</a>
-          </div>
-          <div class="verse-text">"For God who said, 'Let light shine out of darkness,' has shone in our hearts to give the light of the knowledge of God's glory in the face of Jesus Christ."</div>
-          <div class="verse-translation">Christian Standard Bible &middot; CSB</div>
-          <div class="verse-commentary">Paul connects creation and redemption in a single sentence: the same God who said "let there be light" has put that light inside believers. Sharing an accurate picture of God starts not with arguments but with reflection. If the light of God's character has shone in your heart, it will show up in how you treat people, how you respond under pressure, and how you talk about Him when no one is grading you. Sunday's study showed that the serpent's strategy is to distort God's character. The counter-strategy is not louder theology; it is a life that accurately represents who God actually is. People believe what they see in you before they believe what they hear from you.</div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">2 Corinthians 3:18</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/2CO.3.18" target="_blank">&#9769; Open in Bible App</a>
-          </div>
-          <div class="verse-text">"We all, with unveiled faces, are looking as in a mirror at the glory of the Lord and are being transformed into the same image from glory to glory; this is from the Lord who is the Spirit."</div>
-          <div class="verse-translation">Christian Standard Bible &middot; CSB</div>
-          <div class="verse-commentary">This verse describes the mechanism. When you spend time looking at who God really is, you are gradually transformed into His likeness. The phrase "from glory to glory" implies a process, not an event. You do not need to be a finished product before you share what you have seen. Every step of genuine transformation makes God's character more visible through yours. The clearer your picture of Him becomes, the clearer it becomes to the people around you.</div>
-        </div>
-      </div>
-
-      <!-- QUESTION 5 -->
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">5</span>
-          <div class="dq-question">Although we are clearly sinful and not holy, the Bible makes clear statements about God's people living holy lives. What does it really mean to live a holy life?</div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">1 Peter 1:15-16</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/1PE.1.15-16" target="_blank">&#9769; Open in Bible App</a>
-          </div>
-          <div class="verse-text">"But as the one who called you is holy, you also are to be holy in all your conduct; for it is written, Be holy, because I am holy."</div>
-          <div class="verse-translation">Christian Standard Bible &middot; CSB</div>
-          <div class="verse-commentary">Peter quotes <a class="vlink" href="https://www.bible.com/bible/1713/LEV.19.2" target="_blank">Leviticus 19:2</a>, pulling the command straight from the Torah into the New Testament church. The phrase "in all your conduct" is the crucial qualifier: holiness is not a feeling, a title, or a spiritual resume. It shows up in what you do, how you speak, and how you treat people when it costs you something. Monday's study established that holiness is the keystone attribute that makes every other attribute of God safe. The same principle applies to believers: holiness is what makes your love trustworthy, your power safe, and your influence worth following.</div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Romans 6:22</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/ROM.6.22" target="_blank">&#9769; Open in Bible App</a>
-          </div>
-          <div class="verse-text">"But now, since you have been set free from sin and have become enslaved to God, you have your fruit, which results in sanctification -- and the outcome is eternal life!"</div>
-          <div class="verse-translation">Christian Standard Bible &middot; CSB</div>
-          <div class="verse-commentary">Paul frames holiness as a direction, not a destination you arrive at once. "Results in sanctification" describes a process: the fruit grows over time. Freedom from sin does not mean sinlessness; it means a fundamental change of allegiance. You are no longer owned by the old patterns. The fruit of that freedom, a life that increasingly reflects God's character, is sanctification in real time. This is not perfectionism. This is growth.</div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Hebrews 12:14</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/HEB.12.14" target="_blank">&#9769; Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Pursue peace with everyone, and holiness -- without it no one will see the Lord."</div>
-          <div class="verse-translation">Christian Standard Bible &middot; CSB</div>
-          <div class="verse-commentary">The writer of Hebrews pairs holiness with peace, linking vertical transformation to horizontal relationships. And the verb is "pursue," not "achieve." Holiness is something you chase, actively and intentionally, not something you stumble into or check off a list. The stakes are real: "without it no one will see the Lord." Not because holiness earns access to God, but because without the desire to become more like Him, you will not recognize Him when you see Him. Living a holy life means wanting to reflect who God is so deeply that it changes how you treat your neighbor, how you handle failure, and how you spend your ordinary Tuesday afternoons.</div>
-        </div>
-      </div>
+      <!-- BSB_FOOTNOTE: Acts 17:28 | 17:28 This is probably a quote from the Cretan philosopher Epimenides of Knossos. -->
+      <!-- BSB_FOOTNOTE: Acts 17:28 | 17:28 This is probably a quote from the poem “Phainomena” by the Cilician philosopher Aratus. -->
 
     </div>
 
@@ -902,7 +875,7 @@
       <div class="section-heading">The Knowing That Never Finishes</div>
       <p>Neuroscience has confirmed something that poets and theologians have said for centuries: deep knowing changes you physically. A growing body of research on neuroplasticity, including a 2025 overview published by the University of California, shows that when you learn something new, your brain does not simply file the information away. It rewires itself. New neural pathways form, existing connections strengthen, and the very structure of your brain adapts to what you are giving it. The more you engage with a subject, the more capacity you build to understand it. Knowing is not a file you download once. It is a living process that reshapes the knower.</p>
       <p>That finding maps remarkably well onto what this week has been about. Knowing God is not a course you complete. It is a relationship that deepens precisely because there is always more to discover. The paternal love that has flowed through human history, generation to generation, all the springs of tenderness that have opened in human hearts, are a tiny rill compared to the boundless ocean of God's love. You can meditate on it every day of your life. You can summon every capacity you have to comprehend the love of a Father who gave His Son to die for the world. And there will still be infinity beyond. That is not frustrating. That is the design.</p>
-      <p>The four Gospels themselves illustrate the principle. Matthew shows Jesus as King. Mark shows Jesus as Servant. Luke shows Jesus as Healer. John shows Jesus as the eternal Word. Four writers, four angles, four portraits of the same Person, and still no single account could contain Him. Eternity itself will not exhaust what there is to know about who God is. But the journey of discovering Him, the daily act of looking into His Word and letting it look into you, rewires something deeper than neurons. It transforms the soul, "from glory to glory," as Paul wrote, into the image of the One you are learning to see.</p>
+      <p>The four Gospels themselves illustrate the principle. Matthew shows Jesus as King. Mark shows Jesus as Servant. Luke shows Jesus as Healer. John shows Jesus as the eternal Word. Four writers, four angles, four portraits of the same Person, and still no single account could contain Him. Eternity itself will not exhaust what there is to know about who God is. But the journey of discovering Him, the daily act of looking into His Word and letting it look into you, rewires something deeper than neurons. It transforms the soul, "with intensifying glory," as Paul wrote, into the image of the One you are learning to see.</p>
     </div>
 
     <!-- 5. CHRIST AT THE CENTER OF THE WEEK -->
@@ -913,8 +886,8 @@
         <div class="section-title-line"></div>
       </div>
       <p>Every day this week was a different window, but every window opened onto the same Person.</p>
-      <p>On Sabbath, Jesus defined eternal life as knowing the Father and the Son He sent. That was the invitation. On Sunday, the serpent's three-move attack on God's character in Eden found its answer in <a class="vlink" href="https://www.bible.com/bible/1713/PHP.2.6-7" target="_blank">Philippians 2:6-7</a>: Jesus did not consider equality with God something to exploit. He emptied Himself. Every lie the enemy tells about God's motives, Jesus refutes by His life. On Monday, holiness met us in <a class="vlink" href="https://www.bible.com/bible/1713/ISA.57.15" target="_blank">Isaiah 57:15</a>, the high and exalted One who revives the crushed. Then the holy God walked among sinners, touched lepers, and ate with outcasts, not because holiness was compromised but because holiness came to heal. On Tuesday, love was revealed as God's nature, not just His action. <a class="vlink" href="https://www.bible.com/bible/1713/ROM.5.8" target="_blank">Romans 5:8</a> put a date and an address on that love: "while we were still sinners, Christ died for us." On Wednesday, the transcendent Elohim who spoke galaxies into being and the intimate Yahweh who shaped dust with His hands turned out to be the same God. And on Thursday, those two names met in one cradle. <a class="vlink" href="https://www.bible.com/bible/1713/JHN.1.14" target="_blank">John 1:14</a>: the Word became flesh and <em>tabernacled</em> among us.</p>
-      <p>The week's question was "who is the God we are trying to know?" The answer, every single day, was Jesus. He is the holiness you can trust, the love you can stand in, the Creator who knelt to wash feet, and the God who did not send a message but came Himself. If you want to know what God is like, look at Him. <a class="vlink" href="https://www.bible.com/bible/1713/JHN.14.9" target="_blank">John 14:9</a> still stands: "The one who has seen Me has seen the Father."</p>
+      <p>On Sabbath, Jesus defined eternal life as knowing the Father and the Son He sent. That was the invitation. On Sunday, the serpent's three-move attack on God's character in Eden found its answer in <a class="vlink" href="https://www.bible.com/bible/3034/PHP.2.6-7" target="_blank" rel="noopener">Philippians 2:6-7</a>: Jesus did not consider equality with God something to exploit. He emptied Himself. Every lie the enemy tells about God's motives, Jesus refutes by His life. On Monday, holiness met us in <a class="vlink" href="https://www.bible.com/bible/3034/ISA.57.15" target="_blank" rel="noopener">Isaiah 57:15</a>, the high and exalted One who revives the crushed. Then the holy God walked among sinners, touched lepers, and ate with outcasts, not because holiness was compromised but because holiness came to heal. On Tuesday, love was revealed as God's nature, not just His action. <a class="vlink" href="https://www.bible.com/bible/3034/ROM.5.8" target="_blank" rel="noopener">Romans 5:8</a> put a date and an address on that love: "while we were still sinners, Christ died for us." On Wednesday, the transcendent Elohim who spoke galaxies into being and the intimate Yahweh who shaped dust with His hands turned out to be the same God. And on Thursday, those two names met in one cradle. <a class="vlink" href="https://www.bible.com/bible/3034/JHN.1.14" target="_blank" rel="noopener">John 1:14</a>: the Word became flesh and <em>tabernacled</em> among us.</p>
+      <p>The week's question was "who is the God we are trying to know?" The answer, every single day, was Jesus. He is the holiness you can trust, the love you can stand in, the Creator who knelt to wash feet, and the God who did not send a message but came Himself. If you want to know what God is like, look at Him. <a class="vlink" href="https://www.bible.com/bible/3034/JHN.14.9" target="_blank" rel="noopener">John 14:9</a> still stands: "The one who has seen Me has seen the Father."</p>
     </div>
 
     <!-- 6. WEEKEND PRACTICE -->
@@ -941,22 +914,42 @@
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">&#9769; Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/JHN.17.3" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=John+17:3&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
-    <p>&#9769; Daily Bible Study &middot; Shared with Love &#9769;</p>
-    <a class="footer-archive" href="index.html">&larr; Home</a>
+    <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
+    <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -625,7 +648,7 @@ if ('serviceWorker' in navigator) {
     white-space: nowrap;
   }
 
-  /* ── DEEPER QUESTIONS ── */
+  /* LEGACY DEEPER QUESTIONS: retained only so archived Friday bodies can still be reassembled */
   .dq-block {
     margin: 28px 0;
     padding: 0;
@@ -782,73 +805,59 @@ if ('serviceWorker' in navigator) {
       <p>Into that ladder Paul dropped a crucified Messiah and told the church the ladder itself was the disease. The factions were not a random flare-up. They were Corinth's status game smuggled into the body of Christ. That is why Paul does not answer their divisions with better management. He answers with the cross, the one place where the whole ranking system dies, because the God at the top of everything went all the way to the bottom on purpose.</p>
     </div>
 
-    <!-- 3. DEEPER QUESTIONS -->
+    <!-- 3. WHAT THIS WEEK CLARIFIES -->
     <div class="section">
       <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Deeper Questions</span>
+        <span class="section-emoji">💡</span>
+        <span class="section-title">What This Week Clarifies</span>
         <div class="section-title-line"></div>
       </div>
 
-      <p>Take these into the weekend, alone or with people you trust. Let them move from the page into the way you actually treat the believers around you.</p>
+      <p>A week about unity leaves three loose threads, and a week that talked this much about mending nets deserves to have them tied. A plea for one mind that can sound like a demand for sameness. A love for good teachers filed dangerously close to idolatry. A sentence about Christ's afflictions that seems to say the cross left something undone. All three tie off cleanly. Take them one at a time before Sabbath.</p>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">1</span>
-          <div class="dq-question">Near the end of His life, Jesus prayed that His followers would "all be one . . . so that the world may know that You sent Me." Why is the unity of Christians such a powerful piece of evidence that the Father really sent the Son? And why does our disunity get in the way of the church's whole mission?</div>
+      <div class="section-heading">A Mended Net Still Has a Thousand Knots</div>
+      <p>Paul's opening plea can read like a demand for sameness. Agree together. No divisions. United in mind and conviction. To modern ears that sounds like a church of matching opinions and interchangeable people, and the same week seems to argue against it, celebrating a body whose parts are nothing alike. The plea and the picture appear to pull in opposite directions.</p>
+
+<!-- BSB_BLOCK: 1 Corinthians 1:10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:ea9a80cba53831fc76a92c273e21a0ac50a9429335d6d2cccfadb676ea92f393 | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">1 Corinthians 1:10</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.10" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">John 17:21-23</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.17.21-23" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"May they all be one, as you, Father, are in me and I am in you. May they also be in us, so that the world may believe you sent me. I have given them the glory you have given me, so that they may be one as we are one. I am in them and you are in me, so that they may be made completely one, that the world may know you have sent me and have loved them as you have loved me."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Hours before the cross, with everything on the line, this is what Jesus prayed for, that His people would be one. And He tied that oneness directly to the world's believing. The unity of very different people, loving each other for no earthly reason, is meant to be living proof that something supernatural is loose in the world. A watching world cannot see our doctrine or overhear our private prayers, but it can see whether people who should have split apart somehow hold together.</p>
-            <p>That is exactly why division does so much damage. When the church fractures into the same tribes as everyone else, it quietly tells the world there is nothing to see here, no power strong enough to do what the gospel claims. The Corinthian cliques were not just an internal headache. They were sabotaging the one argument the world could actually read. Our unity is not decoration on the mission. It is the mission's credibility.</p>
-          </div>
+        <div class="verse-text">I appeal to you, brothers, in the name of our Lord Jesus Christ, that all of you agree together, so that there may be no divisions among you and that you may be united in mind and conviction.</div>
+<div class="verse-commentary">
+          <p>The word Paul chose settles it. Monday found katartizo underneath united, the fisherman's word for mending a torn net and the doctor's word for setting a broken bone. It means restored to working order, never ground down to sameness. So the memory text asks for one settled agreement, that Jesus is Lord and everything else bends to Him, and it leaves a hundred honest differences standing. The week kept handing us that picture from new angles. A body needs its eye and its foot to stay unalike. The scattered telescopes that photographed a black hole stayed different instruments in different countries and became one eye only because every dish aimed at the same point. That is the unity Paul begs for. Not clones, and not camps. Different people facing one center, joined at the deepest possible point because the same Lord was crucified for them all.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">2</span>
-          <div class="dq-question">Look closely at how Paul portrays the apostles, as fools, weak, dishonored, hungry, the world's garbage. How does that picture clash with everything our culture prizes in a leader? And what does the gap between those two scorecards tell us about how different God's standards are from the world's?</div>
-        </div>
+      <div class="section-heading">The Teacher Was a Gift. The Jersey Was the Theft.</div>
+      <p>Sunday filed the church's team spirit next to idolatry, and that filing can feel unfair. Apollos was a real gift to Corinth. So was Paul. Loving the teacher who first pointed you to Jesus looks like plain gratitude, and nobody in those camps felt like a divider. Every one of them felt loyal. The week owes a reader the line where devotion crossed over.</p>
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">1 Corinthians 4:9-13</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.4.9-13" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"For I think God has displayed us, the apostles, in last place, like men condemned to die: We have become a spectacle to the world, both to angels and to people. We are fools for Christ, but you are wise in Christ! We are weak, but you are strong! You are distinguished, but we are dishonored! Up to the present hour we are both hungry and thirsty; we are poorly clothed, roughly treated, homeless; we labor, working with our own hands. When we are reviled, we bless; when we are persecuted, we endure it; when we are slandered, we respond graciously. Even now, we are like the scum of the earth, like everyone's garbage."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Line up Paul's description against a modern leadership brand and almost nothing matches. We prize the polished, the winning, the influential, the ones with the platform and the following. Paul describes the apostles as fools, weak, dishonored, hungry, homeless, and treated like trash, and he says this is what God's frontline leadership actually looked like. The two scorecards are not slightly different. They are opposite.</p>
-            <p>That gap is the whole point of the week. The world hands out honor for climbing; God hands out honor for laying yourself down. When we feel the pull to measure a ministry, or ourselves, by size and applause and comfort, this passage is a splash of cold water. The people who most looked like Jesus in the first century looked, to their culture, like losers. It is worth asking honestly which scoreboard we are still keeping.</p>
-          </div>
+<!-- BSB_BLOCK: 1 Corinthians 4:1-2 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b2169154444d1c4a8ec579db82240981dc7ec0fb96bfdfecb401fdc84b2474c3 | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">1 Corinthians 4:1-2</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.4.1-2" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>So then, men ought to regard us as servants of Christ and stewards of the mysteries of God. <sup class="verse-number" aria-label="Verse 2">2</sup>Now it is required of stewards that they be found faithful.</div>
+<div class="verse-commentary">
+          <p>Wednesday drew the line with a job description. Regard us, Paul says, as servants and stewards, and the steward picture does the work. The estate manager in a Roman house held the keys and ran the accounts, and owned none of it. Honor him rightly and your thanks still lands on the master of the house. Follow him as owner and something has been stolen, which is why a preacher who collects fans has quietly signed his own name across treasure he was hired to hand on. That is where gratitude tips into idolatry. Not in loving a teacher, but in wearing him, letting a servant occupy the center only Christ can hold. Sunday's question still measures every loyalty on the shelf. Nobody's favorite voice was crucified for them. Thank the stewards warmly. Wear the one name that bled.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">3</span>
-          <div class="dq-question">Paul actually tells the Corinthians to imitate him. When is it right to imitate a Christian leader, and where is the line between following someone's good example and exalting them into the very idol this whole week has been warning us about?</div>
-        </div>
+      <div class="section-heading">Nothing Was Missing From the Cross</div>
+      <p>Thursday saved the week's strangest sentence for its quietest verse. Paul rejoices to fill up what is lacking in Christ's afflictions, and a careful reader stops cold right there. The whole gospel rests on a finished cross. A sentence that sounds like the cross came up short cannot be allowed to drift past unexamined.</p>
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">1 Corinthians 4:16</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.4.16" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Therefore I urge you to imitate me."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>After spending four chapters tearing down the personality cults, Paul says something that sounds almost contradictory. Imitate me. But look at what he had just shown them to imitate, a man who refused a following, served like a steward, and wore his sufferings instead of his honors. Paul is not asking to be exalted. He is pointing at the pattern of the cross running through his life and saying, follow that. Elsewhere he adds the crucial words that keep it safe, imitate me as I imitate Christ.</p>
-            <p>That is the line. Healthy imitation follows a leader in the direction of Jesus and, if the leader ever steps off that path, keeps walking toward Jesus without them. Idolatry follows the person instead of the pattern, defends them when they are wrong, and turns them into a flag to wave against other believers. A good example is a window you look through to see Christ. A cult of personality is a mirror that stops at the leader. The whole week has been teaching us to keep looking through the window.</p>
-          </div>
+<!-- BSB_BLOCK: Colossians 1:24 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:0b23eb9428a977f59f4985045e8b6fe5b9996d96c0070b6d28bf79463051039b | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Colossians 1:24</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/COL.1.24" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">Now I rejoice in my sufferings for you, and I fill up in my flesh what is lacking in regard to Christ’s afflictions for the sake of His body, which is the church.</div>
+<div class="verse-commentary">
+          <p>The week's answer holds both truths at full strength. The atonement lacked nothing. That work was finished, and Paul of all people is not reopening the account. What remains unfinished is the delivery. The love that poured out at Calvary still has addresses it has not reached, and it travels the only way love travels, through people willing to absorb cost to carry it. That is what Paul's floggings, shipwrecks, and sleepless worry were, not payments toward sin but the cost of delivering a finished gift to people who had not yet received it. It is why the scorched helmet outranks the polished one, and why the apostles march at the back of the parade where their Lord walked first. The suffering was never the tragedy of the ministry. It was the love becoming visible.</p>
+          <p>That is the week's closing word to a church that wanted the front of the parade. The center holds the body together, the stewards hand on the treasure, and the love gets delivered by whoever will carry it, at whatever cost. Tomorrow the family gathers again, different as ever, one Lord in the middle. Take your seat in that circle gladly, and thank the stewards who handed the treasure down to you. The net was tied together at a cross, by a Lord who walked to the back of the parade to gather every knot.</p>
         </div>
       </div>
 
@@ -900,22 +909,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.1.10" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+1:10&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

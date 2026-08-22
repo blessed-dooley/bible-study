@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -380,6 +413,16 @@
     padding-top: 14px;
     border-top: 1px solid var(--border);
     font-weight: 300;
+  }
+  .verse-commentary p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-soft);
+    font-weight: 300;
+    margin: 0 0 14px 0;
+  }
+  .verse-commentary p:last-child {
+    margin-bottom: 0;
   }
 
   /* ── ACCENT SECTIONS ── */
@@ -459,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -522,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -540,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -601,7 +648,7 @@
     white-space: nowrap;
   }
 
-  /* ── DEEPER QUESTIONS ── */
+  /* LEGACY DEEPER QUESTIONS: retained only so archived Friday bodies can still be reassembled */
   .dq-block {
     margin: 28px 0;
     padding: 0;
@@ -697,8 +744,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -759,97 +804,61 @@
       <p>Every system of greatness in the ancient world pointed upward. Roman politics rewarded those who climbed highest. Greek philosophy celebrated the self-sufficient mind. Egyptian royalty measured worth by proximity to the throne. Even the Jerusalem temple organized its courts by ascending levels of access to God's presence. The entire cultural atmosphere said: ascend, accumulate, assert. Humility was not a virtue; it was a punishment inflicted on the defeated. Into that world, Jesus introduced a reversal so complete that two thousand years later we are still trying to absorb it. He said the greatest is the one who serves. He said the last will be first. He said the way up is down. And then He lived it, all the way from the throne of heaven to a Roman cross, proving that the direction of the kingdom of God is the opposite of everything the world had ever valued.</p>
     </div>
 
-    <!-- 3. DEEPER QUESTIONS -->
+    <!-- 3. WHAT THIS WEEK CLARIFIES -->
     <div class="section">
       <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Deeper Questions</span>
+        <span class="section-emoji">💡</span>
+        <span class="section-title">What This Week Clarifies</span>
         <div class="section-title-line"></div>
       </div>
 
-      <p>This week has exposed something most of us would rather not look at. These questions are not designed to be comfortable. They are designed to be honest. Take them slowly, and let Scripture do the speaking.</p>
+      <p>Six days on one uncomfortable subject leave a few knots still pulled tight. The week named pride the biggest obstacle between us and God, then showed us a sin that hides from its owner, survives years at Jesus' side, and can even impersonate its own cure. Three tensions deserve one last look before Sabbath.</p>
 
-      <!-- DQ 1 -->
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">1</span>
-          <div class="dq-question">What additional insights do these verses give us about the relationship between pride and humility?</div>
+      <div class="section-heading">Pride Grades Its Own Report Card</div>
+      <p>The week kept circling one alarming fact. Pride is the sin its owner cannot see. Sabbath said the surest symptom is assuming the person beside us has it worse. Wednesday called it the one sickness whose patient refuses the diagnosis. That leaves a problem. A week aimed at my pride depends on a reading of my heart, and my own instrument always reads clean.</p>
+
+<!-- BSB_BLOCK: Luke 18:9-14 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:1a36e9829c45a4965fcdca2e043d085480f0cf8737ca420bfab9b4a5ee0c4b87 | footnotes-stripped:1 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Luke 18:9-14</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/LUK.18.9-14" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Matthew 23:12</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.23.12" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Whoever exalts himself will be humbled, and whoever humbles himself will be exalted."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">Jesus repeats this principle multiple times across the Gospels (here, <a class="vlink" href="https://www.bible.com/bible/1713/LUK.14.11" target="_blank">Luke 14:11</a>, <a class="vlink" href="https://www.bible.com/bible/1713/LUK.18.14" target="_blank">Luke 18:14</a>). The repetition is not accidental. This is not a suggestion; it is a law of the kingdom. The passive voice ("will be humbled," "will be exalted") points to God as the active agent. When we exalt ourselves, God brings us low. When we humble ourselves, God lifts us up. The timing is His; the direction is certain.</div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 9">9</sup>To some who trusted in their own righteousness and viewed others with contempt, He also told this parable: <sup class="verse-number" aria-label="Verse 10">10</sup><span class="words-of-jesus">“Two men went up to the temple to pray. One was a Pharisee and the other a tax collector.</span> <sup class="verse-number" aria-label="Verse 11">11</sup><span class="words-of-jesus">The Pharisee stood by himself and prayed, ‘God, I thank You that I am not like other men—swindlers, evildoers, adulterers—or even like this tax collector.</span> <sup class="verse-number" aria-label="Verse 12">12</sup><span class="words-of-jesus">I fast twice a week and pay tithes of all that I acquire.’</span> <sup class="verse-number" aria-label="Verse 13">13</sup><span class="words-of-jesus">But the tax collector stood at a distance, unwilling even to lift up his eyes to heaven. Instead, he beat his breast and said, ‘God, have mercy on me, a sinner!’</span> <sup class="verse-number" aria-label="Verse 14">14</sup><span class="words-of-jesus">I tell you, this man, rather than the Pharisee, went home justified. For everyone who exalts himself will be humbled, but the one who humbles himself will be exalted.”</span></div>
+<div class="verse-commentary">
+          <p>Jesus solves the instrument problem by letting us watch it fail in someone else. The Pharisee is not lying about his fasting or his tithing. His readings are accurate and his scale is broken, because it only measures sideways, against swindlers and this tax collector, and a sideways scale always flatters its owner. The tax collector stands where the measuring is done by holiness itself, accepts the reading, and prays seven honest words. Monday set the two instruments side by side, the bathroom scale we trust and the calibrated one we avoid, and Jesus hands the verdict to the man who believed the honest number. He went home justified. So the week's hope for an unseeable sin is not sharper self-inspection. It is standing before the right standard, where God "gives grace to the humble" (<a class="vlink" href="https://www.bible.com/bible/3034/1PE.5.5" target="_blank" rel="noopener">1 Peter 5:5</a>). Feeling exposed in that light is not distance. Monday called it proximity.</p>
         </div>
+      </div>
+      <!-- BSB_FOOTNOTE: Luke 18:11 | 18:11 Or stood and prayed to himself -->
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Psalm 25:9</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/PSA.25.9" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"He leads the humble in what is right and teaches them his way."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">Humility is not just a moral virtue; it is a prerequisite for being teachable. God leads the humble because the humble are willing to follow. The proud have already decided where they are going. David's prayer reveals that guidance and humility are inseparable: you cannot receive God's direction if you are already committed to your own.</div>
+      <div class="section-heading">Three Years at the Table Was Not Enough</div>
+      <p>The disciples held the best seat for watching humility that anyone has ever held. Three years beside the humblest Person who ever lived, dust from His roads on their clothes, His bread in their hands. On the last night, with the cross hours away, they argued about rank at His table. Whatever pride is, sitting near Jesus for years did not remove it.</p>
+
+<!-- BSB_BLOCK: Luke 22:27 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:05bb6d010cf893f53883fbb04a90264752bb6e03640b277747a8ec6c6fee399b | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Luke 22:27</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/LUK.22.27" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Psalm 149:4</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/PSA.149.4" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"For the LORD takes pleasure in his people; he adorns the humble with salvation."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">The Hebrew word translated "adorns" (<em>pa'ar</em>) means to beautify, to glorify, to crown with splendor. God does not merely tolerate the humble; He decorates them. Salvation is the crown He places on the heads of those who stopped trying to crown themselves. This is the Philippians 2 principle in Old Testament poetry: the one who descends is the one God exalts.</div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">James 4:6, 10</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/JAS.4.6" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"But he gives greater grace. Therefore he says: God resists the proud but gives grace to the humble. ... Humble yourselves before the Lord, and he will exalt you."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">James mirrors Peter's language (<a class="vlink" href="https://www.bible.com/bible/1713/1PE.5.5" target="_blank">1 Peter 5:5</a>): God <em>antitassomai</em>, actively opposes the proud. But notice the bookend: "He gives greater grace." The promise is not just that pride will be punished; it is that humility opens the floodgates of grace. Verse 10 states the result plainly: humble yourselves, and He will exalt you. The initiative is ours (humble yourselves); the outcome is God's (He will exalt). We bring the posture; He provides the promotion. And His version of exaltation looks nothing like the world's.</div>
+        <div class="verse-text"><span class="words-of-jesus">For who is greater, the one who reclines at the table or the one who serves? Is it not the one who reclines? But I am among you as one who serves.</span></div>
+<div class="verse-commentary">
+          <p>Wednesday drew the hardest lesson from that scene. Pride is not an information problem. These men were not short on correct teaching about humility. They had three years of it, firsthand, from the source, and the argument broke out anyway, because underneath it ran Monday's broken instrument at full volume. Which of them. Sideways measurement, at a table where the only true standard in the room was holding the bread. Notice what Jesus does not do. He does not referee the ranking. He answers with an identity. The greatest person at that table was the one serving it, and He said so while serving the very men doing the arguing, hours before the serving went all the way to a cross.</p>
+          <p>Thursday supplied what nearness alone never did. The week's cure for pride was never more exposure. It was a changed gaze. Stand at the rim of the descent Paul traces, from the form of God down to a servant, a man, a criminal's cross (<a class="vlink" href="https://www.bible.com/bible/3034/PHP.2.3-8" target="_blank" rel="noopener">Philippians 2:3-8</a>), and the ranking argument does not get won so much as forgotten, the way visitors at a canyon edge forget the grievance they rehearsed the whole drive out. You become like what you gaze at. Stare at status and grow proud. Stare at the descent and pride quietly loses its voice. The disciples had nearness for three years. Nearness is the invitation. The gaze is the cure.</p>
         </div>
       </div>
 
-      <!-- DQ 2 -->
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">2</span>
-          <div class="dq-question">When did you last "parade your own goodness"? How did it affect your relationship with God and with the people who witnessed it?</div>
-        </div>
+      <div class="section-heading">The Low Seat Was Never a Strategy</div>
+      <p>One misreading could spoil the whole week. The memory text promises that the humble will end up exalted, and ambition hears a technique. Go low on purpose, get lifted in public later. Lucifer wanted a higher throne, and a calculating humility wants the same throne by a quieter staircase. Exaltation dangled as a prize looks like the very disease this week spent six days diagnosing.</p>
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Matthew 6:1-4</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.6.1-4" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Be careful not to practice your righteousness in front of others to be seen by them. Otherwise, you have no reward with your Father in heaven. So whenever you give to the poor, don't sound a trumpet before you, as the hypocrites do in the synagogues and on the streets, to be applauded by people. Truly I tell you, they have their reward. But when you give to the poor, don't let your left hand know what your right hand is doing, so that your giving may be in secret. And your Father who sees in secret will reward you."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">Jesus says the parading itself is the reward. The person who displays their goodness has already received what they were looking for: human applause. But that applause evaporates. The Father sees what is done in secret, and His reward is the one that lasts. The hardest thing about this question is that most of us do not realize when we are parading. The Pharisee in Monday's parable thought he was praying. We often think we are sharing or encouraging when we are actually performing. The closer we come to Jesus and the more clearly we see the purity of His character, the less we feel like putting our own goodness on display. Those whom heaven recognizes as truly holy are the last to advertise it.</div>
+<!-- BSB_BLOCK: Luke 14:11 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b84be6d4323e323fb9b2e2e3e9fb8cf5b21d94e45b8f7f7f0370fa967dd0e5e8 | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Luke 14:11</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/LUK.14.11" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-      </div>
-
-      <!-- DQ 3 -->
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">3</span>
-          <div class="dq-question">What might you need to change in your life to humble yourself before God in order to strengthen your walk with Him?</div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Micah 6:8</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/MIC.6.8" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Mankind, he has told each of you what is good and what it is the LORD requires of you: to act justly, to love faithfulness, and to walk humbly with your God."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">Micah reduces the entire relationship with God to three things, and the third is the one that governs the other two: walk humbly with your God. You cannot act justly if pride blinds you to your own injustice. You cannot love faithfulness if you are too proud to keep commitments that cost you something. Humility is not one item on the list; it is the foundation for everything else. The change that needs to happen is rarely dramatic. It is usually small, specific, and uncomfortable: apologizing when you were wrong, listening instead of correcting, giving credit instead of taking it, admitting you need help. The simplicity and self-forgetfulness of a child are the attributes that heaven values most. These are the characteristics of real greatness: not rank, not wealth, not intellectual brilliance, but oneness with Christ.</div>
+        <div class="verse-text"><span class="words-of-jesus">For everyone who exalts himself will be humbled, and the one who humbles himself will be exalted.”</span></div>
+<div class="verse-commentary">
+          <p>The answer sits inside Jesus' own verbs. Will be humbled. Will be exalted. Both futures happen to a person, not by him, because God is the one doing the moving in each direction. Sabbath made that observation the week's foundation, and the rest of the week watched it hold. Sunday saw the original self-lift end in a fall, five "I will" statements answered by a cutting down (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.14.12-14" target="_blank" rel="noopener">Isaiah 14:12-14</a>). Thursday saw the opposite, the One who held the highest place release it, with a raising that was His Father's doing rather than a payoff He had angled for. Tuesday gave the pattern a human face. When Aaron and Miriam challenged his position, the most humble man on earth said nothing, and God stepped in to defend him. A humility that angles for the throne is still gripping. The real thing has open hands.</p>
+          <p>That settles where the week lands. Pride was named on Sabbath as the biggest obstacle between us and God, and six days later it has not been out-argued so much as outgrown, shrunk by a long look at Someone it cannot survive. The low seat turns out to be the spot with the clearest view of Him. Tomorrow is Sabbath. The practice below reopens the paper folded at the start of the week, three situations where pride keeps surfacing, now reread by a person who has watched a tax collector go home justified and the King of the universe kneel to wash feet. Take the seat with no angle in it. Whatever rises from there rises in God's hands, at God's call, and it will not need defending.</p>
         </div>
       </div>
 
@@ -902,22 +911,42 @@
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/PHP.2.3-8" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Philippians+2:3-8&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

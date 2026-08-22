@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -619,7 +648,7 @@ if ('serviceWorker' in navigator) {
     white-space: nowrap;
   }
 
-  /* ── DEEPER QUESTIONS ── */
+  /* LEGACY DEEPER QUESTIONS: retained only so archived Friday bodies can still be reassembled */
   .dq-block {
     margin: 28px 0;
     padding: 0;
@@ -755,7 +784,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <p class="tldr-hook">Five rooms across three thousand years, one inclined Ear, and one Hebrew verb the Memory Text dropped in our laps on Sabbath morning: pour out.</p>
       <ul class="week-review-list">
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sabbath:</span> Practical Prayer. The Memory Text gave the week one verb. <em>Shaphak</em>, the priests' word for blood spilled at the base of the altar, the word David used in <a class="vlink" href="https://www.bible.com/bible/1713/PSA.62.8" target="_blank">Psalm 62:8</a> from the run between palaces. Trust first. Then pour. The week's faculty assembles: Elijah, Hannah, the disciples, Daniel, and Paul on the Spirit, all teaching the same move from five different rooms.</span></li>
+        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sabbath:</span> Practical Prayer. The Memory Text gave the week one verb. <em>Shaphak</em>, the priests' word for blood spilled at the base of the altar, the word David used in <a class="vlink" href="https://www.bible.com/bible/3034/PSA.62.8" target="_blank" rel="noopener">Psalm 62:8</a> from the run between palaces. Trust first. Then pour. The week's faculty assembles: Elijah, Hannah, the disciples, Daniel, and Paul on the Spirit, all teaching the same move from five different rooms.</span></li>
         <li><span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> Elijah, Praying in Crisis. The morning after Carmel, the prophet collapsed under a desert shrub and prayed the worst prayer of his life. God answered first with food and water and a long sleep, then with a forty-day walk, then with a <em>qol demamah daqqah</em>, a soft whisper, then with the gentle question that slipped past every defense: "What are you doing here, Elijah?" Tenderness before truth. Whisper before commission.</span></li>
         <li><span class="bullet-icon">☩</span><span><span class="day-label">Monday:</span> When Prayers Seem Unanswered. Hannah at the Shiloh doorpost, lips moving with no sound, told the priest she had been pouring out her heart before the LORD. <em>Marat naphesh</em>. <em>Shaphak</em> at full duration. Jesus' Greek imperatives <em>aiteo, zeteo, krouo</em> are present-tense: keep on asking, keep on seeking, keep on knocking. John adds the partner verse that bends every request toward the Father's <em>thelema</em>. Underneath the long checklist of biblical counsel sits a confidence: God sees what we cannot.</span></li>
         <li><span class="bullet-icon">☩</span><span><span class="day-label">Tuesday:</span> Jesus Teaches Us How to Pray. Twelve men who had been reciting Jewish prayer their whole lives watched their Rabbi pray once and asked Him a question they had never asked anyone. The address He handed them was <em>Pater hemon</em>. <em>Abba</em>. The kitchen-table word the Son had been calling the Father since before the world existed. The first three petitions point God-ward, the next three point us-ward, and the line He underlined twice was the one about forgiveness, because you cannot pour out a clenched fist.</span></li>
@@ -773,103 +802,62 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">Five Rooms, One Inclined Ear</div>
       <p>Walk back through the geography. A juniper tree somewhere in the Sinai wilderness around 870 BC, a tired prophet pressed into the sand. The doorpost of the tabernacle at Shiloh around 1100 BC, a barren wife with her lips moving and a priest reading them wrong. A Galilean hillside about AD 30, twelve men sitting on the grass while their Rabbi finished a private prayer. An upper-story room in Babylon in 539 BC, an old statesman with a borrowed scroll across his knees. A rented house in Rome around AD 57, a slave hearing the Spirit's groans named for the first time in his life. Five rooms scattered across thirteen hundred years. Five voices in five languages. Five postures: face-down, lips-moving, listening, kneeling-with-the-scroll, sitting-while-the-letter-is-read.</p>
-      <p>The week was built so the rooms could be heard talking to one another. Elijah's broom tree is a cousin to Gethsemane. Hannah's silent lips are a cousin to Daniel's whispered confession. The disciples' "Lord, teach us" is a cousin to Paul's "we do not know what to pray for as we should." The Roman house church and the Sinai cliff are praying the same prayer in different alphabets. None of the rooms is in the others' century. All of them are in the same conversation. The inclined Ear of <a class="vlink" href="https://www.bible.com/bible/1713/PSA.116" target="_blank">Psalm 116</a>, which last week made the underlying confidence of every prayer, is the silent through-line. This week added the verb the Ear was waiting to hear. <em>Shaphak.</em> Pour it out. Five rooms, one verb, one Father, one ear that has been bent toward us since long before we learned His name.</p>
+      <p>The week was built so the rooms could be heard talking to one another. Elijah's broom tree is a cousin to Gethsemane. Hannah's silent lips are a cousin to Daniel's whispered confession. The disciples' "Lord, teach us" is a cousin to Paul's "we do not know what to pray for as we should." The Roman house church and the Sinai cliff are praying the same prayer in different alphabets. None of the rooms is in the others' century. All of them are in the same conversation. The inclined Ear of <a class="vlink" href="https://www.bible.com/bible/3034/PSA.116" target="_blank" rel="noopener">Psalm 116</a>, which last week made the underlying confidence of every prayer, is the silent through-line. This week added the verb the Ear was waiting to hear. <em>Shaphak.</em> Pour it out. Five rooms, one verb, one Father, one ear that has been bent toward us since long before we learned His name.</p>
     </div>
 
-    <!-- 3. DEEPER QUESTIONS -->
+    <!-- 3. WHAT THIS WEEK CLARIFIES -->
     <div class="section">
       <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Deeper Questions</span>
+        <span class="section-emoji">💡</span>
+        <span class="section-title">What This Week Clarifies</span>
         <div class="section-title-line"></div>
       </div>
 
-      <p>Four questions to carry into the Sabbath table and the days that follow. The first three are inviting you to look at the week's open seams: the convictions that ran underneath every day, the wider faculty of biblical pray-ers we did not have time to visit, and the discipline most modern Christians have quietly retired. The fourth is the question Sabbath morning will ask you anyway, so you may as well answer it now.</p>
+      <p>A week that ran from a broom tree in the Sinai wilderness to a rented house in Rome leaves a few honest tensions on the table. Three of them are worth settling before the week closes.</p>
 
-      <!-- Question 1 -->
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">1</span>
-          <div class="dq-question">Three convictions kept circling underneath this week's prayers: that thinking and talking of Jesus more than self brings His presence near, that helpless dependence on God outperforms taking counsel with our doubts and fears, and that praise and thanksgiving lift the soul nearer to heaven than anything else we can carry up the road. Which of the three inspires you the most? Which one challenges you the most?</div>
+      <div class="section-heading">A Refuge Is Not a Briefing Room</div>
+      <p>Tuesday planted a quiet paradox in the middle of the week. Jesus said the Father knows what we need before we ask Him, then in the same breath taught us to ask anyway (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.6.8" target="_blank" rel="noopener">Matthew 6:8</a>). The rest of the week doubled down on the telling. Elijah told God exactly how his week had gone. Hannah named a grief God had been watching for years. Daniel spent sixteen verses walking God through a history God had watched happen. Six days of saying things heaven already knew.</p>
+
+<!-- BSB_BLOCK: Psalms 62:8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:2f2ee58c5b5d52216fd50cf3b5cf3fed55a9a4a93663994c29b1cf7f9d39527f | footnotes-stripped:0 | poetry:flattened -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Psalms 62:8</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.62.8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Isaiah 51:3</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/ISA.51.3" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"For the LORD will comfort Zion; he will comfort all her waste places, and he will make her wilderness like Eden, and her desert like the garden of the LORD; joy and gladness will be found in her, thanksgiving and the sound of singing."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Isaiah is writing to people whose city has been demolished and whose hopes have been deported. Into that ruin he speaks the noise of a garden coming back. The sequence of nouns is the answer to Question 1's three convictions. First, comfort, the active work of the LORD. Second, the desert turning into Eden, which is the picture of His presence arriving where it had felt absent. Third, joy and gladness. Fourth and last, "thanksgiving and the sound of singing." Praise is the soundtrack the prophet hears coming out of the rebuilt city, not the entry fee that paid for the rebuilding. Gratitude is the sound of grace already at work.</p>
-            <p>That order matters this week. None of the three convictions is a self-improvement project. Thinking and talking of Jesus more than self is what happens when a worshipper stops staring at the mirror long enough to look out the window. Helpless dependence is what comes naturally when the wilderness has finally taught us we cannot Eden-ize it ourselves. Praise is the noise that fills a heart that has run out of every other answer except the right one. Each of the three is the easier-said-than-done kind. The challenge is not to grit the teeth and produce them. The challenge is to come close enough to the Father that they rise out of us the way singing rose out of the rubble of Zion.</p>
-          </div>
+        <div class="verse-text">Trust in Him at all times, O people; pour out your hearts before Him. God is our refuge. Selah</div>
+<div class="verse-commentary">
+          <p>The Memory Text answered this before the week ever raised it. Watch the order of the verse. Trust comes first, pouring comes second, and the verse ends by naming why both are safe. God is our refuge. Nobody runs into a storm shelter to hand the shelter a weather report. You run in because of what the shelter is. That is what all the telling was for. Elijah's exhaustion, Hannah's spelled-out grief, and Daniel's long confession were not news bulletins for an uninformed heaven. They were the sound of people moving their whole weight indoors. Thursday gave the paradox its plainest answer. Prayer is not the upload. It is the welcome. The Father who already knows still says to ask, because asking was never how He learns what we need. It is how we learn where to carry it.</p>
         </div>
       </div>
 
-      <!-- Question 2 -->
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">2</span>
-          <div class="dq-question">What other lessons can we learn from the prayer lives of others in the Bible, the ones the week did not have time to visit (Ezra weeping in front of the temple, Jehoahaz seeking the LORD's favor, Jonah complaining about God's mercy, Habakkuk turning a prayer into a song, Hezekiah laying the threatening letter open before the LORD, Jeremiah praying after buying a field in a doomed city, Nehemiah fasting at the Persian court, Solomon dedicating the temple)?</div>
-        </div>
+      <div class="section-heading">The Whisper Was Also an Answer</div>
+      <p>Jesus handed the week a promise that sounds unconditional. Ask and it will be given, seek and you will find, knock and the door opens (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.7.7" target="_blank" rel="noopener">Matthew 7:7</a>). The week's own classroom seemed to test that promise hard. Elijah asked to die, and breakfast arrived instead. He braced for fire on the mountain and got a whisper. Hannah asked for a son year after year and walked home with peace before she ever held one. The promise and the case studies do not appear to match.</p>
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">2 Kings 19:14-19</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/2KI.19.14-19" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Hezekiah took the letter from the messengers' hands, read it, then went up to the LORD's temple and spread it out before the LORD. Then Hezekiah prayed before the LORD: LORD God of Israel, enthroned between the cherubim, you are God — you alone — of all the kingdoms of the earth. You made the heavens and the earth. Listen closely, LORD, and hear; open your eyes, LORD, and see. Hear the words that Sennacherib has sent to mock the living God. LORD, it is true that the kings of Assyria have devastated the nations and their lands. They have thrown their gods into the fire, for they were not gods but made by human hands — wood and stone. So they have destroyed them. Now, LORD our God, please save us from his power so that all the kingdoms of the earth may know that you, LORD, are God — you alone."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Hezekiah is what Daniel's four-part prayer looks like under acute pressure. The Assyrian war machine is camped outside the walls of Jerusalem and a threatening letter from Sennacherib has just been delivered. Hezekiah carries it up the temple steps and spreads it open in front of the LORD. The picture is unforgettable. The king does not summarize the threat. He places the actual document on the floor of the sanctuary and lets the LORD read it for Himself. There is something to learn there about what we do with the letters life sends us.</p>
-            <p>The prayer that follows opens with three lines of pure praise (enthroned between the cherubim, you alone are God, you made the heavens and the earth), turns to two short imperatives that echo Daniel's <em>shema</em> and <em>hakshibah</em> ("listen closely, hear; open your eyes, see"), names the actual situation honestly ("the kings of Assyria have devastated the nations"), and closes with a request whose motive is God-ward ("so that all the kingdoms of the earth may know that you, LORD, are God"). Praise, request, and thanksgiving are all in the prayer; the confession is implicit in the helpless hands.</p>
-            <p>The wider gallery the question asks about reads like a syllabus. <a class="vlink" href="https://www.bible.com/bible/1713/EZR.10.1" target="_blank">Ezra 10:1</a> shows public, weeping intercession that draws an entire community into confession. <a class="vlink" href="https://www.bible.com/bible/1713/2KI.13.4" target="_blank">2 Kings 13:4</a> shows that even a half-hearted king can find a hearing if he turns his face the right direction. <a class="vlink" href="https://www.bible.com/bible/1713/HAB.3.1" target="_blank">Habakkuk 3:1</a> turns a prophet's complaint into a worship song with stringed instruments. A complaint becomes a hymn when it remembers who it is talking to. <a class="vlink" href="https://www.bible.com/bible/1713/JER.32.16-25" target="_blank">Jeremiah 32:16-25</a> shows a prophet praying after he has already obeyed (he has bought a field in a city about to fall) and asking the LORD to make sense of an obedience that did not yet have a payoff. <a class="vlink" href="https://www.bible.com/bible/1713/1KI.8.22-54" target="_blank">1 Kings 8:22-54</a> is Solomon's dedication of the temple, the longest sustained prayer in the Old Testament outside the Psalms; he prays with hands spread toward heaven and asks the LORD to forgive every kind of failure his people will yet bring through that door. Each of these has a different rhythm. None of them is doing anything other than pouring out a heart in front of the inclined Ear.</p>
-          </div>
+<!-- BSB_BLOCK: 1 John 5:14 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:17dc1d08fc9914f6334c4cecdabb05a322e1d95c7688ab90484f730eb160652a | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">1 John 5:14</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1JN.5.14" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">And this is the confidence that we have before Him: If we ask anything according to His will, He hears us.</div>
+<div class="verse-commentary">
+          <p>Monday called this verse the partner that carries the weight, and the week proved it. The clause about His will is not fine print that lets God out of the promise. It is what makes the promise safe. A Father who shipped whatever we ordered, exactly as we ordered it, would be a vending machine with no mind and no mercy. Instead He answers the request underneath the request. Elijah asked for death and needed bread, so bread came. He braced for fire and needed quiet, so the whisper came. Hannah asked for a son and received peace first, then Samuel in his own season. Not one of those prayers bounced off the ceiling. Every one was heard exactly as John promises, by a will that could see the whole story. The peace travels first. The yes follows in its own time.</p>
         </div>
       </div>
 
-      <!-- Question 3 -->
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">3</span>
-          <div class="dq-question">What is the role of fasting alongside prayer?</div>
-        </div>
+      <div class="section-heading">Daniel Borrowed His Words Too</div>
+      <p>Set the week's pray-ers side by side and an unfair gap seems to open. Daniel prays sixteen fluent verses with a scroll across his knees. Hannah cannot get a sound out. Elijah manages one exhausted sentence under a shrub. Paul flatly admits that we do not know how we ought to pray. It would be easy to conclude that prayer is a skill, and that the fluent hold an advantage over the rest of us.</p>
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Nehemiah 1:4-11</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/NEH.1.4-11" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"When I heard these words, I sat down and wept. I mourned for a number of days, fasting and praying before the God of the heavens. I said, LORD, the God of the heavens, the great and awe-inspiring God who keeps his gracious covenant with those who love him and keep his commands, let your eyes be open and your ears be attentive to hear your servant's prayer that I now pray to you day and night for your servants, the Israelites. I confess the sins we have committed against you. Both I and my father's family have sinned. We have acted corruptly toward you and have not kept the commands, statutes, and ordinances you gave your servant Moses. Please remember what you commanded your servant Moses: If you are unfaithful, I will scatter you among the peoples. But if you return to me and carefully observe my commands, even though your exiles were banished to the farthest horizon, I will gather them from there and bring them to the place where I chose to have my name dwell. They are your servants and your people. You redeemed them by your great power and strong hand. Please, Lord, let your ear be attentive to the prayer of your servant and to that of your servants who delight to revere your name. Give your servant success today, and grant him compassion in the presence of this man. At the time, I was the king's cupbearer."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Nehemiah's prayer is the cleanest biblical example of fasting paired with intercession. The first verse of the paragraph names what the body did before the words came. He sat down. He wept. He mourned for a number of days. He fasted. Only then did he pray. The fast did not earn the answer; it cleared the room of every other appetite while the prayer was being offered. Fasting in the Bible is not a hunger strike held against God. It is the body saying to the soul, "this matters more than dinner."</p>
-            <p>The Bible holds fasting and prayer together but never makes one mechanically dependent on the other. Daniel fasted before his prayer in <a class="vlink" href="https://www.bible.com/bible/1713/DAN.9.3" target="_blank">Daniel 9:3</a>, the church at Antioch fasted before sending out Paul and Barnabas in <a class="vlink" href="https://www.bible.com/bible/1713/ACT.13.2-3" target="_blank">Acts 13:2-3</a>, Esther fasted three days before going in to the king (<a class="vlink" href="https://www.bible.com/bible/1713/EST.4.16" target="_blank">Esther 4:16</a>), and Jesus fasted forty days at the start of His ministry. None of those fasts is a mood. Each one has a specific situation in front of it. Fasting is what the body does when an issue is heavy enough that the normal rhythms (lunch, supper, the next snack) get re-tuned to match the weight of the prayer.</p>
-            <p>Two cautions sit on either side of the practice. Jesus warned in <a class="vlink" href="https://www.bible.com/bible/1713/MAT.6.16-18" target="_blank">Matthew 6:16-18</a> against the public, performance fast, the same way He warned against the public, performance prayer in the same chapter we read on Tuesday. Isaiah, in <a class="vlink" href="https://www.bible.com/bible/1713/ISA.58.6-7" target="_blank">Isaiah 58:6-7</a>, said the fast God chooses is the one that loosens the chains of injustice and shares bread with the hungry, not the one that just leaves the believer light-headed. A fast that ignores the neighbor is not the fast Nehemiah was practicing. The role of fasting alongside prayer is to align the body with the heart's most urgent ask, on a private timetable, in a way that frees both us and the people around us. Practical guidance for moderns: pick a meal, not a month. Drink water. Tell no one. Use the time you would have spent eating to actually pray. Repeat as the situation requires. Stop when the situation has been answered or when the body needs to rest. There is nothing magic about the hunger; the magic is in the focused attention the hunger purchases.</p>
-          </div>
+<!-- BSB_BLOCK: Romans 8:26-27 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:fcb4cd073f35cb0866341492790ceb6eb9350e61ba84edd3e33e8af8c6736406 | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Romans 8:26-27</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.8.26-27" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-      </div>
-
-      <!-- Question 4 -->
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">4</span>
-          <div class="dq-question">Is there anything new you would like to change or implement in your prayer life as a result of what we have walked through this week? And if you have already named the change in your head, what specifically is keeping you from making it (this morning, before the week ends, before another excuse arrives)?</div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Jonah 4:2-3</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/JON.4.2-3" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"He prayed to the LORD: Please, LORD, isn't this what I said while I was still in my own country? That's why I fled toward Tarshish in the first place. I knew that you are a gracious and compassionate God, slow to anger, abounding in faithful love, and one who relents from sending disaster. And now, LORD, please take my life from me, for it is better for me to die than to live."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Question 4 wants you to name a change. Jonah is here to tell you that the Bible records the unfinished prayers of half-converted people too, and that the LORD answers them anyway. Jonah's prayer is full of theological accuracy ("gracious and compassionate, slow to anger, abounding in faithful love") aimed in exactly the wrong direction. He is angry that God showed mercy to Nineveh. He is so angry that he wishes the whole story had ended at the harbor in Joppa. He has the doctrine right and the heart wrong, and the Bible records every line of it because honest is the only kind of prayer that ever leads to a real change.</p>
-            <p>The chapter that follows is the LORD patiently teaching him with a plant, a worm, and a question. The change Jonah needed in his prayer life was not a different vocabulary; it was a softer heart toward people he had quietly written off. Notice what it did not require. It did not require Jonah to clean himself up before he prayed. It did not require him to feel different first. It required him to bring the actual contents of his chest to the LORD and let the LORD work on them out loud.</p>
-            <p>That is the doorway into the change Question 4 is asking you to make. Whatever you have already named in your head (a regular time, a posture, a journal, a fast, a longer prayer, a shorter prayer, the silence Hannah modeled, the schedule Daniel kept, the closet Jesus described, the four-part shape Daniel prayed, the family meeting James prescribed, the listening <a class="vlink" href="https://www.bible.com/bible/1713/ROM.8" target="_blank">Romans 8</a> promised), write it down today. Tell one person. Begin tomorrow morning. The Father has been listening to less convincing prayers than the one you are about to pray, and He has answered every one of them. The reason most prayer-life changes stall is not insufficient theology. It is the gap between the chair you are sitting in and the chair you want to be sitting in tomorrow at six. Walk across it today.</p>
-          </div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 26">26</sup>In the same way, the Spirit helps us in our weakness. For we do not know how we ought to pray, but the Spirit Himself intercedes for us with groans too deep for words. <sup class="verse-number" aria-label="Verse 27">27</sup>And He who searches our hearts knows the mind of the Spirit, because the Spirit intercedes for the saints according to the will of God.</div>
+<div class="verse-commentary">
+          <p>Wednesday closes the gap from one side. Daniel's fluency was not raw talent. He prayed with Jeremiah's scroll open on his lap, and his sixteen verses came out soaked in a lifetime of Scripture. The Bible put the words in his mouth. Thursday closes the gap from the other side, with the picture of two people hauling one load while the Spirit grips the end we cannot lift. When a situation is too tangled for sentences, He prays it for us in groans no alphabet can spell, and the Father recognizes His voice every time. So the week's most eloquent prayer was borrowed, and its most broken prayers were carried. Nobody in this classroom prayed unassisted.</p>
+          <p>That is the week's final clarification, and the kindest. The school of prayer never had an entrance exam. Its faculty included a prophet who wanted to die, a woman the priest wrote off as drunk, twelve lifelong pray-ers who still asked to be taught, an old man reading someone else's book, and a slave in a rented Roman house hearing about groans deeper than language. What qualified every one of them was the pouring, not the polish. Bring sixteen verses or bring none. The same Ear is inclined either way, the Son is already interceding at the right hand, and the Spirit stands ready to finish whatever we cannot. The week ends where it began. Trust first. Then pour.</p>
         </div>
       </div>
 
@@ -884,8 +872,8 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Verb Travels Light</div>
       <p>Three convictions ran underneath every day this week, and they will travel into Sabbath afternoon and Monday morning whether or not we name them out loud. The first is that thinking and talking of Jesus more than self brings His presence near. Sunday's broom tree turned into a "soft whisper" the moment Elijah stopped rehearsing his own résumé and let the Father ask him a different question. Tuesday's "Our Father in heaven" is the address that moves the camera off ourselves. The week's most reliable diagnostic is the ratio of pronouns. Count "I" and "me" in your last week of prayers; count "You" and "Your name" and "Your kingdom." The first ratio is the one that produces fatigue. The second is the one that produces nearness.</p>
-      <p>The second conviction is that helpless dependence on God beats taking counsel with our own doubts. We tend to do the math on a fear before we bring it to Him. We rehearse the worst-case in our heads, layer in the possible second-worst, and when we finally pray, we pray a thinned-out version of an already-shrunken concern. Hannah did not edit the request before she carried it to the doorpost. Hezekiah did not summarize the Assyrian letter; he laid it out flat. Daniel did not soften Jeremiah's seventy-year math; he prayed straight into the deadline. The Bible's method, over and over, is to bring the situation in its actual size to a Father whose knowledge is infinite, who sees everything in creation, and who has been ready to attend to the cry since long before we worked up the courage to say it out loud.</p>
-      <p>The third conviction is that praise and thanksgiving lift the soul more than any other lever in the Christian life. Worship is not the activity we do once we have already arrived at peace; worship is the road that takes us there. The Psalter is fifty percent lament, but the laments end in praise so often it is almost a structural rule. Daniel opened with praise on Wednesday. Hezekiah opened with praise yesterday. The slave in <a class="vlink" href="https://www.bible.com/bible/1713/ROM.8" target="_blank">Romans 8</a> was given the right to call God "Abba, Father" for the express purpose of joining a family that has been singing since before the foundation of the world. Praise is what the saints do because they cannot help it, and what the rest of us are still learning because the lever is stiffer than it should be.</p>
+      <p>The second conviction is that helpless dependence on God beats taking counsel with our own doubts. We tend to do the math on a fear before we bring it to Him. We rehearse the worst-case in our heads, layer in the possible second-worst, and when we finally pray, we pray a thinned-out version of an already-shrunken concern. Hannah did not edit the request before she carried it to the doorpost. Daniel did not soften Jeremiah's seventy-year math; he prayed straight into the deadline. The Bible's method, over and over, is to bring the situation in its actual size to a Father whose knowledge is infinite, who sees everything in creation, and who has been ready to attend to the cry since long before we worked up the courage to say it out loud.</p>
+      <p>The third conviction is that praise and thanksgiving lift the soul more than any other lever in the Christian life. Worship is not the activity we do once we have already arrived at peace; worship is the road that takes us there. The Psalter is fifty percent lament, but the laments end in praise so often it is almost a structural rule. Daniel opened with praise on Wednesday. The slave in <a class="vlink" href="https://www.bible.com/bible/3034/ROM.8" target="_blank" rel="noopener">Romans 8</a> was given the right to call God "Abba, Father" for the express purpose of joining a family that has been singing since before the foundation of the world. Praise is what the saints do because they cannot help it, and what the rest of us are still learning because the lever is stiffer than it should be.</p>
       <p>So the verb travels light. <em>Shaphak</em> does not need a quiet cabin, the right music, or a one-hour block before it can be used. It needs an honest moment, a shut door (literal or interior), and a Father whose ear is already inclined. Hannah used it standing up. Elijah used it on his back. The disciples used it sitting on the grass. Daniel used it on his knees. The Roman slave used it in groans that had no letters. The same verb fits every one of those rooms, because the inclined Ear has never once been the bottleneck. The bottleneck is always our willingness to start.</p>
     </div>
 
@@ -896,7 +884,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">Christ at the Center of the Week</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Trace the Son's footprint through the week. He is the Father's name made hearable in Sabbath's "Trust in Him at all times," because the trust we are asked to place was first made trustworthy at the cross. He is the Angel who fed Elijah under the broom tree and the same Person, in another garden, sweat falling from Him like drops of blood, accepting the cup His servant could not carry. He is the high priest of <a class="vlink" href="https://www.bible.com/bible/1713/HEB.5" target="_blank">Hebrews 5</a> who offered "prayers and petitions with loud cries and tears" the way Hannah offered hers at Shiloh, and was heard "because of his reverent submission." He is the Teacher who, in Tuesday's nine plain lines, handed creatures the family word He had been using since before time, and who, in His own death and resurrection, made the address "Our Father" actually true. He is the answer to Daniel's three-fold cry on Wednesday. <em>Shema</em>, hear: He is the Word who has the Father's ear. <em>Salah</em>, forgive: He is the lamb whose blood does what the priests' bulls and goats only pictured. <em>Hakshibah va'aseh</em>, listen and act: He is the One the Father raised from the dead so that every promise could be filled in His name. He is the Intercessor at the right hand of the Majesty on high, where (<a class="vlink" href="https://www.bible.com/bible/1713/HEB.7.25" target="_blank">Hebrews 7:25</a>) He always lives to pray for us, and He is the Source of the Spirit who prays inside us in groans no human dictionary can spell. The week's five rooms have one Person standing in all five. Practical prayer means praying inside the conversation Christ is already having for us, and inviting the Spirit to finish what we cannot.</p>
+      <p>Trace the Son's footprint through the week. He is the Father's name made hearable in Sabbath's "Trust in Him at all times," because the trust we are asked to place was first made trustworthy at the cross. He is the Angel who fed Elijah under the broom tree and the same Person, in another garden, sweat falling from Him like drops of blood, accepting the cup His servant could not carry. He is the high priest of <a class="vlink" href="https://www.bible.com/bible/3034/HEB.5" target="_blank" rel="noopener">Hebrews 5</a> who offered "prayers and petitions with loud cries and tears" the way Hannah offered hers at Shiloh, and was heard "because of his reverent submission." He is the Teacher who, in Tuesday's nine plain lines, handed creatures the family word He had been using since before time, and who, in His own death and resurrection, made the address "Our Father" actually true. He is the answer to Daniel's three-fold cry on Wednesday. <em>Shema</em>, hear: He is the Word who has the Father's ear. <em>Salah</em>, forgive: He is the lamb whose blood does what the priests' bulls and goats only pictured. <em>Hakshibah va'aseh</em>, listen and act: He is the One the Father raised from the dead so that every promise could be filled in His name. He is the Intercessor at the right hand of the Majesty on high, where (<a class="vlink" href="https://www.bible.com/bible/3034/HEB.7.25" target="_blank" rel="noopener">Hebrews 7:25</a>) He always lives to pray for us, and He is the Source of the Spirit who prays inside us in groans no human dictionary can spell. The week's five rooms have one Person standing in all five. Practical prayer means praying inside the conversation Christ is already having for us, and inviting the Spirit to finish what we cannot.</p>
     </div>
 
     <!-- 6. WEEKEND PRACTICE -->
@@ -907,7 +895,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="action-box">
-        Take the small piece of paper you tucked into your Bible on Sabbath, the one with your honest "pour-out version" sentence on it. Add four lines underneath it before sundown Friday. Line one, praise: name one specific attribute of the Father that this week brought into focus. Line two, confession: one specific thing this week surfaced that you have not yet named to Him out loud. Line three, request: one specific person, situation, or prayer of your own that you are placing on the floor of the temple the way Hezekiah laid out the letter. Line four, thanksgiving: one specific mercy you have been taking for granted. Pray the four lines slowly Sabbath morning before you do anything else. Then read them again Sunday before you begin the next week. The five rooms of this week are the architecture; your four lines are the floor plan.
+        Take the small piece of paper you tucked into your Bible on Sabbath, the one with your honest "pour-out version" sentence on it. Add four lines underneath it before sundown Friday. Line one, praise: name one specific attribute of the Father that this week brought into focus. Line two, confession: one specific thing this week surfaced that you have not yet named to Him out loud. Line three, request: one specific person, situation, or prayer of your own that you are placing honestly before the Father. Line four, thanksgiving: one specific mercy you have been taking for granted. Pray the four lines slowly Sabbath morning before you do anything else. Then read them again Sunday before you begin the next week. The five rooms of this week are the architecture; your four lines are the floor plan.
       </div>
     </div>
 
@@ -918,27 +906,47 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">Closing Prayer for the Week</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Father, thank You for the week. Thank You for the verb You handed us on Sabbath morning and for the five rooms You let us listen in on. Thank You for sending angels with bread to prophets at the end of their strength, for hearing barren women whose lips were moving with no sound, for teaching twelve fishermen the address of Your house, for receiving an old man's confession in Babylon, and for putting Your Spirit inside us so the prayer never stops, even when our words do. Forgive us for the prayers we have edited before they reached You and the prayers we have not even tried to start. Teach us to pour out, the way David did between palaces, the way Hannah did at the doorpost, the way Daniel did with Jeremiah's scroll on his lap. Bend our wills toward Yours so that what we ask and what You will to give us slowly say the same word. Make us sing on the way out of Zion's ruins, and not only at its restoration. Lift our eyes to the Son who lives forever to pray for us, and fill our chests with the Spirit who knows the language we have not yet found. We pour out our hearts before You once more, because You are our refuge, today and every day. In Jesus' name, Amen.</p>
+      <p>Father, thank You for the week. Thank You for the verb You handed us on Sabbath morning and for the five rooms You let us listen in on. Thank You for sending angels with bread to prophets at the end of their strength, for hearing barren women whose lips were moving with no sound, for teaching twelve fishermen the address of Your house, for receiving an old man's confession in Babylon, and for putting Your Spirit inside us so the prayer never stops, even when our words do. Forgive us for the prayers we have edited before they reached You and the prayers we have not even tried to start. Teach us to pour out, the way David did between palaces, the way Hannah did at the doorpost, the way Daniel did with Jeremiah's scroll on his lap. Bend our wills toward Yours so that what we ask and what You will to give us slowly say the same word. Make us sing while the answer is still forming, and not only after it arrives. Lift our eyes to the Son who lives forever to pray for us, and fill our chests with the Spirit who knows the language we have not yet found. We pour out our hearts before You once more, because You are our refuge, today and every day. In Jesus' name, Amen.</p>
     </div>
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/PSA.62.8" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Psalm+62:8&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -967,8 +975,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -977,18 +987,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -996,6 +1010,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -1015,6 +1030,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

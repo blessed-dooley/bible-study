@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -513,49 +532,6 @@ if ('serviceWorker' in navigator) {
     opacity: 0.7;
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -576,6 +552,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -594,8 +612,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -755,7 +778,7 @@ if ('serviceWorker' in navigator) {
       <p>Even the religious world was split. One faction of Jewish leaders, the Sadducees, flatly denied any resurrection at all. Into that settled gloom the early Christians said something that sounded almost rude in its hope: death is not a wall but a door, the body is not a cage to escape but a good thing God intends to raise, and the future is not a faded basement but a restored world where God Himself moves in among His people and wipes the tears off their faces with His own hand. They did not whisper it. They carved a different word on their graves, and this week is built out of the texts that gave them the nerve to do it.</p>
     </div>
 
-    <!-- 4. THIS WEEK'S MEMORY TEXT (dual translation, NKJV + CSB) -->
+    
     <div class="section">
       <div class="section-label">
         <span class="section-emoji">📖</span>
@@ -763,20 +786,19 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
+<!-- BSB_BLOCK: 1 John 3:2 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:32a42aa79b36269c0917bb65240bcdf207832fa80e37cca9620189b7e3520e5f | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 John 3:2</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1JN.3.2" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1JN.3.2" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Beloved, now we are children of God; and it has not yet been revealed what we shall be, but we know that when He is revealed, we shall be like Him, for we shall see Him as He is."</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"Dear friends, we are God's children now, and what we will be has not yet been revealed. We know that when he appears, we will be like him because we will see him as he is."</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">Beloved, we are now children of God, and what we will be has not yet been revealed. We know that when Christ appears, we will be like Him, for we will see Him as He is.</div>
+<div class="verse-commentary">
           <p>John holds two things in one breath, and the whole week lives in the gap between them. First, settled fact: we are God's children right now. Not pending, not probationary, already adopted. Then an honest blank: what we will become has not yet been shown. The word translated "revealed" is the Greek <em>phaneroo</em>, to bring out into the open what has been hidden, like a photograph developing in a dark room. The image is real and already taken; we just cannot see it yet. And John tells us what will finally develop it. We will be like Him, and the reason given is almost startling in its simplicity: because we will see Him as He is. Not because we tried harder. Seeing the real Jesus, face to face, finishes the work in us that a lifetime of effort only started.</p>
-          <p>The rest of the week's reading fills in that hope from every direction. There is the old prayer for God to turn toward us and let His face shine so we can be saved (<a class="vlink" href="https://www.bible.com/bible/1713/PSA.80" target="_blank">Psalm 80</a>), Paul's promise that the living and the raised will be caught up together to meet the Lord and be with Him forever (<a class="vlink" href="https://www.bible.com/bible/1713/1TH.4.17" target="_blank">1 Thessalonians 4:17</a>), and the city coming down out of heaven dressed like a bride for her husband (<a class="vlink" href="https://www.bible.com/bible/1713/REV.21.9-27" target="_blank">Revelation 21:9-27</a>). There is the announcement that God will swallow up death forever (<a class="vlink" href="https://www.bible.com/bible/1713/ISA.25.8" target="_blank">Isaiah 25:8</a>), the Lamb who becomes the Shepherd and leads us to springs of living water (<a class="vlink" href="https://www.bible.com/bible/1713/REV.7.17" target="_blank">Revelation 7:17</a>), the world with no more death or grief or crying or pain (<a class="vlink" href="https://www.bible.com/bible/1713/REV.21.4" target="_blank">Revelation 21:4</a>), and Jesus' own pledge to raise up at the last day everyone the Father gives Him (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.6.44" target="_blank">John 6:44</a>). One photograph, developing. We will see Him.</p>
+          <p>The rest of the week's reading fills in that hope from every direction. There is the old prayer for God to turn toward us and let His face shine so we can be saved (<a class="vlink" href="https://www.bible.com/bible/3034/PSA.80" target="_blank" rel="noopener">Psalm 80</a>), Paul's promise that the living and the raised will be caught up together to meet the Lord and be with Him forever (<a class="vlink" href="https://www.bible.com/bible/3034/1TH.4.17" target="_blank" rel="noopener">1 Thessalonians 4:17</a>), and the city coming down out of heaven dressed like a bride for her husband (<a class="vlink" href="https://www.bible.com/bible/3034/REV.21.9-27" target="_blank" rel="noopener">Revelation 21:9-27</a>). There is the announcement that God will swallow up death forever (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.25.8" target="_blank" rel="noopener">Isaiah 25:8</a>), the Lamb who becomes the Shepherd and leads us to springs of living water (<a class="vlink" href="https://www.bible.com/bible/3034/REV.7.17" target="_blank" rel="noopener">Revelation 7:17</a>), the world with no more death or grief or crying or pain (<a class="vlink" href="https://www.bible.com/bible/3034/REV.21.4" target="_blank" rel="noopener">Revelation 21:4</a>), and Jesus' own pledge to raise up at the last day everyone the Father gives Him (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.6.44" target="_blank" rel="noopener">John 6:44</a>). One photograph, developing. We will see Him.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 John 3:2 | 3:2 Literally when He appears or when it appears -->
     </div>
 
     <!-- 5. THIS WEEK'S ROAD MAP -->
@@ -814,7 +836,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="action-box action-box-sabbath">
-        Before Sunday, name one fear or grief you have quietly filed under "this is just how it ends." A diagnosis, a graveside, a relationship that death seems to have closed for good. Write it on a slip of paper, then write across it the four words from this week's memory text: "we shall see Him." Keep the slip somewhere you will find it midweek, and let these next seven days hold that fear up against the promise instead of against the tombstone.
+        Before Sunday, name one fear or grief you have quietly filed under "this is just how it ends." A diagnosis, a graveside, a relationship that death seems to have closed for good. Write it on a slip of paper, then write across it the four words from this week's memory text: "we will see Him." Keep the slip somewhere you will find it midweek, and let these next seven days hold that fear up against the promise instead of against the tombstone.
       </div>
     </div>
 
@@ -840,22 +862,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1JN.3.2" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+John+3:2&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

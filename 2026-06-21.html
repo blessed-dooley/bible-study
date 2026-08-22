@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -735,39 +758,39 @@ if ('serviceWorker' in navigator) {
 
       <p>Look honestly at the times and you can feel two pressures at once. There is the big, global kind of dread that Jesus named in advance, and the small, personal kind that James names so bluntly it stings. Today's reading sets those two right next to a 3,000-year-old prayer, because the people who handle a serious age best are not the ones who pretend it is not serious. They are the ones who let the seriousness drive them straight to God's face.</p>
 
+<!-- BSB_BLOCK: 1 Peter 4:7 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:778ed6c2ff1fc6bece170a74051a25a45c55ec720a5ef0075887d86b12c165dd | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Peter 4:7</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1PE.4.7" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1PE.4.7" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"The end of all things is near; therefore, be alert and sober-minded for prayer."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Notice what Peter does not say. He does not tell a pressured church to stockpile, to flee to the hills, or to spend its energy decoding the headlines (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.24.6-11" target="_blank">Matthew 24:6-11</a> lists the wars, famines, and shakings, and even there Jesus' main instruction is "do not be alarmed"). Peter's response to the end being near is startlingly calm and practical: be clear-headed, and pray. The phrase "sober-minded" pictures a person who has not been knocked drunk by fear or by distraction, someone whose head is still on straight when everyone around them is reeling. The nearness of the end is not an excuse to lose our composure. It is the reason to keep it. A serious age does not call first for bigger reactions; it calls for clearer prayer.</p>
+        <div class="verse-text">The end of all things is near. Therefore be clear-minded and sober, so that you can pray.</div>
+<div class="verse-commentary">
+          <p>Notice what Peter does not say. He does not tell a pressured church to stockpile, to flee to the hills, or to spend its energy decoding the headlines (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.24.6-11" target="_blank" rel="noopener">Matthew 24:6-11</a> lists the wars, famines, and shakings, and even there Jesus' main instruction is "do not be alarmed"). Peter's response to the end being near is startlingly calm and practical: be clear-headed, and pray. The phrase "sober-minded" pictures a person who has not been knocked drunk by fear or by distraction, someone whose head is still on straight when everyone around them is reeling. The nearness of the end is not an excuse to lose our composure. It is the reason to keep it. A serious age does not call first for bigger reactions; it calls for clearer prayer.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: James 4:13-14 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:91b26dd844c306b43212a00610e573721c6a66f8231160587104ee5be00b4d17 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">James 4:13-14</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JAS.4.13-14" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JAS.4.13-14" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Come now, you who say, 'Today or tomorrow we will travel to such and such a city and spend a year there and do business and make a profit.' Yet you do not know what tomorrow will bring—what your life will be! For you are like vapor that appears for a little while and then vanishes."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 13">13</sup>Come now, you who say, “Today or tomorrow we will go to this or that city, spend a year there, carry on business, and make a profit.” <sup class="verse-number" aria-label="Verse 14">14</sup>You do not even know what will happen tomorrow! What is your life? You are a mist that appears for a little while and then vanishes.</div>
+<div class="verse-commentary">
           <p>James is not scolding people for planning. He is exposing the quiet arrogance under our calendars, the assumption that tomorrow is something we own. The word he picks for our life is the Greek <em>atmis</em>, the little puff of steam that rises off a kettle or off the ground on a cool morning and is gone before you can point at it. That is the honest measurement of a human life against eternity, no matter whether it lasts nineteen years or ninety. This is not a morbid thought meant to depress us; it is a clarifying one meant to wake us. If life really is that brief and that uncertain, then putting off the most important relationship we will ever have, the one with God, until some more convenient season is the single worst bet a person can make. The vapor does not get a rain check.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Psalms 80:18-19 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:1074c7b925ad2d997c076abd8fddfd236378f78adf3d76f852714a57cd412431 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
-          <div class="verse-ref">Psalm 80:18-19</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/PSA.80.18-19" target="_blank">☩ Open in Bible App</a>
+          <div class="verse-ref">Psalms 80:18-19</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.80.18-19" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Then we will not turn away from you; revive us, and we will call on your name. Restore us, LORD, God of Armies; make your face shine on us, so that we may be saved."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Here is how a believer lives a vapor-short life in a heaving world. Not by white-knuckling, but by praying the oldest revival prayer in the book. The singer has laid out the disaster (<a class="vlink" href="https://www.bible.com/bible/1713/PSA.80.1-3" target="_blank">Psalm 80:1-3</a> begs the Shepherd of Israel to wake up and shine, and <a class="vlink" href="https://www.bible.com/bible/1713/PSA.80.14-17" target="_blank">Psalm 80:14-17</a> points to the burned vine and asks God to tend it again), then lands on the only thing that can fix it. "Make Your face shine on us." A shining face means favor, a smile turned toward you, not away. Catch the last clause: so that we may be saved. We do not restore ourselves. We ask Him to turn toward us, and the turning is the rescue. When you trust what Jesus has done, His flawless life is credited to you, and God's face is permanently turned your way. The prayer the songwriter wept is the reality the cross secured.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 18">18</sup>Then we will not turn away from You; revive us, and we will call on Your name. <sup class="verse-number" aria-label="Verse 19">19</sup>Restore us, O LORD God of Hosts; cause Your face to shine upon us, that we may be saved.</div>
+<div class="verse-commentary">
+          <p>Here is how a believer lives a vapor-short life in a heaving world. Not by white-knuckling, but by praying the oldest revival prayer in the book. The singer has laid out the disaster (<a class="vlink" href="https://www.bible.com/bible/3034/PSA.80.1-3" target="_blank" rel="noopener">Psalm 80:1-3</a> begs the Shepherd of Israel to wake up and shine, and <a class="vlink" href="https://www.bible.com/bible/3034/PSA.80.14-17" target="_blank" rel="noopener">Psalm 80:14-17</a> points to the burned vine and asks God to tend it again), then lands on the only thing that can fix it. "cause Your face to shine upon us." A shining face means favor, a smile turned toward you, not away. Catch the last clause: so that we may be saved. We do not restore ourselves. We ask Him to turn toward us, and the turning is the rescue. When you trust what Jesus has done, His flawless life is credited to you, and God's face is permanently turned your way. The prayer the songwriter wept is the reality the cross secured.</p>
         </div>
       </div>
     </div>
@@ -803,7 +826,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>The songwriter prayed "make Your face shine on us" without knowing how God would finally answer it. The answer has a name. In Jesus, the face of God turned toward us in person, and not from a safe distance. He walked into the heaving, groaning, dying world James was describing and lived a real, vapor-short human life inside it, thirty-three years that ended on a Friday afternoon. He did it so His unbroken record could be credited to us, so that the favor the songwriter begged for would no longer depend on our performance. On the cross the face of God did the opposite of shine; it was turned away from Him, so that it could be turned permanently toward us. That is why a believer can read the worst headlines and the shortest obituary and still be steady. The face is already shining. It was secured at Golgotha and it is never turning away again.</p>
+      <p>The songwriter prayed "cause Your face to shine upon us" without knowing how God would finally answer it. The answer has a name. In Jesus, the face of God turned toward us in person, and not from a safe distance. He walked into the heaving, groaning, dying world James was describing and lived a real, vapor-short human life inside it, thirty-three years that ended on a Friday afternoon. He did it so His unbroken record could be credited to us, so that the favor the songwriter begged for would no longer depend on our performance. On the cross the face of God did the opposite of shine; it was turned away from Him, so that it could be turned permanently toward us. That is why a believer can read the worst headlines and the shortest obituary and still be steady. The face is already shining. It was secured at Golgotha and it is never turning away again.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -814,7 +837,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="action-box">
-        Pray <a class="vlink" href="https://www.bible.com/bible/1713/PSA.80.18-19" target="_blank">Psalm 80:18-19</a> in the first person today. Take the refrain, "Restore me, make Your face shine on me, so that I may be saved," and pray it slowly three times: once over the state of the world, once over someone you love who is far from God, and once over your own drifting places. Then leave the panic where you found it and go live the rest of the day as someone whose God has already turned toward them.
+        Pray <a class="vlink" href="https://www.bible.com/bible/3034/PSA.80.18-19" target="_blank" rel="noopener">Psalm 80:18-19</a> in the first person today. Take the refrain, "Restore me, make Your face shine on me, so that I may be saved," and pray it slowly three times: once over the state of the world, once over someone you love who is far from God, and once over your own drifting places. Then leave the panic where you found it and go live the rest of the day as someone whose God has already turned toward them.
       </div>
     </div>
 
@@ -840,22 +863,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/PSA.80.18-19" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Psalm+80:18-19&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

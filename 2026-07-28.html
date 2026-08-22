@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -710,7 +733,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">Connection to Yesterday</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Yesterday closed in the leather shop, with Paul absorbing costs so the gospel would look as free as it is. But his self-denial ran deeper than money. A few lines later he compares himself to an athlete in training, disciplining his body so that after preaching to others he himself will not be disqualified (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.9.27" target="_blank">1 Corinthians 9:27</a>). Follow my example, he will soon say, as I follow Christ's (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.11.1" target="_blank">1 Corinthians 11:1</a>). Which raises a sobering question. If the apostle with the strongest resume in the church refuses to coast, what happens to people who do? Today Paul answers with a story, and every grave in it belonged to somebody privileged.</p>
+      <p>Yesterday closed in the leather shop, with Paul absorbing costs so the gospel would look as free as it is. But his self-denial ran deeper than money. A few lines later he compares himself to an athlete in training, disciplining his body so that after preaching to others he himself will not be disqualified (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.27" target="_blank" rel="noopener">1 Corinthians 9:27</a>). Follow my example, he will soon say, as I follow Christ's (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.11.1" target="_blank" rel="noopener">1 Corinthians 11:1</a>). Which raises a sobering question. If the apostle with the strongest resume in the church refuses to coast, what happens to people who do? Today Paul answers with a story, and every grave in it belonged to somebody privileged.</p>
     </div>
 
     <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
@@ -733,42 +756,42 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Corinth thought of itself as a spiritually rich church, baptized, communing, fluent in knowledge. Paul answers by opening a photo album. Look, he says, at a generation more privileged than any of you. They walked beneath the visible presence of God. They crossed a sea on dry ground. They ate miracle bread and drank miracle water. And their bones are scattered across a desert. The warning he builds from their story (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.10.7-11" target="_blank">1 Corinthians 10:7-11</a>) is Scripture's sternest word against spiritual overconfidence, and Paul aims it straight at the confident, because the person most sure he is standing is the one not watching his feet.</p>
+      <p>Corinth thought of itself as a spiritually rich church, baptized, communing, fluent in knowledge. Paul answers by opening a photo album. Look, he says, at a generation more privileged than any of you. They walked beneath the visible presence of God. They crossed a sea on dry ground. They ate miracle bread and drank miracle water. And their bones are scattered across a desert. The warning he builds from their story (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.7-11" target="_blank" rel="noopener">1 Corinthians 10:7-11</a>) is Scripture's sternest word against spiritual overconfidence, and Paul aims it straight at the confident, because the person most sure he is standing is the one not watching his feet.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 10:1-5 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:dab079c6a8af257fa7fb73100b11991ac63aede9ffa43b110ef1aad94ec1b952 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 10:1-5</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.10.1-5" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.10.1-5" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Now I do not want you to be unaware, brothers and sisters, that our ancestors were all under the cloud, all passed through the sea, and all were baptized into Moses in the cloud and in the sea. They all ate the same spiritual food, and all drank the same spiritual drink. For they drank from the spiritual rock that followed them, and that rock was Christ. Nevertheless God was not pleased with most of them, since they were struck down in the wilderness."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Count the alls. All under the cloud, all through the sea, all baptized, all fed, all given drink. Paul deliberately describes the Exodus in church language, a baptism in the sea, food and drink at God's table, so Corinth cannot miss the parallel. Israel had the wilderness edition of everything Corinth was bragging about. Then comes the second nevertheless of the week (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.10.5" target="_blank">1 Corinthians 10:5</a>). Yesterday's nevertheless was grace declining a paycheck. This one is judgment declining to be impressed. Paul's word for what their story became is <em>typos</em>, Greek for the mark a blow leaves, a stamp, a mold, and these things took place as examples for us (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.10.6" target="_blank">1 Corinthians 10:6</a>). Their journey was pressed like a die, and the metal it stamps is ours. Privilege is not immunity. It is exposure.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>I do not want you to be unaware, brothers, that our forefathers were all under the cloud, and that they all passed through the sea. <sup class="verse-number" aria-label="Verse 2">2</sup>They were all baptized into Moses in the cloud and in the sea. <sup class="verse-number" aria-label="Verse 3">3</sup>They all ate the same spiritual food <sup class="verse-number" aria-label="Verse 4">4</sup>and drank the same spiritual drink; for they drank from the spiritual rock that accompanied them, and that rock was Christ. <sup class="verse-number" aria-label="Verse 5">5</sup>Nevertheless, God was not pleased with most of them, for they were struck down in the wilderness.</div>
+<div class="verse-commentary">
+          <p>Count the alls. All under the cloud, all through the sea, all baptized, all fed, all given drink. Paul deliberately describes the Exodus in church language, a baptism in the sea, food and drink at God's table, so Corinth cannot miss the parallel. Israel had the wilderness edition of everything Corinth was bragging about. Then comes the second nevertheless of the week (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.5" target="_blank" rel="noopener">1 Corinthians 10:5</a>). Yesterday's nevertheless was grace declining a paycheck. This one is judgment declining to be impressed. Paul's word for what their story became is <em>typos</em>, Greek for the mark a blow leaves, a stamp, a mold, and these things took place as examples for us (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.6" target="_blank" rel="noopener">1 Corinthians 10:6</a>). Their journey was pressed like a die, and the metal it stamps is ours. Privilege is not immunity. It is exposure.</p>
         </div>
       </div>
 
-      <p>What went wrong in the desert reads like a Corinthian checklist. Idolatry first, the people sitting down to eat and drink in front of a golden calf and getting up to party (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.10.7" target="_blank">1 Corinthians 10:7</a>), a festival meal in honor of a fake god, which is precisely the invitation sitting on half of Corinth's kitchen tables. Then sexual immorality tangled into pagan worship, and twenty-three thousand dead in a single day (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.10.8" target="_blank">1 Corinthians 10:8</a>). Grumbling. Testing God. The point of preserving the record was never morbid. These things happened to them as examples, written for our instruction, for the people on whom the ends of the ages have come. The wilderness is not a museum. It is a mirror, and Paul holds it up to every baptized, communing, confident believer in the room. Which was all of them. Which is us.</p>
+      <p>What went wrong in the desert reads like a Corinthian checklist. Idolatry first, the people sitting down to eat and drink in front of a golden calf and getting up to party (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.7" target="_blank" rel="noopener">1 Corinthians 10:7</a>), a festival meal in honor of a fake god, which is precisely the invitation sitting on half of Corinth's kitchen tables. Then sexual immorality tangled into pagan worship, and twenty-three thousand dead in a single day (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.8" target="_blank" rel="noopener">1 Corinthians 10:8</a>). Grumbling. Testing God. The point of preserving the record was never morbid. These things happened to them as examples, written for our instruction, for the people on whom the ends of the ages have come. The wilderness is not a museum. It is a mirror, and Paul holds it up to every baptized, communing, confident believer in the room. Which was all of them. Which is us.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 10:12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:51d5d65e625a61decc0f9188582375984b2f468f254abbe9f5b86cda578e0e4c | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 10:12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.10.12" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.10.12" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"So, whoever thinks he stands must be careful not to fall."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">So the one who thinks he is standing firm should be careful not to fall.</div>
+<div class="verse-commentary">
           <p>The dangerous word in this sentence is thinks. Paul is not warning people who feel shaky. Shaky people grip the railing. He is warning the ones who feel finished with the struggle, the veterans, the theologically fluent, the members who assume their baptism and their Bible knowledge have carried them past the reach of the old sins. Some in Corinth did not even realize they were in danger, which was exactly the danger. No collapse in Scripture ever announces itself in advance. The calf was built while Moses was still on the mountain receiving the law. Standing, it turns out, is not a location you reach. It is a posture you keep, and posture takes attention. Who among us has not learned that the hard way?</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 10:13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:6d380fa85abe8aeb35d96eb1b00ac651e406658eda79c4664ff17291eb68f779 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 10:13</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.10.13" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.10.13" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"No temptation has come upon you except what is common to humanity. But God is faithful; he will not allow you to be tempted beyond what you are able, but with the temptation he will also provide the way out so that you may be able to bear it."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">No temptation has seized you except what is common to man. And God is faithful; He will not let you be tempted beyond what you can bear. But when you are tempted, He will also provide an escape, so that you can stand up under it.</div>
+<div class="verse-commentary">
           <p>Notice where Paul parks this promise, directly after the graves and the warning, so that sober never curdles into hopeless. Three facts change the fight. First, your temptation is not special. Whatever whispers that your struggle is unique, and therefore excusable, is lying. It is common to humanity, which also means it is survivable, because others have walked out of it. Second, God is faithful, and He personally sets the load limit. Nothing reaches you that must break you. Third, He builds the way out into the temptation itself, the way an architect draws the fire exits before the building goes up. The door is designed in advance. Our part is not to be strong enough to stand in the flames. Our part is to take the exit while it is open. You are never in a room God did not build a door into.</p>
         </div>
       </div>
@@ -807,7 +830,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Paul drops the day's most staggering line almost in passing. They drank from the spiritual rock that followed them, and that rock was Christ. He does not say the rock reminds us of Christ. He says it was Christ, present in person a millennium and a half before Bethlehem, traveling with a complaining nation through a waterless land. When Israel was desperate at Rephidim, God told Moses to strike the rock, and water ran out for everyone (<a class="vlink" href="https://www.bible.com/bible/1713/EXO.17.6" target="_blank">Exodus 17:6</a>). Struck, so that others could drink. If that picture feels familiar, it should. At the cross the Rock was struck once for all, and what flowed out was living water for anyone who thirsts (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.7.37-38" target="_blank">John 7:37-38</a>). It also means the way out promised in today's last verse is not an abstraction. The God who builds exit doors into temptations put a Person in the doorway. Israel drank from Christ a thousand years before He had a human name. So do we, every time we come back thirsty.</p>
+      <p>Paul drops the day's most staggering line almost in passing. They drank from the spiritual rock that followed them, and that rock was Christ. He does not say the rock reminds us of Christ. He says it was Christ, present in person a millennium and a half before Bethlehem, traveling with a complaining nation through a waterless land. When Israel was desperate at Rephidim, God told Moses to strike the rock, and water ran out for everyone (<a class="vlink" href="https://www.bible.com/bible/3034/EXO.17.6" target="_blank" rel="noopener">Exodus 17:6</a>). Struck, so that others could drink. If that picture feels familiar, it should. At the cross the Rock was struck once for all, and what flowed out was living water for anyone who thirsts (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.7.37-38" target="_blank" rel="noopener">John 7:37-38</a>). It also means the way out promised in today's last verse is not an abstraction. The God who builds exit doors into temptations put a Person in the doorway. Israel drank from Christ a thousand years before He had a human name. So do we, every time we come back thirsty.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -844,22 +867,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.10.7-11" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+10:7-11&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

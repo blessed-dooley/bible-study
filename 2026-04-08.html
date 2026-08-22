@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -380,6 +413,16 @@
     padding-top: 14px;
     border-top: 1px solid var(--border);
     font-weight: 300;
+  }
+  .verse-commentary p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-soft);
+    font-weight: 300;
+    margin: 0 0 14px 0;
+  }
+  .verse-commentary p:last-child {
+    margin-bottom: 0;
   }
 
   /* ── ACCENT SECTIONS ── */
@@ -459,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -522,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -540,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -638,8 +685,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -720,56 +765,62 @@
       <p>Today's study centers on a comparison between two creation accounts in Genesis that use two different names for God, revealing two dimensions of His character. Genesis 1:1 introduces Elohim, the transcendent Creator of everything. Genesis 2:7 introduces Yahweh, the intimate God who forms human beings with His own hands. Together, they paint a complete picture: God is both unimaginably vast and personally close. We'll also hear from Job and Paul to see how this dual reality shapes our understanding of who God is.</p>
 
       <!-- ANCHOR: Genesis 1:1 -->
+<!-- BSB_BLOCK: Genesis 1:1 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:d9de4acf0f94f915bb8667e33e15ee1d30b8fc2ca4952e8226ca67cfc5dc62bb | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Genesis 1:1</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/GEN.1.1" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/GEN.1.1" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"In the beginning God created the heavens and the earth."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">In the beginning God created the heavens and the earth.</div>
+<div class="verse-commentary">
           <p>Ten words in English. The most consequential sentence ever written. The Hebrew word for God here is <em>Elohim</em>, a plural form that, when used of the one true God, carries the weight of majesty and totality. <em>Elohim</em> is the God of cosmic scale: the one who created the heavens (all of them) and the earth (all of it). There is no qualifier, no limitation, no assistance required. He did not reshape existing material or win a battle to gain the right. He created. The Hebrew verb <em>bara</em>, used here, is reserved exclusively for divine creation; it is never used of human making. Only God does <em>bara</em>.</p>
           <p>This is the transcendent face of God: beyond our comprehension, operating on a scale we cannot fathom, sovereign over every atom and galaxy. When the Bible introduces God, it does not start with a theological argument for His existence. It starts with an action so vast that it renders the question irrelevant. He made everything. That's who you're dealing with.</p>
         </div>
       </div>
 
       <!-- ANCHOR: Genesis 2:7 -->
+<!-- BSB_BLOCK: Genesis 2:7 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:634ab9205405cfc3ebca30e5b2b241cb9089724f3ea819ae8c87abbc44ee3f39 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Genesis 2:7</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/GEN.2.7" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/GEN.2.7" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Then the LORD God formed the man out of the dust from the ground and breathed the breath of life into his nostrils, and the man became a living being."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Now the name changes. "LORD God" is <em>Yahweh Elohim</em>, and the shift is everything. <em>Yahweh</em> is God's personal, covenant name, the name He later gives to Moses at the burning bush (<a class="vlink" href="https://www.bible.com/bible/1713/EXO.3.14" target="_blank">Exodus 3:14</a>), the name so sacred that many Jewish traditions will not speak it aloud. And what is <em>Yahweh</em> doing? He is on the ground. He is forming a human being from dust with His own hands. The Hebrew verb <em>yatsar</em> means to shape or mold, like a potter working clay. This is not a God who creates from a distance; this is a God on His knees in the dirt.</p>
+        <div class="verse-text">Then the LORD God formed man from the dust of the ground and breathed the breath of life into his nostrils, and the man became a living being.</div>
+<div class="verse-commentary">
+          <p>Now the name changes. "LORD God" is <em>Yahweh Elohim</em>, and the shift is everything. <em>Yahweh</em> is God's personal, covenant name, the name He later gives to Moses at the burning bush (<a class="vlink" href="https://www.bible.com/bible/3034/EXO.3.14" target="_blank" rel="noopener">Exodus 3:14</a>), the name so sacred that many Jewish traditions will not speak it aloud. And what is <em>Yahweh</em> doing? He is on the ground. He is forming a human being from dust with His own hands. The Hebrew verb <em>yatsar</em> means to shape or mold, like a potter working clay. This is not a God who creates from a distance; this is a God on His knees in the dirt.</p>
           <p>And then the most intimate moment in all of Scripture: He breathes into Adam's nostrils. Face to face. Mouth to mouth. The God who spoke galaxies into existence leans in close enough to share His own breath. The word for "breath of life" here, <em>neshamah</em>, is used almost exclusively of divine or human breath in the Old Testament. It is personal, intentional, life-giving. Moses uses both names, <em>Elohim</em> and <em>Yahweh</em>, in these first two chapters deliberately. He wants readers to see that the God who is too big to comprehend is the same God who is close enough to breathe on you. And you need both truths to know Him.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Genesis 2:7 | 2:7 Or a living soul; cited in 1 Corinthians 15:45 -->
 
       <!-- SUPPORTING: Job 38:4-7 -->
+<!-- BSB_BLOCK: Job 38:4-7 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:1778cf9ef1666e24960c28ecbfddeadd14a73b6a54b920aa42c01cfd51dc5ddc | footnotes-stripped:1 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Job 38:4-7</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JOB.38.4-7" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JOB.38.4-7" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Where were you when I established the earth? Tell me, if you have understanding. Who fixed its dimensions? Certainly you know! Who stretched a measuring line across it? What were its bases set on? Or who laid its cornerstone while the morning stars sang together and all the sons of God shouted for joy?"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">When God finally speaks to Job after thirty-seven chapters of silence, He does not explain Job's suffering. He reveals His creative power. The questions are rhetorical, but they are not cruel; they are an invitation to recalibrate. God walks Job through creation itself: the foundations of the earth, the seas, the stars, the weather, the animals (<a class="vlink" href="https://www.bible.com/bible/1713/JOB.38.1" target="_blank">Job 38-39</a>). The message is not "you're too small to understand" but "the One who made all of this is the One managing your situation." Elihu had already pointed in this direction, celebrating God's thunder, lightning, and wisdom as evidence of a power too vast to challenge (<a class="vlink" href="https://www.bible.com/bible/1713/JOB.36.24" target="_blank">Job 36:24-33</a>; <a class="vlink" href="https://www.bible.com/bible/1713/JOB.37.1" target="_blank">Job 37</a>). But God's own speech takes it further. The Creator is not only powerful; He is present, attentive, and involved in the details of His creation, from the birth of mountain goats to the flight path of hawks.</div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 4">4</sup>Where were you when I laid the foundations of the earth? Tell Me, if you have understanding. <sup class="verse-number" aria-label="Verse 5">5</sup>Who fixed its measurements? Surely you know! Or who stretched a measuring line across it? <sup class="verse-number" aria-label="Verse 6">6</sup>On what were its foundations set, or who laid its cornerstone, <sup class="verse-number" aria-label="Verse 7">7</sup>while the morning stars sang together and all the sons of God shouted for joy?</div>
+<div class="verse-commentary">
+          <p>When God finally speaks to Job after thirty-seven chapters of silence, He does not explain Job's suffering. He reveals His creative power. The questions are rhetorical, but they are not cruel; they are an invitation to recalibrate. God walks Job through creation itself: the foundations of the earth, the seas, the stars, the weather, the animals (<a class="vlink" href="https://www.bible.com/bible/3034/JOB.38.1" target="_blank" rel="noopener">Job 38-39</a>). The message is not "you're too small to understand" but "the One who made all of this is the One managing your situation." Elihu had already pointed in this direction, celebrating God's thunder, lightning, and wisdom as evidence of a power too vast to challenge (<a class="vlink" href="https://www.bible.com/bible/3034/JOB.36.24" target="_blank" rel="noopener">Job 36:24-33</a>; <a class="vlink" href="https://www.bible.com/bible/3034/JOB.37.1" target="_blank" rel="noopener">Job 37</a>). But God's own speech takes it further. The Creator is not only powerful; He is present, attentive, and involved in the details of His creation, from the birth of mountain goats to the flight path of hawks.</p>
+        </div>
       </div>
+      <!-- BSB_FOOTNOTE: Job 38:6 | 38:6 Or who set its core in place -->
 
-      <!-- SUPPORTING: Acts 17:27-28 (NKJV + CSB) -->
+      
+<!-- BSB_BLOCK: Acts 17:27-28 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:3945c7a7d94a0e04095cacdb3b6f04de781e1d9441aba9b2cc74eedb9b9af5c1 | footnotes-stripped:2 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Acts 17:27-28</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ACT.17.27-28" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ACT.17.27-28" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"...so that they should seek the Lord, in the hope that they might grope for Him and find Him, though He is not far from each one of us; for in Him we live and move and have our being, as also some of your own poets have said, 'For we are also His offspring.'"</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"He did this so that they might seek God, and perhaps they might reach out and find him, though he is not far from each one of us. For in him we live and move and exist, as even some of your own poets have said, 'For we are also his offspring.'"</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">Paul, standing on Mars Hill in Athens, surrounded by altars to unknown gods, makes the same argument Moses made in Genesis: the Creator is both transcendent and immanent. He made everything (transcendence), and "He is not far from each one of us" (immanence). Paul even borrows from the Greek poets to make his point: "In him we live and move and exist." Every breath, every heartbeat, every moment of conscious existence happens inside the sustaining presence of God. The <em>Elohim</em> who created the universe is the <em>Yahweh</em> who is closer to you right now than the air in your lungs.</div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 27">27</sup>God intended that they would seek Him and perhaps reach out for Him and find Him, though He is not far from each one of us. <sup class="verse-number" aria-label="Verse 28">28</sup>‘For in Him we live and move and have our being.’ As some of your own poets have said, ‘We are His offspring.’</div>
+<div class="verse-commentary">
+          <p>Paul, standing on Mars Hill in Athens, surrounded by altars to unknown gods, makes the same argument Moses made in Genesis: the Creator is both transcendent and immanent. He made everything (transcendence), and "He is not far from each one of us" (immanence). Paul even borrows from the Greek poets to make his point: "In him we live and move and exist." Every breath, every heartbeat, every moment of conscious existence happens inside the sustaining presence of God. The <em>Elohim</em> who created the universe is the <em>Yahweh</em> who is closer to you right now than the air in your lungs.</p>
+        </div>
       </div>
+      <!-- BSB_FOOTNOTE: Acts 17:28 | 17:28 This is probably a quote from the Cretan philosopher Epimenides of Knossos. -->
+      <!-- BSB_FOOTNOTE: Acts 17:28 | 17:28 This is probably a quote from the poem “Phainomena” by the Cilician philosopher Aratus. -->
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -804,8 +855,8 @@
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>The New Testament makes an extraordinary claim about the Creator of Genesis 1: it was Jesus. "All things were created through him, and apart from him not one thing was created that has been created" (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.1.3" target="_blank">John 1:3</a>). The <em>Elohim</em> who spoke galaxies into being and the <em>Yahweh</em> who knelt in the dirt to form a human being are fully revealed in the person of Christ. He is the cosmic and the intimate held together in one life.</p>
-      <p>And here is where the week's threads converge: the holy God (Monday) who is love (Tuesday) and who created everything (Wednesday) did not remain at a transcendent distance. He entered His own creation. The Word through whom all things were made "became flesh and dwelt among us" (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.1.14" target="_blank">John 1:14</a>). Tomorrow's study will explore what that means. But for today, sit with this: the hands that shaped the first human being from dust are the same hands that were nailed to a cross. The breath that gave Adam life is the breath that whispered "It is finished." The Creator became part of His creation so that His creation could know Him.</p>
+      <p>The New Testament makes an extraordinary claim about the Creator of Genesis 1: it was Jesus. "All things were created through him, and apart from him not one thing was created that has been created" (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.1.3" target="_blank" rel="noopener">John 1:3</a>). The <em>Elohim</em> who spoke galaxies into being and the <em>Yahweh</em> who knelt in the dirt to form a human being are fully revealed in the person of Christ. He is the cosmic and the intimate held together in one life.</p>
+      <p>And here is where the week's threads converge: the holy God (Monday) who is love (Tuesday) and who created everything (Wednesday) did not remain at a transcendent distance. He entered His own creation. The Word through whom all things were made "became flesh and dwelt among us" (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.1.14" target="_blank" rel="noopener">John 1:14</a>). Tomorrow's study will explore what that means. But for today, sit with this: the hands that shaped the first human being from dust are the same hands that were nailed to a cross. The breath that gave Adam life is the breath that whispered "It is finished." The Creator became part of His creation so that His creation could know Him.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -842,22 +893,42 @@
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/GEN.1.1" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Genesis+1:1-2:7&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <a class="footer-archive" href="index.html">&#8592; Home</a>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
+    <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

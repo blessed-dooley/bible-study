@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -735,51 +758,51 @@ if ('serviceWorker' in navigator) {
 
       <p>Watch how Paul opens his most difficult letter. The Corinthians are fracturing into fan clubs, each one rallying behind a favorite leader, and Paul could have answered by listing everything he has done for them. Instead he reaches for one word in his very first sentence, and then spends the rest of his life unpacking where that word came from. So we start with that opening line and let the question it raises pull us out through his other letters. Who actually called this man, and what did the calling cost him?</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 1:1 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:02017c4c23446260a2b6321bcd2ed32243332e66a620d88400561128affe44ed | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 1:1</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.1.1" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.1" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Paul, called as an apostle of Christ Jesus by God's will, and Sosthenes our brother:"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>The key word is "apostle." In Greek it is <em>apostolos</em>, and it simply means a sent one, an envoy dispatched with a mission and the authority to carry it out. Paul stacks two safeguards around it so no one mistakes him for a self-appointed leader. He was "called," not volunteered, and the call came "by God's will," not by his own decision. This matters enormously to a church splitting into teams behind their favorite personalities. Paul refuses to be one more celebrity to follow. He is a man under orders. Notice too that he names Sosthenes right beside himself, an ordinary brother, no title attached. The envoy of the King does not pull rank to crush the little people. He drafts them in alongside him. Paul's authority is real, but it is borrowed, and he never forgets it. The same humility runs through how he opens his other letters as well (<a class="vlink" href="https://www.bible.com/bible/1713/2CO.1.1" target="_blank">2 Corinthians 1:1</a>, <a class="vlink" href="https://www.bible.com/bible/1713/GAL.1.1" target="_blank">Galatians 1:1</a>).</p>
+        <div class="verse-text">Paul, called to be an apostle of Christ Jesus by the will of God, and our brother Sosthenes,</div>
+<div class="verse-commentary">
+          <p>The key word is "apostle." In Greek it is <em>apostolos</em>, and it simply means a sent one, an envoy dispatched with a mission and the authority to carry it out. Paul stacks two safeguards around it so no one mistakes him for a self-appointed leader. He was "called," not volunteered, and the call came "by the will of God," not by his own decision. This matters enormously to a church splitting into teams behind their favorite personalities. Paul refuses to be one more celebrity to follow. He is a man under orders. Notice too that he names Sosthenes right beside himself, an ordinary brother, no title attached. The envoy of the King does not pull rank to crush the little people. He drafts them in alongside him. Paul's authority is real, but it is borrowed, and he never forgets it. The same humility runs through how he opens his other letters as well (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.1.1" target="_blank" rel="noopener">2 Corinthians 1:1</a>, <a class="vlink" href="https://www.bible.com/bible/3034/GAL.1.1" target="_blank" rel="noopener">Galatians 1:1</a>).</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Romans 1:1 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:aea8f2b084746f24797efefd9af0ccde6c357db1aeba6a496f49364b72a4468d | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Romans 1:1</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ROM.1.1" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.1.1" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Paul, a servant of Christ Jesus, called as an apostle and set apart for the gospel of God—"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Before Paul ever calls himself an apostle here, he calls himself a servant, literally a bond-slave, someone whose whole life belongs to his master. That order is not an accident. The authority comes second. The surrender comes first. Being "sent" only means something because he was first owned. The same word for servant shows up when he tells Titus he is a "servant of God" (<a class="vlink" href="https://www.bible.com/bible/1713/TIT.1.1" target="_blank">Titus 1:1</a>), and he draws the sharp edge of it for the Galatians, admitting that if he were still trying to win people's approval he could not be a servant of Christ at all (<a class="vlink" href="https://www.bible.com/bible/1713/GAL.1.10" target="_blank">Galatians 1:10</a>). The single title "apostle" actually folds several jobs together. Elsewhere Paul unpacks it as being appointed a herald, an apostle, and a teacher (<a class="vlink" href="https://www.bible.com/bible/1713/1TI.2.7" target="_blank">1 Timothy 2:7</a>, <a class="vlink" href="https://www.bible.com/bible/1713/2TI.1.11" target="_blank">2 Timothy 1:11</a>). One man, many assignments, all of them given.</p>
+        <div class="verse-text">Paul, a servant of Christ Jesus, called to be an apostle, and set apart for the gospel of God—</div>
+<div class="verse-commentary">
+          <p>Before Paul ever calls himself an apostle here, he calls himself a servant, literally a bond-slave, someone whose whole life belongs to his master. That order is not an accident. The authority comes second. The surrender comes first. Being "sent" only means something because he was first owned. The same word for servant shows up when he tells Titus he is a "servant of God" (<a class="vlink" href="https://www.bible.com/bible/3034/TIT.1.1" target="_blank" rel="noopener">Titus 1:1</a>), and he draws the sharp edge of it for the Galatians, admitting that if he were still trying to win people's approval he could not be a servant of Christ at all (<a class="vlink" href="https://www.bible.com/bible/3034/GAL.1.10" target="_blank" rel="noopener">Galatians 1:10</a>). The single title "apostle" actually folds several jobs together. Elsewhere Paul unpacks it as being appointed a herald, an apostle, and a teacher (<a class="vlink" href="https://www.bible.com/bible/3034/1TI.2.7" target="_blank" rel="noopener">1 Timothy 2:7</a>, <a class="vlink" href="https://www.bible.com/bible/3034/2TI.1.11" target="_blank" rel="noopener">2 Timothy 1:11</a>). One man, many assignments, all of them given.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Jeremiah 1:5 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:94e589c4995cd2f2c698936d26af75484e82eb953503cbe9280fd591420878fb | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Jeremiah 1:5</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JER.1.5" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JER.1.5" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"I chose you before I formed you in the womb; I set you apart before you were born. I appointed you a prophet to the nations."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Paul's sense of calling did not start the day he met Jesus on the Damascus road. He understood it the way Jeremiah did, as something God settled before he was even born. God tells the frightened young prophet that the plan was in motion while he was still being knit together, that he was set apart before his first breath. Paul says exactly this about himself, that God set him apart from his mother's womb and called him by grace (<a class="vlink" href="https://www.bible.com/bible/1713/GAL.1.15" target="_blank">Galatians 1:15</a>). This is steadying news for anyone who feels like a spiritual latecomer. Your usefulness to God is not a reward for a clean record or a dramatic testimony. It was God's idea about you before you had done anything at all, good or bad, to earn it or wreck it.</p>
+        <div class="verse-text">“Before I formed you in the womb I knew you, and before you were born I set you apart and appointed you as a prophet to the nations.”</div>
+<div class="verse-commentary">
+          <p>Paul's sense of calling did not start the day he met Jesus on the Damascus road. He understood it the way Jeremiah did, as something God settled before he was even born. God tells the frightened young prophet that the plan was in motion while he was still being knit together, that he was set apart before his first breath. Paul says exactly this about himself, that God set him apart from his mother's womb and called him by grace (<a class="vlink" href="https://www.bible.com/bible/3034/GAL.1.15" target="_blank" rel="noopener">Galatians 1:15</a>). This is steadying news for anyone who feels like a spiritual latecomer. Your usefulness to God is not a reward for a clean record or a dramatic testimony. It was God's idea about you before you had done anything at all, good or bad, to earn it or wreck it.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 15:9-11 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c60a1526b5e3f35b43627e8b8bcd298916ab35e1afc66bcf5c6fb3fad9e01f13 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 15:9-11</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.15.9-11" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.15.9-11" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For I am the least of the apostles, not worthy to be called an apostle, because I persecuted the church of God. But by the grace of God I am what I am, and his grace toward me was not in vain. On the contrary, I worked harder than any of them, yet not I, but the grace of God that was with me. Whether, then, it is I or they, this is what we preach, and this is what you have believed."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Here is the part that keeps Paul's confidence from curdling into pride. He is bold about his calling and brutally honest about his past in the same breath. He had seen the risen Jesus, just as the other apostles had, the last in a line of witnesses that ran from Peter to the crowd of five hundred (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.5-7" target="_blank">1 Corinthians 15:5-7</a>, <a class="vlink" href="https://www.bible.com/bible/1713/1CO.15.8" target="_blank">1 Corinthians 15:8</a>). But he never forgets that he had been arresting Christians when grace ambushed him. So he holds two facts together without flinching. He is the least, not worthy of the title, and he outworked everyone. The hinge between those two is one phrase he repeats like a heartbeat, "the grace of God." Everything he is, he is by grace. Everything he did, grace did with him. That is a man who can lead a divided church without needing it to admire him.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 9">9</sup>For I am the least of the apostles and am unworthy to be called an apostle, because I persecuted the church of God. <sup class="verse-number" aria-label="Verse 10">10</sup>But by the grace of God I am what I am, and His grace to me was not in vain. No, I worked harder than all of them—yet not I, but the grace of God that was with me. <sup class="verse-number" aria-label="Verse 11">11</sup>Whether, then, it was I or they, this is what we preach, and this is what you believed.</div>
+<div class="verse-commentary">
+          <p>Here is the part that keeps Paul's confidence from curdling into pride. He is bold about his calling and brutally honest about his past in the same breath. He had seen the risen Jesus, just as the other apostles had, the last in a line of witnesses that ran from Peter to the crowd of five hundred (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.5-7" target="_blank" rel="noopener">1 Corinthians 15:5-7</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.8" target="_blank" rel="noopener">1 Corinthians 15:8</a>). But he never forgets that he had been arresting Christians when grace ambushed him. So he holds two facts together without flinching. He is the least, not worthy of the title, and he outworked everyone. The hinge between those two is one phrase he repeats like a heartbeat, "the grace of God." Everything he is, he is by grace. Everything he did, grace did with him. That is a man who can lead a divided church without needing it to admire him.</p>
         </div>
       </div>
     </div>
@@ -852,22 +875,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.1.1" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+1:1&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -513,49 +532,6 @@ if ('serviceWorker' in navigator) {
     opacity: 0.7;
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -576,6 +552,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -594,8 +612,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -755,7 +778,7 @@ if ('serviceWorker' in navigator) {
       <p>But the ancient world rarely let weather stay weather. A sudden ruin, a wasting illness, a family wiped out in a single season, all of it was read as a message, and the message was almost always the same. Heaven is displeased, and someone is being paid back. The sea itself stood in the old imagination for chaos and threat, the deep that swallowed people whole. Job's friends will say it plainly, that this much suffering proves this much guilt. The whole week leans hard against that reflex. The God these passages reveal is not standing on the shore keeping score. He is asleep in the boat, reaching for a bleeding woman in a crowd, and walking an unrecognized road beside two people whose hope He has let die.</p>
     </div>
 
-    <!-- 4. THIS WEEK'S MEMORY TEXT (dual-translation NKJV + CSB) -->
+    
     <div class="section">
       <div class="section-label">
         <span class="section-emoji">📖</span>
@@ -763,18 +786,16 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
+<!-- BSB_BLOCK: Romans 5:3-5 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:ca93d683e5a4974614ddd2650d935f43e138dc715d60395d9c2b8cd30253781b | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Romans 5:3-5</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ROM.5.3-5" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.5.3-5" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"And not only that, but we also glory in tribulations, knowing that tribulation produces perseverance; and perseverance, character; and character, hope. Now hope does not disappoint, because the love of God has been poured out in our hearts by the Holy Spirit who was given to us."</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"And not only that, but we also rejoice in our afflictions, because we know that affliction produces endurance, endurance produces proven character, and proven character produces hope. This hope will not disappoint us, because God's love has been poured out in our hearts through the Holy Spirit who was given to us."</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 3">3</sup>Not only that, but we also rejoice in our sufferings, because we know that suffering produces perseverance; <sup class="verse-number" aria-label="Verse 4">4</sup>perseverance, character; and character, hope. <sup class="verse-number" aria-label="Verse 5">5</sup>And hope does not disappoint us, because God has poured out His love into our hearts through the Holy Spirit, whom He has given us.</div>
+<div class="verse-commentary">
           <p>Paul does not say we glory in spite of tribulations. He says we glory in them, and the word he uses for tribulation is a Greek term that means pressure, the weight of something heavy pressing down until it crushes. Then he traces what that pressure can produce: endurance, then proven character, then hope. This is not a promise that suffering is good. It is a claim that God can run a setback through a chain that comes out the other end as a hope that "does not disappoint." The reason it holds is the last line. Hope is safe not because our circumstances improve but because God's love has already been poured into us by His Spirit, and the verb stays poured. It does not drain back out when the weather turns.</p>
-          <p>The week walks that chain through real people. Frightened disciples wake a sleeping Jesus in a swamping boat (<a class="vlink" href="https://www.bible.com/bible/1713/MRK.4.35-41" target="_blank">Mark 4:35-41</a>). A woman who has bled for twelve years pushes through a crowd to reach Him (<a class="vlink" href="https://www.bible.com/bible/1713/MRK.5.21-34" target="_blank">Mark 5:21-34</a>). Job, stripped of everything, still insists "I know that my Redeemer lives" (<a class="vlink" href="https://www.bible.com/bible/1713/JOB.19.23-27" target="_blank">Job 19:23-27</a>) even while he cannot find God in any direction he looks (<a class="vlink" href="https://www.bible.com/bible/1713/JOB.23.8-12" target="_blank">Job 23:8-12</a>). Two travelers trudge toward Emmaus with their hope buried in a tomb (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.24.13-27" target="_blank">Luke 24:13-27</a>). And Paul lands it: present sufferings are not worth comparing to the glory coming (<a class="vlink" href="https://www.bible.com/bible/1713/ROM.8.18" target="_blank">Romans 8:18</a>), because God is working all of it together for good (<a class="vlink" href="https://www.bible.com/bible/1713/ROM.8.28" target="_blank">Romans 8:28</a>).</p>
+          <p>The week walks that chain through real people. Frightened disciples wake a sleeping Jesus in a swamping boat (<a class="vlink" href="https://www.bible.com/bible/3034/MRK.4.35-41" target="_blank" rel="noopener">Mark 4:35-41</a>). A woman who has bled for twelve years pushes through a crowd to reach Him (<a class="vlink" href="https://www.bible.com/bible/3034/MRK.5.21-34" target="_blank" rel="noopener">Mark 5:21-34</a>). Job, stripped of everything, still insists "I know that my Redeemer lives" (<a class="vlink" href="https://www.bible.com/bible/3034/JOB.19.23-27" target="_blank" rel="noopener">Job 19:23-27</a>) even while he cannot find God in any direction he looks (<a class="vlink" href="https://www.bible.com/bible/3034/JOB.23.8-12" target="_blank" rel="noopener">Job 23:8-12</a>). Two travelers trudge toward Emmaus with their hope buried in a tomb (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.24.13-27" target="_blank" rel="noopener">Luke 24:13-27</a>). And Paul lands it: present sufferings are not worth comparing to the glory coming (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.8.18" target="_blank" rel="noopener">Romans 8:18</a>), because God is working all of it together for good (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.8.28" target="_blank" rel="noopener">Romans 8:28</a>).</p>
         </div>
       </div>
     </div>
@@ -840,22 +861,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/ROM.5.3-5" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Romans+5:3-5&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -380,6 +413,16 @@
     padding-top: 14px;
     border-top: 1px solid var(--border);
     font-weight: 300;
+  }
+  .verse-commentary p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-soft);
+    font-weight: 300;
+    margin: 0 0 14px 0;
+  }
+  .verse-commentary p:last-child {
+    margin-bottom: 0;
   }
 
   /* ── ACCENT SECTIONS ── */
@@ -459,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -522,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -540,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -638,8 +685,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -721,56 +766,61 @@
       <p>Today's anchor is 1 John 4:7-19, one of the most concentrated explorations of God's love in all of Scripture. John builds a complete theology of love in thirteen verses: where it comes from, how God proved it, what it drives out, and what it produces in those who receive it. We'll walk through the passage in two movements, then let Romans 5:8 and 1 Corinthians 13 add depth to the picture.</p>
 
       <!-- ANCHOR: 1 John 4:7-12 -->
+<!-- BSB_BLOCK: 1 John 4:7-12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:7da8812e3d2706f8dd9450d3d85c244dcb9ca1d21fcb9275df385f2f3f84225a | footnotes-stripped:2 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 John 4:7-12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1JN.4.7-12" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1JN.4.7-12" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Dear friends, let us love one another, because love is from God, and everyone who loves has been born of God and knows God. The one who does not love does not know God, because God is love. God's love was revealed among us in this way: God sent his one and only Son into the world so that we might live through him. Love consists in this: not that we loved God, but that he loved us and sent his Son to be the atoning sacrifice for our sins. Dear friends, if God loved us in this way, we also must love one another. No one has ever seen God. If we love one another, God remains in us and his love is made complete in us."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 7">7</sup>Beloved, let us love one another, because love comes from God. Everyone who loves has been born of God and knows God. <sup class="verse-number" aria-label="Verse 8">8</sup>Whoever does not love does not know God, because God is love. <sup class="verse-number" aria-label="Verse 9">9</sup>This is how God’s love was revealed among us: God sent His one and only Son into the world, so that we might live through Him. <sup class="verse-number" aria-label="Verse 10">10</sup>And love consists in this: not that we loved God, but that He loved us and sent His Son as the atoning sacrifice for our sins. <sup class="verse-number" aria-label="Verse 11">11</sup>Beloved, if God so loved us, we also ought to love one another. <sup class="verse-number" aria-label="Verse 12">12</sup>No one has ever seen God; but if we love one another, God remains in us, and His love is perfected in us.</div>
+<div class="verse-commentary">
           <p>John's logic is striking in its simplicity: love comes from God, God <em>is</em> love, and therefore anyone who truly loves is drawing from God whether they realize it or not. The phrase "God is love" (verse 8) is not a metaphor. It is an identity statement. John does not say God has love or God shows love; he says God <em>is</em> love, the way light <em>is</em> light. Love is not one of God's moods; it is His nature.</p>
           <p>But notice how John immediately defines what that love looks like in practice. Verse 9 gives the definition: God sent His Son so that we might live. Verse 10 sharpens it further: love is not that we loved God first, but that He loved us and sent His Son as the atoning sacrifice. This is the radical heart of <em>agape</em>. God's love does not respond to our lovability. It initiates. It moves first. It bears the cost. The Greek word for "atoning sacrifice" here, <em>hilasmos</em>, carries the weight of propitiation, the turning away of wrath through a substitute. God's love is not sentimental; it solved a real problem at a real cost.</p>
           <p>Verse 12 then makes an astonishing claim: no one has ever seen God, but when we love one another, God's love becomes visible and complete in us. We become the evidence. God's love, which is invisible in its source, becomes visible through its recipients. This is why John insists that love for one another is not optional for those who claim to know God. It is the proof that we actually do.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 John 4:9 | 4:9 Or only begotten or unique -->
+      <!-- BSB_FOOTNOTE: 1 John 4:10 | 4:10 Or as a propitiation -->
 
       <!-- ANCHOR: 1 John 4:13-19 -->
+<!-- BSB_BLOCK: 1 John 4:13-19 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:027c3853b6858b05c514c4bd896a3fd6c2ee3728533e2782b9630cae9ec00252 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 John 4:13-19</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1JN.4.13-19" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1JN.4.13-19" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"This is how we know that we remain in him and he in us: He has given us of his Spirit. And we have seen and we testify that the Father has sent his Son as the world's Savior. Whoever confesses that Jesus is the Son of God, God remains in him and he in God. And we have come to know and to believe the love that God has for us. God is love, and the one who remains in love remains in God, and God remains in him. In this, love is made complete with us so that we may have confidence in the day of judgment, because as he is, so also are we in this world. There is no fear in love; instead, perfect love drives out fear, because fear involves punishment. So the one who fears is not complete in love. We love because he first loved us."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 13">13</sup>By this we know that we remain in Him, and He in us: He has given us of His Spirit. <sup class="verse-number" aria-label="Verse 14">14</sup>And we have seen and testify that the Father has sent His Son to be the Savior of the world. <sup class="verse-number" aria-label="Verse 15">15</sup>If anyone confesses that Jesus is the Son of God, God abides in him, and he in God. <sup class="verse-number" aria-label="Verse 16">16</sup>And we have come to know and believe the love that God has for us. God is love; whoever abides in love abides in God, and God in him. <sup class="verse-number" aria-label="Verse 17">17</sup>In this way, love has been perfected among us, so that we may have confidence on the day of judgment; for in this world we are just like Him. <sup class="verse-number" aria-label="Verse 18">18</sup>There is no fear in love, but perfect love drives out fear, because fear involves punishment. The one who fears has not been perfected in love. <sup class="verse-number" aria-label="Verse 19">19</sup>We love because He first loved us.</div>
+<div class="verse-commentary">
           <p>The second movement of John's argument reaches its climax in verses 18-19. "Perfect love drives out fear." This is not a bumper sticker; it is a theological statement with teeth. Fear and love cannot coexist in their completed forms. If you are afraid of God, John says, you have not yet fully grasped His love. Fear assumes punishment is coming. Perfect love says the punishment has already been absorbed by Someone else.</p>
           <p>Verse 19 is perhaps the most important sentence in the passage: "We love because he first loved us." Five words in English. The entire theology of love in a single clause. Our capacity to love is not self-generated. It is a response. God's love is the cause; ours is the effect. He is the initiator; we are the responders. This demolishes any version of Christianity that starts with human effort and works toward God's approval. The order is fixed: He loved first. We love back. Everything else flows from that sequence.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 John 4:19 | 4:19 BYZ and TR We love Him -->
 
       <!-- SUPPORTING: Romans 5:8 -->
+<!-- BSB_BLOCK: Romans 5:8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b7ff6de6826fc50b39750ade6b300dc28e1dabb5268bff63df725d438571fd5f | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Romans 5:8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ROM.5.8" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.5.8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"But God proves his own love for us in that while we were still sinners, Christ died for us."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">Paul's contribution to the definition of God's love is the word "proves." God's love is not asserted; it is demonstrated. And the demonstration has a specific timestamp: "while we were still sinners." Not after we cleaned up. Not once we showed interest. While we were actively opposed to Him. The cross is God's love with a receipt. It is the proof that <em>agape</em> is not theoretical. He did it. It cost Him everything. And He did it for people who, at the time, didn't want it. That is the love John is talking about.</div>
+        <div class="verse-text">But God proves His love for us in this: While we were still sinners, Christ died for us.</div>
+<div class="verse-commentary">
+          <p>Paul's contribution to the definition of God's love is the word "proves." God's love is not asserted; it is demonstrated. And the demonstration has a specific timestamp: "while we were still sinners." Not after we cleaned up. Not once we showed interest. While we were actively opposed to Him. The cross is God's love with a receipt. It is the proof that <em>agape</em> is not theoretical. He did it. It cost Him everything. And He did it for people who, at the time, didn't want it. That is the love John is talking about.</p>
+        </div>
       </div>
 
-      <!-- SUPPORTING: 1 Corinthians 13:4-8 (NKJV + CSB, per study question) -->
+      
+<!-- BSB_BLOCK: 1 Corinthians 13:4-8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:cb575499d095ff14d5912b369a8e67b10f2ac3d8de330549ed4f940ca2b9bd77 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 13:4-8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.13.4-8" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.13.4-8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Love suffers long and is kind; love does not envy; love does not parade itself, is not puffed up; does not behave rudely, does not seek its own, is not provoked, thinks no evil; does not rejoice in iniquity, but rejoices in the truth; bears all things, believes all things, hopes all things, endures all things. Love never fails."</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"Love is patient, love is kind. Love does not envy, is not boastful, is not conceited, does not act improperly, is not selfish, is not provoked, does not keep a record of wrongs, finds no joy in unrighteousness but rejoices in the truth. It bears all things, believes all things, hopes all things, endures all things. Love never ends."</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">Try something with this passage: read it again, but replace every instance of "love" with "God." God is patient. God is kind. God does not envy. God is not boastful. God does not keep a record of wrongs. God bears all things, believes all things, hopes all things, endures all things. God never fails. Every line holds. This is not a coincidence; it is a description of His character. Now try putting your own name in place of "love." The gap between what holds and what doesn't is the distance between who God is and who we are becoming. That gap is not meant to shame you. It is meant to show you the direction you're growing in, powered by a love that never ends.</div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 4">4</sup>Love is patient, love is kind. It does not envy, it does not boast, it is not proud. <sup class="verse-number" aria-label="Verse 5">5</sup>It is not rude, it is not self-seeking, it is not easily angered, it keeps no account of wrongs. <sup class="verse-number" aria-label="Verse 6">6</sup>Love takes no pleasure in evil, but rejoices in the truth. <sup class="verse-number" aria-label="Verse 7">7</sup>It bears all things, believes all things, hopes all things, endures all things. <sup class="verse-number" aria-label="Verse 8">8</sup>Love never fails. But where there are prophecies, they will cease; where there are tongues, they will be restrained; where there is knowledge, it will be dismissed.</div>
+<div class="verse-commentary">
+          <p>Try something with this passage: read it again, but replace every instance of "love" with "God." God is patient. God is kind. God does not envy. God is not boastful. God does not keep a record of wrongs. God bears all things, believes all things, hopes all things, endures all things. God never fails. Every line holds. This is not a coincidence; it is a description of His character. Now try putting your own name in place of "love." The gap between what holds and what doesn't is the distance between who God is and who we are becoming. That gap is not meant to shame you. It is meant to show you the direction you're growing in, powered by a love that never ends.</p>
+        </div>
       </div>
     </div>
 
@@ -844,22 +894,42 @@
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1JN.4.7-19" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+John+4:7-19&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <a class="footer-archive" href="index.html">&#8592; Home</a>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
+    <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

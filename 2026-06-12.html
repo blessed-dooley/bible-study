@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -625,7 +648,7 @@ if ('serviceWorker' in navigator) {
     white-space: nowrap;
   }
 
-  /* ── DEEPER QUESTIONS ── */
+  /* LEGACY DEEPER QUESTIONS: retained only so archived Friday bodies can still be reassembled */
   .dq-block {
     margin: 28px 0;
     padding: 0;
@@ -782,139 +805,59 @@ if ('serviceWorker' in navigator) {
       <p>What is striking is that the Bible, written inside that world, keeps refusing its logic. It shows God asleep in the boat instead of standing on the shore with a ledger. It lets Job be declared innocent over his friends. It puts the risen Christ on the road with the very people whose hope had collapsed. The setback is never treated as the final word on whether God loves us, because the God of these pages does not change, and His love does not rise and fall with the weather.</p>
     </div>
 
-    <!-- 3. DEEPER QUESTIONS -->
+    <!-- 3. WHAT THIS WEEK CLARIFIES -->
     <div class="section">
       <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Deeper Questions</span>
+        <span class="section-emoji">💡</span>
+        <span class="section-title">What This Week Clarifies</span>
         <div class="section-title-line"></div>
       </div>
 
-      <p>Take these slowly, ideally with someone else and a Bible open. They are not a quiz. They are an invitation to be honest about where your own setbacks have left you, and to let Scripture say something back.</p>
+      <p>Lay the six days beside each other and they start talking to one another. An obedient boat takes on water. An instant healing sits next to years of heaven's silence. Two grieving friends hold every fact and no hope. A week this honest about setbacks ties a few knots on purpose. Three of them are worth untying before the week lets go.</p>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">1</span>
-          <div class="dq-question">How has a setback you are facing, or have faced, changed your picture of God? Where could you look to see His true character more clearly?</div>
+      <div class="section-heading">The Swamped Boat Was Following Orders</div>
+      <p>Crossing the lake that night was not the disciples' idea. Jesus gave the order to head for the other side, and the water started coming in while they were carrying it out. If setbacks were verdicts on disobedience, the one boat on the lake doing exactly what He said should have had the driest crossing. Instead it was the one going under.</p>
+
+<!-- BSB_BLOCK: Mark 4:35-41 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:188a13d75337e585a59816e2a4070b855d3769ab767dc7e1973fcf43923ca757 | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Mark 4:35-41</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MRK.4.35-41" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Malachi 3:6</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/MAL.3.6" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Because I, the LORD, have not changed, you descendants of Jacob have not been destroyed."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>A setback is a master at editing our picture of God. Pain whispers that He has grown cold, or distant, or disappointed in us, and if we are not careful the storm starts repainting His face. This verse is the brake. God says the reason a rebellious people has not been wiped out is simply that He does not change. His character is not on a dimmer switch wired to our circumstances. So the place to recover His true face is never our feelings in the middle of the trouble. It is who He has already shown Himself to be, the One asleep in the boat, reaching for the bleeding woman, walking the Emmaus road. The weather changes. He does not.</p>
-          </div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 35">35</sup>When that evening came, He said to His disciples, <span class="words-of-jesus">“Let us cross to the other side.”</span> <sup class="verse-number" aria-label="Verse 36">36</sup>After they had dismissed the crowd, they took Jesus with them, since He was already in the boat. And there were other boats with Him. <sup class="verse-number" aria-label="Verse 37">37</sup>Soon a violent windstorm came up, and the waves were breaking over the boat, so that it was being swamped. <sup class="verse-number" aria-label="Verse 38">38</sup>But Jesus was in the stern, sleeping on the cushion. So they woke Him and said, “Teacher, don’t You care that we are perishing?” <sup class="verse-number" aria-label="Verse 39">39</sup>Then Jesus got up and rebuked the wind and the sea. <span class="words-of-jesus">“Silence!”</span> He commanded. <span class="words-of-jesus">“Be still!”</span> And the wind died down, and it was perfectly calm. <sup class="verse-number" aria-label="Verse 40">40</sup><span class="words-of-jesus">“Why are you so afraid?”</span> He asked. <span class="words-of-jesus">“Do you still have no faith?”</span> <sup class="verse-number" aria-label="Verse 41">41</sup>Overwhelmed with fear, they asked one another, “Who is this, that even the wind and the sea obey Him?”</div>
+        <div class="verse-commentary">
+          <p>Mark answers with seating assignments. Jesus was not on the shore watching the crew pay for something. He was in the stern of the same swamping boat, so unthreatened by weather on His own route that He slept in it. When He stood up He did not apologize for the itinerary. He muzzled the sea like an animal that had slipped its leash, then went after the deeper leak, the story the men were telling themselves about Him, that His sleep meant He had stopped caring. Here is the week's first clarification. A storm can sit inside the will of God. The obedient are not exempt from weather. They are accompanied in it. His question about their fear was never about wind. It was about Him.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">2</span>
-          <div class="dq-question">When did you last pray that God's voice in your life would be louder than the enemy's? What would it change to start there this week?</div>
+      <div class="section-heading">She Found the Hem. Job Found Nothing</div>
+      <p>Monday and Tuesday sit shoulder to shoulder on purpose. A woman brushes the edge of a robe and twelve years of bleeding stop inside a second, with a family word spoken over her in the street. The next day Job reaches east, west, north, and south, and his hands come back empty. No voice, no verdict, no healing anywhere in the chapter. The week called both of these faith. Side by side they look more like a promise and its exception.</p>
+
+<!-- BSB_BLOCK: Job 23:8-12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:cf68018af71af050523bfd1e404987272b35514c829f6b47cbbb37fdf04dfbd0 | footnotes-stripped:0 | poetry:flattened -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Job 23:8-12</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JOB.23.8-12" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">John 10:10</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.10.10" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"A thief comes only to steal and kill and destroy. I have come so that they may have life and have it in abundance."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Jesus draws a clean line between two voices. One comes to steal, kill, and destroy, and a setback is one of its favorite microphones, using real pain to push a lie, that God has abandoned you, that it is hopeless, that you are alone. The other voice came to give life in abundance, and it tells the truth even when the truth is hard. The danger in a hard season is not usually that we stop believing in God. It is that we start letting the thief narrate our lives, reading every event in his accent. The move this week is to consciously turn up the other voice, to let the One who came to give life have the first and last word over the story the setback is trying to tell.</p>
-          </div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 8">8</sup>If I go east, He is not there, and if I go west, I cannot find Him. <sup class="verse-number" aria-label="Verse 9">9</sup>When He is at work in the north, I cannot behold Him; when He turns to the south, I cannot see Him. <sup class="verse-number" aria-label="Verse 10">10</sup>Yet He knows the way I have taken; when He has tested me, I will come forth as gold. <sup class="verse-number" aria-label="Verse 11">11</sup>My feet have followed in His tracks; I have kept His way without turning aside. <sup class="verse-number" aria-label="Verse 12">12</sup>I have not departed from the command of His lips; I have treasured the words of His mouth more than my daily bread.</div>
+        <div class="verse-commentary">
+          <p>The week never located faith in the outcome. Monday praised a reach, not a result the woman could see in advance, an ember of trust half buried under twelve years of ash. Tuesday moved the same grip into the dark. Job searches every direction and finds nothing, and then the passage quietly reverses who is looking for whom. "He knows the way I have taken." Job cannot see God, but Job has never once been out of God's sight. So he keeps walking a road he learned in the light, treasuring the words more than his bread, and the week honors that walking as the same faith that reached for the hem. Some setbacks end in a second on a crowded street. Some outlast every feeling that started them. The reach and the walk are one grip. Faith holds on before the answer comes.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">3</span>
-          <div class="dq-question">Is your heart humble enough to trust that God is still in charge and still good, even in the hardship? If not, how could you begin to learn that trust?</div>
-        </div>
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">1 Peter 5:6-7</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/1PE.5.6-7" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Humble yourselves, therefore, under the mighty hand of God, so that he may exalt you at the proper time, casting all your cares on him, because he cares about you."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>Notice how Peter ties two things together that we usually keep apart, humbling ourselves and unloading our worry. Pride, oddly, is often what keeps the worry on our own shoulders, the quiet conviction that we have to manage the outcome ourselves because we cannot quite trust anyone else with it, even God. Humility is what finally lets us throw the whole weight onto Someone bigger. And the reason given is not that God is obligated to take it, but that "he cares about you." This is the disciples' "don't You care" from Sunday, answered. The humble heart is not the one that feels nothing in the storm. It is the one that hands the storm to the One it has decided to trust, on the grounds that He genuinely cares.</p>
-          </div>
-        </div>
-      </div>
+      <div class="section-heading">They Had Every Fact and Walked the Wrong Way</div>
+      <p>Wednesday's travelers were not short on information. A powerful prophet, an execution, a third morning, an empty tomb, angels reported by women they trusted. They recited every piece on the road and kept walking away from Jerusalem anyway, with hope in the past tense. The facts were complete and the story still felt finished, because the fact at the center, the cross, looked like the piece that ended it.</p>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">4</span>
-          <div class="dq-question">Are you staying grounded in God's Word day by day? What would it take to ask Him to reignite the love for Him you had at the start?</div>
+<!-- BSB_BLOCK: Romans 8:28 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:11863ec69105c145391d432c5e02e5114f7f7570d4c7588b305d23c1b3673ed0 | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Romans 8:28</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.8.28" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Revelation 2:4-5</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/REV.2.4-5" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"But I have this against you: You have abandoned the love you had at first. Remember then how far you have fallen; repent, and do the works you did at first. Otherwise, I will come to you and remove your lampstand from its place, unless you repent."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>A long setback rarely kills our faith in one blow. It erodes it slowly, until the Bible goes unopened and the prayers go quiet and we look up one day to realize the warmth has cooled into routine. Jesus is tender and direct with a church in exactly that spot. He does not shame them. He gives them a path back, remember, repent, and do the first things again. The cure for a cooled love is not to manufacture a feeling but to return to the simple practices that fed it, the open Word in the morning, the honest prayer, the showing up. Tuesday's Job treasured God's words "more than my daily food" precisely when he felt nothing. Staying grounded daily is how the fire gets relit.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">5</span>
-          <div class="dq-question">When did you last come to God as your Comforter, trusting that He has kept His promise never to leave or abandon you?</div>
-        </div>
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Hebrews 13:5</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/HEB.13.5" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Keep your life free from the love of money. Be satisfied with what you have, for he himself has said, I will never leave you or abandon you."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>The promise quoted here is old, first spoken to people heading into wilderness and battle, and the writer of Hebrews reaches back and hands it to us. In the original Greek the "never" is stacked emphatically, closer to "I will never, no never, leave you." It is a promise built for the exact moment a setback makes you feel most alone. Feelings of abandonment are real, but they are not evidence. The disciples felt abandoned in the boat while the One who set the limits of the sea was a few feet away. Job felt abandoned in every direction while God knew the very path he was walking. Coming to God as Comforter starts by taking Him at His word over our own sense of being alone.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">6</span>
-          <div class="dq-question">If your faith feels weak right now, can you pray the honest prayer, "I do believe; help my unbelief"? Who could you surround yourself with who builds your faith rather than draining it?</div>
-        </div>
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Mark 9:24</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/MRK.9.24" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Immediately the father of the boy cried out, 'I do believe; help my unbelief!'"</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>This is one of the most honest prayers in the Bible, and Jesus answers it. A desperate father admits both things in the same breath, that he believes and that his belief is shaky, and he asks Jesus to make up the difference. He does not have to get his faith up to some required level first. He brings the weak faith he actually has and asks for help with the rest. That is permission for anyone whose faith has taken a beating this season. You do not need a stronger version of yourself before you come. You come with the cracked, half-believing faith you have, say so out loud, and ask Him to carry what you cannot. And you find people who will say it alongside you instead of making you pretend.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">7</span>
-          <div class="dq-question">Who is one weak, weary, or hurting person you could encourage this week with the news that God's power shows up strongest exactly where we are weakest?</div>
-        </div>
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">2 Corinthians 12:9</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/2CO.12.9" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"But he said to me, 'My grace is sufficient for you, for my power is perfected in weakness.' Therefore, I will most gladly boast all the more about my weaknesses, so that Christ's power may reside in me."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">
-            <p>The world tends to hide weakness and reward strength, so this sounds backward. Paul begged God three times to remove a painful thorn, and the answer was not removal but a promise, that grace would be enough and that God's power actually works best in the weak place, not around it. This is the whole week in one line. The weakness is not the obstacle to God showing up. It is the very spot where He shows up strongest. Which means the people the world overlooks, the wounded, the worn down, the ones barely holding on, are exactly the people best positioned to display what God can do. If that is you, you are not disqualified. You are the demonstration. And someone near you needs to hear it from a person who knows.</p>
-          </div>
+        <div class="verse-text">And we know that God works all things together for the good of those who love Him, who are called according to His purpose.</div>
+        <div class="verse-commentary">
+          <p>Thursday set the week's boldest sentence underneath that collapse. Notice what the verse does not say. It never claims all things are good, and the week never asked anyone to call them good. Raiders, bleeding, ten graves, a cross, none of it is good in itself. The claim is about what God does with such things. On the road the risen Jesus walked two broken friends back through Moses and the prophets until the piece that looked most like defeat turned out to be the center of the design. The worst thing ever done on this earth was already working for the good of the world by the third morning. That is the proof buried under the promise. Nothing on your list is too bitter for the loaf.</p>
+          <p>That reframing is the week's parting gift. The storm ends in a flat calm. Twelve years end in the word "daughter." The silence ends in gold, and the buried hope ends at a supper table in Emmaus. Not one of them gets the last word. The girl in the rain had it right from the start. When life turns on us, the face still goes up.</p>
         </div>
       </div>
 
@@ -950,7 +893,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="action-box">
-        Two things this weekend. First, find the <a class="vlink" href="https://www.bible.com/bible/1713/ROM.5.3-5" target="_blank">Romans 5:3-5</a> card you wrote on Sabbath and read it again, out loud, naming where you have actually seen pressure doing its slow work in you this week. Second, do question seven for real. Pick one weary or hurting person, and send them a short message today carrying the news that God's power shows up strongest in the weak place. Be the friend on the Emmaus road for somebody else.
+        Two things this weekend. First, find the <a class="vlink" href="https://www.bible.com/bible/3034/ROM.5.3-5" target="_blank" rel="noopener">Romans 5:3-5</a> card you wrote on Sabbath and read it again, out loud, naming where you have actually seen pressure doing its slow work in you this week. Second, pick one weary or hurting person, and send them a short message today carrying the news that God's power shows up strongest in the weak place. Be the friend on the Emmaus road for somebody else.
       </div>
     </div>
 
@@ -966,22 +909,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/ROM.5.3-5" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Romans+5:3-5&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

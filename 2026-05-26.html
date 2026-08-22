@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -735,45 +764,48 @@ if ('serviceWorker' in navigator) {
 
       <p>Two short verses together do the entire diagnostic work the rest of the week will treat. Paul names what the law does. John names what sin is. Then Jesus walks in and tells us the whole Old Testament library hangs on two hooks, and both of them are about love.</p>
 
+<!-- BSB_BLOCK: Romans 3:20 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:f2ba3dba1051e0b9e84528b98e9d574a8d03366f0e10affd1b7e69fc39658db2 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Romans 3:20</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ROM.3.20" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.3.20" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For no one will be justified in his sight by the works of the law, because the knowledge of sin comes through the law."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">Therefore no one will be justified in His sight by works of the law. For the law merely brings awareness of sin.</div>
+<div class="verse-commentary">
           <p>Paul writes this sentence in Romans 3, after a sustained two-and-a-half-chapter argument that Jew and Gentile both stand condemned. The verse has two halves and they must be held together or one will swallow the other. The first half closes a door. No one gets right with God by performing the law's demands; if we could earn standing through obedience, Christ's death would be unnecessary. The second half opens a different door. The knowledge of sin comes <em>through</em> the law. The Greek phrase is <em>dia nomou epignosis hamartias</em>, "through law, the full knowledge of sin." The preposition <em>dia</em> means the law is the conduit, the lens, the X-ray. The compound <em>epignosis</em> is stronger than ordinary knowledge; it carries the idea of recognition, the moment a vague shape resolves into something you can name.</p>
-          <p>Paul is making a careful distinction. He is not saying the law saves. He is saying the law is how we see what we are being saved <em>from</em>. Without the law, "sin" is a word like "weather," a generic background condition we shrug at. With the law, sin is the specific shape of the wound in our specific life. We met that same dynamic on Sabbath in the Hebrew cabinet (<em>chattat</em>, missing the mark; <em>pesha</em>, covenant breach; <em>avon</em>, bent and twisted), and the cabinet has labels on it precisely because the law is the source of the labels. Two interior witnesses sit alongside Paul's sentence: David's confession that the bent began at birth (<a class="vlink" href="https://www.bible.com/bible/1713/PSA.51.5" target="_blank">Psalm 51:5</a>) and Jeremiah's verdict that the heart is "deceitful above all things" (<a class="vlink" href="https://www.bible.com/bible/1713/JER.17.9" target="_blank">Jeremiah 17:9</a>). The law is not telling us anything we did not already half-know. It is telling us the thing our hearts have been trying to hide from us since Eden.</p>
+          <p>Paul is making a careful distinction. He is not saying the law saves. He is saying the law is how we see what we are being saved <em>from</em>. Without the law, "sin" is a word like "weather," a generic background condition we shrug at. With the law, sin is the specific shape of the wound in our specific life. We met that same dynamic on Sabbath in the Hebrew cabinet (<em>chattat</em>, missing the mark; <em>pesha</em>, covenant breach; <em>avon</em>, bent and twisted), and the cabinet has labels on it precisely because the law is the source of the labels. Two interior witnesses sit alongside Paul's sentence: David's confession that the bent began at birth (<a class="vlink" href="https://www.bible.com/bible/3034/PSA.51.5" target="_blank" rel="noopener">Psalm 51:5</a>) and Jeremiah's verdict that the heart is "deceitful above all things" (<a class="vlink" href="https://www.bible.com/bible/3034/JER.17.9" target="_blank" rel="noopener">Jeremiah 17:9</a>). The law is not telling us anything we did not already half-know. It is telling us the thing our hearts have been trying to hide from us since Eden.</p>
           <p>This is why a faithful reading of Romans 3:20 never produces despair. The X-ray that names the tumor is the same X-ray the Surgeon will follow tomorrow to remove it. The law does not save, but the law makes us savable. It clears the fog so we can see Whose hand is reaching for us.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 John 3:4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:e7c644be2542dc8f50ff77325ac12d1c52679ef014ede50cf2fd71245342990d | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 John 3:4</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1JN.3.4" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1JN.3.4" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Everyone who commits sin practices lawlessness; and sin is lawlessness."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">Everyone who practices sin practices lawlessness as well. Indeed, sin is lawlessness.</div>
+<div class="verse-commentary">
           <p>John's definition is one verse long and built around a single Greek word: <em>anomia</em>. Break the word into its pieces and you get the privative prefix <em>a-</em> ("without," "non-") plus the noun <em>nomos</em> (law). <em>Anomia</em> is literally "no-law-ness," the condition of a life unhitched from the standard. John is not just saying sin <em>breaks</em> the law. He is saying sin <em>is</em> living as if no law applied. The English word "lawless" carries the right edge. A lawless intersection has no traffic lights, and the people who use it long enough stop noticing that the cars keep colliding.</p>
           <p>Notice what this does for the modern question, "Is something a sin?" The Bible's first move is not to ask whether the action feels wrong to us, whether it harms anyone visible, or whether the culture currently approves it. Its first move is to ask whether it lives within the law God spoke at Sinai and Jesus restated on the Galilean hillside. If the action is unhitched from the standard, the action is sin, regardless of how acceptably it has been re-narrated. Yesterday we named the entrenched compromises the enemy builds in our lives. Today's verse explains why they accumulate. We have been treating large pieces of our days as if the standard did not apply to them. <em>Anomia</em> is not a dramatic posture of rebellion. <em>Anomia</em> is just an inch outside the lane line, sustained for years.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 John 3:4 | 3:4 Or is violation of the Law -->
 
+<!-- BSB_BLOCK: Mark 12:30-31 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:53f653e67282a7d278966398df9a81c5b1a02d5cf6c9792a879efacd34509158 | footnotes-stripped:2 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Mark 12:30-31</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MRK.12.30-31" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MRK.12.30-31" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Love the Lord your God with all your heart, with all your soul, with all your mind, and with all your strength. The second is, Love your neighbor as yourself. There is no other command greater than these."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>A scribe has just asked Jesus which commandment is the greatest. He answers with two sentences. The first is the Shema, the prayer every faithful Jew prayed every morning and every evening, from <a class="vlink" href="https://www.bible.com/bible/1713/DEU.6.5" target="_blank">Deuteronomy 6:5</a>. The second is from <a class="vlink" href="https://www.bible.com/bible/1713/LEV.19.18" target="_blank">Leviticus 19:18</a>, buried inside a chapter of seemingly miscellaneous holiness laws. Jesus's move was to pick those two verses, set them side by side, and announce that the entire Mosaic library hung on them. <a class="vlink" href="https://www.bible.com/bible/1713/MAT.22.40" target="_blank">Matthew 22:40</a> records the metaphor: "On these two commands all the Law and the Prophets depend." The Greek verb is <em>kremannumi</em>, the picture of hanging a heavy coat on a peg. The whole canon, in Jesus's mouth, hangs on two hooks.</p>
-          <p>This is the architecture the Decalogue itself was built to teach. The first four commandments of <a class="vlink" href="https://www.bible.com/bible/1713/EXO.20.3-17" target="_blank">Exodus 20:3-17</a> are God-ward; the last six are neighbor-ward. Two tables, two hooks, one love. The God who in <a class="vlink" href="https://www.bible.com/bible/1713/HEB.1.1-2" target="_blank">Hebrews 1:1-2</a> spoke to the fathers through prophets and in these last days has spoken to us through His Son is the same God in both tables. And the apostle John, who watched Jesus do all of this for three years, lands the matter with a sentence that ought to settle every modern argument about whether the law is harsh: "For this is what love for God is: to keep his commands. And his commands are not a burden" (<a class="vlink" href="https://www.bible.com/bible/1713/1JN.5.3" target="_blank">1 John 5:3</a>). The law is not the cage that traps the bird. The law is the wing.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 30">30</sup><span class="words-of-jesus">Love the Lord your God with all your heart and with all your soul and with all your mind and with all your strength.’</span> <sup class="verse-number" aria-label="Verse 31">31</sup><span class="words-of-jesus">The second is this: ‘Love your neighbor as yourself.’ No other commandment is greater than these.”</span></div>
+<div class="verse-commentary">
+          <p>A scribe has just asked Jesus which commandment is the greatest. He answers with two sentences. The first is the Shema, the prayer every faithful Jew prayed every morning and every evening, from <a class="vlink" href="https://www.bible.com/bible/3034/DEU.6.5" target="_blank" rel="noopener">Deuteronomy 6:5</a>. The second is from <a class="vlink" href="https://www.bible.com/bible/3034/LEV.19.18" target="_blank" rel="noopener">Leviticus 19:18</a>, buried inside a chapter of seemingly miscellaneous holiness laws. Jesus's move was to pick those two verses, set them side by side, and announce that the entire Mosaic library hung on them. <a class="vlink" href="https://www.bible.com/bible/3034/MAT.22.40" target="_blank" rel="noopener">Matthew 22:40</a> records the metaphor: "On these two commands all the Law and the Prophets depend." The Greek verb is <em>kremannumi</em>, the picture of hanging a heavy coat on a peg. The whole canon, in Jesus's mouth, hangs on two hooks.</p>
+          <p>This is the architecture the Decalogue itself was built to teach. The first four commandments of <a class="vlink" href="https://www.bible.com/bible/3034/EXO.20.3-17" target="_blank" rel="noopener">Exodus 20:3-17</a> are God-ward; the last six are neighbor-ward. Two tables, two hooks, one love. The God who in <a class="vlink" href="https://www.bible.com/bible/3034/HEB.1.1-2" target="_blank" rel="noopener">Hebrews 1:1-2</a> spoke to the fathers through prophets and in these last days has spoken to us through His Son is the same God in both tables. And the apostle John, who watched Jesus do all of this for three years, lands the matter with a sentence that ought to settle every modern argument about whether the law is harsh: "For this is what love for God is: to keep his commands. And his commands are not a burden" (<a class="vlink" href="https://www.bible.com/bible/3034/1JN.5.3" target="_blank" rel="noopener">1 John 5:3</a>). The law is not the cage that traps the bird. The law is the wing.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Mark 12:30 | 12:30 Deuteronomy 6:4–5 -->
+      <!-- BSB_FOOTNOTE: Mark 12:31 | 12:31 Leviticus 19:18 -->
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -845,22 +877,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/ROM.3.20" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Romans+3:20&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -889,8 +941,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -899,18 +953,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -918,6 +976,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -937,6 +996,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

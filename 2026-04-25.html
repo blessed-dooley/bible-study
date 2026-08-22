@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -363,6 +377,25 @@
     color: var(--text-verse);
     margin-bottom: 8px;
     font-weight: 400;
+  }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
   }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
@@ -499,49 +532,6 @@
     opacity: 0.7;
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -562,6 +552,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -580,8 +612,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -678,16 +715,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/bible-study/sw.js')
-      .catch(function(err) { console.log('SW registration failed:', err); });
-  });
-}
-</script>
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -765,16 +792,17 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
+<!-- BSB_BLOCK: Isaiah 55:11 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:85e7bb4751c14773f436dabb0ba1999ac0de8460c64faa420363d77f6182b738 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Isaiah 55:11</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ISA.55.11" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ISA.55.11" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"So shall My word be that goes forth from My mouth; It shall not return to Me void, But it shall accomplish what I please, And it shall prosper in the thing for which I sent it."</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"so my word that comes from my mouth will not return to me empty, but it will accomplish what I please and will prosper in what I send it to do."</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">The NKJV is the official memory-text translation for this week; the CSB is carried alongside so the picture lands in both formal and contemporary English. The Hebrew word translated "void" or "empty" is <em>reykam</em>, the word an ancient merchant used for a worker who came back from a long trip with nothing to show for the journey. It is not a theological abstraction; it is a receipt. God is saying that when His Word goes out, it does not come back unpaid. It earns what He sent it for, every time, without exception.<br><br>That promise is the anchor of the entire week, because every practical move the week will ask for (make time, find a place, read with a pen, share it with a friend, develop a taste for it) only matters if the Word itself actually does something when it meets an attentive heart. Isaiah's promise guarantees the second half of that equation. The rain comes down and does not go back up without first watering the ground. The Word goes out and does not return without first working through the reader. The only variable in the whole process is the soil. This week walks through the practices that make the soil soft, tracing the abiding vine of <a class="vlink" href="https://www.bible.com/bible/1713/JHN.15.1-8" target="_blank">John 15:1-8</a>, the early-morning withdrawal of <a class="vlink" href="https://www.bible.com/bible/1713/MRK.1.35" target="_blank">Mark 1:35</a>, the command to seek His face in <a class="vlink" href="https://www.bible.com/bible/1713/1CH.16.11" target="_blank">1 Chronicles 16:11</a>, the lamp-to-the-feet of <a class="vlink" href="https://www.bible.com/bible/1713/PSA.119.105" target="_blank">Psalm 119:105</a>, the wakened ear of <a class="vlink" href="https://www.bible.com/bible/1713/ISA.50.4" target="_blank">Isaiah 50:4</a>, and the whole invitation of <a class="vlink" href="https://www.bible.com/bible/1713/ISA.55.1-13" target="_blank">Isaiah 55</a> itself.</div>
+        <div class="verse-text">so My word that proceeds from My mouth will not return to Me empty, but it will accomplish what I please, and it will prosper where I send it.</div>
+<div class="verse-commentary">
+          <p>The BSB renders the Hebrew word <em>reykam</em> as "empty." It is the word an ancient merchant used for a worker who came back from a long trip with nothing to show for the journey. It is not a theological abstraction; it is a receipt. God is saying that when His Word goes out, it does not come back unpaid. It earns what He sent it for, every time, without exception.</p>
+          <p>That promise is the anchor of the entire week, because every practical move the week will ask for (make time, find a place, read with a pen, share it with a friend, develop a taste for it) only matters if the Word itself actually does something when it meets an attentive heart. Isaiah's promise guarantees the second half of that equation. The rain comes down and does not go back up without first watering the ground. The Word goes out and does not return without first working through the reader. The only variable in the whole process is the soil. This week walks through the practices that make the soil soft, tracing the abiding vine of <a class="vlink" href="https://www.bible.com/bible/3034/JHN.15.1-8" target="_blank" rel="noopener">John 15:1-8</a>, the early-morning withdrawal of <a class="vlink" href="https://www.bible.com/bible/3034/MRK.1.35" target="_blank" rel="noopener">Mark 1:35</a>, the command to seek His face in <a class="vlink" href="https://www.bible.com/bible/3034/1CH.16.11" target="_blank" rel="noopener">1 Chronicles 16:11</a>, the lamp-to-the-feet of <a class="vlink" href="https://www.bible.com/bible/3034/PSA.119.105" target="_blank" rel="noopener">Psalm 119:105</a>, the wakened ear of <a class="vlink" href="https://www.bible.com/bible/3034/ISA.50.4" target="_blank" rel="noopener">Isaiah 50:4</a>, and the whole invitation of <a class="vlink" href="https://www.bible.com/bible/3034/ISA.55.1-13" target="_blank" rel="noopener">Isaiah 55</a> itself.</p>
+        </div>
       </div>
     </div>
 
@@ -839,23 +867,51 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/ISA.55.11" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Isaiah+55:11&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/bible-study/sw.js')
+    .then(reg => console.log('SW registered:', reg.scope))
+    .catch(err => console.log('SW registration failed:', err));
+}
+</script>
+
 <!-- Firebase SDK for push notifications -->
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>

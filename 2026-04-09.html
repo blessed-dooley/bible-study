@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -380,6 +413,16 @@
     padding-top: 14px;
     border-top: 1px solid var(--border);
     font-weight: 300;
+  }
+  .verse-commentary p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-soft);
+    font-weight: 300;
+    margin: 0 0 14px 0;
+  }
+  .verse-commentary p:last-child {
+    margin-bottom: 0;
   }
 
   /* ── ACCENT SECTIONS ── */
@@ -459,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -522,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -540,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -638,8 +685,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -705,7 +750,7 @@
         <div class="section-title-line"></div>
       </div>
       <div class="section-heading">The God Who Pitched His Tent</div>
-      <p>When John wrote that "the Word became flesh and dwelt among us" (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.1.14" target="_blank">John 1:14</a>), the Greek word he chose for "dwelt" was <em>skenoo</em>, which literally means "pitched a tent" or "tabernacled." Every Jewish reader would have caught the reference immediately. The tabernacle, the <em>mishkan</em> in Hebrew, was the portable dwelling where God's presence lived among the Israelites during their wilderness wandering. It was the place where heaven and earth overlapped, where the infinite God chose to be locatable among His finite people. John is saying that Jesus is the new tabernacle: God's presence has moved into the neighborhood, this time not in a tent of curtains and gold but in human flesh.</p>
+      <p>When John wrote that "the Word became flesh and dwelt among us" (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.1.14" target="_blank" rel="noopener">John 1:14</a>), the Greek word he chose for "dwelt" was <em>skenoo</em>, which literally means "pitched a tent" or "tabernacled." Every Jewish reader would have caught the reference immediately. The tabernacle, the <em>mishkan</em> in Hebrew, was the portable dwelling where God's presence lived among the Israelites during their wilderness wandering. It was the place where heaven and earth overlapped, where the infinite God chose to be locatable among His finite people. John is saying that Jesus is the new tabernacle: God's presence has moved into the neighborhood, this time not in a tent of curtains and gold but in human flesh.</p>
       <p>This was without precedent in the ancient world. Greek and Roman gods occasionally disguised themselves as humans, visiting earth in borrowed forms the way someone might put on a costume, always ready to shed it and return to Olympus. Hindu tradition speaks of divine avatars who descend but retain their fundamental otherness. In no major religious tradition did the supreme deity permanently and irrevocably become a human being: born helpless, hungry, tired, grieving, bleeding, dying. The incarnation was not a divine visit. It was a divine relocation. God did not come dressed as one of us; He became one of us. And He never stopped being one of us. The risen, ascended Jesus still bears a human body. The tabernacle was never taken down.</p>
     </div>
 
@@ -720,64 +765,65 @@
       <p>Today's passages reveal the most extraordinary claim in all of Scripture: that the infinite, invisible God made Himself fully knowable by becoming a human being. We begin with the name that announced it, move to the words Jesus spoke about it, and close with the theological vision of what it means.</p>
 
       <!-- Matthew 1:23 (anchor) -->
+<!-- BSB_BLOCK: Matthew 1:23 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b9751148136c4e3832e852db102bdce35154dd9618523136e493b15390102674 | footnotes-stripped:2 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Matthew 1:23</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.1.23" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.1.23" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"See, the virgin will become pregnant and give birth to a son, and they will name him Immanuel, which is translated 'God is with us.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">“Behold, the virgin will be with child and will give birth to a son, and they will call Him Immanuel” (which means, “God with us”).</div>
+<div class="verse-commentary">
           <p>Matthew's Gospel opens with a name that redefines everything. Immanuel is not a description of what God does; it is a declaration of who God is in relation to us. "God with us" means God is not observing from a distance, not delegating through intermediaries, not sending messages through prophets alone. He is <em>with</em> us. The preposition carries the full weight of personal presence, proximity, and participation in human life.</p>
-          <p>This name reaches back to Isaiah's original prophecy (<a class="vlink" href="https://www.bible.com/bible/1713/ISA.7.14" target="_blank">Isaiah 7:14</a>) and fulfills it in a way no one anticipated. Isaiah spoke the name into a specific political crisis, assuring King Ahaz that God had not abandoned His people. Matthew sees that promise finding its ultimate fulfillment in a baby born in Bethlehem. God's answer to every fear, every crisis, every moment of feeling abandoned, is not an explanation; it is a presence. He shows up.</p>
+          <p>This name reaches back to Isaiah's original prophecy (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.7.14" target="_blank" rel="noopener">Isaiah 7:14</a>) and fulfills it in a way no one anticipated. Isaiah spoke the name into a specific political crisis, assuring King Ahaz that God had not abandoned His people. Matthew sees that promise finding its ultimate fulfillment in a baby born in Bethlehem. God's answer to every fear, every crisis, every moment of feeling abandoned, is not an explanation; it is a presence. He shows up.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Matthew 1:23 | 1:23 Literally they will call His name Immanuel; Isaiah 7:14 (see also DSS) -->
+      <!-- BSB_FOOTNOTE: Matthew 1:23 | 1:23 See Isaiah 7:14, Isaiah 8:8, and Isaiah 8:10. -->
 
       <!-- Matthew 28:20 -->
+<!-- BSB_BLOCK: Matthew 28:20 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:701f4cf2d3210e3150288782481db0f49513fc7bbe15f266ab29238e5ce40f98 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Matthew 28:20</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.28.20" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.28.20" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Teaching them to observe everything I have commanded you. And remember, I am with you always, to the end of the age."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Now compare this with Matthew 1:23. Matthew's Gospel begins with the promise "God is with us" and ends with Jesus Himself declaring "I am with you always." This is not a coincidence; it is a literary and theological frame that holds the entire Gospel together. The name given at His birth becomes the promise spoken from His own lips after His resurrection. The Immanuel of the manger is the Immanuel of the commission.</p>
+        <div class="verse-text"><span class="words-of-jesus">and teaching them to obey all that I have commanded you. And surely I am with you always, even to the end of the age.”</span></div>
+<div class="verse-commentary">
+          <p>Now compare this with Matthew 1:23. Matthew's Gospel begins with the promise "God with us" and ends with Jesus Himself declaring "I am with you always." This is not a coincidence; it is a literary and theological frame that holds the entire Gospel together. The name given at His birth becomes the promise spoken from His own lips after His resurrection. The Immanuel of the manger is the Immanuel of the commission.</p>
           <p>Notice what Jesus does not say. He does not say "I will send someone to be with you" or "My teachings will be with you" or "My memory will be with you." He says <em>I</em> am with you. Always. To the end of the age. The God who entered human experience at Bethlehem did not leave it at the ascension. His presence with His people is not a temporary arrangement; it is the permanent reality of the universe.</p>
         </div>
       </div>
 
-      <!-- John 14:9 (dual translation NKJV + CSB) -->
+      
+<!-- BSB_BLOCK: John 14:9 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:74735c2564d3b4341587a2c53112e71134675a4bcbb8aa494378e45236a92b1d | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">John 14:9</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.14.9" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.14.9" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Jesus said to him, 'Have I been with you so long, and yet you have not known Me, Philip? He who has seen Me has seen the Father; so how can you say, "Show us the Father"?'"</div>
-        <div class="verse-translation">New King James Version · NKJV</div>
-        <div class="verse-text-alt">"Jesus said to him, 'Have I been among you all this time and you do not know me, Philip? The one who has seen me has seen the Father. How can you say, "Show us the Father"?'"</div>
-        <div class="verse-translation-alt">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">Jesus replied, <span class="words-of-jesus">“Philip, I have been with you all this time, and still you do not know Me? Anyone who has seen Me has seen the Father. How can you say, ‘Show us the Father’?</span></div>
+<div class="verse-commentary">
           <p>This is one of the most direct statements Jesus ever made about His relationship to the Father, and it answers the question the entire week has been asking: who is the God we are trying to know? Philip's request, "Show us the Father," was reasonable enough. He wanted something definitive, some unmistakable revelation of God. Jesus' response must have been staggering: you've been looking at Him this entire time.</p>
           <p>Every act of compassion Jesus showed, every word of truth He spoke, every moment of patience with slow-learning disciples, every tear He shed at a friend's grave, every meal He shared with outsiders, was the Father's character on display. Jesus is not a partial reflection of God or an approximate likeness. He is the complete, unfiltered, undistorted revelation of who God is. If you want to know whether God is angry or gracious, distant or near, indifferent or deeply invested in your life, stop speculating and look at Jesus. What you see is what the Father is like. All the way through. No exceptions.</p>
         </div>
       </div>
 
       <!-- Philippians 2:5-8 -->
+<!-- BSB_BLOCK: Philippians 2:5-8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:8714d87a0097735de7a8f865ea8606c73b9b29a6ef027da6f90626e07033d358 | footnotes-stripped:1 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Philippians 2:5-8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/PHP.2.5-8" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PHP.2.5-8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Adopt the same attitude as that of Christ Jesus, who, existing in the form of God, did not consider equality with God as something to be exploited. Instead he emptied himself by assuming the form of a servant, taking on the likeness of humanity. And when he had come as a man, he humbled himself by becoming obedient to the point of death&#x200A;&#x2014;&#x200A;even to death on a cross."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Paul pulls back the curtain on what the incarnation cost. Jesus was "existing in the form of God," not play-acting divinity but possessing the full reality of it. And He "did not consider equality with God as something to be exploited." That word "exploited" reveals the heart of God more than almost any other word in Scripture. A being with unlimited power who refuses to use it for His own advantage and instead empties Himself for the sake of others is the exact opposite of the serpent's portrait from Sunday's study, which accused God of withholding good things to maintain His own position.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 5">5</sup>Let this mind be in you which was also in Christ Jesus: <sup class="verse-number" aria-label="Verse 6">6</sup>Who, existing in the form of God, did not consider equality with God something to be grasped, <sup class="verse-number" aria-label="Verse 7">7</sup>but emptied Himself, taking the form of a servant, being made in human likeness. <sup class="verse-number" aria-label="Verse 8">8</sup>And being found in appearance as a man, He humbled Himself and became obedient to death—even death on a cross.</div>
+<div class="verse-commentary">
+          <p>Paul pulls back the curtain on what the incarnation cost. Jesus was "existing in the form of God," not play-acting divinity but possessing the full reality of it. And He "did not consider equality with God something to be grasped." That word "exploited" reveals the heart of God more than almost any other word in Scripture. A being with unlimited power who refuses to use it for His own advantage and instead empties Himself for the sake of others is the exact opposite of the serpent's portrait from Sunday's study, which accused God of withholding good things to maintain His own position.</p>
           <p>The downward trajectory here is breathtaking: from the form of God to the form of a servant, from the likeness of God to the likeness of humanity, from the throne of heaven to death on a cross. At each step, Jesus had the power to stop. He never did. This passage does not merely tell us that God loves us; it shows us what that love looks like when it is put into action at the highest possible cost. The God who is holy, loving, and all-powerful used every one of those attributes in the service of rescue, not domination.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Philippians 2:6 | 2:6 Or something to be exploited -->
 
-      <p>Several other passages illuminate this truth from different angles. <a class="vlink" href="https://www.bible.com/bible/1713/HEB.1.3" target="_blank">Hebrews 1:3</a> calls Jesus "the radiance of God's glory and the exact expression of his nature," language that means He is not a copy of God but the very outshining of who God is. <a class="vlink" href="https://www.bible.com/bible/1713/COL.1.15" target="_blank">Colossians 1:15</a> calls Him "the image of the invisible God," the one who makes the unseeable seeable. And <a class="vlink" href="https://www.bible.com/bible/1713/JHN.1.14" target="_blank">John 1:14</a> declares that "the Word became flesh and dwelt among us," the eternal communication of God taking on a body so that we could encounter Him face to face. Each of the four Gospel writers brings a distinct perspective to this portrait: Matthew shows the promised Messiah who fulfills the Hebrew Scriptures, Mark reveals the tireless servant who pours Himself out for others, Luke (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.1.3-4" target="_blank">Luke 1:3-4</a>) carefully documents the human Jesus with compassion and historical precision, and John unveils the divine Son who invites us to believe and find life. Four angles on the same person, because no single perspective could hold the fullness of who He is.</p>
+      <p>Several other passages illuminate this truth from different angles. <a class="vlink" href="https://www.bible.com/bible/3034/HEB.1.3" target="_blank" rel="noopener">Hebrews 1:3</a> calls Jesus "the radiance of God's glory and the exact expression of his nature," language that means He is not a copy of God but the very outshining of who God is. <a class="vlink" href="https://www.bible.com/bible/3034/COL.1.15" target="_blank" rel="noopener">Colossians 1:15</a> calls Him "the image of the invisible God," the one who makes the unseeable seeable. And <a class="vlink" href="https://www.bible.com/bible/3034/JHN.1.14" target="_blank" rel="noopener">John 1:14</a> declares that "the Word became flesh and dwelt among us," the eternal communication of God taking on a body so that we could encounter Him face to face. Each of the four Gospel writers brings a distinct perspective to this portrait: Matthew shows the promised Messiah who fulfills the Hebrew Scriptures, Mark reveals the tireless servant who pours Himself out for others, Luke (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.1.3-4" target="_blank" rel="noopener">Luke 1:3-4</a>) carefully documents the human Jesus with compassion and historical precision, and John unveils the divine Son who invites us to believe and find life. Four angles on the same person, because no single perspective could hold the fullness of who He is.</p>
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -850,22 +896,42 @@
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/MAT.1.23" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Matthew+1:23&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <a class="footer-archive" href="index.html">&#8592; Home</a>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
+    <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

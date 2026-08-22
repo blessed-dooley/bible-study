@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -722,7 +745,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Grave Beside the Deportation Road</div>
       <p>Rachel died on the road. Jacob's beloved wife went into labor on the journey south and was buried where she fell, near the border country between Ramah and Bethlehem, and her grave became a landmark travelers passed for centuries. Now fast-forward more than a thousand years. When Babylon crushed Jerusalem, the captives were assembled in chains at Ramah, the staging depot for deportation. Jeremiah himself was processed through that camp. Line after line of prisoners shuffled north into exile along the old roads, right through Rachel's country, right past the mother's grave.</p>
-      <p>That is the picture behind <a class="vlink" href="https://www.bible.com/bible/1713/JER.31.15" target="_blank">Jeremiah 31:15</a>. The prophet imagines the matriarch rising in her tomb as her descendants are herded past, refusing all comfort, weeping for children who "are no more." Ephraim, the grandson she never lived to hold, had become the name for the whole northern kingdom, the firstborn nation that chased other gods until Assyria swallowed it. By Jeremiah's day the south was following it into the dark. So the Bible gives grieving love its full voice. The weeping mother is in the text, not edited out of it. But she does not get the last word. Into that funeral scene God speaks one of the tenderest oracles in Scripture, and it is addressed to every parent who has ever cried over a child walking the wrong road.</p>
+      <p>That is the picture behind <a class="vlink" href="https://www.bible.com/bible/3034/JER.31.15" target="_blank" rel="noopener">Jeremiah 31:15</a>. The prophet imagines the matriarch rising in her tomb as her descendants are herded past, refusing all comfort, weeping for children who "are no more." Ephraim, the grandson she never lived to hold, had become the name for the whole northern kingdom, the firstborn nation that chased other gods until Assyria swallowed it. By Jeremiah's day the south was following it into the dark. So the Bible gives grieving love its full voice. The weeping mother is in the text, not edited out of it. But she does not get the last word. Into that funeral scene God speaks one of the tenderest oracles in Scripture, and it is addressed to every parent who has ever cried over a child walking the wrong road.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -733,55 +756,58 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Somebody reading this carries a name that hurts: a child, a grandchild, a brother, a friend who walked away from the Lord. Today's anchor is God's answer to Rachel's weeping in <a class="vlink" href="https://www.bible.com/bible/1713/JER.31.16-20" target="_blank">Jeremiah 31:16-20</a>, and the question underneath is the one we are afraid to ask out loud. Has God given up on my wanderer? Hosea supplies the honest diagnosis of how far Ephraim strayed, and then Jeremiah records the homecoming God refuses to stop expecting.</p>
+      <p>Somebody reading this carries a name that hurts: a child, a grandchild, a brother, a friend who walked away from the Lord. Today's anchor is God's answer to Rachel's weeping in <a class="vlink" href="https://www.bible.com/bible/3034/JER.31.16-20" target="_blank" rel="noopener">Jeremiah 31:16-20</a>, and the question underneath is the one we are afraid to ask out loud. Has God given up on my wanderer? Hosea supplies the honest diagnosis of how far Ephraim strayed, and then Jeremiah records the homecoming God refuses to stop expecting.</p>
 
+<!-- BSB_BLOCK: Hosea 4:17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:4457b33c6741dc5f52a2be39b383caef4b00f85f026d897ff90e53a48e8e57af | footnotes-stripped:1 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Hosea 4:17</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/HOS.4.17" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/HOS.4.17" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Ephraim is attached to idols; leave him alone!"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>This might be the most frightening sentence a wandering soul can hear, and the Bible does not soften it. Ephraim has bonded himself to idols the way a drunk bonds to the bottle, and God says to let him have what he is demanding. Yet read the rest of Hosea and the strangest thing appears. God keeps talking. A whole chapter later He is still cataloguing Ephraim's drift, the half-baked loyalty, the silly-dove flitting between Egypt and Assyria for help, anywhere but home (<a class="vlink" href="https://www.bible.com/bible/1713/HOS.7" target="_blank">Hosea 7</a>). You do not keep writing pages about someone you have stopped loving. "Leave him alone" turns out to be a stage in the pursuit, not the end of it. Sometimes love lets the far country do its teaching.</p>
+        <div class="verse-text">Ephraim is joined to idols; leave him alone!</div>
+<div class="verse-commentary">
+          <p>This might be the most frightening sentence a wandering soul can hear, and the Bible does not soften it. Ephraim has bonded himself to idols the way a drunk bonds to the bottle, and God says to let him have what he is demanding. Yet read the rest of Hosea and the strangest thing appears. God keeps talking. A whole chapter later He is still cataloguing Ephraim's drift, the half-baked loyalty, the silly-dove flitting between Egypt and Assyria for help, anywhere but home (<a class="vlink" href="https://www.bible.com/bible/3034/HOS.7" target="_blank" rel="noopener">Hosea 7</a>). You do not keep writing pages about someone you have stopped loving. "Leave him alone" turns out to be a stage in the pursuit, not the end of it. Sometimes love lets the far country do its teaching.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Hosea 4:17 | 4:17 That is, the northern kingdom of Israel -->
 
+<!-- BSB_BLOCK: Jeremiah 31:16-17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c7bd5d70995b811be3c976d51f4c200281f53b0d85fc1895eff6c29aebb99a53 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Jeremiah 31:16-17</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JER.31.16-17" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JER.31.16-17" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"This is what the LORD says: Keep your voice from weeping and your eyes from tears, for the reward for your work will come — this is the LORD's declaration — and your children will return from the enemy's land. There is hope for your future — this is the LORD's declaration — and your children will return to their own territory."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>God answers the weeping mother (<a class="vlink" href="https://www.bible.com/bible/1713/JER.31.15" target="_blank">Jeremiah 31:15</a>) with a command nobody at a graveside expects. Stop crying. Not because the grief is wrong, but because the story is not over. Twice in two verses He stamps it with "this is the LORD's declaration," the way a king seals a decree, and twice He says the children will return. Notice also the quiet phrase "the reward for your work." The years of bedtime prayers, the example, the love that kept the porch light on: none of it evaporated when the child walked out of the faith. God keeps receipts on a parent's faithfulness. Hope, in this passage, is not wishful thinking. It is a signed promise from the only One who can see the road back.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 16">16</sup>This is what the LORD says: “Keep your voice from weeping and your eyes from tears, for the reward for your work will come, declares the LORD. Then your children will return from the land of the enemy. <sup class="verse-number" aria-label="Verse 17">17</sup>So there is hope for your future, declares the LORD, and your children will return to their own land.</div>
+<div class="verse-commentary">
+          <p>God answers the weeping mother (<a class="vlink" href="https://www.bible.com/bible/3034/JER.31.15" target="_blank" rel="noopener">Jeremiah 31:15</a>) with a command nobody at a graveside expects. Stop crying. Not because the grief is wrong, but because the story is not over. Twice in two verses He stamps it with "declares the LORD," the way a king seals a decree, and twice He says the children will return. Notice also the quiet phrase "the reward for your work." The years of bedtime prayers, the example, the love that kept the porch light on: none of it evaporated when the child walked out of the faith. God keeps receipts on a parent's faithfulness. Hope, in this passage, is not wishful thinking. It is a signed promise from the only One who can see the road back.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Jeremiah 31:18-19 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:7b478bee44b29dbe9bd1f306d61620f944aef8a465556abdaac2a86eae052891 | footnotes-stripped:1 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Jeremiah 31:18-19</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JER.31.18-19" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JER.31.18-19" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"I have surely heard Ephraim moaning, 'You disciplined me, and I have been disciplined like an untrained calf. Take me back, so that I can return, for you, LORD, are my God. After my return, I felt regret; after I was instructed, I struck my thigh in grief. I was ashamed and humiliated because I bore the disgrace of my youth.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 18">18</sup>I have surely heard Ephraim’s moaning: ‘You disciplined me severely, like an untrained calf. Restore me, that I may return, for You are the LORD my God. <sup class="verse-number" aria-label="Verse 19">19</sup>After I returned, I repented; and after I was instructed, I struck my thigh in grief. I was ashamed and humiliated because I bore the disgrace of my youth.’</div>
+<div class="verse-commentary">
           <p>Now we hear the wanderer himself, and the first two words are everything. "I have surely heard." All the time Ephraim was in the far country, mumbling his regret where no parent could hear it, God was listening. The boy who once shook off every restraint now compares himself to an untrained calf that finally stopped fighting the yoke, and his prayer is the only one a wanderer ever needs: take me back, so that I can return. He cannot even come home on his own strength. The turning itself has to be given. If you have a wanderer, this verse is the one to hold on a dark night. The silence between you and them is not silence between them and God. He hears rooms you cannot enter.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Jeremiah 31:18 | 31:18 That is, the northern kingdom of Israel; also in verse 20 -->
 
+<!-- BSB_BLOCK: Jeremiah 31:20 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:987907295a07edbdc5fe240d2d6c462959f9c2ca4757a92847fabc8577f5b527 | footnotes-stripped:1 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Jeremiah 31:20</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JER.31.20" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JER.31.20" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Isn't Ephraim a precious son to me, a delightful child? Whenever I speak against him, I certainly still think about him. Therefore, my inner being yearns for him; I will truly have compassion on him. This is the LORD's declaration."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Here God opens His own chest. The Hebrew verb behind "my inner being yearns" is <em>hamah</em>, the word for a growl, a moan, the roar of a churning sea. God's insides are in an uproar over His runaway boy. Even when He had to speak against Ephraim, He could not stop thinking about him. The rebuke and the yearning lived in the same heart at the same time, the way they do in every parent who has had to say hard things to a child they would die for. Whatever you have felt at that kitchen table, the frustration, the discouragement, even the words you regret saying about your wanderer, this verse says God's love went deeper and never wavered. He is not finished. His mercy is great, and His gut growls for the child to come home.</p>
+        <div class="verse-text">Is not Ephraim a precious son to Me, a delightful child? Though I often speak against him, I still remember him. Therefore My heart yearns for him; I have great compassion for him,” declares the LORD.</div>
+<div class="verse-commentary">
+          <p>Here God opens His own chest. The Hebrew verb behind "My heart yearns" is <em>hamah</em>, the word for a growl, a moan, the roar of a churning sea. God's insides are in an uproar over His runaway boy. Even when He had to speak against Ephraim, He could not stop thinking about him. The rebuke and the yearning lived in the same heart at the same time, the way they do in every parent who has had to say hard things to a child they would die for. Whatever you have felt at that kitchen table, the frustration, the discouragement, even the words you regret saying about your wanderer, this verse says God's love went deeper and never wavered. He is not finished. His mercy is great, and His gut growls for the child to come home.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Jeremiah 31:20 | 31:20 Hebrew My bowels yearn for him -->
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -805,7 +831,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">The Ones Who Came Back</div>
       <p>Cornell professor Karl Pillemer ran the first large national survey on family estrangement and discovered how crowded that lonely road is. Twenty-seven percent of Americans, roughly 67 million people, are cut off from a family member, and the parent-and-adult-child rift is among the most common. Then his Cornell Family Reconciliation Project did something more hopeful. His team interviewed about 300 people living through estrangements, including roughly 100 who had actually gotten their person back, hunting for what reopened the door. The finding upends every instinct. Almost nobody reconciled by winning the argument. The ones who succeeded had quietly given up the demand for an apology and the need to have their version of the past accepted. They stopped litigating and kept a warm, low-pressure line open, and one day, often years later, the other person walked back through it.</p>
-      <p>That is research catching up to <a class="vlink" href="https://www.bible.com/bible/1713/JER.31" target="_blank">Jeremiah 31</a>. God's "leave him alone" over Ephraim was never a slammed door, because chapters later He is still speaking of him, still listening, and when the wanderer finally mutters his regret in the far country, God says "I have surely heard." And notice what God does not do in the homecoming scene. He does not reopen the case file. The same heart beats in Jesus' parable, where the returning son starts his rehearsed confession and the father talks over it with orders for a robe. The data describes the porch light; Jeremiah shows Who keeps it burning. A door held open without pressure is the one a wanderer eventually tests.</p>
+      <p>That is research catching up to <a class="vlink" href="https://www.bible.com/bible/3034/JER.31" target="_blank" rel="noopener">Jeremiah 31</a>. God's "leave him alone" over Ephraim was never a slammed door, because chapters later He is still speaking of him, still listening, and when the wanderer finally mutters his regret in the far country, God says "I have surely heard." And notice what God does not do in the homecoming scene. He does not reopen the case file. The same heart beats in Jesus' parable, where the returning son starts his rehearsed confession and the father talks over it with orders for a robe. The data describes the porch light; Jeremiah shows Who keeps it burning. A door held open without pressure is the one a wanderer eventually tests.</p>
     </div>
 
     <!-- 7. CHRIST CONNECTION -->
@@ -815,7 +841,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Centuries after Jeremiah, Jesus stood in front of tax collectors and Pharisees and told a story that is Jeremiah 31:20 with sandals on. A son demands his inheritance, wastes it in the far country, and comes home rehearsing a servant's speech, and the father sees him while he is still a long way off, feels his insides churn with compassion, and runs (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.15.20" target="_blank">Luke 15:20</a>). That father is not a character Jesus invented. He is a portrait of the God whose <em>hamah</em>, that growling, churning yearning, we heard today. And Jesus did more than describe the yearning. He became it. The Son left home in the other direction, out of the Father's house and into our far country, to carry every wanderer back on His shoulders. The cross is what it cost to turn "leave him alone" into "bring him home." If you are praying for a wanderer tonight, you are praying to a God who has already proven how far He will go to get a child back.</p>
+      <p>Centuries after Jeremiah, Jesus stood in front of tax collectors and Pharisees and told a story that is Jeremiah 31:20 with sandals on. A son demands his inheritance, wastes it in the far country, and comes home rehearsing a servant's speech, and the father sees him while he is still a long way off, feels his insides churn with compassion, and runs (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.15.20" target="_blank" rel="noopener">Luke 15:20</a>). That father is not a character Jesus invented. He is a portrait of the God whose <em>hamah</em>, that growling, churning yearning, we heard today. And Jesus did more than describe the yearning. He became it. The Son left home in the other direction, out of the Father's house and into our far country, to carry every wanderer back on His shoulders. The cross is what it cost to turn "leave him alone" into "bring him home." If you are praying for a wanderer tonight, you are praying to a God who has already proven how far He will go to get a child back.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -852,22 +878,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/JER.31.16-20" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Jeremiah+31:16-20&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

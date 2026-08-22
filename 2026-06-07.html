@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -700,7 +723,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">TL;DR</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Water is coming over the sides, the boat is going under, and Jesus is asleep in the back with His head on a cushion. The disciples wake Him with an accusation, not a request. "Don't You care that we're going to die?" He stills the storm with two words, then asks the question that outlasts the weather. Why were you afraid? The terror was never really about the wind. It was about the suspicion that the One in the boat with them had stopped caring, and <strong>a setback is the fastest way to find out what we secretly believe about God</strong>.</p>
+      <p>Water is coming over the sides, the boat is going under, and Jesus is asleep in the back with His head on a cushion. The disciples wake Him with an accusation, not a request. "don’t You care that we are perishing?" He stills the storm with two words, then asks the question that outlasts the weather. Why were you afraid? The terror was never really about the wind. It was about the suspicion that the One in the boat with them had stopped caring, and <strong>a setback is the fastest way to find out what we secretly believe about God</strong>.</p>
     </div>
 
     <!-- 2. CONNECTION TO YESTERDAY -->
@@ -735,15 +758,15 @@ if ('serviceWorker' in navigator) {
 
       <p>Mark tells the whole thing in seven fast verses, and he does not soften the disciples' panic or tidy up their accusation. Watch where the fear actually points. It is not finally at the wind. It is at the Man sleeping through it, and at what His sleep seems to say about whether He still cares.</p>
 
+<!-- BSB_BLOCK: Mark 4:35-41 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:188a13d75337e585a59816e2a4070b855d3769ab767dc7e1973fcf43923ca757 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Mark 4:35-41</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MRK.4.35-41" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MRK.4.35-41" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"On that day, when evening had come, he told them, 'Let's cross over to the other side.' So they left the crowd and took him along since he was already in the boat. And other boats were with him. A great windstorm arose, and the waves were breaking over the boat, so that the boat was already being swamped. He was in the stern, sleeping on the cushion. So they woke him up and said to him, 'Teacher! Don't you care that we're going to die?' He got up, rebuked the wind, and said to the sea, 'Silence! Be still!' The wind ceased, and there was a great calm. Then he said to them, 'Why are you afraid? Do you still have no faith?' And they were terrified and asked one another, 'Who then is this? Even the wind and the sea obey him!'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>The words Jesus speaks to the sea are blunt. The Greek behind "Be still" is <em>pephimoso</em>, which means "be muzzled," the word you would use for strapping a muzzle on a dangerous animal. He does not coax the storm down. He collars it like something that has gotten loose. Then He turns to the men and asks why they were afraid, which sounds harsh until you notice what their fear had done. They had been awake bailing while He slept, steering by the one thing they could see, the rising water, instead of trusting the One they could not yet understand. That is the gap Paul names when he says we walk by faith and not by sight (<a class="vlink" href="https://www.bible.com/bible/1713/2CO.5.7" target="_blank">2 Corinthians 5:7</a>). Their real question, "don't You care," is the question every setback eventually asks out loud. The calm came in seconds. The deeper lesson took the rest of their lives.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 35">35</sup>When that evening came, He said to His disciples, <span class="words-of-jesus">“Let us cross to the other side.”</span> <sup class="verse-number" aria-label="Verse 36">36</sup>After they had dismissed the crowd, they took Jesus with them, since He was already in the boat. And there were other boats with Him. <sup class="verse-number" aria-label="Verse 37">37</sup>Soon a violent windstorm came up, and the waves were breaking over the boat, so that it was being swamped. <sup class="verse-number" aria-label="Verse 38">38</sup>But Jesus was in the stern, sleeping on the cushion. So they woke Him and said, “Teacher, don’t You care that we are perishing?” <sup class="verse-number" aria-label="Verse 39">39</sup>Then Jesus got up and rebuked the wind and the sea. <span class="words-of-jesus">“Silence!”</span> He commanded. <span class="words-of-jesus">“Be still!”</span> And the wind died down, and it was perfectly calm. <sup class="verse-number" aria-label="Verse 40">40</sup><span class="words-of-jesus">“Why are you so afraid?”</span> He asked. <span class="words-of-jesus">“Do you still have no faith?”</span> <sup class="verse-number" aria-label="Verse 41">41</sup>Overwhelmed with fear, they asked one another, “Who is this, that even the wind and the sea obey Him?”</div>
+<div class="verse-commentary">
+          <p>The words Jesus speaks to the sea are blunt. The Greek behind "Be still" is <em>pephimoso</em>, which means "be muzzled," the word you would use for strapping a muzzle on a dangerous animal. He does not coax the storm down. He collars it like something that has gotten loose. Then He turns to the men and asks why they were afraid, which sounds harsh until you notice what their fear had done. They had been awake bailing while He slept, steering by the one thing they could see, the rising water, instead of trusting the One they could not yet understand. That is the gap Paul names when he says we walk by faith and not by sight (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.5.7" target="_blank" rel="noopener">2 Corinthians 5:7</a>). Their real question, "don’t You care that we are perishing?" is the question every setback eventually asks out loud. The calm came in seconds. The deeper lesson took the rest of their lives.</p>
         </div>
       </div>
     </div>
@@ -779,7 +802,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>The disciples end the story with a question they cannot answer. "Who then is this? Even the wind and the sea obey him." Anyone raised on the Hebrew Scriptures would have felt the ground move under that question, because in the Old Testament only One ever speaks to the sea and is obeyed. The God who set the boundary the waves cannot cross was now asleep on a cushion in a borrowed fishing boat, tired enough to need the rest, human enough to feel the exhaustion. Hold that picture, because it turns over before the gospel ends. There is a second storm coming, in a garden and then on a cross, and in that one the roles reverse. This time it is the Son crying out, asking whether He has been forsaken, while heaven stays silent and does not still the wind. He let that storm run all the way through Him so that He could answer our "don't You care" with His own scars.</p>
+      <p>The disciples end the story with a question they cannot answer. "Who is this, that even the wind and the sea obey Him?" Anyone raised on the Hebrew Scriptures would have felt the ground move under that question, because in the Old Testament only One ever speaks to the sea and is obeyed. The God who set the boundary the waves cannot cross was now asleep on a cushion in a borrowed fishing boat, tired enough to need the rest, human enough to feel the exhaustion. Hold that picture, because it turns over before the gospel ends. There is a second storm coming, in a garden and then on a cross, and in that one the roles reverse. This time it is the Son crying out, asking whether He has been forsaken, while heaven stays silent and does not still the wind. He let that storm run all the way through Him so that He could answer our "don’t You care that we are perishing?" with His own scars.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -816,22 +839,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/MRK.4.35-41" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Mark+4:35-41&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

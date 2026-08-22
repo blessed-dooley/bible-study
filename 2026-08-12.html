@@ -378,6 +378,14 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
   .verse-text sup.verse-number,
   .verse-text-alt sup.verse-number {
     font-family: 'Nunito', sans-serif;
@@ -494,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -557,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -575,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -744,55 +756,56 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Read the fifteen verbs (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.13.4-7" target="_blank">1 Corinthians 13:4-7</a>) and then open the Gospels, and something uncanny happens. The abstract portrait starts moving. It picks up a towel. It stops for blind men. It sets its face toward Jerusalem. Scripture insists this is no coincidence, because the love Paul described has always had a face, and today's passages trace the resemblance feature by feature until the identification is unmistakable.</p>
+      <p>Read the fifteen verbs (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.4-7" target="_blank" rel="noopener">1 Corinthians 13:4-7</a>) and then open the Gospels, and something uncanny happens. The abstract portrait starts moving. It picks up a towel. It stops for blind men. It sets its face toward Jerusalem. Scripture insists this is no coincidence, because the love Paul described has always had a face, and today's passages trace the resemblance feature by feature until the identification is unmistakable.</p>
 
+<!-- BSB_BLOCK: John 13:1 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:4cf166b7bc10b7a3a9787ffc8150ce2d6234ed9b7e0f445340317059cc04a873 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">John 13:1</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JHN.13.1" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.13.1" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Before the Passover Festival, Jesus knew that his hour had come to depart from this world to the Father. Having loved his own who were in the world, he loved them to the end."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>John hangs a single sentence over the entire last night of Jesus' life, and it reads like a caption under a portrait. He loved them to the end. The Greek phrase is <em>eis telos</em>, and <em>telos</em> means the end, the goal, the finish line, so the words carry a double weight. He loved them to the last hour, and He loved them to the uttermost, all the way, nothing held back. Within minutes He is washing feet, and before the next sunset He is on a cross. This is the love He then hands His people as their family rule, love one another as I have loved you, the new command (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.13.34" target="_blank">John 13:34</a>), sourced from the Father Himself, as the Father loved Me, so I have loved you (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.15.9" target="_blank">John 15:9</a>), and repeated so nobody could miss it (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.15.12" target="_blank">John 15:12</a>). The portrait's first feature is its scale. This love does not taper off. It finishes.</p>
+        <div class="verse-text">It was now just before the Passover Feast, and Jesus knew that His hour had come to leave this world and return to the Father. Having loved His own who were in the world, He loved them to the very end.</div>
+<div class="verse-commentary">
+          <p>John hangs a single sentence over the entire last night of Jesus' life, and it reads like a caption under a portrait. He loved them to the end. The Greek phrase is <em>eis telos</em>, and <em>telos</em> means the end, the goal, the finish line, so the words carry a double weight. He loved them to the last hour, and He loved them to the uttermost, all the way, nothing held back. Within minutes He is washing feet, and before the next sunset He is on a cross. This is the love He then hands His people as their family rule, love one another as I have loved you, the new command (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.13.34" target="_blank" rel="noopener">John 13:34</a>), sourced from the Father Himself, as the Father loved Me, so I have loved you (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.15.9" target="_blank" rel="noopener">John 15:9</a>), and repeated so nobody could miss it (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.15.12" target="_blank" rel="noopener">John 15:12</a>). The portrait's first feature is its scale. This love does not taper off. It finishes.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: John 13:1 | 13:1 Or He showed them the full extent of His love. -->
 
+<!-- BSB_BLOCK: 1 Timothy 1:16 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:ff8faaf3c9e07d29038b732d92be1e0e87746f4971728037e2db010c1148882b | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Timothy 1:16</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1TI.1.16" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1TI.1.16" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"But I received mercy for this reason, so that in me, the worst of them, Christ Jesus might demonstrate his extraordinary patience as an example to those who would believe in him for eternal life."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Love is patient, love is kind (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.13.4" target="_blank">1 Corinthians 13:4</a>), and Paul offers himself as the laboratory proof of both. The man who once hunted Christians calls himself the display case where Christ exhibits extraordinary patience, and he never got over the kindness underneath it, grace overflowing with faith and love (<a class="vlink" href="https://www.bible.com/bible/1713/1TI.1.14" target="_blank">1 Timothy 1:14</a>). Peter says believers have tasted for themselves that the Lord is kind (<a class="vlink" href="https://www.bible.com/bible/1713/1PE.2.3" target="_blank">1 Peter 2:3</a>), and that tasted kindness reshapes people. It gave a timid Timothy a spirit of power, love, and sound judgment (<a class="vlink" href="https://www.bible.com/bible/1713/2TI.1.7" target="_blank">2 Timothy 1:7</a>) and a pattern to hold in faith and love (<a class="vlink" href="https://www.bible.com/bible/1713/2TI.1.13" target="_blank">2 Timothy 1:13</a>). When we wonder whether the portrait's patience is real, Paul points a thumb at his own chest. If it held for me, it holds for you.</p>
+        <div class="verse-text">But for this very reason I was shown mercy, so that in me, the worst of sinners, Christ Jesus might display His perfect patience as an example to those who would believe in Him for eternal life.</div>
+<div class="verse-commentary">
+          <p>Love is patient, love is kind (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.4" target="_blank" rel="noopener">1 Corinthians 13:4</a>), and Paul offers himself as the laboratory proof of both. The man who once hunted Christians calls himself the display case where Christ exhibits extraordinary patience, and he never got over the kindness underneath it, grace overflowing with faith and love (<a class="vlink" href="https://www.bible.com/bible/3034/1TI.1.14" target="_blank" rel="noopener">1 Timothy 1:14</a>). Peter says believers have tasted for themselves that the Lord is kind (<a class="vlink" href="https://www.bible.com/bible/3034/1PE.2.3" target="_blank" rel="noopener">1 Peter 2:3</a>), and that tasted kindness reshapes people. It gave a timid Timothy a spirit of power, love, and sound judgment (<a class="vlink" href="https://www.bible.com/bible/3034/2TI.1.7" target="_blank" rel="noopener">2 Timothy 1:7</a>) and a pattern to hold in faith and love (<a class="vlink" href="https://www.bible.com/bible/3034/2TI.1.13" target="_blank" rel="noopener">2 Timothy 1:13</a>). When we wonder whether the portrait's patience is real, Paul points a thumb at his own chest. If it held for me, it holds for you.</p>
         </div>
       </div>
 
-      <p>The resemblance keeps building. Love rejoices in the truth, and Jesus was no stranger to joy. He wanted His own joy planted in His friends, remaining in them, filling them up (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.15.9-11" target="_blank">John 15:9-11</a>), and He prayed His joy into them on the night of His arrest (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.17.12-14" target="_blank">John 17:12-14</a>). Love bears and endures all things, and no one has ever endured like Him, the cross itself, the hostility of sinners, for the joy set before Him (<a class="vlink" href="https://www.bible.com/bible/1713/HEB.12.2-3" target="_blank">Hebrews 12:2, 3</a>), obedient all the way down to death on a cross (<a class="vlink" href="https://www.bible.com/bible/1713/PHP.2.8" target="_blank">Philippians 2:8</a>). Feature by feature, the face is coming into focus.</p>
+      <p>The resemblance keeps building. Love rejoices in the truth, and Jesus was no stranger to joy. He wanted His own joy planted in His friends, remaining in them, filling them up (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.15.9-11" target="_blank" rel="noopener">John 15:9-11</a>), and He prayed His joy into them on the night of His arrest (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.17.12-14" target="_blank" rel="noopener">John 17:12-14</a>). Love bears and endures all things, and no one has ever endured like Him, the cross itself, the hostility of sinners, for the joy set before Him (<a class="vlink" href="https://www.bible.com/bible/3034/HEB.12.2-3" target="_blank" rel="noopener">Hebrews 12:2, 3</a>), obedient all the way down to death on a cross (<a class="vlink" href="https://www.bible.com/bible/3034/PHP.2.8" target="_blank" rel="noopener">Philippians 2:8</a>). Feature by feature, the face is coming into focus.</p>
 
+<!-- BSB_BLOCK: 1 John 3:16 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:953f29bf25f494688cdcb66a6698ad2b882b857f3af1cb8ba7e4789c73c2ade0 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 John 3:16</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1JN.3.16" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1JN.3.16" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"This is how we have come to know love: He laid down his life for us. We should also lay down our lives for our brothers and sisters."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>John writes the definition the whole week has been circling. We did not learn what love is from philosophy or poetry or even from watching good families. We learned it at the cross, where the Son laid down His life. Behind that moment stands the character of God Himself, because God is love (<a class="vlink" href="https://www.bible.com/bible/1713/1JN.4.8" target="_blank">1 John 4:8</a>), and He loved the world by giving His only Son (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.3.16" target="_blank">John 3:16</a>). Jesus is the exact expression of that nature (<a class="vlink" href="https://www.bible.com/bible/1713/HEB.1.3" target="_blank">Hebrews 1:3</a>), love made visible among us so that we might live through Him (<a class="vlink" href="https://www.bible.com/bible/1713/1JN.4.7-12" target="_blank">1 John 4:7-12</a>). And the definition comes with a direction. We love because He first loved us, and the proof lands on how we treat the brother in front of us (<a class="vlink" href="https://www.bible.com/bible/1713/1JN.4.19-21" target="_blank">1 John 4:19-21</a>). Love flows downhill, from the cross into us, through us, outward.</p>
+        <div class="verse-text">By this we know what love is: Jesus laid down His life for us, and we ought to lay down our lives for our brothers.</div>
+<div class="verse-commentary">
+          <p>John writes the definition the whole week has been circling. We did not learn what love is from philosophy or poetry or even from watching good families. We learned it at the cross, where the Son laid down His life. Behind that moment stands the character of God Himself, because God is love (<a class="vlink" href="https://www.bible.com/bible/3034/1JN.4.8" target="_blank" rel="noopener">1 John 4:8</a>), and He loved the world by giving His only Son (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.3.16" target="_blank" rel="noopener">John 3:16</a>). Jesus is the exact expression of that nature (<a class="vlink" href="https://www.bible.com/bible/3034/HEB.1.3" target="_blank" rel="noopener">Hebrews 1:3</a>), love made visible among us so that we might live through Him (<a class="vlink" href="https://www.bible.com/bible/3034/1JN.4.7-12" target="_blank" rel="noopener">1 John 4:7-12</a>). And the definition comes with a direction. We love because He first loved us, and the proof lands on how we treat the brother in front of us (<a class="vlink" href="https://www.bible.com/bible/3034/1JN.4.19-21" target="_blank" rel="noopener">1 John 4:19-21</a>). Love flows downhill, from the cross into us, through us, outward.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Acts 9:15 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:e963946246eea4228f9fa7b0de0379a280b0ea866b6e3a749260013cc152ebb9 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Acts 9:15</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ACT.9.15" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ACT.9.15" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"But the Lord said to him, 'Go, for this man is my chosen instrument to take my name to Gentiles, kings, and Israelites.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Love believes all things, and here is what that verb looks like from heaven. Ananias hears the name Saul and recites the file, all the harm he has done, the arrests he is authorized to make (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.9.13-14" target="_blank">Acts 9:13, 14</a>). Every word of the file is accurate. And Jesus answers with a different tense. Go, for this man is My chosen instrument. Not was a persecutor, though he was. Is My instrument, because Jesus sees people not only as they are but as they will become through His power. The church's worst enemy was three days away from becoming its greatest missionary, and only One Person in the universe believed it. Love reads the record and still bets on the future. It is the most stubborn optimism there is, and it is aimed at you.</p>
+        <div class="verse-text"><span class="words-of-jesus">“Go!”</span> said the Lord. <span class="words-of-jesus">“This man is My chosen instrument to carry My name before the Gentiles and their kings, and before the people of Israel.</span></div>
+<div class="verse-commentary">
+          <p>Love believes all things, and here is what that verb looks like from heaven. Ananias hears the name Saul and recites the file, all the harm he has done, the arrests he is authorized to make (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.9.13-14" target="_blank" rel="noopener">Acts 9:13, 14</a>). Every word of the file is accurate. And Jesus answers with a different tense. Go, for this man is My chosen instrument. Not was a persecutor, though he was. Is My instrument, because Jesus sees people not only as they are but as they will become through His power. The church's worst enemy was three days away from becoming its greatest missionary, and only One Person in the universe believed it. Love reads the record and still bets on the future. It is the most stubborn optimism there is, and it is aimed at you.</p>
         </div>
       </div>
     </div>
@@ -840,7 +853,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="action-box">
-        Tonight, read the towel scene in <a class="vlink" href="https://www.bible.com/bible/1713/JHN.13.1-17" target="_blank">John 13:1-17</a> in one sitting. Watch Jesus the way you would watch someone you were trying to describe to a friend, noting each love-verb as it happens. Pick the single move that strikes you most, the interruption He allows, the feet He does not skip, the betrayer He still serves. Then copy that exact move on someone in your house or circle tomorrow before noon.
+        Tonight, read the towel scene in <a class="vlink" href="https://www.bible.com/bible/3034/JHN.13.1-17" target="_blank" rel="noopener">John 13:1-17</a> in one sitting. Watch Jesus the way you would watch someone you were trying to describe to a friend, noting each love-verb as it happens. Pick the single move that strikes you most, the interruption He allows, the feet He does not skip, the betrayer He still serves. Then copy that exact move on someone in your house or circle tomorrow before noon.
       </div>
     </div>
 
@@ -866,22 +879,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/JHN.13.1" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=John+13:1&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -696,7 +725,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <p class="tldr-hook">A slave in a Roman house church listens to a letter being read by candlelight and hears for the first time that the Spirit of God is praying for him in groans no language has letters for.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span><span><a class="vlink" href="https://www.bible.com/bible/1713/ROM.8.26-27" target="_blank">Romans 8:26-27</a> says the Spirit takes hold of the other end of the load when we are too weak to pray, and intercedes inside us with inexpressible groanings.</span></li>
+        <li><span class="bullet-icon">☩</span><span><a class="vlink" href="https://www.bible.com/bible/3034/ROM.8.26-27" target="_blank" rel="noopener">Romans 8:26-27</a> says the Spirit takes hold of the other end of the load when we are too weak to pray, and intercedes inside us with groans too deep for words.</span></li>
         <li><span class="bullet-icon">☩</span><span>The Trinity is at prayer for the saints simultaneously: the Father hears, the Son intercedes from the right hand of glory, and the Spirit translates from inside us.</span></li>
         <li><span class="bullet-icon">☩</span><span>"Why pray when God already knows?" is the wrong question. We do not pray to inform God; we pray to receive the Father whom prayer has always been about.</span></li>
         <li><span class="bullet-icon">☩</span><span>Prayer alone in the closet, prayer with the family, and prayer with the church are all in the New Testament. None of the three is optional.</span></li>
@@ -710,7 +739,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">Connection to Yesterday</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Yesterday Daniel laid his Bible on his lap and prayed sixteen verses of fluent Scripture-shaped speech. Praise, confession, requests, and thanksgiving all came out of him in one sustained pour-out. Today's question is what to do when prayer does not flow that way. When we do not know what to ask. When the words run out before the heart does. When we secretly wonder why we should pray at all if God already knows. The answer this morning is hidden in two short verses Paul tucked into the middle of <a class="vlink" href="https://www.bible.com/bible/1713/ROM.8" target="_blank">Romans 8</a>, and it is the most pastoral footnote in the New Testament. The Spirit Himself is praying inside you, and He has never run out of language.</p>
+      <p>Yesterday Daniel laid his Bible on his lap and prayed sixteen verses of fluent Scripture-shaped speech. Praise, confession, requests, and thanksgiving all came out of him in one sustained pour-out. Today's question is what to do when prayer does not flow that way. When we do not know what to ask. When the words run out before the heart does. When we secretly wonder why we should pray at all if God already knows. The answer this morning is hidden in two short verses Paul tucked into the middle of <a class="vlink" href="https://www.bible.com/bible/3034/ROM.8" target="_blank" rel="noopener">Romans 8</a>, and it is the most pastoral footnote in the New Testament. The Spirit Himself is praying inside you, and He has never run out of language.</p>
     </div>
 
     <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
@@ -721,8 +750,8 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="section-heading">The Letter Read in the House Churches</div>
-      <p>Paul wrote Romans around AD 57 from Corinth, intending to deliver it personally on his way through Rome to Spain. He never made it under his own power; he arrived in chains a few years later. The first hearers of <a class="vlink" href="https://www.bible.com/bible/1713/ROM.8" target="_blank">Romans 8</a> were a divided cluster of Roman house churches, perhaps thirty or forty believers gathered in an upstairs room around a single oil lamp, the letter read aloud by a literate brother because most of them could not read. The room held Jewish believers who had returned to Rome after Claudius's expulsion was lifted in AD 54, Gentile converts who had filled the gap in the meantime, freedmen, slaves, a few well-to-do patrons. They had argued recently about whose theology was more correct. <a class="vlink" href="https://www.bible.com/bible/1713/ROM.14" target="_blank">Romans 14</a> still has the receipts.</p>
-      <p>Imagine being a slave in that room hearing chapter 8 for the first time. You are not a Roman citizen. You do not have a household to pray for; the house is not yours. You do not have the literacy to compose elegant petitions. The cult of the emperor is alive in the city; everyone is supposed to pray to Caesar at the public altars, and you have been sneaking off to a different gathering instead. The reader's voice carries the words "the Spirit also helps us in our weakness, because we do not know what to pray for as we should." Then "the Spirit himself intercedes for us with inexpressible groanings." Whatever else this letter is doing politically, it is also telling the most powerless person in that room that his groans are not unheard. The Spirit of the God who outranks Caesar is praying for him from inside his own chest, and the Father, who is also the Father of Jesus, hears every syllable.</p>
+      <p>Paul wrote Romans around AD 57 from Corinth, intending to deliver it personally on his way through Rome to Spain. He never made it under his own power; he arrived in chains a few years later. The first hearers of <a class="vlink" href="https://www.bible.com/bible/3034/ROM.8" target="_blank" rel="noopener">Romans 8</a> were a divided cluster of Roman house churches, perhaps thirty or forty believers gathered in an upstairs room around a single oil lamp, the letter read aloud by a literate brother because most of them could not read. The room held Jewish believers who had returned to Rome after Claudius's expulsion was lifted in AD 54, Gentile converts who had filled the gap in the meantime, freedmen, slaves, a few well-to-do patrons. They had argued recently about whose theology was more correct. <a class="vlink" href="https://www.bible.com/bible/3034/ROM.14" target="_blank" rel="noopener">Romans 14</a> still has the receipts.</p>
+      <p>Imagine being a slave in that room hearing chapter 8 for the first time. You are not a Roman citizen. You do not have a household to pray for; the house is not yours. You do not have the literacy to compose elegant petitions. The cult of the emperor is alive in the city; everyone is supposed to pray to Caesar at the public altars, and you have been sneaking off to a different gathering instead. The reader's voice carries the words "the Spirit helps us in our weakness. For we do not know how we ought to pray." Then "the Spirit Himself intercedes for us with groans too deep for words." Whatever else this letter is doing politically, it is also telling the most powerless person in that room that his groans are not unheard. The Spirit of the God who outranks Caesar is praying for him from inside his own chest, and the Father, who is also the Father of Jesus, hears every syllable.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -735,44 +764,44 @@ if ('serviceWorker' in navigator) {
 
       <p>Picture a believer kneeling beside a bed at the end of a hard day, the situation in front of her too tangled to put into words. She tries a sentence. It comes out wrong. She tries another. It evaporates. After a few minutes she gives up and just sits there. The most pastoral footnote in the New Testament is for that exact moment, and it sits in the middle of Paul's longest letter. Today walks through the questions a believer eventually has to ask about prayer: what to do when the words run out, what faith looks like at the altar, where prayer is supposed to happen, and why bother praying at all when the days feel easy. The Bible's answers are not symmetrical. Some arrive with a single verse and a long Greek word; others arrive with a posture; one comes only by way of a warning about pride. Watch how the verses do their work.</p>
 
+<!-- BSB_BLOCK: Romans 8:26-27 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:fcb4cd073f35cb0866341492790ceb6eb9350e61ba84edd3e33e8af8c6736406 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Romans 8:26-27</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ROM.8.26-27" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.8.26-27" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"In the same way the Spirit also helps us in our weakness, because we do not know what to pray for as we should, but the Spirit himself intercedes for us with inexpressible groanings. And he who searches our hearts knows the mind of the Spirit, because he intercedes for the saints according to the will of God."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Three Greek words carry the weight of these two verses. The first is <em>synantilambanetai</em>, translated "helps." It is a long compound built from <em>syn</em> (with), <em>anti</em> (over against, on the other side), and <em>lambano</em> (take, grasp). The picture is of two people lifting a heavy load: you are at one end struggling, and someone else gets under the other end and takes the weight you cannot. The same verb is used in <a class="vlink" href="https://www.bible.com/bible/1713/LUK.10.40" target="_blank">Luke 10:40</a>, where Martha asks Jesus to tell Mary to "help" her with the kitchen. The Spirit does not just stand nearby and watch us pray badly. He grabs the other end.</p>
-          <p>The second word is the climactic <em>stenagmoi alaletoi</em>, "groanings inexpressible," or more literally, "groans that have no words." The same noun <em>stenagmos</em> shows up earlier in <a class="vlink" href="https://www.bible.com/bible/1713/ROM.8" target="_blank">Romans 8</a> of the whole creation groaning under the curse, and again of believers groaning while we wait for the resurrection of our bodies. The Spirit is not exempt from the groaning. He picks it up inside us and carries it to the Father in language no human alphabet can spell. When you sit down to pray and nothing intelligible comes out, the prayer you cannot articulate is being prayed by Someone who can.</p>
-          <p>The third word is <em>entugchanei</em>, "intercedes," which is also the verb used in <a class="vlink" href="https://www.bible.com/bible/1713/ROM.8.34" target="_blank">Romans 8:34</a> and <a class="vlink" href="https://www.bible.com/bible/1713/HEB.7.25" target="_blank">Hebrews 7:25</a> of the risen Christ at the right hand of the Father. The Spirit intercedes inside us; the Son intercedes at the throne. We are surrounded on both sides by the Trinity at prayer for us. And the qualifier in verse 27 finishes the picture. The Spirit prays "according to the will of God." The Greek is <em>kata theon</em>, "according to God Himself." Tuesday's <em>thelema</em> from the Lord's Prayer is the same instinct. Where our prayers reach for what we want, the Spirit's prayers always reach for what the Father wills, and the Father (who searches hearts) recognizes the Spirit's voice every time.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 26">26</sup>In the same way, the Spirit helps us in our weakness. For we do not know how we ought to pray, but the Spirit Himself intercedes for us with groans too deep for words. <sup class="verse-number" aria-label="Verse 27">27</sup>And He who searches our hearts knows the mind of the Spirit, because the Spirit intercedes for the saints according to the will of God.</div>
+<div class="verse-commentary">
+          <p>Three Greek words carry the weight of these two verses. The first is <em>synantilambanetai</em>, translated "helps." It is a long compound built from <em>syn</em> (with), <em>anti</em> (over against, on the other side), and <em>lambano</em> (take, grasp). The picture is of two people lifting a heavy load: you are at one end struggling, and someone else gets under the other end and takes the weight you cannot. The same verb is used in <a class="vlink" href="https://www.bible.com/bible/3034/LUK.10.40" target="_blank" rel="noopener">Luke 10:40</a>, where Martha asks Jesus to tell Mary to "help" her with the kitchen. The Spirit does not just stand nearby and watch us pray badly. He grabs the other end.</p>
+          <p>The second word is the climactic <em>stenagmoi alaletoi</em>, "groanings inexpressible," or more literally, "groans that have no words." The same noun <em>stenagmos</em> shows up earlier in <a class="vlink" href="https://www.bible.com/bible/3034/ROM.8" target="_blank" rel="noopener">Romans 8</a> of the whole creation groaning under the curse, and again of believers groaning while we wait for the resurrection of our bodies. The Spirit is not exempt from the groaning. He picks it up inside us and carries it to the Father in language no human alphabet can spell. When you sit down to pray and nothing intelligible comes out, the prayer you cannot articulate is being prayed by Someone who can.</p>
+          <p>The third word is <em>entugchanei</em>, "intercedes," which is also the verb used in <a class="vlink" href="https://www.bible.com/bible/3034/ROM.8.34" target="_blank" rel="noopener">Romans 8:34</a> and <a class="vlink" href="https://www.bible.com/bible/3034/HEB.7.25" target="_blank" rel="noopener">Hebrews 7:25</a> of the risen Christ at the right hand of the Father. The Spirit intercedes inside us; the Son intercedes at the throne. We are surrounded on both sides by the Trinity at prayer for us. And the qualifier in verse 27 finishes the picture. The Spirit prays "according to the will of God." The Greek is <em>kata theon</em>, "according to God Himself." Tuesday's <em>thelema</em> from the Lord's Prayer is the same instinct. Where our prayers reach for what we want, the Spirit's prayers always reach for what the Father wills, and the Father (who searches hearts) recognizes the Spirit's voice every time.</p>
           <p>This is the answer to "why pray when God already knows?" We do not pray to inform Him. We pray to be received by Him. Prayer is not the upload; it is the welcome.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Hebrews 11:6 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:f107d11659e6782236155b66191f6e226d5befdac2e07bcc61fb551684db1df4 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Hebrews 11:6</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/HEB.11.6" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/HEB.11.6" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Now without faith it is impossible to please God, since the one who draws near to him must believe that he exists and that he rewards those who seek him."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Faith in prayer is not an emotion. It is a posture toward two specific facts: that God is, and that God rewards those who seek Him. The Greek participle <em>proserchomenon</em> ("the one who draws near") is the same word the Septuagint uses for a worshipper approaching the altar of God. Faith is the act of approaching the altar believing the One on the other side will not turn you away. The next paragraph of <a class="vlink" href="https://www.bible.com/bible/1713/HEB.11" target="_blank">Hebrews 11</a> names the men and women who lived this way: Abel offering, Enoch walking, Noah building, Abraham going.</p>
-          <p>The faith Jesus describes in <a class="vlink" href="https://www.bible.com/bible/1713/MRK.11.24" target="_blank">Mark 11:24</a> ("believe that you have received it, and you will have it") works because it is bound to the will of the Father, not to the strength of the believer's belief. The "prayer of faith" is not the loudest, most-confident prayer; it is the prayer that asks for what God has promised, the way Daniel asked for the seventy years to end because Jeremiah said they would. The hunger Jesus blesses in <a class="vlink" href="https://www.bible.com/bible/1713/MAT.5.6" target="_blank">Matthew 5:6</a> ("blessed are those who hunger and thirst for righteousness") is faith's appetite, and the promise of <a class="vlink" href="https://www.bible.com/bible/1713/ISA.44.3" target="_blank">Isaiah 44:3</a> ("I will pour water on the thirsty land") is the Father's commitment to fill it. Self-sufficiency is the opposite of faith because it has stopped drawing near to the altar. It thinks it has enough on its own.</p>
+        <div class="verse-text">And without faith it is impossible to please God. For anyone who approaches Him must believe that He exists and that He rewards those who earnestly seek Him.</div>
+<div class="verse-commentary">
+          <p>Faith in prayer is not an emotion. It is a posture toward two specific facts: that God is, and that God rewards those who seek Him. The Greek participle <em>proserchomenon</em> ("anyone who approaches Him") is the same word the Septuagint uses for a worshipper approaching the altar of God. Faith is the act of approaching the altar believing the One on the other side will not turn you away. The next paragraph of <a class="vlink" href="https://www.bible.com/bible/3034/HEB.11" target="_blank" rel="noopener">Hebrews 11</a> names the men and women who lived this way: Abel offering, Enoch walking, Noah building, Abraham going.</p>
+          <p>The faith Jesus describes in <a class="vlink" href="https://www.bible.com/bible/3034/MRK.11.24" target="_blank" rel="noopener">Mark 11:24</a> ("believe that you have received it, and you will have it") works because it is bound to the will of the Father, not to the strength of the believer's belief. The "prayer offered in faith" is not the loudest, most-confident prayer; it is the prayer that asks for what God has promised, the way Daniel asked for the seventy years to end because Jeremiah said they would. The hunger Jesus blesses in <a class="vlink" href="https://www.bible.com/bible/3034/MAT.5.6" target="_blank" rel="noopener">Matthew 5:6</a> ("blessed are those who hunger and thirst for righteousness") is faith's appetite, and the promise of <a class="vlink" href="https://www.bible.com/bible/3034/ISA.44.3" target="_blank" rel="noopener">Isaiah 44:3</a> ("I will pour water on the thirsty land") is the Father's commitment to fill it. Self-sufficiency is the opposite of faith because it has stopped drawing near to the altar. It thinks it has enough on its own.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: James 5:13-16 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:44588073e9b168b9d857113204d1214317a7cb44087e3a9054edc09cd01468b7 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">James 5:13-16</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/JAS.5.13-16" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JAS.5.13-16" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Is anyone among you suffering? He should pray. Is anyone cheerful? He should sing praises. Is anyone among you sick? He should call for the elders of the church, and they are to pray over him after anointing him with olive oil in the name of the Lord. The prayer of faith will save the sick person, and the Lord will raise him up; if he has committed sins, he will be forgiven. Therefore, confess your sins to one another and pray for one another, so that you may be healed. The prayer of a righteous person is very powerful in its effect."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>James gives a four-word menu of where prayer happens, and notice how short each entry is. Suffering: pray. Cheerful: sing. Sick: call the elders. Sinning: confess to one another. There is a prayer-of-the-closet (the suffering person on his own) in the same paragraph as a prayer-of-the-elders (the sick person and the church leaders) and a prayer-of-the-pew (mutual confession among the saints). All three settings are non-negotiable in the New Testament: <a class="vlink" href="https://www.bible.com/bible/1713/MAT.6.6" target="_blank">Matthew 6:6</a> for the closet, <a class="vlink" href="https://www.bible.com/bible/1713/ACT.12.12" target="_blank">Acts 12:12</a> for the home prayer meeting that prayed Peter out of prison, and <a class="vlink" href="https://www.bible.com/bible/1713/MAT.18.20" target="_blank">Matthew 18:20</a> for the gathering of two or three.</p>
-          <p>The phrase "the prayer of faith will save the sick person" has been weaponized by some forms of modern preaching, but James's surrounding sentence has the safety on. The same paragraph admits believers can stay sick (the elders are still called); the same letter elsewhere reminds us that "we all stumble in many ways." The prayer-of-faith does not coerce God; it draws near to Him with the believing-hands of <a class="vlink" href="https://www.bible.com/bible/1713/HEB.11.6" target="_blank">Hebrews 11:6</a> and lets Him do whatever His will requires. Healing comes through the prayer; sometimes the healing is the body's, sometimes the heart's, sometimes the soul's at the resurrection. All three are answered yes.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 13">13</sup>Is any one of you suffering? He should pray. Is anyone cheerful? He should sing praises. <sup class="verse-number" aria-label="Verse 14">14</sup>Is any one of you sick? He should call the elders of the church to pray over him and anoint him with oil in the name of the Lord. <sup class="verse-number" aria-label="Verse 15">15</sup>And the prayer offered in faith will restore the one who is sick. The Lord will raise him up. If he has sinned, he will be forgiven. <sup class="verse-number" aria-label="Verse 16">16</sup>Therefore confess your sins to each other and pray for each other so that you may be healed. The prayer of a righteous man has great power to prevail.</div>
+<div class="verse-commentary">
+          <p>James gives a four-word menu of where prayer happens, and notice how short each entry is. Suffering: pray. Cheerful: sing. Sick: call the elders. Sinning: confess to one another. There is a prayer-of-the-closet (the suffering person on his own) in the same paragraph as a prayer-of-the-elders (the sick person and the church leaders) and a prayer-of-the-pew (mutual confession among the saints). All three settings are non-negotiable in the New Testament: <a class="vlink" href="https://www.bible.com/bible/3034/MAT.6.6" target="_blank" rel="noopener">Matthew 6:6</a> for the closet, <a class="vlink" href="https://www.bible.com/bible/3034/ACT.12.12" target="_blank" rel="noopener">Acts 12:12</a> for the home prayer meeting that prayed Peter out of prison, and <a class="vlink" href="https://www.bible.com/bible/3034/MAT.18.20" target="_blank" rel="noopener">Matthew 18:20</a> for the gathering of two or three.</p>
+          <p>The phrase "the prayer offered in faith will restore the one who is sick" has been weaponized by some forms of modern preaching, but James's surrounding sentence has the safety on. The same paragraph admits believers can stay sick (the elders are still called); the same letter elsewhere reminds us that "we all stumble in many ways." The prayer-of-faith does not coerce God; it draws near to Him with the believing-hands of <a class="vlink" href="https://www.bible.com/bible/3034/HEB.11.6" target="_blank" rel="noopener">Hebrews 11:6</a> and lets Him do whatever His will requires. Healing comes through the prayer; sometimes the healing is the body's, sometimes the heart's, sometimes the soul's at the resurrection. All three are answered yes.</p>
         </div>
       </div>
     </div>
@@ -799,7 +828,7 @@ if ('serviceWorker' in navigator) {
       <div class="section-heading">When the Picture Speaks What the Mouth Cannot</div>
       <p>One of the fastest-growing fields in modern trauma care is art therapy and the broader category called expressive arts therapy. The premise is simple. After certain kinds of suffering (combat, abuse, severe medical events, refugee displacement, loss of a child), the verbal channels stop working. The brain cannot retrieve the experience as a coherent narrative; the words refuse to come out in order; sometimes the language disappears entirely. Talking therapy in those moments is asking a wounded part of the brain to use a faculty it has temporarily lost. So clinicians began handing patients pencils, clay, paint, instruments, and scarves, and asking them to express what could not yet be spoken.</p>
       <p>A 2025 systematic review in <em>Frontiers in Psychiatry</em>, examining arts therapies for children and adolescents with PTSD, concluded what a generation of clinicians had been observing. Nonverbal expressive interventions consistently reduced PTSD symptoms, anxiety, and depression. A separate 2025 study in <em>Cyberpsychology, Behavior, and Social Networking</em> piloted AI-assisted art therapy with workers recovering from on-the-job injuries and recorded moderate effect sizes for both anxiety reduction (Cohen's d of 0.55) and PTSD symptom reduction (Cohen's d of 0.62). The mechanism is not mysterious. Trauma is stored in the body and the senses long before it becomes a sentence. The picture, the rhythm, and the gesture have access to a register the larynx cannot reach.</p>
-      <p>Romans 8:26-27 was the field's playbook two thousand years before the field had a name. When the words run out, when the syllables refuse to form, when the believer on the floor of the kitchen has nothing left, the Spirit of God grasps the other end of the load and intercedes "with inexpressible groanings." The Father is fluent in the register beneath language. He has been listening to His own Spirit pray inside His children since Pentecost, and the prayers He hears most clearly are not always the ones with the best vocabulary. Sometimes the pencil moves and the mouth cannot, and the Father, who searches the heart, recognizes the prayer anyway.</p>
+      <p>Romans 8:26-27 was the field's playbook two thousand years before the field had a name. When the words run out, when the syllables refuse to form, when the believer on the floor of the kitchen has nothing left, the Spirit of God grasps the other end of the load and intercedes "with groans too deep for words." The Father is fluent in the register beneath language. He has been listening to His own Spirit pray inside His children since Pentecost, and the prayers He hears most clearly are not always the ones with the best vocabulary. Sometimes the pencil moves and the mouth cannot, and the Father, who searches the heart, recognizes the prayer anyway.</p>
     </div>
 
     <!-- 7. CHRIST CONNECTION -->
@@ -809,7 +838,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Eight verses after <a class="vlink" href="https://www.bible.com/bible/1713/ROM.8.26-27" target="_blank">Romans 8:26-27</a>, Paul writes one of the great sentences of the New Testament. Christ Jesus is "at the right hand of God and intercedes for us." The same verb <em>entugchanei</em> describes both Persons of the Trinity at prayer for the church at the same time. <a class="vlink" href="https://www.bible.com/bible/1713/HEB.7.25" target="_blank">Hebrews 7:25</a> says Christ "always lives to make intercession" for us. <a class="vlink" href="https://www.bible.com/bible/1713/ACT.7.55" target="_blank">Acts 7:55</a> puts Stephen's last vision into focus: he saw "the heavens opened and the Son of Man standing at the right hand of God," and the Son was standing because the Son was praying for the man being stoned to death below. The Trinity has been at prayer for us all week. The Father hears (Sabbath, <a class="vlink" href="https://www.bible.com/bible/1713/PSA.62.8" target="_blank">Psalm 62:8</a>). The Son intercedes (every day; especially Tuesday's Lord's Prayer and today's <a class="vlink" href="https://www.bible.com/bible/1713/HEB.7.25" target="_blank">Hebrews 7:25</a> echo). The Spirit translates from inside us when we run out of words. We are not praying alone, even when we feel most alone. We are praying inside the conversation the Trinity has been having about us since before the foundation of the world.</p>
+      <p>Eight verses after <a class="vlink" href="https://www.bible.com/bible/3034/ROM.8.26-27" target="_blank" rel="noopener">Romans 8:26-27</a>, Paul writes one of the great sentences of the New Testament. Christ Jesus is "at the right hand of God and intercedes for us." The same verb <em>entugchanei</em> describes both Persons of the Trinity at prayer for the church at the same time. <a class="vlink" href="https://www.bible.com/bible/3034/HEB.7.25" target="_blank" rel="noopener">Hebrews 7:25</a> says Christ "always lives to make intercession" for us. <a class="vlink" href="https://www.bible.com/bible/3034/ACT.7.55" target="_blank" rel="noopener">Acts 7:55</a> puts Stephen's last vision into focus: he saw "the heavens opened and the Son of Man standing at the right hand of God," and the Son was standing because the Son was praying for the man being stoned to death below. The Trinity has been at prayer for us all week. The Father hears (Sabbath, <a class="vlink" href="https://www.bible.com/bible/3034/PSA.62.8" target="_blank" rel="noopener">Psalm 62:8</a>). The Son intercedes (every day; especially Tuesday's Lord's Prayer and today's <a class="vlink" href="https://www.bible.com/bible/3034/HEB.7.25" target="_blank" rel="noopener">Hebrews 7:25</a> echo). The Spirit translates from inside us when we run out of words. We are not praying alone, even when we feel most alone. We are praying inside the conversation the Trinity has been having about us since before the foundation of the world.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -820,7 +849,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="action-box">
-        Today, when the words run out, do not stop praying. Sit still. Open the Bible to <a class="vlink" href="https://www.bible.com/bible/1713/ROM.8.26-34" target="_blank">Romans 8:26-34</a> and read it aloud. Then say one short sentence: "Spirit of God, intercede in me; according to the will of the Father; in the name of the Son." Then sit quietly long enough that you would feel awkward in a crowded room, and let the Spirit pray inside you. Listening is part of prayer. Empty mind is not the goal; the Bible-filled heart is. Keep the Word open while you wait.
+        Today, when the words run out, do not stop praying. Sit still. Open the Bible to <a class="vlink" href="https://www.bible.com/bible/3034/ROM.8.26-34" target="_blank" rel="noopener">Romans 8:26-34</a> and read it aloud. Then say one short sentence: "Spirit of God, intercede in me; according to the will of the Father; in the name of the Son." Then sit quietly long enough that you would feel awkward in a crowded room, and let the Spirit pray inside you. Listening is part of prayer. Empty mind is not the goal; the Bible-filled heart is. Keep the Word open while you wait.
       </div>
     </div>
 
@@ -846,22 +875,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/ROM.8.26-27" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Romans+8:26-27&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -890,8 +939,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -900,18 +951,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -919,6 +974,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -938,6 +994,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

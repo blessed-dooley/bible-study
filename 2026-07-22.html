@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -733,43 +756,45 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Why did one church generate this many problems? A scandal, lawsuits, brothel visits, and more questions waiting in line. Paul's diagnosis is not that Corinth was uniquely wicked. It is that the church had misread its own freedom. So before he finishes his argument about the body, we step sideways into a letter he wrote to another young church breathing the same Greek air (<a class="vlink" href="https://www.bible.com/bible/1713/1TH.4.1-8" target="_blank">1 Thessalonians 4:1-8</a>). There Paul lays out the antidote in a single word, and the word is not willpower. It is God's own will for every believer, worked by God's own Spirit. Sanctification.</p>
+      <p>Why did one church generate this many problems? A scandal, lawsuits, brothel visits, and more questions waiting in line. Paul's diagnosis is not that Corinth was uniquely wicked. It is that the church had misread its own freedom. So before he finishes his argument about the body, we step sideways into a letter he wrote to another young church breathing the same Greek air (<a class="vlink" href="https://www.bible.com/bible/3034/1TH.4.1-8" target="_blank" rel="noopener">1 Thessalonians 4:1-8</a>). There Paul lays out the antidote in a single word, and the word is not willpower. It is God's own will for every believer, worked by God's own Spirit. Sanctification.</p>
 
+<!-- BSB_BLOCK: 1 Thessalonians 4:1-8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:75bd50e0d986989b99a7d6f71fcd99f16f3997c62f7320b0dd7071c57b7412cc | footnotes-stripped:2 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Thessalonians 4:1-8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1TH.4.1-8" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1TH.4.1-8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Additionally then, brothers and sisters, we ask and encourage you in the Lord Jesus, that as you have received instruction from us on how you should live and please God—as you are doing—do this even more. For you know what commands we gave you through the Lord Jesus. For this is God's will, your sanctification: that you keep away from sexual immorality, that each of you knows how to control his own body in holiness and honor, not with lustful passions, like the Gentiles, who don't know God. This means one must not transgress against and take advantage of a brother or sister in this manner, because the Lord is an avenger of all these offenses, as we also previously told and warned you. For God has not called us to impurity but to live in holiness. Consequently, anyone who rejects this does not reject man, but God, who gives you his Holy Spirit."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>Finally, brothers, we ask and encourage you in the Lord Jesus to live in a way that is pleasing to God, just as you have received from us. This is how you already live, so you should do so all the more. <sup class="verse-number" aria-label="Verse 2">2</sup>For you know the instructions we gave you by the authority of the Lord Jesus. <sup class="verse-number" aria-label="Verse 3">3</sup>For it is God’s will that you should be holy: You must abstain from sexual immorality; <sup class="verse-number" aria-label="Verse 4">4</sup>each of you must know how to control his own body in holiness and honor, <sup class="verse-number" aria-label="Verse 5">5</sup>not in lustful passion like the Gentiles who do not know God; <sup class="verse-number" aria-label="Verse 6">6</sup>and no one should ever violate or exploit his brother in this regard, because the Lord will avenge all such acts, as we have already told you and solemnly warned you. <sup class="verse-number" aria-label="Verse 7">7</sup>For God has not called us to impurity, but to holiness. <sup class="verse-number" aria-label="Verse 8">8</sup>Anyone, then, who rejects this command does not reject man but God, the very One who gives you His Holy Spirit.</div>
+<div class="verse-commentary">
           <p>Thessalonica was not Corinth, but it marinated in the same assumptions, which is why these instructions travel so well. At the center sits a sentence worth memorizing. This is God's will, your sanctification. The word is <em>hagiasmos</em>, Greek for being set apart, the ongoing work of making someone holy, and notice whose project it is. God wills it, God empowers it, God gives you His own Holy Spirit for it. What He asks reads almost embarrassingly practical, keep away from sexual immorality, learn to govern your own body in holiness and honor, refuse the lustful autopilot of people who do not know God. Knowing God changes what desire is allowed to drive. And Paul adds a line our culture forgets, that sexual sin always takes advantage of somebody, a brother, a sister, a future spouse, a person reduced to fuel. So rejecting all this, he finishes, is not rejecting a preacher's opinion. It is rejecting the God who moved in.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Thessalonians 4:4 | 4:4 Literally know how to possess his own vessel -->
+      <!-- BSB_FOOTNOTE: 1 Thessalonians 4:6 | 4:6 Or no one should ever harm or cheat his brother in this matter -->
 
-      <p>Now back to Corinth, where freedom had gone feral. Some believers reasoned that since the gospel set them free, they were free to do anything, and they had slogans to prove it. Just as the stomach was made for food, they said, the body was made for sex (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.13" target="_blank">1 Corinthians 6:13</a>). Paul calls that a misuse of the gift. Christ frees us from the law of sin (<a class="vlink" href="https://www.bible.com/bible/1713/ROM.8.2" target="_blank">Romans 8:2</a>), and that freedom is not an opening for the flesh but a call to serve one another in love (<a class="vlink" href="https://www.bible.com/bible/1713/GAL.5.13" target="_blank">Galatians 5:13</a>). Set free from sin, Scripture says, we became servants of righteousness, bound to God, with sanctification as the payoff (<a class="vlink" href="https://www.bible.com/bible/1713/ROM.6.18" target="_blank">Romans 6:18</a>, <a class="vlink" href="https://www.bible.com/bible/1713/ROM.6.22" target="_blank">Romans 6:22</a>). Free was never the same as unclaimed. The body is for the Lord, and the Lord is for the body, and the rest of the chapter (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6" target="_blank">1 Corinthians 6</a>) unpacks that one claim three ways.</p>
+      <p>Now back to Corinth, where freedom had gone feral. Some believers reasoned that since the gospel set them free, they were free to do anything, and they had slogans to prove it. Just as the stomach was made for food, they said, the body was made for sex (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.13" target="_blank" rel="noopener">1 Corinthians 6:13</a>). Paul calls that a misuse of the gift. Christ frees us from the law of sin (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.8.2" target="_blank" rel="noopener">Romans 8:2</a>), and that freedom is not an opening for the flesh but a call to serve one another in love (<a class="vlink" href="https://www.bible.com/bible/3034/GAL.5.13" target="_blank" rel="noopener">Galatians 5:13</a>). Set free from sin, Scripture says, we became servants of righteousness, bound to God, with sanctification as the payoff (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.6.18" target="_blank" rel="noopener">Romans 6:18</a>, <a class="vlink" href="https://www.bible.com/bible/3034/ROM.6.22" target="_blank" rel="noopener">Romans 6:22</a>). Free was never the same as unclaimed. The body is for the Lord, and the Lord is for the body, and the rest of the chapter (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6" target="_blank" rel="noopener">1 Corinthians 6</a>) unpacks that one claim three ways.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 6:11 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:dfd33932b2a15b897f2b7b245969595e46f779cc0a22ea71ba1a4046793850be | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 6:11</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.6.11" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.6.11" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"And some of you used to be like this. But you were washed, you were sanctified, you were justified in the name of the Lord Jesus Christ and by the Spirit of our God."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>First way, you were washed. Paul has just read Corinth its own rap sheet (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.9-10" target="_blank">1 Corinthians 6:9-10</a>), and half the church is on it. Then come three verbs that changed everything, washed, sanctified, justified, and all three arrive in the passive voice. You did not scrub yourself clean, set yourself apart, or argue your own acquittal. It was done to you, in the name of the Lord Jesus and by the Spirit of our God. That is why the immorality Paul spends this chapter dismantling (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.12-20" target="_blank">1 Corinthians 6:12-20</a>) has no place left to live. Not because God is stingy with pleasure, but because those behaviors belong to a person who no longer exists. The washing was real. The only honest thing left is to live like it.</p>
+        <div class="verse-text">And that is what some of you were. But you were washed, you were sanctified, you were justified, in the name of the Lord Jesus Christ and by the Spirit of our God.</div>
+<div class="verse-commentary">
+          <p>First way, you were washed. Paul has just read Corinth its own rap sheet (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.9-10" target="_blank" rel="noopener">1 Corinthians 6:9-10</a>), and half the church is on it. Then come three verbs that changed everything, washed, sanctified, justified, and all three arrive in the passive voice. You did not scrub yourself clean, set yourself apart, or argue your own acquittal. It was done to you, in the name of the Lord Jesus and by the Spirit of our God. That is why the immorality Paul spends this chapter dismantling (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.12-20" target="_blank" rel="noopener">1 Corinthians 6:12-20</a>) has no place left to live. Not because God is stingy with pleasure, but because those behaviors belong to a person who no longer exists. The washing was real. The only honest thing left is to live like it.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 6:15 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:06f1d53ed92ba75c5581de2171e2628bcc6d6da4652c5a84b2e83fb27390936e | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 6:15</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.6.15" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.6.15" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Don't you know that your bodies are a part of Christ's body? So should I take a part of Christ's body and make it part of a prostitute? Absolutely not!"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Second way, your body is a limb of Christ. Not your soul on Sundays, your body, the hands and skin and nervous system reading this sentence. Union with Jesus runs that deep, one spirit with Him (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.17" target="_blank">1 Corinthians 6:17</a>). Which is why Paul asks the question that made Corinth flinch. Take a part of Christ's body and join it to a prostitute? Absolutely not, the strongest no he knows how to write. Sex, Scripture insists, is never casual contact between shells. It makes two people one body, the very words spoken over the first marriage (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.16" target="_blank">1 Corinthians 6:16</a>). There is no version of following an appetite somewhere that Jesus is not carried along, because the third way says it plainest, your body is a temple of His Spirit, bought at a price (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.19-20" target="_blank">1 Corinthians 6:19-20</a>). So offer it, all of it, as a living sacrifice, holy and pleasing to God (<a class="vlink" href="https://www.bible.com/bible/1713/ROM.12.1" target="_blank">Romans 12:1</a>). Worship was never just a soul activity.</p>
+        <div class="verse-text">Do you not know that your bodies are members of Christ? Shall I then take the members of Christ and unite them with a prostitute? Never!</div>
+<div class="verse-commentary">
+          <p>Second way, your body is a limb of Christ. Not your soul on Sundays, your body, the hands and skin and nervous system reading this sentence. Union with Jesus runs that deep, one spirit with Him (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.17" target="_blank" rel="noopener">1 Corinthians 6:17</a>). Which is why Paul asks the question that made Corinth flinch. Take a part of Christ's body and join it to a prostitute? Absolutely not, the strongest no he knows how to write. Sex, Scripture insists, is never casual contact between shells. It makes two people one body, the very words spoken over the first marriage (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.16" target="_blank" rel="noopener">1 Corinthians 6:16</a>). There is no version of following an appetite somewhere that Jesus is not carried along, because the third way says it plainest, your body is a temple of His Spirit, bought at a price (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.19-20" target="_blank" rel="noopener">1 Corinthians 6:19-20</a>). So offer it, all of it, as a living sacrifice, holy and pleasing to God (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.12.1" target="_blank" rel="noopener">Romans 12:1</a>). Worship was never just a soul activity.</p>
         </div>
       </div>
     </div>
@@ -806,7 +831,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>If the body were really just packaging, God would never have worn one. That is the doctrine that detonates every body-shrug philosophy in Corinth, and it is the heartbeat under this whole chapter. The Word became flesh. Jesus did not beam truth down from a safe spiritual distance. He took on lungs, hunger, fingerprints, and fatigue, and when they demanded a sign from Him, He pointed at Himself and called His own body the temple (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.2.19-21" target="_blank">John 2:19-21</a>). Destroy it, He said, and in three days I will raise it. He meant it literally. Easter morning did not release Jesus from His body. It raised that body, scars included, and He wears it still. Heaven judged human flesh worth keeping forever. So when Paul tells you that your body is a temple, he is not flattering you. He is tracing your body's dignity straight back to the Man who bought it with His. The cross was a bodily act. So is following Him.</p>
+      <p>If the body were really just packaging, God would never have worn one. That is the doctrine that detonates every body-shrug philosophy in Corinth, and it is the heartbeat under this whole chapter. The Word became flesh. Jesus did not beam truth down from a safe spiritual distance. He took on lungs, hunger, fingerprints, and fatigue, and when they demanded a sign from Him, He pointed at Himself and called His own body the temple (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.2.19-21" target="_blank" rel="noopener">John 2:19-21</a>). Destroy it, He said, and in three days I will raise it. He meant it literally. Easter morning did not release Jesus from His body. It raised that body, scars included, and He wears it still. Heaven judged human flesh worth keeping forever. So when Paul tells you that your body is a temple, he is not flattering you. He is tracing your body's dignity straight back to the Man who bought it with His. The cross was a bodily act. So is following Him.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -843,22 +868,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1TH.4.1-8" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Thessalonians+4:1-8&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -735,51 +758,52 @@ if ('serviceWorker' in navigator) {
 
       <p>The two letters we call 1 and 2 Corinthians are actually the surviving pieces of a longer, harder conversation. Read closely and you can count the traces of at least four letters and several rounds of bad news from Corinth. Follow that paper trail and a portrait emerges, not of a stern lawgiver mailing in verdicts, but of a pastor who kept picking the pen back up because he could not let these people go.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 1:11-13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:95a6b07204fb2c2b342c802266b6e366a4615a689ff1232170860205a3e8a5e4 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 1:11-13</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.1.11-13" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.11-13" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For it has been reported to me about you, my brothers and sisters, by members of Chloe's people, that there is rivalry among you. What I am saying is this: One of you says, 'I belong to Paul,' or 'I belong to Apollos,' or 'I belong to Cephas,' or 'I belong to Christ.' Is Christ divided? Was Paul crucified for you? Or were you baptized in Paul's name?"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Here is how the correspondence got started. While Paul was in Ephesus across the sea (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.16.5-9" target="_blank">1 Corinthians 16:5-9</a>), word reached him from the household of a woman named Chloe (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.1.11" target="_blank">1 Corinthians 1:11</a>) that his church was splitting into fan clubs. This was not even his first letter to them. He mentions an earlier one we no longer have (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.5.9" target="_blank">1 Corinthians 5:9</a>), and the Corinthians had also written back with a list of their own questions (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.7.1" target="_blank">1 Corinthians 7:1</a>). So 1 Corinthians is Paul's response to a relationship already in motion. And notice his very first move against their bragging about leaders. He points them straight back to the cross. Was Paul crucified for you? Of course not. The cure for a divided church is remembering Whose name they actually bear.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 11">11</sup>My brothers, some from Chloe’s household have informed me that there are quarrels among you. <sup class="verse-number" aria-label="Verse 12">12</sup>What I mean is this: Individuals among you are saying, “I follow Paul,” “I follow Apollos,” “I follow Cephas,” or “I follow Christ.” <sup class="verse-number" aria-label="Verse 13">13</sup>Is Christ divided? Was Paul crucified for you? Were you baptized into the name of Paul?</div>
+<div class="verse-commentary">
+          <p>Here is how the correspondence got started. While Paul was in Ephesus across the sea (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.16.5-9" target="_blank" rel="noopener">1 Corinthians 16:5-9</a>), word reached him from the household of a woman named Chloe (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.11" target="_blank" rel="noopener">1 Corinthians 1:11</a>) that his church was splitting into fan clubs. This was not even his first letter to them. He mentions an earlier one we no longer have (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.9" target="_blank" rel="noopener">1 Corinthians 5:9</a>), and the Corinthians had also written back with a list of their own questions (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.7.1" target="_blank" rel="noopener">1 Corinthians 7:1</a>). So 1 Corinthians is Paul's response to a relationship already in motion. And notice his very first move against their bragging about leaders. He points them straight back to the cross. Was Paul crucified for you? Of course not. The cure for a divided church is remembering Whose name they actually bear.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Corinthians 1:12 | 1:12 That is, Peter -->
 
+<!-- BSB_BLOCK: 1 Corinthians 4:14 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:6e535c7c2da2701b60ce1247564b743800e6c592d6437d3db2ab218402886cc4 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 4:14</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.4.14" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.4.14" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"I'm not writing this to shame you, but to warn you as my dear children."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Before Paul gets blunt, he tells them why. He is not trying to embarrass them. He is warning them the way a parent warns a child running toward a road. That single sentence is the key that unlocks all his hard instructions. When he tells them not to keep cozy company with someone who claims to follow Jesus but lives in open sin (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.5.11" target="_blank">1 Corinthians 5:11</a>), or insists that their chaotic worship gatherings be done in an orderly way (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.14.40" target="_blank">1 Corinthians 14:40</a>), he is not being a killjoy. He even claims these directions carry the Lord's own authority, not just his opinion (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.14.37" target="_blank">1 Corinthians 14:37</a>). A father who only ever flatters his kids does not actually love them. Real love is willing to risk the relationship to tell the truth, and Paul was willing.</p>
+        <div class="verse-text">I am not writing this to shame you, but to warn you as my beloved children.</div>
+<div class="verse-commentary">
+          <p>Before Paul gets blunt, he tells them why. He is not trying to embarrass them. He is warning them the way a parent warns a child running toward a road. That single sentence is the key that unlocks all his hard instructions. When he tells them not to keep cozy company with someone who claims to follow Jesus but lives in open sin (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.11" target="_blank" rel="noopener">1 Corinthians 5:11</a>), or insists that their chaotic worship gatherings be done in an orderly way (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.40" target="_blank" rel="noopener">1 Corinthians 14:40</a>), he is not being a killjoy. He even claims these directions carry the Lord's own authority, not just his opinion (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.37" target="_blank" rel="noopener">1 Corinthians 14:37</a>). A father who only ever flatters his kids does not actually love them. Real love is willing to risk the relationship to tell the truth, and Paul was willing.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 2 Corinthians 2:4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c86a1174732ba0faf3a7b6b13bae6c7ef4a695d0bc4c92d0821ce16bfb05bd7f | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">2 Corinthians 2:4</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/2CO.2.4" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.2.4" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For I wrote to you with many tears out of an extremely troubled and anguished heart—not to cause you pain, but that you should know the abundant love I have for you."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>This is the most naked Paul ever gets about what writing these letters did to him. Somewhere between 1 and 2 Corinthians he sent a severe, sorrowful letter that he later worried had wounded them too deeply (<a class="vlink" href="https://www.bible.com/bible/1713/2CO.2.3" target="_blank">2 Corinthians 2:3</a>, <a class="vlink" href="https://www.bible.com/bible/1713/2CO.7.8" target="_blank">2 Corinthians 7:8</a>), a letter he wrote partly to see whether they would still obey (<a class="vlink" href="https://www.bible.com/bible/1713/2CO.2.9" target="_blank">2 Corinthians 2:9</a>). The phrase "anguished heart" translates a vivid Greek word, <em>synoche</em>, which means a clenching or constriction, the physical sensation of your chest tightening under pressure. Paul did not correct the Corinthians coolly. He wept while he wrote, his whole body knotted with it. And he names the reason out loud. He wrote the hard words precisely so they would feel the depth of his love, not the size of his disappointment. The tears were the proof that the rebuke was love.</p>
+        <div class="verse-text">For through many tears I wrote you out of great distress and anguish of heart, not to grieve you but to let you know how much I love you.</div>
+<div class="verse-commentary">
+          <p>This is the most naked Paul ever gets about what writing these letters did to him. Somewhere between 1 and 2 Corinthians he sent a severe, sorrowful letter that he later worried had wounded them too deeply (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.2.3" target="_blank" rel="noopener">2 Corinthians 2:3</a>, <a class="vlink" href="https://www.bible.com/bible/3034/2CO.7.8" target="_blank" rel="noopener">2 Corinthians 7:8</a>), a letter he wrote partly to see whether they would still obey (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.2.9" target="_blank" rel="noopener">2 Corinthians 2:9</a>). The phrase "anguished heart" translates a vivid Greek word, <em>synoche</em>, which means a clenching or constriction, the physical sensation of your chest tightening under pressure. Paul did not correct the Corinthians coolly. He wept while he wrote, his whole body knotted with it. And he names the reason out loud. He wrote the hard words precisely so they would feel the depth of his love, not the size of his disappointment. The tears were the proof that the rebuke was love.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 2 Corinthians 13:10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:0f7f6e40118e3f091bcce3ffa84c425fb4abc48c4084b51a4f4095574c0aba91 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">2 Corinthians 13:10</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/2CO.13.10" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.13.10" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"This is why I am writing these things while absent, so that when I am present I will not have to deal harshly with you, in keeping with the authority the Lord gave me for building up and not for tearing down."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Paul names the whole point of his writing in one line. The authority Jesus gave him was for building up, not for tearing down. He wrote ahead of time, while still absent, hoping the letters would do their work so he would not have to be severe in person. He even admits some people accused him of trying to scare them with strongly worded letters (<a class="vlink" href="https://www.bible.com/bible/1713/2CO.10.9" target="_blank">2 Corinthians 10:9</a>), and he answers with a clear conscience about his own sincerity toward them (<a class="vlink" href="https://www.bible.com/bible/1713/2CO.1.12" target="_blank">2 Corinthians 1:12</a>). What kept him up at night was not their disrespect but their drift, the fear that, like Eve, they would be lured away from a pure devotion to Christ (<a class="vlink" href="https://www.bible.com/bible/1713/2CO.11.3" target="_blank">2 Corinthians 11:3</a>). Every letter, gentle or severe, was aimed at one thing, keeping them close to Jesus.</p>
+        <div class="verse-text">This is why I write these things while absent, so that when I am present I will not need to be severe in my use of the authority that the Lord gave me for building you up, not for tearing you down.</div>
+<div class="verse-commentary">
+          <p>Paul names the whole point of his writing in one line. The authority Jesus gave him was for building up, not for tearing down. He wrote ahead of time, while still absent, hoping the letters would do their work so he would not have to be severe in person. He even admits some people accused him of trying to scare them with strongly worded letters (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.10.9" target="_blank" rel="noopener">2 Corinthians 10:9</a>), and he answers with a clear conscience about his own sincerity toward them (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.1.12" target="_blank" rel="noopener">2 Corinthians 1:12</a>). What kept him up at night was not their disrespect but their drift, the fear that, like Eve, they would be lured away from a pure devotion to Christ (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.11.3" target="_blank" rel="noopener">2 Corinthians 11:3</a>). Every letter, gentle or severe, was aimed at one thing, keeping them close to Jesus.</p>
         </div>
       </div>
     </div>
@@ -852,22 +876,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/2CO.2.4" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=2+Corinthians+2:4&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

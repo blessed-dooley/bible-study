@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -733,61 +756,64 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Paul began this whole discussion with a quiet claim, that love, not knowledge, is what keeps a person safe near idols (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.8.1-3" target="_blank">1 Corinthians 8:1-3</a>), and that the one who loves God is known by Him (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.8.3" target="_blank">1 Corinthians 8:3</a>). Today he finishes the thought in the section that closes the entire three-chapter argument (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.10.23-11.1" target="_blank">1 Corinthians 10:23-11:1</a>). But to feel the weight of his answer, we need to stand where he learned it, beside Jesus, on the day a scribe asked the biggest question in Israel and on the day a rich young man asked an even more personal one.</p>
+      <p>Paul began this whole discussion with a quiet claim, that love, not knowledge, is what keeps a person safe near idols (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.8.1-3" target="_blank" rel="noopener">1 Corinthians 8:1-3</a>), and that the one who loves God is known by Him (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.8.3" target="_blank" rel="noopener">1 Corinthians 8:3</a>). Today he finishes the thought in the section that closes the entire three-chapter argument (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.23-11.1" target="_blank" rel="noopener">1 Corinthians 10:23-11:1</a>). But to feel the weight of his answer, we need to stand where he learned it, beside Jesus, on the day a scribe asked the biggest question in Israel and on the day a rich young man asked an even more personal one.</p>
 
+<!-- BSB_BLOCK: Mark 12:28-31 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:e5bfe2b7f19b9af62cd64ee0bbad0993d97590f0437d29f6b6a31d2ad5c8e173 | footnotes-stripped:2 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Mark 12:28-31</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MRK.12.28-31" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MRK.12.28-31" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"One of the scribes approached. When he heard them debating and saw that Jesus answered them well, he asked him, 'Which command is the most important of all?' Jesus answered, 'The most important is Listen, Israel! The Lord our God, the Lord is one. Love the Lord your God with all your heart, with all your soul, with all your mind, and with all your strength. The second is, Love your neighbor as yourself. There is no other command greater than these.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Asked to rank hundreds of commands, Jesus answers with the prayer every Jew in earshot had recited that very morning, the confession of one God who deserves everything (<a class="vlink" href="https://www.bible.com/bible/1713/DEU.6.4" target="_blank">Deuteronomy 6:4</a>). The surprise is not the first line. It is the weld. Without being asked for a second command, Jesus attaches one, love your neighbor as yourself. His word for neighbor is <em>plesion</em>, Greek for the near one, whoever God has placed within arm's reach of your life. Two loves, one answer, and Jesus refuses to hand out the first without the second. You cannot love the God you have not seen while ignoring the near one you see daily. Total love for God, practical love for the person beside you. Everything else in the moral universe hangs from those two hooks.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 28">28</sup>Now one of the scribes had come up and heard their debate. Noticing how well Jesus had answered them, he asked Him, “Which commandment is the most important of all?” <sup class="verse-number" aria-label="Verse 29">29</sup>Jesus replied, <span class="words-of-jesus">“This is the most important: ‘Hear, O Israel, the Lord our God, the Lord is One.</span> <sup class="verse-number" aria-label="Verse 30">30</sup><span class="words-of-jesus">Love the Lord your God with all your heart and with all your soul and with all your mind and with all your strength.’</span> <sup class="verse-number" aria-label="Verse 31">31</sup><span class="words-of-jesus">The second is this: ‘Love your neighbor as yourself.’ No other commandment is greater than these.”</span></div>
+<div class="verse-commentary">
+          <p>Asked to rank hundreds of commands, Jesus answers with the prayer every Jew in earshot had recited that very morning, the confession of one God who deserves everything (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.6.4" target="_blank" rel="noopener">Deuteronomy 6:4</a>). The surprise is not the first line. It is the weld. Without being asked for a second command, Jesus attaches one, love your neighbor as yourself. His word for neighbor is <em>plesion</em>, Greek for the near one, whoever God has placed within arm's reach of your life. Two loves, one answer, and Jesus refuses to hand out the first without the second. You cannot love the God you have not seen while ignoring the near one you see daily. Total love for God, practical love for the person beside you. Everything else in the moral universe hangs from those two hooks.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Mark 12:30 | 12:30 Deuteronomy 6:4–5 -->
+      <!-- BSB_FOOTNOTE: Mark 12:31 | 12:31 Leviticus 19:18 -->
 
-      <p>Now watch those two commands walk into the same story. A rich young man runs to Jesus asking about eternal life (<a class="vlink" href="https://www.bible.com/bible/1713/MRK.10.17-22" target="_blank">Mark 10:17-22</a>). Jesus first presses on the God question, why call Me good, since no one is good but God alone (<a class="vlink" href="https://www.bible.com/bible/1713/MRK.10.18" target="_blank">Mark 10:18</a>), an echo of the same one-God confession. Then He runs down the second table of the law, the people commandments (<a class="vlink" href="https://www.bible.com/bible/1713/MRK.10.19" target="_blank">Mark 10:19</a>), and the man passes. Kept them all since childhood. Here stands a moral, religious, admirable man, and something still owns him.</p>
+      <p>Now watch those two commands walk into the same story. A rich young man runs to Jesus asking about eternal life (<a class="vlink" href="https://www.bible.com/bible/3034/MRK.10.17-22" target="_blank" rel="noopener">Mark 10:17-22</a>). Jesus first presses on the God question, why call Me good, since no one is good but God alone (<a class="vlink" href="https://www.bible.com/bible/3034/MRK.10.18" target="_blank" rel="noopener">Mark 10:18</a>), an echo of the same one-God confession. Then He runs down the second table of the law, the people commandments (<a class="vlink" href="https://www.bible.com/bible/3034/MRK.10.19" target="_blank" rel="noopener">Mark 10:19</a>), and the man passes. Kept them all since childhood. Here stands a moral, religious, admirable man, and something still owns him.</p>
 
+<!-- BSB_BLOCK: Mark 10:21 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:de8cb9b56f42f359f2d3312332c32277a5ffbf920467ba501c5b7c6e2d7619f6 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Mark 10:21</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MRK.10.21" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MRK.10.21" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Looking at him, Jesus loved him and said to him, 'You lack one thing: Go, sell all you have and give to the poor, and you will have treasure in heaven. Then come, follow me.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Mark slows the film down for three words, Jesus loved him. The diagnosis that follows is not an attack. It is surgery scheduled by affection. One thing you lack, and the prescription proves how precisely Jesus reads a heart, sell, give to the poor, follow Me. Money had outclimbed God in the man's loyalties, and the poor at his gate had never once outranked his portfolio, so the one command touches both broken loves at the same time. He was offered treasure in heaven and a walking position beside the Son of God, and he was dismayed and went away grieving, because he had many possessions (<a class="vlink" href="https://www.bible.com/bible/1713/MRK.10.22" target="_blank">Mark 10:22</a>). No statue, no incense, no temple membership. Just a man whose good thing had quietly become his god, walking away sad from the only One who could have made him glad.</p>
+        <div class="verse-text">Jesus looked at him, loved him, and said to him, <span class="words-of-jesus">“There is one thing you lack: Go, sell everything you own and give to the poor, and you will have treasure in heaven. Then come, follow Me.”</span></div>
+<div class="verse-commentary">
+          <p>Mark slows the film down for three words, Jesus loved him. The diagnosis that follows is not an attack. It is surgery scheduled by affection. One thing you lack, and the prescription proves how precisely Jesus reads a heart, sell, give to the poor, follow Me. Money had outclimbed God in the man's loyalties, and the poor at his gate had never once outranked his portfolio, so the one command touches both broken loves at the same time. He was offered treasure in heaven and a walking position beside the Son of God, and he was dismayed and went away grieving, because he had many possessions (<a class="vlink" href="https://www.bible.com/bible/3034/MRK.10.22" target="_blank" rel="noopener">Mark 10:22</a>). No statue, no incense, no temple membership. Just a man whose good thing had quietly become his god, walking away sad from the only One who could have made him glad.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Mark 10:21 | 10:21 BYZ and TR Then come, take up the cross, and follow Me. -->
 
-      <p>This is exactly the principle Paul applies to Corinth's gray areas, including the dinner-party dilemmas we walked through earlier, where a whispered word about sacrificial meat turns supper into a statement (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.10.27-28" target="_blank">1 Corinthians 10:27-28</a>). Everything is permissible, Paul grants, but not everything is beneficial, and not everything builds up (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.10.23" target="_blank">1 Corinthians 10:23</a>). Lawful is the floor, not the compass. The compass is the sentence we memorized on Sabbath, do everything for the glory of God (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.10.31" target="_blank">1 Corinthians 10:31</a>), and its street-level twin comes next.</p>
+      <p>This is exactly the principle Paul applies to Corinth's gray areas, including the dinner-party dilemmas we walked through earlier, where a whispered word about sacrificial meat turns supper into a statement (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.27-28" target="_blank" rel="noopener">1 Corinthians 10:27-28</a>). Everything is permissible, Paul grants, but not everything is beneficial, and not everything builds up (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.23" target="_blank" rel="noopener">1 Corinthians 10:23</a>). Lawful is the floor, not the compass. The compass is the sentence we memorized on Sabbath, do everything for the glory of God (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.31" target="_blank" rel="noopener">1 Corinthians 10:31</a>), and its street-level twin comes next.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 10:24 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:940d2746f6b036e87e98a1b937ed5baa1f3bf28a61997c526835dc6dd33717f3 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 10:24</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.10.24" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.10.24" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"No one is to seek his own good, but the good of the other person."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">No one should seek his own good, but the good of others.</div>
+<div class="verse-commentary">
           <p>Read it slowly, because it sounds unlivable on purpose. Corinth's operating system, like ours, ran on seeking your own good and calling it common sense. Paul flips the default. In every choice this week has surveyed, the meat, the invitation, the rights, the freedoms, the question is never only what this does for me. It is what this does to the near one, the brother with the tender conscience, the neighbor watching to see if the gospel changes anything. This is loving your neighbor as yourself with its sleeves rolled up. And notice what it quietly assumes, that seeking the other's good is how love for God becomes visible. Nobody can see your heart. Everybody can see your fork.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Isaiah 42:8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:18d1970cdfa1b4aa6c4f304294e93942995edf23c70f2a6477f6f89e76a0a5e5 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Isaiah 42:8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ISA.42.8" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ISA.42.8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"I am the Lord. That is my name, and I will not give my glory to another or my praise to idols."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">I am the LORD; that is My name! I will not yield My glory to another or My praise to idols.</div>
+<div class="verse-commentary">
           <p>Here is the verse that explains why any of this matters. God states, in His own voice, that His glory is not transferable. Set that beside the week's compass, do everything for the glory of God, and idolatry suddenly gets a working definition wide enough for the modern world. An idol is anything that collects what belongs to God alone, and by that measure idols come in every shape, a career, a body, a bank balance, a relationship, a phone, a grievance, even a ministry. The rich young ruler never bowed to a statue in his life. He just let something else collect the glory, the trust, the first place that belonged to God. Idolatry did not die out with marble temples. It went portable.</p>
         </div>
       </div>
 
-      <p>Paul closes the entire three-chapter argument by pointing at his own life and then past it (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.10.31-11.1" target="_blank">1 Corinthians 10:31-11:1</a>). He did not seek his own advantage, but the advantage of many, so that they may be saved (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.10.33" target="_blank">1 Corinthians 10:33</a>). And then the sentence that only makes sense if the chain holds all the way up, imitate me, as I also imitate Christ (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.11.1" target="_blank">1 Corinthians 11:1</a>). The cure for idolatry was never a rulebook. It is a Person worth imitating, loved above everything, glorified in everything.</p>
+      <p>Paul closes the entire three-chapter argument by pointing at his own life and then past it (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.31-11.1" target="_blank" rel="noopener">1 Corinthians 10:31-11:1</a>). He did not seek his own advantage, but the advantage of many, so that they may be saved (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.33" target="_blank" rel="noopener">1 Corinthians 10:33</a>). And then the sentence that only makes sense if the chain holds all the way up, imitate me, as I also imitate Christ (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.11.1" target="_blank" rel="noopener">1 Corinthians 11:1</a>). The cure for idolatry was never a rulebook. It is a Person worth imitating, loved above everything, glorified in everything.</p>
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -823,7 +849,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Jesus never asked the rich young man for anything He was unwilling to do Himself. Look at the two great commandments and then look at the cross, because Calvary is what they cost when they are kept all the way down. Love God with all your heart, soul, mind, and strength. In Gethsemane that meant a Son sweating blood and still saying, not what I will, but what You will (<a class="vlink" href="https://www.bible.com/bible/1713/MRK.14.36" target="_blank">Mark 14:36</a>). Love your neighbor as yourself. At Golgotha that meant treating our rescue as worth His life, the near ones He was dying for including the soldiers holding the nails. The rich young ruler kept his many possessions and went away grieving. Jesus let go of everything, His rights, His safety, His breath, and secured the treasure He wanted most, which was us. When Paul says imitate me as I imitate Christ, this is the pattern at the top of the chain. Both commandments, kept to the last drop. Idolatry has never had an answer for a love like that. It still does not.</p>
+      <p>Jesus never asked the rich young man for anything He was unwilling to do Himself. Look at the two great commandments and then look at the cross, because Calvary is what they cost when they are kept all the way down. Love God with all your heart, soul, mind, and strength. In Gethsemane that meant a Son sweating blood and still saying, not what I will, but what You will (<a class="vlink" href="https://www.bible.com/bible/3034/MRK.14.36" target="_blank" rel="noopener">Mark 14:36</a>). Love your neighbor as yourself. At Golgotha that meant treating our rescue as worth His life, the near ones He was dying for including the soldiers holding the nails. The rich young ruler kept his many possessions and went away grieving. Jesus let go of everything, His rights, His safety, His breath, and secured the treasure He wanted most, which was us. When Paul says imitate me as I imitate Christ, this is the pattern at the top of the chain. Both commandments, kept to the last drop. Idolatry has never had an answer for a love like that. It still does not.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -860,22 +886,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/MRK.12.28-31" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Mark+12:28-31&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

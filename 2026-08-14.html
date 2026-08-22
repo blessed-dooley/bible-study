@@ -378,6 +378,14 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
   .verse-text sup.verse-number,
   .verse-text-alt sup.verse-number {
     font-family: 'Nunito', sans-serif;
@@ -494,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -557,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -575,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -806,31 +818,31 @@ if ('serviceWorker' in navigator) {
       <div class="section-heading">The Audit and the Countdown Were the Same Lesson</div>
       <p>Sunday zeroed out the most impressive spiritual résumé imaginable. Thursday stamped an expiration date on every trophy in Corinth's case. Two demolitions in one week, and together they raise an uncomfortable question. If the gifts can be worthless now and are temporary anyway, what are they even for?</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 13:8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:25cbe721f63aa8c5cf961371a4010176bb09ca6465ced458b9968ad40597f821 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 13:8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.13.8" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.13.8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Love never ends. But as for prophecies, they will come to an end; as for tongues, they will cease; as for knowledge, it will come to an end."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>The week ran the same audit from two directions. Sunday counted the gifts without love and got zero, the model home furnished to the toothbrush cups with no family inside it (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.13.1-3" target="_blank">1 Corinthians 13:1-3</a>). Thursday counted the gifts against eternity and watched every one of them stand down on schedule, the booster stage falling away with its work complete. Neither pass was an attack on the gifts. Paul spent two chapters honoring them, and both demolitions leave them standing as exactly what they are, real tools with real thrust. What the double audit exposes is location. The value never lived in the inventory. It lives in what the inventory is carrying.</p>
+        <div class="verse-text">Love never fails. But where there are prophecies, they will cease; where there are tongues, they will be restrained; where there is knowledge, it will be dismissed.</div>
+<div class="verse-commentary">
+          <p>The week ran the same audit from two directions. Sunday counted the gifts without love and got zero, the model home furnished to the toothbrush cups with no family inside it (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.1-3" target="_blank" rel="noopener">1 Corinthians 13:1-3</a>). Thursday counted the gifts against eternity and watched every one of them stand down on schedule, the booster stage falling away with its work complete. Neither pass was an attack on the gifts. Paul spent two chapters honoring them, and both demolitions leave them standing as exactly what they are, real tools with real thrust. What the double audit exposes is location. The value never lived in the inventory. It lives in what the inventory is carrying.</p>
           <p>That settles how to measure, and not just for Corinth. The questions we reach for first, how gifted is this person, how impressive is this church, how full is this résumé, are inventory questions, and the week retired them. The chapter's question is a cargo question. What is all this lifting? A congregation's programs, a believer's abilities, a family's accomplishments are boosters and scaffolding, honorable and scheduled to fall away, and the test of every one of them is whether love is the thing riding inside.</p>
         </div>
       </div>
 
       <div class="section-heading">The Portrait Is an Introduction Before It Is an Assignment</div>
-      <p>Be honest about how the middle of the week felt. Fifteen verbs went up on the wall (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.13.4-7" target="_blank">1 Corinthians 13:4-7</a>), and most of us had failed the list by Tuesday lunch. Read as a report card, the love chapter grades everyone into discouragement. So is that what it is?</p>
+      <p>Be honest about how the middle of the week felt. Fifteen verbs went up on the wall (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.4-7" target="_blank" rel="noopener">1 Corinthians 13:4-7</a>), and most of us had failed the list by Tuesday lunch. Read as a report card, the love chapter grades everyone into discouragement. So is that what it is?</p>
 
+<!-- BSB_BLOCK: Galatians 5:22-23 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:29576fafa91920420c367cd105898109c35eee0d39045809d114a1322ca654b8 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Galatians 5:22-23</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/GAL.5.22-23" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/GAL.5.22-23" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"<sup class="verse-number" aria-label="Verse 22">22</sup>But the fruit of the Spirit is love, joy, peace, patience, kindness, goodness, faithfulness, <sup class="verse-number" aria-label="Verse 23">23</sup>gentleness, and self-control. The law is not against such things."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Wednesday answered the discouragement by turning the frame around. The verbs were a biography before they were ever a syllabus. Paul was describing Someone he had met, patient with the worst of sinners, kind before being asked, believing a persecutor into an apostle (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.9.15" target="_blank">Acts 9:15</a>), and the portrait's first message to any reader is not measure up. It is this is how you are currently being loved. Monday had already planted the other half of the answer in a farming word. Fruit. Nobody bolts fruit onto a tree, and nobody grinds out this love by willpower. It ripens from a life the Spirit is living inside.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 22">22</sup>But the fruit of the Spirit is love, joy, peace, patience, kindness, goodness, faithfulness, <sup class="verse-number" aria-label="Verse 23">23</sup>gentleness, and self-control. Against such things there is no law.</div>
+<div class="verse-commentary">
+          <p>Wednesday answered the discouragement by turning the frame around. The verbs were a biography before they were ever a syllabus. Paul was describing Someone he had met, patient with the worst of sinners, kind before being asked, believing a persecutor into an apostle (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.9.15" target="_blank" rel="noopener">Acts 9:15</a>), and the portrait's first message to any reader is not measure up. It is this is how you are currently being loved. Monday had already planted the other half of the answer in a farming word. Fruit. Nobody bolts fruit onto a tree, and nobody grinds out this love by willpower. It ripens from a life the Spirit is living inside.</p>
           <p>Put the two halves together and the chapter's order of operations comes clear. First be loved, because the portrait is aimed at you before it is assigned to you. Then practice the verb on schedule, the way the anniversary couple ran their small faithful chores through fifty years of feeling-weather, because the feelings were never the engine. And ask for the fruit while you practice, since the sap is His and the reps are yours. The week did not lower the standard. It relocated the strength.</p>
         </div>
       </div>
@@ -838,14 +850,14 @@ if ('serviceWorker' in navigator) {
       <div class="section-heading">It Does Not Shatter. It Cools</div>
       <p>Notice what the week's warnings had in common. None of them was dramatic. No betrayal, no blowup, no villain. A cup cooling on a desk. A stylus entering a wrong in the books. A congregation running every program at full power and losing a degree a day. The threats were all quiet ones.</p>
 
+<!-- BSB_BLOCK: Matthew 24:12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c9078c415230e3bc93da7eaaa4856537f74c424f19cb2ce0a0faa8a697a5d273 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Matthew 24:12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.24.12" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.24.12" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Because lawlessness will multiply, the love of many will grow cold."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><span class="words-of-jesus">Because of the multiplication of wickedness, the love of most will grow cold.</span></div>
+<div class="verse-commentary">
           <!-- TODAYS_WORLD_SOURCE: From loneliness to social connection: charting a path to healthier societies | World Health Organization, Commission on Social Connection | 2025 | https://www.who.int/publications/b/79027 -->
           <p>Jesus' forecast for the last days was a temperature warning, and the week kept finding the cold in unexpected rooms. The loneliest people on earth right now are the young, the very generation holding the greatest connective toolkit ever built. The best-audited city in Greece was billing itself to death one filed grievance at a time, because a record of wrongs turns out to be cold storage, and the interest lands on the bookkeeper. Love almost never dies in an explosion. It dies untended, by degrees, while more urgent things get handled.</p>
           <p>Which is why the cure the week prescribed is so unglamorous. Maintenance. Not a hotter feeling but a tended fire, small verbs run on schedule, one entry torn out of the ledger on purpose, warmth delivered in person to somebody going cold within arm's reach. And underneath the maintenance, a supply line, because this warmth is received before it is produced. God canceled our record first, and loved people learn to love. Tomorrow is Sabbath, the weekly maintenance window, and the practice below is one deliberate hour of it.</p>
@@ -901,22 +913,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's passage in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.13" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+13&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

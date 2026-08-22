@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -469,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -532,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -550,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -611,7 +648,7 @@
     white-space: nowrap;
   }
 
-  /* ── DEEPER QUESTIONS ── */
+  /* LEGACY DEEPER QUESTIONS: retained only so archived Friday bodies can still be reassembled */
   .dq-block {
     margin: 28px 0;
     padding: 0;
@@ -707,16 +744,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/bible-study/sw.js')
-      .catch(function(err) { console.log('SW registration failed:', err); });
-  });
-}
-</script>
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -775,123 +802,64 @@ if ('serviceWorker' in navigator) {
       </div>
       <div class="section-heading">A Book Across Six Windows</div>
       <p>This week we walked the Bible's own hallway and looked into the same room through six different windows. Each window was a different writer in a different century speaking a different language, and yet each one was describing the same object. The Hebrew poet of Psalm 119 and the Greek-speaking apostle writing to Corinth are a thousand years apart. Moses in the wilderness of Deuteronomy 8 and Paul chained to a soldier in Rome are separated by about fourteen centuries. The psalmist on his harp and Jesus in an upper room speak different tongues in different rooms. But every one of them reaches for the same reality. There is a Word. It is alive. It judges us and heals us at the same time. It carries the authority of God because it came from the breath of God. It is not decoration. It is food, weapon, surgery, seed, and sword.</p>
-      <p>The historical context the whole week points to is one unified testimony. Jewish synagogues in the first century unrolled scrolls on Sabbath and read them aloud while the congregation stood. The Bereans in Acts 17 are described as more noble because they "searched the Scriptures daily" (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.17.11" target="_blank">Acts 17:11</a>) to test what Paul was saying. Early Christians, most of whom could not read, memorized large sections so that a persecutor could not take the Word away. Tyndale burned on a stake so that English plowboys could have what this week describes. There has never been a generation that did not pay for this book, and there has never been a generation that stopped receiving it. The Bible outlasted every attempt to silence it because the Bible is not paper. It is the voice of God preserved in the voice of His people, from Moses' tent to your kitchen table.</p>
+      <p>The historical context the whole week points to is one unified testimony. Jewish synagogues in the first century unrolled scrolls on Sabbath and read them aloud while the congregation stood. The Bereans in Acts 17 are described as more noble because they "searched the Scriptures daily" (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.17.11" target="_blank" rel="noopener">Acts 17:11</a>) to test what Paul was saying. Early Christians, most of whom could not read, memorized large sections so that a persecutor could not take the Word away. Tyndale burned on a stake so that English plowboys could have what this week describes. There has never been a generation that did not pay for this book, and there has never been a generation that stopped receiving it. The Bible outlasted every attempt to silence it because the Bible is not paper. It is the voice of God preserved in the voice of His people, from Moses' tent to your kitchen table.</p>
     </div>
 
-    <!-- 3. DEEPER QUESTIONS -->
+    <!-- 3. WHAT THIS WEEK CLARIFIES -->
     <div class="section">
       <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Deeper Questions</span>
+        <span class="section-emoji">💡</span>
+        <span class="section-title">What This Week Clarifies</span>
         <div class="section-title-line"></div>
       </div>
 
-      <p>Five questions carry us into the weekend. None of them need a perfect answer. They need an honest one. Read slowly. Let the verse under each question be the voice that answers more than you do.</p>
+      <p>A week that put a sword in our hands leaves a few honest tensions behind, the kind worth naming out loud before the Book goes back on the nightstand. Three stand out, and the week itself already carried their answers.</p>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">1</span>
-          <div class="dq-question">What are all the logical and rational reasons you have for your faith? Name more than you think you have.</div>
+      <div class="section-heading">Nobody Sabotages a Harmless Book</div>
+      <p>Set the week's two loudest claims side by side. The Word on the shelf spoke galaxies into orbit, raised a four-day-dead man with three words, and cuts down under every human defense. And the same week said this unstoppable weapon is routinely beaten by a crowded calendar, a child's sports season, and a screen that is always closer than the page. A power that great should not lose to an ordinary Tuesday.</p>
+
+<!-- BSB_BLOCK: Ephesians 6:17-18 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:ad5ebe58885d8981a84265bb87d21a11bd334d81c4ab613987cc6f38a9216c63 | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Ephesians 6:17-18</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/EPH.6.17-18" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Hebrews 11:3</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/HEB.11.3" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"By faith we understand that the universe was created by the word of God, so that what is seen was made from things that are not visible."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">Faith is often described as the opposite of reason. Hebrews will not allow that. Faith is how we <em>understand</em>. The Greek is <em>nooumen</em>, the verb behind our word "noetic." It is a reasoning word. The text is saying that faith reaches a conclusion reason alone could not reach: the universe came from a Word. Your rational reasons for faith are probably more than you think. The design of your eye. The existence of moral law you did not write. The fact that love is real and cruelty feels wrong. The reliability of the four Gospel accounts. The fingerprints of prophecy. The testimonies of changed lives. The moment last year when something you could only call grace met you on a bad day. Faith is not the absence of reasons. It is the reasonable response to the reasons you already have.</div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 17">17</sup>And take the helmet of salvation and the sword of the Spirit, which is the word of God. <sup class="verse-number" aria-label="Verse 18">18</sup>Pray in the Spirit at all times, with every kind of prayer and petition. To this end, stay alert with all perseverance in your prayers for all the saints.</div>
+<div class="verse-commentary">
+          <p>The contradiction dissolves when you read the enemy's playbook. Sunday laid it out from Paul's cell. The armor carries exactly one offensive weapon, and the campaign against it has never argued that the blade is dull. It just keeps the hand off the handle. Busyness, fatigue, and distraction feel like a normal Tuesday, and that is exactly why they work, because the strategist behind them once heard the Voice this Book carries and knows what it can do. Notice that Paul laces the sword straight into prayer, listening in Scripture and speaking to God as one motion. So the sword's easy defeat is not evidence against its power. It is the best evidence for it. Nobody runs a full-time campaign against a decoration. The enemy has never feared the sword on the wall. He fears the hand that draws it.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">2</span>
-          <div class="dq-question">How do you actually make Bible study and prayer the foundation of your relationship with God? Is a relationship even possible without them?</div>
-        </div>
+      <div class="section-heading">The Door Decides What the Guest Can Do</div>
+      <p>Monday and Thursday can sound like they are wrestling each other. Monday said the Book is God-breathed and gets the final word, the rulebook every opinion must sit down for. Thursday said the outcome of any reading depends on the state of the reader's heart. Put bluntly, one day says the Bible holds all the authority, and the next day seems to hand the deciding vote back to us.</p>
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Psalm 33:6</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/PSA.33.6" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"The heavens were made by the word of the Lord, and all the stars, by the breath of his mouth."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">The same breath that set stars in place is the breath still on the page of your Bible. The Hebrew <em>ruach</em>, breath, is also the word for Spirit. If God made galaxies by speaking, what do you think He can do in one human being who actually sits down and listens? A relationship without Scripture and prayer is not really a relationship. It is a monologue with your own preferences. You can call it friendship with God, but it is friendship with an imagined version of Him, shaped to agree with you. Scripture is where God gets to speak in His own voice. Prayer is where you answer. Any other arrangement is not a relationship. It is a private myth.</div>
+<!-- BSB_BLOCK: 1 Thessalonians 2:13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:84047c326535495f787ad35a1f04e9ad9d72febecd4efe7a091b44184d3679be | footnotes-stripped:0 | poetry:flow -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">1 Thessalonians 2:13</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1TH.2.13" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">And we continually thank God because, when you received the word of God that you heard from us, you accepted it not as the word of men, but as it truly is, the word of God, which is also now at work in you who believe.</div>
+<div class="verse-commentary">
+          <p>Paul's thank-you note to Thessalonica holds the two days together. The believers received the message not as the word of men but as it truly is, the word of God, and only then does the verse say it went to work in them. Thursday's picture for that receiving was a homeowner welcoming a guest. That is the heart's real role. The door does not write the guest's message, edit his vocabulary, or decide what he is authorized to do. It only decides whether he gets in. Monday stands untouched, because welcoming is the opposite of editing. The reader who screens Scripture for agreeable lines has confused the door with the Author. And the reader who opens fully, mustard-seed faith and all, finds the week's promise coming true from the inside. The Word did not gain its power at our door. It was simply, at last, let through it.</p>
         </div>
       </div>
 
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">3</span>
-          <div class="dq-question">If someone wanted to deepen their relationship with God, where would you tell them to start reading?</div>
-        </div>
+      <div class="section-heading">The Mercies Were New on the Mornings You Missed</div>
+      <p>By Friday the week's assignments have piled up. Draw the sword daily. Submit every opinion. Memorize. Bury the verse where the thief cannot reach it. Come with a welcoming heart every single morning. An honest reader looks at that list, then looks at last month's unopened Bible, and quietly concludes that this program belongs to more consistent people.</p>
 
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Matthew 11:4&ndash;5</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.11.4" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Jesus replied to them, 'Go and report to John what you hear and see: The blind receive their sight, the lame walk, those with leprosy are cleansed, the deaf hear, the dead are raised, and the poor are told the good news.'"</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">When John the Baptist, locked in Herod's dungeon, sent a desperate question ("Are you the one, or should we look for another?"), Jesus did not send back an argument. He sent back a paragraph of Isaiah 35 and 61 unfolding in real time. Go tell John what you see. Start with a Gospel. Most often, Mark for speed, John for intimacy, or Luke for tenderness toward outsiders. Then read a Psalm a day alongside it, because the Psalms teach you how to pray while the Gospels teach you whom to pray to. Tell your friend to underline what moves them, circle what confuses them, and bring both to prayer that night. The Bible is not a book you master. It is a Person you meet.</div>
+<!-- BSB_BLOCK: Lamentations 3:22-23 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c8c190b198b5ba654db58a7faac7abe88f43c638e91c1fae1c7553b30b2204be | footnotes-stripped:1 | poetry:flattened -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Lamentations 3:22-23</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/LAM.3.22-23" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 22">22</sup>Because of the loving devotion of the LORD we are not consumed, for His mercies never fail. <sup class="verse-number" aria-label="Verse 23">23</sup>They are new every morning; great is Your faithfulness!</div>
+<div class="verse-commentary">
+          <p>Sunday set the answer down right beside the sword, and it was written in the ruins of Jerusalem. Jeremiah composed these lines while the city was still smoking, so the Bible's clearest word about fresh starts comes from the site of a total loss. The Hebrew behind loving devotion is <em>chesed</em>, God's stubborn covenant loyalty, and Sunday pressed its sharpest edge. This mercy does not measure itself by our record. It was new on the mornings the Bible stayed closed, and it will be new at whatever hour we come back. That is not permission to drift. It is the ground that makes returning possible. Thursday added the last kindness. When a trembling father offered Jesus belief and unbelief in the same sentence, Jesus healed his son with the faith the man actually had. The mustard seed opens the Book. The morning mercies do the rest.</p>
         </div>
       </div>
-
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">4</span>
-          <div class="dq-question">What would it actually look like to live by every word that proceeds from the mouth of the Lord?</div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Deuteronomy 8:3</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/DEU.8.3" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"He humbled you by letting you go hungry; then he gave you manna to eat, which you and your ancestors had not known, so that you might learn that man does not live on bread alone but on every word that comes from the mouth of the Lord."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">The word comes out of the wilderness, where Israel's stomach taught them what their ears would not. God allowed hunger so that they would recognize another kind of bread. Jesus quoted this verse in His own wilderness (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.4.4" target="_blank">Matthew 4:4</a>) against a tempter who wanted Him to live by physical bread alone. To live by every word of God looks, in practical terms, like taking Scripture as the final vote in your decisions. Not the only vote, but the deciding one. When your feelings say one thing and a clear passage says another, the passage wins. When your plans run one direction and a verse has quietly been pulling another, the verse wins. That is what "live by" means. Obedience, one small yes at a time.</div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">Ephesians 6:17</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/EPH.6.17" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Take the helmet of salvation, and the sword of the Spirit&mdash;which is the word of God."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">Sunday's <em>machaira</em> returns here. Living by every word is not an abstract ideal. It is how a soldier stays alive. The sword is the only piece of armor Paul describes as offensive, and Jesus Himself wielded it in His own desert battle. To live by the Word is to keep the sword in your hand, not in the scabbard on the wall.</div>
-        </div>
-      </div>
-
-      <div class="dq-block">
-        <div class="dq-header">
-          <span class="dq-number">5</span>
-          <div class="dq-question">What do these passages, taken together, tell us about God's words?</div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">1 Thessalonians 4:16</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/1TH.4.16" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"For the Lord himself will descend from heaven with a shout, with the archangel's voice, and with the trumpet of God, and the dead in Christ will rise first."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">When God speaks at the end of history, graves will open. That is the scale of what a word from His mouth can do. The same voice that said "Let there be light" will one day say "Get up" over every saved body in the ground, and every one of them will obey. If His Word can do that then, what do you think it can do in you now?</div>
-        </div>
-
-        <div class="verse-block">
-          <div class="verse-header">
-            <div class="verse-ref">James 1:21</div>
-            <a class="bible-btn" href="https://www.bible.com/bible/1713/JAS.1.21" target="_blank">☩ Open in Bible App</a>
-          </div>
-          <div class="verse-text">"Therefore, ridding yourselves of all moral filth and evil excess, humbly receive the implanted word, which is able to save your souls."</div>
-          <div class="verse-translation">Christian Standard Bible · CSB</div>
-          <div class="verse-commentary">James' word for "implanted" is <em>emphytos</em>, the image of a seed already in the soil, already growing. The only two things that can stop the harvest are filth in the soil and weeds that crowd the seedling. The whole survey of passages (creation by word in <a class="vlink" href="https://www.bible.com/bible/1713/PSA.33.6" target="_blank">Psalm 33:6</a>, faith understanding creation in <a class="vlink" href="https://www.bible.com/bible/1713/HEB.11.3" target="_blank">Hebrews 11:3</a>, messianic proof in <a class="vlink" href="https://www.bible.com/bible/1713/MAT.11.4" target="_blank">Matthew 11:4&ndash;5</a>, the resurrection shout in <a class="vlink" href="https://www.bible.com/bible/1713/1TH.4.16" target="_blank">1 Thessalonians 4:16</a>, the Spirit's sword in <a class="vlink" href="https://www.bible.com/bible/1713/EPH.6.17" target="_blank">Ephesians 6:17</a>, and the implanted word in <a class="vlink" href="https://www.bible.com/bible/1713/JAS.1.21" target="_blank">James 1:21</a>) tells one story. God's Word creates, defends, proves, raises, fights, and saves. It has never been an accessory. It has always been the voice by which God is making a people.</div>
-        </div>
-      </div>
+      <!-- BSB_FOOTNOTE: Lamentations 3:22 | 3:22 Forms of the Hebrew chesed are translated here and in most cases throughout the Scriptures as loving devotion; the range of meaning includes love, goodness, kindness, faithfulness, and mercy, as well as loyalty to a covenant. -->
 
     </div>
 
@@ -919,7 +887,7 @@ Sources: Amraandelma "Top 20 User Attention Span Statistics 2026"; APA 2024 long
         <span class="section-title">Christ at the Center of the Week</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Trace the week and you will find that every passage pointed to Jesus before it pointed to anything else. Sabbath's two-edged sword is the same sword coming from the mouth of the risen Christ in <a class="vlink" href="https://www.bible.com/bible/1713/REV.1.16" target="_blank">Revelation 1:16</a>. Sunday's Spirit and <em>rhema</em> are the same pair Jesus modeled in His own desert temptation, answering the tempter with <a class="vlink" href="https://www.bible.com/bible/1713/MAT.4.4" target="_blank">Matthew 4</a>'s "It is written" on His lips and the Spirit fresh from His baptism on His shoulders. Monday's God-breathed Scripture points to the Word who was with God and was God and who became flesh to breathe Himself into a fisherman, a tax collector, and the rest of us. Tuesday's truth is the One who said, "I am the truth" (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.14.6" target="_blank">John 14:6</a>), and who prayed us into sanctification the night before He died. Wednesday's treasure is the same pearl of great price the merchant sold everything to own (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.13.46" target="_blank">Matthew 13:46</a>). And Thursday's spiritually discerned Word is the same Emmaus road Scripture Jesus opened, making hearts burn inside two disciples who had almost given up (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.24.32" target="_blank">Luke 24:32</a>). Six days, one Person. The Bible is Christ's book about Christ, given by Christ, to make us like Christ.</p>
+      <p>Trace the week and you will find that every passage pointed to Jesus before it pointed to anything else. Sabbath's two-edged sword is the same sword coming from the mouth of the risen Christ in <a class="vlink" href="https://www.bible.com/bible/3034/REV.1.16" target="_blank" rel="noopener">Revelation 1:16</a>. Sunday's Spirit and <em>rhema</em> are the same pair Jesus modeled in His own desert temptation, answering the tempter with <a class="vlink" href="https://www.bible.com/bible/3034/MAT.4.4" target="_blank" rel="noopener">Matthew 4</a>'s "It is written" on His lips and the Spirit fresh from His baptism on His shoulders. Monday's God-breathed Scripture points to the Word who was with God and was God and who became flesh to breathe Himself into a fisherman, a tax collector, and the rest of us. Tuesday's truth is the One who said, "I am the truth" (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.14.6" target="_blank" rel="noopener">John 14:6</a>), and who prayed us into sanctification the night before He died. Wednesday's treasure is the same pearl of great price the merchant sold everything to own (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.13.46" target="_blank" rel="noopener">Matthew 13:46</a>). And Thursday's spiritually discerned Word is the same Emmaus road Scripture Jesus opened, making hearts burn inside two disciples who had almost given up (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.24.32" target="_blank" rel="noopener">Luke 24:32</a>). Six days, one Person. The Bible is Christ's book about Christ, given by Christ, to make us like Christ.</p>
     </div>
 
     <!-- 6. WEEKEND PRACTICE -->
@@ -948,23 +916,51 @@ Sources: Amraandelma "Top 20 User Attention Span Statistics 2026"; APA 2024 long
     </div>
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read this week's anchor passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/PSA.119.11" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Psalm+119:11&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/bible-study/sw.js')
+    .then(reg => console.log('SW registered:', reg.scope))
+    .catch(err => console.log('SW registration failed:', err));
+}
+</script>
+
 <!-- Firebase SDK for push notifications -->
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>

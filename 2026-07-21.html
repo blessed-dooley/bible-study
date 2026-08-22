@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -733,43 +756,44 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>There is a question hiding in the middle of this passage that drips with irony. Is there really not one wise person among you? This is Corinth, the church that boasted about wisdom, sorted itself by clever teachers, and rated preachers like entertainment. Paul has spent three chapters deflating that pride, and now it lands with a thud. All that wisdom, and nobody can arbitrate a dispute between brothers. Today's reading (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.1-13" target="_blank">1 Corinthians 6:1-13</a>) follows the lawsuits down to the appetites underneath them, and it keeps asking the church one question. Do you remember whose you are?</p>
+      <p>There is a question hiding in the middle of this passage that drips with irony. Is there really not one wise person among you? This is Corinth, the church that boasted about wisdom, sorted itself by clever teachers, and rated preachers like entertainment. Paul has spent three chapters deflating that pride, and now it lands with a thud. All that wisdom, and nobody can arbitrate a dispute between brothers. Today's reading (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.1-13" target="_blank" rel="noopener">1 Corinthians 6:1-13</a>) follows the lawsuits down to the appetites underneath them, and it keeps asking the church one question. Do you remember whose you are?</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 6:1 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:e795ff291a8a16dbe40dd2e5b788b9a3f55af62fce9b59c6ce3cb74e80dbf27c | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 6:1</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.6.1" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.6.1" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"If any of you has a dispute against another, how dare you take it to court before the unrighteous, and not before the saints?"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Paul's word for the dispute is <em>pragma</em>, Greek for a thing, a matter, an ordinary piece of business, and the ordinariness is part of his point. This was not a criminal case. Crimes belonged to the state's courts, whose God-given authority Paul affirms elsewhere (<a class="vlink" href="https://www.bible.com/bible/1713/ROM.13.1-5" target="_blank">Romans 13:1-5</a>). This was civil, a contract, a debt, a property line, the small change of life together. And for that, believers marched each other in front of judges Paul calls the unrighteous, not because every magistrate was corrupt but because they stood outside the covenant, strangers to the Lord both parties claimed. How dare you is strong language for a small-claims fight. Paul uses it because of what the venue announced. Taking the family's matter to the world's referees told the whole city that the family had no Father worth consulting.</p>
+        <div class="verse-text">If any of you has a grievance against another, how dare he go to law before the unrighteous instead of before the saints!</div>
+<div class="verse-commentary">
+          <p>Paul's word for the dispute is <em>pragma</em>, Greek for a thing, a matter, an ordinary piece of business, and the ordinariness is part of his point. This was not a criminal case. Crimes belonged to the state's courts, whose God-given authority Paul affirms elsewhere (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.13.1-5" target="_blank" rel="noopener">Romans 13:1-5</a>). This was civil, a contract, a debt, a property line, the small change of life together. And for that, believers marched each other in front of judges Paul calls the unrighteous, not because every magistrate was corrupt but because they stood outside the covenant, strangers to the Lord both parties claimed. How dare you is strong language for a small-claims fight. Paul uses it because of what the venue announced. Taking the family's matter to the world's referees told the whole city that the family had no Father worth consulting.</p>
         </div>
       </div>
 
-      <p>We never learn what the case was about. The passage sits bracketed by sexual scandal on both sides (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.5" target="_blank">1 Corinthians 5</a>, <a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.12-20" target="_blank">1 Corinthians 6:12-20</a>), so the matter may have been tangled in the same mess, and some readers have wondered whether the litigants were the father and son of the affair itself (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.5.1" target="_blank">1 Corinthians 5:1</a>). Paul never says, and he does not need to. Whatever the case was (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.1-11" target="_blank">1 Corinthians 6:1-11</a>), his grief was the spectacle, brother against brother, in front of unbelievers (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.6" target="_blank">1 Corinthians 6:6</a>), in courts where rank and rhetoric tipped the scales while the city kept score. Even Paul's outline here is borrowed. Moses, too, set legal process right beside sexual sin (<a class="vlink" href="https://www.bible.com/bible/1713/DEU.22.22-24" target="_blank">Deuteronomy 22:22-24</a>), and Paul walks the same path, handling the church's problems on the Torah's rails rather than Rome's.</p>
+      <p>We never learn what the case was about. The passage sits bracketed by sexual scandal on both sides (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5" target="_blank" rel="noopener">1 Corinthians 5</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.12-20" target="_blank" rel="noopener">1 Corinthians 6:12-20</a>), so the matter may have been tangled in the same mess, and some readers have wondered whether the litigants were the father and son of the affair itself (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.1" target="_blank" rel="noopener">1 Corinthians 5:1</a>). Paul never says, and he does not need to. Whatever the case was (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.1-11" target="_blank" rel="noopener">1 Corinthians 6:1-11</a>), his grief was the spectacle, brother against brother, in front of unbelievers (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.6" target="_blank" rel="noopener">1 Corinthians 6:6</a>), in courts where rank and rhetoric tipped the scales while the city kept score. Even Paul's outline here is borrowed. Moses, too, set legal process right beside sexual sin (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.22.22-24" target="_blank" rel="noopener">Deuteronomy 22:22-24</a>), and Paul walks the same path, handling the church's problems on the Torah's rails rather than Rome's.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 5:12-13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:ed0b0a52eb6300ffdf616dacdcbc612f0dfe5b1fc13d9ea4cbee6f6b6ae07aa7 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 5:12-13</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.5.12-13" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.5.12-13" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For what business is it of mine to judge outsiders? Don't you judge those who are inside? God judges outsiders. Remove the evil person from among you."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Here is the principle underneath both days. The church has a jurisdiction, and it is not the world. Paul refuses to hand out verdicts on outsiders, because God will handle the world's judgment in His own time. But insiders are different. Those who are inside have taken one Lord, joined one body, and handed each other their trust, and that gives the family both the right and the responsibility to settle its own matters. Paul had exercised exactly that inside-jurisdiction over the scandal, judging the case from a distance (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.5.3" target="_blank">1 Corinthians 5:3</a>) while the locals dithered. Now he lays the same map over the lawsuits. A dispute between brothers is inside business. Marching it downtown does not just misplace a court case. It redraws the family's borders and seats the world on the bench.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 12">12</sup>What business of mine is it to judge those outside the church? Are you not to judge those inside? <sup class="verse-number" aria-label="Verse 13">13</sup>God will judge those outside. “Expel the wicked man from among you.”</div>
+<div class="verse-commentary">
+          <p>Here is the principle underneath both days. The church has a jurisdiction, and it is not the world. Paul refuses to hand out verdicts on outsiders, because God will handle the world's judgment in His own time. But insiders are different. Those who are inside have taken one Lord, joined one body, and handed each other their trust, and that gives the family both the right and the responsibility to settle its own matters. Paul had exercised exactly that inside-jurisdiction over the scandal, judging the case from a distance (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.3" target="_blank" rel="noopener">1 Corinthians 5:3</a>) while the locals dithered. Now he lays the same map over the lawsuits. A dispute between brothers is inside business. Marching it downtown does not just misplace a court case. It redraws the family's borders and seats the world on the bench.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Corinthians 5:13 | 5:13 Literally Expel the evil from among you; Deuteronomy 13:5, 17:7, 19:19, 21:21, 22:21, 22:24, and 24:7 -->
 
+<!-- BSB_BLOCK: 1 Corinthians 6:9-10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:d82cb4e5216603bcfb75526f6655bfd922c2019ea61d32cb5dbc8d8e21612e9a | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 6:9-10</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.6.9-10" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.6.9-10" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Don't you know that the unrighteous will not inherit God's kingdom? Do not be deceived: No sexually immoral people, idolaters, adulterers, or males who have sex with males, no thieves, greedy people, drunkards, verbally abusive people, or swindlers will inherit God's kingdom."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Why does a paragraph about lawsuits suddenly break into a list of sins? Because Paul can smell what is underneath the litigation, greed, swindling, taking what is not yours, the same appetites driving the sexual chaos, and he has already filed lists like this while dealing with the scandal (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.5.10-11" target="_blank">1 Corinthians 5:10-11</a>). Notice that sexual sins sit shoulder to shoulder with theft, greed, drunkenness, and abusive speech. Corinth ranked sins by respectability. Paul refuses to, because every entry on the list is the same move, an appetite enthroned where the Lord belongs. The unrighteous, he warns, do not inherit God's kingdom, and unrighteous is the very word he just used for the pagan judges. Act like the world long enough and the question stops being rhetorical. Whose are you? But the list is not a wall to keep sinners out, and the next breath proves it. That is what some of you were (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.11" target="_blank">1 Corinthians 6:11</a>). Were. You were washed, sanctified, justified in the name of the Lord Jesus. The vice list is a mirror with a caption underneath. Not anymore.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 9">9</sup>Do you not know that the wicked will not inherit the kingdom of God? Do not be deceived: Neither the sexually immoral, nor idolaters, nor adulterers, nor men who submit to or perform homosexual acts, <sup class="verse-number" aria-label="Verse 10">10</sup>nor thieves, nor the greedy, nor drunkards, nor verbal abusers, nor swindlers, will inherit the kingdom of God.</div>
+<div class="verse-commentary">
+          <p>Why does a paragraph about lawsuits suddenly break into a list of sins? Because Paul can smell what is underneath the litigation, greed, swindling, taking what is not yours, the same appetites driving the sexual chaos, and he has already filed lists like this while dealing with the scandal (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.10-11" target="_blank" rel="noopener">1 Corinthians 5:10-11</a>). Notice that sexual sins sit shoulder to shoulder with theft, greed, drunkenness, and abusive speech. Corinth ranked sins by respectability. Paul refuses to, because every entry on the list is the same move, an appetite enthroned where the Lord belongs. The unrighteous, he warns, do not inherit God's kingdom, and unrighteous is the very word he just used for the pagan judges. Act like the world long enough and the question stops being rhetorical. Whose are you? But the list is not a wall to keep sinners out, and the next breath proves it. That is what some of you were (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.11" target="_blank" rel="noopener">1 Corinthians 6:11</a>). Were. You were washed, sanctified, justified in the name of the Lord Jesus. The vice list is a mirror with a caption underneath. Not anymore.</p>
         </div>
       </div>
     </div>
@@ -807,7 +831,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>The most Jesus-shaped sentence in this chapter is a question nobody wants to ask. Why not rather be wronged? (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.7" target="_blank">1 Corinthians 6:7</a>). Paul dares to suggest that losing on purpose can be the most Christian move on the table, and he learned that from his Lord. Jesus once refused to arbitrate an inheritance fight between brothers, asking who had appointed Him their judge (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.12.14" target="_blank">Luke 12:14</a>), and then went on to do something far stranger than judging. He absorbed the loss Himself. Falsely accused, He offered no defense. Entitled to armies of angels, He took the nails. The only man who ever deserved to win every case chose to be wronged, cheated, and condemned, and that unjust verdict is the reason we can be called justified at all. Paul tips the same irony toward Corinth, reminding them that the saints will one day judge the world and even angels (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.2" target="_blank">1 Corinthians 6:2</a>, <a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.3" target="_blank">1 Corinthians 6:3</a>). People with that future can afford to lose a property dispute. The cross does not just forgive our fights. It embarrasses them.</p>
+      <p>The most Jesus-shaped sentence in this chapter is a question nobody wants to ask. Why not rather be wronged? (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.7" target="_blank" rel="noopener">1 Corinthians 6:7</a>). Paul dares to suggest that losing on purpose can be the most Christian move on the table, and he learned that from his Lord. Jesus once refused to arbitrate an inheritance fight between brothers, asking who had appointed Him their judge (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.12.14" target="_blank" rel="noopener">Luke 12:14</a>), and then went on to do something far stranger than judging. He absorbed the loss Himself. Falsely accused, He offered no defense. Entitled to armies of angels, He took the nails. The only man who ever deserved to win every case chose to be wronged, cheated, and condemned, and that unjust verdict is the reason we can be called justified at all. Paul tips the same irony toward Corinth, reminding them that the saints will one day judge the world and even angels (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.2" target="_blank" rel="noopener">1 Corinthians 6:2</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.3" target="_blank" rel="noopener">1 Corinthians 6:3</a>). People with that future can afford to lose a property dispute. The cross does not just forgive our fights. It embarrasses them.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -844,22 +868,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.6.1-13" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+6:1-13&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

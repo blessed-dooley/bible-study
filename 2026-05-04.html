@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -721,8 +750,8 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="section-heading">Bodies That Knew Where to Be</div>
-      <p>The first-century church inherited a habit older than itself. Daniel had his upper-story window in Babylon, knees bent three times a day in <a class="vlink" href="https://www.bible.com/bible/1713/DAN.6.10" target="_blank">Daniel 6:10</a>. Stephen had the temple steps with stones already raining down, kneeling as he prayed for his killers in <a class="vlink" href="https://www.bible.com/bible/1713/ACT.7.60" target="_blank">Acts 7:60</a>. Peter had an upstairs room in Joppa, kneeling beside a body before he commanded life back into it in <a class="vlink" href="https://www.bible.com/bible/1713/ACT.9.40" target="_blank">Acts 9:40</a>. Paul had a beach outside the Ephesian harbor, kneeling on the sand with the elders he had pastored for three years weeping into his neck. The kneeling was not because the prayer book required it. The kneeling was because everyone in the room understood that the moment was bigger than they were.</p>
-      <p>Behind the New Testament's instinct to kneel is a long Old Testament shadow with more variety than we usually remember. Jehoshaphat stood in front of the assembly with the army of three nations bearing down on Judah. Hannah stood by the doorpost in Shiloh and asked for a son in <a class="vlink" href="https://www.bible.com/bible/1713/1SA.1.26" target="_blank">1 Samuel 1:26</a>. Job stood crying out to a sky he could not understand in <a class="vlink" href="https://www.bible.com/bible/1713/JOB.30.20" target="_blank">Job 30:20</a>. David sat down before the Ark and asked the question every honest worshiper has eventually asked, who am I, that You have brought me this far, in <a class="vlink" href="https://www.bible.com/bible/1713/2SA.7.18" target="_blank">2 Samuel 7:18</a>. King David himself bowed on his bed when news of Solomon's anointing reached him in <a class="vlink" href="https://www.bible.com/bible/1713/1KI.1.47" target="_blank">1 Kings 1:47</a>. The Hebrew word *barakh*, which we found yesterday in Daniel's thanksgiving, literally means to bend the knee. The body has been answering "amen" since long before the word existed, and Psalm 91 promises a fortified soul to the one whose body keeps showing up at <a class="vlink" href="https://www.bible.com/bible/1713/PSA.91" target="_blank">Psalm 91</a>.</p>
+      <p>The first-century church inherited a habit older than itself. Daniel had his upper-story window in Babylon, knees bent three times a day in <a class="vlink" href="https://www.bible.com/bible/3034/DAN.6.10" target="_blank" rel="noopener">Daniel 6:10</a>. Stephen had the temple steps with stones already raining down, kneeling as he prayed for his killers in <a class="vlink" href="https://www.bible.com/bible/3034/ACT.7.60" target="_blank" rel="noopener">Acts 7:60</a>. Peter had an upstairs room in Joppa, kneeling beside a body before he commanded life back into it in <a class="vlink" href="https://www.bible.com/bible/3034/ACT.9.40" target="_blank" rel="noopener">Acts 9:40</a>. Paul had a beach outside the Ephesian harbor, kneeling on the sand with the elders he had pastored for three years weeping into his neck. The kneeling was not because the prayer book required it. The kneeling was because everyone in the room understood that the moment was bigger than they were.</p>
+      <p>Behind the New Testament's instinct to kneel is a long Old Testament shadow with more variety than we usually remember. Jehoshaphat stood in front of the assembly with the army of three nations bearing down on Judah. Hannah stood by the doorpost in Shiloh and asked for a son in <a class="vlink" href="https://www.bible.com/bible/3034/1SA.1.26" target="_blank" rel="noopener">1 Samuel 1:26</a>. Job stood crying out to a sky he could not understand in <a class="vlink" href="https://www.bible.com/bible/3034/JOB.30.20" target="_blank" rel="noopener">Job 30:20</a>. David sat down before the Ark and asked the question every honest worshiper has eventually asked, who am I, that You have brought me this far, in <a class="vlink" href="https://www.bible.com/bible/3034/2SA.7.18" target="_blank" rel="noopener">2 Samuel 7:18</a>. King David himself bowed on his bed when news of Solomon's anointing reached him in <a class="vlink" href="https://www.bible.com/bible/3034/1KI.1.47" target="_blank" rel="noopener">1 Kings 1:47</a>. The Hebrew word *barakh*, which we found yesterday in Daniel's thanksgiving, literally means to bend the knee. The body has been answering "amen" since long before the word existed, and Psalm 91 promises a fortified soul to the one whose body keeps showing up at <a class="vlink" href="https://www.bible.com/bible/3034/PSA.91" target="_blank" rel="noopener">Psalm 91</a>.</p>
     </div>
 
     <!-- 4. INTO THE WORD -->
@@ -735,41 +764,41 @@ if ('serviceWorker' in navigator) {
 
       <p>Three scenes today, three different bodies, three different postures. Paul kneels on a beach. Jesus kneels in a garden. Jehoshaphat stands in a stone courtyard. None of them chose the wrong position, and none of them chose the position by accident. The body was always part of the prayer because the body is part of the person, and the person is the one praying.</p>
 
+<!-- BSB_BLOCK: Acts 20:36 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:8d35ff26f483b0bb1a11d674308a0f9c5af5c1fb8092c544ca7cab9a13009d52 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Acts 20:36</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ACT.20.36" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ACT.20.36" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"After he said these things, he knelt down and prayed with all of them."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">When Paul had said this, he knelt down with all of them and prayed.</div>
+<div class="verse-commentary">
           <p>Paul has just finished one of the most emotionally loaded farewells in the Bible. He has called the elders of the Ephesian church to meet him at the harbor town of Miletus because he is on his way to Jerusalem and has been told by the Spirit that he will not see them again. He has reminded them how he lived among them ("with tears and trials"), warned them that wolves will come from inside the flock, commended them to "God and to the word of his grace," and then come to the moment that no script handles well. He kneels.</p>
           <p>The Greek verb behind "knelt down" (*titheis ta gonata*, "placing the knees") is the same one Luke uses for Stephen as the rocks fall and for Peter at Tabitha's bedside. It is not the standing-prayer posture that was the default for Jewish men in the first century. It was the posture of someone who has run out of words and started saying them with the body. The whole company kneels with him on the sand. There is no platform, no synagogue, no temple. There is a beach, an aging missionary, a circle of shepherds about to lose him, and the salt wind off the Aegean. They pray with their knees because the moment will not let them pray any other way.</p>
           <p>The detail that earns the verse its place in the canon of prayer is the smallest one. Paul does not kneel by himself and gesture for others to bow their heads. He kneels and they kneel with him. Posture is contagious among believers who actually love each other. The body reminds the room what kind of moment this is. By the time the Amen is said, no one has to be told why their faces are wet.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Luke 22:41 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:beb6985819051f18556f49e51accaa2753c0a0a7e60c640fe1e3f2f9e56c338f | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Luke 22:41</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/LUK.22.41" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/LUK.22.41" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"He withdrew from them about a stone's throw, knelt down, and began to pray,"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Luke is meticulous about distance. A stone's throw is roughly thirty meters, far enough that the disciples can see the shape of Jesus on His knees but not close enough to make out every word. Mark, telling the same scene, will say He "fell on the ground" in <a class="vlink" href="https://www.bible.com/bible/1713/MRK.14.35" target="_blank">Mark 14:35</a>. The body could not stay upright. The weight of what was about to happen pressed Him from kneeling into prostration, and back to kneeling, and back to prostration, three times in the same garden. The Son of God, the same Person who had stood on hillsides preaching the Sermon on the Mount, knelt when the cross was finally close enough to touch. If the posture of prayer ever needed a final endorsement, it received one in Gethsemane.</p>
+        <div class="verse-text">And He withdrew about a stone’s throw beyond them, where He knelt down and prayed,</div>
+<div class="verse-commentary">
+          <p>Luke is meticulous about distance. A stone's throw is roughly thirty meters, far enough that the disciples can see the shape of Jesus on His knees but not close enough to make out every word. Mark, telling the same scene, will say He "fell on the ground" in <a class="vlink" href="https://www.bible.com/bible/3034/MRK.14.35" target="_blank" rel="noopener">Mark 14:35</a>. The body could not stay upright. The weight of what was about to happen pressed Him from kneeling into prostration, and back to kneeling, and back to prostration, three times in the same garden. The Son of God, the same Person who had stood on hillsides preaching the Sermon on the Mount, knelt when the cross was finally close enough to touch. If the posture of prayer ever needed a final endorsement, it received one in Gethsemane.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 2 Chronicles 20:5 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:1a610d988cd9f854166002b0ba82e47441c2f6530ec9d221388f993619fe1ad7 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">2 Chronicles 20:5</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/2CH.20.5" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CH.20.5" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Then Jehoshaphat stood in the assembly of Judah and Jerusalem in the LORD's temple before the new courtyard."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Three nations are marching on Jerusalem and the king has just learned about it. Jehoshaphat does not kneel. He stands. The standing matters because he is the king; he is praying as the head of his people, and the prayer that follows in <a class="vlink" href="https://www.bible.com/bible/1713/2CH.20.6" target="_blank">2 Chronicles 20:6</a> is essentially a court argument: God of our fathers, are You not God in heaven? Did You not give this land to Abraham's descendants forever? Standing was the customary Jewish prayer posture for public worship, the position of someone confidently presenting his case. The same posture was abused by the Pharisee in Jesus' parable, who stood and prayed with himself in <a class="vlink" href="https://www.bible.com/bible/1713/LUK.18.11" target="_blank">Luke 18:11</a>, while the tax collector stood far off and would not even lift his eyes in <a class="vlink" href="https://www.bible.com/bible/1713/LUK.18.13" target="_blank">Luke 18:13</a>. Same posture, two different prayers. The body is honest about the heart, but the heart is what God is reading.</p>
+        <div class="verse-text">Then Jehoshaphat stood in the assembly of Judah and Jerusalem in the house of the LORD in front of the new courtyard</div>
+<div class="verse-commentary">
+          <p>Three nations are marching on Jerusalem and the king has just learned about it. Jehoshaphat does not kneel. He stands. The standing matters because he is the king; he is praying as the head of his people, and the prayer that follows in <a class="vlink" href="https://www.bible.com/bible/3034/2CH.20.6" target="_blank" rel="noopener">2 Chronicles 20:6</a> is essentially a court argument: God of our fathers, are You not God in heaven? Did You not give this land to Abraham's descendants forever? Standing was the customary Jewish prayer posture for public worship, the position of someone confidently presenting his case. The same posture was abused by the Pharisee in Jesus' parable, who stood and prayed with himself in <a class="vlink" href="https://www.bible.com/bible/3034/LUK.18.11" target="_blank" rel="noopener">Luke 18:11</a>, while the tax collector stood far off and would not even lift his eyes in <a class="vlink" href="https://www.bible.com/bible/3034/LUK.18.13" target="_blank" rel="noopener">Luke 18:13</a>. Same posture, two different prayers. The body is honest about the heart, but the heart is what God is reading.</p>
         </div>
       </div>
     </div>
@@ -818,7 +847,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="action-box">
-        Today, kneel once. If your knees do not allow it, lower yourself however your body allows: bow your head, drop your shoulders, place your forehead on a kitchen table, sit down on the carpet. Whatever it is, let it be a position you do not normally pray in, and let the awkwardness be part of the prayer. Paul says to "pray constantly" in <a class="vlink" href="https://www.bible.com/bible/1713/1TH.5.17" target="_blank">1 Thessalonians 5:17</a>, with a "devotion to prayer" in <a class="vlink" href="https://www.bible.com/bible/1713/COL.4.2" target="_blank">Colossians 4:2</a>, and a "perseverance" in <a class="vlink" href="https://www.bible.com/bible/1713/ROM.12.12" target="_blank">Romans 12:12</a>. Begin that perseverance today by letting your body answer what your mouth is saying.
+        Today, kneel once. If your knees do not allow it, lower yourself however your body allows: bow your head, drop your shoulders, place your forehead on a kitchen table, sit down on the carpet. Whatever it is, let it be a position you do not normally pray in, and let the awkwardness be part of the prayer. Paul says to "pray constantly" in <a class="vlink" href="https://www.bible.com/bible/3034/1TH.5.17" target="_blank" rel="noopener">1 Thessalonians 5:17</a>, with a "devotion to prayer" in <a class="vlink" href="https://www.bible.com/bible/3034/COL.4.2" target="_blank" rel="noopener">Colossians 4:2</a>, and a "perseverance" in <a class="vlink" href="https://www.bible.com/bible/3034/ROM.12.12" target="_blank" rel="noopener">Romans 12:12</a>. Begin that perseverance today by letting your body answer what your mouth is saying.
       </div>
     </div>
 
@@ -844,22 +873,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/ACT.20.36" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Acts+20:36&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -874,6 +923,7 @@ if ('serviceWorker' in navigator) {
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 <script>
+// Push notification opt-in
 (function() {
   var firebaseConfig = {
     apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
@@ -884,8 +934,13 @@ if ('serviceWorker' in navigator) {
     appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
     measurementId: "G-BY2BM5HTX4"
   };
+
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
+
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
+
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -893,32 +948,51 @@ if ('serviceWorker' in navigator) {
   function setCookie(name, value) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') { initFirebaseAndRegister(); return; }
+
+  // If already opted in, silently ensure token is current
+  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
+    initFirebaseAndRegister();
+    return;
+  }
+
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
+
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
+
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
     setCookie('dbs_notif', 'yes');
     initFirebaseAndRegister();
   };
+
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
     setCookie('dbs_notif', 'no');
   };
+
   function initFirebaseAndRegister() {
     try {
       if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
       var messaging = firebase.messaging();
       var db = firebase.firestore();
+
       navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({ vapidKey: VAPID_KEY, serviceWorkerRegistration: swReg });
+        return messaging.getToken({
+          vapidKey: VAPID_KEY,
+          serviceWorkerRegistration: swReg
+        });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,
@@ -926,8 +1000,12 @@ if ('serviceWorker' in navigator) {
             userAgent: navigator.userAgent.substring(0, 100)
           }, { merge: true });
         }
-      }).catch(function(err) { console.log('Notification setup error:', err); });
-    } catch(e) { console.log('Firebase init error:', e); }
+      }).catch(function(err) {
+        console.log('Notification setup error:', err);
+      });
+    } catch(e) {
+      console.log('Firebase init error:', e);
+    }
   }
 })();
 </script>

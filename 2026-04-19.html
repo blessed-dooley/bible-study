@@ -27,6 +27,14 @@
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -228,8 +236,10 @@
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -240,13 +250,17 @@
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -364,6 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -469,49 +502,6 @@
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -532,6 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -550,8 +582,13 @@
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -648,16 +685,6 @@
   }
   .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 </style>
-<!-- PWA -->
-<meta name="apple-mobile-web-app-title" content="Bible Study">
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/bible-study/sw.js')
-      .catch(function(err) { console.log('SW registration failed:', err); });
-  });
-}
-</script>
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -737,14 +764,14 @@ if ('serviceWorker' in navigator) {
 
       <p>The anchor for today is Paul's short sentence about the sword and the prayer in Ephesians 6:17-18. The reason this is where the week starts, and not with a philosophical claim about inspiration, is that the weapon comes before the theory of the weapon. Paul tells us what the Bible is for before he tells us why it works. The supporting verses press in from three angles: Lamentations on the steady character behind the weapon, the psalms and Gospels on the creative and combat power of God's spoken word, and Ezekiel on the enemy who knows exactly how sharp the blade is, which is why he spends so much energy making sure you never pick it up.</p>
 
+<!-- BSB_BLOCK: Ephesians 6:17-18 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:ad5ebe58885d8981a84265bb87d21a11bd334d81c4ab613987cc6f38a9216c63 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Ephesians 6:17-18</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/EPH.6.17-18" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/EPH.6.17-18" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Take the helmet of salvation and the sword of the Spirit, which is the word of God. Pray at all times in the Spirit with every prayer and request, and stay alert with all perseverance and intercession for all the saints."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 17">17</sup>And take the helmet of salvation and the sword of the Spirit, which is the word of God. <sup class="verse-number" aria-label="Verse 18">18</sup>Pray in the Spirit at all times, with every kind of prayer and petition. To this end, stay alert with all perseverance in your prayers for all the saints.</div>
+<div class="verse-commentary">
         <p>Notice what Paul does not say. He does not tell the Ephesian believers to read the Bible so they can win arguments, feel better about themselves, or produce a correct theology. He tells them to pick it up because they are in a fight. The helmet of salvation protects what you think about who you are in Christ. The sword protects what you say back when the fight begins. And Paul does not leave the sword standing alone. He laces it immediately into prayer. <em>Rhema</em> and <em>proseuche</em>, spoken word and speaking to God, are the same activity from two directions. You are listening in Scripture and speaking in prayer, and both together are how the sword stays sharp.</p>
 
 <p>The grammar of verse 18 is relentless. <em>All</em> times, <em>every</em> prayer, <em>all</em> perseverance, <em>all</em> the saints. Paul refuses to make prayer a devotional hobby. It is the oxygen the sword breathes in. Separate the sword from prayer and you are swinging a dead blade. Separate prayer from Scripture and you are whispering into the dark without a compass.</p>
@@ -752,39 +779,53 @@ if ('serviceWorker' in navigator) {
 <p>Here is the practical weight of this. The enemy does not mostly fight believers by convincing them the Bible is wrong. He fights by keeping them busy, tired, distracted, discouraged, and behind schedule. None of those feel demonic. They feel like a normal Tuesday. That is the genius of the strategy. Paul saw it clearly from his cell. The sword is free. The sword is powerful. And most believers will never once this year draw it on purpose in the heat of a real battle. If the only place a reader takes one thing from this study, let it be this: the most powerful weapon in your possession sits on a shelf, and the enemy does not fear it until you pick it up.</p></div>
       </div>
 
+<!-- BSB_BLOCK: Lamentations 3:22-23 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c8c190b198b5ba654db58a7faac7abe88f43c638e91c1fae1c7553b30b2204be | footnotes-stripped:1 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Lamentations 3:22-23</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/LAM.3.22-23" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/LAM.3.22-23" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Because of the Lord's faithful love we do not perish, for his mercies never end. They are new every morning; great is your faithfulness!"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 22">22</sup>Because of the loving devotion of the LORD we are not consumed, for His mercies never fail. <sup class="verse-number" aria-label="Verse 23">23</sup>They are new every morning; great is Your faithfulness!</div>
+<div class="verse-commentary">
         <p>This is the verse the lesson page puts in a box and asks you to read slowly. Consider where it was written. Jeremiah is sitting in the smoking ruins of Jerusalem, watching the city of David burn. The temple is rubble. His people are walking away in chains. The Book of Lamentations is, line by line, the most honest grief in the Old Testament. And right in the middle of it, in chapter three, the prophet says this. God's mercies are new <em>every morning</em>. The Hebrew word for "faithful love" is <em>chesed</em>, the covenant-loyalty word, God's stubborn commitment to keep loving His people when every reason to stop is on fire around them.</p>
 
 <p>Hold that next to your own devotional life. Most of us have had seasons where the Bible went unopened for weeks. Seasons where prayer became a quick thank-You before a meal. Seasons where Sunday morning was more social than spiritual. Our pattern is not steady. God's is. The terrifying and beautiful thing about <em>chesed</em> is that it does not measure itself by ours. His mercies were new this morning whether you noticed them or not. They were new yesterday morning when the Bible stayed closed. They will be new tomorrow whether you remember the anchor or not.</p>
 
 <p>This is not permission to stay inconsistent. It is the ground that makes coming back possible. Most people avoid the Bible in their inconsistent seasons because they expect to be met with disappointment. <em>Chesed</em> is why that expectation is wrong.</p></div>
       </div>
+      <!-- BSB_FOOTNOTE: Lamentations 3:22 | 3:22 Forms of the Hebrew chesed are translated here and in most cases throughout the Scriptures as loving devotion; the range of meaning includes love, goodness, kindness, faithfulness, and mercy, as well as loyalty to a covenant. -->
 
+<!-- BSB_BLOCK: Psalms 33:6 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:6113f1a624c9439d51b1733e8785ff34e442fc86b1311ae2572641b942e375f5 | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
-          <div class="verse-ref">Psalm 33:6, 9</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/PSA.33.6" target="_blank">☩ Open in Bible App</a>
+          <div class="verse-ref">Psalms 33:6</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.33.6" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"The heavens were made by the word of the Lord, and all the stars, by the breath of his mouth... For he spoke, and it came into being; he commanded, and it came into existence."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">If you want to know how much power is stored in the word of God, look up. The same speech that called galaxies into orbit is the speech that has been written down and handed to you in a paperback volume. When Jesus stood outside Lazarus' tomb, He did not wave a staff. He did not pile up ritual. He spoke three words, "Lazarus, come out" (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.11.43" target="_blank">John 11:43</a>), and four days of death obeyed. The same pattern runs through the wilderness temptations, where Jesus answered Satan not with power displays but with the short phrase "It is written" (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.4.4" target="_blank">Matthew 4:4</a>). When the Son of God faced the most concentrated spiritual assault of His human life, He reached for memorized Scripture. That is not a coincidence. That is the pattern.</div>
+        <div class="verse-text">By the word of the LORD the heavens were made, and all the stars by the breath of His mouth.</div>
       </div>
 
+<!-- BSB_BLOCK: Psalms 33:9 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:fbfe6e37ac64f105f7d8c69129d4e737c9be6c2db24076165d01463ba94c5994 | footnotes-stripped:0 | poetry:flattened -->
+      <div class="verse-block">
+        <div class="verse-header">
+          <div class="verse-ref">Psalms 33:9</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.33.9" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">For He spoke, and it came to be; He commanded, and it stood firm.</div>
+<div class="verse-commentary">
+          <p>If you want to know how much power is stored in the word of God, look up. The same speech that called galaxies into orbit is the speech that has been written down and handed to you in a paperback volume. When Jesus stood outside Lazarus' tomb, He did not wave a staff. He did not pile up ritual. He spoke three words, "Lazarus, come out" (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.11.43" target="_blank" rel="noopener">John 11:43</a>), and four days of death obeyed. The same pattern runs through the wilderness temptations, where Jesus answered Satan not with power displays but with the short phrase "It is written" (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.4.4" target="_blank" rel="noopener">Matthew 4:4</a>). When the Son of God faced the most concentrated spiritual assault of His human life, He reached for memorized Scripture. That is not a coincidence. That is the pattern.</p>
+        </div>
+      </div>
+
+<!-- BSB_BLOCK: Ezekiel 28:14-15 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:37b4780b5bf65a04642736b1f3d8802451fc754a715be6e3fecc55af2324812b | footnotes-stripped:0 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Ezekiel 28:14-15</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/EZK.28.14-15" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/EZK.28.14-15" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"You were an anointed guardian cherub, for I had appointed you. You were on the holy mountain of God; you walked among the fiery stones. From the day you were created you were blameless in your ways until wickedness was found in you."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">Ezekiel's oracle is addressed to the king of Tyre, but its imagery reaches past any human ruler to the being behind him. The cherub who stood in God's own presence, who walked among the stones of fire, heard God speak and knew firsthand what that voice could do. That is why the opposition to Scripture is personal for him. He lost heaven the moment he turned against the One whose voice had created him. He knows the <em>rhema</em> can restore in your life everything his pride cost him in his. Your distraction is not neutral. It is strategic from the other side. Every time you pick up the Bible on purpose, you are drawing a sword forged in the very voice that exposed him.</div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 14">14</sup>You were anointed as a guardian cherub, for I had ordained you. You were on the holy mountain of God; you walked among the fiery stones. <sup class="verse-number" aria-label="Verse 15">15</sup>From the day you were created you were blameless in your ways—until wickedness was found in you.</div>
+<div class="verse-commentary">
+          <p>Ezekiel's oracle is addressed to the king of Tyre, but its imagery reaches past any human ruler to the being behind him. The cherub who stood in God's own presence, who walked among the stones of fire, heard God speak and knew firsthand what that voice could do. That is why the opposition to Scripture is personal for him. He lost heaven the moment he turned against the One whose voice had created him. He knows the <em>rhema</em> can restore in your life everything his pride cost him in his. Your distraction is not neutral. It is strategic from the other side. Every time you pick up the Bible on purpose, you are drawing a sword forged in the very voice that exposed him.</p>
+        </div>
       </div>
     </div>
 
@@ -820,7 +861,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>When Jesus stepped into the wilderness to face the most focused spiritual attack of His human life, He brought no army and no miracles. He had fasted forty days, and the enemy came at Him when He was at His weakest. Each time, the Son of God answered with the same three words. "It is written." Not "I am God." Not "Stand down." Just a quoted verse, thrust forward like a <em>machaira</em>. The most powerful Person in the universe chose to win His most decisive fight by quoting a book. That is the verdict on how powerful the Word is. It is also the verdict on how powerful it is in your hands. The sword you were given is the one Jesus used. He did not leave you underarmed. He left you with the exact weapon that already beat the enemy once. He is also, in Himself, the Word that became flesh (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.1.14" target="_blank">John 1:14</a>). Every verse points back to Him.</p>
+      <p>When Jesus stepped into the wilderness to face the most focused spiritual attack of His human life, He brought no army and no miracles. He had fasted forty days, and the enemy came at Him when He was at His weakest. Each time, the Son of God answered with the same three words. "It is written." Not "I am God." Not "Stand down." Just a quoted verse, thrust forward like a <em>machaira</em>. The most powerful Person in the universe chose to win His most decisive fight by quoting a book. That is the verdict on how powerful the Word is. It is also the verdict on how powerful it is in your hands. The sword you were given is the one Jesus used. He did not leave you underarmed. He left you with the exact weapon that already beat the enemy once. He is also, in Himself, the Word that became flesh (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.1.14" target="_blank" rel="noopener">John 1:14</a>). Every verse points back to Him.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -857,23 +898,51 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/EPH.6.17-18" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Ephesians+6:17-18&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/bible-study/sw.js')
+    .then(reg => console.log('SW registered:', reg.scope))
+    .catch(err => console.log('SW registration failed:', err));
+}
+</script>
+
 <!-- Firebase SDK for push notifications -->
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>

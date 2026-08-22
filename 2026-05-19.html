@@ -236,8 +236,10 @@ if ('serviceWorker' in navigator) {
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .section-emoji {
     font-size: 24px;
@@ -248,13 +250,17 @@ if ('serviceWorker' in navigator) {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -372,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -477,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -540,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -558,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -735,45 +764,46 @@ if ('serviceWorker' in navigator) {
 
       <p>It is the day after the Mount of Transfiguration. Jesus has come down with Peter, James, and John from the highest moment of His earthly ministry and walked straight into the lowest moment of His disciples' ministry. A father is standing in the road with a tormented son, and the nine disciples who stayed at the base of the mountain have just publicly failed to help him. Jesus drives the demon out in a sentence, hands the boy back to his father, and turns to the nine. Privately, they ask Him why they could not do it. The answer is short and exact and contains the verse the whole rest of today is built on. The problem was not the size of their faith. The problem was the kind.</p>
 
+<!-- BSB_BLOCK: Matthew 17:20 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:5e083b0f8497212e1c7ee81bf715ba30ae1113e814b9de436c58a9c5062538e4 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Matthew 17:20</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.17.20" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.17.20" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"'Because of your little faith,' he told them. 'For truly I tell you, if you have faith the size of a mustard seed, you will tell this mountain, "Move from here to there," and it will move. Nothing will be impossible for you.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><span class="words-of-jesus">“Because you have so little faith,”</span> He answered. <span class="words-of-jesus">“For truly I tell you, if you have faith the size of a mustard seed, you can say to this mountain, ‘Move from here to there,’ and it will move. Nothing will be impossible for you.”</span></div>
+<div class="verse-commentary">
           <p>The Greek word Matthew puts on Jesus' lips for "little faith" is <em>oligopistia</em>. It is a compound of <em>oligos</em> (few, small) and <em>pistis</em>, and Jesus uses it almost exclusively of His own followers. Not the Pharisees, who refused signs altogether. Not the crowds, who came for bread. His own disciples, the men who had walked with Him for two years and just watched Him feed five thousand people from five loaves. The diagnosis was not aimed at outsiders. It was aimed inside the camp. The most disclosing word in the verse is that the men whose faith was rebuked had plenty of religious volume; what they were short on was the right substance.</p>
-          <p>Then the image. A mustard seed. <em>Kokkos sinapeos</em>. The smallest of garden seeds in first-century Palestine, the visual shorthand a rabbi would use when he meant "barely there." Jesus had used the same seed in <a class="vlink" href="https://www.bible.com/bible/1713/MAT.13.31-32" target="_blank">Matthew 13:31-32</a> to picture the kingdom of God, which begins as something a farmer would not bother to weigh and ends up as a tree large enough for the birds of the air to roost in. Today He returns to the same seed for a different point. A mustard seed of real faith does what a boulder of pretended faith never touches.</p>
+          <p>Then the image. A mustard seed. <em>Kokkos sinapeos</em>. The smallest of garden seeds in first-century Palestine, the visual shorthand a rabbi would use when he meant "barely there." Jesus had used the same seed in <a class="vlink" href="https://www.bible.com/bible/3034/MAT.13.31-32" target="_blank" rel="noopener">Matthew 13:31-32</a> to picture the kingdom of God, which begins as something a farmer would not bother to weigh and ends up as a tree large enough for the birds of the air to roost in. Today He returns to the same seed for a different point. A mustard seed of real faith does what a boulder of pretended faith never touches.</p>
           <p>Notice what Jesus does not say. He does not say, "If you had more faith, you would move mountains." He says, "If you had faith the size of a mustard seed." The disciples almost certainly heard the comment as a quantity comment. We almost certainly do too. But the noun He used for their problem was qualitative. <em>Oligopistia</em> is not "small faith"; it is "wrong-kind-of-faith." A seed of the real thing is alive. A pile of the wrong thing, no matter how impressive, is dead matter on the ground.</p>
           <p>The mountain in the verse is metaphor with teeth. In rabbinic literature, the phrase "to remove mountains" meant to do what was widely judged to be impossible. The standing rabbinic compliment for an exceptional teacher was that he could "uproot mountains" by his interpretive skill. Jesus takes the metaphor and points it back at His disciples. The mountain you cannot move is the demon you cannot drive out. The mountain is the daughter who will not come home. The mountain is the marriage that has been petrified for fifteen years. The mountain is the addiction your willpower has not budged. Small faith in a great God moves what large faith in nothing has never touched.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Matthew 17:20 | 17:20 BYZ and TR include 21But this kind does not come out except by prayer and fasting; see Mark 9:29. -->
 
+<!-- BSB_BLOCK: Ephesians 2:8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:2c056eac4e721d8dc9a7fb0ec9a0b7c07a23dc22703ff28b64b58aa40a223b02 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Ephesians 2:8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/EPH.2.8" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/EPH.2.8" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For you are saved by grace through faith, and this is not from yourselves; it is God's gift."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">For it is by grace you have been saved through faith, and this not from yourselves; it is the gift of God,</div>
+<div class="verse-commentary">
           <p>Paul writes this to a Gentile church in a Roman port city whose members had spent most of their lives worshiping mystery cults and emperor statues. He chooses every word with care. We are saved <em>by grace</em>, the source. <em>Through faith</em>, the means. <em>And this is not from yourselves</em>, the disclaimer. <em>It is God's gift</em>, the explanation. The grammar is doing real work. Grace is the cause; faith is the channel; neither is a contribution we put on the table.</p>
-          <p>The verse closes a long debate before it even starts. If faith is the means by which grace reaches us, where did the faith come from? <a class="vlink" href="https://www.bible.com/bible/1713/ROM.12.3" target="_blank">Romans 12:3</a> answers in the same direction: God has dealt to each one a measure of faith. The picture in Paul's mind is a parent placing the first coin in a child's open hand. The faith we exercise is the same faith we have received. The Holy Spirit, in the moment we first heard the gospel and the message landed, deposited in us the response that received it. <a class="vlink" href="https://www.bible.com/bible/1713/JER.31.3" target="_blank">Jeremiah 31:3</a> describes that movement from God's side: "I have loved you with an everlasting love; therefore I have continued to extend faithful love to you." The drawing is His; the responding is the answer His drawing makes possible.</p>
-          <p>This dissolves the most common modern objection to faith. The person who says, "I just do not have enough faith," is, in the Bible's grammar, complaining about a gift that has been given. The honest version of the objection, as <a class="vlink" href="https://www.bible.com/bible/1713/MRK.9.24" target="_blank">Mark 9:24</a> showed us yesterday, is not "I do not have any" but "I do believe; help my unbelief." The first sentence locks the door. The second prays it open.</p>
+          <p>The verse closes a long debate before it even starts. If faith is the means by which grace reaches us, where did the faith come from? <a class="vlink" href="https://www.bible.com/bible/3034/ROM.12.3" target="_blank" rel="noopener">Romans 12:3</a> answers in the same direction: God has dealt to each one a measure of faith. The picture in Paul's mind is a parent placing the first coin in a child's open hand. The faith we exercise is the same faith we have received. The Holy Spirit, in the moment we first heard the gospel and the message landed, deposited in us the response that received it. <a class="vlink" href="https://www.bible.com/bible/3034/JER.31.3" target="_blank" rel="noopener">Jeremiah 31:3</a> describes that movement from God's side: "I have loved you with an everlasting love; therefore I have continued to extend faithful love to you." The drawing is His; the responding is the answer His drawing makes possible.</p>
+          <p>This dissolves the most common modern objection to faith. The person who says, "I just do not have enough faith," is, in the Bible's grammar, complaining about a gift that has been given. The honest version of the objection, as <a class="vlink" href="https://www.bible.com/bible/3034/MRK.9.24" target="_blank" rel="noopener">Mark 9:24</a> showed us yesterday, is not "I do not have any" but "I do believe; help my unbelief." The first sentence locks the door. The second prays it open.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Luke 7:50 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:1c7ef897bfc247da6c5e12a06b17e1f5b36e233d546c5fd99b8e45c2076215b7 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Luke 7:50</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/LUK.7.50" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/LUK.7.50" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"And he said to the woman, 'Your faith has saved you. Go in peace.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">And Jesus told the woman, <span class="words-of-jesus">“Your faith has saved you; go in peace.”</span></div>
+<div class="verse-commentary">
           <p>The setting is a Pharisee's house in the middle of dinner, a woman known in the town as a sinner has just washed Jesus' feet with her tears, dried them with her hair, kissed them, and anointed them with perfume. The host is appalled. The other guests are murmuring. Jesus is calm. And after a parable about forgiven debts He turns to her and says one of the most disclosing lines in Luke's gospel: <em>he pistis sou sesoken se</em>. "Your faith has saved you." The verb <em>sesoken</em> is a perfect tense, meaning the saving has happened and the result is standing in the room. She came in already saved by what her faith had received from Him.</p>
-          <p>Notice what was visible in her faith that night. Not eloquence. She does not say a word. Not theological precision. The Pharisees who knew theology were the ones who could not see what was happening. Not even certainty about the future. Her past life was the loudest thing in the room. What she had was a posture of love and trust toward Jesus that her body could not stop showing. She wept on His feet. Her faith was a person on her knees. The same passages this week (<a class="vlink" href="https://www.bible.com/bible/1713/HEB.12.1-2" target="_blank">Hebrews 12:1-2</a>, the cloud of witnesses inviting us to run while we keep our eyes on Jesus, the founder and perfecter of our faith; <a class="vlink" href="https://www.bible.com/bible/1713/2CH.15.7" target="_blank">2 Chronicles 15:7</a>, the Spirit's word to a king to be strong because his work would not be in vain; <a class="vlink" href="https://www.bible.com/bible/1713/ROM.3.23-26" target="_blank">Romans 3:23-26</a>, Paul's compressed gospel that God is both just and the justifier of the one who has faith in Jesus) are not propositions that need to be felt to be true. They are deeds we hold in our hands the way the woman held the alabaster jar. Faith is what we do with what we know.</p>
+          <p>Notice what was visible in her faith that night. Not eloquence. She does not say a word. Not theological precision. The Pharisees who knew theology were the ones who could not see what was happening. Not even certainty about the future. Her past life was the loudest thing in the room. What she had was a posture of love and trust toward Jesus that her body could not stop showing. She wept on His feet. Her faith was a person on her knees. The same passages this week (<a class="vlink" href="https://www.bible.com/bible/3034/HEB.12.1-2" target="_blank" rel="noopener">Hebrews 12:1-2</a>, the cloud of witnesses inviting us to run while we keep our eyes on Jesus, the founder and perfecter of our faith; <a class="vlink" href="https://www.bible.com/bible/3034/2CH.15.7" target="_blank" rel="noopener">2 Chronicles 15:7</a>, the Spirit's word to a king to be strong because his work would not be in vain; <a class="vlink" href="https://www.bible.com/bible/3034/ROM.3.23-26" target="_blank" rel="noopener">Romans 3:23-26</a>, Paul's compressed gospel that God is both just and the justifier of the one who has faith in Jesus) are not propositions that need to be felt to be true. They are deeds we hold in our hands the way the woman held the alabaster jar. Faith is what we do with what we know.</p>
         </div>
       </div>
     </div>
@@ -820,7 +850,7 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
       <div class="action-box">
-        Take four short verses and say them out loud today as a prayer. <a class="vlink" href="https://www.bible.com/bible/1713/HEB.12.1-2" target="_blank">Hebrews 12:1-2</a>: "Let us also lay aside every hindrance and the sin that so easily ensnares us. Let us run with endurance the race that lies before us, keeping our eyes on Jesus, the source and perfecter of our faith. For the joy that lay before him, he endured the cross, despising the shame, and sat down at the right hand of the throne of God." <a class="vlink" href="https://www.bible.com/bible/1713/2CH.15.7" target="_blank">2 Chronicles 15:7</a>: "But as for you, be strong; don't give up, for your work has a reward." <a class="vlink" href="https://www.bible.com/bible/1713/ROM.3.23-26" target="_blank">Romans 3:23-26</a> in summary: I have sinned and fall short, but I am declared righteous as a gift through the redemption that is in Christ Jesus, whom God set forth as the satisfaction of His justice by His blood. <a class="vlink" href="https://www.bible.com/bible/1713/LUK.7.50" target="_blank">Luke 7:50</a>: "Your faith has saved you. Go in peace." Do not wait until you feel the verses. Speak them, and let the speaking exercise the faith.
+        Take four short verses and say them out loud today as a prayer. <a class="vlink" href="https://www.bible.com/bible/3034/HEB.12.1-2" target="_blank" rel="noopener">Hebrews 12:1-2</a>: "Let us also lay aside every hindrance and the sin that so easily ensnares us. Let us run with endurance the race that lies before us, keeping our eyes on Jesus, the source and perfecter of our faith. For the joy that lay before him, he endured the cross, despising the shame, and sat down at the right hand of the throne of God." <a class="vlink" href="https://www.bible.com/bible/3034/2CH.15.7" target="_blank" rel="noopener">2 Chronicles 15:7</a>: "But as for you, be strong; don't give up, for your work has a reward." <a class="vlink" href="https://www.bible.com/bible/3034/ROM.3.23-26" target="_blank" rel="noopener">Romans 3:23-26</a> in summary: I have sinned and fall short, but I am declared righteous as a gift through the redemption that is in Christ Jesus, whom God set forth as the satisfaction of His justice by His blood. <a class="vlink" href="https://www.bible.com/bible/3034/LUK.7.50" target="_blank" rel="noopener">Luke 7:50</a>: "Your faith has saved you. Go in peace." Do not wait until you feel the verses. Speak them, and let the speaking exercise the faith.
       </div>
     </div>
 
@@ -846,22 +876,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/MAT.17.20" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Matthew+17:20&amp;version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
@@ -890,8 +940,10 @@ if ('serviceWorker' in navigator) {
 
   var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
 
+  // Check if notifications are supported
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
 
+  // Check if user already made a choice
   function getCookie(name) {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -900,18 +952,22 @@ if ('serviceWorker' in navigator) {
     document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
   }
 
+  // If already opted in, silently ensure token is current
   if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
     initFirebaseAndRegister();
     return;
   }
 
+  // If denied at browser level or user said no, do nothing
   if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
 
+  // Show the banner after a short delay
   setTimeout(function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.remove('hidden');
   }, 2000);
 
+  // Opt-in handler
   window.dbsNotifOptIn = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -919,6 +975,7 @@ if ('serviceWorker' in navigator) {
     initFirebaseAndRegister();
   };
 
+  // Dismiss handler
   window.dbsNotifDismiss = function() {
     var banner = document.getElementById('notifBanner');
     if (banner) banner.classList.add('hidden');
@@ -938,6 +995,7 @@ if ('serviceWorker' in navigator) {
         });
       }).then(function(token) {
         if (token) {
+          // Save token to Firestore using a hash of the token as document ID
           var docId = token.substring(0, 32);
           db.collection('fcm_tokens').doc(docId).set({
             token: token,

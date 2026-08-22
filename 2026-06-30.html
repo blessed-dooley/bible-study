@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -735,39 +758,39 @@ if ('serviceWorker' in navigator) {
 
       <p>To feel what the gospel was up against in Corinth, we look at two snapshots. First, how Paul actually got his start in the city, quietly, at a workbench with two new friends. Then, two glimpses from the letter he would later send back, where the moral and religious pressure of the place rises right off the page. The city was not a neutral backdrop. It was a constant undertow, and these verses show both the foothold the gospel found and the current it had to fight.</p>
 
+<!-- BSB_BLOCK: Acts 18:1-3 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:a8b5f3fc8458d1bef1af84d8d60a3fa87982a29c31513dc8c0e12681064b341d | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Acts 18:1-3</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ACT.18.1-3" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ACT.18.1-3" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"After this, he left Athens and went to Corinth, where he found a Jew named Aquila, a native of Pontus, who had recently come from Italy with his wife Priscilla, because Claudius had ordered all the Jews to leave Rome. Paul came to them, and since they were of the same occupation, he stayed with them and worked, for they were tentmakers by trade."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>After this, Paul left Athens and went to Corinth. <sup class="verse-number" aria-label="Verse 2">2</sup>There he found a Jew named Aquila, a native of Pontus, who had recently come from Italy with his wife Priscilla because Claudius had ordered all the Jews to leave Rome. Paul went to visit them, <sup class="verse-number" aria-label="Verse 3">3</sup>and he stayed and worked with them because they were tentmakers by trade, just as he was.</div>
+<div class="verse-commentary">
           <p>Notice how unglamorous the start of this church was. No miracle, no crowd, just a tired traveler finding two people in the same trade and moving in to sew tents alongside them. Paul, the brilliant apostle, spent his weekdays cutting leather and stitching canvas to pay his own way so the gospel would cost his hearers nothing. That detail tells you something about how God works. He did not parachute Paul into Corinth with a budget and a stage. He met him with ordinary work and ordinary friends, and those friends, Aquila and Priscilla, would go on to become some of the most important coworkers in the whole New Testament. The kingdom in Corinth started not with a spectacle but with a shared workbench and a spare room. God's biggest movements often begin that small.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 5:9-11 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:7f8b865cc64c48a641a992cbd0442a9f617d8594ed637cefa94678ea32368d46 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 5:9-11</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.5.9-11" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.5.9-11" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"I wrote to you in a letter not to associate with sexually immoral people. I did not mean the immoral people of this world or the greedy and swindlers or idolaters; otherwise you would have to leave the world. But actually, I wrote you not to associate with anyone who claims to be a brother or sister and is sexually immoral or greedy, an idolater or verbally abusive, a drunkard or a swindler. Do not even eat with such a person."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 9">9</sup>I wrote you in my letter not to associate with sexually immoral people. <sup class="verse-number" aria-label="Verse 10">10</sup>I was not including the sexually immoral of this world, or the greedy and swindlers, or idolaters. In that case you would have to leave this world. <sup class="verse-number" aria-label="Verse 11">11</sup>But now I am writing you not to associate with anyone who claims to be a brother but is sexually immoral or greedy, an idolater or a verbal abuser, a drunkard or a swindler. With such a man do not even eat.</div>
+<div class="verse-commentary">
           <p>Here you can feel the weight of the city pressing on the church. Paul has to spell out a distinction the Corinthians kept getting wrong. He never told them to avoid sinful outsiders, because in Corinth that would mean leaving the planet. The immoral, the greedy, the idolaters were their neighbors, customers, and family, and Paul fully expected believers to live among them. His concern was different. The danger was not the corruption outside the church but corruption tolerated inside it, a person claiming the name of Jesus while living exactly like the city around them. Notice his realism. He assumes Christians will rub shoulders with a messy world every single day. Holiness was never about retreating behind a wall. It was about being genuinely different while standing right in the middle of it all.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 8:4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:f821a99effa4496606958dc57794c03e1b8abd67ccb97cb505044156eea3c84b | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 8:4</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.8.4" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.8.4" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"About eating food sacrificed to idols, then, we know that 'an idol is nothing in the world,' and that 'there is no God but one.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>This was a daily, dinner-table problem in Corinth. Most meat in the market had been sacrificed to a god before it was sold, so a new Christian had to decide what that even meant. Paul's answer cuts to the bone. The Greek word for idol here is <em>eidolon</em>, which means an image, a mere appearance with no reality behind it. An idol is a picture of a god who does not exist. There is only one God, so the marble Aphrodite on the hill is exactly nothing, a zero dressed up in stone. That truth was meant to set the Corinthians free from fear of these so-called powers, even though Paul knew not everyone could shake the feeling overnight, since the city recognized many "gods" and many "lords" (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.8.5" target="_blank">1 Corinthians 8:5</a>). The gods that ran their whole city, the ones everyone feared and served, turned out to be hollow. Only One was real.</p>
+        <div class="verse-text">So about eating food sacrificed to idols: We know that an idol is nothing at all in the world, and that there is no God but one.</div>
+<div class="verse-commentary">
+          <p>This was a daily, dinner-table problem in Corinth. Most meat in the market had been sacrificed to a god before it was sold, so a new Christian had to decide what that even meant. Paul's answer cuts to the bone. The Greek word for idol here is <em>eidolon</em>, which means an image, a mere appearance with no reality behind it. An idol is a picture of a god who does not exist. There is only one God, so the marble Aphrodite on the hill is exactly nothing, a zero dressed up in stone. That truth was meant to set the Corinthians free from fear of these so-called powers, even though Paul knew not everyone could shake the feeling overnight, since the city recognized many "gods" and many "lords" (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.8.5" target="_blank" rel="noopener">1 Corinthians 8:5</a>). The gods that ran their whole city, the ones everyone feared and served, turned out to be hollow. Only One was real.</p>
         </div>
       </div>
     </div>
@@ -840,22 +863,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.5.9-11" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+5:9-11&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

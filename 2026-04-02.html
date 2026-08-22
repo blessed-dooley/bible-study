@@ -7,53 +7,63 @@
 <meta name="study-title" content="Linked to the Vine">
 <meta name="study-series" content="Growing in a Relationship with God · Lesson 1, Reality Check · Part 6 of 7">
 
-<!-- Favicon, emerald cross -->
-<link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-
-<!-- Open Graph, link preview -->
+<!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
+<meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Linked to the Vine">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 1 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 1, Reality Check · Part 6 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-04-02.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Growing in a Relationship with God · Lesson 1, Reality Check · Part 6 of 7 · Daily Bible Study">
+
+<!-- Favicon — emerald cross -->
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a1a1a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
+</script>
+
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #1a1a1a;
-    --bg-raise: #222;
-    --bg-high: #2a2a2a;
-    --bg-card: #1f1f1f;
-    --border: rgba(255, 255, 255, 0.07);
-    --border-mid: rgba(255, 255, 255, 0.12);
-    --emerald: #3d9970;
-    --emerald-dim: #2a6b4e;
-    --emerald-glow: rgba(61, 153, 112, 0.15);
-    --emerald-pale: rgba(61, 153, 112, 0.08);
-    --silver: #c8cdd4;
-    --silver-soft: #9ea4ad;
-    --silver-dim: rgba(200, 205, 212, 0.22);
-    --silver-glow: rgba(200, 205, 212, 0.12);
-    --text: #ebe6dc;
-    --text-soft: #a8a49c;
-    --text-muted: #6a6660;
-    --text-verse: #f0ede6;
-    --white: #f5f1e8;
+    --bg:           #1a1a1a;
+    --bg-raise:     #222222;
+    --bg-high:      #2a2a2a;
+    --bg-card:      #1f1f1f;
+    --border:       rgba(255,255,255,0.07);
+    --border-mid:   rgba(255,255,255,0.12);
+    --emerald:      #3d9970;
+    --emerald-dim:  #2a6b4e;
+    --emerald-glow: rgba(61,153,112,0.15);
+    --emerald-pale: rgba(61,153,112,0.08);
+    --silver:       #c8cdd4;
+    --silver-soft:  #9ea4ad;
+    --silver-dim:   rgba(200,205,212,0.22);
+    --silver-glow:  rgba(200,205,212,0.12);
+    --text:         #ebe6dc;
+    --text-soft:    #a8a49c;
+    --text-muted:   #6a6660;
+    --text-verse:   #f0ede6;
+    --white:        #f5f1e8;
   }
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
 
   body {
     background: var(--bg);
@@ -64,11 +74,9 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  .page {
-    max-width: 660px;
-    margin: 0 auto;
-  }
+  .page { max-width: 660px; margin: 0 auto; }
 
+  /* ── HEADER ── */
   .header {
     margin-bottom: 0;
     padding: 40px 28px 32px;
@@ -83,13 +91,10 @@
   .header::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     height: 3px;
     background: linear-gradient(90deg, transparent, var(--emerald), transparent);
   }
-
   .header::after {
     content: '';
     position: absolute;
@@ -107,24 +112,10 @@
     z-index: 0;
   }
 
+    /* keep header text above hero cross */
   .header-eyebrow,
   .header h1,
-  .header-subtitle {
-    position: relative;
-    z-index: 1;
-  }
-
-  /* keep header text above hero cross */
-  .header-eyebrow,
-  .header h1,
-  .header-subtitle {
-    position: relative;
-    z-index: 1;
-  }
-
-  .header-subtitle span {
-    display: block;
-  }
+  .header-subtitle { position: relative; z-index: 1; }
 
   .header-eyebrow {
     font-family: 'Nunito', sans-serif;
@@ -138,7 +129,6 @@
     align-items: center;
     gap: 10px;
   }
-
   .header-eyebrow::before {
     content: '';
     display: block;
@@ -165,9 +155,12 @@
     font-weight: 400;
     color: var(--text-soft);
     letter-spacing: 0.02em;
-    margin-bottom: 24px;
     line-height: 1.6;
     padding-right: 100px;
+    margin-bottom: 24px;
+  }
+  .header-subtitle span {
+    display: block;
   }
 
   .date-badge {
@@ -185,13 +178,13 @@
     padding: 6px 14px;
     border-radius: 4px;
   }
-
   .date-badge::before {
     content: '☩';
     font-size: 12px;
     opacity: 0.7;
   }
 
+  /* ── CELTIC DIVIDER ── */
   .celtic-divider {
     display: flex;
     align-items: center;
@@ -205,7 +198,6 @@
     position: relative;
     overflow: hidden;
   }
-
   .celtic-divider::before,
   .celtic-divider::after {
     content: '';
@@ -213,11 +205,9 @@
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--emerald-dim));
   }
-
   .celtic-divider::after {
     background: linear-gradient(90deg, var(--emerald-dim), transparent);
   }
-
   .celtic-divider-symbol {
     color: var(--emerald);
     font-size: 14px;
@@ -227,6 +217,7 @@
     user-select: none;
   }
 
+  /* ── CARD WRAPPER ── */
   .card {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -234,41 +225,42 @@
     border-bottom: none;
   }
 
+  /* ── SECTIONS ── */
   .section {
-    padding: 28px;
+    padding: 28px 28px;
     border-bottom: 1px solid var(--border);
     position: relative;
   }
-
-  .section:last-child {
-    border-bottom: none;
-  }
+  .section:last-child { border-bottom: none; }
 
   .section-label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
+    min-width: 0;
   }
-
   .section-emoji {
     font-size: 24px;
     line-height: 1;
     flex-shrink: 0;
   }
-
   .section-title {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--emerald);
-    white-space: nowrap;
+    line-height: 1.45;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
-
   .section-title-line {
-    flex: 1;
+    flex: 1 1 48px;
+    min-width: 40px;
     height: 1px;
     background: linear-gradient(90deg, var(--border-mid), transparent);
   }
@@ -289,18 +281,15 @@
     margin-bottom: 14px;
     font-weight: 300;
   }
+  .section p:last-child { margin-bottom: 0; }
 
-  .section p:last-child {
-    margin-bottom: 0;
-  }
-
+  /* ── TL;DR ── */
   .tldr-list {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
-
   .tldr-list li {
     display: flex;
     gap: 12px;
@@ -310,7 +299,6 @@
     color: var(--text);
     font-weight: 300;
   }
-
   .bullet-icon {
     color: var(--emerald);
     font-size: 13px;
@@ -319,6 +307,7 @@
     opacity: 0.7;
   }
 
+  /* ── TL;DR HOOK ── */
   .tldr-hook {
     font-size: 17px;
     font-style: italic;
@@ -329,6 +318,7 @@
     padding-left: 4px;
   }
 
+  /* ── VERSE BLOCK ── */
   .verse-block {
     margin: 20px 0;
     background: var(--bg-high);
@@ -338,10 +328,7 @@
     padding: 18px 20px;
     position: relative;
   }
-
-  .verse-block:first-child {
-    margin-top: 8px;
-  }
+  .verse-block:first-child { margin-top: 8px; }
 
   .verse-header {
     display: flex;
@@ -351,7 +338,6 @@
     gap: 8px;
     margin-bottom: 12px;
   }
-
   .verse-ref {
     font-family: 'Nunito', sans-serif;
     font-size: 12px;
@@ -360,7 +346,6 @@
     text-transform: uppercase;
     color: var(--emerald);
   }
-
   .bible-btn {
     display: inline-flex;
     align-items: center;
@@ -379,7 +364,6 @@
     transition: background 0.2s, border-color 0.2s;
     white-space: nowrap;
   }
-
   .bible-btn:hover {
     background: var(--emerald-glow);
     border-color: var(--emerald);
@@ -394,7 +378,25 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
-
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -404,7 +406,6 @@
     color: var(--text-soft);
     margin-bottom: 14px;
   }
-
   .verse-commentary {
     font-size: 16px;
     line-height: 1.8;
@@ -413,17 +414,27 @@
     border-top: 1px solid var(--border);
     font-weight: 300;
   }
+  .verse-commentary p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-soft);
+    font-weight: 300;
+    margin: 0 0 14px 0;
+  }
+  .verse-commentary p:last-child {
+    margin-bottom: 0;
+  }
 
+  /* ── ACCENT SECTIONS ── */
   .section-context {
     background: var(--bg-card);
   }
 
   .section-christ {
-    background: linear-gradient(135deg, rgba(245, 241, 232, 0.05) 0%, rgba(245, 241, 232, 0.02) 100%);
+    background: linear-gradient(135deg, rgba(245,241,232,0.05) 0%, rgba(245,241,232,0.02) 100%);
     border-left: 4px solid var(--emerald);
     position: relative;
   }
-
   .section-christ::after {
     content: '✝';
     position: absolute;
@@ -433,12 +444,14 @@
     color: var(--emerald);
     opacity: 0.12;
   }
+  .section-christ .section p {
+    color: var(--text);
+  }
 
   .section-prayer {
     background: var(--bg-card);
     border-top: 2px solid var(--emerald-dim) !important;
   }
-
   .section-prayer p {
     font-family: 'Nunito', sans-serif;
     font-size: 18px;
@@ -453,7 +466,7 @@
   }
 
   .action-box {
-    background: linear-gradient(135deg, rgba(245, 241, 232, 0.05) 0%, rgba(245, 241, 232, 0.02) 100%);
+    background: linear-gradient(135deg, rgba(245,241,232,0.05) 0%, rgba(245,241,232,0.02) 100%);
     border: 1px solid var(--silver-dim);
     border-radius: 8px;
     padding: 22px 24px;
@@ -462,9 +475,8 @@
     color: var(--white);
     font-weight: 400;
     position: relative;
-    box-shadow: 0 0 24px rgba(245, 241, 232, 0.04), inset 0 1px 0 rgba(245, 241, 232, 0.06);
+    box-shadow: 0 0 24px rgba(245,241,232,0.04), inset 0 1px 0 rgba(245,241,232,0.06);
   }
-
   .action-box::before {
     content: 'DO THIS TODAY';
     display: block;
@@ -479,7 +491,6 @@
   .section-discussion {
     background: var(--bg-card);
   }
-
   .discussion-q {
     font-family: 'Nunito', sans-serif;
     font-size: 19px;
@@ -491,56 +502,7 @@
     border-left: 3px solid var(--emerald);
   }
 
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-
-  .strip-apps {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
+  /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
     background: var(--bg-card);
@@ -552,7 +514,6 @@
     align-items: center;
     gap: 8px;
   }
-
   .footer p {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -561,7 +522,48 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
-
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -573,51 +575,34 @@
     opacity: 0.7;
     transition: opacity 0.2s;
   }
+  .footer-archive:hover { opacity: 1; }
 
-  .footer-archive:hover {
-    opacity: 1;
+  @media (max-width: 480px) {
+    body { padding: 0 0 60px; }
+    .header { padding: 28px 20px 24px; border-radius: 0; }
+    .card { border-radius: 0; }
+    .section { padding: 24px 20px; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
+    .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
-  @media(max-width:480px) {
-    body {
-      padding: 0 0 60px;
-    }
-
-    .header {
-      padding: 28px 20px 24px;
-      border-radius: 0;
-    }
-
-    .card {
-      border-radius: 0;
-    }
-
-    .section {
-      padding: 24px 20px;
-    }
-
-    .bible-app-strip {
-      padding: 14px 20px;
-      align-items: center;
-    }
-
-    .footer {
-      padding: 16px 20px;
-      border-radius: 0;
-    }
-  }
-
+  /* ── INLINE VERSE LINK ── */
   .vlink {
     color: var(--emerald);
     text-decoration: none;
     border-bottom: 1px solid var(--emerald-dim);
     transition: border-color 0.2s;
   }
-
   .vlink:hover {
     border-color: var(--emerald);
   }
 
+  /* ── ALT TRANSLATION (dual-translation verse blocks) ── */
   .verse-text-alt {
     font-family: 'Cormorant Garamond', serif;
     font-size: 21px;
@@ -630,7 +615,6 @@
     border-top: 1px solid var(--border);
     opacity: 0.85;
   }
-
   .verse-translation-alt {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -641,6 +625,7 @@
     margin-bottom: 14px;
   }
 
+
   /* Notification opt-in banner */
   .notif-banner {
     position: fixed;
@@ -649,7 +634,7 @@
     right: 0;
     z-index: 9999;
     background: var(--bg-card);
-    border-bottom: 1px solid rgba(61, 153, 112, 0.3);
+    border-bottom: 1px solid rgba(61,153,112,0.3);
     padding: 12px 16px;
     display: flex;
     align-items: center;
@@ -659,16 +644,14 @@
     font-family: 'Nunito', sans-serif;
     font-size: 14px;
     color: var(--text);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
-
   .notif-banner.hidden {
     transform: translateY(-100%);
     opacity: 0;
     pointer-events: none;
   }
-
   .notif-banner-text {
     display: flex;
     align-items: center;
@@ -676,7 +659,6 @@
     gap: 8px;
     flex-basis: 100%;
   }
-
   .notif-btn-yes {
     background: #3d9970;
     color: var(--white);
@@ -689,15 +671,11 @@
     cursor: pointer;
     transition: background 0.2s;
   }
-
-  .notif-btn-yes:hover {
-    background: #2a6b4e;
-  }
-
+  .notif-btn-yes:hover { background: #2a6b4e; }
   .notif-btn-no {
     background: transparent;
     color: var(--text-soft);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255,255,255,0.12);
     padding: 6px 14px;
     border-radius: 6px;
     font-family: 'Nunito', sans-serif;
@@ -705,26 +683,8 @@
     cursor: pointer;
     transition: color 0.2s, border-color 0.2s;
   }
-
-  .notif-btn-no:hover {
-    color: var(--text);
-    border-color: rgba(255, 255, 255, 0.25);
-  }
-  </style>
-<!-- PWA -->
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#1a1a1a">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Bible Study">
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/bible-study/sw.js')
-      .catch(function(err) { console.log('SW registration failed:', err); });
-  });
-}
-</script>
+  .notif-btn-no:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
+</style>
 </head>
 <body>
   <!-- Notification opt-in banner -->
@@ -783,35 +743,59 @@ if ('serviceWorker' in navigator) {
     <div class="section">
       <div class="section-label"><span class="section-emoji">📖</span><span class="section-title">Into the Word</span><div class="section-title-line"></div></div>
 
-      <p>Today's anchor passage is <a class="vlink" href="https://www.bible.com/bible/1713/LUK.11.13" target="_blank">Luke 11:13</a>, where Jesus makes a stunning promise about the Holy Spirit. The study also draws in <a class="vlink" href="https://www.bible.com/bible/1713/JER.31.3" target="_blank">Jeremiah 31:3</a>, <a class="vlink" href="https://www.bible.com/bible/1713/1JN.4.19" target="_blank">1 John 4:19</a>, and <a class="vlink" href="https://www.bible.com/bible/1713/ROM.8.9" target="_blank">Romans 8:9-11</a> as supporting texts. Together these passages answer the question: if we cannot abide on our own power, how does the connection actually happen? The answer is that God Himself, through His Spirit, enters the branch and does from the inside what the branch could never do alone.</p>
+      <p>Today's anchor passage is <a class="vlink" href="https://www.bible.com/bible/3034/LUK.11.13" target="_blank" rel="noopener">Luke 11:13</a>, where Jesus makes a stunning promise about the Holy Spirit. The study also draws in <a class="vlink" href="https://www.bible.com/bible/3034/JER.31.3" target="_blank" rel="noopener">Jeremiah 31:3</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1JN.4.19" target="_blank" rel="noopener">1 John 4:19</a>, and <a class="vlink" href="https://www.bible.com/bible/3034/ROM.8.9" target="_blank" rel="noopener">Romans 8:9-11</a> as supporting texts. Together these passages answer the question: if we cannot abide on our own power, how does the connection actually happen? The answer is that God Himself, through His Spirit, enters the branch and does from the inside what the branch could never do alone.</p>
 
+<!-- BSB_BLOCK: Luke 11:13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:bae9f188e57a34aec632a73210f2e8049eac6297772a9eddc1525da069318c4e | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
-        <div class="verse-header"><div class="verse-ref">Luke 11:13</div><a class="bible-btn" href="https://www.bible.com/bible/1713/LUK.11.13" target="_blank">☩ Open in Bible App</a></div>
-        <div class="verse-text">"If you then, who are evil, know how to give good gifts to your children, how much more will the heavenly Father give the Holy Spirit to those who ask him?"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">This verse is the climax of Jesus' teaching on prayer. He has just told the parable of the persistent friend who knocks at midnight (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.11.5" target="_blank">Luke 11:5-8</a>), and then given the famous "ask, seek, knock" promise (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.11.9" target="_blank">Luke 11:9-10</a>). But the punch line is not that God gives us whatever we want. It is that the greatest gift the Father offers is the Holy Spirit Himself. Notice the argument Jesus uses: even flawed, sinful human parents know how to give good things to their children. How much more, then, will the perfect heavenly Father give the best gift of all? The word "give" here is <em>didomi</em> (δίδωμι), a straightforward term for a free gift, not something earned or purchased. And the gift is not abstract power or vague spiritual energy. It is the Holy Spirit, a Person, the Third Member of the Godhead, who comes to dwell inside us. All we have to do is ask. That is the astonishing simplicity of it: the sap that makes the branch alive is available to anyone who asks the Father for it.</div>
+        <div class="verse-header">
+          <div class="verse-ref">Luke 11:13</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/LUK.11.13" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text"><span class="words-of-jesus">So if you who are evil know how to give good gifts to your children, how much more will your Father in heaven give the Holy Spirit to those who ask Him!”</span></div>
+<div class="verse-commentary">
+          <p>This verse is the climax of Jesus' teaching on prayer. He has just told the parable of the persistent friend who knocks at midnight (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.11.5" target="_blank" rel="noopener">Luke 11:5-8</a>), and then given the famous "ask, seek, knock" promise (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.11.9" target="_blank" rel="noopener">Luke 11:9-10</a>). But the punch line is not that God gives us whatever we want. It is that the greatest gift the Father offers is the Holy Spirit Himself. Notice the argument Jesus uses: even flawed, sinful human parents know how to give good things to their children. How much more, then, will the perfect heavenly Father give the best gift of all? The word "give" here is <em>didomi</em> (δίδωμι), a straightforward term for a free gift, not something earned or purchased. And the gift is not abstract power or vague spiritual energy. It is the Holy Spirit, a Person, the Third Member of the Godhead, who comes to dwell inside us. All we have to do is ask. That is the astonishing simplicity of it: the sap that makes the branch alive is available to anyone who asks the Father for it.</p>
+        </div>
       </div>
 
+<!-- BSB_BLOCK: Jeremiah 31:3 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:96a609fac7fee15d4efe679af4f30351c1e8a57f04bfe10912442476f7bd3be2 | footnotes-stripped:1 | poetry:flattened -->
       <div class="verse-block">
-        <div class="verse-header"><div class="verse-ref">Jeremiah 31:3</div><a class="bible-btn" href="https://www.bible.com/bible/1713/JER.31.3" target="_blank">☩ Open in Bible App</a></div>
-        <div class="verse-text">"The LORD appeared to him from far away. I have loved you with an everlasting love; therefore, I have continued to extend faithful love to you."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">This verse, which we touched on Tuesday, reappears here because it answers a crucial objection. If abiding depends on the Spirit's presence, and the Spirit comes as a gift, then the entire relationship rests on God's initiative, not ours. Jeremiah confirms this: God's love is everlasting, meaning it did not begin when we started seeking Him. The Hebrew word <em>chesed</em> (חֶסֶד), translated "faithful love," carries the weight of covenant loyalty, unbreakable commitment, and steadfast kindness all at once. God draws us with this love. The branch does not reach out and grab the vine; the vine sends its sap into the branch. Our response, our asking, our abiding, is always a reaction to what God has first done. That is why abiding never starts with trying harder. It starts with recognizing that He loved us first.</div>
+        <div class="verse-header">
+          <div class="verse-ref">Jeremiah 31:3</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/JER.31.3" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">The LORD appeared to us in the past, saying: “I have loved you with an everlasting love; therefore I have drawn you with loving devotion.</div>
+<div class="verse-commentary">
+          <p>This verse, which we touched on Tuesday, reappears here because it answers a crucial objection. If abiding depends on the Spirit's presence, and the Spirit comes as a gift, then the entire relationship rests on God's initiative, not ours. Jeremiah confirms this: God's love is everlasting, meaning it did not begin when we started seeking Him. The Hebrew word <em>chesed</em> (חֶסֶד), translated "faithful love," carries the weight of covenant loyalty, unbreakable commitment, and steadfast kindness all at once. God draws us with this love. The branch does not reach out and grab the vine; the vine sends its sap into the branch. Our response, our asking, our abiding, is always a reaction to what God has first done. That is why abiding never starts with trying harder. It starts with recognizing that He loved us first.</p>
+        </div>
       </div>
+      <!-- BSB_FOOTNOTE: Jeremiah 31:3 | 31:3 Or The LORD appeared to him from afar, saying -->
 
+<!-- BSB_BLOCK: 1 John 4:19 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:e510dbcbf066513e9d9a307c4e27212cc33fbccb7c02898a814f6455eb953c84 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
-        <div class="verse-header"><div class="verse-ref">1 John 4:19</div><a class="bible-btn" href="https://www.bible.com/bible/1713/1JN.4.19" target="_blank">☩ Open in Bible App</a></div>
-        <div class="verse-text">"We love because he first loved us."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">Nine words that dismantle every performance-based approach to spiritual growth. John states it as a fact of spiritual physics: our capacity to love, to obey, to bear fruit, to abide, all of it originates in what He first did. The word "first" (<em>protos</em>, πρῶτος) does not merely mean "before us in time." It means "as the originator, the source, the one who made our response possible." This is the vine-and-branch dynamic distilled to its essence. We cannot make ourselves abide any more than a branch can force sap through its own cells. The sap comes from the vine. The love comes from God. Our role is to remain open, to keep the channel clear, to not close the door that He has already opened. That is what it means to be linked to the Vine.</div>
+        <div class="verse-header">
+          <div class="verse-ref">1 John 4:19</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1JN.4.19" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text">We love because He first loved us.</div>
+<div class="verse-commentary">
+          <p>Nine words that dismantle every performance-based approach to spiritual growth. John states it as a fact of spiritual physics: our capacity to love, to obey, to bear fruit, to abide, all of it originates in what He first did. The word "first" (<em>protos</em>, πρῶτος) does not merely mean "before us in time." It means "as the originator, the source, the one who made our response possible." This is the vine-and-branch dynamic distilled to its essence. We cannot make ourselves abide any more than a branch can force sap through its own cells. The sap comes from the vine. The love comes from God. Our role is to remain open, to keep the channel clear, to not close the door that He has already opened. That is what it means to be linked to the Vine.</p>
+        </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 John 4:19 | 4:19 BYZ and TR We love Him -->
 
+<!-- BSB_BLOCK: Romans 8:9-11 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c9900c2b16c7aeb88f09cd5fb64a3ca462299bf3210f1deeab627c829a10393e | footnotes-stripped:2 | poetry:flow -->
       <div class="verse-block">
-        <div class="verse-header"><div class="verse-ref">Romans 8:9-11</div><a class="bible-btn" href="https://www.bible.com/bible/1713/ROM.8.9" target="_blank">☩ Open in Bible App</a></div>
-        <div class="verse-text">"You, however, are not in the flesh, but in the Spirit, if indeed the Spirit of God lives in you. If anyone does not have the Spirit of Christ, he does not belong to him. Now if Christ is in you, the body is dead because of sin, but the Spirit gives life because of righteousness. And if the Spirit of him who raised Jesus from the dead lives in you, then he who raised Christ from the dead will also bring your mortal bodies to life through his Spirit who lives in you."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">Paul takes the vine-and-branch metaphor into explicit theological territory. The Spirit of God "lives in you," Paul says, using the Greek <em>oikeo</em> (οἰκέω), which means to take up permanent residence, to make a home. This is not a visitor who drops by occasionally; it is a family member who has moved in. And the same Spirit who raised Jesus from the dead, the most powerful act in all of history, is the Spirit who now lives inside every believer. That is the sap flowing through the branch. Not willpower, not religious habit, not moral effort, but the resurrection power of God Himself dwelling in us. Paul's logic is stunning: if the Spirit can raise the dead, He can certainly bring life to a dry, struggling, withering branch. The question is never whether the Spirit is powerful enough. It is whether we will let Him flow.</div>
+        <div class="verse-header">
+          <div class="verse-ref">Romans 8:9-11</div>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.8.9-11" target="_blank" rel="noopener">☩ Open in Bible App</a>
+        </div>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 9">9</sup>You, however, are controlled not by the flesh, but by the Spirit, if the Spirit of God lives in you. And if anyone does not have the Spirit of Christ, he does not belong to Christ. <sup class="verse-number" aria-label="Verse 10">10</sup>But if Christ is in you, your body is dead because of sin, yet your spirit is alive because of righteousness. <sup class="verse-number" aria-label="Verse 11">11</sup>And if the Spirit of Him who raised Jesus from the dead is living in you, He who raised Christ Jesus from the dead will also give life to your mortal bodies through His Spirit, who lives in you.</div>
+<div class="verse-commentary">
+          <p>Paul takes the vine-and-branch metaphor into explicit theological territory. The Spirit of God "lives in you," Paul says, using the Greek <em>oikeo</em> (οἰκέω), which means to take up permanent residence, to make a home. This is not a visitor who drops by occasionally; it is a family member who has moved in. And the same Spirit who raised Jesus from the dead, the most powerful act in all of history, is the Spirit who now lives inside every believer. That is the sap flowing through the branch. Not willpower, not religious habit, not moral effort, but the resurrection power of God Himself dwelling in us. Paul's logic is stunning: if the Spirit can raise the dead, He can certainly bring life to a dry, struggling, withering branch. The question is never whether the Spirit is powerful enough. It is whether we will let Him flow.</p>
+        </div>
       </div>
+      <!-- BSB_FOOTNOTE: Romans 8:10 | 8:10 Or yet the Spirit is life -->
+      <!-- BSB_FOOTNOTE: Romans 8:11 | 8:11 NA, BYZ, and TR raised Christ from the dead -->
 
     </div>
 
@@ -834,7 +818,7 @@ if ('serviceWorker' in navigator) {
     <!-- CHRIST CONNECTION -->
     <div class="section section-christ">
       <div class="section-label"><span class="section-emoji">✝️</span><span class="section-title">The Christ Connection</span><div class="section-title-line"></div></div>
-      <p>On the night He was betrayed, Jesus told His disciples that it was actually better for them that He leave, because only then would the Helper come (<a class="vlink" href="https://www.bible.com/bible/1713/JHN.16.7" target="_blank">John 16:7</a>). That statement must have sounded impossible. How could anything be better than having Jesus physically present? But Jesus knew something the disciples did not yet understand: while He walked beside them, He was one Person in one location. When the Spirit came, He would be inside every believer, everywhere, simultaneously. The Vine would no longer just be walking next to the branches; the Vine's life would be flowing through them.</p>
+      <p>On the night He was betrayed, Jesus told His disciples that it was actually better for them that He leave, because only then would the Helper come (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.16.7" target="_blank" rel="noopener">John 16:7</a>). That statement must have sounded impossible. How could anything be better than having Jesus physically present? But Jesus knew something the disciples did not yet understand: while He walked beside them, He was one Person in one location. When the Spirit came, He would be inside every believer, everywhere, simultaneously. The Vine would no longer just be walking next to the branches; the Vine's life would be flowing through them.</p>
       <p>This is what the Cross and the resurrection made possible. Jesus was crushed so that His life could flow into every branch. He was buried like a seed so that a global vineyard could grow. And when He rose, He sent the Spirit, the living sap of God, to dwell in anyone who would ask. Every struggling believer, every spiritually dry season, every moment of feeling disconnected, finds its answer here: the same Spirit who raised Christ from the dead lives in you. You are not trying to reach God. God has already reached you. The sap is already flowing. Remain.</p>
     </div>
 
@@ -860,22 +844,50 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/LUK.11.13" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Luke+11%3A13%2CRomans+8%3A9-11&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
 
+
+  <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/bible-study/sw.js')
+    .then(reg => console.log('SW registered:', reg.scope))
+    .catch(err => console.log('SW registration failed:', err));
+}
+</script>
 
 <!-- Firebase SDK for push notifications -->
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>

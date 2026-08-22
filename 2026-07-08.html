@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -733,43 +756,45 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>We just felt how offensive the cross was, so now watch Paul preach it anyway, on purpose, as the center of everything. In <a class="vlink" href="https://www.bible.com/bible/1713/ACT.13.16-47" target="_blank">Acts 13:16-47</a> we get a long sample of an actual Paul sermon, where he walks a synagogue crowd through the whole story of Israel and lands all of it on a crucified and risen Jesus. He is not tiptoeing around the scandal. He is aiming straight at it. And when he sums up his entire preaching philosophy, it comes down to one stubborn refusal to talk about anything else.</p>
+      <p>We just felt how offensive the cross was, so now watch Paul preach it anyway, on purpose, as the center of everything. In <a class="vlink" href="https://www.bible.com/bible/3034/ACT.13.16-47" target="_blank" rel="noopener">Acts 13:16-47</a> we get a long sample of an actual Paul sermon, where he walks a synagogue crowd through the whole story of Israel and lands all of it on a crucified and risen Jesus. He is not tiptoeing around the scandal. He is aiming straight at it. And when he sums up his entire preaching philosophy, it comes down to one stubborn refusal to talk about anything else.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 1:22-23 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:35cfafe7722d24b93fd5fb7cff509f7c361b53c91d525a9ca936d31854100b4b | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 1:22-23</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.1.22-23" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.22-23" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For the Jews ask for signs and the Greeks seek wisdom, but we preach Christ crucified, a stumbling block to the Jews and foolishness to the Gentiles,"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Paul names the two biggest audiences in his world and the one thing each of them wanted. The Jews wanted signs, dramatic proof straight from heaven. The Greeks wanted wisdom, an elegant system that made sense of life. Paul looks at both wish lists and says, in effect, I have neither one. We preach Christ crucified. To the Jews that was a <em>skandalon</em>, the Greek word for the part of a trap that springs it, the thing you trip over, and where we get our word "scandal." A crucified Messiah was the rock their faith stumbled on. To the Greeks it was just foolishness. Notice that Paul does not adjust the message to fit either crowd. He could have led with a miracle for one and a philosophy for the other. Instead he leads with the very thing that offends them both, because the cross was never meant to satisfy our expectations. It was meant to save us in spite of them. Even Jesus' closest disciples tripped over it at first (<a class="vlink" href="https://www.bible.com/bible/1713/MRK.8.31-32" target="_blank">Mark 8:31-32</a>, <a class="vlink" href="https://www.bible.com/bible/1713/MRK.9.30-32" target="_blank">Mark 9:30-32</a>, <a class="vlink" href="https://www.bible.com/bible/1713/MRK.10.32-34" target="_blank">Mark 10:32-34</a>).</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 22">22</sup>Jews demand signs and Greeks search for wisdom, <sup class="verse-number" aria-label="Verse 23">23</sup>but we preach Christ crucified, a stumbling block to Jews and foolishness to Gentiles,</div>
+<div class="verse-commentary">
+          <p>Paul names the two biggest audiences in his world and the one thing each of them wanted. The Jews wanted signs, dramatic proof straight from heaven. The Greeks wanted wisdom, an elegant system that made sense of life. Paul looks at both wish lists and says, in effect, I have neither one. We preach Christ crucified. To the Jews that was a <em>skandalon</em>, the Greek word for the part of a trap that springs it, the thing you trip over, and where we get our word "scandal." A crucified Messiah was the rock their faith stumbled on. To the Greeks it was just foolishness. Notice that Paul does not adjust the message to fit either crowd. He could have led with a miracle for one and a philosophy for the other. Instead he leads with the very thing that offends them both, because the cross was never meant to satisfy our expectations. It was meant to save us in spite of them. Even Jesus' closest disciples tripped over it at first (<a class="vlink" href="https://www.bible.com/bible/3034/MRK.8.31-32" target="_blank" rel="noopener">Mark 8:31-32</a>, <a class="vlink" href="https://www.bible.com/bible/3034/MRK.9.30-32" target="_blank" rel="noopener">Mark 9:30-32</a>, <a class="vlink" href="https://www.bible.com/bible/3034/MRK.10.32-34" target="_blank" rel="noopener">Mark 10:32-34</a>).</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Corinthians 1:23 | 1:23 BYZ and TR to Greeks -->
 
+<!-- BSB_BLOCK: Acts 13:38-39 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:ae2044820ee8e416932e888f55bf060923b34f656c76b99a680aa0405b9be14a | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Acts 13:38-39</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ACT.13.38-39" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ACT.13.38-39" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Therefore, let it be known to you, brothers and sisters, that through this man forgiveness of sins is being proclaimed to you, and everyone who believes is justified through him from everything that you could not be justified from through the law of Moses."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>This is the payoff of Paul's whole sermon, and it tells us what the cross actually means. Through this man, the crucified and risen Jesus, forgiveness of sins is being announced. Not earned, not negotiated, announced, the way you would announce a debt that has been publicly declared paid. And then he adds the line that would have stunned a synagogue. Everyone who believes is justified, set right with God, from everything the law of Moses could never fix. Generations had been straining to be good enough through the law, and Paul tells them plainly it could never carry them all the way. The cross does what centuries of rule-keeping could not. And this salvation is not narrow. It was sent out to the whole room and far beyond it (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.13.26" target="_blank">Acts 13:26</a>).</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 38">38</sup>Therefore let it be known to you, brothers, that through Jesus the forgiveness of sins is proclaimed to you. <sup class="verse-number" aria-label="Verse 39">39</sup>Through Him everyone who believes is justified from everything from which you could not be justified by the law of Moses.</div>
+<div class="verse-commentary">
+          <p>This is the payoff of Paul's whole sermon, and it tells us what the cross actually means. Through this man, the crucified and risen Jesus, forgiveness of sins is being announced. Not earned, not negotiated, announced, the way you would announce a debt that has been publicly declared paid. And then he adds the line that would have stunned a synagogue. Everyone who believes is justified, set right with God, from everything the law of Moses could never fix. Generations had been straining to be good enough through the law, and Paul tells them plainly it could never carry them all the way. The cross does what centuries of rule-keeping could not. And this salvation is not narrow. It was sent out to the whole room and far beyond it (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.13.26" target="_blank" rel="noopener">Acts 13:26</a>).</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Acts 13:47 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:d33a92f8edbf09b1194fec4d1a5fa47bf971c39dff0482088ba5c06668cff4bd | footnotes-stripped:1 | poetry:flattened -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Acts 13:47</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/ACT.13.47" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/ACT.13.47" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"For this is what the Lord has commanded us: I have made you a light for the Gentiles, to bring salvation to the ends of the earth."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Watch where the sermon ends up. Paul quotes God's ancient promise that His salvation would reach the Gentiles, the outsiders, all the way to the ends of the earth. This is the same man who once believed salvation belonged to his people alone. Now he stands in a synagogue announcing that the crucified Messiah is light for everyone, including the very nations a devout Jew had been taught to keep at arm's length. The cross blew the doors off. A Savior who died for the sins of the world cannot be locked up as anyone's private possession. And that includes us, the far-off outsiders who would have had no claim on Israel's God if a Jewish Messiah had not been lifted up for the whole world to see. The scandal turned out to be the widest welcome in history. This was the message Paul refused to dress up or trade away (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.2.1-5" target="_blank">1 Corinthians 2:1-5</a>).</p>
+        <div class="verse-text">For this is what the Lord has commanded us: ‘I have made you a light for the Gentiles, to bring salvation to the ends of the earth.’”</div>
+<div class="verse-commentary">
+          <p>Watch where the sermon ends up. Paul quotes God's ancient promise that His salvation would reach the Gentiles, the outsiders, all the way to the ends of the earth. This is the same man who once believed salvation belonged to his people alone. Now he stands in a synagogue announcing that the crucified Messiah is light for everyone, including the very nations a devout Jew had been taught to keep at arm's length. The cross blew the doors off. A Savior who died for the sins of the world cannot be locked up as anyone's private possession. And that includes us, the far-off outsiders who would have had no claim on Israel's God if a Jewish Messiah had not been lifted up for the whole world to see. The scandal turned out to be the widest welcome in history. This was the message Paul refused to dress up or trade away (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.2.1-5" target="_blank" rel="noopener">1 Corinthians 2:1-5</a>).</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: Acts 13:47 | 13:47 Isaiah 49:6 -->
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -841,22 +866,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/ACT.13.16-47" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Acts+13:16-47&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

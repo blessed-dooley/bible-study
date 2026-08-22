@@ -378,6 +378,14 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
   .verse-text sup.verse-number,
   .verse-text-alt sup.verse-number {
     font-family: 'Nunito', sans-serif;
@@ -494,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -557,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -575,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -744,30 +756,31 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Imagine the church member Corinth would have voted most spiritual. She prays in languages no one has taught her. He explains mysteries that make elders lean forward. Their faith gets results, their giving is legendary, and the whole congregation feels lucky to have them. Paul opens the love chapter (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.13" target="_blank">1 Corinthians 13</a>) by building exactly that person, trait by gleaming trait, and then he asks the question nobody in Corinth thought to ask. What is all of it worth if love is not the thing driving it? His arithmetic is about to be brutal.</p>
+      <p>Imagine the church member Corinth would have voted most spiritual. She prays in languages no one has taught her. He explains mysteries that make elders lean forward. Their faith gets results, their giving is legendary, and the whole congregation feels lucky to have them. Paul opens the love chapter (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13" target="_blank" rel="noopener">1 Corinthians 13</a>) by building exactly that person, trait by gleaming trait, and then he asks the question nobody in Corinth thought to ask. What is all of it worth if love is not the thing driving it? His arithmetic is about to be brutal.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 13:3 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:33782eca60957caa8c205c57053921891b2bc7d25b14f49b295b4bdf4194d8a5 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 13:3</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.13.3" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.13.3" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"And if I give away all my possessions, and if I give over my body in order to boast but do not have love, I gain nothing."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>This is the top of a three-rung ladder, and every rung ends in the same place. Tongues of men and of angels without love are noise (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.13.1" target="_blank">1 Corinthians 13:1</a>). Prophecy, all mysteries, all knowledge, mountain-moving faith without love are nothing (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.13.2" target="_blank">1 Corinthians 13:2</a>). Then Paul reaches the summit, total generosity, the body itself given over, and the verdict actually gets worse. I gain nothing. Notice he never calls the gifts useless. Tongues are real, prophecy is real, faith and sacrifice are real, and all of them are good. They are useless only when love is not the engine driving them. The résumé was never the problem. The problem is a résumé with no heart behind it, and God, who reads hearts, refuses to be impressed.</p>
+        <div class="verse-text">If I give all I possess to the poor and exult in the surrender of my body, but have not love, I gain nothing.</div>
+<div class="verse-commentary">
+          <p>This is the top of a three-rung ladder, and every rung ends in the same place. Tongues of men and of angels without love are noise (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.1" target="_blank" rel="noopener">1 Corinthians 13:1</a>). Prophecy, all mysteries, all knowledge, mountain-moving faith without love are nothing (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.2" target="_blank" rel="noopener">1 Corinthians 13:2</a>). Then Paul reaches the summit, total generosity, the body itself given over, and the verdict actually gets worse. I gain nothing. Notice he never calls the gifts useless. Tongues are real, prophecy is real, faith and sacrifice are real, and all of them are good. They are useless only when love is not the engine driving them. The résumé was never the problem. The problem is a résumé with no heart behind it, and God, who reads hearts, refuses to be impressed.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Corinthians 13:3 | 13:3 SBL, NE, BYZ, and TR surrender my body to be burned -->
 
       <p>So what is this love that carries so much weight? Not the word we spend on strawberries and playlists, and not the chemistry the movies sell. The love of this chapter is a grace the Spirit plants, a settled commitment of our actions, our feelings, and our thoughts toward Christ and toward the people in front of us. Affection, charity, virtue, and kindness are its fingerprints, but none of them is the hand. And because this love is living, Jesus warns that it can also die, not with a bang but by degrees.</p>
 
+<!-- BSB_BLOCK: Matthew 24:12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c9078c415230e3bc93da7eaaa4856537f74c424f19cb2ce0a0faa8a697a5d273 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Matthew 24:12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/MAT.24.12" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.24.12" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Because lawlessness will multiply, the love of many will grow cold."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><span class="words-of-jesus">Because of the multiplication of wickedness, the love of most will grow cold.</span></div>
+<div class="verse-commentary">
           <p>Jesus is describing the last days, and the danger He names is not persecution or false teaching. It is temperature. The Greek verb here is <em>psychō</em>, to cool, the word for something hot losing its heat one unnoticed degree at a time. Love rarely dies in an explosion. It dies like coffee on a desk, cooling because it sat untouched while we handled more urgent things. Notice the physics of the verse. Lawlessness multiplies in the world outside, and love loses temperature in the people who were supposed to stay warm. The surrounding cold seeps in wherever love is not actively tended. That is why Paul's arithmetic matters so much. A church can keep every program running at full power, cooling the whole time, and never hear an alarm go off.</p>
         </div>
       </div>
@@ -842,22 +855,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.13" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+13&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

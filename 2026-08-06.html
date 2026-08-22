@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -733,55 +756,56 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>Say the word prophecy and most people picture a crystal ball with a religious paint job, someone predicting next year's headlines. Scripture's picture is at once bigger and closer to home. Today's passages, Paul's definition of the gift (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.14.3" target="_blank">1 Corinthians 14:3</a>) and the risen Christ's staffing plan for His church (<a class="vlink" href="https://www.bible.com/bible/1713/EPH.4.11-13" target="_blank">Ephesians 4:11-13</a>), show a gift that has less to do with forecasting the future and everything to do with carrying God's voice to people who need it now.</p>
+      <p>Say the word prophecy and most people picture a crystal ball with a religious paint job, someone predicting next year's headlines. Scripture's picture is at once bigger and closer to home. Today's passages, Paul's definition of the gift (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.3" target="_blank" rel="noopener">1 Corinthians 14:3</a>) and the risen Christ's staffing plan for His church (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.4.11-13" target="_blank" rel="noopener">Ephesians 4:11-13</a>), show a gift that has less to do with forecasting the future and everything to do with carrying God's voice to people who need it now.</p>
 
-      <p>Notice first where prophecy sits in Paul's mind. In list after list it comes before tongues (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.10" target="_blank">1 Corinthians 12:10</a>, <a class="vlink" href="https://www.bible.com/bible/1713/1CO.12.28" target="_blank">1 Corinthians 12:28</a>), even among the gifts that will one day retire (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.13.8" target="_blank">1 Corinthians 13:8</a>). And when tongues does get named first, the order only sharpens the contrast. The uninterpreted tongue builds its own speaker while prophecy builds the church (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.14.4" target="_blank">1 Corinthians 14:4</a>). Paul would rather the whole congregation prophesied (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.14.5" target="_blank">1 Corinthians 14:5</a>). A visit full of impressive sound profits nothing next to a word of revelation or teaching (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.14.6" target="_blank">1 Corinthians 14:6</a>), and even as signs the two gifts serve different audiences (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.14.22" target="_blank">1 Corinthians 14:22</a>). The gift Corinth benched was the one Paul kept moving to the front.</p>
+      <p>Notice first where prophecy sits in Paul's mind. In list after list it comes before tongues (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.10" target="_blank" rel="noopener">1 Corinthians 12:10</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.28" target="_blank" rel="noopener">1 Corinthians 12:28</a>), even among the gifts that will one day retire (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.8" target="_blank" rel="noopener">1 Corinthians 13:8</a>). And when tongues does get named first, the order only sharpens the contrast. The uninterpreted tongue builds its own speaker while prophecy builds the church (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.4" target="_blank" rel="noopener">1 Corinthians 14:4</a>). Paul would rather the whole congregation prophesied (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.5" target="_blank" rel="noopener">1 Corinthians 14:5</a>). A visit full of impressive sound profits nothing next to a word of revelation or teaching (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.6" target="_blank" rel="noopener">1 Corinthians 14:6</a>), and even as signs the two gifts serve different audiences (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.22" target="_blank" rel="noopener">1 Corinthians 14:22</a>). The gift Corinth benched was the one Paul kept moving to the front.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 14:3 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:647f6be38318c6674620ef70dfc37375235a8b1cfc67f54fec85d722e328554b | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 14:3</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.14.3" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.14.3" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"On the other hand, the person who prophesies speaks to people for strengthening, encouragement, and consolation."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Here is the gift defined by its fruit, and not one item on the list is a prediction. Strengthening, encouragement, consolation. The Greek verb behind the gift, <em>prophēteuō</em>, can mean to say something in advance, but just as often it means to say something on behalf of someone else, and Scripture uses it both ways. Peter says David spoke in advance, foreseeing the resurrection (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.2.29-31" target="_blank">Acts 2:29-31</a>), the same pattern as the Lord who does nothing without revealing His counsel to His servants the prophets (<a class="vlink" href="https://www.bible.com/bible/1713/AMO.3.7" target="_blank">Amos 3:7</a>). But when Judas and Silas are called prophets, their prophesying looks like encouraging and strengthening the brothers with many words (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.15.32" target="_blank">Acts 15:32</a>). Prophecy is less about predicting the future and more about how to live in the present. It is God's voice arriving through a person, aimed at the exact place another person is buckling.</p>
+        <div class="verse-text">But he who prophesies speaks to men for their edification, encouragement, and comfort.</div>
+<div class="verse-commentary">
+          <p>Here is the gift defined by its fruit, and not one item on the list is a prediction. Strengthening, encouragement, consolation. The Greek verb behind the gift, <em>prophēteuō</em>, can mean to say something in advance, but just as often it means to say something on behalf of someone else, and Scripture uses it both ways. Peter says David spoke in advance, foreseeing the resurrection (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.2.29-31" target="_blank" rel="noopener">Acts 2:29-31</a>), the same pattern as the Lord who does nothing without revealing His counsel to His servants the prophets (<a class="vlink" href="https://www.bible.com/bible/3034/AMO.3.7" target="_blank" rel="noopener">Amos 3:7</a>). But when Judas and Silas are called prophets, their prophesying looks like encouraging and strengthening the brothers with many words (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.15.32" target="_blank" rel="noopener">Acts 15:32</a>). Prophecy is less about predicting the future and more about how to live in the present. It is God's voice arriving through a person, aimed at the exact place another person is buckling.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: Ephesians 4:11-13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:58b2e3bdac82be4700c6b9799a7b5806de977721e83a50ece0add33b4b40beee | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Ephesians 4:11-13</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/EPH.4.11-13" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/EPH.4.11-13" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"And he himself gave some to be apostles, some prophets, some evangelists, some pastors and teachers, to equip the saints for the work of ministry, to build up the body of Christ, until we all reach unity in the faith and in the knowledge of God's Son, growing into maturity with a stature measured by Christ's fullness."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>Look at the word until. The ascended Christ gave these gifts, prophets included, with an expiration condition attached, and the condition is not the death of the last apostle. It is the church reaching unity in the faith, maturity, the full stature of Christ. Look around. We are not there. So the gifts were never meant to retire in the first century, and Peter said as much at Pentecost, the promise is for you and for your children and for all who are far off, as many as the Lord our God will call (<a class="vlink" href="https://www.bible.com/bible/1713/ACT.2.39" target="_blank">Acts 2:39</a>). A church that assumes God went silent after the apostles has misread the delivery schedule. The scaffolding stays up until the building is finished. The building is not finished.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 11">11</sup>And it was He who gave some to be apostles, some to be prophets, some to be evangelists, and some to be pastors and teachers, <sup class="verse-number" aria-label="Verse 12">12</sup>to equip the saints for works of ministry and to build up the body of Christ, <sup class="verse-number" aria-label="Verse 13">13</sup>until we all reach unity in the faith and in the knowledge of the Son of God, as we mature to the full measure of the stature of Christ.</div>
+<div class="verse-commentary">
+          <p>Look at the word until. The ascended Christ gave these gifts, prophets included, with an expiration condition attached, and the condition is not the death of the last apostle. It is the church reaching unity in the faith, maturity, the full stature of Christ. Look around. We are not there. So the gifts were never meant to retire in the first century, and Peter said as much at Pentecost, the promise is for you and for your children and for all who are far off, as many as the Lord our God will call (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.2.39" target="_blank" rel="noopener">Acts 2:39</a>). A church that assumes God went silent after the apostles has misread the delivery schedule. The scaffolding stays up until the building is finished. The building is not finished.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 John 4:1-3 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:47adca3f5c29c4cc75d770cdfdbda47f14cfbbc4cf922820fe99f1f69a283624 | footnotes-stripped:1 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 John 4:1-3</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1JN.4.1-3" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1JN.4.1-3" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Dear friends, do not believe every spirit, but test the spirits to see if they are from God, because many false prophets have gone out into the world. This is how you know the Spirit of God: Every spirit that confesses that Jesus Christ has come in the flesh is from God, but every spirit that does not confess Jesus is not from God. This is the spirit of the antichrist, which you have heard is coming; even now it is already in the world."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>An ongoing gift demands an ongoing filter, and Scripture hands us four tests that work together. First, the words come true. A prophet whose unconditional predictions fail was never sent (<a class="vlink" href="https://www.bible.com/bible/1713/DEU.18.22" target="_blank">Deuteronomy 18:22</a>), the standard Jeremiah threw down when Hananiah promised easy peace (<a class="vlink" href="https://www.bible.com/bible/1713/JER.28.8" target="_blank">Jeremiah 28:8</a>), let the fulfillment identify the sent one (<a class="vlink" href="https://www.bible.com/bible/1713/JER.28.9" target="_blank">Jeremiah 28:9</a>). Second, the message agrees with what God already said. Even a wonder-worker who tugs people toward other gods fails (<a class="vlink" href="https://www.bible.com/bible/1713/DEU.13.1-3" target="_blank">Deuteronomy 13:1-3</a>), for if they do not speak according to the law and the testimony, there is no dawn in them (<a class="vlink" href="https://www.bible.com/bible/1713/ISA.8.20" target="_blank">Isaiah 8:20</a>). Third, the life confesses Christ, here in John's test. Fourth, the fruit feeds somebody, for you will recognize them by their fruit (<a class="vlink" href="https://www.bible.com/bible/1713/MAT.7.15-20" target="_blank">Matthew 7:15-20</a>). Test the spirits is a command, not a suggestion. So is the word that comes right before it. Dear friends.</p>
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>Beloved, do not believe every spirit, but test the spirits to see whether they are from God. For many false prophets have gone out into the world. <sup class="verse-number" aria-label="Verse 2">2</sup>By this you will know the Spirit of God: Every spirit that confesses that Jesus Christ has come in the flesh is from God, <sup class="verse-number" aria-label="Verse 3">3</sup>and every spirit that does not confess Jesus is not from God. This is the spirit of the antichrist, which you have heard is coming and which is already in the world at this time.</div>
+<div class="verse-commentary">
+          <p>An ongoing gift demands an ongoing filter, and Scripture hands us four tests that work together. First, the words come true. A prophet whose unconditional predictions fail was never sent (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.18.22" target="_blank" rel="noopener">Deuteronomy 18:22</a>), the standard Jeremiah threw down when Hananiah promised easy peace (<a class="vlink" href="https://www.bible.com/bible/3034/JER.28.8" target="_blank" rel="noopener">Jeremiah 28:8</a>), let the fulfillment identify the sent one (<a class="vlink" href="https://www.bible.com/bible/3034/JER.28.9" target="_blank" rel="noopener">Jeremiah 28:9</a>). Second, the message agrees with what God already said. Even a wonder-worker who tugs people toward other gods fails (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.13.1-3" target="_blank" rel="noopener">Deuteronomy 13:1-3</a>), for if they do not speak according to the law and the testimony, there is no dawn in them (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.8.20" target="_blank" rel="noopener">Isaiah 8:20</a>). Third, the life confesses Christ, here in John's test. Fourth, the fruit feeds somebody, for you will recognize them by their fruit (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.7.15-20" target="_blank" rel="noopener">Matthew 7:15-20</a>). Test the spirits is a command, not a suggestion. So is the word that comes right before it. Dear friends.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 John 4:3 | 4:3 BYZ and TR that Jesus Christ has come in the flesh -->
 
+<!-- BSB_BLOCK: Revelation 19:10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:1d0e631ff2d1e07075fa94f392f138e25bbc6b71578352c8dcca1474bb5d2810 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Revelation 19:10</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/REV.19.10" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/REV.19.10" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Then I fell at his feet to worship him, but he said to me, 'Don't do that! I am a fellow servant with you and your brothers and sisters who hold firmly to the testimony of Jesus. Worship God, because the testimony of Jesus is the spirit of prophecy.'"</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>The Bible's last book will not let prophecy fade into history. When the dragon makes war on God's people at the end, they are identified by two marks, keeping the commandments of God and holding firmly to the testimony of Jesus (<a class="vlink" href="https://www.bible.com/bible/1713/REV.12.17" target="_blank">Revelation 12:17</a>), and the angel defines that second mark in today's verse. The testimony of Jesus is the spirit of prophecy. God's people at history's close are a prophecy-marked people, still strengthened, encouraged, and consoled by His voice. History bears the pattern out. Whenever God's people have needed guiding, He has kept His promise to reveal His counsel, and every voice that has ever claimed the gift, in any century including ours, stands before the same four tests and points to the same Person. The gift never outgrows its job description. It speaks for Jesus, about Jesus, toward Jesus. Anything else is just noise wearing a robe.</p>
+        <div class="verse-text">So I fell at his feet to worship him. But he told me, “Do not do that! I am a fellow servant with you and your brothers who rely on the testimony of Jesus. Worship God! For the testimony of Jesus is the spirit of prophecy.”</div>
+<div class="verse-commentary">
+          <p>The Bible's last book will not let prophecy fade into history. When the dragon makes war on God's people at the end, they are identified by two marks, keeping the commandments of God and holding firmly to the testimony of Jesus (<a class="vlink" href="https://www.bible.com/bible/3034/REV.12.17" target="_blank" rel="noopener">Revelation 12:17</a>), and the angel defines that second mark in today's verse. The testimony of Jesus is the spirit of prophecy. God's people at history's close are a prophecy-marked people, still strengthened, encouraged, and consoled by His voice. History bears the pattern out. Whenever God's people have needed guiding, He has kept His promise to reveal His counsel, and every voice that has ever claimed the gift, in any century including ours, stands before the same four tests and points to the same Person. The gift never outgrows its job description. It speaks for Jesus, about Jesus, toward Jesus. Anything else is just noise wearing a robe.</p>
         </div>
       </div>
     </div>
@@ -818,7 +842,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>The angel's definition settles what prophecy is for. The testimony of Jesus is the spirit of prophecy, which means every true prophetic word ever spoken has been carrying Him. On the road to Emmaus, the risen Christ walked two discouraged disciples through Moses and all the Prophets and interpreted for them the things concerning Himself (<a class="vlink" href="https://www.bible.com/bible/1713/LUK.24.27" target="_blank">Luke 24:27</a>), a Bible study proving the whole prophetic tradition had one subject. He is also prophecy's fulfillment in person, the Prophet like Moses that God promised to raise up (<a class="vlink" href="https://www.bible.com/bible/1713/DEU.18.15" target="_blank">Deuteronomy 18:15</a>), and more than a prophet, the Son in whom God has spoken His final word (<a class="vlink" href="https://www.bible.com/bible/1713/HEB.1.1-2" target="_blank">Hebrews 1:1-2</a>). That is why the tests all point one direction. Does the voice agree with His word, confess His flesh-and-blood coming, produce His fruit? Prophecy that strengthens, encourages, and consoles is simply Jesus still doing with human mouths what He did on that road, coming alongside the buckling and setting their hearts on fire with Himself.</p>
+      <p>The angel's definition settles what prophecy is for. The testimony of Jesus is the spirit of prophecy, which means every true prophetic word ever spoken has been carrying Him. On the road to Emmaus, the risen Christ walked two discouraged disciples through Moses and all the Prophets and interpreted for them the things concerning Himself (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.24.27" target="_blank" rel="noopener">Luke 24:27</a>), a Bible study proving the whole prophetic tradition had one subject. He is also prophecy's fulfillment in person, the Prophet like Moses that God promised to raise up (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.18.15" target="_blank" rel="noopener">Deuteronomy 18:15</a>), and more than a prophet, the Son in whom God has spoken His final word (<a class="vlink" href="https://www.bible.com/bible/3034/HEB.1.1-2" target="_blank" rel="noopener">Hebrews 1:1-2</a>). That is why the tests all point one direction. Does the voice agree with His word, confess His flesh-and-blood coming, produce His fruit? Prophecy that strengthens, encourages, and consoles is simply Jesus still doing with human mouths what He did on that road, coming alongside the buckling and setting their hearts on fire with Himself.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -855,22 +879,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/EPH.4.11-13" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=Ephesians+4:11-13&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {

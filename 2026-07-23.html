@@ -378,6 +378,25 @@ if ('serviceWorker' in navigator) {
     margin-bottom: 8px;
     font-weight: 400;
   }
+  .words-of-jesus {
+    color: #ffb4a8;
+    font-weight: 500;
+  }
+  body.red-letter-off .words-of-jesus {
+    color: inherit;
+    font-weight: inherit;
+  }
+  .verse-text sup.verse-number,
+  .verse-text-alt sup.verse-number {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.55em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--emerald);
+    margin-right: 0.22em;
+  }
   .verse-translation {
     font-family: 'Nunito', sans-serif;
     font-size: 10px;
@@ -483,49 +502,6 @@ if ('serviceWorker' in navigator) {
     border-left: 3px solid var(--emerald);
   }
 
-  /* ── BIBLE APP STRIP ── */
-  .bible-app-strip {
-    background: var(--bg-raise);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--border-mid);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .strip-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .strip-apps { display: flex; gap: 8px; flex-wrap: wrap; }
-  .app-link {
-    display: inline-flex;
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--emerald-dim);
-    color: var(--emerald);
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .app-link:hover {
-    border-color: var(--emerald);
-    color: var(--emerald);
-  }
-
   /* ── FOOTER ── */
   .footer {
     padding: 20px 28px;
@@ -546,6 +522,48 @@ if ('serviceWorker' in navigator) {
     text-transform: uppercase;
     color: var(--text-muted);
   }
+  .footer .footer-meta,
+  .footer .scripture-source {
+    max-width: 620px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.55;
+    text-align: center;
+    text-transform: none;
+  }
+  .footer .footer-meta a,
+  .footer .scripture-source a {
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--emerald-dim);
+  }
+  .red-letter-toggle {
+    border: 1px solid var(--border-mid);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .red-letter-toggle[aria-pressed="true"] {
+    border-color: #ffb4a8;
+    color: #ffb4a8;
+  }
+  .red-letter-toggle[aria-pressed="false"] {
+    border-color: var(--border-mid);
+    color: var(--text-muted);
+  }
+  .red-letter-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .red-letter-toggle:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
+  }
   .footer-archive {
     font-family: 'Nunito', sans-serif;
     font-size: 11px;
@@ -564,8 +582,13 @@ if ('serviceWorker' in navigator) {
     .header { padding: 28px 20px 24px; border-radius: 0; }
     .card { border-radius: 0; }
     .section { padding: 24px 20px; }
-    .bible-app-strip { padding: 14px 20px; align-items: center; }
+    .verse-header { align-items: flex-start; flex-direction: column; flex-wrap: nowrap; }
+    .bible-btn { align-self: flex-start; }
     .footer { padding: 16px 20px; border-radius: 0; }
+  }
+  @media print {
+    .words-of-jesus { color: inherit; font-weight: 600; }
+    .red-letter-toggle { display: none; }
   }
 
   /* ── INLINE VERSE LINK ── */
@@ -733,47 +756,49 @@ if ('serviceWorker' in navigator) {
         <div class="section-title-line"></div>
       </div>
 
-      <p>The reading begins at the temple and walks into the bedroom (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.19" target="_blank">1 Corinthians 6:19-7:9</a>). That order matters. Paul does not start with rules about sex. He starts with who you are, a body indwelt and purchased, and only then answers the questions Corinth mailed him about marriage and singleness. Two commands organize everything that follows. Flee, because some temptations are not for fighting. And honor, because desire was never the enemy, only desire without a home. Watch how a man who chose singleness writes about marriage with more reverence than the culture that mocked it.</p>
+      <p>The reading begins at the temple and walks into the bedroom (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.19" target="_blank" rel="noopener">1 Corinthians 6:19-7:9</a>). That order matters. Paul does not start with rules about sex. He starts with who you are, a body indwelt and purchased, and only then answers the questions Corinth mailed him about marriage and singleness. Two commands organize everything that follows. Flee, because some temptations are not for fighting. And honor, because desire was never the enemy, only desire without a home. Watch how a man who chose singleness writes about marriage with more reverence than the culture that mocked it.</p>
 
+<!-- BSB_BLOCK: 1 Corinthians 6:18 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:4bbd3b43748f3013735b7d38457ba5dde2a953e74d6fe9467e01fc3c1aee63a2 | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 6:18</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.6.18" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.6.18" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Flee sexual immorality! Every other sin a person commits is outside the body, but the person who is sexually immoral sins against his own body."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
-          <p>The command is the Greek word <em>pheugo</em>, to flee, to run for your life, and Paul writes it in a tense that means keep on fleeing, make running your standing policy. Notice what he does not say. He does not say reason with sexual temptation, or linger and prove your strength, or see how close you can stand. Scripture treats this pull differently from other battles. You do not win it toe to toe. You win it with distance. Then comes the strange-sounding reason, that other sins happen outside the body but this one sins against your own body. Other sins use the body as a tool. This one turns the body itself, the Spirit's own address, against its Owner, which is why the command sits bracketed by union with the Lord (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.17" target="_blank">1 Corinthians 6:17</a>) and the temple He lives in (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.6.19" target="_blank">1 Corinthians 6:19</a>). Fleeing is not prudishness. It is guarding a sanctuary.</p>
+        <div class="verse-text">Flee from sexual immorality. Every other sin a man can commit is outside his body, but he who sins sexually sins against his own body.</div>
+<div class="verse-commentary">
+          <p>The command is the Greek word <em>pheugo</em>, to flee, to run for your life, and Paul writes it in a tense that means keep on fleeing, make running your standing policy. Notice what he does not say. He does not say reason with sexual temptation, or linger and prove your strength, or see how close you can stand. Scripture treats this pull differently from other battles. You do not win it toe to toe. You win it with distance. Then comes the strange-sounding reason, that other sins happen outside the body but this one sins against your own body. Other sins use the body as a tool. This one turns the body itself, the Spirit's own address, against its Owner, which is why the command sits bracketed by union with the Lord (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.17" target="_blank" rel="noopener">1 Corinthians 6:17</a>) and the temple He lives in (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.19" target="_blank" rel="noopener">1 Corinthians 6:19</a>). Fleeing is not prudishness. It is guarding a sanctuary.</p>
         </div>
       </div>
 
+<!-- BSB_BLOCK: 1 Corinthians 6:19-7:9 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:59ecc5b741cb6c049e1c39c503c05174a7857a6d51ca33237cca04b975cf339b | footnotes-stripped:2 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">1 Corinthians 6:19-7:9</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/1CO.6.19" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.6.19-7.9" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Don't you know that your body is a temple of the Holy Spirit who is in you, whom you have from God? You are not your own, for you were bought at a price. So glorify God with your body. Now in response to the matters you wrote about: 'It is good for a man not to have sexual relations with a woman.' But because sexual immorality is so common, each man should have sexual relations with his own wife, and each woman should have sexual relations with her own husband. A husband should fulfill his marital duty to his wife, and likewise a wife to her husband. A wife does not have the right over her own body, but her husband does. In the same way, a husband does not have the right over his own body, but his wife does. Do not deprive one another—except when you agree for a time, to devote yourselves to prayer. Then come together again; otherwise, Satan may tempt you because of your lack of self-control. I say this as a concession, not as a command. I wish that all people were as I am. But each has his own gift from God, one person has this gift, another has that. I say to the unmarried and to widows: It is good for them if they remain as I am. But if they do not have self-control, they should marry, since it is better to marry than to burn with desire."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text"><sup class="verse-number" aria-label="Verse 19">19</sup>Do you not know that your body is a temple of the Holy Spirit who is in you, whom you have received from God? You are not your own; <sup class="verse-number" aria-label="Verse 20">20</sup>you were bought at a price. Therefore glorify God with your body. <sup class="verse-number" aria-label="Chapter 7, verse 1">7:1</sup>Now for the matters you wrote about: It is good to abstain from sexual relations. <sup class="verse-number" aria-label="Verse 2">2</sup>But because there is so much sexual immorality, each man should have his own wife, and each woman her own husband. <sup class="verse-number" aria-label="Verse 3">3</sup>The husband should fulfill his marital duty to his wife, and likewise the wife to her husband. <sup class="verse-number" aria-label="Verse 4">4</sup>The wife does not have authority over her own body, but the husband. Likewise the husband does not have authority over his own body, but the wife. <sup class="verse-number" aria-label="Verse 5">5</sup>Do not deprive each other, except by mutual consent and for a time, so you may devote yourselves to prayer. Then come together again, so that Satan will not tempt you through your lack of self-control. <sup class="verse-number" aria-label="Verse 6">6</sup>I say this as a concession, not as a command. <sup class="verse-number" aria-label="Verse 7">7</sup>I wish that all men were as I am. But each man has his own gift from God; one has this gift, another has that. <sup class="verse-number" aria-label="Verse 8">8</sup>Now to the unmarried and widows I say this: It is good for them to remain unmarried, as I am. <sup class="verse-number" aria-label="Verse 9">9</sup>But if they cannot control themselves, let them marry. For it is better to marry than to burn with passion.</div>
+<div class="verse-commentary">
           <p>Right after the temple claim, Paul opens Corinth's letter. Now in response to the matters you wrote about. The line he quotes first, that it is good for a man not to have sexual relations with a woman, is almost certainly their slogan, the ascetic faction's proposal, and Paul refuses to bless it as a blanket rule. His counsel is striking for what it assumes. Sex inside marriage is not a concession to weakness but a duty of love, given rather than withheld, and given mutually. In a world where a wife was treated as property, Paul writes that a husband's body belongs to his wife exactly as hers belongs to him. Nobody in Corinth had ever read a sentence like that. Abstinence, he says, is for agreed seasons of prayer, and then come together again, because a door left open is a door the tempter uses. Marriage is a gift. Singleness is a gift. The only wrong move is pretending you do not burn.</p>
         </div>
       </div>
+      <!-- BSB_FOOTNOTE: 1 Corinthians 6:20 | 6:20 BYZ and TR include and with your spirit, which belong to God. -->
+      <!-- BSB_FOOTNOTE: 1 Corinthians 7:1 | 7:1 Literally It is good for a man not to touch a woman. -->
 
-      <p>Keep the chapter's shape in mind before drawing sweeping conclusions. The first half answers questions about marriage (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.7.1-24" target="_blank">1 Corinthians 7:1-24</a>), the second half questions about singleness (<a class="vlink" href="https://www.bible.com/bible/1713/1CO.7.25-40" target="_blank">1 Corinthians 7:25-40</a>), and all of it responds to specific situations in one anxious congregation. Paul is not writing a complete theology of marriage here, and anyone tempted to read him as anti-marriage should hear him elsewhere, where he brands teachers who forbid marriage as carriers of demonic doctrine (<a class="vlink" href="https://www.bible.com/bible/1713/1TI.4.1-3" target="_blank">1 Timothy 4:1-3</a>) and counsels young widows to marry and build households (<a class="vlink" href="https://www.bible.com/bible/1713/1TI.5.14" target="_blank">1 Timothy 5:14</a>). Scripture's design holds steady even when its counsel is situational. Sex is God's gift with one home, the marriage of a man and a woman, the only arrangement the Bible ever blesses with it. And talking about all of this out loud, as Paul does, is part of protecting it.</p>
+      <p>Keep the chapter's shape in mind before drawing sweeping conclusions. The first half answers questions about marriage (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.7.1-24" target="_blank" rel="noopener">1 Corinthians 7:1-24</a>), the second half questions about singleness (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.7.25-40" target="_blank" rel="noopener">1 Corinthians 7:25-40</a>), and all of it responds to specific situations in one anxious congregation. Paul is not writing a complete theology of marriage here, and anyone tempted to read him as anti-marriage should hear him elsewhere, where he brands teachers who forbid marriage as carriers of demonic doctrine (<a class="vlink" href="https://www.bible.com/bible/3034/1TI.4.1-3" target="_blank" rel="noopener">1 Timothy 4:1-3</a>) and counsels young widows to marry and build households (<a class="vlink" href="https://www.bible.com/bible/3034/1TI.5.14" target="_blank" rel="noopener">1 Timothy 5:14</a>). Scripture's design holds steady even when its counsel is situational. Sex is God's gift with one home, the marriage of a man and a woman, the only arrangement the Bible ever blesses with it. And talking about all of this out loud, as Paul does, is part of protecting it.</p>
 
+<!-- BSB_BLOCK: Hebrews 13:4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:68c8de349a893c138a925bda7390c39bc1cd15591b3c99a4d666f14a7f8d906d | footnotes-stripped:0 | poetry:flow -->
       <div class="verse-block">
         <div class="verse-header">
           <div class="verse-ref">Hebrews 13:4</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/1713/HEB.13.4" target="_blank">☩ Open in Bible App</a>
+          <a class="bible-btn" href="https://www.bible.com/bible/3034/HEB.13.4" target="_blank" rel="noopener">☩ Open in Bible App</a>
         </div>
-        <div class="verse-text">"Marriage is to be honored by all and the marriage bed kept undefiled, because God will judge the sexually immoral and adulterers."</div>
-        <div class="verse-translation">Christian Standard Bible · CSB</div>
-        <div class="verse-commentary">
+        <div class="verse-text">Marriage should be honored by all and the marriage bed kept undefiled, for God will judge the sexually immoral and adulterers.</div>
+<div class="verse-commentary">
           <p>One verse, two guardrails. Marriage can be dishonored by defiling it, the affair, the wandering eye, the habit that hollows out a spouse's trust. And it can be dishonored by dismissing it, filing the whole institution under expired traditions. Scripture refuses both. Honored by all, the verse says, which means the single honor it too, and the married honor the callings of the unmarried, the way Jesus and Paul, both single men, spoke of marriage with reverence. Honor here is not nostalgia. It is treating something as weight-bearing, load-worthy, holy. The marriage bed kept undefiled is not the Bible being squeamish about sex. It is the Bible being fierce about promises. God takes vows more seriously than we take feelings, and the verse ends with Him standing guard over both.</p>
         </div>
       </div>
 
-      <p>When Paul says flee, he may well be remembering a young man in Egypt. Potiphar's wife pressured Joseph day after day (<a class="vlink" href="https://www.bible.com/bible/1713/GEN.39.6-18" target="_blank">Genesis 39:6-18</a>), and the account lingers on one physical detail, repeated over and over in the telling, that he ran out of the house and left his coat behind in her hands (<a class="vlink" href="https://www.bible.com/bible/1713/GEN.39.18" target="_blank">Genesis 39:18</a>). Fleeing cost him. The abandoned coat became the evidence that put him in prison. But the same story calls him a man in whom the Spirit of God lived (<a class="vlink" href="https://www.bible.com/bible/1713/GEN.41.38" target="_blank">Genesis 41:38</a>), and in God's timing he was given a wife (<a class="vlink" href="https://www.bible.com/bible/1713/GEN.41.45" target="_blank">Genesis 41:45</a>) and a life his obedience had guarded, having waited for marriage in a culture that would have laughed at him for it. Joseph teaches the honest version of today's command. Running is not free. It can cost you a coat, a job, years. It is still cheaper than the temple.</p>
+      <p>When Paul says flee, he may well be remembering a young man in Egypt. Potiphar's wife pressured Joseph day after day (<a class="vlink" href="https://www.bible.com/bible/3034/GEN.39.6-18" target="_blank" rel="noopener">Genesis 39:6-18</a>), and the account lingers on one physical detail, repeated over and over in the telling, that he ran out of the house and left his coat behind in her hands (<a class="vlink" href="https://www.bible.com/bible/3034/GEN.39.18" target="_blank" rel="noopener">Genesis 39:18</a>). Fleeing cost him. The abandoned coat became the evidence that put him in prison. But the same story calls him a man in whom the Spirit of God lived (<a class="vlink" href="https://www.bible.com/bible/3034/GEN.41.38" target="_blank" rel="noopener">Genesis 41:38</a>), and in God's timing he was given a wife (<a class="vlink" href="https://www.bible.com/bible/3034/GEN.41.45" target="_blank" rel="noopener">Genesis 41:45</a>) and a life his obedience had guarded, having waited for marriage in a culture that would have laughed at him for it. Joseph teaches the honest version of today's command. Running is not free. It can cost you a coat, a job, years. It is still cheaper than the temple.</p>
     </div>
 
     <!-- 5. STREET LEVEL -->
@@ -810,7 +835,7 @@ if ('serviceWorker' in navigator) {
         <span class="section-title">The Christ Connection</span>
         <div class="section-title-line"></div>
       </div>
-      <p>Here is the mystery underneath the whole day. Why does the Bible guard marriage so fiercely? Because marriage was never only about the couple. From the beginning it has been a living picture of something bigger, Christ and His church, the covenant behind every covenant (<a class="vlink" href="https://www.bible.com/bible/1713/EPH.5.31-32" target="_blank">Ephesians 5:31-32</a>). That is why defiling it lies about God, and honoring it tells the truth about Him. And look closely at the Bridegroom the picture points to. Joseph fled temptation, and it cost him his coat. Jesus faced a harder assignment. When the cup of our redemption stood in front of Him, He did not flee. He stayed, He obeyed, He kept covenant with an unfaithful bride at the cost of His life, faithful where every human love has flickered. Single reader, take heart from this too. The truest, fullest human who ever lived never married, and He calls the married and the unmarried into the same romance, the love of God that outlasts every wedding. Flee what lies about Him. Honor what tells His story.</p>
+      <p>Here is the mystery underneath the whole day. Why does the Bible guard marriage so fiercely? Because marriage was never only about the couple. From the beginning it has been a living picture of something bigger, Christ and His church, the covenant behind every covenant (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.5.31-32" target="_blank" rel="noopener">Ephesians 5:31-32</a>). That is why defiling it lies about God, and honoring it tells the truth about Him. And look closely at the Bridegroom the picture points to. Joseph fled temptation, and it cost him his coat. Jesus faced a harder assignment. When the cup of our redemption stood in front of Him, He did not flee. He stayed, He obeyed, He kept covenant with an unfaithful bride at the cost of His life, faithful where every human love has flickered. Single reader, take heart from this too. The truest, fullest human who ever lived never married, and He calls the married and the unmarried into the same romance, the love of God that outlasts every wedding. Flee what lies about Him. Honor what tells His story.</p>
     </div>
 
     <!-- 8. APPLICATION -->
@@ -847,22 +872,42 @@ if ('serviceWorker' in navigator) {
 
   </div>
 
-  <!-- BIBLE APP STRIP -->
-  <div class="bible-app-strip">
-    <div class="strip-label">☩ Read today's passages in full</div>
-    <div class="strip-apps">
-      <a class="app-link" href="https://www.bible.com/bible/1713/1CO.6.19-20" target="_blank">YouVersion</a>
-      <a class="app-link" href="https://www.biblegateway.com/passage/?search=1+Corinthians+6:19-7:9&version=CSB" target="_blank">Bible Gateway</a>
-    </div>
-  </div>
+
 
   <!-- FOOTER -->
   <div class="footer">
     <p>☩ Daily Bible Study · Shared with Love ☩</p>
+    <p class="footer-meta">Independently written · <a href="about.html">About our approach</a></p>
+    <p class="scripture-source">Scripture quotations are from the <a href="scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
+    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
     <a class="footer-archive" href="index.html">← Home</a>
   </div>
 
 </div>
+<script>
+(function() {
+  var button = document.querySelector('.red-letter-toggle');
+  if (!button) return;
+  if (!document.querySelector('.words-of-jesus')) {
+    button.hidden = true;
+    return;
+  }
+  var key = 'dbs_red_letter';
+  function apply(enabled) {
+    document.body.classList.toggle('red-letter-off', !enabled);
+    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
+  }
+  var enabled = true;
+  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
+  apply(enabled);
+  button.addEventListener('click', function() {
+    enabled = !enabled;
+    apply(enabled);
+    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
+  });
+})();
+</script>
 <script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
