@@ -2,7 +2,7 @@
 // Cache strategy: Cache-first for studies, network-first for navigation
 // Push notifications via Firebase Cloud Messaging
 
-const CACHE_VERSION = 'dbs-v5';
+const CACHE_VERSION = 'dbs-v6';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STUDY_CACHE = `${CACHE_VERSION}-studies`;
 
@@ -10,6 +10,10 @@ const STUDY_CACHE = `${CACHE_VERSION}-studies`;
 const STATIC_ASSETS = [
   '/bible-study/',
   '/bible-study/manifest.json',
+  '/bible-study/assets/study-v4_9.css',
+  '/bible-study/assets/study-watermark-ae706e30.png',
+  '/bible-study/assets/favicon-729135cb.png',
+  '/bible-study/assets/apple-touch-icon-729135cb.png',
   '/bible-study/icons/icon-192x192.png',
   '/bible-study/icons/icon-512x512.png'
 ];
