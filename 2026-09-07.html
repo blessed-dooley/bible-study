@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Motivation — Daily Bible Study</title>
 <meta name="study-title" content="Motivation">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 11, Stewardship and Mission · Part 3 of 7">
+<meta name="study-passage" content="2 Corinthians 8:1">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 11, Stewardship and Mission · Day 3 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Motivation">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 11, Stewardship and Mission · Part 3 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 11, Stewardship and Mission · Day 3 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-09-07.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 11, Stewardship and Mission · Part 3 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 11, Stewardship and Mission · Day 3 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,337 +38,213 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Motivation</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 11, Stewardship and Mission</span>
-      <span>Part 3 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">September 7, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Mon · Sep 7</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">11 min</span>
+    </div>
+    <h1 class="study-title">Motivation</h1>
+    <p class="study-sub"><span class="sub-title">Stewardship and Mission</span><span class="sub-facts"><span>Lesson 11</span><span>Day 3 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>An offering plate is passing down the row, and nobody watching can tell what is happening inside the hands that touch it. One person is paying protection money to a God he fears. One is keeping a family habit. One is managing an image. Paul spends two chapters naming the fuels that burn clean, gratitude for grace, the example of Jesus, blessings meant to keep moving, and love that can be seen. Then the man of many words runs out of them entirely. Thanks be to God for His indescribable gift. <strong>God is not funding a budget. He is growing givers who look like His Son.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday closed with a receipt. Jesus, rich beyond imagining, chose beggar-poverty on purpose so that we could become rich, and Paul restarted Corinth's stalled pledge by simply holding that receipt up. Maybe you took the challenge and gave something that actually cost you. If so, you already know today's question from the inside, because somewhere between deciding and giving, you could feel your own reasons shifting under you. Am I doing this out of love or leftover guilt? Gratitude or image? Today Paul opens the engine compartment of generosity and names the only fuels that burn clean. It turns out God cares less about the amount in the hand than the reason in it.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>An offering plate is passing down the row, and nobody watching can tell what is happening inside the hands that touch it. One person is paying protection money to a God he fears. One is keeping a family habit. One is managing an image. Paul spends two chapters naming the fuels that burn clean, gratitude for grace, the example of Jesus, blessings meant to keep moving, and love that can be seen. Then the man of many words runs out of them entirely. Thanks be to God for His indescribable gift. <strong>God is not funding a budget. He is growing givers who look like His Son.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday closed with a receipt. Jesus, rich beyond imagining, chose beggar-poverty on purpose so that we could become rich, and Paul restarted Corinth's stalled pledge by simply holding that receipt up. Maybe you took the challenge and gave something that actually cost you. If so, you already know today's question from the inside, because somewhere between deciding and giving, you could feel your own reasons shifting under you. Am I doing this out of love or leftover guilt? Gratitude or image? Today Paul opens the engine compartment of generosity and names the only fuels that burn clean. It turns out God cares less about the amount in the hand than the reason in it.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Pagan Giving Was a Contract With the Gods</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>Pagan Giving Was a Contract With the Gods</h3>
       <p>A merchant stands before a roadside altar with a problem and a proposition. His ship leaves for Italy in the morning, so he speaks to the god the way he speaks to a business partner. Bring the cargo home safe, and a fine goat is yours. All over the Greek and Roman world, stone altars carried the closing line of that transaction, a standard formula so common that carvers abbreviated it, the vow paid, willingly and deservedly. Religion ran on the same logic as the marketplace. I give so that you will give. Gifts to the gods were opening bids, premiums on divine insurance, invoices settled after services rendered. The dominant logic had little room for gratitude. You gave to obtain, and you kept the receipts.</p>
       <p>Now listen to how strange Paul sounds against that backdrop. In two chapters about giving, he never once positions the offering as a way to get something from God. The direction is completely reversed. Grace has already been given, the Gift has already arrived, the debt runs the other way and can never be paid anyway. So the Christian gives the way a rescued man says thank you, not the way a merchant buys a favorable wind. Corinth's converts had spent their whole lives giving-to-get. Today's passages hand them, and us, an entirely new set of reasons, and every one of them starts from something already received.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Read straight through the two chapters of Paul's appeal and a pattern emerges. Giving language saturates every paragraph (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.1-9.15" target="_blank" rel="noopener">2 Corinthians 8:1-9:15</a>). Grace given, selves given, gifts decided in the heart, generosity scattered to the poor, and thanks rising to God at the end of it all. The chapters open with giving and close with giving, and in between Paul quietly answers a question most fundraisers never touch. Not how much, and not even to whom, but why. Trace the reasons with him, one passage at a time, and notice where each one begins.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Read straight through the two chapters of Paul's appeal and a pattern emerges. Giving language saturates every paragraph (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.1-9.15" target="_blank" rel="noopener" data-verse="2-corinthians-8-1-9-15" data-ref="2 Corinthians 8:1-9:15" aria-expanded="false">2 Corinthians 8:1-9:15</a>). Grace given, selves given, gifts decided in the heart, generosity scattered to the poor, and thanks rising to God at the end of it all. The chapters open with giving and close with giving, and in between Paul quietly answers a question most fundraisers never touch. Not how much, and not even to whom, but why. Trace the reasons with him, one passage at a time, and notice where each one begins.</p>
 
       <!-- BSB_BLOCK: 2 Corinthians 8:1 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:f3c6762407e45b9269d9e2fcb91a55e103b5e6f6006fd940bb2247ab81153780 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 8:1</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.8.1" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.8.1" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Now, brothers, we want you to know about the grace that God has given the churches of Macedonia.</div>
         <div class="verse-commentary">
-          <p>The first word of the whole appeal is not money. It is grace, and it has already been given. That is the first motive, gratitude, and Paul builds it into the architecture of the letter. The appeal opens with grace poured out on Macedonia, and two chapters later it closes the loop with the surpassing grace God has given you, and thanks rising to Him for it (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.9.14-15" target="_blank" rel="noopener">2 Corinthians 9:14-15</a>). Grace brackets everything about giving. God moved first, He always has, and our offerings are one of the few ways a person can say thank You with their whole body. A gift given in gratitude asks for nothing back, because it is itself the response to something already received. Giving-to-get belongs to the old altars. Children of grace give because they got.</p>
+          <p>The first word of the whole appeal is not money. It is grace, and it has already been given. That is the first motive, gratitude, and Paul builds it into the architecture of the letter. The appeal opens with grace poured out on Macedonia, and two chapters later it closes the loop with the surpassing grace God has given you, and thanks rising to Him for it (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.9.14-15" target="_blank" rel="noopener" data-verse="2-corinthians-9-14-15" data-ref="2 Corinthians 9:14-15" aria-expanded="false">2 Corinthians 9:14-15</a>). Grace brackets everything about giving. God moved first, He always has, and our offerings are one of the few ways a person can say thank You with their whole body. A gift given in gratitude asks for nothing back, because it is itself the response to something already received. Giving-to-get belongs to the old altars. Children of grace give because they got.</p>
         </div>
-      </div>
+      </figure>
 
       <p>Gratitude is the first fuel, but watch what the Macedonians actually handed over before a single coin moved.</p>
 
       <!-- BSB_BLOCK: 2 Corinthians 8:5 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:691daa97928629a30497d9ba1417f99b4c1e4ca67b0f7c587b045daa728d262e | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 8:5</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.8.5" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.8.5" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">And not only did they do as we expected, but they gave themselves first to the Lord and then to us, through the will of God.</div>
         <div class="verse-commentary">
-          <p>Themselves first. The order is the sermon. Macedonia's giving did not start at the moneybag, it started at the altar of their own lives, and once a person belongs wholly to the Lord, what is in the wallet stops being a negotiation. This is the second motive, the desire to walk the road Jesus walked. He gave all, the rich One choosing poverty for our sake, the verse we sat with yesterday (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.9" target="_blank" rel="noopener">2 Corinthians 8:9</a>), and a self given first to God will keep finding smaller ways to repeat that shape. Notice too how the heart stays in charge of the hand. Each one gives what he has decided in his heart, God loving the cheerful giver rather than the cornered one (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.9.7" target="_blank" rel="noopener">2 Corinthians 9:7</a>). Surrendered people do not need to be squeezed.</p>
+          <p>Themselves first. The order is the sermon. Macedonia's giving did not start at the moneybag, it started at the altar of their own lives, and once a person belongs wholly to the Lord, what is in the wallet stops being a negotiation. This is the second motive, the desire to walk the road Jesus walked. He gave all, the rich One choosing poverty for our sake, the verse we sat with yesterday (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.9" target="_blank" rel="noopener" data-verse="2-corinthians-8-9" data-ref="2 Corinthians 8:9" aria-expanded="false">2 Corinthians 8:9</a>), and a self given first to God will keep finding smaller ways to repeat that shape. Notice too how the heart stays in charge of the hand. Each one gives what he has decided in his heart, God loving the cheerful giver rather than the cornered one (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.9.7" target="_blank" rel="noopener" data-verse="2-corinthians-9-7" data-ref="2 Corinthians 9:7" aria-expanded="false">2 Corinthians 9:7</a>). Surrendered people do not need to be squeezed.</p>
         </div>
-      </div>
+      </figure>
 
       <p>The third motive answers a quieter worry, the fear that generosity will leave the giver empty. Paul points at where the supply actually comes from.</p>
 
       <!-- BSB_BLOCK: 2 Corinthians 9:10-11 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:0a5a30731747b0e3fe6f833c76d1b2270768411203a387691e40f26287e80e96 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 9:10-11</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.9.10-11" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 10">10</sup>Now He who supplies seed to the sower and bread for food will supply and multiply your store of seed and will increase the harvest of your righteousness. <sup class="verse-number" aria-label="Verse 11">11</sup>You will be enriched in every way to be generous on every occasion, and through us your generosity will produce thanksgiving to God.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.9.10-11" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 10">10</sup>Now He who supplies seed to the sower and bread for food will supply and multiply your store of seed and will increase the harvest of your righteousness. <sup class="verse-number" aria-label="Verse 11">11</sup>You will be enriched in every way to be generous on every occasion, and through us your generosity will produce thanksgiving to God.</div>
         <div class="verse-commentary">
-          <p>A farmer may hold two kinds of grain, bread for eating and seed for sowing, and both sacks come from God. Paul quotes the psalm about the righteous man who scatters his gifts abroad to the poor (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.9.9" target="_blank" rel="noopener">2 Corinthians 9:9</a>) and then names the Supplier behind every scattering hand. Here is the third motive, the desire to share what was only ever passed to us. You will be enriched in every way, he says, and then immediately gives the purpose, to be generous on every occasion. God's blessings arrive with momentum. They are meant to move through His people, not pool in them, and when they move, watch what grows downstream. Not just relieved need, but thanksgiving to God, people glorifying Him because generosity proved the gospel was real in you (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.9.13" target="_blank" rel="noopener">2 Corinthians 9:13</a>). Enriched is the description. Generous is the assignment.</p>
+          <p>A farmer may hold two kinds of grain, bread for eating and seed for sowing, and both sacks come from God. Paul quotes the psalm about the righteous man who scatters his gifts abroad to the poor (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.9.9" target="_blank" rel="noopener" data-verse="2-corinthians-9-9" data-ref="2 Corinthians 9:9" aria-expanded="false">2 Corinthians 9:9</a>) and then names the Supplier behind every scattering hand. Here is the third motive, the desire to share what was only ever passed to us. You will be enriched in every way, he says, and then immediately gives the purpose, to be generous on every occasion. God's blessings arrive with momentum. They are meant to move through His people, not pool in them, and when they move, watch what grows downstream. Not just relieved need, but thanksgiving to God, people glorifying Him because generosity proved the gospel was real in you (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.9.13" target="_blank" rel="noopener" data-verse="2-corinthians-9-13" data-ref="2 Corinthians 9:13" aria-expanded="false">2 Corinthians 9:13</a>). Enriched is the description. Generous is the assignment.</p>
         </div>
-      </div>
+      </figure>
 
-      <p>One motive remains, the simplest and the most exposing. Love. Paul is careful to say he is not commanding anyone, he is testing the sincerity of their love against the earnestness of others (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.8" target="_blank" rel="noopener">2 Corinthians 8:8</a>), and he asks Corinth to give the watching churches proof of that love in something they can see (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.24" target="_blank" rel="noopener">2 Corinthians 8:24</a>). Talk is cheap in every century. Giving is love with a receipt. And when all four motives finally converge, they collapse into a single sentence of worship.</p>
+      <p>One motive remains, the simplest and the most exposing. Love. Paul is careful to say he is not commanding anyone, he is testing the sincerity of their love against the earnestness of others (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.8" target="_blank" rel="noopener" data-verse="2-corinthians-8-8" data-ref="2 Corinthians 8:8" aria-expanded="false">2 Corinthians 8:8</a>), and he asks Corinth to give the watching churches proof of that love in something they can see (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.24" target="_blank" rel="noopener" data-verse="2-corinthians-8-24" data-ref="2 Corinthians 8:24" aria-expanded="false">2 Corinthians 8:24</a>). Talk is cheap in every century. Giving is love with a receipt. And when all four motives finally converge, they collapse into a single sentence of worship.</p>
 
       <!-- BSB_BLOCK: 2 Corinthians 9:15 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:279310b45db7f52aa38138411c5234efae7da47576eca18f7cd08e830dfa2c03 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 9:15</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.9.15" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.9.15" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Thanks be to God for His indescribable gift!</div>
         <div class="verse-commentary">
           <p>Paul made his living with words. He argued before philosophers and governors, wrote sentences that run half a page, and always had one more clause in him. Yet when he reaches for what God handed us in Christ, language itself gives out. His word is <em>anekdiēgētos</em>, Greek for indescribable, a gift no telling can get to the bottom of, and it appears nowhere else in the New Testament, as if the word were saved for the one Gift that needed it. This is where two chapters of fundraising end, not with a total, but with worship. Every clean motive for giving finally drains into this sentence. We are grateful people, imitating a self-giving Lord, passing along blessings that were never ours to dam up, loving in ways that can be audited. Stand at the bottom of the indescribable Gift, and giving stops needing to be talked into.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Thank-You Note Nobody Made You Write</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Thank-You Note Nobody Made You Write</h3>
       <p>Most of us wrote our first thank-you notes under guard. A parent stood over the kitchen table the day after the birthday, dictating warmth one line at a time. Dear Aunt Carol. Thank you for the sweater. I love it. You signed your name like a prisoner signing a confession, and the note was true, and it meant almost nothing, because it was really a ransom, the price of being released back outside to play. Now set that note next to the other kind, the one nobody makes you write. Years after a teacher talked you out of quitting, whatever she gave you finally finishes its work, and you find yourself at thirty hunting down an address. The sentences come out nearly identical. Thank you. It mattered. I still have it. Same words, opposite act.</p>
       <p>The difference is not the gratitude claimed on the page. It is the direction the letter travels. The kitchen-table note pushes an obligation away so an account can close. The letter at thirty overflows from an account that will never close, and it asks for nothing, because everything was already received. That distance is the distance Paul walks in these two chapters. Corinth's altars ran on the first kind of giving, payment rendered, favor expected, receipts kept. What God wants is the second kind, and He grows it the only way it grows, by giving first and then waiting for the thanks to need somewhere to go. So run today's question through your mailbox. The same gift can be a bill getting paid or a love letter getting answered. One is a transaction. The other is worship, and God has never once confused the two.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Book Lady Started With a Daddy Who Couldn't Read</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Book Lady Started With a Daddy Who Couldn't Read</h3>
       <!-- TODAYS_WORLD_SOURCE: Dolly Parton's Imagination Library has gifted more than 332 million books to children around the world | NewsChannel 5 Nashville | 2026 | https://www.newschannel5.com/news/dolly-partons-imagination-library-has-gifted-more-than-332-million-books-to-children-around-the-world -->
       <p>When Dolly Parton died in late August 2026 at age eighty, the tributes named the hits and the rhinestones, and then many of them landed on the same quiet machine. In 1995 she started mailing free books to children in her home county in East Tennessee, one book a month, addressed to the child by name, from birth to age five, no fee and no income test. The Imagination Library spread from one county to all fifty states and on to other countries, and by the week of her death it had given away more than 332 million books. The reason behind it never changed. Her father, Robert Lee Parton, one of the smartest men she knew, had never learned to read. She built the whole thing as a tribute to him, and the children who got the books simply called her the Book Lady.</p>
       <p>Look at what that motive did to the shape of the giving. There was nothing to collect. Toddlers cannot repay, most of those families would never meet her, and the books kept mailing long after any career could benefit. This was not a transaction, and it was not image management either. She liked to say her daddy was prouder of the Book Lady than of anything she ever did on a stage. It was love for one man, overflowing onto millions of children he never met, which is exactly the current Paul has been describing. Giving that starts from something already received does not need to be squeezed out, and it does not quit when the cameras leave. The mailings did not even stop when she did. That is what a gift looks like when the reason in the hand is love.</p>
-    </div>
+    <details class="disclosure source-disclosure"><summary class="disclosure-summary"><span class="disclosure-label">Source</span> <span class="disclosure-publisher">NewsChannel 5 Nashville</span></summary><div class="disclosure-body"><p><cite>Dolly Parton's Imagination Library has gifted more than 332 million books to children around the world</cite>. NewsChannel 5 Nashville, 2026. <a href="https://www.newschannel5.com/news/dolly-partons-imagination-library-has-gifted-more-than-332-million-books-to-children-around-the-world" target="_blank" rel="noopener noreferrer">Read the source</a>.</p></div></details></section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Line up Paul's four motives and notice that they are one motive wearing four coats. Gratitude, for what? For Christ. Imitation, of whom? Of Christ. Blessings shared, from where? From the God who supplies seed to the sower and gave the Seed that fell into the ground and died. Love, proven how? The way His was proven, in something you can see, at a cross. Every clean reason for giving has the same face. And here is the wonder inside today's last verse. When God wanted to move the world to generosity, He did not send an invoice or an argument. He sent His Son, and then let the gift itself do the persuading. The indescribable Gift has no matching donation level. Nobody gives back at that scale. All we can do is what Paul does, run out of words, say thank You, and let the thanks leak into how we live. Gratitude is the currency Paul's whole appeal has been asking for. It just refuses to stay in the wallet.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Line up Paul's four motives and notice that they are one motive wearing four coats. Gratitude, for what? For Christ. Imitation, of whom? Of Christ. Blessings shared, from where? From the God who supplies seed to the sower and gave the Seed that fell into the ground and died. Love, proven how? The way His was proven, in something you can see, at a cross. Every clean reason for giving has the same face. And here is the wonder inside today's last verse. When God wanted to move the world to generosity, He did not send an invoice or an argument. He sent His Son, and then let the gift itself do the persuading. The indescribable Gift has no matching donation level. Nobody gives back at that scale. All we can do is what Paul does, run out of words, say thank You, and let the thanks leak into how we live. Gratitude is the currency Paul's whole appeal has been asking for. It just refuses to stay in the wallet.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Run a motive check on your very next act of giving, today if possible. Before the money or the time leaves your hands, stop for ten seconds and answer honestly. Why am I doing this? If the answer smells like guilt, image, or bargaining with God, do not cancel the gift. Re-aim it. Write one sentence first, on the memo line, in your notes app, or out loud, naming something specific God has given you. Then give as a thank-you note instead of a payment. Same gift, new fuel.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, You see what we do with our hands and You also see why, and today that second part has our attention. We confess the old altar logic still living in us, the giving that bargains, the giving that performs, the giving that pays protection money to a God we forgot loves us. Forgive us for handing You contracts when You handed us grace first. Fill our motives with better fuel. Make us grateful people, so stunned by the Gift we cannot describe that thankfulness needs somewhere to go. Make us imitators of Jesus, who gave Himself before He gave anything else. Make us channels, not reservoirs, for every blessing You supply. And make our love visible enough to audit. Whatever leaves our hands this week, let it leave for the right reason. Thanks be to You for Your indescribable Gift. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"If you traced your last few acts of giving to their real fuel, what would you find (gratitude, love, habit, guilt, image, a quiet deal with God)? And which of Paul's four motives, gratitude for grace, the example of Jesus, sharing what God supplied, or visible love, would most change your giving if it took the wheel this month?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"If you traced your last few acts of giving to their real fuel, what would you find (gratitude, love, habit, guilt, image, a quiet deal with God)? And which of Paul's four motives, gratitude for grace, the example of Jesus, sharing what God supplied, or visible love, would most change your giving if it took the wheel this month?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, You see what we do with our hands and You also see why, and today that second part has our attention. We confess the old altar logic still living in us, the giving that bargains, the giving that performs, the giving that pays protection money to a God we forgot loves us. Forgive us for handing You contracts when You handed us grace first. Fill our motives with better fuel. Make us grateful people, so stunned by the Gift we cannot describe that thankfulness needs somewhere to go. Make us imitators of Jesus, who gave Himself before He gave anything else. Make us channels, not reservoirs, for every blessing You supply. And make our love visible enough to audit. Whatever leaves our hands this week, let it leave for the right reason. Thanks be to You for Your indescribable Gift. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-09-06.html"><span class="day-nav-kicker">← Sunday</span><span class="day-nav-title">The Example of Jesus</span></a><a class="day-nav-item" href="/bible-study/2026-09-08.html"><span class="day-nav-kicker">Tuesday →</span><span class="day-nav-title">Planning</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"2-corinthians-8-1-9-15":{"ref":"2 Corinthians 8:1-9:15","text":"Now, brothers, we want you to know about the grace that God has given the churches of Macedonia. In the terrible ordeal they suffered, their abundant joy and deep poverty overflowed into rich generosity. For I testify that they gave according to their ability and even beyond it. Of their own accord, they earnestly pleaded with us for the privilege of sharing in this service to the saints. And not only did they do as we expected, but they gave themselves first to the Lord and then to us, through the will of God. So we urged Titus to help complete your act of grace, just as he had started it. But just as you excel in everything\u2014in faith, in speech, in knowledge, in complete earnestness, and in the love we inspired in you\u2014see that you also excel in this grace of giving. I am not giving a command, but I am testing the sincerity of your love through the earnestness of others. For you know the grace of our Lord Jesus Christ, that though He was rich, yet for your sake He became poor, so that you through His poverty might become rich. And this is my opinion about what is helpful for you in this matter: Last year you were the first not only to give, but even to have such a desire. Now finish the work, so that you may complete it with the same eager desire, according to your means. For if the eagerness is there, the gift is acceptable according to what one has, not according to what he does not have. It is not our intention that others may be relieved while you are burdened, but that there may be equality. At the present time, your surplus will meet their need, so that in turn their surplus will meet your need. This way there will be equality. As it is written: \u201cHe who gathered much had no excess, and he who gathered little had no shortfall.\u201d But thanks be to God, who put into the heart of Titus the same devotion I have for you. For not only did he welcome our appeal, but he is eagerly coming to you of his own volition. Along with Titus we are sending the brother who is praised by all the churches for his work in the gospel. More than that, this brother was chosen by the churches to accompany us with the gracious offering we administer to honor the Lord Himself and to show our eagerness to help. We want to avoid any criticism of the way we administer this generous gift. For we are taking great care to do what is right, not only in the eyes of the Lord, but also in the eyes of men. And we are sending along with them our brother who has proven his earnestness to us many times and in many ways, and now even more so by his great confidence in you. As for Titus, he is my partner and fellow worker among you. As for our brothers, they are messengers of the churches, the glory of Christ. In full view of the churches, then, show these men the proof of your love and the reason for our boasting about you. Now about the service to the saints, there is no need for me to write to you. For I know your eagerness to help, and I have been boasting to the Macedonians that since last year you in Achaia were prepared to give. And your zeal has stirred most of them to do likewise. But I am sending the brothers in order that our boasting about you in this matter should not prove empty, but that you will be prepared, just as I said. Otherwise, if any Macedonians come with me and find you unprepared, we\u2014to say nothing of you\u2014would be ashamed of having been so confident. So I thought it necessary to urge the brothers to visit you beforehand and make arrangements for the generous gift you had promised. This way, your gift will be prepared generously and not begrudgingly. Remember this: Whoever sows sparingly will also reap sparingly, and whoever sows generously will also reap generously. Each one should give what he has decided in his heart to give, not out of regret or compulsion. For God loves a cheerful giver. And God is able to make all grace abound to you, so that in all things, at all times, having all that you need, you will abound in every good work. As it is written: \u201cHe has scattered abroad His gifts to the poor; His righteousness endures forever.\u201d Now He who supplies seed to the sower and bread for food will supply and multiply your store of seed and will increase the harvest of your righteousness. You will be enriched in every way to be generous on every occasion, and through us your generosity will produce thanksgiving to God. For this ministry of service is not only supplying the needs of the saints but is also overflowing in many expressions of thanksgiving to God. Because of the proof this ministry provides, the saints will glorify God for your obedient confession of the gospel of Christ, and for the generosity of your contribution to them and to all the others. And their prayers for you will express their affection for you, because of the surpassing grace God has given you. Thanks be to God for His indescribable gift!","bibleUrl":"https://www.bible.com/bible/3034/2CO.8.1-9.15"},"2-corinthians-9-14-15":{"ref":"2 Corinthians 9:14-15","text":"And their prayers for you will express their affection for you, because of the surpassing grace God has given you. Thanks be to God for His indescribable gift!","bibleUrl":"https://www.bible.com/bible/3034/2CO.9.14-15"},"2-corinthians-8-9":{"ref":"2 Corinthians 8:9","text":"For you know the grace of our Lord Jesus Christ, that though He was rich, yet for your sake He became poor, so that you through His poverty might become rich.","bibleUrl":"https://www.bible.com/bible/3034/2CO.8.9"},"2-corinthians-9-7":{"ref":"2 Corinthians 9:7","text":"Each one should give what he has decided in his heart to give, not out of regret or compulsion. For God loves a cheerful giver.","bibleUrl":"https://www.bible.com/bible/3034/2CO.9.7"},"2-corinthians-9-9":{"ref":"2 Corinthians 9:9","text":"As it is written: \u201cHe has scattered abroad His gifts to the poor; His righteousness endures forever.\u201d","bibleUrl":"https://www.bible.com/bible/3034/2CO.9.9"},"2-corinthians-9-13":{"ref":"2 Corinthians 9:13","text":"Because of the proof this ministry provides, the saints will glorify God for your obedient confession of the gospel of Christ, and for the generosity of your contribution to them and to all the others.","bibleUrl":"https://www.bible.com/bible/3034/2CO.9.13"},"2-corinthians-8-8":{"ref":"2 Corinthians 8:8","text":"I am not giving a command, but I am testing the sincerity of your love through the earnestness of others.","bibleUrl":"https://www.bible.com/bible/3034/2CO.8.8"},"2-corinthians-8-24":{"ref":"2 Corinthians 8:24","text":"In full view of the churches, then, show these men the proof of your love and the reason for our boasting about you.","bibleUrl":"https://www.bible.com/bible/3034/2CO.8.24"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

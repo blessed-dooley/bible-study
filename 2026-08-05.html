@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>The Gift of Tongues — Daily Bible Study</title>
 <meta name="study-title" content="The Gift of Tongues">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 6, Spiritual Gifts · Part 5 of 7">
+<meta name="study-passage" content="1 Corinthians 14:9">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 6, Spiritual Gifts · Day 5 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="The Gift of Tongues">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 6, Spiritual Gifts · Part 5 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 6, Spiritual Gifts · Day 5 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-08-05.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 6, Spiritual Gifts · Part 5 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 6, Spiritual Gifts · Day 5 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,338 +38,210 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>The Gift of Tongues</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 6, Spiritual Gifts</span>
-      <span>Part 5 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">August 5, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Wed · Aug 5</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
+    </div>
+    <h1 class="study-title">The Gift of Tongues</h1>
+    <p class="study-sub"><span class="sub-title">Spiritual Gifts</span><span class="sub-facts"><span>Lesson 6</span><span>Day 5 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>Across the gulf from Corinth, pilgrims paid to hear a priestess whose answers needed official interpreters, because in that world the stranger the speech, the stronger the god. Corinth's church dragged that scale into worship and cranked its loudest gift. Paul honors the gift itself, real languages given by the Spirit, and then takes the scale away. Words nobody understands build nobody up. So speak to be understood, take turns, let someone interpret, keep the gathering in order. <strong>God has never tried to sound impressive. He wants to be understood, because understanding is how love builds.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday love got its fifteen verbs, and the chapter ended with the only measure that matters. Not how a gift sounds, but what it builds. Today that measure meets its first real test case, the gift Corinth had turned up the loudest. Tongues had become the congregation's showpiece, the proof of spirituality, the sound that filled the living room whether anyone understood it or not. Paul walks in carrying yesterday's chapter like a level against a crooked wall. Love is patient, love is kind, and love asks one question of every word spoken in worship. Did that build the person beside you?</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Across the gulf from Corinth, pilgrims paid to hear a priestess whose answers needed official interpreters, because in that world the stranger the speech, the stronger the god. Corinth's church dragged that scale into worship and cranked its loudest gift. Paul honors the gift itself, real languages given by the Spirit, and then takes the scale away. Words nobody understands build nobody up. So speak to be understood, take turns, let someone interpret, keep the gathering in order. <strong>God has never tried to sound impressive. He wants to be understood, because understanding is how love builds.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday love got its fifteen verbs, and the chapter ended with the only measure that matters. Not how a gift sounds, but what it builds. Today that measure meets its first real test case, the gift Corinth had turned up the loudest. Tongues had become the congregation's showpiece, the proof of spirituality, the sound that filled the living room whether anyone understood it or not. Paul walks in carrying yesterday's chapter like a level against a crooked wall. Love is patient, love is kind, and love asks one question of every word spoken in worship. Did that build the person beside you?</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Priestess Nobody Could Understand</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Priestess Nobody Could Understand</h3>
       <p>A day's journey from Corinth, on the slopes across the gulf, sat the most famous religious address in the Greek world. Delphi. Kings and farmers alike queued there to put their questions to the god Apollo, and the answers came through a woman seated on a tripod in the temple's inner room. What came out of her was not conversation. Ancient writers describe utterances that had to pass through the shrine's official interpreters before a pilgrim could carry them home, and the arrangement bothered nobody. Just the opposite. In that world, speech you could not follow was the whole point. The ecstatic cults that danced through Corinth's own streets ran on the same instinct, frenzied cries, clashing cymbals, language dissolving as the god took over. Losing intelligibility was the proof of contact.</p>
-      <p>Now picture Corinth's converts, raised on that scale, walking into Christian worship. When a brother stood and poured out praise in a language nobody present knew, every pagan-trained nerve in the room said the same thing. This must be the peak. The stranger the speech, the stronger the spirit. Paul spends a whole chapter dismantling that scale, because the God of Israel has always been the talking God, the One who speaks in order to be heard. Paul would rather say five understandable words than ten thousand nobody can follow (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.19" target="_blank" rel="noopener">1 Corinthians 14:19</a>). In Corinth's religion, mystery was the product. In Christ's church, meaning is.</p>
-    </div>
+      <p>Now picture Corinth's converts, raised on that scale, walking into Christian worship. When a brother stood and poured out praise in a language nobody present knew, every pagan-trained nerve in the room said the same thing. This must be the peak. The stranger the speech, the stronger the spirit. Paul spends a whole chapter dismantling that scale, because the God of Israel has always been the talking God, the One who speaks in order to be heard. Paul would rather say five understandable words than ten thousand nobody can follow (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.19" target="_blank" rel="noopener" data-verse="1-corinthians-14-19" data-ref="1 Corinthians 14:19" aria-expanded="false">1 Corinthians 14:19</a>). In Corinth's religion, mystery was the product. In Christ's church, meaning is.</p>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>So what about tongues? Of all the gifts on this week's lists, this is the one the Corinthians pushed to the front and the one that still stirs the most questions. Paul refuses both easy exits. He will not despise the gift, and he will not let it run the room. Today's passage watches him do something harder than either, honor a true gift while retraining an entire congregation on what worship is for. His argument starts with what the gift actually is, and it ends with two or three sentences of house rules that still hold.</p>
 
-      <p>So what about tongues? Of all the gifts on this week's lists, this is the one the Corinthians pushed to the front and the one that still stirs the most questions. Paul refuses both easy exits. He will not despise the gift, and he will not let it run the room. Today's passage watches him do something harder than either, honor a true gift while retraining an entire congregation on what worship is for. His argument starts with what the gift actually is, and it ends with two or three sentences of house rules that still hold.</p>
+      <p>Begin where the gift began. Jesus promised that new tongues would follow the gospel out into the world (<a class="vlink" href="https://www.bible.com/bible/3034/MRK.16.17" target="_blank" rel="noopener" data-verse="mark-16-17" data-ref="Mark 16:17" aria-expanded="false">Mark 16:17</a>), and at Pentecost the promise landed with an audience. Visitors from a dozen nations heard Galilean fishermen declaring the magnificent acts of God, each in his own native language (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.2.1-13" target="_blank" rel="noopener" data-verse="acts-2-1-13" data-ref="Acts 2:1-13" aria-expanded="false">Acts 2:1-13</a>). The same sign fell at a Roman officer's house (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.10.44-48" target="_blank" rel="noopener" data-verse="acts-10-44-48" data-ref="Acts 10:44-48" aria-expanded="false">Acts 10:44-48</a>) and on a handful of disciples in Ephesus (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.19.6" target="_blank" rel="noopener" data-verse="acts-19-6" data-ref="Acts 19:6" aria-expanded="false">Acts 19:6</a>). In line with those scenes, the tongues of 1 Corinthians are best understood as the Spirit-granted ability to speak real languages the speaker never learned. The gift was a bridge to human ears, never a fog machine.</p>
 
-      <p>Begin where the gift began. Jesus promised that new tongues would follow the gospel out into the world (<a class="vlink" href="https://www.bible.com/bible/3034/MRK.16.17" target="_blank" rel="noopener">Mark 16:17</a>), and at Pentecost the promise landed with an audience. Visitors from a dozen nations heard Galilean fishermen declaring the magnificent acts of God, each in his own native language (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.2.1-13" target="_blank" rel="noopener">Acts 2:1-13</a>). The same sign fell at a Roman officer's house (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.10.44-48" target="_blank" rel="noopener">Acts 10:44-48</a>) and on a handful of disciples in Ephesus (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.19.6" target="_blank" rel="noopener">Acts 19:6</a>). In line with those scenes, the tongues of 1 Corinthians are best understood as the Spirit-granted ability to speak real languages the speaker never learned. The gift was a bridge to human ears, never a fog machine.</p>
-
-      <p>Now watch how much ink Paul gives it. Tongues appears in the gift list (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.8-10" target="_blank" rel="noopener">1 Corinthians 12:8-10</a>), in the ranked catalog (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.28" target="_blank" rel="noopener">1 Corinthians 12:28</a>) with its own rhetorical question (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.30" target="_blank" rel="noopener">1 Corinthians 12:30</a>), and twice in the love chapter (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.1" target="_blank" rel="noopener">1 Corinthians 13:1</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.8" target="_blank" rel="noopener">1 Corinthians 13:8</a>). Then chapter fourteen says the word tongue fifteen times, more than the rest of the letter combined, and even reaches for a rare term for foreign speech drawn from the prophets (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.21" target="_blank" rel="noopener">1 Corinthians 14:21</a>). Writers linger where the wound is. The gift was real, and its misuse was tipping public worship into disorder and confusion.</p>
+      <p>Now watch how much ink Paul gives it. Tongues appears in the gift list (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.8-10" target="_blank" rel="noopener" data-verse="1-corinthians-12-8-10" data-ref="1 Corinthians 12:8-10" aria-expanded="false">1 Corinthians 12:8-10</a>), in the ranked catalog (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.28" target="_blank" rel="noopener" data-verse="1-corinthians-12-28" data-ref="1 Corinthians 12:28" aria-expanded="false">1 Corinthians 12:28</a>) with its own rhetorical question (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.30" target="_blank" rel="noopener" data-verse="1-corinthians-12-30" data-ref="1 Corinthians 12:30" aria-expanded="false">1 Corinthians 12:30</a>), and twice in the love chapter (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.1" target="_blank" rel="noopener" data-verse="1-corinthians-13-1" data-ref="1 Corinthians 13:1" aria-expanded="false">1 Corinthians 13:1</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.8" target="_blank" rel="noopener" data-verse="1-corinthians-13-8" data-ref="1 Corinthians 13:8" aria-expanded="false">1 Corinthians 13:8</a>). Then chapter fourteen says the word tongue fifteen times, more than the rest of the letter combined, and even reaches for a rare term for foreign speech drawn from the prophets (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.21" target="_blank" rel="noopener" data-verse="1-corinthians-14-21" data-ref="1 Corinthians 14:21" aria-expanded="false">1 Corinthians 14:21</a>). Writers linger where the wound is. The gift was real, and its misuse was tipping public worship into disorder and confusion.</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 14:9 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:3c88b82014694a56679bd83586f65863ab3a25d0aa386a4bbbdad4b6d5a3e380 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 14:9</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.14.9" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.14.9" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">So it is with you. Unless you speak intelligible words with your tongue, how will anyone know what you are saying? You will just be speaking into the air.</div>
 <div class="verse-commentary">
-          <p>Speaking into the air. It is one of Paul's bluntest images, a room full of sound and not one syllable arriving anywhere. His logic is almost embarrassingly simple. Words exist to be known. A flute has to hold a melody, a trumpet has to sound the right call, and a mouth has to make meaning, or the noise benefits exactly no one (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.6" target="_blank" rel="noopener">1 Corinthians 14:6</a>). This is why Paul insists the gift of tongues travel with its partner gift, interpretation, and why he tells the tongue-speaker to pray for the ability to interpret (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.13" target="_blank" rel="noopener">1 Corinthians 14:13</a>). He is not criticizing the gift. He is refusing to let a bridge be used as a wall. Sound that never becomes meaning is not deep. It is weather.</p>
+          <p>Speaking into the air. It is one of Paul's bluntest images, a room full of sound and not one syllable arriving anywhere. His logic is almost embarrassingly simple. Words exist to be known. A flute has to hold a melody, a trumpet has to sound the right call, and a mouth has to make meaning, or the noise benefits exactly no one (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.6" target="_blank" rel="noopener" data-verse="1-corinthians-14-6" data-ref="1 Corinthians 14:6" aria-expanded="false">1 Corinthians 14:6</a>). This is why Paul insists the gift of tongues travel with its partner gift, interpretation, and why he tells the tongue-speaker to pray for the ability to interpret (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.13" target="_blank" rel="noopener" data-verse="1-corinthians-14-13" data-ref="1 Corinthians 14:13" aria-expanded="false">1 Corinthians 14:13</a>). He is not criticizing the gift. He is refusing to let a bridge be used as a wall. Sound that never becomes meaning is not deep. It is weather.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: 1 Corinthians 14:26 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:9bd2d8f2334621ba339706d5dd55ba3bba2538ffc3ce0cf4fac14ae0ae797c05 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 14:26</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.14.26" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.14.26" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">What then shall we say, brothers? When you come together, everyone has a psalm or a teaching, a revelation, a tongue, or an interpretation. All of these must be done to build up the church.</div>
 <div class="verse-commentary">
           <p>Here is the sentence that governs the whole chapter, and the word carrying it is the Greek <em>oikodomē</em>, the ordinary term for putting up a building, a house going up beam by beam. Everything in the gathering exists to raise the house. Notice first what Paul does not say. He does not cancel the participatory service. Each one still arrives carrying something, a hymn, a teaching, a revelation, a tongue, an interpretation, the same crowded living room we walked into on Sabbath. The variety stays. What changes is the test every contribution must pass at the door. Not, is it impressive. Not even, is it real. Does it build? A gathering is a construction site, and love reads every gift like a work order. Whatever you carried in this week, it was meant to leave a wall taller than it found it.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: 1 Corinthians 14:27 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:69c4965d45d63b1347ddba9813afdf142ed4366236f4547858cbb32edbc6c1db | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 14:27</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.14.27" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.14.27" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">If anyone speaks in a tongue, two, or at most three, should speak in turn, and someone must interpret.</div>
 <div class="verse-commentary">
-          <p>Paul gets astonishingly practical. Two, or at the most three. Each in turn. Someone interprets, or the speaker stays quiet and speaks to God privately. You can feel the Corinthian service reshaping around those instructions, volume giving way to order, performance giving way to communication. And tucked inside the rules sits a correction the church has needed ever since. Paul wished everyone had this gift (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.5" target="_blank" rel="noopener">1 Corinthians 14:5</a>), yet the Spirit gives it to some and not others, exactly as He decides (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.10" target="_blank" rel="noopener">1 Corinthians 12:10</a>). So no believer's baptism in the Spirit is ever proven or disproven by this one gift. And the gift itself still walks among us in its plainest clothes. The member who can welcome a visitor in her own language, or carry the gospel across a counter in a second tongue, is holding the Corinthian gift the way Pentecost held it. As a bridge.</p>
+          <p>Paul gets astonishingly practical. Two, or at the most three. Each in turn. Someone interprets, or the speaker stays quiet and speaks to God privately. You can feel the Corinthian service reshaping around those instructions, volume giving way to order, performance giving way to communication. And tucked inside the rules sits a correction the church has needed ever since. Paul wished everyone had this gift (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.5" target="_blank" rel="noopener" data-verse="1-corinthians-14-5" data-ref="1 Corinthians 14:5" aria-expanded="false">1 Corinthians 14:5</a>), yet the Spirit gives it to some and not others, exactly as He decides (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.10" target="_blank" rel="noopener" data-verse="1-corinthians-12-10" data-ref="1 Corinthians 12:10" aria-expanded="false">1 Corinthians 12:10</a>). So no believer's baptism in the Spirit is ever proven or disproven by this one gift. And the gift itself still walks among us in its plainest clothes. The member who can welcome a visitor in her own language, or carry the gospel across a counter in a second tongue, is holding the Corinthian gift the way Pentecost held it. As a bridge.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: 1 Corinthians 14:40 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:80454ba8943ad85872da4a54c824ab4b545a3cd7dc821a94d5a4ba51a4468a96 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 14:40</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.14.40" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.14.40" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">But everything must be done in a proper and orderly manner.</div>
 <div class="verse-commentary">
-          <p>The chapter closes with eight words that have steadied two thousand years of church services. Order is not the enemy of the Spirit. Order is His signature, for God is not a God of disorder but of peace (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.33" target="_blank" rel="noopener">1 Corinthians 14:33</a>). Paul has already imagined the alternative, a visitor stepping into wall-to-wall uninterpreted tongues and concluding the church is out of its mind (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.23" target="_blank" rel="noopener">1 Corinthians 14:23</a>). Chaos costs souls. But order, taking turns, making sense, leaving room, is love wearing its work clothes, the same care for one another that Monday's body required. A service a stranger can walk into and understand is not less spiritual than a dazzling one. It is more, because the Spirit who fills the room is the same Spirit who wants the stranger home.</p>
+          <p>The chapter closes with eight words that have steadied two thousand years of church services. Order is not the enemy of the Spirit. Order is His signature, for God is not a God of disorder but of peace (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.33" target="_blank" rel="noopener" data-verse="1-corinthians-14-33" data-ref="1 Corinthians 14:33" aria-expanded="false">1 Corinthians 14:33</a>). Paul has already imagined the alternative, a visitor stepping into wall-to-wall uninterpreted tongues and concluding the church is out of its mind (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.23" target="_blank" rel="noopener" data-verse="1-corinthians-14-23" data-ref="1 Corinthians 14:23" aria-expanded="false">1 Corinthians 14:23</a>). Chaos costs souls. But order, taking turns, making sense, leaving room, is love wearing its work clothes, the same care for one another that Monday's body required. A service a stranger can walk into and understand is not less spiritual than a dazzling one. It is more, because the Spirit who fills the room is the same Spirit who wants the stranger home.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Every Announcement Was True and You Were Still Lost</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>Every Announcement Was True and You Were Still Lost</h3>
       <p>Land in an airport where you do not speak the language and you find out what it feels like to drown in accurate information. The ceiling speakers never rest. Gate changes, boarding calls, final warnings, all of it real, all of it urgent, none of it landing. Somewhere in that river of sound is your name, your flight, your one chance at the connection, and you cannot find it. A whole crowd stands up and moves and you do not know whether to follow. Then a gate agent looks at the boarding pass shaking in your hand, points down the corridor, and says four words in rough English. Other gate. B4. Run. You will remember her face for the rest of your life.</p>
       <p>That is the scene Paul is worried about, except the airport is a church. The gift in Corinth was real speech carrying real praise, and Paul never doubts it. He just asks the lost traveler's question. Did it reach anyone? Words that never become meaning cannot build a person, no matter how true they are, and there is always somebody in the room holding a boarding pass. The visitor. The teenager. The friend who has never opened a Bible. Church vocabulary can turn into ceiling speakers, constant, correct, and landing on no one. Love does what the gate agent did. It sees one lost face, drops the fluency, and points. Ten thousand words filled that terminal. Four of them saved your trip.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Words That Only Sound Like Sense</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Words That Only Sound Like Sense</h3>
       <p>In 2025 researchers Cruz and Lombrozo published a study in Nature Human Behaviour on what technical language does to the people reading it, and they found something unsettling. Jargon makes a weak explanation feel more complete than it is, masking the gaps so readers walk away satisfied while actually understanding less. The impressive words do not hand over knowledge. They counterfeit the feeling of having received it.</p>
       <p>Read that next to Paul and the overlap is uncanny. A room can be full of true, technically flawless speech and leave everyone in it a little more lost and a little more sure they are the problem. That is speaking into the air, and it happens in churches every week, not in ancient tongues but in insider vocabulary, in answers pitched over the visitor's head, in words chosen to sound weighty rather than to land. Paul's fix was never to say less that is true. It was to make the truth reach the person in the next chair. Being understood is not a lower calling than sounding profound. In Paul's math it is the higher one, because only the words that actually land can build.</p>
       <!-- TODAYS_WORLD_SOURCE: How laypeople evaluate scientific explanations containing jargon | Nature Human Behaviour | 2025 | https://doi.org/10.1038/s41562-025-02227-0 -->
-    </div>
+    <details class="disclosure source-disclosure"><summary class="disclosure-summary"><span class="disclosure-label">Source</span> <span class="disclosure-publisher">Nature Human Behaviour</span></summary><div class="disclosure-body"><p><cite>How laypeople evaluate scientific explanations containing jargon</cite>. Nature Human Behaviour, 2025. <a href="https://doi.org/10.1038/s41562-025-02227-0" target="_blank" rel="noopener noreferrer">Read the source</a>.</p></div></details></section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Translation is not a side project for God. It is His habit. He spoke through prophets in the language of shepherds and kings, and when the time fully came, He did the unthinkable. The Word became flesh and dwelt among us (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.1.14" target="_blank" rel="noopener">John 1:14</a>), God translating Himself into a life we could read, a face we could watch, hands we could touch. Jesus taught in the dialect of farmers and fishermen. His parables ran on seed, bread, sheep, and lamps, the vocabulary of everybody. When the Spirit came at Pentecost, the first miracle of the church age was a translation miracle, every visitor hearing the mighty works of God in the language their mother sang over their cradle. And the cross speaks the one language that needs no interpreter anywhere on earth, love that gives everything. Corinth wanted a God impressive enough to be incomprehensible. In Jesus, God chose the opposite glory. He has never once spoken over our heads on purpose.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Translation is not a side project for God. It is His habit. He spoke through prophets in the language of shepherds and kings, and when the time fully came, He did the unthinkable. The Word became flesh and dwelt among us (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.1.14" target="_blank" rel="noopener" data-verse="john-1-14" data-ref="John 1:14" aria-expanded="false">John 1:14</a>), God translating Himself into a life we could read, a face we could watch, hands we could touch. Jesus taught in the dialect of farmers and fishermen. His parables ran on seed, bread, sheep, and lamps, the vocabulary of everybody. When the Spirit came at Pentecost, the first miracle of the church age was a translation miracle, every visitor hearing the mighty works of God in the language their mother sang over their cradle. And the cross speaks the one language that needs no interpreter anywhere on earth, love that gives everything. Corinth wanted a God impressive enough to be incomprehensible. In Jesus, God chose the opposite glory. He has never once spoken over our heads on purpose.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Today, translate one truth. Take something Jesus means to you and say it in one sentence a twelve-year-old could repeat, no church words allowed. No blessed, no saved, no fellowship. Write the sentence down, then test it out loud on one actual person, a kid, a coworker, the friend who never darkens a church door. If their eyes don't glaze, you built something. If they do, revise and try again tomorrow. Speaking to be understood is not dumbing it down. It is love doing carpentry.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, thank You for being the God who speaks to be heard. You could have stayed incomprehensible, and instead You sent prophets, then Your Son, plain enough for fishermen and children and us. Forgive us for the times our worship and our witness have been sound aimed at nobody, words that impressed the room and built no one in it. Teach us the difference between reverence and fog. Where our congregations gather, give us order that welcomes the stranger, turns taken in love, and every voice raising the same house. Give the members among us who carry second languages a holy restlessness for the people who need You in exactly those words. And keep us from ever measuring Your Spirit by volume. We would rather say five words that land than ten thousand that echo. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"Where does your faith-talk most often turn into speaking into the air, true words that land on nobody (insider vocabulary around guests, answers to questions nobody asked, volume where clarity was needed)? And who in your life needs one truth about God translated into their language this week, whether that means Spanish, teenager, or plain English?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"Where does your faith-talk most often turn into speaking into the air, true words that land on nobody (insider vocabulary around guests, answers to questions nobody asked, volume where clarity was needed)? And who in your life needs one truth about God translated into their language this week, whether that means Spanish, teenager, or plain English?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, thank You for being the God who speaks to be heard. You could have stayed incomprehensible, and instead You sent prophets, then Your Son, plain enough for fishermen and children and us. Forgive us for the times our worship and our witness have been sound aimed at nobody, words that impressed the room and built no one in it. Teach us the difference between reverence and fog. Where our congregations gather, give us order that welcomes the stranger, turns taken in love, and every voice raising the same house. Give the members among us who carry second languages a holy restlessness for the people who need You in exactly those words. And keep us from ever measuring Your Spirit by volume. We would rather say five words that land than ten thousand that echo. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-08-04.html"><span class="day-nav-kicker">← Tuesday</span><span class="day-nav-title">A More Excellent Way</span></a><a class="day-nav-item" href="/bible-study/2026-08-06.html"><span class="day-nav-kicker">Thursday →</span><span class="day-nav-title">The Gift of Prophecy</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"1-corinthians-14-19":{"ref":"1 Corinthians 14:19","text":"But in the church, I would rather speak five coherent words to instruct others than ten thousand words in a tongue.","bibleUrl":"https://www.bible.com/bible/3034/1CO.14.19"},"mark-16-17":{"ref":"Mark 16:17","text":"And these signs will accompany those who believe: In My name they will drive out demons; they will speak in new tongues;","bibleUrl":"https://www.bible.com/bible/3034/MRK.16.17"},"acts-2-1-13":{"ref":"Acts 2:1-13","text":"When the day of Pentecost came, they were all together in one place. Suddenly a sound like a mighty rushing wind came from heaven and filled the whole house where they were sitting. They saw tongues like flames of fire that separated and came to rest on each of them. And they were all filled with the Holy Spirit and began to speak in other tongues as the Spirit enabled them. Now there were dwelling in Jerusalem God-fearing Jews from every nation under heaven. And when this sound rang out, a crowd came together in bewilderment, because each one heard them speaking his own language. Astounded and amazed, they asked, \u201cAre not all these who are speaking Galileans? How is it then that each of us hears them in his own native language? Parthians, Medes, and Elamites; residents of Mesopotamia, Judea and Cappadocia, Pontus and Asia, Phrygia and Pamphylia, Egypt and the parts of Libya near Cyrene; visitors from Rome, both Jews and converts to Judaism; Cretans and Arabs\u2014we hear them declaring the wonders of God in our own tongues!\u201d Astounded and perplexed, they asked one another, \u201cWhat does this mean?\u201d But others mocked them and said, \u201cThey are drunk on new wine!\u201d","bibleUrl":"https://www.bible.com/bible/3034/ACT.2.1-13"},"acts-10-44-48":{"ref":"Acts 10:44-48","text":"While Peter was still speaking these words, the Holy Spirit fell upon all who heard his message. All the circumcised believers who had accompanied Peter were astounded that the gift of the Holy Spirit had been poured out even on the Gentiles. For they heard them speaking in tongues and exalting God. Then Peter said, \u201cCan anyone withhold the water to baptize these people? They have received the Holy Spirit just as we have!\u201d So he ordered that they be baptized in the name of Jesus Christ. Then they asked him to stay for a few days.","bibleUrl":"https://www.bible.com/bible/3034/ACT.10.44-48"},"acts-19-6":{"ref":"Acts 19:6","text":"And when Paul laid his hands on them, the Holy Spirit came upon them, and they spoke in tongues and prophesied.","bibleUrl":"https://www.bible.com/bible/3034/ACT.19.6"},"1-corinthians-12-8-10":{"ref":"1 Corinthians 12:8-10","text":"To one there is given through the Spirit the message of wisdom, to another the message of knowledge by the same Spirit, to another faith by the same Spirit, to another gifts of healing by that one Spirit, to another the working of miracles, to another prophecy, to another distinguishing between spirits, to another speaking in various tongues, and to still another the interpretation of tongues.","bibleUrl":"https://www.bible.com/bible/3034/1CO.12.8-10"},"1-corinthians-12-28":{"ref":"1 Corinthians 12:28","text":"And in the church God has appointed first of all apostles, second prophets, third teachers, then workers of miracles, and those with gifts of healing, helping, administration, and various tongues.","bibleUrl":"https://www.bible.com/bible/3034/1CO.12.28"},"1-corinthians-12-30":{"ref":"1 Corinthians 12:30","text":"Do all have gifts of healing? Do all speak in tongues? Do all interpret?","bibleUrl":"https://www.bible.com/bible/3034/1CO.12.30"},"1-corinthians-13-1":{"ref":"1 Corinthians 13:1","text":"If I speak in the tongues of men and of angels, but have not love, I am only a ringing gong or a clanging cymbal.","bibleUrl":"https://www.bible.com/bible/3034/1CO.13.1"},"1-corinthians-13-8":{"ref":"1 Corinthians 13:8","text":"Love never fails. But where there are prophecies, they will cease; where there are tongues, they will be restrained; where there is knowledge, it will be dismissed.","bibleUrl":"https://www.bible.com/bible/3034/1CO.13.8"},"1-corinthians-14-21":{"ref":"1 Corinthians 14:21","text":"It is written in the Law: \u201cBy strange tongues and foreign lips I will speak to this people, but even then they will not listen to Me, says the Lord.\u201d","bibleUrl":"https://www.bible.com/bible/3034/1CO.14.21"},"1-corinthians-14-6":{"ref":"1 Corinthians 14:6","text":"Now, brothers, if I come to you speaking in tongues, how will I benefit you, unless I bring you some revelation or knowledge or prophecy or teaching?","bibleUrl":"https://www.bible.com/bible/3034/1CO.14.6"},"1-corinthians-14-13":{"ref":"1 Corinthians 14:13","text":"Therefore, the one who speaks in a tongue should pray that he may interpret.","bibleUrl":"https://www.bible.com/bible/3034/1CO.14.13"},"1-corinthians-14-5":{"ref":"1 Corinthians 14:5","text":"I wish that all of you could speak in tongues, but I would rather have you prophesy. He who prophesies is greater than one who speaks in tongues, unless he interprets so that the church may be edified.","bibleUrl":"https://www.bible.com/bible/3034/1CO.14.5"},"1-corinthians-12-10":{"ref":"1 Corinthians 12:10","text":"to another the working of miracles, to another prophecy, to another distinguishing between spirits, to another speaking in various tongues, and to still another the interpretation of tongues.","bibleUrl":"https://www.bible.com/bible/3034/1CO.12.10"},"1-corinthians-14-33":{"ref":"1 Corinthians 14:33","text":"For God is not a God of disorder, but of peace\u2014as in all the churches of the saints.","bibleUrl":"https://www.bible.com/bible/3034/1CO.14.33"},"1-corinthians-14-23":{"ref":"1 Corinthians 14:23","text":"So if the whole church comes together and everyone speaks in tongues, and some who are uninstructed or some unbelievers come in, will they not say that you are out of your minds?","bibleUrl":"https://www.bible.com/bible/3034/1CO.14.23"},"john-1-14":{"ref":"John 1:14","text":"The Word became flesh and made His dwelling among us. We have seen His glory, the glory of the one and only Son from the Father, full of grace and truth.","bibleUrl":"https://www.bible.com/bible/3034/JHN.1.14"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

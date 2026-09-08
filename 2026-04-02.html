@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Linked to the Vine — Daily Bible Study</title>
 <meta name="study-title" content="Linked to the Vine">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 1, Reality Check · Part 6 of 7">
+<meta name="study-passage" content="Luke 11:13">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 1, Reality Check · Day 6 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Linked to the Vine">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 1, Reality Check · Part 6 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 1, Reality Check · Day 6 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-04-02.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 1, Reality Check · Part 6 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 1, Reality Check · Day 6 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,302 +38,222 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Linked to the Vine</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 1, Reality Check</span>
-      <span>Part 6 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">April 2, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider"><span class="celtic-divider-symbol">✦ ☩ ✦</span></div>
-
-  <div class="card">
-
-    <!-- TL;DR -->
-    <div class="section">
-      <div class="section-label"><span class="section-emoji">📌</span><span class="section-title">TL;DR</span><div class="section-title-line"></div></div>
-      <p class="tldr-hook">You cannot make yourself grow any more than a branch can force sap through its own veins.</p>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Thu · Apr 2</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
+    </div>
+    <h1 class="study-title">Linked to the Vine</h1>
+    <p class="study-sub"><span class="sub-title">Reality Check</span><span class="sub-facts"><span>Lesson 1</span><span>Day 6 of 7</span></span></p>
+  </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p class="tldr-hook">You cannot make yourself grow any more than a branch can force sap through its own veins.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span> The Holy Spirit is the sap that flows from the Vine into the branches, making growth possible.</li>
-        <li><span class="bullet-icon">☩</span> We often treat abiding as something we accomplish through effort, when it is actually a receptive posture of letting the Spirit flow through us.</li>
-        <li><span class="bullet-icon">☩</span> Jesus promised that the Father gives the Holy Spirit to those who ask, and the Spirit's role is to comfort, convict, reveal Jesus, and guide into truth.</li>
-        <li><span class="bullet-icon">☩</span> The question is not whether God is willing to send His Spirit, but whether we are willing to ask and remain open.</li>
+        <li>
+<span class="bullet-icon">☩</span> The Holy Spirit is the sap that flows from the Vine into the branches, making growth possible.</li>
+        <li>
+<span class="bullet-icon">☩</span> We often treat abiding as something we accomplish through effort, when it is actually a receptive posture of letting the Spirit flow through us.</li>
+        <li>
+<span class="bullet-icon">☩</span> Jesus promised that the Father gives the Holy Spirit to those who ask, and the Spirit's role is to comfort, convict, reveal Jesus, and guide into truth.</li>
+        <li>
+<span class="bullet-icon">☩</span> The question is not whether God is willing to send His Spirit, but whether we are willing to ask and remain open.</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label"><span class="section-emoji">🔁</span><span class="section-title">Connection to Yesterday</span><div class="section-title-line"></div></div>
-      <p>Yesterday we explored Jesus' Vine and Branches discourse in John 15, where He repeated the word "remain" ten times and revealed that abiding is the single key to fruitfulness, joy, and genuine discipleship. Today we press deeper into the question that yesterday's study naturally raises: if we cannot produce fruit on our own, and if abiding means continuous dependence on the Vine, then what is the actual mechanism of connection? What flows through the branch to make it alive? The answer is the Holy Spirit. Wednesday told us what to do: remain. Thursday tells us how it actually works: through the Spirit who flows from the Vine into every branch willing to receive Him.</p>
-    </div>
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday we explored Jesus' Vine and Branches discourse in John 15, where He repeated the word "remain" ten times and revealed that abiding is the single key to fruitfulness, joy, and genuine discipleship. Today we press deeper into the question that yesterday's study naturally raises: if we cannot produce fruit on our own, and if abiding means continuous dependence on the Vine, then what is the actual mechanism of connection? What flows through the branch to make it alive? The answer is the Holy Spirit. Wednesday told us what to do: remain. Thursday tells us how it actually works: through the Spirit who flows from the Vine into every branch willing to receive Him.</p>
+    </section>
 
-    <!-- CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label"><span class="section-emoji">🗺️</span><span class="section-title">Historical & Cultural Context</span><div class="section-title-line"></div></div>
-      <div class="section-heading">The Vinedresser's Secret</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Vinedresser's Secret</h3>
       <p>Every vineyard worker in first-century Palestine understood something about grapevines that most modern readers miss. During winter dormancy, a grapevine's buds are hydraulically isolated from the main stem. The vascular connections between bud and cane are physically disconnected; no water, no nutrients, no sap can flow. The vine looks dead. The buds look dead. But when spring arrives and the soil warms, the roots begin absorbing water and pushing it upward. The vine "bleeds," sap seeping from pruning cuts, and slowly the vascular connections between the vine and its buds are rebuilt from the inside out. Only then can the buds swell, break open, and begin to grow.</p>
       <p>Jesus' listeners would have known this. When He spoke of branches that wither and branches that bear fruit, the difference was not effort or willpower; it was whether the sap was flowing. A branch connected to the vine's life-giving flow would naturally produce leaves, then flowers, then grapes. A branch cut off from that flow would naturally dry up and die. There was no third option. This biological reality is the background for today's study: the Holy Spirit is the sap. He is the living current that flows from Christ the Vine into every connected branch, and without Him, no amount of religious effort produces anything.</p>
-    </div>
+    </section>
 
-    <!-- INTO THE WORD -->
-    <div class="section">
-      <div class="section-label"><span class="section-emoji">📖</span><span class="section-title">Into the Word</span><div class="section-title-line"></div></div>
-
-      <p>Today's anchor passage is <a class="vlink" href="https://www.bible.com/bible/3034/LUK.11.13" target="_blank" rel="noopener">Luke 11:13</a>, where Jesus makes a stunning promise about the Holy Spirit. The study also draws in <a class="vlink" href="https://www.bible.com/bible/3034/JER.31.3" target="_blank" rel="noopener">Jeremiah 31:3</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1JN.4.19" target="_blank" rel="noopener">1 John 4:19</a>, and <a class="vlink" href="https://www.bible.com/bible/3034/ROM.8.9" target="_blank" rel="noopener">Romans 8:9-11</a> as supporting texts. Together these passages answer the question: if we cannot abide on our own power, how does the connection actually happen? The answer is that God Himself, through His Spirit, enters the branch and does from the inside what the branch could never do alone.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Today's anchor passage is <a class="vlink" href="https://www.bible.com/bible/3034/LUK.11.13" target="_blank" rel="noopener" data-verse="luke-11-13" data-ref="Luke 11:13" aria-expanded="false">Luke 11:13</a>, where Jesus makes a stunning promise about the Holy Spirit. The study also draws in <a class="vlink" href="https://www.bible.com/bible/3034/JER.31.3" target="_blank" rel="noopener" data-verse="jeremiah-31-3" data-ref="Jeremiah 31:3" aria-expanded="false">Jeremiah 31:3</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1JN.4.19" target="_blank" rel="noopener" data-verse="1-john-4-19" data-ref="1 John 4:19" aria-expanded="false">1 John 4:19</a>, and <a class="vlink" href="https://www.bible.com/bible/3034/ROM.8.9" target="_blank" rel="noopener" data-verse="romans-8-9-11" data-ref="Romans 8:9-11" aria-expanded="false">Romans 8:9-11</a> as supporting texts. Together these passages answer the question: if we cannot abide on our own power, how does the connection actually happen? The answer is that God Himself, through His Spirit, enters the branch and does from the inside what the branch could never do alone.</p>
 
 <!-- BSB_BLOCK: Luke 11:13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:bae9f188e57a34aec632a73210f2e8049eac6297772a9eddc1525da069318c4e | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Luke 11:13</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/LUK.11.13" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/LUK.11.13" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text"><span class="words-of-jesus">So if you who are evil know how to give good gifts to your children, how much more will your Father in heaven give the Holy Spirit to those who ask Him!”</span></div>
 <div class="verse-commentary">
-          <p>This verse is the climax of Jesus' teaching on prayer. He has just told the parable of the persistent friend who knocks at midnight (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.11.5" target="_blank" rel="noopener">Luke 11:5-8</a>), and then given the famous "ask, seek, knock" promise (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.11.9" target="_blank" rel="noopener">Luke 11:9-10</a>). But the punch line is not that God gives us whatever we want. It is that the greatest gift the Father offers is the Holy Spirit Himself. Notice the argument Jesus uses: even flawed, sinful human parents know how to give good things to their children. How much more, then, will the perfect heavenly Father give the best gift of all? The word "give" here is <em>didomi</em> (δίδωμι), a straightforward term for a free gift, not something earned or purchased. And the gift is not abstract power or vague spiritual energy. It is the Holy Spirit, a Person, the Third Member of the Godhead, who comes to dwell inside us. All we have to do is ask. That is the astonishing simplicity of it: the sap that makes the branch alive is available to anyone who asks the Father for it.</p>
+          <p>This verse is the climax of Jesus' teaching on prayer. He has just told the parable of the persistent friend who knocks at midnight (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.11.5" target="_blank" rel="noopener" data-verse="luke-11-5-8" data-ref="Luke 11:5-8" aria-expanded="false">Luke 11:5-8</a>), and then given the famous "ask, seek, knock" promise (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.11.9" target="_blank" rel="noopener" data-verse="luke-11-9-10" data-ref="Luke 11:9-10" aria-expanded="false">Luke 11:9-10</a>). But the punch line is not that God gives us whatever we want. It is that the greatest gift the Father offers is the Holy Spirit Himself. Notice the argument Jesus uses: even flawed, sinful human parents know how to give good things to their children. How much more, then, will the perfect heavenly Father give the best gift of all? The word "give" here is <em>didomi</em> (δίδωμι), a straightforward term for a free gift, not something earned or purchased. And the gift is not abstract power or vague spiritual energy. It is the Holy Spirit, a Person, the Third Member of the Godhead, who comes to dwell inside us. All we have to do is ask. That is the astonishing simplicity of it: the sap that makes the branch alive is available to anyone who asks the Father for it.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Jeremiah 31:3 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:96a609fac7fee15d4efe679af4f30351c1e8a57f04bfe10912442476f7bd3be2 | footnotes-stripped:1 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Jeremiah 31:3</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/JER.31.3" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/JER.31.3" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">The LORD appeared to us in the past, saying: “I have loved you with an everlasting love; therefore I have drawn you with loving devotion.</div>
 <div class="verse-commentary">
           <p>This verse, which we touched on Tuesday, reappears here because it answers a crucial objection. If abiding depends on the Spirit's presence, and the Spirit comes as a gift, then the entire relationship rests on God's initiative, not ours. Jeremiah confirms this: God's love is everlasting, meaning it did not begin when we started seeking Him. The Hebrew word <em>chesed</em> (חֶסֶד), translated "faithful love," carries the weight of covenant loyalty, unbreakable commitment, and steadfast kindness all at once. God draws us with this love. The branch does not reach out and grab the vine; the vine sends its sap into the branch. Our response, our asking, our abiding, is always a reaction to what God has first done. That is why abiding never starts with trying harder. It starts with recognizing that He loved us first.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: Jeremiah 31:3 | 31:3 Or The LORD appeared to him from afar, saying -->
 
 <!-- BSB_BLOCK: 1 John 4:19 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:e510dbcbf066513e9d9a307c4e27212cc33fbccb7c02898a814f6455eb953c84 | footnotes-stripped:1 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 John 4:19</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1JN.4.19" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1JN.4.19" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">We love because He first loved us.</div>
 <div class="verse-commentary">
           <p>Nine words that dismantle every performance-based approach to spiritual growth. John states it as a fact of spiritual physics: our capacity to love, to obey, to bear fruit, to abide, all of it originates in what He first did. The word "first" (<em>protos</em>, πρῶτος) does not merely mean "before us in time." It means "as the originator, the source, the one who made our response possible." This is the vine-and-branch dynamic distilled to its essence. We cannot make ourselves abide any more than a branch can force sap through its own cells. The sap comes from the vine. The love comes from God. Our role is to remain open, to keep the channel clear, to not close the door that He has already opened. That is what it means to be linked to the Vine.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: 1 John 4:19 | 4:19 BYZ and TR We love Him -->
 
 <!-- BSB_BLOCK: Romans 8:9-11 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c9900c2b16c7aeb88f09cd5fb64a3ca462299bf3210f1deeab627c829a10393e | footnotes-stripped:2 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Romans 8:9-11</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.8.9-11" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 9">9</sup>You, however, are controlled not by the flesh, but by the Spirit, if the Spirit of God lives in you. And if anyone does not have the Spirit of Christ, he does not belong to Christ. <sup class="verse-number" aria-label="Verse 10">10</sup>But if Christ is in you, your body is dead because of sin, yet your spirit is alive because of righteousness. <sup class="verse-number" aria-label="Verse 11">11</sup>And if the Spirit of Him who raised Jesus from the dead is living in you, He who raised Christ Jesus from the dead will also give life to your mortal bodies through His Spirit, who lives in you.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ROM.8.9-11" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 9">9</sup>You, however, are controlled not by the flesh, but by the Spirit, if the Spirit of God lives in you. And if anyone does not have the Spirit of Christ, he does not belong to Christ. <sup class="verse-number" aria-label="Verse 10">10</sup>But if Christ is in you, your body is dead because of sin, yet your spirit is alive because of righteousness. <sup class="verse-number" aria-label="Verse 11">11</sup>And if the Spirit of Him who raised Jesus from the dead is living in you, He who raised Christ Jesus from the dead will also give life to your mortal bodies through His Spirit, who lives in you.</div>
 <div class="verse-commentary">
           <p>Paul takes the vine-and-branch metaphor into explicit theological territory. The Spirit of God "lives in you," Paul says, using the Greek <em>oikeo</em> (οἰκέω), which means to take up permanent residence, to make a home. This is not a visitor who drops by occasionally; it is a family member who has moved in. And the same Spirit who raised Jesus from the dead, the most powerful act in all of history, is the Spirit who now lives inside every believer. That is the sap flowing through the branch. Not willpower, not religious habit, not moral effort, but the resurrection power of God Himself dwelling in us. Paul's logic is stunning: if the Spirit can raise the dead, He can certainly bring life to a dry, struggling, withering branch. The question is never whether the Spirit is powerful enough. It is whether we will let Him flow.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: Romans 8:10 | 8:10 Or yet the Spirit is life -->
       <!-- BSB_FOOTNOTE: Romans 8:11 | 8:11 NA, BYZ, and TR raised Christ from the dead -->
 
-    </div>
+    </section>
 
-    <!-- STREET LEVEL -->
-    <div class="section">
-      <div class="section-label"><span class="section-emoji">🎯</span><span class="section-title">Street Level</span><div class="section-title-line"></div></div>
-      <div class="section-heading">The Wi-Fi You Forgot You Had</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Wi-Fi You Forgot You Had</h3>
       <p>Imagine buying a brand-new laptop, taking it home, and then spending the next six months typing every document offline, manually transferring files with a flash drive, and looking things up in a physical encyclopedia you keep on the shelf. Someone walks by one day and says, "You know that thing has Wi-Fi, right?" You stare at them. The settings menu is right there. One click. Suddenly you have access to the entire internet, cloud storage, real-time collaboration, everything the machine was designed to connect to. You had the hardware the whole time. You just never turned on the connection.</p>
       <p>That is what many believers do with the Holy Spirit. They have the hardware. They were given the gift at conversion. But they have been trying to run their spiritual lives offline: grinding through Bible reading plans on willpower, white-knuckling their way through temptation, producing "fruit" through sheer effort. Jesus said the Father gives the Spirit to those who ask. The connection is right there. It has always been right there. The question is whether you have turned it on, whether you are actually drawing on the power source you were designed to use, or still trying to run everything manually.</p>
-    </div>
+    </section>
 
-    <!-- TODAY'S WORLD -->
-    <div class="section">
-      <div class="section-label"><span class="section-emoji">🌍</span><span class="section-title">Today's World, Ancient Truth</span><div class="section-title-line"></div></div>
-      <div class="section-heading">Grapevine Science Confirms What Jesus Already Knew</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>Grapevine Science Confirms What Jesus Already Knew</h3>
       <p>A 2025 study published in the journal <em>Plants</em> (MDPI) tracked the physiology of grapevine sap bleeding across three consecutive growing seasons (2022-2024) in a Romanian vineyard. The researchers confirmed something viticulturists have long observed but only recently measured precisely: during winter dormancy, grapevine buds are hydraulically isolated from the vine. No water, no nutrients, no sap can reach them. The vascular connections are physically broken. It is only when spring temperatures warm the soil above about 6 degrees Celsius that root pressure rebuilds, sap begins flowing upward through the xylem, and the buds can finally break open and grow.</p>
       <p>The parallels to Jesus' teaching in John 15 are remarkable. A branch that is hydraulically disconnected does not just grow slowly; it cannot grow at all. No amount of sunlight or favorable weather will produce a single leaf if the sap is not flowing. And the reconnection is not something the bud initiates; it is something the vine does from below, pushing life upward through the roots. This is exactly what Jesus was describing. The Holy Spirit is the sap. God initiates the flow. Our part is not to generate life but to remain connected so the life that comes from the Vine can reach us. Modern grapevine science has, in its own way, published a peer-reviewed confirmation of the theology Jesus taught on the road to Gethsemane.</p>
-    </div>
+    </section>
 
-    <!-- CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label"><span class="section-emoji">✝️</span><span class="section-title">The Christ Connection</span><div class="section-title-line"></div></div>
-      <p>On the night He was betrayed, Jesus told His disciples that it was actually better for them that He leave, because only then would the Helper come (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.16.7" target="_blank" rel="noopener">John 16:7</a>). That statement must have sounded impossible. How could anything be better than having Jesus physically present? But Jesus knew something the disciples did not yet understand: while He walked beside them, He was one Person in one location. When the Spirit came, He would be inside every believer, everywhere, simultaneously. The Vine would no longer just be walking next to the branches; the Vine's life would be flowing through them.</p>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>On the night He was betrayed, Jesus told His disciples that it was actually better for them that He leave, because only then would the Helper come (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.16.7" target="_blank" rel="noopener" data-verse="john-16-7" data-ref="John 16:7" aria-expanded="false">John 16:7</a>). That statement must have sounded impossible. How could anything be better than having Jesus physically present? But Jesus knew something the disciples did not yet understand: while He walked beside them, He was one Person in one location. When the Spirit came, He would be inside every believer, everywhere, simultaneously. The Vine would no longer just be walking next to the branches; the Vine's life would be flowing through them.</p>
       <p>This is what the Cross and the resurrection made possible. Jesus was crushed so that His life could flow into every branch. He was buried like a seed so that a global vineyard could grow. And when He rose, He sent the Spirit, the living sap of God, to dwell in anyone who would ask. Every struggling believer, every spiritually dry season, every moment of feeling disconnected, finds its answer here: the same Spirit who raised Christ from the dead lives in you. You are not trying to reach God. God has already reached you. The sap is already flowing. Remain.</p>
-    </div>
+    </section>
 
-    <!-- APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label"><span class="section-emoji">✅</span><span class="section-title">Personal Application Challenge</span><div class="section-title-line"></div></div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Before you do anything else this morning, pray one honest sentence: "Father, give me Your Holy Spirit today." That is it. No lengthy devotional, no complicated spiritual exercise. Just the prayer Jesus told you to pray in Luke 11:13. Then, at some point during the day, open your Bible to John 14-16 and read slowly until one verse stops you. When it does, sit with it. Let the Spirit who lives in you do what Jesus said He would do: teach you, remind you, and guide you into truth. You are not generating this; you are receiving it.
       </div>
-    </div>
+    </section>
 
-    <!-- PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label"><span class="section-emoji">🙏</span><span class="section-title">Closing Prayer</span><div class="section-title-line"></div></div>
-      <p>Father, we confess that we have tried to produce fruit without Your sap flowing through us. We have treated the Christian life as a performance we manage rather than a connection we receive. Forgive us. Today we ask, just as Jesus told us to, for Your Holy Spirit. Not as a distant force, but as the living presence of God taking up residence in us. Thank You that the same power that raised Jesus from the dead is available to us right now, not because we earned it, but because You love to give good gifts to Your children. Flow through us today. Produce in us what we could never produce on our own. We are tired of running offline. Connect us to the Vine, and let the sap of Your Spirit bring everything dry back to life. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">When has your spiritual life felt most alive and fruitful, and when you look back at that season honestly, was it because you were working harder or because you were more connected to the Spirit? What was different about that time?</div>
+    </section>
 
-    <!-- DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label"><span class="section-emoji">💬</span><span class="section-title">Discussion Question</span><div class="section-title-line"></div></div>
-      <div class="discussion-q">When has your spiritual life felt most alive and fruitful, and when you look back at that season honestly, was it because you were working harder or because you were more connected to the Spirit? What was different about that time?</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, we confess that we have tried to produce fruit without Your sap flowing through us. We have treated the Christian life as a performance we manage rather than a connection we receive. Forgive us. Today we ask, just as Jesus told us to, for Your Holy Spirit. Not as a distant force, but as the living presence of God taking up residence in us. Thank You that the same power that raised Jesus from the dead is available to us right now, not because we earned it, but because You love to give good gifts to Your children. Flow through us today. Produce in us what we could never produce on our own. We are tired of running offline. Connect us to the Vine, and let the sap of Your Spirit bring everything dry back to life. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-04-01.html"><span class="day-nav-kicker">← Wednesday</span><span class="day-nav-title">Abide</span></a><a class="day-nav-item" href="/bible-study/2026-04-03.html"><span class="day-nav-kicker">Friday →</span><span class="day-nav-title">Further Thought &amp; Discussion</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"luke-11-13":{"ref":"Luke 11:13","text":"So if you who are evil know how to give good gifts to your children, how much more will your Father in heaven give the Holy Spirit to those who ask Him!\u201d","bibleUrl":"https://www.bible.com/bible/3034/LUK.11.13"},"jeremiah-31-3":{"ref":"Jeremiah 31:3","text":"The LORD appeared to us in the past, saying: \u201cI have loved you with an everlasting love; therefore I have drawn you with loving devotion.","bibleUrl":"https://www.bible.com/bible/3034/JER.31.3"},"1-john-4-19":{"ref":"1 John 4:19","text":"We love because He first loved us.","bibleUrl":"https://www.bible.com/bible/3034/1JN.4.19"},"romans-8-9-11":{"ref":"Romans 8:9-11","text":"You, however, are controlled not by the flesh, but by the Spirit, if the Spirit of God lives in you. And if anyone does not have the Spirit of Christ, he does not belong to Christ. But if Christ is in you, your body is dead because of sin, yet your spirit is alive because of righteousness. And if the Spirit of Him who raised Jesus from the dead is living in you, He who raised Christ Jesus from the dead will also give life to your mortal bodies through His Spirit, who lives in you.","bibleUrl":"https://www.bible.com/bible/3034/ROM.8.9"},"luke-11-5-8":{"ref":"Luke 11:5-8","text":"Then Jesus said to them, \u201cSuppose one of you goes to his friend at midnight and says, \u2018Friend, lend me three loaves of bread, because a friend of mine has come to me on a journey, and I have nothing to set before him.\u2019 And suppose the one inside answers, \u2018Do not bother me. My door is already shut, and my children and I are in bed. I cannot get up to give you anything.\u2019 I tell you, even though he will not get up to provide for him because of his friendship, yet because of the man\u2019s persistence, he will get up and give him as much as he needs.","bibleUrl":"https://www.bible.com/bible/3034/LUK.11.5"},"luke-11-9-10":{"ref":"Luke 11:9-10","text":"So I tell you: Ask, and it will be given to you; seek, and you will find; knock, and the door will be opened to you. For everyone who asks receives; he who seeks finds; and to him who knocks, the door will be opened.","bibleUrl":"https://www.bible.com/bible/3034/LUK.11.9"},"john-16-7":{"ref":"John 16:7","text":"But I tell you the truth, it is for your benefit that I am going away. Unless I go away, the Advocate will not come to you; but if I go, I will send Him to you.","bibleUrl":"https://www.bible.com/bible/3034/JHN.16.7"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

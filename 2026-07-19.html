@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Dissonance Between Faith and Practice — Daily Bible Study</title>
 <meta name="study-title" content="Dissonance Between Faith and Practice">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 4, Sin in the Church · Part 2 of 7">
+<meta name="study-passage" content="1 Corinthians 5:1-2">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 4, Sin in the Church · Day 2 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Dissonance Between Faith and Practice">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 4, Sin in the Church · Part 2 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 4, Sin in the Church · Day 2 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-07-19.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 4, Sin in the Church · Part 2 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 4, Sin in the Church · Day 2 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,312 +38,185 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Dissonance Between Faith and Practice</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 4, Sin in the Church</span>
-      <span>Part 2 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">July 19, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Sun · Jul 19</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">9 min</span>
+    </div>
+    <h1 class="study-title">Dissonance Between Faith and Practice</h1>
+    <p class="study-sub"><span class="sub-title">Sin in the Church</span><span class="sub-facts"><span>Lesson 4</span><span>Day 2 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>The report reaches Paul in Ephesus and the news is ugly. A man in the Corinthian church is sleeping with his stepmother, a sin so far past the line that even pagan Rome banned it, and the church's reaction is not grief. It is pride. They think their tolerance proves how gracious they are. Paul hears something else, yeast working through dough, a congregation quietly learning to call blindness love. <strong>A church that can no longer blush at sin has not become more loving. It has stopped seeing.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday ended with a staggering picture. The holiest ground in Corinth was not the temple on the hill. It was people, bought at a price, walking around with the Spirit of God living inside them. Today we find out what provoked the letter's hardest chapter. A report has crossed the Aegean to Paul, and it is not about worship styles. Something is happening inside one of those temples, and the church that should be on its knees about it is congratulating itself instead. This first case study is not really about how bad sin can get. It is about how blind a proud church can become to it.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>The report reaches Paul in Ephesus and the news is ugly. A man in the Corinthian church is sleeping with his stepmother, a sin so far past the line that even pagan Rome banned it, and the church's reaction is not grief. It is pride. They think their tolerance proves how gracious they are. Paul hears something else, yeast working through dough, a congregation quietly learning to call blindness love. <strong>A church that can no longer blush at sin has not become more loving. It has stopped seeing.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday ended with a staggering picture. The holiest ground in Corinth was not the temple on the hill. It was people, bought at a price, walking around with the Spirit of God living inside them. Today we find out what provoked the letter's hardest chapter. A report has crossed the Aegean to Paul, and it is not about worship styles. Something is happening inside one of those temples, and the church that should be on its knees about it is congratulating itself instead. This first case study is not really about how bad sin can get. It is about how blind a proud church can become to it.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">A Scandal Even the Pagans Refused to Excuse</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>A Scandal Even the Pagans Refused to Excuse</h3>
       <p>When the Roman orator Cicero wanted to make a jury's skin crawl, he told them about a wedding. A mother-in-law had married her own daughter's husband, and Cicero could barely get the words out. Unbelievable, he called it, unheard of in all his years. Rome was not a prudish place. Its poets joked about affairs, its generals collected mistresses, and its gods behaved worse than its citizens. But even Rome kept a short list of things beyond the pale, and the family line sat at the top of the list. Taking your father's wife was not on the menu of Roman vice. Their own law forbade it, and their own moralists gagged at it.</p>
       <p>That is what makes the Corinthian case so devastating. This was not a church stumbling over the ordinary temptations of a port city. A man had taken his father's wife, crossing a line Israel's law had drawn in ink centuries earlier and pagan Rome had never dared erase. The one place in that whole city where the affair raised no eyebrows was the congregation of Jesus. So today's question is not how such a thing could happen in a church. People fail everywhere. The question is how a church could watch it happen and feel proud of itself. When God's people lose the ability to blush, the world notices before they do.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>For four chapters Paul has been coaxing a divided church, reasoning with it, pleading with it. Then a report stops the quill cold, and you can almost hear the tone change. It is actually reported. Not rumored, not whispered, reported, and the news has already crossed the sea. The whole chapter that follows (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.1-13" target="_blank" rel="noopener">1 Corinthians 5:1-13</a>) is Paul dealing with the fallout, and today we sit with the two shocks at the top of it. The first is what a church member was doing. The second, and Paul treats it as the worse one, is what the church was feeling about it.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>For four chapters Paul has been coaxing a divided church, reasoning with it, pleading with it. Then a report stops the quill cold, and you can almost hear the tone change. It is actually reported. Not rumored, not whispered, reported, and the news has already crossed the sea. The whole chapter that follows (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.1-13" target="_blank" rel="noopener" data-verse="1-corinthians-5-1-13" data-ref="1 Corinthians 5:1-13" aria-expanded="false">1 Corinthians 5:1-13</a>) is Paul dealing with the fallout, and today we sit with the two shocks at the top of it. The first is what a church member was doing. The second, and Paul treats it as the worse one, is what the church was feeling about it.</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 5:1-2 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:a56d69581ff1cf7e1037712d29a23bd6b59091e67d5a17175ac4f3eb6188e0b9 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 5:1-2</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.5.1-2" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>It is actually reported that there is sexual immorality among you, and of a kind that is intolerable even among pagans: A man has his father’s wife. <sup class="verse-number" aria-label="Verse 2">2</sup>And you are proud! Shouldn’t you rather have been stricken with grief and have removed from your fellowship the man who did this?</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.5.1-2" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 1">1</sup>It is actually reported that there is sexual immorality among you, and of a kind that is intolerable even among pagans: A man has his father’s wife. <sup class="verse-number" aria-label="Verse 2">2</sup>And you are proud! Shouldn’t you rather have been stricken with grief and have removed from your fellowship the man who did this?</div>
 <div class="verse-commentary">
-          <p>Paul names the problem with the broadest word Greek had for it, <em>porneia</em>, sexual immorality of every kind, the word that eventually gave us "pornography." Then comes the detail that made even hardened Corinth blush. A man has his father's wife (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.1" target="_blank" rel="noopener">1 Corinthians 5:1</a>), his stepmother, crossing a line the Torah had drawn in ink (<a class="vlink" href="https://www.bible.com/bible/3034/LEV.18.7-8" target="_blank" rel="noopener">Leviticus 18:7-8</a>) and even pagan law refused to cross. The report came through people from Chloe's household (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.11" target="_blank" rel="noopener">1 Corinthians 1:11</a>), so this was no anonymous smear. But watch where Paul aims his shock. Not first at the man. At the congregation. And you are arrogant (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.2" target="_blank" rel="noopener">1 Corinthians 5:2</a>)! They knew, and the knowing had curdled into a strange pride, as if tolerating what even outsiders condemned proved how free in Christ they were. Grief was the sane response. They chose applause.</p>
+          <p>Paul names the problem with the broadest word Greek had for it, <em>porneia</em>, sexual immorality of every kind, the word that eventually gave us "pornography." Then comes the detail that made even hardened Corinth blush. A man has his father's wife (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.1" target="_blank" rel="noopener" data-verse="1-corinthians-5-1" data-ref="1 Corinthians 5:1" aria-expanded="false">1 Corinthians 5:1</a>), his stepmother, crossing a line the Torah had drawn in ink (<a class="vlink" href="https://www.bible.com/bible/3034/LEV.18.7-8" target="_blank" rel="noopener" data-verse="leviticus-18-7-8" data-ref="Leviticus 18:7-8" aria-expanded="false">Leviticus 18:7-8</a>) and even pagan law refused to cross. The report came through people from Chloe's household (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.11" target="_blank" rel="noopener" data-verse="1-corinthians-1-11" data-ref="1 Corinthians 1:11" aria-expanded="false">1 Corinthians 1:11</a>), so this was no anonymous smear. But watch where Paul aims his shock. Not first at the man. At the congregation. And you are arrogant (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.2" target="_blank" rel="noopener" data-verse="1-corinthians-5-2" data-ref="1 Corinthians 5:2" aria-expanded="false">1 Corinthians 5:2</a>)! They knew, and the knowing had curdled into a strange pride, as if tolerating what even outsiders condemned proved how free in Christ they were. Grief was the sane response. They chose applause.</p>
         </div>
-      </div>
+      </figure>
 
-      <p>Why would a church do that? Paul never tells us, and honesty beats guessing too hard. Maybe the man was wealthy, a patron the congregation depended on and did not dare confront. Maybe they had twisted the slogan making the rounds in Corinth, everything is permissible for me (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.12" target="_blank" rel="noopener">1 Corinthians 6:12</a>), into a license grace never issued. We simply do not know. What we do know is the outcome. A church stared at a flagrant violation of God's design and trained itself to see nothing. Worse than nothing. It learned to call the blindness love.</p>
+      <p>Why would a church do that? Paul never tells us, and honesty beats guessing too hard. Maybe the man was wealthy, a patron the congregation depended on and did not dare confront. Maybe they had twisted the slogan making the rounds in Corinth, everything is permissible for me (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.12" target="_blank" rel="noopener" data-verse="1-corinthians-6-12" data-ref="1 Corinthians 6:12" aria-expanded="false">1 Corinthians 6:12</a>), into a license grace never issued. We simply do not know. What we do know is the outcome. A church stared at a flagrant violation of God's design and trained itself to see nothing. Worse than nothing. It learned to call the blindness love.</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 5:6 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:cb41e0afe1af50cb2209e48bd9392caa494a78821ae569d1cc27cc24002873bf | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 5:6</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.5.6" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.5.6" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Your boasting is not good. Do you not know that a little leaven works through the whole batch of dough?</div>
 <div class="verse-commentary">
           <p>Every Jewish family knew the ritual. Before Passover you swept the house for leaven, every crumb of it, because the feast required bread with nothing working through it. Paul reaches for that picture on purpose. Yeast is quiet. It never announces itself. It just spreads, cell by cell, until the whole batch rises on its influence. Tolerated sin behaves exactly the same way. The affair was one household's scandal, but the tolerance belonged to everyone, and tolerance teaches. Every week the matter went unaddressed, the whole congregation was quietly learning a new definition of normal, the way dough learns from a pinch of yeast. Paul is not panicking over one man's failure. He is watching a church's conscience ferment. What a church refuses to name, it eventually stops noticing. And what it stops noticing, it starts producing.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Train You Stop Hearing</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Train You Stop Hearing</h3>
       <p>Ask anyone who has ever moved into a house beside train tracks. The first night, the 2 a.m. freight sounds like it is coming through the bedroom wall. The windows rattle, the dog barks, and you lie there wondering what you have done. Two weeks later you barely stir. A month in, you hear nothing at all. Then a friend stays over, staggers into the kitchen the next morning and asks how on earth you slept through that, and you answer with a straight face. Through what? You are not pretending. Your brain filed a freight train under normal without ever asking your permission. The whole street sleeps the same way. Kids who grow up there never hear the train at all.</p>
       <p>That is the church in Corinth. The scandal came thundering through the congregation on schedule, week after week, and the members slept right through it. Nobody voted to approve it. Nobody preached a sermon defending it. They just adjusted, a little at a time, until the unthinkable became part of the house. And when visitors winced, the church smiled the way locals smile at jumpy houseguests, quietly proud of how unbothered it had become. Paul's letter is the friend at breakfast asking how anyone in this house is still sleeping. Sin's favorite trick is not persuasion. It is repetition. Keep a thing close enough, long enough, and it stops sounding like anything. The train never got quieter. The house went deaf.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Four Missing Bolts and a Factory That Stopped Noticing</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>Four Missing Bolts and a Factory That Stopped Noticing</h3>
       <p>On January 5, 2024, a panel the size of a refrigerator door tore off the side of Alaska Airlines Flight 1282 a few minutes after takeoff from Portland. The cabin depressurized in an instant. A teenager's shirt was ripped off his body, phones were sucked into the night sky, and only a nearly empty row beside the hole kept the story from turning deadly. Investigators traced the failure to something almost unbelievable. Months earlier, workers at Boeing's Renton factory had opened that door plug for a repair and reinstalled it without the four bolts that hold it in place. No paperwork recorded the job. No inspection caught it. The jet then flew 154 flights with nothing but friction keeping the panel on.</p>
       <p>When the National Transportation Safety Board announced its findings at a board meeting in June 2025, the probable cause was not one careless mechanic. It was a factory culture, years of inadequate training, guidance, and oversight in which skipped steps and missing records had quietly become normal. The board's chair said the deficiencies should have been evident and should have been preventable. Here is the detail worth losing sleep over. For 154 flights, the missing bolts seemed fine, and every safe landing testified that nothing was wrong. Tolerated deviation always works that way. It rewards you right up until it ruins you. The Corinthian church's scandal was flying fine too, and their pride was 154 smooth landings deep. The blowout is never the moment the failure happens. It is only the moment the failure stops being deniable.</p>
       <!-- TODAYS_WORLD_SOURCE: Boeing's Inadequate 'Training, Guidance and Oversight' Led to Mid-Exit Door Plug Blowout on Passenger Jet | National Transportation Safety Board | 2025 | https://www.ntsb.gov/news/press-releases/Pages/NR20250624.aspx -->
-    </div>
+    <details class="disclosure source-disclosure"><summary class="disclosure-summary"><span class="disclosure-label">Source</span> <span class="disclosure-publisher">National Transportation Safety Board</span></summary><div class="disclosure-body"><p><cite>Boeing's Inadequate 'Training, Guidance and Oversight' Led to Mid-Exit Door Plug Blowout on Passenger Jet</cite>. National Transportation Safety Board, 2025. <a href="https://www.ntsb.gov/news/press-releases/Pages/NR20250624.aspx" target="_blank" rel="noopener noreferrer">Read the source</a>.</p></div></details></section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Follow Paul's leaven picture one verse further and you land at the cross. Clean out the old leaven, he writes, for Christ our Passover lamb has been sacrificed (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.7" target="_blank" rel="noopener">1 Corinthians 5:7</a>). Notice the tense. The Lamb is not about to die, waiting on our housecleaning. He has already been sacrificed. In every Jewish home the order was fixed. The lamb died, and the leaven went out the door, because you do not keep the feast with old rot in the walls. Paul is saying the church lives permanently inside that moment. Calvary has already happened. The blood is already on the doorposts. The only question left is whether we will sweep the house. That is why tolerating the scandal was not extra grace. It was forgetting what grace cost. A church that shrugs at sin is not being generous with Jesus' mercy. It is being careless with His blood. The Lamb has died. Sweep the house.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Follow Paul's leaven picture one verse further and you land at the cross. Clean out the old leaven, he writes, for Christ our Passover lamb has been sacrificed (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.7" target="_blank" rel="noopener" data-verse="1-corinthians-5-7" data-ref="1 Corinthians 5:7" aria-expanded="false">1 Corinthians 5:7</a>). Notice the tense. The Lamb is not about to die, waiting on our housecleaning. He has already been sacrificed. In every Jewish home the order was fixed. The lamb died, and the leaven went out the door, because you do not keep the feast with old rot in the walls. Paul is saying the church lives permanently inside that moment. Calvary has already happened. The blood is already on the doorposts. The only question left is whether we will sweep the house. That is why tolerating the scandal was not extra grace. It was forgetting what grace cost. A church that shrugs at sin is not being generous with Jesus' mercy. It is being careless with His blood. The Lamb has died. Sweep the house.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Somewhere in your life there is a thing you have renamed. Scripture calls it sin, and you have been calling it a quirk, a coping mechanism, a private matter, no big deal. Today, before God, use its real name. Say it out loud in prayer, without the softer word. Then take one concrete step against it before the day ends, delete the app, end the conversation, pour it out, make the call. Grief over sin is not self-hatred. It is the first honest step home.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we have been reading about Corinth, but You have been reading us. We confess that we have our own tolerated things, sins we have relabeled until they sound like personality. We confess that we have sometimes been proud of our tolerance, calling it love, calling it grace, while something You died to remove settled deeper into the house. Give us the gift we least want and most need, the ability to blush again. Teach us to grieve sin without despising sinners, starting with the one in the mirror. Keep us tender toward the man in this story, because his road, repentance and restoration, is the road we all walk home. And thank You that the Lamb has already been sacrificed, that the price is already paid. Help us sweep the house. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"What has your church family, or your own heart, drifted into tolerating that Scripture clearly condemns, all under the banner of love and acceptance (a habit everyone jokes about, a relationship pattern nobody questions, a business practice that pays too well to examine)? And if you pictured actually addressing it, what would grieving it look like, instead of either shrugging at it or attacking the people caught in it?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"What has your church family, or your own heart, drifted into tolerating that Scripture clearly condemns, all under the banner of love and acceptance (a habit everyone jokes about, a relationship pattern nobody questions, a business practice that pays too well to examine)? And if you pictured actually addressing it, what would grieving it look like, instead of either shrugging at it or attacking the people caught in it?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, we have been reading about Corinth, but You have been reading us. We confess that we have our own tolerated things, sins we have relabeled until they sound like personality. We confess that we have sometimes been proud of our tolerance, calling it love, calling it grace, while something You died to remove settled deeper into the house. Give us the gift we least want and most need, the ability to blush again. Teach us to grieve sin without despising sinners, starting with the one in the mirror. Keep us tender toward the man in this story, because his road, repentance and restoration, is the road we all walk home. And thank You that the Lamb has already been sacrificed, that the price is already paid. Help us sweep the house. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-07-18.html"><span class="day-nav-kicker">← Saturday</span><span class="day-nav-title">Sin in the Church</span></a><a class="day-nav-item" href="/bible-study/2026-07-20.html"><span class="day-nav-kicker">Monday →</span><span class="day-nav-title">Dealing With Scandals</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"1-corinthians-5-1-13":{"ref":"1 Corinthians 5:1-13","text":"It is actually reported that there is sexual immorality among you, and of a kind that is intolerable even among pagans: A man has his father\u2019s wife. And you are proud! Shouldn\u2019t you rather have been stricken with grief and have removed from your fellowship the man who did this? Although I am absent from you in body, I am present with you in spirit, and I have already pronounced judgment on the one who did this, just as if I were present. When you are assembled in the name of our Lord Jesus and I am with you in spirit, along with the power of the Lord Jesus, hand this man over to Satan for the destruction of the flesh, so that his spirit may be saved on the Day of the Lord. Your boasting is not good. Do you not know that a little leaven works through the whole batch of dough? Get rid of the old leaven, that you may be a new unleavened batch, as you really are. For Christ, our Passover lamb, has been sacrificed. Therefore let us keep the feast, not with the old bread, leavened with malice and wickedness, but with the unleavened bread of sincerity and of truth. I wrote you in my letter not to associate with sexually immoral people. I was not including the sexually immoral of this world, or the greedy and swindlers, or idolaters. In that case you would have to leave this world. But now I am writing you not to associate with anyone who claims to be a brother but is sexually immoral or greedy, an idolater or a verbal abuser, a drunkard or a swindler. With such a man do not even eat. What business of mine is it to judge those outside the church? Are you not to judge those inside? God will judge those outside. \u201cExpel the wicked man from among you.\u201d","bibleUrl":"https://www.bible.com/bible/3034/1CO.5.1-13"},"1-corinthians-5-1":{"ref":"1 Corinthians 5:1","text":"It is actually reported that there is sexual immorality among you, and of a kind that is intolerable even among pagans: A man has his father\u2019s wife.","bibleUrl":"https://www.bible.com/bible/3034/1CO.5.1"},"leviticus-18-7-8":{"ref":"Leviticus 18:7-8","text":"You must not expose the nakedness of your father by having sexual relations with your mother. She is your mother; you must not have sexual relations with her. You must not have sexual relations with your father\u2019s wife; it would dishonor your father.","bibleUrl":"https://www.bible.com/bible/3034/LEV.18.7-8"},"1-corinthians-1-11":{"ref":"1 Corinthians 1:11","text":"My brothers, some from Chloe\u2019s household have informed me that there are quarrels among you.","bibleUrl":"https://www.bible.com/bible/3034/1CO.1.11"},"1-corinthians-5-2":{"ref":"1 Corinthians 5:2","text":"And you are proud! Shouldn\u2019t you rather have been stricken with grief and have removed from your fellowship the man who did this?","bibleUrl":"https://www.bible.com/bible/3034/1CO.5.2"},"1-corinthians-6-12":{"ref":"1 Corinthians 6:12","text":"\u201cEverything is permissible for me,\u201d but not everything is beneficial. \u201cEverything is permissible for me,\u201d but I will not be mastered by anything.","bibleUrl":"https://www.bible.com/bible/3034/1CO.6.12"},"1-corinthians-5-7":{"ref":"1 Corinthians 5:7","text":"Get rid of the old leaven, that you may be a new unleavened batch, as you really are. For Christ, our Passover lamb, has been sacrificed.","bibleUrl":"https://www.bible.com/bible/3034/1CO.5.7"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

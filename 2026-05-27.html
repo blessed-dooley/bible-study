@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>The Law and the Gospel — Daily Bible Study</title>
 <meta name="study-title" content="The Law and the Gospel">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Part 5 of 7">
+<meta name="study-passage" content="Matthew 5:17">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Day 5 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="The Law and the Gospel">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Part 5 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Day 5 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-05-27.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Part 5 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Day 5 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,334 +38,214 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>The Law and the Gospel</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 9, Sin, the Gospel, and the Law</span>
-      <span>Part 5 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Wed · May 27</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">12 min</span>
     </div>
-    <div class="date-badge">May 27, 2026</div>
+    <h1 class="study-title">The Law and the Gospel</h1>
+    <p class="study-sub"><span class="sub-title">Sin, the Gospel, and the Law</span><span class="sub-facts"><span>Lesson 9</span><span>Day 5 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">The law never forgives anyone, but Jesus walks up a Galilean hillside and announces in fifteen words that He has come to fill the law full of the very thing it could not do for us on its own.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p class="tldr-hook">The law never forgives anyone, but Jesus walks up a Galilean hillside and announces in fifteen words that He has come to fill the law full of the very thing it could not do for us on its own.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span><span>The law can name the wound but cannot close it. It points out why we need to be forgiven. It cannot do the forgiving.</span></li>
-        <li><span class="bullet-icon">☩</span><span>Jesus did not come to demolish the law. He came to fill it to the brim, to live every commandment all the way through on our behalf and to absorb its verdict in our place.</span></li>
-        <li><span class="bullet-icon">☩</span><span>Paul lands the news in one sentence in Romans 3:28: a person is justified by faith, apart from the works of the law. The work was never ours to do. It was His.</span></li>
-        <li><span class="bullet-icon">☩</span><span>Love for Jesus is at the center of the law. We do not obey to earn standing; we obey because the One who earned it for us said, "If you love me, you will keep my commandments."</span></li>
+        <li>
+<span class="bullet-icon">☩</span><span>The law can name the wound but cannot close it. It points out why we need to be forgiven. It cannot do the forgiving.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span>Jesus did not come to demolish the law. He came to fill it to the brim, to live every commandment all the way through on our behalf and to absorb its verdict in our place.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span>Paul lands the news in one sentence in Romans 3:28: a person is justified by faith, apart from the works of the law. The work was never ours to do. It was His.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span>Love for Jesus is at the center of the law. We do not obey to earn standing; we obey because the One who earned it for us said, "If you love me, you will keep my commandments."</span>
+</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday Paul named what the law does and John named what sin is. The law is the X-ray that resolves the vague shape of "trouble" into the specific name of the tumor. <em>Anomia</em>. The lane line we have been an inch outside of for years. Today the diagnosis is complete and the room goes quiet. Because the law can name the wound, but the law cannot close it. The X-ray does not perform surgery. If yesterday's verses left you sober, today's verses are the reason the sober person can still smile in the waiting room. The Surgeon has already come down the hall. His name is Jesus. He came to fulfill what the law was pointing at the whole time.</p>
-    </div>
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday Paul named what the law does and John named what sin is. The law is the X-ray that resolves the vague shape of "trouble" into the specific name of the tumor. <em>Anomia</em>. The lane line we have been an inch outside of for years. Today the diagnosis is complete and the room goes quiet. Because the law can name the wound, but the law cannot close it. The X-ray does not perform surgery. If yesterday's verses left you sober, today's verses are the reason the sober person can still smile in the waiting room. The Surgeon has already come down the hall. His name is Jesus. He came to fulfill what the law was pointing at the whole time.</p>
+    </section>
 
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Hillside Where the Rumor Was Already Loud</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Hillside Where the Rumor Was Already Loud</h3>
       <p>Matthew 5:17 is the seventeenth verse of the longest recorded sermon Jesus ever preached. Galilee in the early 30s was a region full of competing teachers, and the religious leadership in Jerusalem had been watching this particular rabbi for months. The rumor had been building. He healed on Sabbaths. He let His disciples pluck grain on Sabbaths. He ate with tax collectors. He touched lepers. He spoke with a woman at a Samaritan well. To the trained Pharisaic ear, the pattern looked like a man dismantling the law, brick by brick, and the leadership had begun to ask the question their authority required them to ask. Is this teacher loosening the Torah?</p>
       <p>That is the question Jesus answers in the seventeenth verse of His sermon, before anyone has even put it to Him directly. The Greek verb behind "abolish" is <em>kataluo</em>, the word for tearing a building down to its foundation stones. The Greek verb behind "fulfill" is <em>pleroo</em>, the word for filling a jar to the brim. He is not asking His audience to choose between two versions of the law (a strict and a relaxed one). He is announcing that the law has always been a container waiting for the right content. He is the content. Every commandment was a half-line of music waiting for the rest of the melody, and on the hillside in front of a crowd of fishermen and farmers and a few suspicious Pharisees, the music finally has a singer.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Two single sentences from two different writers, side by side, give us the whole hinge of the Christian gospel. Jesus on the hillside in Matthew. Paul in the Roman house churches in Romans. Then a third line from the same Jesus on the night before He died, the line that tells us what the rescued life actually looks like. Three sentences. The law and the gospel, held in the same hand at last.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Two single sentences from two different writers, side by side, give us the whole hinge of the Christian gospel. Jesus on the hillside in Matthew. Paul in the Roman house churches in Romans. Then a third line from the same Jesus on the night before He died, the line that tells us what the rescued life actually looks like. Three sentences. The law and the gospel, held in the same hand at last.</p>
 
 <!-- BSB_BLOCK: Matthew 5:17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:128ca3127414e8b7bbd4c604630b1098d39dabee79a34925c44f1e248e79a951 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Matthew 5:17</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.5.17" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/MAT.5.17" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text"><span class="words-of-jesus">Do not think that I have come to abolish the Law or the Prophets. I have not come to abolish them, but to fulfill them.</span></div>
 <div class="verse-commentary">
           <p>Two Greek verbs in one sentence. <em>Kataluo</em> on the negative side is the verb for demolishing a structure, the kind of word a soldier would use when he was about to take down a wall. <em>Pleroo</em> on the positive side is the verb for filling a container completely, the kind of word a host would use when he poured wine until it reached the lip of the cup. Jesus is not just saying "I am not against the law." He is saying "I am the filling the law has been waiting for." The Old Testament's hundreds of commandments and prophecies were a series of empty cups arranged on a long table; the Son of God walked up to the table in Galilee and started filling them.</p>
           <p>That single verb <em>pleroo</em> is doing the heaviest theological work in the verse. It points in three directions at once. Backward, to Jesus's perfect obedience to the law in every breath of His thirty-three years (He never once stepped outside the lane line; He <em>filled</em> every commandment completely). Forward, to the cross, where the law's verdict against our lawlessness was honored against His body (He <em>filled</em> the law's penalty all the way to the bottom of the cup). And outward, to us, because the obedience He earned and the penalty He absorbed are credited to people who could not have produced either. The law has not been demolished. The law has been emptied of its power to condemn us and refilled with the Son who satisfied it.</p>
           <p>This is why the sentence is good news rather than terrifying news. The law that named our sin yesterday was always pointing forward to the Person who would do for us what we could not do. The hillside in Galilee is the room where the law finally meets the One it was waiting for. The next verse Jesus speaks (5:18) is even sharper: not one stroke of a Hebrew letter will pass away from the law until everything is accomplished. The law is permanent. It is also fulfilled. Those two sentences are friends, not enemies.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Romans 3:28 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:1d5ebe3c526e7e17f967c11c1a28122bf695f3591112fa39b81082383f9d6ffa | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Romans 3:28</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.3.28" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ROM.3.28" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">For we maintain that a man is justified by faith apart from works of the law.</div>
 <div class="verse-commentary">
           <p>Paul drops the news in seventeen English words. The Greek is even more compact: <em>logizometha gar dikaiousthai pistei anthropon choris ergon nomou</em>. The verb <em>logizometha</em> is the bookkeeping verb, "we credit to the account." The verb <em>dikaiousthai</em> is the verb the courtroom uses when a judge pronounces the defendant in the right. The two prepositions do the rest of the work. <em>Pistei</em>, "by faith," names the channel. <em>Choris ergon nomou</em>, "apart from works of law," shuts the other door. Whatever we have been bringing to the Judge as our case for standing, Paul is telling us we can leave it in the hallway. The Judge has already heard the case He needed to hear, and the case was His Son's life and death on our behalf.</p>
-          <p>Four more verses around this one say the same thing in a different voice. <a class="vlink" href="https://www.bible.com/bible/3034/ROM.4.13-16" target="_blank" rel="noopener">Romans 4:13-16</a> walks back to Abraham and says the promise came to him before the law was given, so the inheritance is by promise and not by works. <a class="vlink" href="https://www.bible.com/bible/3034/GAL.2.16" target="_blank" rel="noopener">Galatians 2:16</a> repeats the formula three times in a single verse to make sure no one misses it: not by works of the law, but by faith in Jesus Christ. <a class="vlink" href="https://www.bible.com/bible/3034/GAL.3.13" target="_blank" rel="noopener">Galatians 3:13</a> says Christ redeemed us from the curse of the law by becoming the curse for us. <a class="vlink" href="https://www.bible.com/bible/3034/PHP.3.9" target="_blank" rel="noopener">Philippians 3:9</a> names Paul's own exchange: a righteousness of his own from the law, traded for the righteousness from God that comes by faith. Five verses, one verdict. Justification was never something we could afford to buy. It is the gift the Surgeon paid for so we could walk out of the operating room alive.</p>
+          <p>Four more verses around this one say the same thing in a different voice. <a class="vlink" href="https://www.bible.com/bible/3034/ROM.4.13-16" target="_blank" rel="noopener" data-verse="romans-4-13-16" data-ref="Romans 4:13-16" aria-expanded="false">Romans 4:13-16</a> walks back to Abraham and says the promise came to him before the law was given, so the inheritance is by promise and not by works. <a class="vlink" href="https://www.bible.com/bible/3034/GAL.2.16" target="_blank" rel="noopener" data-verse="galatians-2-16" data-ref="Galatians 2:16" aria-expanded="false">Galatians 2:16</a> repeats the formula three times in a single verse to make sure no one misses it: not by works of the law, but by faith in Jesus Christ. <a class="vlink" href="https://www.bible.com/bible/3034/GAL.3.13" target="_blank" rel="noopener" data-verse="galatians-3-13" data-ref="Galatians 3:13" aria-expanded="false">Galatians 3:13</a> says Christ redeemed us from the curse of the law by becoming the curse for us. <a class="vlink" href="https://www.bible.com/bible/3034/PHP.3.9" target="_blank" rel="noopener" data-verse="philippians-3-9" data-ref="Philippians 3:9" aria-expanded="false">Philippians 3:9</a> names Paul's own exchange: a righteousness of his own from the law, traded for the righteousness from God that comes by faith. Five verses, one verdict. Justification was never something we could afford to buy. It is the gift the Surgeon paid for so we could walk out of the operating room alive.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: John 14:15 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:7531e3fcd0396da6996e4ef23aef58958a1f251d06a04ecd0185f6de2c39c8aa | footnotes-stripped:1 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">John 14:15</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.14.15" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/JHN.14.15" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text"><span class="words-of-jesus">If you love Me, you will keep My commandments.</span></div>
 <div class="verse-commentary">
           <p>Jesus says this sentence in the upper room on the night before He dies, after washing the disciples' feet and before praying the longest recorded prayer of His life. The sentence is small. Its architecture is enormous. The "if" is a real conditional; the Greek does not soften it. The "you will keep" is a future indicative; Jesus is not commanding obedience so much as predicting it. Where genuine love for Him lives, kept commandments are the natural growth.</p>
           <p>This is the verse that holds law and gospel together without collapsing either. Salvation is not by keeping the commandments (Romans 3:28 closed that door fifteen minutes ago in our reading). But the saved life is not commandment-free either (Matthew 5:17 closed that door fifteen minutes before that). The bridge between the two doors is in this verse. We do not obey to earn what Jesus has already given us. We obey because we love the One who gave it, and because His Spirit now lives in us as the energy that makes obedience possible. The lawless life and the legalistic life look like opposite sins, but they share one root: a heart that has not yet been melted by love for Jesus. When the heart melts, the law is not a burden anymore. It is a love language.</p>
           <p>The law and the gospel are not two systems. They are two beats of one heart.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: John 14:15 | 14:15 Or If you love Me, keep -->
-    </div>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Empty Mold and the Bronze</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Empty Mold and the Bronze</h3>
       <p>At the back of every bronze foundry there is a room nobody photographs. The wax sculpture has already been finished by the artist, polished for weeks, every contour exactly as he intends. The wax has been encased in fire-resistant plaster. The plaster has been put in a kiln until the wax melts and drains out a hole at the bottom, leaving behind a hollow that holds the exact negative space of every detail the artist sculpted. That room is the empty room. The mold is finished. It is perfectly precise. It is also useless. The artist could put it on a shelf and look at it for the rest of his life and the statue would never exist.</p>
       <p>Then the bronze comes. The crucible is glowing orange. Two men in leather aprons pour the molten metal into the cavity the wax left, and the bronze runs into every crevice the mold defines, taking the exact shape the wax once had. When the plaster is broken away the next day, what stands there is not the wax and not the mold. It is the bronze, in the precise form the mold had been waiting for. The mold and the bronze are not opposites. They are one statue from two sides. That is what Matthew 5:17 means by the Greek verb <em>pleroo</em>. Jesus did not come to break the mold. He came to be the bronze. The law had been holding the exact shape of righteousness empty in the air for fifteen hundred years, and the Son of God walked into the foundry and filled every contour with His own life.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Same Alphabet, Two Operations</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Same Alphabet, Two Operations</h3>
       <p>In December 2023, the U.S. Food and Drug Administration approved a treatment for sickle cell disease that does something genetics had only theorized about for the better part of a century. The therapy, called Casgevy, uses CRISPR-Cas9 to make a precise edit in the patient's own DNA, reactivating the fetal hemoglobin most adults stop producing in infancy. The reactivated hemoglobin steps in for the adult hemoglobin the sickle cell mutation had broken, and the disease effectively goes silent. Follow-up data published in 2025 confirmed what the clinical trials had already suggested. In one study, 96.7 percent of treated patients were free at the one-year mark of the painful vaso-occlusive crises that define the disease, and one hundred percent were free of hospitalization. A disease that had defined the patient's life since infancy was, by every measurable marker, no longer expressing itself.</p>
       <p>Notice what made the treatment possible. Sickle cell disease has been understood at the molecular level since Linus Pauling identified it in 1949 as the first "molecular disease," with a known point mutation in the hemoglobin gene as its precise cause. For three quarters of a century, the field knew exactly which letter of the patient's DNA was wrong. They could read the mutation in every patient's blood. They could not edit it. The naming was complete; the cure could not be acted on. What changed in this decade was not the diagnosis. It was the arrival of a new instrument written in the same alphabet, a way of going into the same DNA the diagnosis was already pointing at and writing a new line that bypasses the broken one.</p>
       <p>That is the architecture of the law and the gospel. The law had been reading the mutation in human nature with perfect precision since Sinai. It could not edit what it could read. Yesterday's Romans 3:20 named the wound; today's Romans 3:28 names the cure, and the eight verses between them are the distance between knowing the letter and being able to do something about it. Jesus did not abolish the alphabet. He came as the instrument written in it, and He went in and rewrote the part the law could only point at. The law and the gospel are the same field's two operations on the same letter.</p>
-    </div>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>The whole day has been an extended Christ Connection, but it deserves one last line in its own voice. Look at the cross from underneath. The law is hanging on it. Every commandment we have ever broken, every glance we did not look away from, every angry word, every silent contempt, every Sabbath we resented, every truth we shaved down, every neighbor we did not love as ourselves. The verdict the law had every right to hand down is being honored against the body of the One who never broke a single commandment in His life. That is the gospel inside the law. The same God who spoke the Ten from Sinai is hanging on the wood that absorbed their verdict. The law is not abolished. The law is not relaxed. The law is filled to the brim and poured out in blood, so that anyone who comes to Him by faith can stand in the courtroom and hear the bookkeeping verb of Romans 3:28 read out loud over them. Credited. Justified. Yours by faith, apart from the works of the law, because of Him.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>The whole day has been an extended Christ Connection, but it deserves one last line in its own voice. Look at the cross from underneath. The law is hanging on it. Every commandment we have ever broken, every glance we did not look away from, every angry word, every silent contempt, every Sabbath we resented, every truth we shaved down, every neighbor we did not love as ourselves. The verdict the law had every right to hand down is being honored against the body of the One who never broke a single commandment in His life. That is the gospel inside the law. The same God who spoke the Ten from Sinai is hanging on the wood that absorbed their verdict. The law is not abolished. The law is not relaxed. The law is filled to the brim and poured out in blood, so that anyone who comes to Him by faith can stand in the courtroom and hear the bookkeeping verb of Romans 3:28 read out loud over them. Credited. Justified. Yours by faith, apart from the works of the law, because of Him.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Sit with one verse today, twice. Read Romans 3:28 in the morning and again in the evening, out loud, the second time replacing "a person" with your own name. ("For we conclude that <em>your name here</em> is justified by faith apart from the works of the law.") Between the two readings, do one ordinary act of obedience to a commandment you have been quietly skipping. Make the phone call. Cancel the lie. Confess the small theft of time. Whichever one comes to mind first is probably the right one. Then read the verse again. The morning reading is what the gospel says about you. The evening reading is what the gospel says is still true, after the day you actually had.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we are tired of trying to keep the law to be loved by You and we are tired of pretending we do not need to keep it because You already love us. Both of those postures are exhausting and neither is the gospel. Forgive us for swinging between them like a pendulum, sometimes scared, sometimes flippant, never settled. Today let the news of Romans 3:28 land in the chest like a stone in a still pond. We are justified by faith, apart from anything we have done. The work was Your Son's. He fulfilled the law for us, every commandment all the way through, and absorbed its verdict in our place. Now teach us the kind of obedience that grows out of love rather than fear. Make Jesus so dear to us this week that keeping His commands feels less like a burden and more like the way we say His name. We do not stand on our record. We stand on His. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"Which pole have you been living closer to lately, the one where you secretly hope your obedience is earning God's approval, or the one where you assume your justification means a particular commandment does not really apply to you anymore? (A daily worry that you have not done enough. A Sabbath habit you have quietly let drift. A relational obligation you have stopped honoring because 'I'm forgiven.' A devotional rhythm you sustain mostly to feel safe.) What would change this week if you let Romans 3:28 settle the standing question, and John 14:15 settle the obedience question, at the same time?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"Which pole have you been living closer to lately, the one where you secretly hope your obedience is earning God's approval, or the one where you assume your justification means a particular commandment does not really apply to you anymore? (A daily worry that you have not done enough. A Sabbath habit you have quietly let drift. A relational obligation you have stopped honoring because 'I'm forgiven.' A devotional rhythm you sustain mostly to feel safe.) What would change this week if you let Romans 3:28 settle the standing question, and John 14:15 settle the obedience question, at the same time?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, we are tired of trying to keep the law to be loved by You and we are tired of pretending we do not need to keep it because You already love us. Both of those postures are exhausting and neither is the gospel. Forgive us for swinging between them like a pendulum, sometimes scared, sometimes flippant, never settled. Today let the news of Romans 3:28 land in the chest like a stone in a still pond. We are justified by faith, apart from anything we have done. The work was Your Son's. He fulfilled the law for us, every commandment all the way through, and absorbed its verdict in our place. Now teach us the kind of obedience that grows out of love rather than fear. Make Jesus so dear to us this week that keeping His commands feels less like a burden and more like the way we say His name. We do not stand on our record. We stand on His. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-05-26.html"><span class="day-nav-kicker">← Tuesday</span><span class="day-nav-title">The Law</span></a><a class="day-nav-item" href="/bible-study/2026-05-28.html"><span class="day-nav-kicker">Thursday →</span><span class="day-nav-title">Knowing and Doing</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"romans-4-13-16":{"ref":"Romans 4:13-16","text":"For the promise to Abraham and his offspring that he would be heir of the world was not given through the law, but through the righteousness that comes by faith. For if those who live by the law are heirs, faith is useless and the promise is worthless, because the law brings wrath. And where there is no law, there is no transgression. Therefore, the promise comes by faith, so that it may rest on grace and may be guaranteed to all Abraham\u2019s offspring\u2014not only to those who are of the law, but also to those who are of the faith of Abraham. He is the father of us all.","bibleUrl":"https://www.bible.com/bible/3034/ROM.4.13-16"},"galatians-2-16":{"ref":"Galatians 2:16","text":"know that a man is not justified by works of the law, but by faith in Jesus Christ. So we, too, have believed in Christ Jesus, that we may be justified by faith in Christ and not by works of the law, because by works of the law no one will be justified.","bibleUrl":"https://www.bible.com/bible/3034/GAL.2.16"},"galatians-3-13":{"ref":"Galatians 3:13","text":"Christ redeemed us from the curse of the law by becoming a curse for us. For it is written: \u201cCursed is everyone who is hung on a tree.\u201d","bibleUrl":"https://www.bible.com/bible/3034/GAL.3.13"},"philippians-3-9":{"ref":"Philippians 3:9","text":"and be found in Him, not having my own righteousness from the law, but that which is through faith in Christ, the righteousness from God on the basis of faith.","bibleUrl":"https://www.bible.com/bible/3034/PHP.3.9"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

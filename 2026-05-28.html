@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Knowing and Doing — Daily Bible Study</title>
 <meta name="study-title" content="Knowing and Doing">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Part 6 of 7">
+<meta name="study-passage" content="Matthew 7:24-29">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Day 6 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Knowing and Doing">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Part 6 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Day 6 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-05-28.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Part 6 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Day 6 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,333 +38,214 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Knowing and Doing</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 9, Sin, the Gospel, and the Law</span>
-      <span>Part 6 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Thu · May 28</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">13 min</span>
     </div>
-    <div class="date-badge">May 28, 2026</div>
+    <h1 class="study-title">Knowing and Doing</h1>
+    <p class="study-sub"><span class="sub-title">Sin, the Gospel, and the Law</span><span class="sub-facts"><span>Lesson 9</span><span>Day 6 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">Jesus closes the longest sermon He ever preached with one image: two men, two houses, one storm, and the only thing that separates them is whether the words they both heard were also done.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p class="tldr-hook">Jesus closes the longest sermon He ever preached with one image: two men, two houses, one storm, and the only thing that separates them is whether the words they both heard were also done.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span><span>Hearing without doing is not the warm-up to obedience. It is its own kind of sand-foundation, and the storm is coming for it anyway.</span></li>
-        <li><span class="bullet-icon">☩</span><span>"Lord, Lord" doubled is the most reverent address in the Greek language. Jesus says even doubled it is not enough if the will of the Father is not also being done.</span></li>
-        <li><span class="bullet-icon">☩</span><span>Eternal life, in Jesus's own definition, is not a quantity of facts. It is knowing the only true God and the Son He sent, with the kind of knowing that runs through the hands and feet.</span></li>
-        <li><span class="bullet-icon">☩</span><span>The wise builder is the one who dug to the bedrock long before the rain. The wise life is the one that does the obedience now, not the one that promises to.</span></li>
+        <li>
+<span class="bullet-icon">☩</span><span>Hearing without doing is not the warm-up to obedience. It is its own kind of sand-foundation, and the storm is coming for it anyway.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span>"Lord, Lord" doubled is the most reverent address in the Greek language. Jesus says even doubled it is not enough if the will of the Father is not also being done.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span>Eternal life, in Jesus's own definition, is not a quantity of facts. It is knowing the only true God and the Son He sent, with the kind of knowing that runs through the hands and feet.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span>The wise builder is the one who dug to the bedrock long before the rain. The wise life is the one that does the obedience now, not the one that promises to.</span>
+</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday Paul and Jesus together gave us the architecture of the gospel. Justified by faith, apart from the works of the law (Romans 3:28). Not abolished, but fulfilled (Matthew 5:17). And the saved life that grows naturally out of love for the Savior: "If you love me, you will keep my commands" (John 14:15). Three sentences, one heartbeat. Today Jesus closes the same Sermon on the Mount with the most concrete image He ever picked. Two men, two houses, one storm. They have heard the same words. They have nodded at the same teaching. The only thing that separates them is whether the words went down through the ears into the foundations of the actual house, or whether they sat as decoration on the wall while the real building got put up on the sand.</p>
-    </div>
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday Paul and Jesus together gave us the architecture of the gospel. Justified by faith, apart from the works of the law (Romans 3:28). Not abolished, but fulfilled (Matthew 5:17). And the saved life that grows naturally out of love for the Savior: "If you love me, you will keep my commands" (John 14:15). Three sentences, one heartbeat. Today Jesus closes the same Sermon on the Mount with the most concrete image He ever picked. Two men, two houses, one storm. They have heard the same words. They have nodded at the same teaching. The only thing that separates them is whether the words went down through the ears into the foundations of the actual house, or whether they sat as decoration on the wall while the real building got put up on the sand.</p>
+    </section>
 
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Wadi That Was Dry Eleven Months of the Year</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Wadi That Was Dry Eleven Months of the Year</h3>
       <p>The image Jesus reaches for at the end of His sermon is not metaphor in the abstract; it is the most familiar image He could pick for the people listening to Him. In the Judean and Galilean countryside, a wadi is a dry riverbed that runs through a steep valley most of the year and looks, for eleven months, like a perfectly reasonable building site. The sand is smooth. The ground is level. The cost of clearing the lot is low. But for a few hours in the winter, when the rains come hard against the limestone hills above, the wadi fills in minutes with a torrent fast enough to carry full-grown livestock downstream. First-century Galilean fathers warned their sons about it the way coastal fathers today warn their children about riptides. You build on the hill, on the bedrock, on the place the storm has already tested. You do not build in the wadi just because the dirt is easy to move.</p>
       <p>So when Jesus describes a builder who "dug deep" before he laid a foundation (Luke's parallel in Luke 6:48 makes the digging explicit), every listener knew exactly what he meant. The wise builder put in days of unglamorous labor with a pick and a shovel before the first stone of the house was set. The foolish builder skipped the labor and put the same stone on the same sand and went home that evening with a faster project and no idea what the rain was about to do. Jesus is not adding a piece of advice at the end of His sermon. He is telling His audience how to know which of the two builders they have actually been for the previous two and a half chapters of His teaching.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Three texts sit in front of us this morning: the closing image of the Sermon on the Mount, the warning that comes just before it, and one verse from a different gospel that tells us what real knowing looks like. Take them in that order and the day's title (Knowing and Doing) starts doing its own teaching.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Three texts sit in front of us this morning: the closing image of the Sermon on the Mount, the warning that comes just before it, and one verse from a different gospel that tells us what real knowing looks like. Take them in that order and the day's title (Knowing and Doing) starts doing its own teaching.</p>
 
 <!-- BSB_BLOCK: Matthew 7:24-29 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:3d06bff8f1fbc68631fe9b922fe3898eb33ac916d1e6b72821d67d06cb6b835e | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Matthew 7:24-29</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.7.24-29" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 24">24</sup><span class="words-of-jesus">Therefore everyone who hears these words of Mine and acts on them is like a wise man who built his house on the rock.</span> <sup class="verse-number" aria-label="Verse 25">25</sup><span class="words-of-jesus">The rain fell, the torrents raged, and the winds blew and beat against that house; yet it did not fall, because its foundation was on the rock.</span> <sup class="verse-number" aria-label="Verse 26">26</sup><span class="words-of-jesus">But everyone who hears these words of Mine and does not act on them is like a foolish man who built his house on sand.</span> <sup class="verse-number" aria-label="Verse 27">27</sup><span class="words-of-jesus">The rain fell, the torrents raged, and the winds blew and beat against that house, and it fell—and great was its collapse!”</span> <sup class="verse-number" aria-label="Verse 28">28</sup>When Jesus had finished saying these things, the crowds were astonished at His teaching, <sup class="verse-number" aria-label="Verse 29">29</sup>because He taught as one who had authority, and not as their scribes.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/MAT.7.24-29" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 24">24</sup><span class="words-of-jesus">Therefore everyone who hears these words of Mine and acts on them is like a wise man who built his house on the rock.</span> <sup class="verse-number" aria-label="Verse 25">25</sup><span class="words-of-jesus">The rain fell, the torrents raged, and the winds blew and beat against that house; yet it did not fall, because its foundation was on the rock.</span> <sup class="verse-number" aria-label="Verse 26">26</sup><span class="words-of-jesus">But everyone who hears these words of Mine and does not act on them is like a foolish man who built his house on sand.</span> <sup class="verse-number" aria-label="Verse 27">27</sup><span class="words-of-jesus">The rain fell, the torrents raged, and the winds blew and beat against that house, and it fell—and great was its collapse!”</span> <sup class="verse-number" aria-label="Verse 28">28</sup>When Jesus had finished saying these things, the crowds were astonished at His teaching, <sup class="verse-number" aria-label="Verse 29">29</sup>because He taught as one who had authority, and not as their scribes.</div>
 <div class="verse-commentary">
           <p>The two builders hear exactly the same words. That is the part of the parable most readers miss on the first pass. Jesus does not separate them by intelligence, by access, by background, by zeal at church, or by quantity of teaching received. He separates them by one Greek verb. <em>Poieo</em>, "to do." The wise builder is the one who "hears and does" (<em>akouei... kai poiei</em>). The foolish builder is the one who "hears and does not do" (<em>akouei... kai me poion</em>). Same lecture. Same Sermon. Same Teacher. One went home and obeyed the next morning. The other went home and told his family how good the sermon was.</p>
           <p>The rock in the image is <em>petra</em> in Greek, the same word Jesus uses three chapters later (Matt. 16:18) when He names Peter and declares the church will be built on this rock. The rock is not a metaphor for ideology; it is the surface that holds when everything above it is being shaken. The digging-down-to-bedrock work is the work of obedience, the small, daily, unglamorous matter of doing the thing Jesus just said. Forgiving the person we were going to keep score against. Saying the apology we owed last week. Putting the phone down at the dinner table. Closing the tab. Calling the parent. The rain does not ask whether we knew the right answer. The rain asks what the foundation actually is.</p>
           <p>The Greek verb behind the foolish house's collapse is striking. <em>Epesen</em> ("it fell"), in the aorist tense, used elsewhere of Jericho's wall falling, of Babylon falling in Revelation. The collapse is total and instantaneous. The narrator then adds three Greek words that have echoed for two thousand years. <em>Megale he ptosis autes</em>: "great was the fall of it." The house was up. The house was finished. The house looked the same as the other one to the visitor walking by in the dry season. And then the storm came, and the only thing that mattered was the question no one could see from the street: what was underneath. Hearing without doing produces a house that looks identical to a built-on-bedrock life. Right up until the rain falls.</p>
           <p>The wise life is the one that does the obedience now, while the dirt is still easy to dig.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Matthew 7:21 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:2f9c68f918dc032434288eb3a5c2c21cdac8bda73d226d6a932f18f9f47a5844 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Matthew 7:21</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.7.21" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/MAT.7.21" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text"><span class="words-of-jesus">Not everyone who says to Me, ‘Lord, Lord,’ will enter the kingdom of heaven, but only he who does the will of My Father in heaven.</span></div>
 <div class="verse-commentary">
           <p>This is the verse three verses before the wise and foolish builders, and the two readings belong together. The doubled "Lord, Lord" is the most reverent address in first-century Greek. <em>Kyrie kyrie</em>, vocative, with the doubling that intensifies sincerity. The people Jesus has in mind in this verse are not the indifferent, the hostile, or the half-Christian. They are the very pious. They have shown up. They have used the correct address. They have, in the next two verses, prophesied and cast out demons and done many works in His name. And Jesus says, "I never knew you."</p>
           <p>Notice what Jesus does <em>not</em> say. He does not say "you never knew me." He says, "I never knew you." The Greek verb is <em>ginosko</em>, the same relational-knowing verb we met five weeks ago in John 17:3 (and we will meet again in two verses here). Jesus is not denying their facts about Him. He is denying that the relationship ever ran in the other direction. The line that decides the difference is the second half of the verse: "only he who <em>does</em> the will of My Father in heaven." The Greek word behind "will" is <em>thelema</em>, the same noun that crossed Jesus's lips in Gethsemane last week, "not as I will but as You will." The Father's will is what Jesus did all the way to the cross. The Father's will is what He is asking us to do in the small, daily room we are standing in this morning.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: John 17:3 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:69fa1efa9b527b68d65cd8075290c3979fec523b68e38ade19a323120f5846f1 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">John 17:3</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.17.3" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/JHN.17.3" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text"><span class="words-of-jesus">Now this is eternal life, that they may know You, the only true God, and Jesus Christ, whom You have sent.</span></div>
 <div class="verse-commentary">
           <p>Jesus prays this verse in the upper room on the night before His arrest, just minutes after the foot-washing. He has been talking to the Father about His followers and He pauses to define eternal life for them. The definition is not a quantity. It is not a duration. It is not a list of doctrines. Eternal life is to <em>know</em>. The Greek verb is <em>ginosko</em>, the same relational-knowing verb we met earlier this quarter when this exact verse was the Memory Text of an entire week. The Hebrew equivalent is <em>yada</em>, the same verb the Hebrew Bible reaches for when it talks about marital intimacy and covenant friendship. This is not the knowing of a witness on a stand reciting facts. It is the knowing of a husband and a wife after thirty years.</p>
-          <p>Place John 17:3 next to Matthew 7:21 and the week's title finally clicks together. The "knowing" that matters is the kind that is being shaped by doing. The "doing" that matters is the kind that is being shaped by knowing. The two are inseparable, like the two ventricles of one heart pumping the same blood. The God who could be destroyed because of a lack of knowledge in <a class="vlink" href="https://www.bible.com/bible/3034/HOS.4.1" target="_blank" rel="noopener">Hosea 4:1</a>, who told an exiled Israel they were "destroyed for lack of knowledge" in <a class="vlink" href="https://www.bible.com/bible/3034/HOS.4.6" target="_blank" rel="noopener">Hosea 4:6</a>, who watched them "play the harlot" without restraint in <a class="vlink" href="https://www.bible.com/bible/3034/HOS.4.10" target="_blank" rel="noopener">Hosea 4:10</a>, was never speaking of a deficit of information. He was speaking of a deficit of intimacy that broke into a deficit of obedience. The cure for both is the same cure, and His name is the One the Father sent.</p>
+          <p>Place John 17:3 next to Matthew 7:21 and the week's title finally clicks together. The "knowing" that matters is the kind that is being shaped by doing. The "doing" that matters is the kind that is being shaped by knowing. The two are inseparable, like the two ventricles of one heart pumping the same blood. The God who could be destroyed because of a lack of knowledge in <a class="vlink" href="https://www.bible.com/bible/3034/HOS.4.1" target="_blank" rel="noopener" data-verse="hosea-4-1" data-ref="Hosea 4:1" aria-expanded="false">Hosea 4:1</a>, who told an exiled Israel they were "destroyed for lack of knowledge" in <a class="vlink" href="https://www.bible.com/bible/3034/HOS.4.6" target="_blank" rel="noopener" data-verse="hosea-4-6" data-ref="Hosea 4:6" aria-expanded="false">Hosea 4:6</a>, who watched them "play the harlot" without restraint in <a class="vlink" href="https://www.bible.com/bible/3034/HOS.4.10" target="_blank" rel="noopener" data-verse="hosea-4-10" data-ref="Hosea 4:10" aria-expanded="false">Hosea 4:10</a>, was never speaking of a deficit of information. He was speaking of a deficit of intimacy that broke into a deficit of obedience. The cure for both is the same cure, and His name is the One the Father sent.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Brown Belt in the Parking Lot</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Brown Belt in the Parking Lot</h3>
       <p>Every karate studio in the country has the same wall of awkward stories. The brown belt who tested early because his memory was photographic. He could name every form in the curriculum, demonstrate every block at the chalkboard, recite the Japanese terms for every strike. He scored higher than anyone in the school on the written promotion test. What he did not do, between his green belt and his brown belt, was show up on Thursday nights when the sparring class met. He told himself he would, and he did once or twice, but the rest of the time he stayed home and watched videos of forms. He could perform every kata in the system with technically perfect lines. He had never, not once, been hit hard by another adult.</p>
       <p>A blue belt at the same school spent two Thursdays a month for two years getting his nose bloodied. His forms were sloppy. His promotion test scores were average. He could not name the Japanese term for half the strikes he used. But the night the two of them walked out to the parking lot together and a real fight came at them in the dark, only one of them moved. The brown belt's hands did not arrive. He had hours of technically correct rehearsal in his head and no muscle memory in his arms. The blue belt's body knew what to do before his brain caught up. Jesus closes the Sermon on the Mount with the same parking lot. Two builders, two houses, one storm. The teaching they heard was the same. The Thursday nights were not.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The If-Then That Closed the Gap</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The If-Then That Closed the Gap</h3>
       <p>In early 2025, the journal <em>Sustainable Production and Consumption</em> published a meta-analysis from a research team examining one of the most studied tools in modern behavioral psychology: the implementation intention. The technique is small enough to fit on an index card. Instead of just saying "I want to recycle more" or "I want to exercise next week," the person writes out an if-then sentence with a specific cue. "If it is six in the evening and I have finished dinner, then I will sort the recycling into the bin in the garage." The meta-analysis pulled together thirty-one studies covering 10,466 participants across pro-environmental behaviors and found an overall effect size of d = 0.781. In a field where small advances are normal, that is an unusually large number. People who had simply intended to act often did not. People who had written down when, where, and how they would act often did.</p>
       <p>The implementation-intention literature has been replicating across health behaviors, academic study habits, financial saving, and clinical follow-through for the better part of three decades. The same pattern keeps showing up. Knowledge alone does not move behavior reliably. Intention alone does not move behavior reliably. The variable that does move behavior is the specification of the doing: a concrete cue, a concrete location, a concrete moment, and the action linked to all three in a sentence the person actually writes down or says out loud. The if-then is not motivation. It is rehearsal of the doing before the doing happens.</p>
       <p>Jesus closed the longest sermon He ever preached with the same structure. "If" you hear these words of Mine, and you "do" them, you will be the wise builder when the storm comes. The if-then of Matthew 7:24 is the world's oldest implementation intention, and modern psychology is finally catching up to it. The verb the storm sorts by is not hearing. It is doing. And the way the doing actually arrives in someone's Thursday is when the hearing has been turned into a concrete moment with a cue, a location, and an action that has been rehearsed before the rain.</p>
-    </div>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Jesus is the one human being whose hearing and doing never came apart. Every word the Father spoke, He did. Every commandment the law named, He kept. Every will of the Father, He bent His own will to, including the cup He prayed not to drink in the garden across the brook last week. The doing-life He lived is the foundation we are being told to build on this morning, and the news of the gospel is that the foundation has already been poured. We are not asked to manufacture our own bedrock; we are asked to dig down through the sand of our own self-trust until we hit the rock the Father already placed for us, and to build the house of our days on top of Him. The doing Jesus calls us to is not earning. It is the natural movement of a life that has stopped pretending the storm is not coming. The next time the rain falls, the only question is whether what was heard from this Sermon is also what is being done in our actual week. The Person who taught the parable is the Person who is the rock.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Jesus is the one human being whose hearing and doing never came apart. Every word the Father spoke, He did. Every commandment the law named, He kept. Every will of the Father, He bent His own will to, including the cup He prayed not to drink in the garden across the brook last week. The doing-life He lived is the foundation we are being told to build on this morning, and the news of the gospel is that the foundation has already been poured. We are not asked to manufacture our own bedrock; we are asked to dig down through the sand of our own self-trust until we hit the rock the Father already placed for us, and to build the house of our days on top of Him. The doing Jesus calls us to is not earning. It is the natural movement of a life that has stopped pretending the storm is not coming. The next time the rain falls, the only question is whether what was heard from this Sermon is also what is being done in our actual week. The Person who taught the parable is the Person who is the rock.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Pick one thing you have heard from the Word of God in the last seven days but have not done. Maybe a forgiveness you have been delaying. Maybe a confession you owe a spouse. Maybe a gift you said you would give. Maybe a habit you said you would stop. Do that one thing before you sleep tonight, even if it is awkward, even if it costs you something, even if it requires a phone call you do not want to make. The act of doing is the digging-down to the rock. The hearing is the sermon. The doing is the foundation.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we have been very good at hearing and quietly bad at doing. We have absorbed sermons we never acted on, underlined Bible verses we never obeyed, agreed with truths we never lived. We are not the indifferent. We are the doubled-Lord-Lord crowd who can name the right answer in every spiritual conversation and have noticed that our actual life does not always change very much from week to week. Forgive us. Make us today the digging kind. Show us the one thing we have heard from You that has been waiting on us to do. Give us the courage to do it before the night closes. And remind us that the foundation is not something we are pouring; it is the rock You have already laid in the Person of Your Son, and we are simply being asked to build our small house on top of the bedrock You have provided. We do not want to be the house that fell with a great crash. We want to be the house that stood when the rain came. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"What is the truest thing about your life right now: that the storm has not come yet, or that the storm has come and revealed something about the foundation you had not noticed in the dry season? (A relationship that came apart in a hard month. A job loss that exposed where your security actually lived. A medical diagnosis that revealed which prayers you had been praying and which you had been performing. A grief that showed you what you actually believed about God.) What is one piece of the doing-life Jesus is asking you to build on the rock this week, while the dirt is still easy to dig?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"What is the truest thing about your life right now: that the storm has not come yet, or that the storm has come and revealed something about the foundation you had not noticed in the dry season? (A relationship that came apart in a hard month. A job loss that exposed where your security actually lived. A medical diagnosis that revealed which prayers you had been praying and which you had been performing. A grief that showed you what you actually believed about God.) What is one piece of the doing-life Jesus is asking you to build on the rock this week, while the dirt is still easy to dig?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, we have been very good at hearing and quietly bad at doing. We have absorbed sermons we never acted on, underlined Bible verses we never obeyed, agreed with truths we never lived. We are not the indifferent. We are the doubled-Lord-Lord crowd who can name the right answer in every spiritual conversation and have noticed that our actual life does not always change very much from week to week. Forgive us. Make us today the digging kind. Show us the one thing we have heard from You that has been waiting on us to do. Give us the courage to do it before the night closes. And remind us that the foundation is not something we are pouring; it is the rock You have already laid in the Person of Your Son, and we are simply being asked to build our small house on top of the bedrock You have provided. We do not want to be the house that fell with a great crash. We want to be the house that stood when the rain came. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-05-27.html"><span class="day-nav-kicker">← Wednesday</span><span class="day-nav-title">The Law and the Gospel</span></a><a class="day-nav-item" href="/bible-study/2026-05-29.html"><span class="day-nav-kicker">Friday →</span><span class="day-nav-title">Further Thought &amp; Discussion</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"hosea-4-1":{"ref":"Hosea 4:1","text":"Hear the word of the LORD, O children of Israel, for the LORD has a case against the people of the land: \u201cThere is no truth, no loving devotion, and no knowledge of God in the land!","bibleUrl":"https://www.bible.com/bible/3034/HOS.4.1"},"hosea-4-6":{"ref":"Hosea 4:6","text":"My people are destroyed for lack of knowledge. Because you have rejected knowledge, I will also reject you as My priests. Since you have forgotten the law of your God, I will also forget your children.","bibleUrl":"https://www.bible.com/bible/3034/HOS.4.6"},"hosea-4-10":{"ref":"Hosea 4:10","text":"They will eat but not be satisfied; they will be promiscuous but not multiply. For they have abandoned the LORD to give themselves","bibleUrl":"https://www.bible.com/bible/3034/HOS.4.10"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

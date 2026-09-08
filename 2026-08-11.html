@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>What Love Does Not Do — Daily Bible Study</title>
 <meta name="study-title" content="What Love Does Not Do">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Part 4 of 7">
+<meta name="study-passage" content="1 Corinthians 13:4-7">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Day 4 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="What Love Does Not Do">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Part 4 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Day 4 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-08-11.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Part 4 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Day 4 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,324 +38,197 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>What Love Does Not Do</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 7, A Portrait of Love</span>
-      <span>Part 4 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">August 11, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Tue · Aug 11</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
+    </div>
+    <h1 class="study-title">What Love Does Not Do</h1>
+    <p class="study-sub"><span class="sub-title">A Portrait of Love</span><span class="sub-facts"><span>Lesson 7</span><span>Day 4 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>Today Paul paints in negative space. Eight things love refuses to do, and every one of them feels good in the moment. The flash of envy at a friend's news. The subtle brag slipped into conversation. The sharp reply that wins the exchange. The tidy mental ledger where every wrong is filed by date. Paul is not listing random vices. Each refusal matches something his own congregation was busy doing. <strong>Love is proven less by the impressive things it does and more by the satisfying things it declines.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday you ran one deliberate rep of your hardest verb, patience without the sigh, kindness without the invoice, joy at news that was not yours. Seven verbs showed us what love does with its hands. But Paul knows something about hands. They do damage as naturally as they do good. So today the portrait adds its shadows, eight refusals, the things love will not let itself do no matter how justified they feel. If yesterday was love's job description, today is its code of conduct, and it reads like Paul had been sitting in Corinth's pews taking notes. He had been reading their mail, at least. And ours.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Today Paul paints in negative space. Eight things love refuses to do, and every one of them feels good in the moment. The flash of envy at a friend's news. The subtle brag slipped into conversation. The sharp reply that wins the exchange. The tidy mental ledger where every wrong is filed by date. Paul is not listing random vices. Each refusal matches something his own congregation was busy doing. <strong>Love is proven less by the impressive things it does and more by the satisfying things it declines.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday you ran one deliberate rep of your hardest verb, patience without the sigh, kindness without the invoice, joy at news that was not yours. Seven verbs showed us what love does with its hands. But Paul knows something about hands. They do damage as naturally as they do good. So today the portrait adds its shadows, eight refusals, the things love will not let itself do no matter how justified they feel. If yesterday was love's job description, today is its code of conduct, and it reads like Paul had been sitting in Corinth's pews taking notes. He had been reading their mail, at least. And ours.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">A Port City Kept Its Books</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>A Port City Kept Its Books</h3>
       <p>Stand on the Lechaion Road, Corinth's marble spine running up from the harbor, and listen to the sound of business. A stylus pressing figures into a wax tablet. Grain from Sicily, weighed and entered. A loan to a shipwright, terms and date, entered. Corinth sat on the narrow neck between two seas, and cargo from both directions paid its way across, which made the city one enormous counting house. Fortunes lived and died by the ledgers. A merchant who forgot what he was owed did not stay a merchant, so nothing owed was ever forgotten. Everything was written down, and everything written down was collected.</p>
       <p>Paul reaches straight into that world for one of today's refusals. Love, he writes, does not keep a record of wrongs, and the verb he chooses is a bookkeeping term, the word for entering an item into the account so it can be settled later. Every Corinthian knew that motion of the stylus. Paul's claim is that love refuses to run its relationships like a counting house. It keeps no column of injuries, logs no dates beside offenses, carries no receivables file of things to bring up during the next argument. In the best-audited city in Greece, Paul describes a love that deliberately loses track of what it is owed. That was bad accounting. It still is. It is also the only way any relationship survives.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Why would Paul spend half his portrait on negatives? Because the Corinthians could have signed the positive list and gone to lunch. It is the refusals that name names. Read the eight again slowly and notice how precisely they trace this church's file, the envy behind the factions, the puffed-up knowledge, the rudeness of the strong toward the weak, the lawsuits chasing personal rights. Paul re-reads his own list back to a congregation that was living its opposite, and somewhere in the reading, the mirror turns toward us.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Why would Paul spend half his portrait on negatives? Because the Corinthians could have signed the positive list and gone to lunch. It is the refusals that name names. Read the eight again slowly and notice how precisely they trace this church's file, the envy behind the factions, the puffed-up knowledge, the rudeness of the strong toward the weak, the lawsuits chasing personal rights. Paul re-reads his own list back to a congregation that was living its opposite, and somewhere in the reading, the mirror turns toward us.</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 13:4-7 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:0e9dc8f7826c8de2c3b444349df0554c95f46c1e8645834aaa343304504143e6 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 13:4-7</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.13.4-7" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 4">4</sup>Love is patient, love is kind. It does not envy, it does not boast, it is not proud. <sup class="verse-number" aria-label="Verse 5">5</sup>It is not rude, it is not self-seeking, it is not easily angered, it keeps no account of wrongs. <sup class="verse-number" aria-label="Verse 6">6</sup>Love takes no pleasure in evil, but rejoices in the truth. <sup class="verse-number" aria-label="Verse 7">7</sup>It bears all things, believes all things, hopes all things, endures all things.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.13.4-7" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 4">4</sup>Love is patient, love is kind. It does not envy, it does not boast, it is not proud. <sup class="verse-number" aria-label="Verse 5">5</sup>It is not rude, it is not self-seeking, it is not easily angered, it keeps no account of wrongs. <sup class="verse-number" aria-label="Verse 6">6</sup>Love takes no pleasure in evil, but rejoices in the truth. <sup class="verse-number" aria-label="Verse 7">7</sup>It bears all things, believes all things, hopes all things, endures all things.</div>
 <div class="verse-commentary">
           <p>Count the refusals this time. Love does not envy, does not boast, is not arrogant, is not rude, is not self-seeking, is not irritable, keeps no record of wrongs, and finds no joy when someone else goes wrong. Behind that record-keeping phrase sits the Greek verb <em>logizomai</em>, an accounting word, to enter something into the books. Love refuses the ledger. It also refuses the touchiness that turns every slight into an event, and the smug little lift we feel when a rival stumbles. None of these refusals comes naturally, because each one means giving up something that pays immediately, the win, the credit, the collected debt. That is exactly why they prove love is real. Anyone can perform the positives on a good day. Only love says no to what feels this good.</p>
         </div>
-      </div>
+      </figure>
 
-      <p>The first refusal deserves a closer look, because Paul has used its verb positively all through this letter. Desire the greater gifts, he says (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.31" target="_blank" rel="noopener">1 Corinthians 12:31</a>). Desire spiritual gifts (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.1" target="_blank" rel="noopener">1 Corinthians 14:1</a>). Desire to prophesy (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.39" target="_blank" rel="noopener">1 Corinthians 14:39</a>). Same Greek verb, turned toward God's gifts, and it is holy hunger. Turned toward a gifted person, it curdles into the thing that made Joseph's brothers sell him south (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.7.9" target="_blank" rel="noopener">Acts 7:9</a>) and the thing splitting Corinth into camps, where envy and strife were walking proof of spiritual infancy (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.3.3" target="_blank" rel="noopener">1 Corinthians 3:3</a>). Wanting what God gives is worship. Resenting who God gave it to is war.</p>
+      <p>The first refusal deserves a closer look, because Paul has used its verb positively all through this letter. Desire the greater gifts, he says (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.31" target="_blank" rel="noopener" data-verse="1-corinthians-12-31" data-ref="1 Corinthians 12:31" aria-expanded="false">1 Corinthians 12:31</a>). Desire spiritual gifts (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.1" target="_blank" rel="noopener" data-verse="1-corinthians-14-1" data-ref="1 Corinthians 14:1" aria-expanded="false">1 Corinthians 14:1</a>). Desire to prophesy (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.14.39" target="_blank" rel="noopener" data-verse="1-corinthians-14-39" data-ref="1 Corinthians 14:39" aria-expanded="false">1 Corinthians 14:39</a>). Same Greek verb, turned toward God's gifts, and it is holy hunger. Turned toward a gifted person, it curdles into the thing that made Joseph's brothers sell him south (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.7.9" target="_blank" rel="noopener" data-verse="acts-7-9" data-ref="Acts 7:9" aria-expanded="false">Acts 7:9</a>) and the thing splitting Corinth into camps, where envy and strife were walking proof of spiritual infancy (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.3.3" target="_blank" rel="noopener" data-verse="1-corinthians-3-3" data-ref="1 Corinthians 3:3" aria-expanded="false">1 Corinthians 3:3</a>). Wanting what God gives is worship. Resenting who God gave it to is war.</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 8:1 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:f2614614e676bf35092b1a210f078fc824e7f3885b1466924650dbbda1a90a3a | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 8:1</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.8.1" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.8.1" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Now about food sacrificed to idols: We know that we all have knowledge. Knowledge puffs up, but love builds up.</div>
 <div class="verse-commentary">
-          <p>Here is where boasting and arrogance were actually living in Corinth. The educated members knew an idol was nothing, and their knowledge had inflated them until they could no longer see the brother at the next table whose conscience was still tender from a lifetime in the temples (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.8" target="_blank" rel="noopener">1 Corinthians 8</a>). Paul does not dispute their facts. He disputes their posture, dripping irony about the wise and strong looking down on the fools for Christ (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.4.10" target="_blank" rel="noopener">1 Corinthians 4:10</a>). His two verbs tell the whole story. Puffing up inflates one person, a balloon, all air and skin. Building up raises a house other people can live in. Every congregation is doing one or the other, and rudeness towards the weak is simply arrogance with its elbows out.</p>
+          <p>Here is where boasting and arrogance were actually living in Corinth. The educated members knew an idol was nothing, and their knowledge had inflated them until they could no longer see the brother at the next table whose conscience was still tender from a lifetime in the temples (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.8" target="_blank" rel="noopener">1 Corinthians 8</a>). Paul does not dispute their facts. He disputes their posture, dripping irony about the wise and strong looking down on the fools for Christ (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.4.10" target="_blank" rel="noopener" data-verse="1-corinthians-4-10" data-ref="1 Corinthians 4:10" aria-expanded="false">1 Corinthians 4:10</a>). His two verbs tell the whole story. Puffing up inflates one person, a balloon, all air and skin. Building up raises a house other people can live in. Every congregation is doing one or the other, and rudeness towards the weak is simply arrogance with its elbows out.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: 1 Corinthians 10:24 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:940d2746f6b036e87e98a1b937ed5baa1f3bf28a61997c526835dc6dd33717f3 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 10:24</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.10.24" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.10.24" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">No one should seek his own good, but the good of others.</div>
 <div class="verse-commentary">
           <p>Love is not self-seeking, and Paul had already given that refusal a rule of its own. Do not chase your own advantage. Chase the other person's. This is the sentence that sounded most insane in Corinth and sounds most insane now, because both cultures run on securing your own. Notice, though, what Paul is actually proposing. Not a world where nobody's needs matter, but a community where everyone's needs are carried by someone else, each member seeking the good of the other until the circle closes and every person in it is looked after. Rights enforced to the wall leave a room full of winners who cannot stand each other. Rights laid down build the one thing Corinth could not buy, a people who actually belong to one another.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">You Were Right and You Said Nothing</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>You Were Right and You Said Nothing</h3>
       <p>You told them. Maybe it was the used car with paint too shiny for its mileage, or the plan to fix the roof without calling anyone who fixes roofs, or the guy who was charming the way weather is nice. You said your piece once, gently, and got waved off. Then one Tuesday the phone rings and it has all gone exactly the way you said it would. Here is the moment. The most satisfying sentence in the English language is sitting loaded on your tongue, fully earned, completely true, already assembled. I told you so. You could say it kindly. You could say it with nothing but a look. Every syllable has been paid for. And love picks up that perfect, deserved sentence, and sets it back down. Makes the tea instead. Asks what happens next. Helps load the truck.</p>
       <p>Nobody hands out trophies for that, and the invisibility is the point. Half of Paul's portrait is refusals, and every one of them means walking away from a payoff that was genuinely available. The flash of being envied. The credit. The delicious last word. The little lift of watching your prediction come true. Those wins feel wonderful for about an hour. Love keeps declining them, not because it is weak but because it is busy protecting something better, the person in front of you, who needs a friend right now far more than a verdict. You were right. You said nothing. That silence was love doing its strongest work, in the one place only God could hear it.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Ledger Was Costing the Bookkeeper</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Ledger Was Costing the Bookkeeper</h3>
       <p>Researchers recently ran the largest forgiveness experiment ever attempted, and they ran it in places with long memories. In a trial published in BMJ Public Health in 2024, a team led by psychologist Man Yee Ho, alongside forgiveness researcher Everett Worthington and Harvard's Tyler VanderWeele, gave 4,598 people at six sites in five countries, Colombia, South Africa, Ukraine, Indonesia, and Hong Kong, a plain do-it-yourself workbook. No therapist, no retreat, about three hours at a kitchen table. The pages walk one real hurt, a specific one with a name and a date, through five steps. Recall it honestly. Work at seeing the offender as human. Remember a time you were the one forgiven. Commit to canceling the debt. Hold on when the books try to reopen. Two weeks later, compared with people still waiting for their copy, the forgivers were measurably better. Less unforgiveness. Less depression. Less anxiety. And greater flourishing, the researchers' word for a life going well as a whole.</p>
       <p>Notice who the trial was measuring. Not the people who did the wrong. The people holding the record of it. Paul's bookkeeping word pictured a wrong entered in the account so it could be collected later, and the modern data shows what that entry actually collects. It charges the bookkeeper. Every grudge on file was quietly billing its keeper in depression, in anxiety, in the unforgiveness itself, interest accruing for years on debts nobody was ever going to pay. Tearing up the page turned out to be the move that stopped the bleeding, exactly as the chapter said, and exactly as the cross showed. God did not wait to collect what we owed. He canceled the record that stood against us and nailed it to His cross, and He has been inviting His people into that accounting ever since. Love keeps no record of wrongs. That is not naive bookkeeping. It is the only bookkeeping that leaves the bookkeeper alive.</p>
       <!-- TODAYS_WORLD_SOURCE: International REACH forgiveness intervention: a multisite randomised controlled trial | BMJ Public Health | 2024 | https://pmc.ncbi.nlm.nih.gov/articles/PMC11812785/ -->
-    </div>
+    <details class="disclosure source-disclosure"><summary class="disclosure-summary"><span class="disclosure-label">Source</span> <span class="disclosure-publisher">BMJ Public Health</span></summary><div class="disclosure-body"><p><cite>International REACH forgiveness intervention: a multisite randomised controlled trial</cite>. BMJ Public Health, 2024. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11812785/" target="_blank" rel="noopener noreferrer">Read the source</a>.</p></div></details></section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Watch the eight refusals hold at the one place they should have shattered. At the cross, Jesus had grounds for every behavior love declines. He could have envied, the Lord of glory watching soldiers gamble for His only robe. He could have boasted, one word summoning legions of angels to end the whole indignity. He was mocked and stayed silent, struck and did not strike back, provoked past any limit a human being has ever faced and never once became what they were. And the ledger. He was accumulating the greatest record of wrongs in history, hour by hour, nail by nail, and He looked at the men writing the entries and said Father, forgive them. The refusals of 1 Corinthians 13 are not weakness dressed up as virtue. They are the strongest will in the universe, declining every exit, staying on the cross out of love for the people who put Him there. Including us.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Watch the eight refusals hold at the one place they should have shattered. At the cross, Jesus had grounds for every behavior love declines. He could have envied, the Lord of glory watching soldiers gamble for His only robe. He could have boasted, one word summoning legions of angels to end the whole indignity. He was mocked and stayed silent, struck and did not strike back, provoked past any limit a human being has ever faced and never once became what they were. And the ledger. He was accumulating the greatest record of wrongs in history, hour by hour, nail by nail, and He looked at the men writing the entries and said Father, forgive them. The refusals of 1 Corinthians 13 are not weakness dressed up as virtue. They are the strongest will in the universe, declining every exit, staying on the cross out of love for the people who put Him there. Including us.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         You know whose file you keep. The person whose old offenses you can still recite by date. Today, retire one entry. Write the oldest wrong on a slip of paper, pray for that person by name while you hold it, then tear it up and throw it away. You are not saying it never happened. You are saying it will no longer collect interest. One entry, gone for good, today.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, today's list found us. We know the taste of every behavior on it, the envy that spikes at someone else's good news, the boast we disguise as an update, the sharp word that felt so right leaving our mouth, and the records. Lord, You know about our records. Some of us have kept certain books for years, accurate to the day. Forgive us for running love like a counting house. Teach us Your accounting instead, the kind that canceled a debt we could never have paid and then burned the ledger at Calvary. Pry the stylus out of our hands. Where we have been touchy, settle us. Where we have been self-seeking, turn our eyes to the person beside us. And when the old files call our name this week, remind us that we tore them up on purpose, in Your presence, because loved people learn to love. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"Which of the eight refusals is hardest for you to make (dropping the scorecard in your marriage, staying unprovoked with a certain relative, feeling honest gladness when a rival succeeds)? And what do you think would actually change in that relationship if you retired that one behavior for the next seven days?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"Which of the eight refusals is hardest for you to make (dropping the scorecard in your marriage, staying unprovoked with a certain relative, feeling honest gladness when a rival succeeds)? And what do you think would actually change in that relationship if you retired that one behavior for the next seven days?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, today's list found us. We know the taste of every behavior on it, the envy that spikes at someone else's good news, the boast we disguise as an update, the sharp word that felt so right leaving our mouth, and the records. Lord, You know about our records. Some of us have kept certain books for years, accurate to the day. Forgive us for running love like a counting house. Teach us Your accounting instead, the kind that canceled a debt we could never have paid and then burned the ledger at Calvary. Pry the stylus out of our hands. Where we have been touchy, settle us. Where we have been self-seeking, turn our eyes to the person beside us. And when the old files call our name this week, remind us that we tore them up on purpose, in Your presence, because loved people learn to love. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-08-10.html"><span class="day-nav-kicker">← Monday</span><span class="day-nav-title">What Love Does</span></a><a class="day-nav-item" href="/bible-study/2026-08-12.html"><span class="day-nav-kicker">Wednesday →</span><span class="day-nav-title">A Portrait of Jesus</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"1-corinthians-12-31":{"ref":"1 Corinthians 12:31","text":"But eagerly desire the greater gifts. And now I will show you the most excellent way.","bibleUrl":"https://www.bible.com/bible/3034/1CO.12.31"},"1-corinthians-14-1":{"ref":"1 Corinthians 14:1","text":"Earnestly pursue love and eagerly desire spiritual gifts, especially the gift of prophecy.","bibleUrl":"https://www.bible.com/bible/3034/1CO.14.1"},"1-corinthians-14-39":{"ref":"1 Corinthians 14:39","text":"So, my brothers, be eager to prophesy, and do not forbid speaking in tongues.","bibleUrl":"https://www.bible.com/bible/3034/1CO.14.39"},"acts-7-9":{"ref":"Acts 7:9","text":"Because the patriarchs were jealous of Joseph, they sold him as a slave into Egypt. But God was with him","bibleUrl":"https://www.bible.com/bible/3034/ACT.7.9"},"1-corinthians-3-3":{"ref":"1 Corinthians 3:3","text":"for you are still worldly. For since there is jealousy and dissension among you, are you not worldly? Are you not walking in the way of man?","bibleUrl":"https://www.bible.com/bible/3034/1CO.3.3"},"1-corinthians-4-10":{"ref":"1 Corinthians 4:10","text":"We are fools for Christ, but you are wise in Christ. We are weak, but you are strong. You are honored, but we are dishonored.","bibleUrl":"https://www.bible.com/bible/3034/1CO.4.10"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

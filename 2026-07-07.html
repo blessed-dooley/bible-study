@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Power to Those Who Are Being Saved — Daily Bible Study</title>
 <meta name="study-title" content="Power to Those Who Are Being Saved">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 2, The Message of the Cross · Part 4 of 7">
+<meta name="study-passage" content="Colossians 1:20">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 2, The Message of the Cross · Day 4 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Power to Those Who Are Being Saved">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 2, The Message of the Cross · Part 4 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 2, The Message of the Cross · Day 4 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-07-07.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 2, The Message of the Cross · Part 4 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 2, The Message of the Cross · Day 4 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,325 +38,195 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Power to Those Who Are Being Saved</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 2, The Message of the Cross</span>
-      <span>Part 4 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">July 7, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Tue · Jul 7</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">8 min</span>
+    </div>
+    <h1 class="study-title">Power to Those Who Are Being Saved</h1>
+    <p class="study-sub"><span class="sub-title">The Message of the Cross</span><span class="sub-facts"><span>Lesson 2</span><span>Day 4 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>Same cross, two completely different verdicts. To people clinging to their own wisdom it looks like ruin, and Paul uses a word that means they are actually destroying themselves. To people willing to come with empty hands it is rescue. Two short verses spell out what that rescue cost. Jesus reconciled us to God by His blood, bore our sins in His own body, and healed us by His wounds. The debt we could never pay was simply paid. <strong>Salvation is not something we achieve by being clever or good. It is something we receive, because Jesus already paid it in full.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday the cross was a punchline. The same crowd that prized wisdom looked at a crucified Savior and saw only foolishness. But Paul has been holding back the other half of the sentence. The very message that sounds like nonsense to people heading for ruin is raw power to the people being rescued. Same cross, opposite reactions, and the difference is not how smart you are. It is which way you are facing. Today we stop talking about how the cross sounds and start looking at what it actually did, the real work Jesus finished there on our behalf.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Same cross, two completely different verdicts. To people clinging to their own wisdom it looks like ruin, and Paul uses a word that means they are actually destroying themselves. To people willing to come with empty hands it is rescue. Two short verses spell out what that rescue cost. Jesus reconciled us to God by His blood, bore our sins in His own body, and healed us by His wounds. The debt we could never pay was simply paid. <strong>Salvation is not something we achieve by being clever or good. It is something we receive, because Jesus already paid it in full.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday the cross was a punchline. The same crowd that prized wisdom looked at a crucified Savior and saw only foolishness. But Paul has been holding back the other half of the sentence. The very message that sounds like nonsense to people heading for ruin is raw power to the people being rescued. Same cross, opposite reactions, and the difference is not how smart you are. It is which way you are facing. Today we stop talking about how the cross sounds and start looking at what it actually did, the real work Jesus finished there on our behalf.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Debt That Could Cost You Everything</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Debt That Could Cost You Everything</h3>
       <p>In the ancient world, debt was not just a number on a statement. It could cost you everything. A person who could not pay what they owed might lose their land, their freedom, even their children, sold off to settle the account. Lenders kept a written record of the debt, a signed certificate that hung over a person like a sentence waiting to be carried out. Everyone in Corinth understood the dread of owing more than you could ever repay, and the desperate relief of having someone step in and clear it for good.</p>
       <p>That is the world Paul reaches into when he describes what the cross accomplished. Sin is a debt we ran up against God and can never pay down. The wages we have earned are death, plain and simple. What happened at the cross is that the bill was paid in full by Someone else, the certificate cancelled, the prison door swung open. This is why Paul can call the same cross that destroys the proud the rescue of everyone who stops pretending they can cover their own account. One group keeps insisting they are good for it. The other lets the debt be paid. Only one of them walks out free.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Paul keeps saying the cross is the power of God to those being saved (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.18" target="_blank" rel="noopener">1 Corinthians 1:18</a>). Power to do what, exactly? Today two short verses answer that, one from Paul and one from Peter, and they are worth slowing all the way down on. Remember the danger Paul named, that clever words can quietly drain the cross of its power (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.17" target="_blank" rel="noopener">1 Corinthians 1:17</a>). So before he says one more thing about wisdom and foolishness, he shows us the actual rescue, the concrete work Jesus did on the cross that no human cleverness could have pulled off.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Paul keeps saying the cross is the power of God to those being saved (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.18" target="_blank" rel="noopener" data-verse="1-corinthians-1-18" data-ref="1 Corinthians 1:18" aria-expanded="false">1 Corinthians 1:18</a>). Power to do what, exactly? Today two short verses answer that, one from Paul and one from Peter, and they are worth slowing all the way down on. Remember the danger Paul named, that clever words can quietly drain the cross of its power (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.17" target="_blank" rel="noopener" data-verse="1-corinthians-1-17" data-ref="1 Corinthians 1:17" aria-expanded="false">1 Corinthians 1:17</a>). So before he says one more thing about wisdom and foolishness, he shows us the actual rescue, the concrete work Jesus did on the cross that no human cleverness could have pulled off.</p>
 
 <!-- BSB_BLOCK: Colossians 1:20 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:0ef9b993c4ba0a6ad7903ce5c7633f677ee39ba52e04109199a62f8492ddadc7 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Colossians 1:20</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/COL.1.20" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/COL.1.20" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">and through Him to reconcile to Himself all things, whether things on earth or things in heaven, by making peace through the blood of His cross.</div>
 <div class="verse-commentary">
-          <p>Start with the sheer size of what the cross repaired. Paul does not say Jesus smoothed over a misunderstanding. He says God reconciled everything to Himself, the whole fractured creation, by making peace through the blood of the cross. Reconcile is a relationship word. It means two parties who were at war are brought back together, the hostility ended, the bond restored. And notice how the peace was made. Not by God lowering His standards or pretending the offense did not matter, but by Jesus absorbing the entire cost in His own body. Everything we are handed in Christ, a clean record, a restored standing, a way home, flows out of this one act (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.30" target="_blank" rel="noopener">1 Corinthians 1:30</a>). The cross is where the war between us and God ended, and He is the one who paid for the peace.</p>
+          <p>Start with the sheer size of what the cross repaired. Paul does not say Jesus smoothed over a misunderstanding. He says God reconciled everything to Himself, the whole fractured creation, by making peace through the blood of the cross. Reconcile is a relationship word. It means two parties who were at war are brought back together, the hostility ended, the bond restored. And notice how the peace was made. Not by God lowering His standards or pretending the offense did not matter, but by Jesus absorbing the entire cost in His own body. Everything we are handed in Christ, a clean record, a restored standing, a way home, flows out of this one act (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.30" target="_blank" rel="noopener" data-verse="1-corinthians-1-30" data-ref="1 Corinthians 1:30" aria-expanded="false">1 Corinthians 1:30</a>). The cross is where the war between us and God ended, and He is the one who paid for the peace.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: 1 Peter 2:24 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:3512b810333757a5f15857cb7c6bc8414ea3b8808386186ff16c3cea58fcc76b | footnotes-stripped:2 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Peter 2:24</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1PE.2.24" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1PE.2.24" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">He Himself bore our sins in His body on the tree, so that we might die to sin and live to righteousness. “By His stripes you are healed.”</div>
 <div class="verse-commentary">
-          <p>Peter says the same thing in even more personal terms. He himself bore our sins in His body. Not a symbol, not a gesture, but the actual weight of our wrongdoing laid on Jesus and carried up to the cross. There is an exchange happening here that sits at the very heart of the gospel. Our sin went onto Him, so that His righteousness could become the life we now live toward. And then the line that undoes you. By His wounds you have been healed. The very injuries that should have been ours, the punishment we had earned, became the medicine that makes us well. The wages of sin really are death, but the gift of God is life (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.6.23" target="_blank" rel="noopener">Romans 6:23</a>). This is why Paul keeps insisting that salvation is something we receive and never something we pull off. It is God who saves the ones who simply believe (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.21" target="_blank" rel="noopener">1 Corinthians 1:21</a>).</p>
+          <p>Peter says the same thing in even more personal terms. He himself bore our sins in His body. Not a symbol, not a gesture, but the actual weight of our wrongdoing laid on Jesus and carried up to the cross. There is an exchange happening here that sits at the very heart of the gospel. Our sin went onto Him, so that His righteousness could become the life we now live toward. And then the line that undoes you. By His wounds you have been healed. The very injuries that should have been ours, the punishment we had earned, became the medicine that makes us well. The wages of sin really are death, but the gift of God is life (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.6.23" target="_blank" rel="noopener" data-verse="romans-6-23" data-ref="Romans 6:23" aria-expanded="false">Romans 6:23</a>). This is why Paul keeps insisting that salvation is something we receive and never something we pull off. It is God who saves the ones who simply believe (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.21" target="_blank" rel="noopener" data-verse="1-corinthians-1-21" data-ref="1 Corinthians 1:21" aria-expanded="false">1 Corinthians 1:21</a>).</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: 1 Peter 2:24 | 2:24 Isaiah 53:4 (see also LXX) -->
       <!-- BSB_FOOTNOTE: 1 Peter 2:24 | 2:24 Isaiah 53:5 -->
 
 <!-- BSB_BLOCK: 1 Corinthians 1:19 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:2b3cb9896956c0471f6a4b3318f429eae1d063836094c3b4d62e0db6c83f950c | footnotes-stripped:1 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 1:19</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.19" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.1.19" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">For it is written: “I will destroy the wisdom of the wise; the intelligence of the intelligent I will frustrate.”</div>
 <div class="verse-commentary">
-          <p>Paul backs all of this with a hard word from the Old Testament. God says He will destroy the wisdom of the wise. The Greek verb behind "perishing" back in verse 18 is <em>apollymi</em>, and it carries the sense of being ruined or destroyed, even self-destroyed. The same word describes a thief who comes only to kill and to destroy (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.10.10" target="_blank" rel="noopener">John 10:10</a>). Here is the sober point. The people who reject the cross are not neutral bystanders who happen to disagree. They are perishing, quietly dismantling themselves by gripping a wisdom that was never able to save them. God quoting Isaiah (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.29.14" target="_blank" rel="noopener">Isaiah 29:14</a>) is not Him picking a fight with smart people. It is Him promising to tear down the proud self-reliance that was already tearing us apart. He destroys the thing that is destroying us.</p>
+          <p>Paul backs all of this with a hard word from the Old Testament. God says He will destroy the wisdom of the wise. The Greek verb behind "perishing" back in verse 18 is <em>apollymi</em>, and it carries the sense of being ruined or destroyed, even self-destroyed. The same word describes a thief who comes only to kill and to destroy (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.10.10" target="_blank" rel="noopener" data-verse="john-10-10" data-ref="John 10:10" aria-expanded="false">John 10:10</a>). Here is the sober point. The people who reject the cross are not neutral bystanders who happen to disagree. They are perishing, quietly dismantling themselves by gripping a wisdom that was never able to save them. God quoting Isaiah (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.29.14" target="_blank" rel="noopener" data-verse="isaiah-29-14" data-ref="Isaiah 29:14" aria-expanded="false">Isaiah 29:14</a>) is not Him picking a fight with smart people. It is Him promising to tear down the proud self-reliance that was already tearing us apart. He destroys the thing that is destroying us.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: 1 Corinthians 1:19 | 1:19 Isaiah 29:14 (see also LXX) -->
-    </div>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Rescue You Have to Stop Fighting</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Rescue You Have to Stop Fighting</h3>
       <p>Lifeguards are trained for a terrible, backwards fact. A drowning person will often fight the very people trying to save them. Blind with panic, they climb up onto the rescuer, shove them under, and claw toward the air, dragging both of them down. So a guard is taught to wait for the thrashing to slow, or to come in from behind, because the thing most likely to get a drowning person killed is their own frantic effort to save themselves. The rescue cannot really begin until the fighting stops. They have to go still, quit clawing, and let themselves be carried in by someone else's strength.</p>
       <p>Two people can go under in the same water. One keeps fighting, burns himself out trying to stay on top, and the rescue that was right beside him becomes the thing he drowns next to. The other stops, lets go, and is towed safely to shore by an arm that was never his own. That is the line running straight through the cross. To the proud, still kicking, still certain they can keep their own head above water, grace looks like one more thing to fight off. To the person who has finally stopped thrashing and put up empty hands, it is the grip that pulls them home. Same water. Same rescuer. The only difference is who finally quit trying to save himself.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Debt Someone Else Bought</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Debt Someone Else Bought</h3>
       <p>Imagine opening your mail to find a plain letter telling you a debt you could never pay is simply gone. Hundreds of thousands of people have received that exact letter. A nonprofit now called Undue Medical Debt buys up the crushing hospital bills of strangers, the kind that pile up after a cancer diagnosis or a long illness, and then cancels them outright, asking nothing back. It works because old medical debt sells for almost nothing, so a single donated dollar can wipe out around a hundred dollars of what someone owes. Since 2014 the group has erased more than 15 billion dollars in debt for over 10 million people. In 2024, New York City alone put up 18 million dollars to clear roughly 2 billion dollars owed by its residents.</p>
       <p>You cannot do this for yourself, and that is the whole point. The people whose debt vanishes did not negotiate it down or earn it off. Someone with the means they lacked stepped in and paid what they never could. That is the cross in miniature. We ran up a debt against God we were never going to settle, and the wages of it were death. Then Jesus paid the account in full with His own blood and handed us the letter that says it is gone. The drowning man who keeps clawing at the water cannot tow himself to shore. He can only stop fighting and let himself be carried. Some gifts are too big to buy. They can only be received.</p>
-    </div>
-    <!-- TODAYS_WORLD_SOURCE: Undue Medical Debt (formerly RIP Medical Debt) cancels unpayable medical debt for pennies on the dollar; NYC 2024 partnership to erase about $2 billion | NPR Shots / Stateline | 2024 | https://www.npr.org/sections/health-shots/2024/01/23/1225014618/nyc-joins-a-growing-wave-of-local-governments-erasing-residents-medical-debt -->
+    </section>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Everything today circles one quiet truth. Jesus did the saving. We keep slipping back into thinking we contribute something, that we meet God halfway, that our effort tops off what the cross started. Today's verses leave no room for it. He reconciled us. He bore our sins. By His wounds, not our willpower, we are healed. The cross is not a down payment we finish off with good behavior. It is the whole price, paid in full, by the only One who could pay it. And the posture that receives it is not strength but surrender, the empty hands of someone who has finally stopped trying to save themselves. That is the real divide running through this passage. Not the smart and the stupid, but the proud who insist on covering their own debt and the humble who let Jesus cover it all.</p>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Everything today circles one quiet truth. Jesus did the saving. We keep slipping back into thinking we contribute something, that we meet God halfway, that our effort tops off what the cross started. Today's verses leave no room for it. He reconciled us. He bore our sins. By His wounds, not our willpower, we are healed. The cross is not a down payment we finish off with good behavior. It is the whole price, paid in full, by the only One who could pay it. And the posture that receives it is not strength but surrender, the empty hands of someone who has finally stopped trying to save themselves. That is the real divide running through this passage. Not the smart and the stupid, but the proud who insist on covering their own debt and the humble who let Jesus cover it all.</p>
-    </div>
-
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Somewhere in your life there is probably an account you are still trying to settle with God, a sin you keep re-apologizing for, a failure you feel you have to make up for before you can feel close to Him again. Today, name that one thing, and then say out loud what the cross already says about it. "Paid in full." You are not adding to what Jesus did. You are receiving it. Live one whole day as someone whose debt is genuinely, completely cleared.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, thank You for doing what we could never do for ourselves. We come with empty hands today, because that is the only honest way to come. Thank You that Jesus bore our sins in His own body, that He made peace by His blood, that by His wounds we are healed. Forgive us for the times we try to earn back what You have already given, as if the cross still needed our help. Teach us to stop striving and simply receive. And let the relief of a debt fully paid make us gentle with everyone else who is still trying to pay their own. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"Where are you still trying to pay off a debt that Jesus already settled in full, and what would change in how you live this week if you truly believed the cross meant 'paid,' not 'partially covered'?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"Where are you still trying to pay off a debt that Jesus already settled in full, and what would change in how you live this week if you truly believed the cross meant 'paid,' not 'partially covered'?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, thank You for doing what we could never do for ourselves. We come with empty hands today, because that is the only honest way to come. Thank You that Jesus bore our sins in His own body, that He made peace by His blood, that by His wounds we are healed. Forgive us for the times we try to earn back what You have already given, as if the cross still needed our help. Teach us to stop striving and simply receive. And let the relief of a debt fully paid make us gentle with everyone else who is still trying to pay their own. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-07-06.html"><span class="day-nav-kicker">← Monday</span><span class="day-nav-title">Foolishness to Those Who Are Perishing</span></a><a class="day-nav-item" href="/bible-study/2026-07-08.html"><span class="day-nav-kicker">Wednesday →</span><span class="day-nav-title">A Messiah Crucified</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"1-corinthians-1-18":{"ref":"1 Corinthians 1:18","text":"For the message of the cross is foolishness to those who are perishing, but to us who are being saved it is the power of God.","bibleUrl":"https://www.bible.com/bible/3034/1CO.1.18"},"1-corinthians-1-17":{"ref":"1 Corinthians 1:17","text":"For Christ did not send me to baptize, but to preach the gospel, not with words of wisdom, lest the cross of Christ be emptied of its power.","bibleUrl":"https://www.bible.com/bible/3034/1CO.1.17"},"1-corinthians-1-30":{"ref":"1 Corinthians 1:30","text":"It is because of Him that you are in Christ Jesus, who has become for us wisdom from God: our righteousness, holiness, and redemption.","bibleUrl":"https://www.bible.com/bible/3034/1CO.1.30"},"romans-6-23":{"ref":"Romans 6:23","text":"For the wages of sin is death, but the gift of God is eternal life in Christ Jesus our Lord.","bibleUrl":"https://www.bible.com/bible/3034/ROM.6.23"},"1-corinthians-1-21":{"ref":"1 Corinthians 1:21","text":"For since in the wisdom of God the world through its wisdom did not know Him, God was pleased through the foolishness of what was preached to save those who believe.","bibleUrl":"https://www.bible.com/bible/3034/1CO.1.21"},"john-10-10":{"ref":"John 10:10","text":"The thief comes only to steal and kill and destroy. I have come that they may have life, and have it in all its fullness.","bibleUrl":"https://www.bible.com/bible/3034/JHN.10.10"},"isaiah-29-14":{"ref":"Isaiah 29:14","text":"Therefore I will again confound these people with wonder upon wonder. The wisdom of the wise will vanish, and the intelligence of the intelligent will be hidden.\u201d","bibleUrl":"https://www.bible.com/bible/3034/ISA.29.14"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

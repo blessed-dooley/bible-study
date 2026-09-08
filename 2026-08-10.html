@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>What Love Does — Daily Bible Study</title>
 <meta name="study-title" content="What Love Does">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Part 3 of 7">
+<meta name="study-passage" content="1 Corinthians 13:4-7">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Day 3 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="What Love Does">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Part 3 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Day 3 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-08-10.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Part 3 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Day 3 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,324 +38,198 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>What Love Does</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 7, A Portrait of Love</span>
-      <span>Part 3 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">August 10, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Mon · Aug 10</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
+    </div>
+    <h1 class="study-title">What Love Does</h1>
+    <p class="study-sub"><span class="sub-title">A Portrait of Love</span><span class="sub-facts"><span>Lesson 7</span><span>Day 3 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>Ask a hundred people what love is and you will get feelings. Ask Paul and you get footage. Today he hands the Corinthians seven verbs you could catch on camera. Love waits without the sigh. Love does the kind thing first. Love shows up at somebody else's celebration and means it. Love carries, trusts, hopes, and outlasts. There is not a single emotion on the list, because Paul is describing how a person filled with the Spirit behaves, not how they feel. <strong>Love is not a feeling we wait for. It is a set of verbs we practice, and the practice becomes a life.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday ended with a cup of coffee going cold on a desk, love losing temperature one unnoticed degree at a time, and with Paul's arithmetic still ringing. Everything minus love equals nothing. Which raises the obvious next question. If love is the one ingredient that makes the rest count, what exactly is it? Today Paul answers, and he refuses to hand us a definition we can frame and forget. He hands us a work order. Seven verbs, each one something love does with its hands, each one something you could watch happen across a kitchen table.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Ask a hundred people what love is and you will get feelings. Ask Paul and you get footage. Today he hands the Corinthians seven verbs you could catch on camera. Love waits without the sigh. Love does the kind thing first. Love shows up at somebody else's celebration and means it. Love carries, trusts, hopes, and outlasts. There is not a single emotion on the list, because Paul is describing how a person filled with the Spirit behaves, not how they feel. <strong>Love is not a feeling we wait for. It is a set of verbs we practice, and the practice becomes a life.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday ended with a cup of coffee going cold on a desk, love losing temperature one unnoticed degree at a time, and with Paul's arithmetic still ringing. Everything minus love equals nothing. Which raises the obvious next question. If love is the one ingredient that makes the rest count, what exactly is it? Today Paul answers, and he refuses to hand us a definition we can frame and forget. He hands us a work order. Seven verbs, each one something love does with its hands, each one something you could watch happen across a kitchen table.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Kindness Already Had a History</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>Kindness Already Had a History</h3>
       <p>On Sabbath mornings in Corinth, before there was a church, there was a synagogue, and inside it a reader unrolling a Greek scroll. Most of Corinth's Jews, and the God-fearing Greeks who slipped in beside them, did not read Hebrew. They knew the Scriptures through the Septuagint, the Greek translation of the Old Testament, and in that translation one family of words kept surfacing whenever the Psalms talked about God. Kindness words. The Lord is good to everyone. His compassion rests on all He has made. Week after week, the congregation heard kindness described not as good manners but as the settled habit of the Almighty.</p>
       <p>So when Paul's letter reached the church and someone read the words love is kind aloud, the verb did not arrive empty. Paul reached for that same word family, the one the Greek Psalms had spent centuries filling with the character of God. His converts had been singing about a kind God long before they were told to be kind people. That is the quiet force of today's list. Paul is not inventing virtues from scratch. He is taking the family traits of the God of Israel and writing them into the job description of everyone who claims to be His child. Kindness was God's reputation first. Now it is supposed to be ours.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Somewhere today a person will say I love you and mean I enjoy how you make me feel. Paul writes four verses that make that sentence impossible to leave alone. He takes love out of the heart, where nobody can check on it, and moves it into the daylight of behavior, where everybody can. What follows is the heart of the whole chapter, a portrait of love painted entirely in motion. Read it slowly. Every verb is aimed at somebody.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Somewhere today a person will say I love you and mean I enjoy how you make me feel. Paul writes four verses that make that sentence impossible to leave alone. He takes love out of the heart, where nobody can check on it, and moves it into the daylight of behavior, where everybody can. What follows is the heart of the whole chapter, a portrait of love painted entirely in motion. Read it slowly. Every verb is aimed at somebody.</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 13:4-7 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:0e9dc8f7826c8de2c3b444349df0554c95f46c1e8645834aaa343304504143e6 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 13:4-7</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.13.4-7" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 4">4</sup>Love is patient, love is kind. It does not envy, it does not boast, it is not proud. <sup class="verse-number" aria-label="Verse 5">5</sup>It is not rude, it is not self-seeking, it is not easily angered, it keeps no account of wrongs. <sup class="verse-number" aria-label="Verse 6">6</sup>Love takes no pleasure in evil, but rejoices in the truth. <sup class="verse-number" aria-label="Verse 7">7</sup>It bears all things, believes all things, hopes all things, endures all things.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.13.4-7" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 4">4</sup>Love is patient, love is kind. It does not envy, it does not boast, it is not proud. <sup class="verse-number" aria-label="Verse 5">5</sup>It is not rude, it is not self-seeking, it is not easily angered, it keeps no account of wrongs. <sup class="verse-number" aria-label="Verse 6">6</sup>Love takes no pleasure in evil, but rejoices in the truth. <sup class="verse-number" aria-label="Verse 7">7</sup>It bears all things, believes all things, hopes all things, endures all things.</div>
 <div class="verse-commentary">
-          <p>Paul personifies love, as if it were a person you could follow around for a day, and the first thing you would notice is what it does under pressure. It shows patience, even when circumstances give it every excuse not to, the same long-tempered bearing with one another that Paul begs of every church (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.4.2" target="_blank" rel="noopener">Ephesians 4:2</a>). It does the kind thing without being asked. And notice what is missing from the whole passage. Not one feeling. Paul is showing us how a person moved by the Spirit behaves, because for him love is more about actions than emotions. Feelings rise and fall on their own schedule. Verbs are decisions. That means the question this passage asks is never how do you feel about them, but what have you been doing for them lately.</p>
+          <p>Paul personifies love, as if it were a person you could follow around for a day, and the first thing you would notice is what it does under pressure. It shows patience, even when circumstances give it every excuse not to, the same long-tempered bearing with one another that Paul begs of every church (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.4.2" target="_blank" rel="noopener" data-verse="ephesians-4-2" data-ref="Ephesians 4:2" aria-expanded="false">Ephesians 4:2</a>). It does the kind thing without being asked. And notice what is missing from the whole passage. Not one feeling. Paul is showing us how a person moved by the Spirit behaves, because for him love is more about actions than emotions. Feelings rise and fall on their own schedule. Verbs are decisions. That means the question this passage asks is never how do you feel about them, but what have you been doing for them lately.</p>
         </div>
-      </div>
+      </figure>
 
-      <p>Keep walking the list and it gets more surprising. Love rejoices in the truth, and behind that phrase sits a very specific skill, the ability to be glad alongside someone else. It is the joy of the neighbors who celebrated with Elizabeth over her impossible baby (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.1.58" target="_blank" rel="noopener">Luke 1:58</a>), the shepherd shouting rejoice with me over one found sheep (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.15.6" target="_blank" rel="noopener">Luke 15:6</a>), the woman throwing a party over one found coin (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.15.9" target="_blank" rel="noopener">Luke 15:9</a>), the body where one member's honor makes every member glad (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.26" target="_blank" rel="noopener">1 Corinthians 12:26</a>), and Paul himself, chained and still rejoicing with his friends (<a class="vlink" href="https://www.bible.com/bible/3034/PHP.2.17-18" target="_blank" rel="noopener">Philippians 2:17, 18</a>). Then come the four load-bearing verbs. Love bears, believes, hopes, endures, all things (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.7" target="_blank" rel="noopener">1 Corinthians 13:7</a>). Bearing and enduring are near twins, the same tough endurance Paul practiced when he chose to put up with anything rather than hinder the gospel (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.12" target="_blank" rel="noopener">1 Corinthians 9:12</a>). Believing all things means leading with the benefit of the doubt. Hoping all things means expecting good on the far side of hard. Love endures precisely by believing and hoping. It lasts because it refuses to stop expecting.</p>
+      <p>Keep walking the list and it gets more surprising. Love rejoices in the truth, and behind that phrase sits a very specific skill, the ability to be glad alongside someone else. It is the joy of the neighbors who celebrated with Elizabeth over her impossible baby (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.1.58" target="_blank" rel="noopener" data-verse="luke-1-58" data-ref="Luke 1:58" aria-expanded="false">Luke 1:58</a>), the shepherd shouting rejoice with me over one found sheep (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.15.6" target="_blank" rel="noopener" data-verse="luke-15-6" data-ref="Luke 15:6" aria-expanded="false">Luke 15:6</a>), the woman throwing a party over one found coin (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.15.9" target="_blank" rel="noopener" data-verse="luke-15-9" data-ref="Luke 15:9" aria-expanded="false">Luke 15:9</a>), the body where one member's honor makes every member glad (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.26" target="_blank" rel="noopener" data-verse="1-corinthians-12-26" data-ref="1 Corinthians 12:26" aria-expanded="false">1 Corinthians 12:26</a>), and Paul himself, chained and still rejoicing with his friends (<a class="vlink" href="https://www.bible.com/bible/3034/PHP.2.17-18" target="_blank" rel="noopener">Philippians 2:17, 18</a>). Then come the four load-bearing verbs. Love bears, believes, hopes, endures, all things (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.7" target="_blank" rel="noopener" data-verse="1-corinthians-13-7" data-ref="1 Corinthians 13:7" aria-expanded="false">1 Corinthians 13:7</a>). Bearing and enduring are near twins, the same tough endurance Paul practiced when he chose to put up with anything rather than hinder the gospel (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.12" target="_blank" rel="noopener" data-verse="1-corinthians-9-12" data-ref="1 Corinthians 9:12" aria-expanded="false">1 Corinthians 9:12</a>). Believing all things means leading with the benefit of the doubt. Hoping all things means expecting good on the far side of hard. Love endures precisely by believing and hoping. It lasts because it refuses to stop expecting.</p>
 
 <!-- BSB_BLOCK: Psalms 145:9 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:55caab92239e3caf8c0241ab1a2e64ae3bd1f2566febc9bf0a8f8f0450736af0 | footnotes-stripped:0 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Psalms 145:9</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.145.9" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/PSA.145.9" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">The LORD is good to all; His compassion rests on all He has made.</div>
 <div class="verse-commentary">
           <p>Here is the spring the kindness verb drinks from. When Paul says love shows kindness, he uses <em>chrēsteuomai</em>, a Greek verb that appears only this once in the whole New Testament, but its word family is all over the Greek Old Testament, especially the Psalms, where it describes the Lord's goodness wrapped in mercy. That backstory matters. Kindness in this chapter is not politeness, the smile we give the cashier. It is imitation. The psalm says God is good to everyone, that His compassion covers everything He has made, the deserving and the undeserving alike. So when love shows kindness to someone who has not earned it, it is not being naive. It is copying its Father. Kindness is family resemblance, and the family it resembles is God's.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Galatians 5:22-23 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:29576fafa91920420c367cd105898109c35eee0d39045809d114a1322ca654b8 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Galatians 5:22-23</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/GAL.5.22-23" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 22">22</sup>But the fruit of the Spirit is love, joy, peace, patience, kindness, goodness, faithfulness, <sup class="verse-number" aria-label="Verse 23">23</sup>gentleness, and self-control. Against such things there is no law.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/GAL.5.22-23" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 22">22</sup>But the fruit of the Spirit is love, joy, peace, patience, kindness, goodness, faithfulness, <sup class="verse-number" aria-label="Verse 23">23</sup>gentleness, and self-control. Against such things there is no law.</div>
 <div class="verse-commentary">
           <p>Set this list beside today's list and watch them overlap. Love leads the fruit. Patience is on both pages. Kindness is on both pages. Joy shows up here, and rejoicing there. That overlap answers the question today's verbs quietly raise, which is where does anyone get the strength to live like this. Paul's answer is in his farming word. Fruit. Nobody bolts fruit onto a tree. It grows from the life inside, and this life is the Spirit's. The verbs of 1 Corinthians 13 are not a self-improvement checklist we grind through. They are what naturally ripens in a person who stays connected to God's Spirit day after day. Our part is real, choosing the verb when the feeling is missing. But the sap is His. We practice what He produces.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Butterflies Grew Up</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Butterflies Grew Up</h3>
       <p>At every fiftieth anniversary party, somebody finally asks the question. What's the secret? And the husband, who has been dreading the microphone all evening, gives an answer that disappoints the whole room. We just kept showing up, he says. I make her tea. She warms my side of the bed. The crowd wanted butterflies and he handed them chores. But watch that man for a week. He starts her car on cold mornings so the seat is warm before she gets in. He fills the pill organizer every Sunday night, her days and his, whether or not he feels anything in particular while he does it. Ask him which of those mornings he felt in love, and he honestly could not tell you. The feelings came and went a thousand times across fifty years, like weather. The verbs never missed a day.</p>
       <p>That is what Paul is handing us in today's passage. Not a rush to wait for. Seven verbs to run today, patience and kindness and rejoicing on purpose, practiced on schedule through every kind of feeling-weather. In a love like that, the butterflies do not die. They grow up. They get jobs. And given enough mornings, the practice stops being something a person does and becomes someone the person is, which is exactly what the Spirit grows in anyone who keeps choosing the verb. Fruit does not appear in a day. It ripens on a schedule of small, repeated yeses.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Feelings Followed the Verbs</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Feelings Followed the Verbs</h3>
       <p>In June 2025, researchers at the University of California, San Francisco published the results of a large-scale global well-being study. They called it the Big Joy Project, and the assignment could not have been humbler. For seven days, five to ten minutes a day, each participant performed one small prescribed act, and the daily list reads like Paul's portrait with a login screen. Do a kind thing for someone. Write down what you are grateful for. Celebrate another person's joy on purpose. Nobody was asked to feel anything first. The acts were scheduled, mood or no mood. In all, 48,789 people consented to take part, 17,598 completed the measures before and after the week, and 169 countries were represented. When the team analyzed the results, the week of tiny verbs had measurably raised emotional well-being and positive emotion, lowered stress, and improved self-reported health and sleep quality, with benefits comparable to programs that run ten or twelve weeks. The largest gains landed on the youngest and most disadvantaged participants.</p>
       <p>Notice the order of operations, because it is the whole finding. The feelings were not the fuel. They were the exhaust. People acted first, on schedule, and the joy showed up behind the acting, which is precisely the architecture Paul built into today's passage. Love is patient. Love is kind. Love rejoices with. Verbs, all of them, available on days when the warm feeling never reports for duty. Scripture assigned these reps two thousand years before anyone measured them, and it also named what the researchers were watching grow. Fruit. A week of deliberate kindness does not make anyone a finished orchard, and no app can pour God's love into a heart. That is the Spirit's work. But the study caught the mechanism in daylight. Choose the verb, and the verb starts changing the person running it. The feelings were never the engine. The verbs were.</p>
       <!-- TODAYS_WORLD_SOURCE: Scaling a Brief Digital Well-Being Intervention (the Big Joy Project) and Sociodemographic Moderators: Single-Group Pre-Post Study | Journal of Medical Internet Research | 2025 | https://www.jmir.org/2025/1/e72053/ -->
-    </div>
+    <details class="disclosure source-disclosure"><summary class="disclosure-summary"><span class="disclosure-label">Source</span> <span class="disclosure-publisher">Journal of Medical Internet Research</span></summary><div class="disclosure-body"><p><cite>Scaling a Brief Digital Well-Being Intervention (the Big Joy Project) and Sociodemographic Moderators: Single-Group Pre-Post Study</cite>. Journal of Medical Internet Research, 2025. <a href="https://www.jmir.org/2025/1/e72053/" target="_blank" rel="noopener noreferrer">Read the source</a>.</p></div></details></section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Every verb on today's list, Jesus performed in sandals, on foot, at street level. Patience looked like three years of explaining the kingdom to twelve men who kept asking about thrones. Kindness looked like a hand laid on a leper who had not been touched in years. Rejoicing with looked like a wedding at Cana, where He kept the celebration alive with the best wine of the day. Bearing all things looked like a Teacher washing the feet of the man about to sell Him. And believing all things looked like breakfast on a beach, where He handed the ministry back to the friend who had denied Him three times, because He saw who Peter would become and not just what Peter had done. We will spend Wednesday gazing at this portrait in full. For now it is enough to notice one thing. Not one verb stayed theoretical. In Jesus, every line of the love chapter got up and walked.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Every verb on today's list, Jesus performed in sandals, on foot, at street level. Patience looked like three years of explaining the kingdom to twelve men who kept asking about thrones. Kindness looked like a hand laid on a leper who had not been touched in years. Rejoicing with looked like a wedding at Cana, where He kept the celebration alive with the best wine of the day. Bearing all things looked like a Teacher washing the feet of the man about to sell Him. And believing all things looked like breakfast on a beach, where He handed the ministry back to the friend who had denied Him three times, because He saw who Peter would become and not just what Peter had done. We will spend Wednesday gazing at this portrait in full. For now it is enough to notice one thing. Not one verb stayed theoretical. In Jesus, every line of the love chapter got up and walked.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Pick the verb on Paul's list that comes least naturally to you and run it once today, on purpose. If it is patience, let the slow moment pass without the sigh or the phone. If it is kindness, do the unrequested helpful thing for the person you find hardest. If it is rejoicing with, find somebody's good news today and celebrate it like it happened to you, no comparison allowed. One verb, one deliberate rep, before you sleep tonight.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, thank You for refusing to leave love vague. We have hidden behind the vagueness, calling ourselves loving because we felt warm things while doing nothing. Today You showed us seven verbs, and we felt the list read us back. We confess the sighs that leak out of our patience. We confess the kindness we ration to people who can return it. We confess how much easier it is to weep with those who weep than to honestly rejoice with those who rejoice. Spirit of God, grow Your fruit in us, because we have tried manufacturing it and the plastic version fools no one. Give us one honest rep of the hardest verb today, and the strength to repeat it tomorrow, until Your love stops being something we admire and becomes something our families can feel. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"Which of Paul's seven verbs is hardest for you right now (patience with a slow situation, kindness to a difficult person, honest joy at someone else's success, holding on when trust has been bruised)? And since this love is the Spirit's fruit rather than raw willpower, what would it look like to ask God for that verb this week instead of just trying harder at it?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"Which of Paul's seven verbs is hardest for you right now (patience with a slow situation, kindness to a difficult person, honest joy at someone else's success, holding on when trust has been bruised)? And since this love is the Spirit's fruit rather than raw willpower, what would it look like to ask God for that verb this week instead of just trying harder at it?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, thank You for refusing to leave love vague. We have hidden behind the vagueness, calling ourselves loving because we felt warm things while doing nothing. Today You showed us seven verbs, and we felt the list read us back. We confess the sighs that leak out of our patience. We confess the kindness we ration to people who can return it. We confess how much easier it is to weep with those who weep than to honestly rejoice with those who rejoice. Spirit of God, grow Your fruit in us, because we have tried manufacturing it and the plastic version fools no one. Give us one honest rep of the hardest verb today, and the strength to repeat it tomorrow, until Your love stops being something we admire and becomes something our families can feel. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-08-09.html"><span class="day-nav-kicker">← Sunday</span><span class="day-nav-title">The Essentialness of Love</span></a><a class="day-nav-item" href="/bible-study/2026-08-11.html"><span class="day-nav-kicker">Tuesday →</span><span class="day-nav-title">What Love Does Not Do</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"ephesians-4-2":{"ref":"Ephesians 4:2","text":"with all humility and gentleness, with patience, bearing with one another in love,","bibleUrl":"https://www.bible.com/bible/3034/EPH.4.2"},"luke-1-58":{"ref":"Luke 1:58","text":"Her neighbors and relatives heard that the Lord had shown her great mercy, and they rejoiced with her.","bibleUrl":"https://www.bible.com/bible/3034/LUK.1.58"},"luke-15-6":{"ref":"Luke 15:6","text":"comes home, and calls together his friends and neighbors to tell them, \u2018Rejoice with me, for I have found my lost sheep!\u2019","bibleUrl":"https://www.bible.com/bible/3034/LUK.15.6"},"luke-15-9":{"ref":"Luke 15:9","text":"And when she finds it, she calls together her friends and neighbors to say, \u2018Rejoice with me, for I have found my lost coin.\u2019","bibleUrl":"https://www.bible.com/bible/3034/LUK.15.9"},"1-corinthians-12-26":{"ref":"1 Corinthians 12:26","text":"If one part suffers, every part suffers with it; if one part is honored, every part rejoices with it.","bibleUrl":"https://www.bible.com/bible/3034/1CO.12.26"},"1-corinthians-13-7":{"ref":"1 Corinthians 13:7","text":"It bears all things, believes all things, hopes all things, endures all things.","bibleUrl":"https://www.bible.com/bible/3034/1CO.13.7"},"1-corinthians-9-12":{"ref":"1 Corinthians 9:12","text":"If others have this right to your support, shouldn\u2019t we have it all the more? But we did not exercise this right. Instead, we put up with anything rather than hinder the gospel of Christ.","bibleUrl":"https://www.bible.com/bible/3034/1CO.9.12"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

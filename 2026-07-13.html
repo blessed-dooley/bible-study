@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Centered on Jesus — Daily Bible Study</title>
 <meta name="study-title" content="Centered on Jesus">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 3, Unity in Christ · Part 3 of 7">
+<meta name="study-passage" content="1 Corinthians 1:10">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 3, Unity in Christ · Day 3 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Centered on Jesus">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 3, Unity in Christ · Part 3 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 3, Unity in Christ · Day 3 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-07-13.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 3, Unity in Christ · Part 3 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 3, Unity in Christ · Day 3 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,322 +38,194 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Centered on Jesus</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 3, Unity in Christ</span>
-      <span>Part 3 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">July 13, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Mon · Jul 13</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">9 min</span>
+    </div>
+    <h1 class="study-title">Centered on Jesus</h1>
+    <p class="study-sub"><span class="sub-title">Unity in Christ</span><span class="sub-facts"><span>Lesson 3</span><span>Day 3 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>Yesterday's question left a hole. If the church is not supposed to rally around Paul or Apollos, what actually holds it together? Today Paul answers with a Person. We were called into fellowship with the Son of God, baptized into His name and no leader's. The word he uses for "united" means mending a torn net or setting a broken bone, not filing everyone down until they match. He wants a body, not a set of clones, where wildly different people are anchored to the same Lord. <strong>Unity is not everyone becoming the same. It is everyone facing the same Jesus.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday Paul emptied the factions with a single question. Was Paul crucified for you? No, and neither was Apollos or Cephas. But a question like that leaves a hole behind it. If the church is not supposed to gather around its favorite teachers, then what does hold it together? Today Paul fills the hole, and the answer is a Person. We were never called into a fan club for Paul. We were called into fellowship with the Son of God Himself. The problem in Corinth was never that they loved their leaders too much. It was that they had let a leader slide into the one place where only Christ belongs.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday's question left a hole. If the church is not supposed to rally around Paul or Apollos, what actually holds it together? Today Paul answers with a Person. We were called into fellowship with the Son of God, baptized into His name and no leader's. The word he uses for "united" means mending a torn net or setting a broken bone, not filing everyone down until they match. He wants a body, not a set of clones, where wildly different people are anchored to the same Lord. <strong>Unity is not everyone becoming the same. It is everyone facing the same Jesus.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday Paul emptied the factions with a single question. Was Paul crucified for you? No, and neither was Apollos or Cephas. But a question like that leaves a hole behind it. If the church is not supposed to gather around its favorite teachers, then what does hold it together? Today Paul fills the hole, and the answer is a Person. We were never called into a fan club for Paul. We were called into fellowship with the Son of God Himself. The problem in Corinth was never that they loved their leaders too much. It was that they had let a leader slide into the one place where only Christ belongs.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Rome Told the Body Story to Keep People in Their Place</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>Rome Told the Body Story to Keep People in Their Place</h3>
       <p>Long before Paul, the Romans already had a famous story about a body. As the legend went, the common people of early Rome once went on strike and marched out of the city, furious at being used by the elite. A senator coaxed them back with a fable. Once upon a time, he said, the hands and the mouth resented the lazy stomach and refused to feed it, until the whole body wasted away and they learned their lesson. The moral was blunt. Know your place, do your job, and stop complaining, because the people at the top are the stomach and you are the hands. For generations the "body" was a tidy image for keeping the lower ranks quiet and content at the bottom.</p>
       <p>Paul knew that image, and he detonated it. When he tells the Corinthians they are one body with many members, he is not telling the little people to keep serving the important people. He says the opposite. The parts that look weakest are the ones you cannot live without, the members that seem least honorable get the most honor, and nobody gets to say to anyone else, "I don't need you." In Rome the body kept people in their lane. In Christ the body makes the lowliest member essential. A church busy ranking its teachers had the picture exactly upside down, and Paul flips it right side up by pointing them past every member to the Head.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>So what does Paul actually want in place of the factions? His words sound almost impossible at first, that a church full of different people would be "united in the same mind and the same judgment." It sounds like he is asking everyone to become identical. He is not. Read him closely and you find something far better than uniformity, a real unity that runs underneath our differences because it is anchored in one shared Lord. The center of the church was never meant to be a personality. It is a Person, and everything Paul says here is working to move Christ back to the middle where He belongs.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>So what does Paul actually want in place of the factions? His words sound almost impossible at first, that a church full of different people would be "united in the same mind and the same judgment." It sounds like he is asking everyone to become identical. He is not. Read him closely and you find something far better than uniformity, a real unity that runs underneath our differences because it is anchored in one shared Lord. The center of the church was never meant to be a personality. It is a Person, and everything Paul says here is working to move Christ back to the middle where He belongs.</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 1:10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:ea9a80cba53831fc76a92c273e21a0ac50a9429335d6d2cccfadb676ea92f393 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 1:10</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.10" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.1.10" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">I appeal to you, brothers, in the name of our Lord Jesus Christ, that all of you agree together, so that there may be no divisions among you and that you may be united in mind and conviction.</div>
 <div class="verse-commentary">
           <p>Here is the verse the whole week keeps circling. Notice what Paul is and is not asking for. The Greek word behind "united" is <em>katartizo</em>, the word for mending a torn fishing net, setting a broken bone, or easing a dislocated joint back into place. It does not mean grinding everyone down until they think and sound the same. It means taking something fractured and restoring it to working order. Paul is not after a church of clones. He is after a church that functions, where people who disagree about a hundred smaller things are still set solidly on the same foundation. And that phrase "the same mind and the same conviction" is not about matching opinions on every subject. It is about one settled agreement underneath everything else, that Jesus is Lord and all the rest bends to Him. Unity is not everyone becoming the same. It is everyone facing the same direction.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: 1 Corinthians 1:9 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:61173d9e560a633841c1d8f07e54256546ed6f6261e31ad441a12feaa4c01755 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 1:9</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.9" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.1.9" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">God, who has called you into fellowship with His Son Jesus Christ our Lord, is faithful.</div>
 <div class="verse-commentary">
-          <p>This is the ground the whole appeal stands on. God did not call the Corinthians into the Paul movement or the Apollos movement. He called them into fellowship with His Son. And notice that Paul cannot stop calling Jesus "Lord." In just the opening lines of the letter he repeats it over and over (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.2" target="_blank" rel="noopener">1 Corinthians 1:2</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.7" target="_blank" rel="noopener">1 Corinthians 1:7</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.8" target="_blank" rel="noopener">1 Corinthians 1:8</a>), driving the point home before he ever touches the quarrels. Every believer in that fractured church already possessed the one thing that could unite them. They belonged to the same Lord. They had simply let smaller loyalties crowd Him toward the edge of the room. Paul's cure is not complicated. Put Christ back in the center, and the factions lose their oxygen.</p>
+          <p>This is the ground the whole appeal stands on. God did not call the Corinthians into the Paul movement or the Apollos movement. He called them into fellowship with His Son. And notice that Paul cannot stop calling Jesus "Lord." In just the opening lines of the letter he repeats it over and over (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.2" target="_blank" rel="noopener" data-verse="1-corinthians-1-2" data-ref="1 Corinthians 1:2" aria-expanded="false">1 Corinthians 1:2</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.7" target="_blank" rel="noopener" data-verse="1-corinthians-1-7" data-ref="1 Corinthians 1:7" aria-expanded="false">1 Corinthians 1:7</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.8" target="_blank" rel="noopener" data-verse="1-corinthians-1-8" data-ref="1 Corinthians 1:8" aria-expanded="false">1 Corinthians 1:8</a>), driving the point home before he ever touches the quarrels. Every believer in that fractured church already possessed the one thing that could unite them. They belonged to the same Lord. They had simply let smaller loyalties crowd Him toward the edge of the room. Paul's cure is not complicated. Put Christ back in the center, and the factions lose their oxygen.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: 1 Corinthians 12:27 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b5e5ed98d0ec8ab28f1d6156f6f5a189cf4f65e24b742777ee60629ab0f592c6 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 12:27</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.12.27" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.12.27" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Now you are the body of Christ, and each of you is a member of it.</div>
 <div class="verse-commentary">
-          <p>Paul's favorite picture for the church is a body. Not a crowd of look-alikes, but a body, where an eye and a foot and an ear are wildly different and every one of them is needed, and not one of them works alone. That is a unity with room for difference built right into it. It also explains why the factions were so deadly. A body divided against itself is not a body anymore, it is just scattered parts. And remember how they joined this body in the first place. Not one of them was baptized into Paul (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.13" target="_blank" rel="noopener">1 Corinthians 1:13</a>). Every one of them was baptized into the name of the Father, the Son, and the Holy Spirit (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.28.19" target="_blank" rel="noopener">Matthew 28:19</a>). They were stamped as Christ's from the very start. The heartbreak in Corinth was a body full of members who kept acting like they belonged to different owners, when they had all been claimed by the same Lord.</p>
+          <p>Paul's favorite picture for the church is a body. Not a crowd of look-alikes, but a body, where an eye and a foot and an ear are wildly different and every one of them is needed, and not one of them works alone. That is a unity with room for difference built right into it. It also explains why the factions were so deadly. A body divided against itself is not a body anymore, it is just scattered parts. And remember how they joined this body in the first place. Not one of them was baptized into Paul (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.13" target="_blank" rel="noopener" data-verse="1-corinthians-1-13" data-ref="1 Corinthians 1:13" aria-expanded="false">1 Corinthians 1:13</a>). Every one of them was baptized into the name of the Father, the Son, and the Holy Spirit (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.28.19" target="_blank" rel="noopener" data-verse="matthew-28-19" data-ref="Matthew 28:19" aria-expanded="false">Matthew 28:19</a>). They were stamped as Christ's from the very start. The heartbreak in Corinth was a body full of members who kept acting like they belonged to different owners, when they had all been claimed by the same Lord.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Why Strangers Talk Around a Fire</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>Why Strangers Talk Around a Fire</h3>
       <p>Think about the last time you stood around a real fire at night, a backyard fire pit or a ring at a campground. Look at who is there. People who would have nothing to say to each other in a bright kitchen. Different ages, different politics, some loud, some shy, a few of them strangers. And yet a fire on a cold night does something a lit room never quite manages. It turns a random cluster of people into a circle. Nobody had to agree on anything first. Nobody became like anyone else. They just turned their chairs toward the same warmth, and somewhere in facing the same center, they quietly became an "us."</p>
       <p>That is the unity Paul is begging the Corinthians to recover, and notice what it is not. He is not asking a room full of very different people to become identical. The word he reaches for means mending a torn net or setting a broken bone, putting something fractured back into working order, not filing everyone down until they match. A church is a circle around a fire, and the fire is Christ. Face Him together and a hundred differences stop dividing you, because you are all being warmed by the same thing. Turn away from the center to argue about who is sitting where, and the circle breaks and the cold comes back in. Unity was never everyone becoming the same. It is everyone leaning toward the same fire.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <!-- TODAYS_WORLD_SOURCE: Telescopes Unite in Unprecedented Observations of Famous Black Hole (data collected by a team of 760 scientists and engineers from nearly 200 institutions, spanning 32 countries or regions) | Event Horizon Telescope Collaboration | 2021 | https://eventhorizontelescope.org/blog/telescopes-unite-unprecedented-observations-famous-black-hole -->
-      <div class="section-heading">The Eye as Wide as the Earth</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<!-- TODAYS_WORLD_SOURCE: Telescopes Unite in Unprecedented Observations of Famous Black Hole (data collected by a team of 760 scientists and engineers from nearly 200 institutions, spanning 32 countries or regions) | Event Horizon Telescope Collaboration | 2021 | https://eventhorizontelescope.org/blog/telescopes-unite-unprecedented-observations-famous-black-hole -->
+      <h3>The Eye as Wide as the Earth</h3>
       <p>A black hole sits so far away and looms so small in our sky that no single telescope on Earth could ever photograph one. So in 2019 a team did something stranger. They took radio dishes scattered across the planet, from Hawaii and Arizona to Chile, Spain, Mexico, Greenland, and the South Pole, run by different countries and institutions, and aimed every one of them at the same spot in the sky at the same instant, all synchronized by atomic clocks. When their separate streams of data were combined, the scattered dishes acted like one telescope the size of the whole Earth, and it captured the first image ever taken of a black hole. In 2022 they did it again for the giant one at the center of our own galaxy. Behind that work stood a sprawling collaboration, some 760 scientists and engineers from nearly 200 institutions, spanning 32 countries or regions.</p>
       <p>Notice what actually made it work. Nobody melted the telescopes down and rebuilt them as identical machines. They stayed exactly what they were, wildly different instruments in different nations, run by people speaking different languages. Their unity came from one thing only. Every last one of them was fixed on the same center. That is the picture Paul is reaching for. He is not asking the Corinthians to become copies of one another, matched in shape and size and opinion. He is asking them to aim their lives at the same Christ. A church becomes one body the way those scattered dishes became a single eye, not by sameness but by a shared center. Turn the instruments toward each other and you get nothing. Turn them all toward the same point and suddenly they see what none of them could see alone.</p>
-    </div>
+    <details class="disclosure source-disclosure"><summary class="disclosure-summary"><span class="disclosure-label">Source</span> <span class="disclosure-publisher">Event Horizon Telescope Collaboration</span></summary><div class="disclosure-body"><p><cite>Telescopes Unite in Unprecedented Observations of Famous Black Hole (data collected by a team of 760 scientists and engineers from nearly 200 institutions, spanning 32 countries or regions)</cite>. Event Horizon Telescope Collaboration, 2021. <a href="https://eventhorizontelescope.org/blog/telescopes-unite-unprecedented-observations-famous-black-hole" target="_blank" rel="noopener noreferrer">Read the source</a>.</p></div></details></section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Every problem in Corinth traces back to one misplaced center. A church is only ever as unified as the Person it is built around, and the Corinthians had quietly swapped the Son of God for their favorite spokesmen. Paul's fix is not to find a better leader or broker a cleverer compromise. It is to move Christ back to the middle. Think about what that means. The thing that binds Christians together is not agreement, not personality, not shared taste in music or politics or preachers. It is a shared Lord who was crucified and raised for every one of us. Two believers who cannot agree on much of anything are still joined at the deepest possible point, because the same Jesus died for both and the same Spirit lives in both. When He is the center, the differences become a body. When He is not, they become a battlefield. Unity was never something the church had to manufacture. It was something they already had in Him and kept forgetting to live.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Every problem in Corinth traces back to one misplaced center. A church is only ever as unified as the Person it is built around, and the Corinthians had quietly swapped the Son of God for their favorite spokesmen. Paul's fix is not to find a better leader or broker a cleverer compromise. It is to move Christ back to the middle. Think about what that means. The thing that binds Christians together is not agreement, not personality, not shared taste in music or politics or preachers. It is a shared Lord who was crucified and raised for every one of us. Two believers who cannot agree on much of anything are still joined at the deepest possible point, because the same Jesus died for both and the same Spirit lives in both. When He is the center, the differences become a body. When He is not, they become a battlefield. Unity was never something the church had to manufacture. It was something they already had in Him and kept forgetting to live.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Take an honest inventory today of what actually sits at the center of your faith. Sometimes it is a favorite teacher, podcast, author, or tradition, and it has quietly become the lens you judge every other Christian by. Name it. Then deliberately set Christ back in that spot. Here is one practical test. Before you share, repost, or argue for your favorite voice this week, ask whether you are pointing people to Jesus or to your team. And take two minutes today to thank God not for your preferred leader, but for the Lord you share with believers who are nothing like you.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Lord Jesus, we confess how easily You slip from the center. We build our faith around voices we admire and wake up having quietly made them more important to us than You. Forgive us. You are the One who was crucified for us, the One we were baptized into, the Lord we all share. Draw us back to the middle where You belong. Teach us to hold on to You so tightly that the smaller loyalties lose their grip, and to recognize as family everyone else who belongs to You. Make our differences into a body again, joined to You as our Head. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"What has quietly drifted into the center of your faith in the place that belongs to Christ (a favorite teacher, a tradition, a cause, a way of doing church), and how would your attitude toward other believers change if Jesus, and not that thing, were unmistakably at the center?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"What has quietly drifted into the center of your faith in the place that belongs to Christ (a favorite teacher, a tradition, a cause, a way of doing church), and how would your attitude toward other believers change if Jesus, and not that thing, were unmistakably at the center?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Lord Jesus, we confess how easily You slip from the center. We build our faith around voices we admire and wake up having quietly made them more important to us than You. Forgive us. You are the One who was crucified for us, the One we were baptized into, the Lord we all share. Draw us back to the middle where You belong. Teach us to hold on to You so tightly that the smaller loyalties lose their grip, and to recognize as family everyone else who belongs to You. Make our differences into a body again, joined to You as our Head. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-07-12.html"><span class="day-nav-kicker">← Sunday</span><span class="day-nav-title">The Problem of Cliques in the Church</span></a><a class="day-nav-item" href="/bible-study/2026-07-14.html"><span class="day-nav-kicker">Tuesday →</span><span class="day-nav-title">Wisdom and Maturity</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"1-corinthians-1-2":{"ref":"1 Corinthians 1:2","text":"To the church of God in Corinth, to those sanctified in Christ Jesus and called to be holy, together with all those everywhere who call on the name of our Lord Jesus Christ, their Lord and ours:","bibleUrl":"https://www.bible.com/bible/3034/1CO.1.2"},"1-corinthians-1-7":{"ref":"1 Corinthians 1:7","text":"Therefore you do not lack any spiritual gift as you eagerly await the revelation of our Lord Jesus Christ.","bibleUrl":"https://www.bible.com/bible/3034/1CO.1.7"},"1-corinthians-1-8":{"ref":"1 Corinthians 1:8","text":"He will sustain you to the end, so that you will be blameless on the day of our Lord Jesus Christ.","bibleUrl":"https://www.bible.com/bible/3034/1CO.1.8"},"1-corinthians-1-13":{"ref":"1 Corinthians 1:13","text":"Is Christ divided? Was Paul crucified for you? Were you baptized into the name of Paul?","bibleUrl":"https://www.bible.com/bible/3034/1CO.1.13"},"matthew-28-19":{"ref":"Matthew 28:19","text":"Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit,","bibleUrl":"https://www.bible.com/bible/3034/MAT.28.19"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

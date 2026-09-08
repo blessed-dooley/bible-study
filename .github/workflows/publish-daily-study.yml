@@ -27,6 +27,14 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Validate reader JavaScript
+        run: |
+          node --check assets/notifications.js
+          node --check assets/reader-controls.js
+          node --check assets/verse-popover.js
+          node --check assets/archive-search.js
+          node --check assets/full-text-search.js
+
       - name: Publish tomorrow's study from staging
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
@@ -43,30 +51,20 @@ jobs:
             exit 0
           fi
 
+      - name: Refresh navigation and search data
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: |
+          python3 tools/refresh-site-data.py --root .
+          python3 tools/generate_studies_json.py --root . --out studies.json
+          python3 tools/generate_search_index.py --root . --out search-index.json
+          python3 tools/generate_studies_json.py --root . --out studies.json --check
+          python3 tools/generate_search_index.py --root . --out search-index.json --check
+
       - name: Regenerate sitemap.xml
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
-          python3 - << 'SITEMAP_EOF'
-          import os, datetime
-
-          base = 'https://blessedcontent.github.io/bible-study'
-          files = sorted([f for f in os.listdir('.') if f.endswith('.html')])
-
-          xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
-          xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-
-          for f in files:
-              url = f'{base}/{f}'
-              lastmod = datetime.date.today().isoformat()
-              xml += f'  <url>\n    <loc>{url}</loc>\n    <lastmod>{lastmod}</lastmod>\n  </url>\n'
-
-          xml += '</urlset>\n'
-
-          with open('sitemap.xml', 'w') as fh:
-              fh.write(xml)
-
-          print(f'Sitemap updated with {len(files)} entries')
-          SITEMAP_EOF
+          python3 tools/generate_sitemap.py --root . --out sitemap.xml
+          python3 tools/generate_sitemap.py --root . --out sitemap.xml --check
 
       - name: Commit and push
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'

@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Time — Daily Bible Study</title>
 <meta name="study-title" content="Time">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Part 2 of 7">
+<meta name="study-passage" content="John 15:4-5">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Day 2 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Time">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Part 2 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Day 2 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-04-26.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Part 2 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Day 2 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,336 +38,213 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Time</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 5, How to Study the Bible</span>
-      <span>Part 2 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Sun · Apr 26</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
     </div>
-    <div class="date-badge">April 26, 2026</div>
+    <h1 class="study-title">Time</h1>
+    <p class="study-sub"><span class="sub-title">How to Study the Bible</span><span class="sub-facts"><span>Lesson 5</span><span>Day 2 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">The alarm goes off early, the Bible opens, a chapter gets read, the book closes, and the rest of the day rolls on as if the whole exchange never happened.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p class="tldr-hook">The alarm goes off early, the Bible opens, a chapter gets read, the book closes, and the rest of the day rolls on as if the whole exchange never happened.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span> Making time for God is the first surrender, and the one that makes every other surrender possible.</li>
-        <li><span class="bullet-icon">☩</span> Hurry is not a scheduling problem; it is a heart problem that a faster reading speed will never fix.</li>
-        <li><span class="bullet-icon">☩</span> Jesus inherited the ancient practice of rising in the dark to pray, and then He became the reason anyone still does it.</li>
-        <li><span class="bullet-icon">☩</span> Psalm 46 ends with the only way a human being has ever actually known God: by stopping.</li>
+        <li>
+<span class="bullet-icon">☩</span> Making time for God is the first surrender, and the one that makes every other surrender possible.</li>
+        <li>
+<span class="bullet-icon">☩</span> Hurry is not a scheduling problem; it is a heart problem that a faster reading speed will never fix.</li>
+        <li>
+<span class="bullet-icon">☩</span> Jesus inherited the ancient practice of rising in the dark to pray, and then He became the reason anyone still does it.</li>
+        <li>
+<span class="bullet-icon">☩</span> Psalm 46 ends with the only way a human being has ever actually known God: by stopping.</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday asked you to pick one chapter, write the reference on a sticky note, and place it where the morning could not miss it. That sticky note was the first commitment of the week. Today the week pays the bill. The chapter you chose is going to require fifteen or twenty minutes that currently belong to something else: the phone, the commute audio, the second cup of coffee, the news you already knew was bad. Isaiah's promise from Sabbath was that the Word does not return empty. But the Word can only come back with anything if it is first sent out into an actual block of your day. Time is the soil this whole week depends on.</p>
-    </div>
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday asked you to pick one chapter, write the reference on a sticky note, and place it where the morning could not miss it. That sticky note was the first commitment of the week. Today the week pays the bill. The chapter you chose is going to require fifteen or twenty minutes that currently belong to something else: the phone, the commute audio, the second cup of coffee, the news you already knew was bad. Isaiah's promise from Sabbath was that the Word does not return empty. But the Word can only come back with anything if it is first sent out into an actual block of your day. Time is the soil this whole week depends on.</p>
+    </section>
 
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Hour Before Dawn</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Hour Before Dawn</h3>
       <p>In first-century Judea, a practicing Jew's day was built around three fixed prayer times. Shacharit at dawn. Mincha in the afternoon. Maariv at nightfall. The morning prayer was the anchor, and it required rising in the dark so the opening words of the Shema could be said as the first light broke over the Mount of Olives. The rabbis argued about how to define "morning light" for this purpose; one answer went like this: early enough to tell the blue thread from the white thread on the edge of a prayer shawl. The discipline was not about optimizing a schedule. It was a daily confession that the day belonged to God before the day began.</p>
       <p>That rhythm produced Jesus. Mark tells us He "got up very early in the morning, while it was still dark, and went out and made his way to a deserted place" to pray. He did not invent that hour. He inherited it. But He did something with it that no one else had done: He poured the most important communication of His life into that quiet pre-sunrise block of solitude. By the time John 15 was spoken in an upper room on the night of His arrest, the disciples had watched Him do this for three years. He was not giving them an abstract discourse on abiding. He was describing the life they had watched Him live every single morning before they were awake.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>A grapevine in a vineyard never strains. The branch does not wake up on Tuesday and decide it will produce grapes that week; it simply stays on the trunk, and the sap does the rest. That picture is why Jesus reached for it on the night before His arrest. When He told His disciples to remain in Him, He was not handing them a new assignment. He was describing a connection they already had and asking whether they would live consciously inside it. The psalmist called this rhythm <a class="vlink" href="https://www.bible.com/bible/3034/PSA.37.4" target="_blank" rel="noopener">delight</a>. The Bereans lived it by <a class="vlink" href="https://www.bible.com/bible/3034/ACT.17.11" target="_blank" rel="noopener">examining the Scriptures</a> daily. The first cost of conscious abiding is time, which is why today starts there.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>A grapevine in a vineyard never strains. The branch does not wake up on Tuesday and decide it will produce grapes that week; it simply stays on the trunk, and the sap does the rest. That picture is why Jesus reached for it on the night before His arrest. When He told His disciples to remain in Him, He was not handing them a new assignment. He was describing a connection they already had and asking whether they would live consciously inside it. The psalmist called this rhythm <a class="vlink" href="https://www.bible.com/bible/3034/PSA.37.4" target="_blank" rel="noopener">delight</a>. The Bereans lived it by <a class="vlink" href="https://www.bible.com/bible/3034/ACT.17.11" target="_blank" rel="noopener">examining the Scriptures</a> daily. The first cost of conscious abiding is time, which is why today starts there.</p>
 
       <!-- ANCHOR: John 15:4-5 -->
 <!-- BSB_BLOCK: John 15:4-5 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:da1f1dfd5774081e4cdc3e211442f4187d3ef7d69fd6a2ca37bb7eb4d8db38eb | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">John 15:4-5</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.15.4-5" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 4">4</sup><span class="words-of-jesus">Remain in Me, and I will remain in you. Just as no branch can bear fruit by itself unless it remains in the vine, neither can you bear fruit unless you remain in Me.</span> <sup class="verse-number" aria-label="Verse 5">5</sup><span class="words-of-jesus">I am the vine and you are the branches. The one who remains in Me, and I in him, will bear much fruit. For apart from Me you can do nothing.</span></div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/JHN.15.4-5" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 4">4</sup><span class="words-of-jesus">Remain in Me, and I will remain in you. Just as no branch can bear fruit by itself unless it remains in the vine, neither can you bear fruit unless you remain in Me.</span> <sup class="verse-number" aria-label="Verse 5">5</sup><span class="words-of-jesus">I am the vine and you are the branches. The one who remains in Me, and I in him, will bear much fruit. For apart from Me you can do nothing.</span>
+</div>
 <div class="verse-commentary">
           <p>The Greek word behind "remain" is <em>meno</em>. It appears eleven times in the first eleven verses of John 15, which should make any reader slow down. <em>Meno</em> is a stationary verb. It means to stay, to dwell, to keep living in a place you already are. It is the word you would use for a guest who never quite moves out, a tenant who has signed a lease for life, a branch that has no plans to relocate. It is not the word you would use for a visit.</p>
           <p>That single word undoes the way most of us think about Bible reading. Abiding is not a tighter schedule. It is not fifteen minutes better spent. It is the acknowledgment that we were already attached to this Vine before we ever cracked the book and that the question is whether we will live consciously in the connection we already have. The branch on a grapevine does not strain to produce fruit. It does not wake up each morning and announce, "Today I will grow grapes." It stays connected, and the sap does the work.</p>
           <p>Which is why Jesus makes the shocking claim at the end: "apart from Me you can do nothing." He does not say you will accomplish less. He says you will accomplish nothing at all that lasts into eternity. The entire visible output of a Christian life, every act of patience with the rude customer, every honest word in the marriage, every gentle answer to the teenager who pushed the wrong button, every quiet prayer for the coworker who makes life hard, is sap from a Vine we have been conscious of for long enough that morning to hear ourselves breathing near Him. Time given to the Bible is not a task on the list. It is the trellis that keeps the branch close enough to the Vine for the sap to flow. Stop abiding and the fruit does not fail quickly. It just fails quietly.</p>
         </div>
-      </div>
+      </figure>
 
       <!-- SUPPORTING: Psalm 46:10 -->
 <!-- BSB_BLOCK: Psalms 46:10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:9dff3fe69b7b83de9ecc7e76e1cebf8278a1cf778160c66bacd408125c515cf2 | footnotes-stripped:0 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Psalms 46:10</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.46.10" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/PSA.46.10" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">“Be still and know that I am God; I will be exalted among the nations, I will be exalted over the earth.”</div>
 <div class="verse-commentary">
           <p>The older English translations render the first command as "Be still." The Hebrew is sharper. <em>Raphah</em> means to let go, to drop your hands, to sink down, to quit striving. It is what a clenched fist does when it finally unclenches. The psalm is not suggesting a meditation posture. It is ordering a cease-fire.</p>
           <p>Notice the sequence: stop, and then know. The knowing comes second. The Hebrew mind did not separate quietness from knowledge the way modern readers do. You cannot know God while you are still running, arguing, juggling, defending, scrolling. The first condition of knowledge is surrender of the hands. That is why fifteen minutes in the morning before the day's traffic begins is worth more than sixty minutes stolen in the middle of the emergency. The emergency still owns you at minute sixty. The stillness at sunrise owns nothing at all, which is exactly what makes God reachable inside it.</p>
         </div>
-      </div>
+      </figure>
 
       <!-- SUPPORTING: Jeremiah 29:13 -->
 <!-- BSB_BLOCK: Jeremiah 29:13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:68f1f2a039472b08ae6f27199b978881a0dab71bc8943b06de15c5d3060bbaa4 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Jeremiah 29:13</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/JER.29.13" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/JER.29.13" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">You will seek Me and find Me when you search for Me with all your heart.</div>
 <div class="verse-commentary">
           <p>Jeremiah spoke this promise to the same exiles who would later treasure the words of Isaiah 55. They were not asking how to find God in a bookstore; they were asking how to find Him in Babylon, on the other side of the wreckage. The answer came with a condition: whole-heart searching.</p>
           <p>The Hebrew phrase <em>bekhol-levavkha</em> means something closer to "from the whole center of you." The heart in Hebrew is not the feelings; it is the control room where the will, the mind, and the affections all meet. God is not promising to be found by the person who squeezes Him into a margin. He is promising to be found by the person whose search has moved from the margin to the middle of the page. Time is how that shift shows up in a calendar. A quarter-hearted search produces a quarter-hearted answer, which is usually mistaken for God being absent. He is not absent. He is waiting for the whole of you to actually turn.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Seventh Minute</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Seventh Minute</h3>
       <p>The phone buzzes, and it is the friend who only calls when something is actually happening. You pick up, and the first four minutes are logistics: yes, everybody is fine, yes, the kids are back in school, yes, the house finally sold. By minute five you are both half-distracted, trading closing phrases, thinking about the dinner still on the stove. Then there is a pause neither of you rushes to fill. And in the silence of minute seven, after the updates have been checked off and the call was almost already over, the real reason they called finally surfaces, quietly, with the tone that changes everything.</p>
       <p>Abiding has a seventh minute. Most of what passes for time with God in modern life is the first three minutes: a drive-time podcast, a verse from an app, a quick prayer while the coffee brews. None of it is wasted. But none of it reaches the silence where the real thing tends to surface. The vine and the branch do their most important work in the unhurried hour, not the notification. Jesus used the word <em>meno</em>, abide, as if it were a place you sit down in. Hurry is not a scheduling problem; it is a heart problem that a faster devotional will never fix. A seventh minute only happens inside a block, and blocks have to be defended.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Interrupted Even When We Are Resting</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>Interrupted Even When We Are Resting</h3>
       <p>Researchers now measure something called time poverty, and the finding that has surprised them most is how little it depends on the actual number of hours in your day. A 2025 diary study in the <em>Journal of Happiness Studies</em> tracked people across ordinary weeks and found that those whose leisure was repeatedly interrupted reported feeling significantly more time poor than those whose leisure ran continuously, even when the total hours were identical. The length of a block, not the size of it, is what makes it feel like anything. Fifteen minutes in a chair with no phone mattered more to well-being than two hours spent half-checking one.</p>
-      <p>Harvard Business School economists studying the same phenomenon across very large American samples have reported what they call a startling result: the subjective feeling of being time poor is associated with lower well-being than even the shock of losing a job. The U.S. Bureau of Labor Statistics&rsquo; American Time Use Survey, released in 2025, showed the average adult logs about five hours of leisure a day, but more than half of that is television, typically consumed while a phone handles the rest of the attention. A 2025 paper in <em>Knowledge Management Research and Practice</em> added a further cost: employees living chronically time poor showed measurably lower knowledge sharing with coworkers. Nobody builds anything worth handing over in three minute margins.</p>
+      <p>Harvard Business School economists studying the same phenomenon across very large American samples have reported what they call a startling result: the subjective feeling of being time poor is associated with lower well-being than even the shock of losing a job. The U.S. Bureau of Labor Statistics’ American Time Use Survey, released in 2025, showed the average adult logs about five hours of leisure a day, but more than half of that is television, typically consumed while a phone handles the rest of the attention. A 2025 paper in <em>Knowledge Management Research and Practice</em> added a further cost: employees living chronically time poor showed measurably lower knowledge sharing with coworkers. Nobody builds anything worth handing over in three minute margins.</p>
       <p>The word Jesus used for abiding was <em>meno</em>. It is a stationary verb. A branch does not sip from the Vine in fifteen second intervals, and abiding was never going to fit inside a format the attention economy is willing to spare. What the economists are proving in spreadsheets, Jesus said in a garden: fruit requires continuity, not access. The seventh minute of the phone call is where the reason for the call finally arrives. The seventh minute of the morning is where the Vine finally speaks.</p>
-    </div>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Look at the arithmetic of His life. He had three years of public ministry, crowds following Him everywhere, twelve men who could barely get five minutes alone with Him, a constant queue of the sick and the desperate, and the certain knowledge that the cross was waiting at the end. If anyone in human history had a legitimate reason to treat prayer as an efficiency loss, it was the Son of God on His way to redeem the world. Instead, the gospel writers make a point of noting how often He rose in the dark and went somewhere nobody could reach Him. He did not <em>meno</em> in crowds. He <em>meno-ed</em> in the Father. The fruit that fed five thousand, healed ten lepers, and forgave a thief on the neighboring cross grew on a Vine whose roots were fed every morning before anyone knew He was awake. No servant has ever had a better reason than He did to skip the quiet hour. None of them did. Neither can we.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Look at the arithmetic of His life. He had three years of public ministry, crowds following Him everywhere, twelve men who could barely get five minutes alone with Him, a constant queue of the sick and the desperate, and the certain knowledge that the cross was waiting at the end. If anyone in human history had a legitimate reason to treat prayer as an efficiency loss, it was the Son of God on His way to redeem the world. Instead, the gospel writers make a point of noting how often He rose in the dark and went somewhere nobody could reach Him. He did not <em>meno</em> in crowds. He <em>meno-ed</em> in the Father. The fruit that fed five thousand, healed ten lepers, and forgave a thief on the neighboring cross grew on a Vine whose roots were fed every morning before anyone knew He was awake. No servant has ever had a better reason than He did to skip the quiet hour. None of them did. Neither can we.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Tomorrow morning, set your alarm fifteen minutes earlier than you currently do. Not an hour. Fifteen. Open your Bible to the chapter you chose on Sabbath. Do not try to finish it. Read the first paragraph out loud, slowly. Close the book. Sit quietly for sixty seconds without reaching for the phone. That is the whole assignment. The morning is not about volume; it is about presence. Rebuild the habit one paragraph at a time.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we confess that our schedules have been shaped by everything except You. We have traded the quiet of the dawn for the glow of a phone, and we have told ourselves that we do not have the time we used to have. We are not sure that is true. Teach us to <em>raphah</em>, to drop our hands long enough for the knowledge of You to catch up to us. Remind us that the branch never strained to produce the grape. Give us back the pre-sunrise hour our grandparents knew without thinking about it, and fill it with Your presence. Where our search has been quarter-hearted, pull it toward the middle of the page. Where we have read in a hurry, slow us down. And if there is a single paragraph this week that You want to carve into our lives, lead us to it tomorrow morning, and keep us there until it has had time to do what You sent it to do. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"What are you currently doing in the first thirty minutes after you wake up (the honest answer, not the aspirational one: phone, news, coffee, scrolling, nothing at all), and what would have to change in the last thirty minutes before bed for tomorrow morning to actually belong to God instead of to the rush?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"What are you currently doing in the first thirty minutes after you wake up (the honest answer, not the aspirational one: phone, news, coffee, scrolling, nothing at all), and what would have to change in the last thirty minutes before bed for tomorrow morning to actually belong to God instead of to the rush?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, we confess that our schedules have been shaped by everything except You. We have traded the quiet of the dawn for the glow of a phone, and we have told ourselves that we do not have the time we used to have. We are not sure that is true. Teach us to <em>raphah</em>, to drop our hands long enough for the knowledge of You to catch up to us. Remind us that the branch never strained to produce the grape. Give us back the pre-sunrise hour our grandparents knew without thinking about it, and fill it with Your presence. Where our search has been quarter-hearted, pull it toward the middle of the page. Where we have read in a hurry, slow us down. And if there is a single paragraph this week that You want to carve into our lives, lead us to it tomorrow morning, and keep us there until it has had time to do what You sent it to do. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-    <!-- BIBLE APP STRIP -->
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-04-25.html"><span class="day-nav-kicker">← Saturday</span><span class="day-nav-title">How to Study the Bible</span></a><a class="day-nav-item" href="/bible-study/2026-04-27.html"><span class="day-nav-kicker">Monday →</span><span class="day-nav-title">A Place</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

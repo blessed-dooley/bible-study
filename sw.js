@@ -2,16 +2,31 @@
 // Cache strategy: Cache-first for studies, network-first for navigation
 // Push notifications via Firebase Cloud Messaging
 
-const CACHE_VERSION = 'dbs-v6';
+const CACHE_VERSION = 'dbs-v9-responsive-reader';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STUDY_CACHE = `${CACHE_VERSION}-studies`;
+const RUNTIME_CACHE = `${CACHE_VERSION}-runtime`;
 
 // Static assets to pre-cache on install
 const STATIC_ASSETS = [
   '/bible-study/',
   '/bible-study/manifest.json',
-  '/bible-study/assets/study-v4_9.css',
-  '/bible-study/assets/study-watermark-ae706e30.png',
+  '/bible-study/studies.json',
+  '/bible-study/about.html',
+  '/bible-study/scripture-sources.html',
+  '/bible-study/privacy.html',
+  '/bible-study/corrections.html',
+  '/bible-study/assets/study-v5_0.css',
+  '/bible-study/assets/reader-controls.js',
+  '/bible-study/assets/archive-search.js',
+  '/bible-study/assets/full-text-search.js',
+  '/bible-study/assets/verse-popover.js?v=74b31b80',
+  '/bible-study/assets/privacy-controls.js',
+  '/bible-study/assets/notifications.js',
+  '/bible-study/assets/cross-v8-dark-97a6d5a5.svg',
+  '/bible-study/assets/cross-v8-light-65779cc7.svg',
+  '/bible-study/assets/cross-light-soft.svg',
+  // Retained so rolling back a page to the Phase 1 release stays offline-safe.
   '/bible-study/assets/favicon-729135cb.png',
   '/bible-study/assets/apple-touch-icon-729135cb.png',
   '/bible-study/icons/icon-192x192.png',
@@ -33,7 +48,7 @@ self.addEventListener('activate', event => {
     caches.keys().then(keys =>
       Promise.all(
         keys
-          .filter(key => key.startsWith('dbs-') && key !== STATIC_CACHE && key !== STUDY_CACHE)
+          .filter(key => key.startsWith('dbs-') && key !== STATIC_CACHE && key !== STUDY_CACHE && key !== RUNTIME_CACHE)
           .map(key => caches.delete(key))
       )
     ).then(() => self.clients.claim())
@@ -46,6 +61,24 @@ self.addEventListener('fetch', event => {
 
   // Only handle GET requests
   if (event.request.method !== 'GET') return;
+
+  // The full-text body index is intentionally lazy and never pre-cached.
+  // Once a reader searches body text, keep one runtime copy and refresh it
+  // in the background without making the archive depend on it.
+  if (url.pathname === '/bible-study/search-index.json') {
+    event.respondWith(
+      caches.open(RUNTIME_CACHE).then(cache =>
+        cache.match(event.request).then(cached => {
+          const refresh = fetch(event.request).then(response => {
+            if (response.ok) cache.put(event.request, response.clone());
+            return response;
+          });
+          return cached || refresh;
+        })
+      )
+    );
+    return;
+  }
 
   // Study HTML files (e.g., 2026-04-10.html) - cache first, fall back to network
   if (url.pathname.match(/\/bible-study\/\d{4}-\d{2}-\d{2}\.html$/)) {

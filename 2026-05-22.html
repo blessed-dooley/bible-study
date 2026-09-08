@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Further Thought &amp; Discussion — Daily Bible Study</title>
 <meta name="study-title" content="Further Thought &amp; Discussion">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 8, Having Faith · Part 7 of 7">
+<meta name="study-passage" content="Luke 7:1-10">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 8, Having Faith · Day 7 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Further Thought &amp; Discussion">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 8, Having Faith · Part 7 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 8, Having Faith · Day 7 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-05-22.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 8, Having Faith · Part 7 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 8, Having Faith · Day 7 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,309 +38,211 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--friday">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Further Thought &amp; Discussion</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 8, Having Faith</span>
-      <span>Part 7 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Fri · May 22</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">12 min</span>
     </div>
-    <div class="date-badge">May 22, 2026</div>
+    <h1 class="study-title">Further Thought &amp; Discussion</h1>
+    <p class="study-sub"><span class="sub-title">Having Faith</span><span class="sub-facts"><span>Lesson 8</span><span>Day 7 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. WEEK IN REVIEW -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">Week in Review</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">Five witnesses, one olive press, and one Memory Text we held in our hands like a title deed all week: faith is the reality of what we hope for and the evidence of what we cannot see.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">Week in Review</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="review">Week in Review</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="clarifies">What This Week Clarifies</button><button type="button" class="chip" data-jump="speaking">Still Speaking</button><button type="button" class="chip" data-jump="christ">Christ at the Center of the Week</button><button type="button" class="chip" data-jump="application">Weekend Practice</button><button type="button" class="chip" data-jump="prayer">Closing Prayer for the Week</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="review" aria-labelledby="review-label">
+      <h2 class="section-label" id="review-label">Week in Review</h2>
+<p class="tldr-hook">Five witnesses, one olive press, and one Memory Text we held in our hands like a title deed all week: faith is the reality of what we hope for and the evidence of what we cannot see.</p>
       <ul class="week-review-list">
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sabbath:</span> Having Faith. We opened Hebrews 11:1 the way you would open a deed in escrow. Faith is the title to land we have not yet stepped onto and the courtroom proof that ends an argument. The week's gallery of witnesses came into view, and we walked toward the door of it together.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> Just Give Me a Sign! The Pharisees met Jesus on the shore at Dalmanutha with their pre-approved menu, and the Son of God sighed so deeply Mark gave the sound its own word (<em>anastenazo</em>). Faith is not the absence of evidence. Faith is what we do with the evidence we have already been given.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Monday:</span> Jesus Sees Our Faith. A centurion at Capernaum, a Canaanite mother on the road to Tyre, and a father with tears in his eyes at the bottom of the Mount of Transfiguration. Jesus reads faith where no rabbi would have looked. He praised what we would have missed and challenged the absence of it where we would have praised it.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Tuesday:</span> Faith Is Not a Feeling. <em>Pistis</em> in the first-century Greek marketplace meant the steady loyalty you would lend money on, the contract you would sign in good faith. A mustard seed of real faith does what a boulder of pretended faith never touches. Faith is exercised, not felt.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Wednesday:</span> Examples of Faith. Hebrews 11. Abel, Enoch, Noah, Abraham, Sarah, Moses, Rahab, the prophets. The writer ran out of breath at verse 32 and admitted, "time would fail me." The cloud is family. The chapter ends with the announcement that it is not complete without us.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Thursday:</span> The Faith of Jesus. The olive press across the Kidron. "Not as I will, but as You will." Revelation 14:12's "faith of Jesus" reads two ways in Greek and is meant to. The faith we have in Him and the faith He had in His Father are now joined in the people He is bringing home.</span></li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Sabbath:</span> Having Faith. We opened Hebrews 11:1 the way you would open a deed in escrow. Faith is the title to land we have not yet stepped onto and the courtroom proof that ends an argument. The week's gallery of witnesses came into view, and we walked toward the door of it together.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> Just Give Me a Sign! The Pharisees met Jesus on the shore at Dalmanutha with their pre-approved menu, and the Son of God sighed so deeply Mark gave the sound its own word (<em>anastenazo</em>). Faith is not the absence of evidence. Faith is what we do with the evidence we have already been given.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Monday:</span> Jesus Sees Our Faith. A centurion at Capernaum, a Canaanite mother on the road to Tyre, and a father with tears in his eyes at the bottom of the Mount of Transfiguration. Jesus reads faith where no rabbi would have looked. He praised what we would have missed and challenged the absence of it where we would have praised it.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Tuesday:</span> Faith Is Not a Feeling. <em>Pistis</em> in the first-century Greek marketplace meant the steady loyalty you would lend money on, the contract you would sign in good faith. A mustard seed of real faith does what a boulder of pretended faith never touches. Faith is exercised, not felt.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Wednesday:</span> Examples of Faith. Hebrews 11. Abel, Enoch, Noah, Abraham, Sarah, Moses, Rahab, the prophets. The writer ran out of breath at verse 32 and admitted, "time would fail me." The cloud is family. The chapter ends with the announcement that it is not complete without us.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Thursday:</span> The Faith of Jesus. The olive press across the Kidron. "Not as I will, but as You will." Revelation 14:12's "faith of Jesus" reads two ways in Greek and is meant to. The faith we have in Him and the faith He had in His Father are now joined in the people He is bringing home.</span>
+</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. HISTORICAL & CULTURAL CONTEXT (capstone) -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Five Witnesses and a Garden</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>Five Witnesses and a Garden</h3>
       <p>Set the week out on a map. Dalmanutha on the western shore of the Sea of Galilee, an unremarkable boat-landing where the Pharisees demanded a sign and got refused. The Roman barracks at Capernaum, a few miles northeast, where a centurion who had built the local synagogue sent two sets of messengers to a Rabbi he could not bring himself to face. A dirt road north out of Galilee, climbing into Phoenician country toward Tyre and Sidon, where a Canaanite mother chased Jesus down and handed His own metaphor back at Him as a comeback. The base of Mount Hermon, where a father had just watched the disciples fail to help his son. The hallway of Hebrews 11, written from somewhere in the Roman world to a Jewish-Christian community wavering under quiet pressure, walking past Abel, Enoch, Noah, Abraham, Sarah, Moses, Rahab, Gideon, David, the prophets, and a roll call too long to finish. And finally Gethsemane, an olive grove across the Kidron Valley from Jerusalem on a Thursday night in early spring. Five rooms separated by miles and centuries; one inclined Ear; one Son in a garden carrying the trust the rest of us could not generate.</p>
-    </div>
+    </section>
 
-    <!-- 3. WHAT THIS WEEK CLARIFIES -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">💡</span>
-        <span class="section-title">What This Week Clarifies</span>
-        <div class="section-title-line"></div>
-      </div>
+    <section class="section" id="clarifies" aria-labelledby="clarifies-label">
+      <h2 class="section-label" id="clarifies-label">What This Week Clarifies</h2>
+<p>This week kept overturning the expected order of things. The experts with the scrolls were refused, and a Roman officer heard that his faith outstripped what Jesus had found in Israel. The disciples who lived beside Jesus were told their faith was the wrong kind. And a week spent studying our faith ended by handing us Someone else's. Three tensions sit under those reversals, and the week left each one resolved. They are worth one last walk-through.</p>
 
-      <p>This week kept overturning the expected order of things. The experts with the scrolls were refused, and a Roman officer heard that his faith outstripped what Jesus had found in Israel. The disciples who lived beside Jesus were told their faith was the wrong kind. And a week spent studying our faith ended by handing us Someone else's. Three tensions sit under those reversals, and the week left each one resolved. They are worth one last walk-through.</p>
-
-      <div class="section-heading">The Sigh and the Marvel Came From the Same Eyes</div>
+      <h3>The Sigh and the Marvel Came From the Same Eyes</h3>
       <p>Sunday and Monday set two scenes a day's walk apart and let them collide. On the shore at Dalmanutha the trained theologians, men with the scrolls and a front-row seat to two years of miracles, asked for one more sign and heard one of the strongest refusals in the gospels. On the road near Capernaum a Roman officer who had never met Jesus sent word that a sentence would be enough, and Jesus marveled. By every expected measure the order is backwards.</p>
 
 <!-- BSB_BLOCK: Luke 7:1-10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:776e23dadb35dd51209f36d2f217b3637ec0f6304a3311f7c8817ceb69818db9 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Luke 7:1-10</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/LUK.7.1-10" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>When Jesus had concluded His discourse in the hearing of the people, He went to Capernaum. <sup class="verse-number" aria-label="Verse 2">2</sup>There a highly valued servant of a centurion was sick and about to die. <sup class="verse-number" aria-label="Verse 3">3</sup>When the centurion heard about Jesus, he sent some Jewish elders to ask Him to come and heal his servant. <sup class="verse-number" aria-label="Verse 4">4</sup>They came to Jesus and pleaded with Him earnestly, “This man is worthy to have You grant this, <sup class="verse-number" aria-label="Verse 5">5</sup>for he loves our nation and has built our synagogue.” <sup class="verse-number" aria-label="Verse 6">6</sup>So Jesus went with them. But when He was not far from the house, the centurion sent friends with the message: “Lord, do not trouble Yourself, for I am not worthy to have You come under my roof. <sup class="verse-number" aria-label="Verse 7">7</sup>That is why I did not consider myself worthy to come to You. But just say the word, and my servant will be healed. <sup class="verse-number" aria-label="Verse 8">8</sup>For I myself am a man under authority, with soldiers under me. I tell one to go, and he goes, and another to come, and he comes. I tell my servant to do something, and he does it.” <sup class="verse-number" aria-label="Verse 9">9</sup>When Jesus heard this, He marveled at the centurion. Turning to the crowd following Him, He said, <span class="words-of-jesus">“I tell you, not even in Israel have I found such great faith.”</span> <sup class="verse-number" aria-label="Verse 10">10</sup>And when the messengers returned to the house, they found the servant in good health.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/LUK.7.1-10" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 1">1</sup>When Jesus had concluded His discourse in the hearing of the people, He went to Capernaum. <sup class="verse-number" aria-label="Verse 2">2</sup>There a highly valued servant of a centurion was sick and about to die. <sup class="verse-number" aria-label="Verse 3">3</sup>When the centurion heard about Jesus, he sent some Jewish elders to ask Him to come and heal his servant. <sup class="verse-number" aria-label="Verse 4">4</sup>They came to Jesus and pleaded with Him earnestly, “This man is worthy to have You grant this, <sup class="verse-number" aria-label="Verse 5">5</sup>for he loves our nation and has built our synagogue.” <sup class="verse-number" aria-label="Verse 6">6</sup>So Jesus went with them. But when He was not far from the house, the centurion sent friends with the message: “Lord, do not trouble Yourself, for I am not worthy to have You come under my roof. <sup class="verse-number" aria-label="Verse 7">7</sup>That is why I did not consider myself worthy to come to You. But just say the word, and my servant will be healed. <sup class="verse-number" aria-label="Verse 8">8</sup>For I myself am a man under authority, with soldiers under me. I tell one to go, and he goes, and another to come, and he comes. I tell my servant to do something, and he does it.” <sup class="verse-number" aria-label="Verse 9">9</sup>When Jesus heard this, He marveled at the centurion. Turning to the crowd following Him, He said, <span class="words-of-jesus">“I tell you, not even in Israel have I found such great faith.”</span> <sup class="verse-number" aria-label="Verse 10">10</sup>And when the messengers returned to the house, they found the servant in good health.</div>
         <div class="verse-commentary">
           <p>The week's answer is that faith was never a function of how much evidence a person holds. It is what a person does with the evidence already given. The Pharisees had baskets of proof, and every miracle went into a drawer marked do not consult, because the sign they wanted was one that would let them keep their categories. The centurion heard a rumor and drew the right conclusion from it. He knew how authority works, took Jesus at His word before any demonstration, and Luke records the Son of God marveling at a Gentile soldier. That is why more proof was never the cure for the one group and less proof was never a handicap for the other. The deciding organ was not the eye. It was the willingness behind it.</p>
         </div>
-      </div>
+      </figure>
 
-      <div class="section-heading">The Seed Outweighed the Boulder</div>
+      <h3>The Seed Outweighed the Boulder</h3>
       <p>Underneath the whole week ran the worry that our faith might be too small to count. The father at the mountain brought belief mixed with unbelief. The disciples who had watched two years of miracles failed at one demon. And the quiet assumption in both scenes is that faith works by volume, that somewhere there is a scale and most of us are underweight.</p>
 
 <!-- BSB_BLOCK: Matthew 17:20 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:5e083b0f8497212e1c7ee81bf715ba30ae1113e814b9de436c58a9c5062538e4 | footnotes-stripped:1 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Matthew 17:20</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.17.20" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><span class="words-of-jesus">“Because you have so little faith,”</span> He answered. <span class="words-of-jesus">“For truly I tell you, if you have faith the size of a mustard seed, you can say to this mountain, ‘Move from here to there,’ and it will move. Nothing will be impossible for you.”</span></div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/MAT.17.20" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<span class="words-of-jesus">“Because you have so little faith,”</span> He answered. <span class="words-of-jesus">“For truly I tell you, if you have faith the size of a mustard seed, you can say to this mountain, ‘Move from here to there,’ and it will move. Nothing will be impossible for you.”</span>
+</div>
         <div class="verse-commentary">
           <p>Jesus answered the volume assumption by shrinking the unit. The word He chose for the disciples' problem was never about smallness. Tuesday unpacked it as wrong-kind-of-faith, religious volume without the living substance, a boulder of the pretend thing. Against it He set the smallest seed in a Galilean garden and promised it could move a mountain, because a seed of the real thing is alive and aimed at the right Person. The weight was never supposed to rest on the grip. It rests on the One being gripped. And the seed itself is not our manufacture. The week kept saying so. God deals a measure of faith to each of us, the way a parent presses a first coin into a child's palm. Nobody is underweight. Some of us have just not planted what we were handed.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: Matthew 17:20 | 17:20 BYZ and TR include 21But this kind does not come out except by prayer and fasting; see Mark 9:29. -->
 
-      <div class="section-heading">The Week Ended With Someone Else's Faith</div>
+      <h3>The Week Ended With Someone Else's Faith</h3>
       <p>For five days the week studied human faith, the officer's, the mother's, the father's, and the long wall of witnesses Wednesday walked us past. Most of those witnesses died before receiving what they were promised, and none of them was asked to pray what Jesus prayed in the olive grove. So a week about having faith closed with an honest problem. If the heroes finished empty-handed and the Son's Gethsemane trust is beyond us, our own supply looks thin for the road ahead.</p>
 
 <!-- BSB_BLOCK: Revelation 14:12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:4b9bb8431bed9be97934f024f8903941aa9bd0ae5b3a4abf5d90c6d0f0d5617f | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Revelation 14:12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/REV.14.12" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/REV.14.12" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Here is a call for the perseverance of the saints, who keep the commandments of God and the faith of Jesus.</div>
         <div class="verse-commentary">
           <p>The verse the week was always climbing toward answers with two words that read both directions. The faith of Jesus is the trust we place in Him, and it is also the trust He Himself carried, and the wording holds both on purpose. The people who stand at the end are not the ones who generated heroic belief. They are the ones joined to a faith that was already tested in a garden across the Kidron, where the Son asked for the cup to pass and stayed in the Father's hand when the answer was no. Nothing in the cloud ever matched that night, and nothing needed to. He walked the whole dark road first, and what He carried through it is now credited to the people who hold on to Him.</p>
           <p>That is why the week never asked us to measure our supply. The officer sent a message, the mother kept walking, the father told the truth about his mixture, and every one of them was reaching for the same Person we reach for. Our grip has always been the small end of the rope. The strong end is anchored in Him, and it held through the one night it was tested with everything. We walk into next week not with more faith than we had on Sabbath, but with a better grasp of Whose faith is holding us.</p>
         </div>
-      </div>
+      </figure>
 
-    </div>
+    </section>
 
-    <!-- 4. STILL SPEAKING -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Still Speaking</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Helpless Made Invincible</div>
+    <section class="section" id="speaking" aria-labelledby="speaking-label">
+      <h2 class="section-label" id="speaking-label">Still Speaking</h2>
+<h3>The Helpless Made Invincible</h3>
       <p>Look back across the witnesses the week assembled. The first was a Gentile officer who could not bring himself to walk into Jesus' line of sight. The second was a foreign mother whose own people had been called dogs. The third was a father whose son had just collapsed at His feet. The fourth was a chapter full of refugees, exiles, women whose dead were given back by resurrection, and men sawn in two. And the fifth was the Son of God Himself, face down in an olive press across the Kidron, asking for the cup to pass and putting Himself in the Father's hand when the answer was no. In every case the visible posture was helplessness, and the invisible result was a power the room could not have produced.</p>
       <p>The pattern is not accidental. There is something in the architecture of faith that requires the bottoming-out. Strong souls do not generate faith; they receive it. The hand that is empty enough to hold what Christ offers is the hand that comes away holding everything. On paper, the soul that admits it cannot is the most fragile thing in the kingdom. In the kingdom's actual economy, it is the most unbreakable, because the strength it draws on is not its own. This is why the cloud is so eclectic. Sarah laughing at God in a tent doorway and Daniel kneeling at a Babylonian window and the centurion stopping the Rabbi in the road and the mother taking the proverb about dogs and turning it into theology, are all variations on the same one note. They were all helpless in their own way. They all stretched out an empty hand. And the Person whose hand met theirs was the same Person whose hand will meet ours this morning.</p>
       <p>The world today is full of people in exactly the same posture as the cloud, although the wilderness has different names. The diagnosis at the doctor's office. The marriage on its third silence. The calling that has gone quiet. The bank balance. The grief that has been waiting six months for a single complete sentence. The witnesses on the Hebrews 11 wall are not telling us to grit our teeth and try harder. They are telling us where they put their weight when they discovered they had none of their own to put down. Their strength was always borrowed. Their faith was always exercised, never generated. And when the cup of Gethsemane was finally raised on Friday afternoon and emptied, the strength they had borrowed was paid for in blood. The Savior we are leaning on is the Savior who has already absorbed every drop of helplessness we could possibly bring Him. He paid the full price of the lean. The leaning is now safe.</p>
-    </div>
+    </section>
 
-    <!-- 5. CHRIST AT THE CENTER OF THE WEEK -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">Christ at the Center of the Week</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Christ is the title deed Hebrews 11:1 was talking about; He is the property the deed gives us standing on. Christ is the sign the Pharisees would not receive on the shore at Dalmanutha, and the sign God ultimately gave them on a hill outside the city at three in the afternoon. Christ is the eyes that read the centurion through a messenger and the Canaanite mother through a comeback and the father through his trembling honesty; He reads us the same way this morning. Christ is the mustard seed and the soil it was planted in; the One whose own faith in a garden moved the mountain of death itself. Christ is the perfecter the cloud of Hebrews 11 was always pointing at; chapter 12 names Him explicitly, and the cloud is not complete without Him. Christ is the Man at the olive press, lifting the cup He had asked the Father to let pass and drinking it to the dregs so that the cloud's faith and ours could be credited to the same account. Five witnesses, one Garden, one Person in the middle of all five rooms. The faith of Jesus is not a separate item to add to our spiritual life. It is the substance of every faith-act the cloud has ever attempted, including ours.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the Center of the Week</h2>
+<p>Christ is the title deed Hebrews 11:1 was talking about; He is the property the deed gives us standing on. Christ is the sign the Pharisees would not receive on the shore at Dalmanutha, and the sign God ultimately gave them on a hill outside the city at three in the afternoon. Christ is the eyes that read the centurion through a messenger and the Canaanite mother through a comeback and the father through his trembling honesty; He reads us the same way this morning. Christ is the mustard seed and the soil it was planted in; the One whose own faith in a garden moved the mountain of death itself. Christ is the perfecter the cloud of Hebrews 11 was always pointing at; chapter 12 names Him explicitly, and the cloud is not complete without Him. Christ is the Man at the olive press, lifting the cup He had asked the Father to let pass and drinking it to the dregs so that the cloud's faith and ours could be credited to the same account. Five witnesses, one Garden, one Person in the middle of all five rooms. The faith of Jesus is not a separate item to add to our spiritual life. It is the substance of every faith-act the cloud has ever attempted, including ours.</p>
+    </section>
 
-    <!-- 6. WEEKEND PRACTICE -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Weekend Practice</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Weekend Practice</h2>
+<div class="application-card">
         Before the new week begins, turn your Memory Text card over and write the four prayers of the cloud on the back, one per line: (1) "Lord, I believe You exist, and that You reward those who diligently seek You. I come to You now." (Hebrews 11:6). (2) "I believe; help my unbelief." (Mark 9:24). (3) "Lord, increase our faith." (Luke 17:5). (4) "Not as I will, but as You will." (Matthew 26:39). Tuck the card into your Bible at next week's pages. Each morning, before you read anything else, glance at the four lines and pray whichever one fits the day. Let the words the cloud already prayed carry you forward.
       </div>
-    </div>
+    </section>
 
-    <!-- 7. CLOSING PRAYER FOR THE WEEK -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer for the Week</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we thank You for a week that walked us past a centurion in Capernaum, a mother on the road to Tyre, a father at the bottom of a mountain, the cloud at the end of Hebrews 11, and Your Son in the olive press across the Kidron. We thank You that we were not asked, in any of those scenes, to bring more than what the Bible's people brought, which was honest, mustard-seed, hand-empty trust. We confess that we have spent stretches of our lives demanding signs, refusing to count what You had already given, and measuring our faith by the temperature of our hearts. Forgive us. Today we lay all of that down. We hold resolutely to the confession of our hope, because You who promised are faithful. We come to You believing You are, and that You reward those who diligently seek You. We thank You for the faith of Jesus, exercised in our place, in a garden we could not have prayed in. Take that faith, credit it to us, and carry us into next week the way the prophets carried Hebrews 11 across thirteen hundred years: by walking, not by seeing. We trust You to bring it to completion. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer for the Week</h2>
+<p>Father, we thank You for a week that walked us past a centurion in Capernaum, a mother on the road to Tyre, a father at the bottom of a mountain, the cloud at the end of Hebrews 11, and Your Son in the olive press across the Kidron. We thank You that we were not asked, in any of those scenes, to bring more than what the Bible's people brought, which was honest, mustard-seed, hand-empty trust. We confess that we have spent stretches of our lives demanding signs, refusing to count what You had already given, and measuring our faith by the temperature of our hearts. Forgive us. Today we lay all of that down. We hold resolutely to the confession of our hope, because You who promised are faithful. We come to You believing You are, and that You reward those who diligently seek You. We thank You for the faith of Jesus, exercised in our place, in a garden we could not have prayed in. Take that faith, credit it to us, and carry us into next week the way the prophets carried Hebrews 11 across thirteen hundred years: by walking, not by seeing. We trust You to bring it to completion. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+  </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-05-21.html"><span class="day-nav-kicker">← Thursday</span><span class="day-nav-title">The Faith of Jesus</span></a><a class="day-nav-item" href="/bible-study/2026-05-23.html"><span class="day-nav-kicker">Saturday →</span><span class="day-nav-title">Sin, the Gospel, and the Law</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

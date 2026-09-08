@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
-<meta name="study-title" content="&#x27;Tis So Sweet">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Part 6 of 7">
+<title>'Tis So Sweet — Daily Bible Study</title>
+<meta name="study-title" content="'Tis So Sweet">
+<meta name="study-passage" content="Psalms 119:103-104">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Day 6 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
-<meta property="og:title" content="&#x27;Tis So Sweet">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Part 6 of 7 · Daily Bible Study">
+<meta property="og:title" content="'Tis So Sweet">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Day 6 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-04-30.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Part 6 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Day 6 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,337 +38,214 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>'Tis So Sweet</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 5, How to Study the Bible</span>
-      <span>Part 6 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Thu · Apr 30</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">12 min</span>
     </div>
-    <div class="date-badge">April 30, 2026</div>
+    <h1 class="study-title">'Tis So Sweet</h1>
+    <p class="study-sub"><span class="sub-title">How to Study the Bible</span><span class="sub-facts"><span>Lesson 5</span><span>Day 6 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">Ezekiel sat by the Chebar River with the exiles, and when God handed him a scroll and told him to eat it, the old prophet reported back one detail: in his mouth it was sweeter than honey.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p class="tldr-hook">Ezekiel sat by the Chebar River with the exiles, and when God handed him a scroll and told him to eat it, the old prophet reported back one detail: in his mouth it was sweeter than honey.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span> The Bible tastes sweet to the tongue that actually chews it, and bland to the tongue that is always chasing another flavor.</li>
-        <li><span class="bullet-icon">☩</span> Two prophets, six centuries apart on different continents, both ate a scroll God handed them and both reported the same taste.</li>
-        <li><span class="bullet-icon">☩</span> The Hebrew word for sweet was the rarest luxury in a desert economy, the flavor people climbed rocks for, and Scripture claims to outrank it.</li>
-        <li><span class="bullet-icon">☩</span> Sweetness is the point where Bible study stops being discipline and starts being affection.</li>
+        <li>
+<span class="bullet-icon">☩</span> The Bible tastes sweet to the tongue that actually chews it, and bland to the tongue that is always chasing another flavor.</li>
+        <li>
+<span class="bullet-icon">☩</span> Two prophets, six centuries apart on different continents, both ate a scroll God handed them and both reported the same taste.</li>
+        <li>
+<span class="bullet-icon">☩</span> The Hebrew word for sweet was the rarest luxury in a desert economy, the flavor people climbed rocks for, and Scripture claims to outrank it.</li>
+        <li>
+<span class="bullet-icon">☩</span> Sweetness is the point where Bible study stops being discipline and starts being affection.</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday you were asked to reach out to one person, to move the practice from a private corner into a shared conversation. Whether the reply came back quickly or is still on its way, today the week turns inward one more time. Time, place, method, companion, and now the question every serious reader eventually has to answer: does the Book you are studying actually taste like anything? If the honest answer is "not really, not yet," this is the day the week has been building toward. The sweetness is not a mood. It is a discovery that happens inside the practice the other four days have been building.</p>
-    </div>
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday you were asked to reach out to one person, to move the practice from a private corner into a shared conversation. Whether the reply came back quickly or is still on its way, today the week turns inward one more time. Time, place, method, companion, and now the question every serious reader eventually has to answer: does the Book you are studying actually taste like anything? If the honest answer is "not really, not yet," this is the day the week has been building toward. The sweetness is not a mood. It is a discovery that happens inside the practice the other four days have been building.</p>
+    </section>
 
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Scroll That Tasted Like Honey</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Scroll That Tasted Like Honey</h3>
       <p>In the sixth century BC, the prophet Ezekiel was sitting with the exiles by the Chebar River in Babylon when God extended a scroll toward him and told him, bluntly, to eat it. Ezekiel did. What he reports next catches every first-time reader off guard: "it was as sweet as honey in my mouth." Six hundred years later, another prophet on a different continent received almost the same instruction. The apostle John, exiled to the volcanic island of Patmos, was handed a small scroll by an angel and told to eat it. He obeyed, and the same phrase came out of his mouth: "in my mouth it was as sweet as honey." Two visions, six centuries apart, both recorded in words borrowed straight from Psalm 119:103.</p>
       <p>The Scripture is food, and the ancient writers were not being poetic about it. They were being accurate. The Hebrew word for sweet, <em>matoq</em>, was not an abstract category. It was the rarest luxury in a desert economy, the flavor children climbed rocks for, the one dessert a shepherd brought home on a feast day. Honey meant the best thing you had. So when the psalmist claims that Scripture tastes like honey, he is not complimenting the Bible; he is daring the reader to discover a sweetness the rest of the world cannot manufacture. For a culture drowning in sugar substitutes, this may be the most radical promise in the Book: the Word of God is actually sweet, not in the way a sermon is sweet, but in the way a real thing is sweet on an actual tongue. Most people have never let it stay in their mouths long enough to find out.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Honey was not background flavor in the ancient world. It was the rarest thing on the table, the sweetness children climbed rocks for, the one luxury a shepherd brought home on a feast day. So when the psalmist announces that the words of God taste sweeter than honey to his mouth, he is not reaching for a polite compliment. He is staking a claim: the Book he has been reading is the sweetest thing his tongue has ever actually touched. The whole week reduces to the single imperative David put in <a class="vlink" href="https://www.bible.com/bible/3034/PSA.34.8" target="_blank" rel="noopener">Psalm 34:8</a>. Taste. And see.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Honey was not background flavor in the ancient world. It was the rarest thing on the table, the sweetness children climbed rocks for, the one luxury a shepherd brought home on a feast day. So when the psalmist announces that the words of God taste sweeter than honey to his mouth, he is not reaching for a polite compliment. He is staking a claim: the Book he has been reading is the sweetest thing his tongue has ever actually touched. The whole week reduces to the single imperative David put in <a class="vlink" href="https://www.bible.com/bible/3034/PSA.34.8" target="_blank" rel="noopener" data-verse="psalms-34-8" data-ref="Psalms 34:8" aria-expanded="false">Psalm 34:8</a>. Taste. And see.</p>
 
       <!-- ANCHOR: Psalm 119:103-104 (dual translation) -->
 <!-- BSB_BLOCK: Psalms 119:103-104 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:ae578eb3beca85bdc691801be39b1d92f790716d4358bac568d7ef12a9590401 | footnotes-stripped:0 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Psalms 119:103-104</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.119.103-104" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 103">103</sup>How sweet are Your words to my taste—sweeter than honey in my mouth! <sup class="verse-number" aria-label="Verse 104">104</sup>I gain understanding from Your precepts; therefore I hate every false way.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/PSA.119.103-104" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 103">103</sup>How sweet are Your words to my taste—sweeter than honey in my mouth! <sup class="verse-number" aria-label="Verse 104">104</sup>I gain understanding from Your precepts; therefore I hate every false way.</div>
 <div class="verse-commentary">
           <p>The psalmist uses a physical verb. He does not say the Word is inspiring or edifying or helpful. He says it is sweet on the palate, <em>matoq</em> in the mouth. The Hebrew word for "mouth" in this verse is <em>chek</em>, which is not the lips but the roof of the mouth, the exact spot where taste happens. He is insisting that this is a sensory claim, not a metaphor he reached for because he could not think of a better one.</p>
           <p>That choice is unsettling in the best way. The rest of the psalm has been describing the Word as a lamp, a treasure, a sword, a path. All of those are tools; they do things to the world. Sweetness does something to the taster. A sweet word is not consumed in order to accomplish a goal. It is consumed because the eating itself is the point. When the psalmist lingers on this image, he is admitting that Bible study eventually stops being work and starts being enjoyment. That is the difference between the believer who has been reading the Bible for forty years and still forces himself to open it every morning, and the believer who has been reading it for forty years and cannot go a day without opening it. One is doing the duty. The other has tasted.</p>
           <p>Verse 104 tracks the consequence. "I gain understanding from Your precepts; therefore I hate every false way." The Hebrew noun <em>binah</em> is not head knowledge; it is the kind of understanding that tells you which way to turn at a fork in the road. Sweetness in the mouth produces <em>binah</em> in the mind, and <em>binah</em> in the mind produces a reflexive recoil from everything that would poison the sweetness. The reader who has tasted the honey of the Word develops a palate for spiritual truth that will make a lie feel physically wrong going down. That is the cumulative gift of the week. Time makes a place. Place makes a method. Method invites a companion. And all of it opens onto the slow awakening of a taste that no other food can feed. The one who has tasted starts to hate the false. The one who has not tasted cannot tell the difference yet.</p>
         </div>
-      </div>
+      </figure>
 
       <!-- SUPPORTING: Isaiah 55:1-3 -->
 <!-- BSB_BLOCK: Isaiah 55:1-3 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:1a6f553a92fe064d0fcc1e8bc3e57afb4ea2e5ea9b085072494eacf787fbff3c | footnotes-stripped:1 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Isaiah 55:1-3</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ISA.55.1-3" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>“Come, all you who are thirsty, come to the waters; and you without money, come, buy, and eat! Come, buy wine and milk without money and without cost! <sup class="verse-number" aria-label="Verse 2">2</sup>Why spend money on that which is not bread, and your labor on that which does not satisfy? Listen carefully to Me, and eat what is good, and your soul will delight in the richest of foods. <sup class="verse-number" aria-label="Verse 3">3</sup>Incline your ear and come to Me; listen, so that your soul may live. I will make with you an everlasting covenant—My loving devotion promised to David.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ISA.55.1-3" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 1">1</sup>“Come, all you who are thirsty, come to the waters; and you without money, come, buy, and eat! Come, buy wine and milk without money and without cost! <sup class="verse-number" aria-label="Verse 2">2</sup>Why spend money on that which is not bread, and your labor on that which does not satisfy? Listen carefully to Me, and eat what is good, and your soul will delight in the richest of foods. <sup class="verse-number" aria-label="Verse 3">3</sup>Incline your ear and come to Me; listen, so that your soul may live. I will make with you an everlasting covenant—My loving devotion promised to David.</div>
 <div class="verse-commentary">
-          <p>The week's memory text (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.55.11" target="_blank" rel="noopener">Isaiah 55:11</a>) lives inside this larger invitation, and the invitation is addressed to the specific kind of tired that most modern readers know well. The hearer is thirsty but has no silver, hungry but has been spending everything on the wrong food, exhausted but can't remember what it felt like to be satisfied.</p>
+          <p>The week's memory text (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.55.11" target="_blank" rel="noopener" data-verse="isaiah-55-11" data-ref="Isaiah 55:11" aria-expanded="false">Isaiah 55:11</a>) lives inside this larger invitation, and the invitation is addressed to the specific kind of tired that most modern readers know well. The hearer is thirsty but has no silver, hungry but has been spending everything on the wrong food, exhausted but can't remember what it felt like to be satisfied.</p>
           <p>God's answer is stunning. Come anyway. No charge. Not because what He offers is cheap, but because He has already paid. The invitation names what the hearer has been doing by mistake: "Why spend money on that which is not bread?" The verbs pile up, five commands in three verses: come, buy, eat, listen, come, listen. The language is insistent. Scripture is not a quiet suggestion. It is a feast calling across a market square full of counterfeits, and the price tag on the one real thing is a price the invitation has already covered. Every believer who opens the Book in the morning is eating at a table that was paid for on a Friday afternoon at Golgotha and has been set ever since.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: Isaiah 55:3 | 55:3 Cited in Acts 13:34 -->
 
       <!-- SUPPORTING: Isaiah 55:6 (dual translation) -->
 <!-- BSB_BLOCK: Isaiah 55:6 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:278426794543aa8551d9b32dafabd173b2de3690e83702daa5c83fc1f98941c2 | footnotes-stripped:0 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Isaiah 55:6</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ISA.55.6" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ISA.55.6" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Seek the LORD while He may be found; call on Him while He is near.</div>
 <div class="verse-commentary">
           <p>Isaiah does not say God will always be reachable in the same way He is reachable right now. He says there is a "while," a window, a season during which He can be found. That does not mean God becomes unavailable; it means a heart hardens by degrees, and a life lived on full schedules and cold coffee eventually loses the ability to recognize His nearness even when the Bible is open on the table.</p>
           <p>"While" is the quiet urgency of the whole week. The chair by the window is available today. The chapter you picked on Sabbath is waiting on your table today. The person who would say yes to reading with you is within text-message range today. Every morning offered is an invitation that will not be identical tomorrow. The honey is best when it is still warm. Seek Him while He may be found is not a threat. It is a kindness. It tells the reader that this practice is not meant to be indefinitely deferred; it is meant to be walked through, this week, before the taste becomes an abstraction again.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Morning You Miss It</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Morning You Miss It</h3>
       <p>For the first six weeks of a new running habit, the alarm is the enemy. You told a friend you would do this, and now it is five-fifty in the morning and the room is cold and the bed is winning. You go anyway, some days. Your lungs burn. Your knees complain. The first mile is a negotiation you almost lose every time. You do not love it. You do it because the plan on the refrigerator says Tuesday and you said Tuesday. Then, sometime around the eighth week, you skip a morning for a decent reason, and by Thursday you feel a quiet edge you cannot place. Your body is looking for the thing you used to make it do. The discipline has crossed a line into desire without telling you, and now a missed morning feels like something missing.</p>
       <p><em>Matoq</em> is the Hebrew word for sweet, and in the ancient world it was the rarest luxury a desert economy could name, the flavor people climbed rocks for. Psalm 119 makes the audacious claim that Scripture on the roof of the mouth actually tastes sweet to the reader who has learned to chew it. Nobody starts there. At first the Bible is the alarm clock, and the page is the bed you have to leave. But the promise of the psalmist, and of every faithful reader who has walked this road before you, is that sweetness is not the reward at the end; it is what happens to the palate somewhere around the eighth week. Keep showing up to the run long enough, and the missed morning will be the proof. Keep showing up to the Word long enough, and the missed morning will be the proof.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">From the Table of Kings to the Bottom of the Vending Machine</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>From the Table of Kings to the Bottom of the Vending Machine</h3>
       <p>In the year 1500, a single pound of refined white sugar in Europe was priced like a luxury good. Emperors and caliphs ordered it sculpted into centerpieces for their dinner tables. Apothecaries kept it under lock and key because a spoonful of it was considered medicine. Columbus hauled cane cuttings to Hispaniola on his second voyage in 1493, the first harvest followed in 1501, and from that point the math began to change. Steam-powered mills, centrifugal refining, and beet-sugar extraction under Napoleon gradually turned the rarest desert luxury in the ancient world into a commodity so cheap that the industrial worker's caloric ration could be routinely cut with it. By 1909, sugars made up roughly 11.9 percent of the American food supply. By the late 1990s the share had reached 18.2 percent. USDA data now estimates per capita U.S. sugar and sweetener intake at about 120 pounds a year.</p>
       <p>The consequence has been measurable for decades: hedonic adaptation, where the body recalibrates to whatever sweetness it is routinely given and then registers nothing below that baseline. A 2025 paper in <em>Nature Climate Change</em> that tracked U.S. household transaction data found added-sugar consumption rising almost linearly with ambient temperature across an ordinary year, with the sharpest effect in the lowest-income households. The shelves have been engineered so that nothing else can compete. Children raised on ultra-processed food routinely report fresh fruit as bland within their first decade. The palate has not gotten stronger; it has gotten deafer.</p>
       <p>Psalm 119:103 is sensory, not metaphorical. <em>Matoq</em> was the rarest luxury in a desert economy, the flavor people climbed rocks for. <em>Chek</em> is the roof of the mouth, where taste is actually decided. The psalmist claims Scripture lands on that exact spot and tastes like honey there. A culture flooded with synthetic sweetness has raised children who will never have tasted a real date, a real fig, or a real drop of honeycomb the way their great-grandparents did. The same culture has raised Christians whose Bibles have never had the chance to taste like anything yet. The cure for the deadened palate is not more volume. It is less of the counterfeit, and enough time at the real thing to let the sweetness register again.</p>
-    </div>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Jesus described Himself as food. In John 6 He told a crowd that had just eaten five loaves and two fish that the true bread from heaven was standing in front of them, and they were scandalized by the image. "I am the bread of life," He said. "The one who comes to me will never be hungry, and the one who believes in me will never be thirsty again." In John 7, on the last day of a Jewish harvest festival, He stood up and shouted across the temple courts that anyone thirsty could come to Him and drink. The invitation of Isaiah 55, which the week has been circling since Sabbath, always had His name on it. When believers taste the sweetness of the Word, what they are tasting is the Person who said the Word is spirit and life, the Person whose body was broken so that the feast could be set for the hungry, the Person who said, "Take, eat; this is my body," on the night before He paid the price the invitation has been honoring ever since. Scripture is sweet because Christ is sweet, and the honey in the mouth of Ezekiel and John was a foretaste of a risen Lord whose words, whose wounds, and whose table are meant to be savored, not skimmed.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Jesus described Himself as food. In John 6 He told a crowd that had just eaten five loaves and two fish that the true bread from heaven was standing in front of them, and they were scandalized by the image. "I am the bread of life," He said. "The one who comes to me will never be hungry, and the one who believes in me will never be thirsty again." In John 7, on the last day of a Jewish harvest festival, He stood up and shouted across the temple courts that anyone thirsty could come to Him and drink. The invitation of Isaiah 55, which the week has been circling since Sabbath, always had His name on it. When believers taste the sweetness of the Word, what they are tasting is the Person who said the Word is spirit and life, the Person whose body was broken so that the feast could be set for the hungry, the Person who said, "Take, eat; this is my body," on the night before He paid the price the invitation has been honoring ever since. Scripture is sweet because Christ is sweet, and the honey in the mouth of Ezekiel and John was a foretaste of a risen Lord whose words, whose wounds, and whose table are meant to be savored, not skimmed.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Tonight, before bed, read one verse from the chapter you picked on Sabbath out loud, slowly, three times. On the third reading, pause on one word and stay there for a breath. Ask yourself: is this actually sweet to me yet, or am I still in the "acquired taste" phase? Answer honestly. Then thank God for the window that is still open and ask Him for the palate you do not yet have.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we confess that most of what we have eaten this year did not satisfy us, and we spent silver on a lot of it anyway. We have been thirsty for so long that we started to think the thirst was normal. Teach us to taste. Put the honey of Your Word on our tongues until even our memory of junk food starts to turn. We are not asking You to change the Bible. We are asking You to change our palate. Give us the <em>binah</em> that comes from slow reading, the recoil from false ways that only a tasted truth can produce, and the courage to come, buy, eat without silver, simply because You have already paid. Keep the window open a little longer. We are still learning how to be hungry. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"On a scale from 'duty' to 'delight,' where does your current Bible reading actually land (be specific: boredom, guilt, neutral, growing interest, something closer to craving), and what is the one small practice from this week (the time, the place, the pen, the companion, or the slow third reading) that is most likely to shift that number in the next thirty days?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"On a scale from 'duty' to 'delight,' where does your current Bible reading actually land (be specific: boredom, guilt, neutral, growing interest, something closer to craving), and what is the one small practice from this week (the time, the place, the pen, the companion, or the slow third reading) that is most likely to shift that number in the next thirty days?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, we confess that most of what we have eaten this year did not satisfy us, and we spent silver on a lot of it anyway. We have been thirsty for so long that we started to think the thirst was normal. Teach us to taste. Put the honey of Your Word on our tongues until even our memory of junk food starts to turn. We are not asking You to change the Bible. We are asking You to change our palate. Give us the <em>binah</em> that comes from slow reading, the recoil from false ways that only a tasted truth can produce, and the courage to come, buy, eat without silver, simply because You have already paid. Keep the window open a little longer. We are still learning how to be hungry. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-    <!-- BIBLE APP STRIP -->
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-04-29.html"><span class="day-nav-kicker">← Wednesday</span><span class="day-nav-title">A Double Blessing</span></a><a class="day-nav-item" href="/bible-study/2026-05-01.html"><span class="day-nav-kicker">Friday →</span><span class="day-nav-title">Further Thought &amp; Discussion</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"psalms-34-8":{"ref":"Psalms 34:8","text":"Taste and see that the LORD is good; blessed is the man who takes refuge in Him!","bibleUrl":"https://www.bible.com/bible/3034/PSA.34.8"},"isaiah-55-11":{"ref":"Isaiah 55:11","text":"so My word that proceeds from My mouth will not return to Me empty, but it will accomplish what I please, and it will prosper where I send it.","bibleUrl":"https://www.bible.com/bible/3034/ISA.55.11"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

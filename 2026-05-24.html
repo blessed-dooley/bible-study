@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Distractions and Temptations — Daily Bible Study</title>
 <meta name="study-title" content="Distractions and Temptations">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Part 2 of 7">
+<meta name="study-passage" content="Judges 16:17">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Day 2 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Distractions and Temptations">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Part 2 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Day 2 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-05-24.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Part 2 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Day 2 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,334 +38,214 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Distractions and Temptations</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 9, Sin, the Gospel, and the Law</span>
-      <span>Part 2 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Sun · May 24</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">13 min</span>
     </div>
-    <div class="date-badge">May 24, 2026</div>
+    <h1 class="study-title">Distractions and Temptations</h1>
+    <p class="study-sub"><span class="sub-title">Sin, the Gospel, and the Law</span><span class="sub-facts"><span>Lesson 9</span><span>Day 2 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">Samson kept his hair, kept his vow, kept his strength for most of two decades, until the morning he walked into a Philistine town five miles from home and could not stop looking at a girl.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p class="tldr-hook">Samson kept his hair, kept his vow, kept his strength for most of two decades, until the morning he walked into a Philistine town five miles from home and could not stop looking at a girl.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span><span>The pull that took Samson down was not a single big sin. It was a slow drift of small ones, a series of unguarded glances, an appetite he never bothered to govern.</span></li>
-        <li><span class="bullet-icon">☩</span><span>Satan does not need a moral catastrophe to keep us from God. He just needs an inbox, a feed, a calendar full of things that are not exactly wrong but will not leave room for anything else.</span></li>
-        <li><span class="bullet-icon">☩</span><span>Jesus knew the same exhaustion we know, full days and hungry crowds and tired legs at a well in Samaria, and built one move into His operating system. Before sunrise. To a deserted place. Alone.</span></li>
-        <li><span class="bullet-icon">☩</span><span>The Word of God is not extra credit on a busy day. It is the rope that pulls a Samson out of the riddle before the riddle takes his eyes.</span></li>
+        <li>
+<span class="bullet-icon">☩</span><span>The pull that took Samson down was not a single big sin. It was a slow drift of small ones, a series of unguarded glances, an appetite he never bothered to govern.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span>Satan does not need a moral catastrophe to keep us from God. He just needs an inbox, a feed, a calendar full of things that are not exactly wrong but will not leave room for anything else.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span>Jesus knew the same exhaustion we know, full days and hungry crowds and tired legs at a well in Samaria, and built one move into His operating system. Before sunrise. To a deserted place. Alone.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span>The Word of God is not extra credit on a busy day. It is the rope that pulls a Samson out of the riddle before the riddle takes his eyes.</span>
+</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday we hung two vocabularies on the wall: the Hebrew cabinet of words for sin (<em>chattat</em>, missing the mark; <em>pesha</em>, covenant breach; <em>avon</em>, bent and twisted) and the Hebrew cabinet of words for the law (<em>piqqudim</em>, <em>mitzvot</em>, <em>huqqim</em>, <em>torah</em>). The Memory Text from Psalm 119 held both halves in one breath: "Your precepts have given me life. Save me." Today we meet a man who was given more precepts than most. A Nazirite from his mother's womb, set apart before he could remember being set apart, with a daily reminder of his vow hanging on the side of his own head. And the very first scene of his adult story is Samson seeing a Philistine woman in Timnah and not looking away.</p>
-    </div>
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday we hung two vocabularies on the wall: the Hebrew cabinet of words for sin (<em>chattat</em>, missing the mark; <em>pesha</em>, covenant breach; <em>avon</em>, bent and twisted) and the Hebrew cabinet of words for the law (<em>piqqudim</em>, <em>mitzvot</em>, <em>huqqim</em>, <em>torah</em>). The Memory Text from Psalm 119 held both halves in one breath: "Your precepts have given me life. Save me." Today we meet a man who was given more precepts than most. A Nazirite from his mother's womb, set apart before he could remember being set apart, with a daily reminder of his vow hanging on the side of his own head. And the very first scene of his adult story is Samson seeing a Philistine woman in Timnah and not looking away.</p>
+    </section>
 
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Timnah, Five Miles Down the Hill</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>Timnah, Five Miles Down the Hill</h3>
       <p>The opening verse of Judges 14 says Samson "went down to Timnah," and the verb is doing more than describing geography. Timnah sat on the southern edge of the Sorek Valley, only five or six miles west of Samson's hometown of Zorah, but it was downhill in every sense. Samson's family lived in the hill country of Dan, the part of Israel's allotment that had never been fully cleared of Philistines. Timnah was a Philistine settlement next door, close enough to see from the family roof and just culturally far enough away to feel exotic. The Philistines were the Iron Age sea-people who had locked Israel's economy in a vise for a generation. The previous chapter has just told us that the Spirit of the LORD began to stir Samson while he was still a teenager and that he had been set apart from the womb as a Nazirite, the only person in the Bible whose lifelong vow was declared before his birth.</p>
       <p>To "go down to Timnah" was to walk five miles in the wrong direction. Not a foreign mission trip, not a strategic dating decision, but a young man walking out of the world his calling had been pressed into and toward the very nation he was supposed to be delivering Israel from. The narrator slips in a small parenthetical at <a class="vlink" href="https://www.bible.com/bible/3034/JDG.14.4" target="_blank" rel="noopener">verse four</a> that the LORD was using even this for His purposes, the Bible's standard reminder that God is not surprised by our distractions. But that note does not soften the diagnosis of what Samson is doing. He is being pulled downhill, on his own legs, by his own eyes, for his own reasons. <a class="vlink" href="https://www.bible.com/bible/3034/JDG.16" target="_blank" rel="noopener">Judges chapter sixteen</a> will eventually show us where the downhill walk ends, in a stone-floored Philistine temple with the supports of the building leaning against his back. The first move toward that ending was the casual stroll to a town five miles off the map of his calling.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Open <a class="vlink" href="https://www.bible.com/bible/3034/JDG.14" target="_blank" rel="noopener">Judges 14</a> and the first verb in the chapter is "went down," and what Samson is going down to is a five-mile change in the trajectory of his entire life. He sees a Philistine woman in Timnah and demands her as a wife. He overrules his parents. He walks through a vineyard a Nazirite was forbidden to touch. He scrapes honey out of a lion's carcass a Nazirite was forbidden to touch. He hosts a wedding <em>mishteh</em>, in Hebrew literally a "drinking-place" a Nazirite was forbidden to host. None of those steps looks like a catastrophe at the time. Each looks like a reasonable accommodation to a normal life. Two chapters later the slow drift becomes the moment everything snaps. Samson is on Delilah's lap and his mouth is moving.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Open <a class="vlink" href="https://www.bible.com/bible/3034/JDG.14" target="_blank" rel="noopener">Judges 14</a> and the first verb in the chapter is "went down," and what Samson is going down to is a five-mile change in the trajectory of his entire life. He sees a Philistine woman in Timnah and demands her as a wife. He overrules his parents. He walks through a vineyard a Nazirite was forbidden to touch. He scrapes honey out of a lion's carcass a Nazirite was forbidden to touch. He hosts a wedding <em>mishteh</em>, in Hebrew literally a "drinking-place" a Nazirite was forbidden to host. None of those steps looks like a catastrophe at the time. Each looks like a reasonable accommodation to a normal life. Two chapters later the slow drift becomes the moment everything snaps. Samson is on Delilah's lap and his mouth is moving.</p>
 
 <!-- BSB_BLOCK: Judges 16:17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:63c1dcf9c516274bbd387c0b7962a82dbb558f2a20d1189ae7bfdaec9f2d71c3 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Judges 16:17</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/JDG.16.17" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/JDG.16.17" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Samson told her all that was in his heart: “My hair has never been cut, because I have been a Nazirite to God from my mother’s womb. If I am shaved, my strength will leave me, and I will become as weak as any other man.”</div>
 <div class="verse-commentary">
-          <p>The narrator has been stacking verbs all the way. The first three verses of chapter fourteen put four of them in front of us: <em>went down</em>, <em>saw</em>, <em>told</em>, <em>told</em>. The seeing verb is <em>ra'ah</em>, the same verb at the head of the trouble in <a class="vlink" href="https://www.bible.com/bible/3034/GEN.3.6" target="_blank" rel="noopener">Genesis 3:6</a> ("the woman saw that the tree was good for food") and in <a class="vlink" href="https://www.bible.com/bible/3034/2SA.11.2" target="_blank" rel="noopener">2 Samuel 11:2</a> ("David from the roof saw a woman bathing"). Three of Israel's most famous downfalls open with the same Hebrew verb of looking. Samson's overrule of his parents lands on the slipperiest sentence in the chapter, <em>yashar hi b'einay</em>, "she is right in my eyes," the same idiom <a class="vlink" href="https://www.bible.com/bible/3034/JDG.21.25" target="_blank" rel="noopener">Judges 21:25</a> will use as the diagnosis of a whole nation that has lost its center. Two chapters later Samson is still using the same eyes and the same mouth, but he is no longer in Timnah. He saw a prostitute in Gaza (<a class="vlink" href="https://www.bible.com/bible/3034/JDG.16.1" target="_blank" rel="noopener">Judges 16:1</a>), he loved a woman in the Valley of Sorek (<a class="vlink" href="https://www.bible.com/bible/3034/JDG.16.4" target="_blank" rel="noopener">Judges 16:4</a>), Delilah nagged him until he was worn down to the point of death (<a class="vlink" href="https://www.bible.com/bible/3034/JDG.16.16" target="_blank" rel="noopener">Judges 16:16</a>), and then "he told her everything." The eye opened the door at fourteen. The mouth surrenders the key at sixteen.</p>
+          <p>The narrator has been stacking verbs all the way. The first three verses of chapter fourteen put four of them in front of us: <em>went down</em>, <em>saw</em>, <em>told</em>, <em>told</em>. The seeing verb is <em>ra'ah</em>, the same verb at the head of the trouble in <a class="vlink" href="https://www.bible.com/bible/3034/GEN.3.6" target="_blank" rel="noopener" data-verse="genesis-3-6" data-ref="Genesis 3:6" aria-expanded="false">Genesis 3:6</a> ("the woman saw that the tree was good for food") and in <a class="vlink" href="https://www.bible.com/bible/3034/2SA.11.2" target="_blank" rel="noopener" data-verse="2-samuel-11-2" data-ref="2 Samuel 11:2" aria-expanded="false">2 Samuel 11:2</a> ("David from the roof saw a woman bathing"). Three of Israel's most famous downfalls open with the same Hebrew verb of looking. Samson's overrule of his parents lands on the slipperiest sentence in the chapter, <em>yashar hi b'einay</em>, "she is right in my eyes," the same idiom <a class="vlink" href="https://www.bible.com/bible/3034/JDG.21.25" target="_blank" rel="noopener" data-verse="judges-21-25" data-ref="Judges 21:25" aria-expanded="false">Judges 21:25</a> will use as the diagnosis of a whole nation that has lost its center. Two chapters later Samson is still using the same eyes and the same mouth, but he is no longer in Timnah. He saw a prostitute in Gaza (<a class="vlink" href="https://www.bible.com/bible/3034/JDG.16.1" target="_blank" rel="noopener" data-verse="judges-16-1" data-ref="Judges 16:1" aria-expanded="false">Judges 16:1</a>), he loved a woman in the Valley of Sorek (<a class="vlink" href="https://www.bible.com/bible/3034/JDG.16.4" target="_blank" rel="noopener" data-verse="judges-16-4" data-ref="Judges 16:4" aria-expanded="false">Judges 16:4</a>), Delilah nagged him until he was worn down to the point of death (<a class="vlink" href="https://www.bible.com/bible/3034/JDG.16.16" target="_blank" rel="noopener" data-verse="judges-16-16" data-ref="Judges 16:16" aria-expanded="false">Judges 16:16</a>), and then "he told her everything." The eye opened the door at fourteen. The mouth surrenders the key at sixteen.</p>
           <p>Notice the phrase Samson uses for what he is giving away. "I have been a Nazirite to God from my mother’s womb." He still knows the precept. He still remembers the vow. He has not become a theological skeptic. He has just become someone for whom the precept does not load-bear anything anymore. The hair on his head has become a relic of a younger self, a story he tells at dinner parties, a fact about him rather than the central reality of his life. The vow has not been broken yet at the moment of these words. It is about to be. But the breaking is already finished inside him. The scissors only need to catch up to the heart.</p>
           <p>This is the warning the book of Judges keeps planting in our path. Sin in the Bible is rarely a single dramatic act of rebellion. It is usually the slow inside-out hollowing of a person whose precepts have quietly become preferences. Samson did not stop being a Nazirite at Delilah's couch. He stopped being a Nazirite the first morning he decided his own eyes were the final court on what was right in the world. Yesterday's Memory Text said the psalmist would "never forget Your precepts." The man on Delilah's lap has not forgotten his. He has just stopped letting it form him.</p>
           <p>Sin does not start when the hair is cut. It starts at the first look that decides not to look away.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Mark 1:35 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:9d283c63b971430705e29c475c708316ba2da376b062e761c21b49cfc6ca3f27 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Mark 1:35</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/MRK.1.35" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/MRK.1.35" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Early in the morning, while it was still dark, Jesus got up and went out to a solitary place to pray.</div>
 <div class="verse-commentary">
           <p>The opposite verb. Where Samson "went down" toward what his eyes wanted, the gospel writer Mark hands us a parallel sentence with a different direction. Jesus "got up," "went out," and "slipped out" to a deserted place. The Greek noun behind "deserted place" is <em>eremos topos</em>, the same lonely-place language we walked into four weeks ago when this verse anchored a different week. The same Mark, the same sentence, applied here as the answer to the question this morning is asking. How do you not become Samson? You build the move Jesus built. Before the day got its hands on Him, before the crowd in Capernaum could find Him, before the disciples knew He was awake, He had already located the door no one was about to open and put Himself behind it.</p>
-          <p>The other gospel writers tell us this was not a single quirky morning. Luke notes that Jesus "often withdrew to deserted places and prayed" (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.5.16" target="_blank" rel="noopener">Luke 5:16</a>) and records the all-night prayer on the mountain before He named the Twelve (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.6.12" target="_blank" rel="noopener">Luke 6:12</a>). Matthew records the lakeshore retreat after the death of John the Baptist (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.14.23" target="_blank" rel="noopener">Matthew 14:23</a>). John tells us He was "tired" at a Samaritan well at the sixth hour (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.4.6" target="_blank" rel="noopener">John 4:6</a>). The pattern is overwhelming. The Son of God built His operating system around scheduled, unspectacular withdrawal to be with His Father. The crowd never set His schedule. His Father did.</p>
+          <p>The other gospel writers tell us this was not a single quirky morning. Luke notes that Jesus "often withdrew to deserted places and prayed" (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.5.16" target="_blank" rel="noopener" data-verse="luke-5-16" data-ref="Luke 5:16" aria-expanded="false">Luke 5:16</a>) and records the all-night prayer on the mountain before He named the Twelve (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.6.12" target="_blank" rel="noopener" data-verse="luke-6-12" data-ref="Luke 6:12" aria-expanded="false">Luke 6:12</a>). Matthew records the lakeshore retreat after the death of John the Baptist (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.14.23" target="_blank" rel="noopener" data-verse="matthew-14-23" data-ref="Matthew 14:23" aria-expanded="false">Matthew 14:23</a>). John tells us He was "tired" at a Samaritan well at the sixth hour (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.4.6" target="_blank" rel="noopener" data-verse="john-4-6" data-ref="John 4:6" aria-expanded="false">John 4:6</a>). The pattern is overwhelming. The Son of God built His operating system around scheduled, unspectacular withdrawal to be with His Father. The crowd never set His schedule. His Father did.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Matthew 6:33 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c5478b70ed22a94754ec269cd83322f879568008f9e6639e6359d75a3c34b64d | footnotes-stripped:1 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Matthew 6:33</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.6.33" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/MAT.6.33" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text"><span class="words-of-jesus">But seek first the kingdom of God and His righteousness, and all these things will be added unto you.</span></div>
 <div class="verse-commentary">
           <p>Matthew 6:33 sits inside the Sermon on the Mount, the same hill we will climb to on Thursday. Jesus has just spent twenty verses naming the worries that run our brains all day (food, clothes, shelter, tomorrow) and then drops a single sentence on top of them. "Seek first." The Greek verb is <em>zeteo</em>, present imperative, the "keep on seeking" mode we met three weeks back in the "ask, seek, knock" of the Lord's Prayer week. First, not as a chronological line item but as a priority structure. The order in your morning is the order in your life. Whatever gets the first hour gets the day. Whatever gets the day gets the year.</p>
-          <p>The promise on the end of the verse is easy to miss. "All these things will be added unto you." Not "you will have to skip them." Not "everything will collapse while you pray." The provision is added. Samson tried to grab everything at once and ended with nothing. Jesus says the kingdom first, and the kitchen table is full when you sit down to it. The seeking-first move is not an austerity program. It is the rope God lowers to people whose eyes have been pulled where their feet should not go. Even the Risen Christ, speaking from glory in <a class="vlink" href="https://www.bible.com/bible/3034/REV.3.14-22" target="_blank" rel="noopener">Revelation 3:14-22</a>, says it bluntly to a church that thinks it is fine: "I rebuke and discipline those I love. So be zealous and repent." The apathy that lets the door stay closed is the apathy Jesus is standing on the other side of, knocking.</p>
+          <p>The promise on the end of the verse is easy to miss. "All these things will be added unto you." Not "you will have to skip them." Not "everything will collapse while you pray." The provision is added. Samson tried to grab everything at once and ended with nothing. Jesus says the kingdom first, and the kitchen table is full when you sit down to it. The seeking-first move is not an austerity program. It is the rope God lowers to people whose eyes have been pulled where their feet should not go. Even the Risen Christ, speaking from glory in <a class="vlink" href="https://www.bible.com/bible/3034/REV.3.14-22" target="_blank" rel="noopener" data-verse="revelation-3-14-22" data-ref="Revelation 3:14-22" aria-expanded="false">Revelation 3:14-22</a>, says it bluntly to a church that thinks it is fine: "I rebuke and discipline those I love. So be zealous and repent." The apathy that lets the door stay closed is the apathy Jesus is standing on the other side of, knocking.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: Matthew 6:33 | 6:33 SBL, WH, and NE seek first His kingdom; see also Luke 12:31. -->
-    </div>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Bermuda Grass at the Fence Line</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Bermuda Grass at the Fence Line</h3>
       <p>Most people who have ever owned a backyard with a rose bed against the fence have lost the same fight. The neighbor's bermuda grass is fine. It is a normal lawn grass that millions of people pay good money for. It is not poison, it is not on any official invasive list, and on any given morning, looking out the kitchen window at the property line, nothing is happening that you would think to act on. There is no day when the grass attacks the roses. There is no morning when you wake up to find a battle has been fought. There is only the underground runner, the rhizome, that puts out one new node every two weeks all season long for ten or fifteen years. By the time you can see what is happening above ground, the rose bed has been quietly choked from below. The roses did not lose a war. They lost their lunch. Every week. Almost nothing. For a decade.</p>
       <p>That is the shape Samson's fall took. There was never a morning he woke with a clear decision to break his Nazirite vow. There was only the trip to Timnah, and then the lion, and then the wedding feast, and then the prostitute in Gaza, and then the Valley of Sorek, and then the lap. The runners had been moving under the fence for years before the scissors ever came out. We have the same gardening problem in our spiritual yard. The relationships, the feeds, the appetites, the categories of consumption we have decided are individually fine. The hair is still on our head. The vow is still in our file. But the soil under the roses is being colonized one rhizome at a time, and one morning we will pull back the mulch and there will be no roots left.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Ninety-Six Times a Day</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>Ninety-Six Times a Day</h3>
       <p>In April 2025, <em>Perspectives in Public Health</em>, the peer-reviewed journal of the United Kingdom's Royal Society for Public Health, published a paper by Sharpe and Spooner (Institute of Psychology, Business, and Human Sciences, University of Chichester) that gave the modern phenomenon its first formal name. "Dopamine-scrolling," they argued, was no longer a side effect of other problems like distraction or sleep loss. It was its own diagnosable pattern. A habitual, low-grade pursuit of novel content, with no destination, no goal, no obvious harm in any single moment, sustained for hundreds of brief sessions every day. The authors asked public health authorities to begin treating it as a phenomenon in its own right, the way an earlier generation of researchers had to argue that tobacco was its own object of study and not a personality quirk of the people who used it.</p>
       <p>The numbers around the paper land in Samson's lap. StatsPanda, citing DataReportal's Digital 2025 Global Overview and BankMyCell, reports that the average smartphone user now picks the device up about ninety-six times a day, once every ten waking minutes, and spends four hours and thirty-seven minutes on it across all those sessions. No single one of those checks is a moral catastrophe. The unlock for the weather is fine. The unlock to glance at a text is fine. The unlock to see if the package shipped is fine. The drift is the architecture, not any individual lookup. The brain's reward circuitry treats each refresh as a small uncertain reward, and at four-and-a-half hours a day the small rewards add up across a year to more than sixteen hundred hours of screen time, roughly a hundred waking days, spent on something the user did not consciously choose to spend any of it on.</p>
       <p>That is the modern shape of "he went down to Timnah." It is not a single decision to walk into a Philistine vineyard. It is ninety-six unlocks a day, every day, for years, none of them quite crossing a line, all of them quietly pulling the eye downhill. The Hebrew verb at the head of Samson's fall was <em>ra'ah</em>, "he saw." A British public health journal has just put a more modern name on the place that verb tends to take a life if it is not governed.</p>
-    </div>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>The bridge from Samson to Jesus runs through the garden across the brook we walked into last week. Both walked into a fight with the powers of darkness, and both faced a moment where the question on the table was whether their own will would bend to the Father's. Samson is the strong man who depended on his strength, and his strength left him in a Philistine lap. Jesus is the strong man who emptied Himself before the contest, walked into Gethsemane, and prayed the sentence Samson never prayed: "Not as I will, but as You will." Where Samson's eyes pulled him into a Philistine field, Jesus's eyes were lifted to His Father all night in lonely places. Where Samson lost his vision and was paraded between two pillars of a pagan temple, Jesus willingly stretched out between two pieces of wood and broke the back of the powers Samson was supposed to be delivering Israel from. The strong Man came on Samson's behalf and on ours, and the way out of distraction begins where He first walked it.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>The bridge from Samson to Jesus runs through the garden across the brook we walked into last week. Both walked into a fight with the powers of darkness, and both faced a moment where the question on the table was whether their own will would bend to the Father's. Samson is the strong man who depended on his strength, and his strength left him in a Philistine lap. Jesus is the strong man who emptied Himself before the contest, walked into Gethsemane, and prayed the sentence Samson never prayed: "Not as I will, but as You will." Where Samson's eyes pulled him into a Philistine field, Jesus's eyes were lifted to His Father all night in lonely places. Where Samson lost his vision and was paraded between two pillars of a pagan temple, Jesus willingly stretched out between two pieces of wood and broke the back of the powers Samson was supposed to be delivering Israel from. The strong Man came on Samson's behalf and on ours, and the way out of distraction begins where He first walked it.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         For one day this week, set a calendar alert for thirty minutes before you normally start your day. Use that thirty minutes for one thing only: open the Bible and sit with it. No podcast, no email check, no scrolling "just for a minute," no caffeine routine that turns into thirty minutes of news. Read the next chapter of wherever you are, or read Psalm 119 if you have nowhere. The thirty minutes is the test. If it is taken from you tomorrow morning, you will know whose hand took it.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we come to You as people who have been pulled in five directions before the coffee was even cool, and who have hardly noticed that we were being pulled. We have a hundred small Timnahs that we go down to without thinking. An inbox we open before You. A feed we scroll before the Bible. A calendar packed so full there is no breath left for the conversation we said we wanted with You. Forgive us. Show us today the slow drift Samson never noticed until his eyes were already gone. Teach us the discipline Your Son built into every gospel: deserted place, before sunrise, alone with You. We do not need a more impressive plan, Father. We need the seeking-first move that orders everything else. Pull our eyes off the next shiny thing and back onto the One whose face is the only sight that will outlast every other. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"Look at the last week of your phone screen-time report, or the last twenty minutes of your scrolling, and ask honestly: what is the Timnah in your life right now? (A category of content. An app. A relationship that pulls you down a hill you know you should not be walking. A consumption habit you have stopped resisting.) What would it look like this week to build one small fence around that Timnah in a way Jesus would recognize, not as a willpower diet but as a thirty-minute alone-with-the-Father move that comes earlier in your day than the pull?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"Look at the last week of your phone screen-time report, or the last twenty minutes of your scrolling, and ask honestly: what is the Timnah in your life right now? (A category of content. An app. A relationship that pulls you down a hill you know you should not be walking. A consumption habit you have stopped resisting.) What would it look like this week to build one small fence around that Timnah in a way Jesus would recognize, not as a willpower diet but as a thirty-minute alone-with-the-Father move that comes earlier in your day than the pull?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, we come to You as people who have been pulled in five directions before the coffee was even cool, and who have hardly noticed that we were being pulled. We have a hundred small Timnahs that we go down to without thinking. An inbox we open before You. A feed we scroll before the Bible. A calendar packed so full there is no breath left for the conversation we said we wanted with You. Forgive us. Show us today the slow drift Samson never noticed until his eyes were already gone. Teach us the discipline Your Son built into every gospel: deserted place, before sunrise, alone with You. We do not need a more impressive plan, Father. We need the seeking-first move that orders everything else. Pull our eyes off the next shiny thing and back onto the One whose face is the only sight that will outlast every other. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-05-23.html"><span class="day-nav-kicker">← Saturday</span><span class="day-nav-title">Sin, the Gospel, and the Law</span></a><a class="day-nav-item" href="/bible-study/2026-05-25.html"><span class="day-nav-kicker">Monday →</span><span class="day-nav-title">Strongholds in My Relationship With God</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"genesis-3-6":{"ref":"Genesis 3:6","text":"When the woman saw that the tree was good for food and pleasing to the eyes, and that it was desirable for obtaining wisdom, she took the fruit and ate it. She also gave some to her husband who was with her, and he ate it.","bibleUrl":"https://www.bible.com/bible/3034/GEN.3.6"},"2-samuel-11-2":{"ref":"2 Samuel 11:2","text":"One evening David got up from his bed and strolled around on the roof of the palace. And from the roof he saw a woman bathing\u2014a very beautiful woman.","bibleUrl":"https://www.bible.com/bible/3034/2SA.11.2"},"judges-21-25":{"ref":"Judges 21:25","text":"In those days there was no king in Israel; everyone did what was right in his own eyes.","bibleUrl":"https://www.bible.com/bible/3034/JDG.21.25"},"judges-16-1":{"ref":"Judges 16:1","text":"One day Samson went to Gaza, where he saw a prostitute and went in to spend the night with her.","bibleUrl":"https://www.bible.com/bible/3034/JDG.16.1"},"judges-16-4":{"ref":"Judges 16:4","text":"Some time later, Samson fell in love with a woman in the Valley of Sorek, whose name was Delilah.","bibleUrl":"https://www.bible.com/bible/3034/JDG.16.4"},"judges-16-16":{"ref":"Judges 16:16","text":"Finally, after she had pressed him daily with her words and pleaded until he was sick to death,","bibleUrl":"https://www.bible.com/bible/3034/JDG.16.16"},"luke-5-16":{"ref":"Luke 5:16","text":"Yet He frequently withdrew to the wilderness to pray.","bibleUrl":"https://www.bible.com/bible/3034/LUK.5.16"},"luke-6-12":{"ref":"Luke 6:12","text":"In those days Jesus went out to the mountain to pray, and He spent the night in prayer to God.","bibleUrl":"https://www.bible.com/bible/3034/LUK.6.12"},"matthew-14-23":{"ref":"Matthew 14:23","text":"After He had dismissed them, He went up on the mountain by Himself to pray. When evening came, He was there alone,","bibleUrl":"https://www.bible.com/bible/3034/MAT.14.23"},"john-4-6":{"ref":"John 4:6","text":"Since Jacob\u2019s well was there, Jesus, weary from His journey, sat down by the well. It was about the sixth hour.","bibleUrl":"https://www.bible.com/bible/3034/JHN.4.6"},"revelation-3-14-22":{"ref":"Revelation 3:14-22","text":"To the angel of the church in Laodicea write: These are the words of the Amen, the faithful and true Witness, the Originator of God\u2019s creation. I know your deeds; you are neither cold nor hot. How I wish you were one or the other! So because you are lukewarm\u2014neither hot nor cold\u2014I am about to vomit you out of My mouth! You say, \u2018I am rich; I have grown wealthy and need nothing.\u2019 But you do not realize that you are wretched, pitiful, poor, blind, and naked. I counsel you to buy from Me gold refined by fire so that you may become rich, white garments so that you may be clothed and your shameful nakedness not exposed, and salve to anoint your eyes so that you may see. Those I love I rebuke and discipline. Therefore be earnest and repent. Behold, I stand at the door and knock. If anyone hears My voice and opens the door, I will come in and dine with him, and he with Me. To the one who overcomes, I will grant the right to sit with Me on My throne, just as I overcame and sat down with My Father on His throne. He who has an ear, let him hear what the Spirit says to the churches.\u201d","bibleUrl":"https://www.bible.com/bible/3034/REV.3.14-22"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

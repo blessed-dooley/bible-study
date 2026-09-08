@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Unity — Daily Bible Study</title>
+<meta name="publication-state" content="staged">
+<meta name="robots" content="noindex, nofollow">
 <meta name="study-title" content="Unity">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 11, Stewardship and Mission · Part 6 of 7">
+<meta name="study-passage" content="2 Corinthians 8:13-14">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 11, Stewardship and Mission · Day 6 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Unity">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 11, Stewardship and Mission · Part 6 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 11, Stewardship and Mission · Day 6 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-09-10.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 11, Stewardship and Mission · Part 6 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 11, Stewardship and Mission · Day 6 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,327 +40,215 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
-<body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+<body class="study-page--daily" data-staged="true">
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Unity</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 11, Stewardship and Mission</span>
-      <span>Part 6 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">September 10, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="staged-banner" role="status">
+  <span class="staged-banner-tag" aria-hidden="true">Staged</span>
+  <span>Review artifact: this page is not published or listed in the archive.</span>
+</div>
+<div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Thu · Sep 10</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
+    </div>
+    <h1 class="study-title">Unity</h1>
+    <p class="study-sub"><span class="sub-title">Stewardship and Mission</span><span class="sub-facts"><span>Lesson 11</span><span>Day 6 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>When the relief fund finally travels, Paul refuses to carry it alone. Titus goes, and with him two brothers the churches themselves chose, every coin handled in the open, because sacred money moves with witnesses. But watch what Paul is really building. Greek money on Jewish tables. Surplus flowing toward need until it evens out. Former strangers proving with their wallets that they are one family now, in full view of the churches. Money can split a congregation, and money can stitch congregations together. <strong>An offering aimed by love does what sermons alone cannot. It makes the family visible.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday left us watching the Macedonian believers beg for the privilege of giving, and the point landed close to the skin. The attitude is most of the gift. But a glad gift, once it leaves a glad hand, still has somewhere to go. It gets counted, carried, guarded, and finally spent on real bread for real people, and every step of that journey preaches something. Today the letter follows the money out the door. Who carries it, how they were chosen, and what it means when Greek coins finally land on Jewish tables. It turns out the offering was never just relief. It was architecture.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>When the relief fund finally travels, Paul refuses to carry it alone. Titus goes, and with him two brothers the churches themselves chose, every coin handled in the open, because sacred money moves with witnesses. But watch what Paul is really building. Greek money on Jewish tables. Surplus flowing toward need until it evens out. Former strangers proving with their wallets that they are one family now, in full view of the churches. Money can split a congregation, and money can stitch congregations together. <strong>An offering aimed by love does what sermons alone cannot. It makes the family visible.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday left us watching the Macedonian believers beg for the privilege of giving, and the point landed close to the skin. The attitude is most of the gift. But a glad gift, once it leaves a glad hand, still has somewhere to go. It gets counted, carried, guarded, and finally spent on real bread for real people, and every step of that journey preaches something. Today the letter follows the money out the door. Who carries it, how they were chosen, and what it means when Greek coins finally land on Jewish tables. It turns out the offering was never just relief. It was architecture.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Sacred Money Traveled With Witnesses</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>Sacred Money Traveled With Witnesses</h3>
       <p>Jewish communities scattered across the empire had solved this problem generations earlier. Every year, from Rome to Babylon, Jewish families paid the half-shekel temple tax, and every year those collections had to cross bandit country to reach Jerusalem. So the communities built a system everyone could trust. The money was gathered publicly, sealed, and sent with appointed envoys, respected men chosen by their own communities, traveling together so that no single pair of hands ever held the sacred funds alone. The convoys were famous. Even Roman officials wrote about the Jewish gold that streamed toward Jerusalem, and the system worked because the couriers were witnesses for each other from the first coin to the last.</p>
       <p>Paul, a diaspora Jew who grew up inside that system, builds the church's collection on the same wisdom. Titus does not travel alone. Two brothers go with him, not friends Paul picked, but men the churches themselves selected, praised by all the churches, so that every hand on the money answers to somebody. Paul says the reason out loud, taking great care to do what is right, not only before the Lord but before men, because he knew his critics were watching for one loose coin to build an accusation on. And there is a second layer under the logistics. When that little delegation finally walked into Jerusalem, Greek believers carrying Greek gifts to Jewish saints, the convoy itself was the sermon. The money arrived with faces attached, and the faces said family.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Money is the last thing most of us would trust to hold a family together, because we have all watched it do the opposite. Estates that split siblings. Church budgets that split boards. Corinth knew money's dividing power. Yet across these two chapters (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.1-9.15" target="_blank" rel="noopener">2 Corinthians 8:1-9:15</a>), Paul keeps handling the offering like a load-bearing beam, something God intends to build unity on. Today's passages show the design, and it starts with what the money is supposed to do between churches that have never met.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Money is the last thing most of us would trust to hold a family together, because we have all watched it do the opposite. Estates that split siblings. Church budgets that split boards. Corinth knew money's dividing power. Yet across these two chapters (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.1-9.15" target="_blank" rel="noopener" data-verse="2-corinthians-8-1-9-15" data-ref="2 Corinthians 8:1-9:15" aria-expanded="false">2 Corinthians 8:1-9:15</a>), Paul keeps handling the offering like a load-bearing beam, something God intends to build unity on. Today's passages show the design, and it starts with what the money is supposed to do between churches that have never met.</p>
 
       <!-- BSB_BLOCK: 2 Corinthians 8:13-14 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:ac8d9145546b10b069a5f492b0e4489a90cc7ecfbb54e64a543d2f78e60eccaf | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 8:13-14</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.8.13-14" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 13">13</sup>It is not our intention that others may be relieved while you are burdened, but that there may be equality. <sup class="verse-number" aria-label="Verse 14">14</sup>At the present time, your surplus will meet their need, so that in turn their surplus will meet your need. This way there will be equality.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.8.13-14" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 13">13</sup>It is not our intention that others may be relieved while you are burdened, but that there may be equality. <sup class="verse-number" aria-label="Verse 14">14</sup>At the present time, your surplus will meet their need, so that in turn their surplus will meet your need. This way there will be equality.</div>
         <div class="verse-commentary">
           <p>Paul's word here is <em>isotēs</em>, Greek for equality, the way scales balance when neither pan sits higher. He is not stripping one church to pad another, and he says so. The design is circulation. Your surplus meets their need now, their surplus meets your need later, and notice that Paul fully expects the flow to reverse someday, as if wealthy Corinth might one day be the church holding out its hand. In God's family, abundance is not a rank. It is a temporary assignment, and need is not a shame. It is a temporary assignment too. What stays constant is the family, with resources sloshing between its members the way blood moves to whichever limb is working hardest. Equality like that can be guarded by laws and safeguards, and Paul is about to build some. But it is loved into existence, one offering at a time.</p>
         </div>
-      </div>
+      </figure>
 
       <p>A vision that beautiful still has to survive the road, and Paul knows exactly how offerings die. Not usually from theft. From suspicion. So watch how carefully he builds the carrying.</p>
 
       <!-- BSB_BLOCK: 2 Corinthians 8:18-23 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:a31e06f420e5f2bd68ad56ec3baf3061b10569912e6ef0c08d75639ddbd0dd0d | footnotes-stripped:2 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 8:18-23</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.8.18-23" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 18">18</sup>Along with Titus we are sending the brother who is praised by all the churches for his work in the gospel. <sup class="verse-number" aria-label="Verse 19">19</sup>More than that, this brother was chosen by the churches to accompany us with the gracious offering we administer to honor the Lord Himself and to show our eagerness to help. <sup class="verse-number" aria-label="Verse 20">20</sup>We want to avoid any criticism of the way we administer this generous gift. <sup class="verse-number" aria-label="Verse 21">21</sup>For we are taking great care to do what is right, not only in the eyes of the Lord, but also in the eyes of men. <sup class="verse-number" aria-label="Verse 22">22</sup>And we are sending along with them our brother who has proven his earnestness to us many times and in many ways, and now even more so by his great confidence in you. <sup class="verse-number" aria-label="Verse 23">23</sup>As for Titus, he is my partner and fellow worker among you. As for our brothers, they are messengers of the churches, the glory of Christ.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.8.18-23" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 18">18</sup>Along with Titus we are sending the brother who is praised by all the churches for his work in the gospel. <sup class="verse-number" aria-label="Verse 19">19</sup>More than that, this brother was chosen by the churches to accompany us with the gracious offering we administer to honor the Lord Himself and to show our eagerness to help. <sup class="verse-number" aria-label="Verse 20">20</sup>We want to avoid any criticism of the way we administer this generous gift. <sup class="verse-number" aria-label="Verse 21">21</sup>For we are taking great care to do what is right, not only in the eyes of the Lord, but also in the eyes of men. <sup class="verse-number" aria-label="Verse 22">22</sup>And we are sending along with them our brother who has proven his earnestness to us many times and in many ways, and now even more so by his great confidence in you. <sup class="verse-number" aria-label="Verse 23">23</sup>As for Titus, he is my partner and fellow worker among you. As for our brothers, they are messengers of the churches, the glory of Christ.</div>
         <div class="verse-commentary">
-          <p>Count the safeguards. Titus, whose devotion God Himself planted (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.16" target="_blank" rel="noopener">2 Corinthians 8:16</a>). A brother praised by all the churches (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.18" target="_blank" rel="noopener">2 Corinthians 8:18</a>), and chosen by the churches, not appointed by Paul (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.19" target="_blank" rel="noopener">2 Corinthians 8:19</a>). A third man tested many times and in many ways. Paul is deliberately designing away every shadow, right in the open, in the eyes of the Lord and of men, because holy purposes deserve honest processes. And then he gives the couriers a title that should stop us cold. Messengers of the churches, the glory of Christ (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.23" target="_blank" rel="noopener">2 Corinthians 8:23</a>). Men carrying a relief fund get named with Christ's own glory, because handling the family's love with integrity is not administration. It is ministry.</p>
+          <p>Count the safeguards. Titus, whose devotion God Himself planted (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.16" target="_blank" rel="noopener" data-verse="2-corinthians-8-16" data-ref="2 Corinthians 8:16" aria-expanded="false">2 Corinthians 8:16</a>). A brother praised by all the churches (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.18" target="_blank" rel="noopener" data-verse="2-corinthians-8-18" data-ref="2 Corinthians 8:18" aria-expanded="false">2 Corinthians 8:18</a>), and chosen by the churches, not appointed by Paul (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.19" target="_blank" rel="noopener" data-verse="2-corinthians-8-19" data-ref="2 Corinthians 8:19" aria-expanded="false">2 Corinthians 8:19</a>). A third man tested many times and in many ways. Paul is deliberately designing away every shadow, right in the open, in the eyes of the Lord and of men, because holy purposes deserve honest processes. And then he gives the couriers a title that should stop us cold. Messengers of the churches, the glory of Christ (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.23" target="_blank" rel="noopener" data-verse="2-corinthians-8-23" data-ref="2 Corinthians 8:23" aria-expanded="false">2 Corinthians 8:23</a>). Men carrying a relief fund get named with Christ's own glory, because handling the family's love with integrity is not administration. It is ministry.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: 2 Corinthians 8:19 | 8:19 See 1 Corinthians 16:3–4. -->
       <!-- BSB_FOOTNOTE: 2 Corinthians 8:23 | 8:23 Or apostles -->
 
       <p>So the money is aimed at equality and carried by witnesses. One question remains, the deepest one. Why does Paul care this much? Years later, writing to Rome while this very gift traveled with him, he showed his heart.</p>
 
       <!-- BSB_BLOCK: Romans 15:26-27 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:059bd0db8f4a83b5a43aa0b7be74fe5ede6bcba33500ec259a8b4b330e4050d4 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Romans 15:26-27</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.15.26-27" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 26">26</sup>For Macedonia and Achaia were pleased to make a contribution for the poor among the saints in Jerusalem. <sup class="verse-number" aria-label="Verse 27">27</sup>They were pleased to do it, and indeed they owe it to them. For if the Gentiles have shared in their spiritual blessings, they are obligated to minister to them with material blessings.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ROM.15.26-27" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 26">26</sup>For Macedonia and Achaia were pleased to make a contribution for the poor among the saints in Jerusalem. <sup class="verse-number" aria-label="Verse 27">27</sup>They were pleased to do it, and indeed they owe it to them. For if the Gentiles have shared in their spiritual blessings, they are obligated to minister to them with material blessings.</div>
         <div class="verse-commentary">
-          <p>Pleased, and owed. Paul holds both words without blinking, and together they explain the whole project. The gospel had traveled one direction, out of Jerusalem, from Jewish believers to the Gentile world, the richest inheritance ever shared. Now something travels back along the same road, material blessing answering spiritual blessing, not as payment but as family circulation. These were two peoples with every historic reason to stay strangers, and some in Jerusalem had once doubted Gentile converts belonged at all. Paul wants the whole Christian family, Jew and Gentile, visibly united in a way that testifies to generations to come, and he knows a truth congregations still learn slowly. Show these men the proof of your love, he tells Corinth (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.24" target="_blank" rel="noopener">2 Corinthians 8:24</a>), because giving is finally a signal of loyalty to Christ, the Head into whom the whole body grows up (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.4.15" target="_blank" rel="noopener">Ephesians 4:15</a>). One offering, and Paul calls it service, grace, blessing, worship, and fellowship. All that from an offering. Think about it.</p>
+          <p>Pleased, and owed. Paul holds both words without blinking, and together they explain the whole project. The gospel had traveled one direction, out of Jerusalem, from Jewish believers to the Gentile world, the richest inheritance ever shared. Now something travels back along the same road, material blessing answering spiritual blessing, not as payment but as family circulation. These were two peoples with every historic reason to stay strangers, and some in Jerusalem had once doubted Gentile converts belonged at all. Paul wants the whole Christian family, Jew and Gentile, visibly united in a way that testifies to generations to come, and he knows a truth congregations still learn slowly. Show these men the proof of your love, he tells Corinth (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.24" target="_blank" rel="noopener" data-verse="2-corinthians-8-24" data-ref="2 Corinthians 8:24" aria-expanded="false">2 Corinthians 8:24</a>), because giving is finally a signal of loyalty to Christ, the Head into whom the whole body grows up (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.4.15" target="_blank" rel="noopener" data-verse="ephesians-4-15" data-ref="Ephesians 4:15" aria-expanded="false">Ephesians 4:15</a>). One offering, and Paul calls it service, grace, blessing, worship, and fellowship. All that from an offering. Think about it.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Cords Ran Across the Fence Line</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Cords Ran Across the Fence Line</h3>
       <p>The night the ice storm took the power out, the neighborhood found out what it was. One house on the block had a generator, and by morning the map had redrawn itself. Orange extension cords ran out of that garage, across the driveway, over the fence line, into the kitchen of the retired couple two doors down. Coolers migrated. The family with the gas stove boiled water for the family with the newborn. People who had waved at each other for nine years stood in one garage learning each other's names, and nobody wrote anything down, because nobody was keeping accounts. For four cold days the property lines stayed right where the county drew them, and you could not see them from the street. What you could see was the cords.</p>
       <p>That is what Paul is building with a relief offering, and why he handles it like architecture. Money aimed by love does what those cords did. Surplus runs across the line to need, in the open, where everyone can watch the current move, and the current is expected to reverse. Next storm it is your freezer and their chainsaw. Equality, in Paul's design, was never everyone owning identical amounts. It is a family in which abundance is a rotating assignment, need is a rotating assignment, and the connection outlasts them both. So picture Corinth's coins landing in Jerusalem's kitchens, crossing a fence line centuries in the making, and picture what the watching world could suddenly see. It had been one household all along. Generosity is the cord that proves it.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Mission Field Started Sending Missionaries Back</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Mission Field Started Sending Missionaries Back</h3>
       <!-- TODAYS_WORLD_SOURCE: How the Global Religious Landscape Changed From 2010 to 2020 | Pew Research Center | 2025 | https://www.pewresearch.org/religion/2025/06/09/how-the-global-religious-landscape-changed-from-2010-to-2020/ -->
       <!-- TODAYS_WORLD_SOURCE: Our Origin | The Redeemed Christian Church of God North America | 2026 | https://www.rccgna.org/the-church/our-origin/ -->
       <!-- TODAYS_WORLD_SOURCE: Majority World Mission Movements | Lausanne Movement (State of the Great Commission report) | 2024 | https://lausanne.org/report/polycentric-christianity/majority-world-mission-movements -->
       <p>On June 9, 2025, the Pew Research Center published a decade's worth of religious census work, and one line of it quietly rearranged the map of the Christian world. By 2020, sub-Saharan Africa had become home to roughly three in ten of the world's Christians, more of them than any other region on earth, a distinction Europe long held. The faith's center of gravity has moved south, and the traffic has turned around with it. Nigeria's Redeemed Christian Church of God has planted hundreds of congregations across North America. Mission researchers now describe a polycentric faith, with major missionary movements based in Africa, Asia, and Latin America, Brazilian and Korean senders prominent among them. Scholars even have a name for the pattern, reverse mission, churches in regions that Western agencies once treated chiefly as mission fields now sending missionaries and planting churches of their own, including in the countries that first sent them.</p>
       <p>A century and a half ago, that flow ran almost entirely one direction. Missionaries, money, and printed Scriptures sailed out from Europe and North America toward continents the senders called the mission field, and nobody drawing those maps imagined the current ever coming back. But Paul would have. The collection he carried ran on the principle that in God's family, surplus is a temporary assignment, your abundance for their need now, theirs for yours later, and he grounded it in an exchange already in motion, spiritual blessing flowing out of Jerusalem and material blessing flowing back. Twenty centuries later the wheel has turned again, and churches in regions the old maps marked as the mission field are sending preachers, prayer, and whole congregations back to the places that first mailed it. The family never was a charity. It is a circulation, and the current is still moving.</p>
-    </div>
+    <details class="disclosure source-disclosure"><summary class="disclosure-summary"><span class="disclosure-label">Sources</span> <span class="disclosure-publisher">Pew Research Center, The Redeemed Christian Church of God North America + 1 more</span></summary><div class="disclosure-body">
+<p><cite>How the Global Religious Landscape Changed From 2010 to 2020</cite>. Pew Research Center, 2025. <a href="https://www.pewresearch.org/religion/2025/06/09/how-the-global-religious-landscape-changed-from-2010-to-2020/" target="_blank" rel="noopener noreferrer">Read the source</a>.</p>
+<p><cite>Our Origin</cite>. The Redeemed Christian Church of God North America, 2026. <a href="https://www.rccgna.org/the-church/our-origin/" target="_blank" rel="noopener noreferrer">Read the source</a>.</p>
+<p><cite>Majority World Mission Movements</cite>. Lausanne Movement (State of the Great Commission report), 2024. <a href="https://lausanne.org/report/polycentric-christianity/majority-world-mission-movements" target="_blank" rel="noopener noreferrer">Read the source</a>.</p>
+</div></details></section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>The night before He died, Jesus prayed for people He could see and people He could not, for everyone who would ever believe, that they may all be one, so that the world would know the Father sent Him. Then He went out and paid for that oneness, tearing down the dividing wall between Jew and Gentile in His own flesh, making one new family where two hostile peoples had stood. Everything here lives downstream from that purchase. The equality between churches exists because both churches were bought with the same blood. The delegation walking to Jerusalem exists because the wall it once could not have crossed is rubble. Giving, Paul says, signals loyalty to Christ the Head, and a body that shares its supply is simply a body that is actually connected to Him. So do not read today as church finance. Somewhere between a Greek harbor and a Jerusalem doorway, coins carried by witnesses became evidence that His prayer was being answered. The offering plate is one of the places where it still is.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>The night before He died, Jesus prayed for people He could see and people He could not, for everyone who would ever believe, that they may all be one, so that the world would know the Father sent Him. Then He went out and paid for that oneness, tearing down the dividing wall between Jew and Gentile in His own flesh, making one new family where two hostile peoples had stood. Everything here lives downstream from that purchase. The equality between churches exists because both churches were bought with the same blood. The delegation walking to Jerusalem exists because the wall it once could not have crossed is rubble. Giving, Paul says, signals loyalty to Christ the Head, and a body that shares its supply is simply a body that is actually connected to Him. So do not read today as church finance. Somewhere between a Greek harbor and a Jerusalem doorway, coins carried by witnesses became evidence that His prayer was being answered. The offering plate is one of the places where it still is.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Aim one gift across a line today. Choose believers you will never meet, a congregation in another country, a mission serving a different language, a church plant nothing like your own, and give something real toward their need. Before you send it, say one sentence out loud. These are my family. Then pray for them by name, or by place if you have no names, and notice how differently the money feels when it travels as family business instead of charity to strangers.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, thank You for making us part of a family bigger than our address, our language, and our lifetime. Thank You for the believers we have never met who prayed the gospel down the road to us, and for the ones right now, somewhere far away, whose need is the assignment You are handing to our surplus. Teach us the circulation of Your household. Keep us from gripping abundance like a rank or hiding need like a shame. Make our church's handling of money so honest, so open, so witnessed, that no shadow ever falls across Your name because of us. And when our gifts travel where we cannot, let them arrive the way that first delegation did, with love attached, saying family in a language every saint can read. Knit Your church into one, Lord, and let it begin with our open hands. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"When your giving goes somewhere far away (a mission field, disaster relief, believers in another country), does it honestly feel like family business or like charity to strangers? And what would change about how you give, and how much you care where it lands, if you pictured the people receiving it seated at your own table?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"When your giving goes somewhere far away (a mission field, disaster relief, believers in another country), does it honestly feel like family business or like charity to strangers? And what would change about how you give, and how much you care where it lands, if you pictured the people receiving it seated at your own table?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, thank You for making us part of a family bigger than our address, our language, and our lifetime. Thank You for the believers we have never met who prayed the gospel down the road to us, and for the ones right now, somewhere far away, whose need is the assignment You are handing to our surplus. Teach us the circulation of Your household. Keep us from gripping abundance like a rank or hiding need like a shame. Make our church's handling of money so honest, so open, so witnessed, that no shadow ever falls across Your name because of us. And when our gifts travel where we cannot, let them arrive the way that first delegation did, with love attached, saying family in a language every saint can read. Knit Your church into one, Lord, and let it begin with our open hands. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-09-09.html"><span class="day-nav-kicker">← Wednesday</span><span class="day-nav-title">Attitude</span></a><div class="day-nav-item is-pending" aria-disabled="true">
+<span class="day-nav-kicker">Friday →</span><span class="day-nav-title">Not published yet</span>
+</div></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"2-corinthians-8-1-9-15":{"ref":"2 Corinthians 8:1-9:15","text":"Now, brothers, we want you to know about the grace that God has given the churches of Macedonia. In the terrible ordeal they suffered, their abundant joy and deep poverty overflowed into rich generosity. For I testify that they gave according to their ability and even beyond it. Of their own accord, they earnestly pleaded with us for the privilege of sharing in this service to the saints. And not only did they do as we expected, but they gave themselves first to the Lord and then to us, through the will of God. So we urged Titus to help complete your act of grace, just as he had started it. But just as you excel in everything\u2014in faith, in speech, in knowledge, in complete earnestness, and in the love we inspired in you\u2014see that you also excel in this grace of giving. I am not giving a command, but I am testing the sincerity of your love through the earnestness of others. For you know the grace of our Lord Jesus Christ, that though He was rich, yet for your sake He became poor, so that you through His poverty might become rich. And this is my opinion about what is helpful for you in this matter: Last year you were the first not only to give, but even to have such a desire. Now finish the work, so that you may complete it with the same eager desire, according to your means. For if the eagerness is there, the gift is acceptable according to what one has, not according to what he does not have. It is not our intention that others may be relieved while you are burdened, but that there may be equality. At the present time, your surplus will meet their need, so that in turn their surplus will meet your need. This way there will be equality. As it is written: \u201cHe who gathered much had no excess, and he who gathered little had no shortfall.\u201d But thanks be to God, who put into the heart of Titus the same devotion I have for you. For not only did he welcome our appeal, but he is eagerly coming to you of his own volition. Along with Titus we are sending the brother who is praised by all the churches for his work in the gospel. More than that, this brother was chosen by the churches to accompany us with the gracious offering we administer to honor the Lord Himself and to show our eagerness to help. We want to avoid any criticism of the way we administer this generous gift. For we are taking great care to do what is right, not only in the eyes of the Lord, but also in the eyes of men. And we are sending along with them our brother who has proven his earnestness to us many times and in many ways, and now even more so by his great confidence in you. As for Titus, he is my partner and fellow worker among you. As for our brothers, they are messengers of the churches, the glory of Christ. In full view of the churches, then, show these men the proof of your love and the reason for our boasting about you. Now about the service to the saints, there is no need for me to write to you. For I know your eagerness to help, and I have been boasting to the Macedonians that since last year you in Achaia were prepared to give. And your zeal has stirred most of them to do likewise. But I am sending the brothers in order that our boasting about you in this matter should not prove empty, but that you will be prepared, just as I said. Otherwise, if any Macedonians come with me and find you unprepared, we\u2014to say nothing of you\u2014would be ashamed of having been so confident. So I thought it necessary to urge the brothers to visit you beforehand and make arrangements for the generous gift you had promised. This way, your gift will be prepared generously and not begrudgingly. Remember this: Whoever sows sparingly will also reap sparingly, and whoever sows generously will also reap generously. Each one should give what he has decided in his heart to give, not out of regret or compulsion. For God loves a cheerful giver. And God is able to make all grace abound to you, so that in all things, at all times, having all that you need, you will abound in every good work. As it is written: \u201cHe has scattered abroad His gifts to the poor; His righteousness endures forever.\u201d Now He who supplies seed to the sower and bread for food will supply and multiply your store of seed and will increase the harvest of your righteousness. You will be enriched in every way to be generous on every occasion, and through us your generosity will produce thanksgiving to God. For this ministry of service is not only supplying the needs of the saints but is also overflowing in many expressions of thanksgiving to God. Because of the proof this ministry provides, the saints will glorify God for your obedient confession of the gospel of Christ, and for the generosity of your contribution to them and to all the others. And their prayers for you will express their affection for you, because of the surpassing grace God has given you. Thanks be to God for His indescribable gift!","bibleUrl":"https://www.bible.com/bible/3034/2CO.8.1-9.15"},"2-corinthians-8-16":{"ref":"2 Corinthians 8:16","text":"But thanks be to God, who put into the heart of Titus the same devotion I have for you.","bibleUrl":"https://www.bible.com/bible/3034/2CO.8.16"},"2-corinthians-8-18":{"ref":"2 Corinthians 8:18","text":"Along with Titus we are sending the brother who is praised by all the churches for his work in the gospel.","bibleUrl":"https://www.bible.com/bible/3034/2CO.8.18"},"2-corinthians-8-19":{"ref":"2 Corinthians 8:19","text":"More than that, this brother was chosen by the churches to accompany us with the gracious offering we administer to honor the Lord Himself and to show our eagerness to help.","bibleUrl":"https://www.bible.com/bible/3034/2CO.8.19"},"2-corinthians-8-23":{"ref":"2 Corinthians 8:23","text":"As for Titus, he is my partner and fellow worker among you. As for our brothers, they are messengers of the churches, the glory of Christ.","bibleUrl":"https://www.bible.com/bible/3034/2CO.8.23"},"2-corinthians-8-24":{"ref":"2 Corinthians 8:24","text":"In full view of the churches, then, show these men the proof of your love and the reason for our boasting about you.","bibleUrl":"https://www.bible.com/bible/3034/2CO.8.24"},"ephesians-4-15":{"ref":"Ephesians 4:15","text":"Instead, speaking the truth in love, we will in all things grow up into Christ Himself, who is the head.","bibleUrl":"https://www.bible.com/bible/3034/EPH.4.15"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

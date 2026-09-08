@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Call to Holiness — Daily Bible Study</title>
 <meta name="study-title" content="Call to Holiness">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Part 5 of 7">
+<meta name="study-passage" content="2 Corinthians 6:3-10">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Day 5 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Call to Holiness">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Part 5 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Day 5 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-09-02.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Part 5 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Day 5 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,327 +38,208 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Call to Holiness</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 10, Authentic Christian Ministry</span>
-      <span>Part 5 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">September 2, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Wed · Sep 2</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">12 min</span>
+    </div>
+    <h1 class="study-title">Call to Holiness</h1>
+    <p class="study-sub"><span class="sub-title">Authentic Christian Ministry</span><span class="sub-facts"><span>Lesson 10</span><span>Day 5 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>Any farmer could tell you what happens when you hitch an ox and a donkey to the same plow. Different heights, different gaits, different wills. The yoke torments both animals and the furrow wanders drunk across the field. Paul borrows that picture for the reconciled life. God has moved in, I will dwell with them and walk among them, and His address changes what a life can stay hitched to. Seven promises come first. Then come the commands to unhitch. <strong>Holiness is not earning God's presence. It is what His presence, already promised, does to a life.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday the embassy went out with its impossible message, the wronged King pleading with rebels, the wall of hostility crashing down, one new family standing where the war used to be. Today the letter asks the question every treaty eventually faces. What does life inside the peace actually look like? Paul's answer starts with his own chest cracked open, we have spoken freely, our hearts are open wide, and then turns unexpectedly practical, all the way down to livestock and plows. The reconciled do not just sign the peace. They change what they pull alongside, because new allegiance means a new harness.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Any farmer could tell you what happens when you hitch an ox and a donkey to the same plow. Different heights, different gaits, different wills. The yoke torments both animals and the furrow wanders drunk across the field. Paul borrows that picture for the reconciled life. God has moved in, I will dwell with them and walk among them, and His address changes what a life can stay hitched to. Seven promises come first. Then come the commands to unhitch. <strong>Holiness is not earning God's presence. It is what His presence, already promised, does to a life.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday the embassy went out with its impossible message, the wronged King pleading with rebels, the wall of hostility crashing down, one new family standing where the war used to be. Today the letter asks the question every treaty eventually faces. What does life inside the peace actually look like? Paul's answer starts with his own chest cracked open, we have spoken freely, our hearts are open wide, and then turns unexpectedly practical, all the way down to livestock and plows. The reconciled do not just sign the peace. They change what they pull alongside, because new allegiance means a new harness.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">An Ox and a Donkey Could Not Share a Yoke</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>An Ox and a Donkey Could Not Share a Yoke</h3>
       <p>Israel's law had a farm rule that sounds almost quaint until you have watched it violated. Do not plow with an ox and a donkey yoked together. Any farmer knew why. The ox stands taller and drives forward with slow, enormous strength. The donkey is smaller, quicker, stubborn on its own schedule. Lash them under one beam and the yoke rides up on one neck and grinds down on the other, each animal fighting the other's rhythm with every step, and the furrow behind them wanders drunk across the field. Nothing about the pairing works. Both animals suffer, the equipment strains, and the crop is planted crooked. A mismatched yoke was not morally offensive. It was mechanically ruinous.</p>
       <p>Now set that picture down in Corinth, where nearly every formal partnership came hitched to a god. Business deals were sworn at altars. Trade guilds dined in temple halls under a patron deity. Marriage contracts invoked the household gods. To yoke yourself to a partner was, in practice, to yoke yourself to their gods, and the city assumed you would. That is the world in which Paul says do not be unequally yoked. He is not sorting people into worthy and worthless. He is talking mechanics. Two lives hitched to different masters pull toward different fields, and everything between them, the necks, the beam, the furrow, pays for the mismatch. The question is never whether the other animal is good. It is where your master is plowing.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Somewhere in Corinth a believer is rereading one line of this letter with a knot in his stomach, because it names the business partner, or the fiancé, or the guild he just joined. Before Paul ever gets there, he does something gentler. He opens his shirt and shows the church what an authentic servant of God has actually been through, and then he opens his heart and tells them the hard command is coming from a father, not an auditor. Today's question sits at the end of that sequence. If God Himself has moved in with us, what can we stay hitched to?</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Somewhere in Corinth a believer is rereading one line of this letter with a knot in his stomach, because it names the business partner, or the fiancé, or the guild he just joined. Before Paul ever gets there, he does something gentler. He opens his shirt and shows the church what an authentic servant of God has actually been through, and then he opens his heart and tells them the hard command is coming from a father, not an auditor. Today's question sits at the end of that sequence. If God Himself has moved in with us, what can we stay hitched to?</p>
 
       <!-- BSB_BLOCK: 2 Corinthians 6:3-10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:43461e2cc4c9f98c740127de007ccda410e2b149e0326f333e3351c55186789b | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 6:3-10</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.6.3-10" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 3">3</sup>We put no obstacle in anyone’s way, so that no one can discredit our ministry. <sup class="verse-number" aria-label="Verse 4">4</sup>Rather, as servants of God we commend ourselves in every way: in great endurance; in troubles, hardships, and calamities; <sup class="verse-number" aria-label="Verse 5">5</sup>in beatings, imprisonments, and riots; in labor, sleepless nights, and hunger; <sup class="verse-number" aria-label="Verse 6">6</sup>in purity, knowledge, patience, and kindness; in the Holy Spirit and in sincere love; <sup class="verse-number" aria-label="Verse 7">7</sup>in truthful speech and in the power of God; with the weapons of righteousness in the right hand and in the left; <sup class="verse-number" aria-label="Verse 8">8</sup>through glory and dishonor, slander and praise; viewed as imposters, yet genuine; <sup class="verse-number" aria-label="Verse 9">9</sup>unknown, yet well-known; dying, and yet we live on; punished, yet not killed; <sup class="verse-number" aria-label="Verse 10">10</sup>sorrowful, yet always rejoicing; poor, yet making many rich; having nothing, and yet possessing everything.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.6.3-10" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 3">3</sup>We put no obstacle in anyone’s way, so that no one can discredit our ministry. <sup class="verse-number" aria-label="Verse 4">4</sup>Rather, as servants of God we commend ourselves in every way: in great endurance; in troubles, hardships, and calamities; <sup class="verse-number" aria-label="Verse 5">5</sup>in beatings, imprisonments, and riots; in labor, sleepless nights, and hunger; <sup class="verse-number" aria-label="Verse 6">6</sup>in purity, knowledge, patience, and kindness; in the Holy Spirit and in sincere love; <sup class="verse-number" aria-label="Verse 7">7</sup>in truthful speech and in the power of God; with the weapons of righteousness in the right hand and in the left; <sup class="verse-number" aria-label="Verse 8">8</sup>through glory and dishonor, slander and praise; viewed as imposters, yet genuine; <sup class="verse-number" aria-label="Verse 9">9</sup>unknown, yet well-known; dying, and yet we live on; punished, yet not killed; <sup class="verse-number" aria-label="Verse 10">10</sup>sorrowful, yet always rejoicing; poor, yet making many rich; having nothing, and yet possessing everything.</div>
         <div class="verse-commentary">
-          <p>Read the résumé Paul submits in place of the letters his rivals carried. What he endured, troubles, beatings, riots, sleepless nights, and hunger (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.6.4-5" target="_blank" rel="noopener">2 Corinthians 6:4-5</a>). What he carried through it, purity, patience, kindness, the Holy Spirit, sincere love (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.6.6" target="_blank" rel="noopener">2 Corinthians 6:6</a>). What he fought with, truthful speech, the power of God, righteousness filling both hands (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.6.7" target="_blank" rel="noopener">2 Corinthians 6:7</a>). And how it all looked from the street, nine whiplash paradoxes, viewed as imposters yet genuine, unknown yet well-known, dying and living on, sorrowful yet always rejoicing, poor yet making many rich (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.6.8-10" target="_blank" rel="noopener">2 Corinthians 6:8-10</a>). This is the week's whole argument in one breath. Authenticity was never going to look impressive. It looks like a man with nothing, holding everything.</p>
+          <p>Read the résumé Paul submits in place of the letters his rivals carried. What he endured, troubles, beatings, riots, sleepless nights, and hunger (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.6.4-5" target="_blank" rel="noopener" data-verse="2-corinthians-6-4-5" data-ref="2 Corinthians 6:4-5" aria-expanded="false">2 Corinthians 6:4-5</a>). What he carried through it, purity, patience, kindness, the Holy Spirit, sincere love (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.6.6" target="_blank" rel="noopener" data-verse="2-corinthians-6-6" data-ref="2 Corinthians 6:6" aria-expanded="false">2 Corinthians 6:6</a>). What he fought with, truthful speech, the power of God, righteousness filling both hands (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.6.7" target="_blank" rel="noopener" data-verse="2-corinthians-6-7" data-ref="2 Corinthians 6:7" aria-expanded="false">2 Corinthians 6:7</a>). And how it all looked from the street, nine whiplash paradoxes, viewed as imposters yet genuine, unknown yet well-known, dying and living on, sorrowful yet always rejoicing, poor yet making many rich (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.6.8-10" target="_blank" rel="noopener" data-verse="2-corinthians-6-8-10" data-ref="2 Corinthians 6:8-10" aria-expanded="false">2 Corinthians 6:8-10</a>). This is the week's whole argument in one breath. Authenticity was never going to look impressive. It looks like a man with nothing, holding everything.</p>
         </div>
-      </div>
+      </figure>
 
       <p>Then the tone softens before it sharpens. What comes next is a father's plea, and it lands on the most practical question in the Christian life, the question of what we harness ourselves to.</p>
 
       <!-- BSB_BLOCK: 2 Corinthians 6:11-7:1 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:4ad4daa434b5c96b07dbb726e3bd8e79e75d285223a906783c82f369a816a741 | footnotes-stripped:4 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 6:11-7:1</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.6.11-7.1" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 11">11</sup>We have spoken freely to you, Corinthians. Our hearts are open wide. <sup class="verse-number" aria-label="Verse 12">12</sup>It is not our affection, but yours, that is restrained. <sup class="verse-number" aria-label="Verse 13">13</sup>As a fair exchange—I speak as to my children—open wide your hearts also. <sup class="verse-number" aria-label="Verse 14">14</sup>Do not be unequally yoked with unbelievers. For what partnership can righteousness have with wickedness? Or what fellowship does light have with darkness? <sup class="verse-number" aria-label="Verse 15">15</sup>What harmony is there between Christ and Belial? Or what does a believer have in common with an unbeliever? <sup class="verse-number" aria-label="Verse 16">16</sup>What agreement can exist between the temple of God and idols? For we are the temple of the living God. As God has said: “I will dwell with them and walk among them, and I will be their God, and they will be My people.” <sup class="verse-number" aria-label="Verse 17">17</sup>“Therefore come out from among them and be separate, says the Lord. Touch no unclean thing, and I will receive you.” <sup class="verse-number" aria-label="Verse 18">18</sup>And: “I will be a Father to you, and you will be My sons and daughters, says the Lord Almighty.” <sup class="verse-number" aria-label="Chapter 7, verse 1">7:1</sup>Therefore, beloved, since we have these promises, let us cleanse ourselves from everything that defiles body and spirit, perfecting holiness in the fear of God.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.6.11-7.1" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 11">11</sup>We have spoken freely to you, Corinthians. Our hearts are open wide. <sup class="verse-number" aria-label="Verse 12">12</sup>It is not our affection, but yours, that is restrained. <sup class="verse-number" aria-label="Verse 13">13</sup>As a fair exchange—I speak as to my children—open wide your hearts also. <sup class="verse-number" aria-label="Verse 14">14</sup>Do not be unequally yoked with unbelievers. For what partnership can righteousness have with wickedness? Or what fellowship does light have with darkness? <sup class="verse-number" aria-label="Verse 15">15</sup>What harmony is there between Christ and Belial? Or what does a believer have in common with an unbeliever? <sup class="verse-number" aria-label="Verse 16">16</sup>What agreement can exist between the temple of God and idols? For we are the temple of the living God. As God has said: “I will dwell with them and walk among them, and I will be their God, and they will be My people.” <sup class="verse-number" aria-label="Verse 17">17</sup>“Therefore come out from among them and be separate, says the Lord. Touch no unclean thing, and I will receive you.” <sup class="verse-number" aria-label="Verse 18">18</sup>And: “I will be a Father to you, and you will be My sons and daughters, says the Lord Almighty.” <sup class="verse-number" aria-label="Chapter 7, verse 1">7:1</sup>Therefore, beloved, since we have these promises, let us cleanse ourselves from everything that defiles body and spirit, perfecting holiness in the fear of God.</div>
         <div class="verse-commentary">
-          <p>Our hearts are open wide, Paul says, open your hearts also, and it is from inside that embrace that the command comes. Do not be unequally yoked (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.6.14" target="_blank" rel="noopener">2 Corinthians 6:14</a>). His verb is <em>heterozygeō</em>, Greek for being mismatched under a yoke, and this is the only place in the New Testament anyone uses it. Then five rhetorical questions land like hammer blows, partnership, fellowship, harmony, commonality, agreement, each one asking what righteousness and wickedness could possibly build together. The reason is not snobbery. It is occupancy. We are the temple of the living God, and the living God does not share His house with idols. Some alliances do not just slow a believer down. They pull against everything his Master is plowing, and both lives get ground up under the beam.</p>
+          <p>Our hearts are open wide, Paul says, open your hearts also, and it is from inside that embrace that the command comes. Do not be unequally yoked (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.6.14" target="_blank" rel="noopener" data-verse="2-corinthians-6-14" data-ref="2 Corinthians 6:14" aria-expanded="false">2 Corinthians 6:14</a>). His verb is <em>heterozygeō</em>, Greek for being mismatched under a yoke, and this is the only place in the New Testament anyone uses it. Then five rhetorical questions land like hammer blows, partnership, fellowship, harmony, commonality, agreement, each one asking what righteousness and wickedness could possibly build together. The reason is not snobbery. It is occupancy. We are the temple of the living God, and the living God does not share His house with idols. Some alliances do not just slow a believer down. They pull against everything his Master is plowing, and both lives get ground up under the beam.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: 2 Corinthians 6:15 | 6:15 Scrivener’s TR and PT; many Greek sources Beliar -->
       <!-- BSB_FOOTNOTE: 2 Corinthians 6:16 | 6:16 Leviticus 26:12; Jeremiah 32:38; Ezekiel 37:27 -->
       <!-- BSB_FOOTNOTE: 2 Corinthians 6:17 | 6:17 Isaiah 52:11; see also Ezekiel 20:34, including LXX. -->
       <!-- BSB_FOOTNOTE: 2 Corinthians 6:18 | 6:18 See 2 Samuel 7:14. -->
 
-      <p>Before the knot in anybody's stomach tightens into despair, count the order of what just happened. The passage carries six appeals, from the yoke warning through come out and be separate (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.6.14-17" target="_blank" rel="noopener">2 Corinthians 6:14-17</a>) to cleansing ourselves and perfecting holiness (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.7.1" target="_blank" rel="noopener">2 Corinthians 7:1</a>). But underneath them sit seven promises (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.6.16-18" target="_blank" rel="noopener">2 Corinthians 6:16-18</a>), and the four promises of verse 16, I will dwell, I will walk, I will be their God, they will be My people (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.6.16" target="_blank" rel="noopener">2 Corinthians 6:16</a>), come before the three commands of verse 17 (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.6.17" target="_blank" rel="noopener">2 Corinthians 6:17</a>). The word therefore holds the whole thing in sequence. God moves in first. The housecleaning follows. Which leaves one honest question. Cleanse ourselves? With what? Paul answered that years earlier, in his first letter to this same church, in three verbs that are all passive.</p>
+      <p>Before the knot in anybody's stomach tightens into despair, count the order of what just happened. The passage carries six appeals, from the yoke warning through come out and be separate (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.6.14-17" target="_blank" rel="noopener" data-verse="2-corinthians-6-14-17" data-ref="2 Corinthians 6:14-17" aria-expanded="false">2 Corinthians 6:14-17</a>) to cleansing ourselves and perfecting holiness (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.7.1" target="_blank" rel="noopener" data-verse="2-corinthians-7-1" data-ref="2 Corinthians 7:1" aria-expanded="false">2 Corinthians 7:1</a>). But underneath them sit seven promises (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.6.16-18" target="_blank" rel="noopener" data-verse="2-corinthians-6-16-18" data-ref="2 Corinthians 6:16-18" aria-expanded="false">2 Corinthians 6:16-18</a>), and the four promises of verse 16, I will dwell, I will walk, I will be their God, they will be My people (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.6.16" target="_blank" rel="noopener" data-verse="2-corinthians-6-16" data-ref="2 Corinthians 6:16" aria-expanded="false">2 Corinthians 6:16</a>), come before the three commands of verse 17 (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.6.17" target="_blank" rel="noopener" data-verse="2-corinthians-6-17" data-ref="2 Corinthians 6:17" aria-expanded="false">2 Corinthians 6:17</a>). The word therefore holds the whole thing in sequence. God moves in first. The housecleaning follows. Which leaves one honest question. Cleanse ourselves? With what? Paul answered that years earlier, in his first letter to this same church, in three verbs that are all passive.</p>
 
       <!-- BSB_BLOCK: 1 Corinthians 6:11-13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:17fed0b8181e1b21ccfd4dc09e1e4239a038e4caf2b904bdc0fc5ccdf895cf66 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 6:11-13</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.6.11-13" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 11">11</sup>And that is what some of you were. But you were washed, you were sanctified, you were justified, in the name of the Lord Jesus Christ and by the Spirit of our God. <sup class="verse-number" aria-label="Verse 12">12</sup>“Everything is permissible for me,” but not everything is beneficial. “Everything is permissible for me,” but I will not be mastered by anything. <sup class="verse-number" aria-label="Verse 13">13</sup>“Food for the stomach and the stomach for food,” but God will destroy them both. The body is not intended for sexual immorality, but for the Lord, and the Lord for the body.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.6.11-13" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 11">11</sup>And that is what some of you were. But you were washed, you were sanctified, you were justified, in the name of the Lord Jesus Christ and by the Spirit of our God. <sup class="verse-number" aria-label="Verse 12">12</sup>“Everything is permissible for me,” but not everything is beneficial. “Everything is permissible for me,” but I will not be mastered by anything. <sup class="verse-number" aria-label="Verse 13">13</sup>“Food for the stomach and the stomach for food,” but God will destroy them both. The body is not intended for sexual immorality, but for the Lord, and the Lord for the body.</div>
         <div class="verse-commentary">
           <p>That is what some of you were. Past tense, and then the three great passives, you were washed, you were sanctified, you were justified, in the name of the Lord Jesus and by the Spirit of our God. Nobody in Corinth gave themselves that bath. Holiness begins as something done to us, a standing conferred, a temple consecrated, and only then does it become something we practice, a body no longer up for grabs because the body is for the Lord and the Lord is for the body. So today's call to perfect holiness is not a ladder back into earning. It is the Spirit finishing what He started, with our cooperation, our unhitching, our part. God does not ask strangers to act like family. He adopts first, and then He teaches the family resemblance.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">You Cannot Carry a Couch to Two Rooms</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>You Cannot Carry a Couch to Two Rooms</h3>
       <p>Everybody has carried a couch with somebody, and a stairwell teaches things no classroom can. Every intention your partner has travels straight through the load and into your hands. You feel them speed up. You feel them tire. Walking backward, you steer by their eyes, and the whole clumsy dance works for exactly one reason. You are both headed for the same room. Now picture the ridiculous version. Halfway up the stairs, your partner becomes convinced the couch belongs in a different room than the one you are backing toward, and neither of you will yield. It does not matter how strong they are. Strong makes it worse. The couch grinds into the doorframe, wrists twist, backs give, and the thing you were carrying together takes the worst of it.</p>
       <p>That is the mechanics underneath today's command, and notice what the command is not. It is not a verdict on the other carrier. They may be kinder than you, stronger than you, better company on the stairs. The question is never their character. It is their direction, because two people bound to one load can only walk toward one master's room. Paul is not telling believers to love fewer people. He is telling us to be honest about the harness, to stop binding the loads that steer a whole life, the covenants, the ventures, the deep entanglements, to someone pulling toward a different lord. The best moment for that honesty is at the bottom of the stairs, before your hands are committed under the weight. And where a wrong load is already on your shoulders, the honest move is to set it down gently, not to blame your partner for the doorframe. Belonging settles the rest. The God who said I will dwell with them has already moved in, and the One who owns the house decides where the couch goes.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Ice Cream Answered to Two Masters</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Ice Cream Answered to Two Masters</h3>
       <p>In 2000, the founders of Ben &amp; Jerry's sold their company to the global giant Unilever for 326 million dollars, and the contract contained a clause almost nobody had ever seen in a corporate merger. An independent board would survive the sale, permanently free to pursue the company's social mission. On paper, the deal promised both partners their own gait under one harness. It did not survive the road. The following decades ground through disputes, blocked statements, and finally open lawsuits, with the ice cream maker accusing its parent of silencing its positions on social causes and moving against the very board the merger had guaranteed. In September 2025, co-founder Jerry Greenfield resigned after nearly fifty years, writing that the company's lost independence made staying impossible. And by the spring of 2026, with the brand passed to the newly spun-off Magnum Ice Cream Company, Ben Cohen was publicly campaigning for Magnum to sell Ben &amp; Jerry's back to socially minded investors.</p>
       <p>Nobody in this story needs to be the villain. Unilever ran a business the way public companies run, Magnum insists it remains committed to the brand's mission, and that is exactly what makes the case instructive. The clause failed because no clause can make two teams pull toward one field. A mission that answers to conscience and a conglomerate that answers to quarterly earnings are hitched to different masters, and twenty-five years of wear showed precisely where the beam ground. Paul's do not be unequally yoked has been read as snobbery, but this is all it ever meant. Mechanics. What agreement can exist between the temple of God and idols is not an insult to the other partner. It is a description of directions. And notice what the believer's version rests on. Not fear of contamination but the seven promises, the God who said I will dwell with them and walk among them. When the Owner has already moved in, some harnesses simply cannot stay on, whatever the paperwork promised.</p>
       <!-- TODAYS_WORLD_SOURCE: Ben & Jerry's Jerry Greenfield quits in independence row with Unilever | CNBC | 2025 | https://www.cnbc.com/2025/09/17/ben-jerrys-jerry-greenfield-quits-in-independence-row-with-unilever.html -->
       <!-- TODAYS_WORLD_SOURCE: Ben & Jerry's co-founder wants the company to be independent once more | Associated Press via Boston.com | 2026 | https://www.boston.com/news/business/2026/04/14/ben-jerrys-co-founder-wants-the-company-to-be-independent-once-more/ -->
-    </div>
+    <details class="disclosure source-disclosure"><summary class="disclosure-summary"><span class="disclosure-label">Sources</span> <span class="disclosure-publisher">CNBC, Associated Press via Boston.com</span></summary><div class="disclosure-body">
+<p><cite>Ben &amp; Jerry's Jerry Greenfield quits in independence row with Unilever</cite>. CNBC, 2025. <a href="https://www.cnbc.com/2025/09/17/ben-jerrys-jerry-greenfield-quits-in-independence-row-with-unilever.html" target="_blank" rel="noopener noreferrer">Read the source</a>.</p>
+<p><cite>Ben &amp; Jerry's co-founder wants the company to be independent once more</cite>. Associated Press via Boston.com, 2026. <a href="https://www.boston.com/news/business/2026/04/14/ben-jerrys-co-founder-wants-the-company-to-be-independent-once-more/" target="_blank" rel="noopener noreferrer">Read the source</a>.</p>
+</div></details></section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Every promise in today's passage has already put on skin. I will dwell with them and walk among them, God said, and then a baby was born whose name meant God with us, and the Word became flesh and dwelt among us. Jesus is the temple the promises were pointing at, and watch what happened when that Temple walked through unclean territory. He touched the leper, and the leper came away clean. The bleeding woman touched Him, and the flow stopped. He took a corpse by the hand, and the corpse sat up. All contamination runs one direction in this world, except around Jesus, where the current reverses and holiness becomes the contagious thing. That is why come out and be separate is not a quarantine order. We are not hiding from infection. We are staying close to the Healer, hitched to the One whose purity flows outward, letting Him set the pace and the direction of the furrow. He was cast outside the city so we could be welcomed in. Staying in step with Him is what holiness is.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Every promise in today's passage has already put on skin. I will dwell with them and walk among them, God said, and then a baby was born whose name meant God with us, and the Word became flesh and dwelt among us. Jesus is the temple the promises were pointing at, and watch what happened when that Temple walked through unclean territory. He touched the leper, and the leper came away clean. The bleeding woman touched Him, and the flow stopped. He took a corpse by the hand, and the corpse sat up. All contamination runs one direction in this world, except around Jesus, where the current reverses and holiness becomes the contagious thing. That is why come out and be separate is not a quarantine order. We are not hiding from infection. We are staying close to the Healer, hitched to the One whose purity flows outward, letting Him set the pace and the direction of the furrow. He was cast outside the city so we could be welcomed in. Staying in step with Him is what holiness is.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Inspect your harness. Today, name the one yoke that most consistently pulls you off God's furrow. A business entanglement, a group chat that drags you into contempt, an account you follow that feeds what you are trying to starve, a relationship where you always become someone you do not like. Take one visible step before bedtime, mute it, unsubscribe, set the boundary, book the hard conversation. Start from belonging, not fear. The God who said I will dwell with them has already moved in.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, the promises came first, and we want to hold them in order. You said You would dwell with us and walk among us, that You would be our God and receive us, that You would be a Father to sons and daughters. We believe You, and we confess that Your house is not as clean as Your presence deserves. You know the yokes we have tolerated, the partnerships that pull us off Your furrow, the habits harnessed to appetites that do not love us, the compromises we renamed as balance. Give us the honesty to name them and the courage to unhitch. Wash us again in the washing we could never give ourselves, and let Your Spirit carry holiness through every room we have been keeping dark. We do not clean up to earn You. We clean house because You live here. Perfect what You have started in us, gently and completely. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"Which yoke in your life most reliably steers you away from where God is plowing (a partnership, a feed you scroll, a friendship that always ends in gossip, a commitment you made before you knew Christ)? And since the seven promises come before the commands, how would starting from I am already His change the way you go about unhitching, compared with starting from I had better prove myself?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"Which yoke in your life most reliably steers you away from where God is plowing (a partnership, a feed you scroll, a friendship that always ends in gossip, a commitment you made before you knew Christ)? And since the seven promises come before the commands, how would starting from I am already His change the way you go about unhitching, compared with starting from I had better prove myself?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, the promises came first, and we want to hold them in order. You said You would dwell with us and walk among us, that You would be our God and receive us, that You would be a Father to sons and daughters. We believe You, and we confess that Your house is not as clean as Your presence deserves. You know the yokes we have tolerated, the partnerships that pull us off Your furrow, the habits harnessed to appetites that do not love us, the compromises we renamed as balance. Give us the honesty to name them and the courage to unhitch. Wash us again in the washing we could never give ourselves, and let Your Spirit carry holiness through every room we have been keeping dark. We do not clean up to earn You. We clean house because You live here. Perfect what You have started in us, gently and completely. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
-
-<!-- Firebase SDK for push notifications -->
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-09-01.html"><span class="day-nav-kicker">← Tuesday</span><span class="day-nav-title">Christ-focused Ministry of Reconciliation</span></a><a class="day-nav-item" href="/bible-study/2026-09-03.html"><span class="day-nav-kicker">Thursday →</span><span class="day-nav-title">Comfort and Joy</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"2-corinthians-6-4-5":{"ref":"2 Corinthians 6:4-5","text":"Rather, as servants of God we commend ourselves in every way: in great endurance; in troubles, hardships, and calamities; in beatings, imprisonments, and riots; in labor, sleepless nights, and hunger;","bibleUrl":"https://www.bible.com/bible/3034/2CO.6.4-5"},"2-corinthians-6-6":{"ref":"2 Corinthians 6:6","text":"in purity, knowledge, patience, and kindness; in the Holy Spirit and in sincere love;","bibleUrl":"https://www.bible.com/bible/3034/2CO.6.6"},"2-corinthians-6-7":{"ref":"2 Corinthians 6:7","text":"in truthful speech and in the power of God; with the weapons of righteousness in the right hand and in the left;","bibleUrl":"https://www.bible.com/bible/3034/2CO.6.7"},"2-corinthians-6-8-10":{"ref":"2 Corinthians 6:8-10","text":"through glory and dishonor, slander and praise; viewed as imposters, yet genuine; unknown, yet well-known; dying, and yet we live on; punished, yet not killed; sorrowful, yet always rejoicing; poor, yet making many rich; having nothing, and yet possessing everything.","bibleUrl":"https://www.bible.com/bible/3034/2CO.6.8-10"},"2-corinthians-6-14":{"ref":"2 Corinthians 6:14","text":"Do not be unequally yoked with unbelievers. For what partnership can righteousness have with wickedness? Or what fellowship does light have with darkness?","bibleUrl":"https://www.bible.com/bible/3034/2CO.6.14"},"2-corinthians-6-14-17":{"ref":"2 Corinthians 6:14-17","text":"Do not be unequally yoked with unbelievers. For what partnership can righteousness have with wickedness? Or what fellowship does light have with darkness? What harmony is there between Christ and Belial? Or what does a believer have in common with an unbeliever? What agreement can exist between the temple of God and idols? For we are the temple of the living God. As God has said: \u201cI will dwell with them and walk among them, and I will be their God, and they will be My people.\u201d \u201cTherefore come out from among them and be separate, says the Lord. Touch no unclean thing, and I will receive you.\u201d","bibleUrl":"https://www.bible.com/bible/3034/2CO.6.14-17"},"2-corinthians-7-1":{"ref":"2 Corinthians 7:1","text":"Therefore, beloved, since we have these promises, let us cleanse ourselves from everything that defiles body and spirit, perfecting holiness in the fear of God.","bibleUrl":"https://www.bible.com/bible/3034/2CO.7.1"},"2-corinthians-6-16-18":{"ref":"2 Corinthians 6:16-18","text":"What agreement can exist between the temple of God and idols? For we are the temple of the living God. As God has said: \u201cI will dwell with them and walk among them, and I will be their God, and they will be My people.\u201d \u201cTherefore come out from among them and be separate, says the Lord. Touch no unclean thing, and I will receive you.\u201d And: \u201cI will be a Father to you, and you will be My sons and daughters, says the Lord Almighty.\u201d","bibleUrl":"https://www.bible.com/bible/3034/2CO.6.16-18"},"2-corinthians-6-16":{"ref":"2 Corinthians 6:16","text":"What agreement can exist between the temple of God and idols? For we are the temple of the living God. As God has said: \u201cI will dwell with them and walk among them, and I will be their God, and they will be My people.\u201d","bibleUrl":"https://www.bible.com/bible/3034/2CO.6.16"},"2-corinthians-6-17":{"ref":"2 Corinthians 6:17","text":"\u201cTherefore come out from among them and be separate, says the Lord. Touch no unclean thing, and I will receive you.\u201d","bibleUrl":"https://www.bible.com/bible/3034/2CO.6.17"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

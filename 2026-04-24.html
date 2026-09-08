@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Further Thought &amp; Discussion — Daily Bible Study</title>
 <meta name="study-title" content="Further Thought &amp; Discussion">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Part 7 of 7">
+<meta name="study-passage" content="Ephesians 6:17-18">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Day 7 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Further Thought &amp; Discussion">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Part 7 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Day 7 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-04-24.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Part 7 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Day 7 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,135 +38,167 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--friday">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Further Thought &amp; Discussion</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 4, The Role of the Bible</span>
-      <span>Part 7 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Fri · Apr 24</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
     </div>
-    <div class="date-badge">April 24, 2026</div>
+    <h1 class="study-title">Further Thought &amp; Discussion</h1>
+    <p class="study-sub"><span class="sub-title">The Role of the Bible</span><span class="sub-facts"><span>Lesson 4</span><span>Day 7 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. WEEK IN REVIEW -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">Week in Review</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">Six days, one book, and a growing suspicion that the Bible has been watching us read more carefully than we have been reading it.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">Week in Review</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="review">Week in Review</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="clarifies">What This Week Clarifies</button><button type="button" class="chip" data-jump="speaking">Still Speaking</button><button type="button" class="chip" data-jump="christ">Christ at the Center of the Week</button><button type="button" class="chip" data-jump="application">Weekend Practice</button><button type="button" class="chip" data-jump="prayer">Closing Prayer for the Week</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="review" aria-labelledby="review-label">
+      <h2 class="section-label" id="review-label">Week in Review</h2>
+<p class="tldr-hook">Six days, one book, and a growing suspicion that the Bible has been watching us read more carefully than we have been reading it.</p>
       <ul class="week-review-list">
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sabbath:</span> The Role of the Bible. Hebrews 4:12 introduced a book that is <em>living</em>, <em>active</em>, and surgical, a two-edged <em>machaira</em> that reaches down under every defense.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> The Most Powerful Weapon. Ephesians 6:17&ndash;18 handed us the armor's only offensive piece, the Spirit's sword, and tied it to prayer so tightly that one does not work without the other.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Monday:</span> Scripture, the Authority. Second Timothy 3:15&ndash;17 described a book that is <em>theopneustos</em>, God-breathed, and profitable enough to equip a whole life for every good work.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Tuesday:</span> Bible Truth. John 17:17 gave us <em>aletheia</em>, truth as un-hiddenness, and a Savior who prayed His friends into sanctification through the Word.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Wednesday:</span> Bible Claims. Psalm 119:11 asked where we hide the Word inside us, with a verb (<em>tsaphan</em>) a peasant used for burying treasure under the floorboards.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Thursday:</span> State of the Heart. First Corinthians 2:14 told us the signal is fine; the question is whether our receiver is tuned to <em>pneumatikos</em> or stuck on <em>psychikos</em>.</span></li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Sabbath:</span> The Role of the Bible. Hebrews 4:12 introduced a book that is <em>living</em>, <em>active</em>, and surgical, a two-edged <em>machaira</em> that reaches down under every defense.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> The Most Powerful Weapon. Ephesians 6:17–18 handed us the armor's only offensive piece, the Spirit's sword, and tied it to prayer so tightly that one does not work without the other.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Monday:</span> Scripture, the Authority. Second Timothy 3:15–17 described a book that is <em>theopneustos</em>, God-breathed, and profitable enough to equip a whole life for every good work.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Tuesday:</span> Bible Truth. John 17:17 gave us <em>aletheia</em>, truth as un-hiddenness, and a Savior who prayed His friends into sanctification through the Word.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Wednesday:</span> Bible Claims. Psalm 119:11 asked where we hide the Word inside us, with a verb (<em>tsaphan</em>) a peasant used for burying treasure under the floorboards.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Thursday:</span> State of the Heart. First Corinthians 2:14 told us the signal is fine; the question is whether our receiver is tuned to <em>pneumatikos</em> or stuck on <em>psychikos</em>.</span>
+</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. HISTORICAL & CULTURAL CONTEXT (condensed capstone) -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">A Book Across Six Windows</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>A Book Across Six Windows</h3>
       <p>This week we walked the Bible's own hallway and looked into the same room through six different windows. Each window was a different writer in a different century speaking a different language, and yet each one was describing the same object. The Hebrew poet of Psalm 119 and the Greek-speaking apostle writing to Corinth are a thousand years apart. Moses in the wilderness of Deuteronomy 8 and Paul chained to a soldier in Rome are separated by about fourteen centuries. The psalmist on his harp and Jesus in an upper room speak different tongues in different rooms. But every one of them reaches for the same reality. There is a Word. It is alive. It judges us and heals us at the same time. It carries the authority of God because it came from the breath of God. It is not decoration. It is food, weapon, surgery, seed, and sword.</p>
-      <p>The historical context the whole week points to is one unified testimony. Jewish synagogues in the first century unrolled scrolls on Sabbath and read them aloud while the congregation stood. The Bereans in Acts 17 are described as more noble because they "searched the Scriptures daily" (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.17.11" target="_blank" rel="noopener">Acts 17:11</a>) to test what Paul was saying. Early Christians, most of whom could not read, memorized large sections so that a persecutor could not take the Word away. Tyndale burned on a stake so that English plowboys could have what this week describes. There has never been a generation that did not pay for this book, and there has never been a generation that stopped receiving it. The Bible outlasted every attempt to silence it because the Bible is not paper. It is the voice of God preserved in the voice of His people, from Moses' tent to your kitchen table.</p>
-    </div>
+      <p>The historical context the whole week points to is one unified testimony. Jewish synagogues in the first century unrolled scrolls on Sabbath and read them aloud while the congregation stood. The Bereans in Acts 17 are described as more noble because they "searched the Scriptures daily" (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.17.11" target="_blank" rel="noopener" data-verse="acts-17-11" data-ref="Acts 17:11" aria-expanded="false">Acts 17:11</a>) to test what Paul was saying. Early Christians, most of whom could not read, memorized large sections so that a persecutor could not take the Word away. Tyndale burned on a stake so that English plowboys could have what this week describes. There has never been a generation that did not pay for this book, and there has never been a generation that stopped receiving it. The Bible outlasted every attempt to silence it because the Bible is not paper. It is the voice of God preserved in the voice of His people, from Moses' tent to your kitchen table.</p>
+    </section>
 
-    <!-- 3. WHAT THIS WEEK CLARIFIES -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">💡</span>
-        <span class="section-title">What This Week Clarifies</span>
-        <div class="section-title-line"></div>
-      </div>
+    <section class="section" id="clarifies" aria-labelledby="clarifies-label">
+      <h2 class="section-label" id="clarifies-label">What This Week Clarifies</h2>
+<p>A week that put a sword in our hands leaves a few honest tensions behind, the kind worth naming out loud before the Book goes back on the nightstand. Three stand out, and the week itself already carried their answers.</p>
 
-      <p>A week that put a sword in our hands leaves a few honest tensions behind, the kind worth naming out loud before the Book goes back on the nightstand. Three stand out, and the week itself already carried their answers.</p>
-
-      <div class="section-heading">Nobody Sabotages a Harmless Book</div>
+      <h3>Nobody Sabotages a Harmless Book</h3>
       <p>Set the week's two loudest claims side by side. The Word on the shelf spoke galaxies into orbit, raised a four-day-dead man with three words, and cuts down under every human defense. And the same week said this unstoppable weapon is routinely beaten by a crowded calendar, a child's sports season, and a screen that is always closer than the page. A power that great should not lose to an ordinary Tuesday.</p>
 
 <!-- BSB_BLOCK: Ephesians 6:17-18 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:ad5ebe58885d8981a84265bb87d21a11bd334d81c4ab613987cc6f38a9216c63 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Ephesians 6:17-18</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/EPH.6.17-18" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 17">17</sup>And take the helmet of salvation and the sword of the Spirit, which is the word of God. <sup class="verse-number" aria-label="Verse 18">18</sup>Pray in the Spirit at all times, with every kind of prayer and petition. To this end, stay alert with all perseverance in your prayers for all the saints.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/EPH.6.17-18" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 17">17</sup>And take the helmet of salvation and the sword of the Spirit, which is the word of God. <sup class="verse-number" aria-label="Verse 18">18</sup>Pray in the Spirit at all times, with every kind of prayer and petition. To this end, stay alert with all perseverance in your prayers for all the saints.</div>
 <div class="verse-commentary">
           <p>The contradiction dissolves when you read the enemy's playbook. Sunday laid it out from Paul's cell. The armor carries exactly one offensive weapon, and the campaign against it has never argued that the blade is dull. It just keeps the hand off the handle. Busyness, fatigue, and distraction feel like a normal Tuesday, and that is exactly why they work, because the strategist behind them once heard the Voice this Book carries and knows what it can do. Notice that Paul laces the sword straight into prayer, listening in Scripture and speaking to God as one motion. So the sword's easy defeat is not evidence against its power. It is the best evidence for it. Nobody runs a full-time campaign against a decoration. The enemy has never feared the sword on the wall. He fears the hand that draws it.</p>
         </div>
-      </div>
+      </figure>
 
-      <div class="section-heading">The Door Decides What the Guest Can Do</div>
+      <h3>The Door Decides What the Guest Can Do</h3>
       <p>Monday and Thursday can sound like they are wrestling each other. Monday said the Book is God-breathed and gets the final word, the rulebook every opinion must sit down for. Thursday said the outcome of any reading depends on the state of the reader's heart. Put bluntly, one day says the Bible holds all the authority, and the next day seems to hand the deciding vote back to us.</p>
 
 <!-- BSB_BLOCK: 1 Thessalonians 2:13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:84047c326535495f787ad35a1f04e9ad9d72febecd4efe7a091b44184d3679be | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Thessalonians 2:13</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1TH.2.13" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1TH.2.13" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">And we continually thank God because, when you received the word of God that you heard from us, you accepted it not as the word of men, but as it truly is, the word of God, which is also now at work in you who believe.</div>
 <div class="verse-commentary">
           <p>Paul's thank-you note to Thessalonica holds the two days together. The believers received the message not as the word of men but as it truly is, the word of God, and only then does the verse say it went to work in them. Thursday's picture for that receiving was a homeowner welcoming a guest. That is the heart's real role. The door does not write the guest's message, edit his vocabulary, or decide what he is authorized to do. It only decides whether he gets in. Monday stands untouched, because welcoming is the opposite of editing. The reader who screens Scripture for agreeable lines has confused the door with the Author. And the reader who opens fully, mustard-seed faith and all, finds the week's promise coming true from the inside. The Word did not gain its power at our door. It was simply, at last, let through it.</p>
         </div>
-      </div>
+      </figure>
 
-      <div class="section-heading">The Mercies Were New on the Mornings You Missed</div>
+      <h3>The Mercies Were New on the Mornings You Missed</h3>
       <p>By Friday the week's assignments have piled up. Draw the sword daily. Submit every opinion. Memorize. Bury the verse where the thief cannot reach it. Come with a welcoming heart every single morning. An honest reader looks at that list, then looks at last month's unopened Bible, and quietly concludes that this program belongs to more consistent people.</p>
 
 <!-- BSB_BLOCK: Lamentations 3:22-23 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c8c190b198b5ba654db58a7faac7abe88f43c638e91c1fae1c7553b30b2204be | footnotes-stripped:1 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Lamentations 3:22-23</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/LAM.3.22-23" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 22">22</sup>Because of the loving devotion of the LORD we are not consumed, for His mercies never fail. <sup class="verse-number" aria-label="Verse 23">23</sup>They are new every morning; great is Your faithfulness!</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/LAM.3.22-23" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 22">22</sup>Because of the loving devotion of the LORD we are not consumed, for His mercies never fail. <sup class="verse-number" aria-label="Verse 23">23</sup>They are new every morning; great is Your faithfulness!</div>
 <div class="verse-commentary">
           <p>Sunday set the answer down right beside the sword, and it was written in the ruins of Jerusalem. Jeremiah composed these lines while the city was still smoking, so the Bible's clearest word about fresh starts comes from the site of a total loss. The Hebrew behind loving devotion is <em>chesed</em>, God's stubborn covenant loyalty, and Sunday pressed its sharpest edge. This mercy does not measure itself by our record. It was new on the mornings the Bible stayed closed, and it will be new at whatever hour we come back. That is not permission to drift. It is the ground that makes returning possible. Thursday added the last kindness. When a trembling father offered Jesus belief and unbelief in the same sentence, Jesus healed his son with the faith the man actually had. The mustard seed opens the Book. The morning mercies do the rest.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: Lamentations 3:22 | 3:22 Forms of the Hebrew chesed are translated here and in most cases throughout the Scriptures as loving devotion; the range of meaning includes love, goodness, kindness, faithfulness, and mercy, as well as loyalty to a covenant. -->
 
-    </div>
+    </section>
 
-    <!-- 4. STILL SPEAKING (merged Street Level + Today's World) -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Still Speaking</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Letter the Grandfather Left</div>
+    <section class="section" id="speaking" aria-labelledby="speaking-label">
+      <h2 class="section-label" id="speaking-label">Still Speaking</h2>
+<h3>The Letter the Grandfather Left</h3>
       <p>In the bottom of a cedar chest in an attic somewhere, a grandchild finds a folded letter in handwriting they have never seen but instantly recognize. The grandfather died before this grandchild was born. The grandfather never met them, never held them, never knew their name. And yet, page by page, the letter speaks, and the voice on the page sounds exactly like the one their mother has described all these years. The ink is faded. The paper is brittle. But the <em>voice</em> is unmistakably alive. Whoever reads that letter slowly, on a quiet afternoon, comes downstairs changed.</p>
       <p>That is the Bible. A letter from a Father the reader has not yet seen in person, handed down through enough generations that the paper has gone a little brittle, but the voice in it has not faded at all. Paul wrote to the Thessalonians that the Word of God "effectively works in you who believe" (<em>energeitai</em>, the root of energy), which is to say the letter is not only legible but alive. It is still speaking. Still cutting. Still feeding. Still tuning. Three thousand years of readers have sat down with it, and every honest one has stood up changed.</p>
       <p>The cultural backdrop of 2026 makes the letter's voice stand out more sharply, not less. A decade of research points one direction. Sustained attention has fallen 37 percent since the year 2000 (Amraandelma cross-platform data). Deep reading in American adults is down 39 percent over the last ten years (APA longitudinal study). Publications documenting "digital amnesia" have quadrupled in four years (Springer Nature <em>Discover Psychology</em> 2025). Seventy percent of Britons trust AI-written news less than human-written news (YouGov 2025), and even transparent disclosure of AI authorship makes readers trust the text <em>less</em>, not more (arXiv 2025 "transparency dilemma" studies). A generation is losing the faculty to sit with a long text, the memory to carry a long text, and the trust that any text is reliable at all. Exactly the generation that most needs a letter that cannot be faked and will not stop speaking.</p>
@@ -173,179 +206,48 @@ if ('serviceWorker' in navigator) {
       <!-- STILL_SPEAKING_SOURCES
 Sources: Amraandelma "Top 20 User Attention Span Statistics 2026"; APA 2024 longitudinal study on reading habits; Springer Nature Discover Psychology (2025) bibliometric analysis of digital amnesia; YouGov UK 2025 AI news trust survey; arXiv (2025) "Full Disclosure, Less Trust?"
 -->
-    </div>
+    </section>
 
-    <!-- 5. CHRIST AT THE CENTER OF THE WEEK -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">Christ at the Center of the Week</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Trace the week and you will find that every passage pointed to Jesus before it pointed to anything else. Sabbath's two-edged sword is the same sword coming from the mouth of the risen Christ in <a class="vlink" href="https://www.bible.com/bible/3034/REV.1.16" target="_blank" rel="noopener">Revelation 1:16</a>. Sunday's Spirit and <em>rhema</em> are the same pair Jesus modeled in His own desert temptation, answering the tempter with <a class="vlink" href="https://www.bible.com/bible/3034/MAT.4.4" target="_blank" rel="noopener">Matthew 4</a>'s "It is written" on His lips and the Spirit fresh from His baptism on His shoulders. Monday's God-breathed Scripture points to the Word who was with God and was God and who became flesh to breathe Himself into a fisherman, a tax collector, and the rest of us. Tuesday's truth is the One who said, "I am the truth" (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.14.6" target="_blank" rel="noopener">John 14:6</a>), and who prayed us into sanctification the night before He died. Wednesday's treasure is the same pearl of great price the merchant sold everything to own (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.13.46" target="_blank" rel="noopener">Matthew 13:46</a>). And Thursday's spiritually discerned Word is the same Emmaus road Scripture Jesus opened, making hearts burn inside two disciples who had almost given up (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.24.32" target="_blank" rel="noopener">Luke 24:32</a>). Six days, one Person. The Bible is Christ's book about Christ, given by Christ, to make us like Christ.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the Center of the Week</h2>
+<p>Trace the week and you will find that every passage pointed to Jesus before it pointed to anything else. Sabbath's two-edged sword is the same sword coming from the mouth of the risen Christ in <a class="vlink" href="https://www.bible.com/bible/3034/REV.1.16" target="_blank" rel="noopener" data-verse="revelation-1-16" data-ref="Revelation 1:16" aria-expanded="false">Revelation 1:16</a>. Sunday's Spirit and <em>rhema</em> are the same pair Jesus modeled in His own desert temptation, answering the tempter with <a class="vlink" href="https://www.bible.com/bible/3034/MAT.4.4" target="_blank" rel="noopener">Matthew 4</a>'s "It is written" on His lips and the Spirit fresh from His baptism on His shoulders. Monday's God-breathed Scripture points to the Word who was with God and was God and who became flesh to breathe Himself into a fisherman, a tax collector, and the rest of us. Tuesday's truth is the One who said, "I am the truth" (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.14.6" target="_blank" rel="noopener" data-verse="john-14-6" data-ref="John 14:6" aria-expanded="false">John 14:6</a>), and who prayed us into sanctification the night before He died. Wednesday's treasure is the same pearl of great price the merchant sold everything to own (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.13.46" target="_blank" rel="noopener" data-verse="matthew-13-46" data-ref="Matthew 13:46" aria-expanded="false">Matthew 13:46</a>). And Thursday's spiritually discerned Word is the same Emmaus road Scripture Jesus opened, making hearts burn inside two disciples who had almost given up (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.24.32" target="_blank" rel="noopener" data-verse="luke-24-32" data-ref="Luke 24:32" aria-expanded="false">Luke 24:32</a>). Six days, one Person. The Bible is Christ's book about Christ, given by Christ, to make us like Christ.</p>
+    </section>
 
-    <!-- 6. WEEKEND PRACTICE -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Weekend Practice</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Weekend Practice</h2>
+<div class="application-card">
         This weekend, pull out the card you have been carrying since Sunday and write Psalm 119:11 on one side and 1 Corinthians 2:14 on the other. On Sabbath morning, before you open your Bible, pray the Thursday prayer out loud: "Holy Spirit, I am coming as a student, not a judge. Teach me what I cannot see on my own." Then read one Gospel chapter slowly, underline one sentence that lands, and write one honest sentence under it about what you want God to do with what you just read. That is how a week of study becomes a lifetime of formation.
       </div>
-    </div>
+    </section>
 
-    <!-- 7. CLOSING PRAYER FOR THE WEEK -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer for the Week</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we began this week on a Sabbath with a sword in our hands and end it on a Friday with the same sword more familiar in our grip. Thank You for not giving us a pep talk. Thank You for giving us a <em>machaira</em>. Thank You that when Jesus stood in the wilderness, He quoted the book You wrote, and the enemy left. Thank You for making that same book available to us on a weekday afternoon when nobody is watching.</p>
+    <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer for the Week</h2>
+<p>Father, we began this week on a Sabbath with a sword in our hands and end it on a Friday with the same sword more familiar in our grip. Thank You for not giving us a pep talk. Thank You for giving us a <em>machaira</em>. Thank You that when Jesus stood in the wilderness, He quoted the book You wrote, and the enemy left. Thank You for making that same book available to us on a weekday afternoon when nobody is watching.</p>
       <p>We confess that we have often treated Scripture as a phrasebook we keep near the door rather than as a language we are learning to speak. We have read to win arguments instead of reading to be changed. We have searched for verses that agreed with us instead of letting Your words examine us. Forgive us. Soften our soil. Make us students, not judges. Give us hearts that hear the Voice, not just opinions that approve of themselves.</p>
       <p>Holy Spirit, keep hiding Your Word in us. Dig it in past the surface. Plant it where anxiety tries to grow, where anger tries to grow, where shame tries to grow. When the moment comes that we need a <em>rhema</em>, put one on our lips. When the moment comes that we need to be quiet, close our mouths and open our ears. Teach us the difference between reading about You and meeting You in the reading.</p>
       <p>Jesus, You are the Word made flesh. Every verse we carried this week points back to You. Be the center of every week after this one. Make us the kind of people who, when the world runs out of answers, know exactly where the Book is on the shelf, and know exactly Whose voice is waiting on the page. In Your name we pray, Amen.</p>
-    </div>
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </section>
+  </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-04-23.html"><span class="day-nav-kicker">← Thursday</span><span class="day-nav-title">State of the Heart</span></a><a class="day-nav-item" href="/bible-study/2026-04-25.html"><span class="day-nav-kicker">Saturday →</span><span class="day-nav-title">How to Study the Bible</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"acts-17-11":{"ref":"Acts 17:11","text":"Now the Bereans were more noble-minded than the Thessalonians, for they received the message with great eagerness and examined the Scriptures every day to see if these teachings were true.","bibleUrl":"https://www.bible.com/bible/3034/ACT.17.11"},"revelation-1-16":{"ref":"Revelation 1:16","text":"He held in His right hand seven stars, and a sharp double-edged sword came from His mouth. His face was like the sun shining at its brightest.","bibleUrl":"https://www.bible.com/bible/3034/REV.1.16"},"john-14-6":{"ref":"John 14:6","text":"Jesus answered, \u201cI am the way and the truth and the life. No one comes to the Father except through Me.","bibleUrl":"https://www.bible.com/bible/3034/JHN.14.6"},"matthew-13-46":{"ref":"Matthew 13:46","text":"When he found one very precious pearl, he went away and sold all he had and bought it.","bibleUrl":"https://www.bible.com/bible/3034/MAT.13.46"},"luke-24-32":{"ref":"Luke 24:32","text":"They asked each other, \u201cWere not our hearts burning within us as He spoke with us on the road and opened the Scriptures to us?\u201d","bibleUrl":"https://www.bible.com/bible/3034/LUK.24.32"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

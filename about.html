@@ -1,53 +1,133 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-red="on">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About Our Approach · Daily Bible Study</title>
-  <meta name="description" content="Who these independent daily Bible studies are for, how they are organized, written, and reviewed, and how freely they may be shared.">
-  <style>
-    :root { color-scheme: dark; --bg:#1a1a1a; --card:#1f1f1f; --text:#e8e8e8; --soft:#b9b7b1; --muted:#8e918e; --emerald:#6fcf9b; --border:#343735; }
-    * { box-sizing: border-box; }
-    body { margin:0; padding:32px 18px 64px; background:var(--bg); color:var(--text); font:17px/1.75 system-ui,-apple-system,"Segoe UI",sans-serif; }
-    main { max-width:760px; margin:auto; }
-    article { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:clamp(24px,5vw,48px); }
-    .eyebrow { color:var(--emerald); font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; }
-    h1 { margin:.35em 0 .65em; font-family:Georgia,serif; font-size:clamp(34px,7vw,54px); line-height:1.08; }
-    h2 { margin:1.7em 0 .45em; font-family:Georgia,serif; font-size:26px; }
-    p { color:var(--soft); }
-    a { color:var(--emerald); }
-    nav, footer { text-align:center; margin-top:24px; color:var(--muted); font-size:14px; }
-    nav a, footer a { margin:0 8px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About our approach — Daily Bible Study</title>
+<meta name="description" content="How these studies are written, reviewed, sourced, published, and shared.">
+<meta name="theme-color" content="#1a1a1a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="icon" type="image/png" href="./assets/favicon-729135cb.png">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="./assets/apple-touch-icon-729135cb.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap">
+<link rel="stylesheet" href="./assets/study-v5_0.css">
+<script>
+/* Service-worker registration. v5.0 shipped this on index.html and every
+   study page but NOT on the four trust pages, so a reader landing on About
+   got no offline caching and no install prompt. Present on all eight now.
+   In this review sandbox the script 404s and the .catch logs a benign
+   message; no worker is installed, because the /bible-study/ scope does not
+   match the preview path. */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function (error) { console.log('SW registration failed:', error); });
+  });
+}
+</script>
 </head>
-<body>
-  <main>
-    <article>
-      <div class="eyebrow">Daily Bible Study</div>
-      <h1>About Our Approach</h1>
-      <p>These studies are independently written for Christians across traditions and for anyone who is curious about the Bible. The studies follow a daily rhythm, and each one is designed to stand on its own. You do not need denominational background, a separate lesson book, or any previous Bible-study experience. If you can read this page, you have everything you need.</p>
-
-      <h2>The weekly rhythm</h2>
+<body class="trust-page">
+<a class="skip-link" href="#main">Skip to the content</a><header class="appbar">
+  <div class="appbar-row">
+    <a class="wordmark" href="./index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span><span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
+    </div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this page</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="./index.html">All studies</a>
+    <a class="menu-row" href="./about.html">About our approach</a>
+    <a class="menu-row" href="./scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="./privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="./corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
+  </div>
+</header><div class="prose-header"><div class="prose-header-inner">
+<h1 class="prose-title">About our approach</h1>
+<p class="prose-lede">These studies are independently written for Christians across traditions and for anyone who is curious about the Bible. The studies follow a daily rhythm, and each one is designed to stand on its own. You do not need denominational background, a separate lesson book, or any previous Bible-study experience. If you can read this page, you have everything you need.</p>
+</div></div><nav class="on-this-page" aria-label="On this page"><span class="otp-label">On this page</span><span class="otp-chips"><a class="chip" href="#the-weekly-rhythm">The weekly rhythm</a><a class="chip" href="#how-each-study-takes-shape">How each study takes shape</a><a class="chip" href="#how-studies-are-reviewed">How studies are reviewed</a><a class="chip" href="#scripture">Scripture</a><a class="chip" href="#sharing-and-reuse">Sharing and reuse</a><a class="chip" href="#privacy">Privacy and reader controls</a><a class="chip" href="#support-principles">Support principles</a><a class="chip" href="#corrections">Corrections</a></span></nav>
+<main class="prose-body" id="main"><section class="section" id="the-weekly-rhythm" aria-labelledby="the-weekly-rhythm-label"><h2 class="section-label" id="the-weekly-rhythm-label">The weekly rhythm</h2>
       <p>Bible readers around the world often follow shared reading plans, and this site works in a similar way. A recurring published study schedule provides the dates, official weekly and daily titles, each week's subject, and the Scripture outline. Keeping those titles helps readers who follow the same schedule find the corresponding study here. Studies are prepared in advance and scheduled for consistent publication, usually becoming available the afternoon before their dated reading. Each study has completed the editorial review described below before it is scheduled.</p>
 
-      <h2>How each study takes shape</h2>
+      </section><section class="section" id="how-each-study-takes-shape" aria-labelledby="how-each-study-takes-shape-label"><h2 class="section-label" id="how-each-study-takes-shape-label">How each study takes shape</h2>
       <p>Around that framework, each study develops its own commentary, historical explanations, illustrations, applications, prayers, reflections, questions, structure, and presentation. Scripture and identified research sources inform the work, and the resulting study is written for this site.</p>
       <p>Friday studies gather up the week. Their reflections draw together the themes, tensions, and insights that emerged across the preceding studies, helping readers see how the pieces belong together.</p>
 
-      <h2>How studies are reviewed</h2>
+      </section><section class="section" id="how-studies-are-reviewed" aria-labelledby="how-studies-are-reviewed-label"><h2 class="section-label" id="how-studies-are-reviewed-label">How studies are reviewed</h2>
       <p>These studies are developed through a human-led editorial process with AI assistance in drafting, research, and verification. The editor sets the direction, exercises theological and stylistic judgment, reviews and revises the work, and makes the final decision to publish. Automated checks support that editorial review by checking page structure, links, Scripture-source integrity, and recurring writing problems.</p>
 
-      <h2>Scripture</h2>
+      </section><section class="section" id="scripture" aria-labelledby="scripture-label"><h2 class="section-label" id="scripture-label">Scripture</h2>
       <p>Primary Scripture quotations use the Berean Standard Bible, a modern English translation dedicated to the public domain. Quotations are drawn from an exact, verified copy of the publisher's official text, and the wording is not altered. The <a href="scripture-sources.html">Scripture Sources</a> page explains where that text comes from and how it is kept faithful.</p>
 
-      <h2>Sharing and reuse</h2>
+      </section><section class="section" id="sharing-and-reuse" aria-labelledby="sharing-and-reuse-label"><h2 class="section-label" id="sharing-and-reuse-label">Sharing and reuse</h2>
       <p>We want these studies to travel. The original material this project has the authority to release, including its commentary, prayers, applications, and reflections, is dedicated to the public domain through <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0 Universal</a>. You may copy it, quote it, translate it, adapt it, and share it for any purpose without asking permission.</p>
       <p>That dedication covers only this project's own original material. It does not cover Scripture text, trademarks, quotations or materials that belong to others, or the content of sites we link to.</p>
       <p>If you republish material from these studies, we would be grateful if you describe them as independently written companion studies and link back to this site so readers can find the original context. This courtesy is appreciated, not required.</p>
       <p>We hope these pages help you read the Bible slowly, carefully, and with joy.</p>
-    </article>
-      <nav><a href="index.html">Home</a><a href="scripture-sources.html">Scripture Sources</a></nav>
-    <footer>☩ Daily Bible Study · Shared with Love ☩</footer>
-  </main>
+
+      </section><section class="section" id="privacy" aria-labelledby="privacy-label"><h2 id="privacy-label" class="section-label">Privacy and reader controls</h2>
+      <p>No account is required to read these studies. The site uses GoatCounter for aggregate visit counts. GoatCounter states that its standard service does not store IP addresses, full user-agent strings, tracker IDs, cookies, or browser storage. Its <a href="https://www.goatcounter.com/help/privacy" rel="noopener">privacy explanation</a> describes the details.</p>
+      <p>Notifications are optional. If a reader chooses them, the browser and Firebase create a device registration identifier so a message can reach that browser. The current site also stores the resulting notification token, a timestamp, and a shortened browser user-agent value in Firestore. A cookie remembers the reader's yes-or-no choice. Theme and red-letter choices stay in that browser's local storage.</p>
+      <p>Readers can turn notifications off on the Privacy and reader controls page or withdraw permission in browser settings. The sender removes registrations that Firebase reports as invalid.</p>
+
+      </section><section class="section" id="support-principles" aria-labelledby="support-principles-label"><h2 id="support-principles-label" class="section-label">Support principles</h2>
+      <p>Every study and core reading tool will remain free. If voluntary financial support is offered later, it will be optional, will not unlock content or Scripture, and will not be described as a tax-deductible donation.</p>
+
+      </section><section class="section" id="corrections" aria-labelledby="corrections-label"><h2 class="section-label" id="corrections-label">Corrections</h2>
+      <p>Corrections are evaluated against the study text, Scripture, and supporting sources. Factual and scriptural errors are fixed on the page itself; substantive changes are noted, while typographic fixes are made silently.</p>
+      <div class="notice notice--info"><span class="notice-mark" aria-hidden="true">i</span><span><strong>Online correction reports are coming later.</strong> The Corrections page explains what belongs in a report and how corrections are handled.</span></div>
+      </section></main><footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="./about.html">About</a>
+    <a href="./scripture-sources.html">Scripture sources</a>
+    <a href="./privacy.html">Privacy</a>
+    <a href="./corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer>
+<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="./assets/notifications.js" defer></script>
+<script src="./assets/reader-controls.js" defer></script>
 </body>
 </html>

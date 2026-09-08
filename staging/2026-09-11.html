@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Further Thought &amp; Discussion — Daily Bible Study</title>
+<meta name="publication-state" content="staged">
+<meta name="robots" content="noindex, nofollow">
 <meta name="study-title" content="Further Thought &amp; Discussion">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 11, Stewardship and Mission · Part 7 of 7">
+<meta name="study-passage" content="2 Corinthians 9:7">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 11, Stewardship and Mission · Day 7 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Further Thought &amp; Discussion">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 11, Stewardship and Mission · Part 7 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 11, Stewardship and Mission · Day 7 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-09-11.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 11, Stewardship and Mission · Part 7 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 11, Stewardship and Mission · Day 7 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,307 +40,215 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
-<body class="study-page--friday">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+<body class="study-page--friday" data-staged="true">
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Further Thought &amp; Discussion</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 11, Stewardship and Mission</span>
-      <span>Part 7 of 7</span>
+</header><div class="staged-banner" role="status">
+  <span class="staged-banner-tag" aria-hidden="true">Staged</span>
+  <span>Review artifact: this page is not published or listed in the archive.</span>
+</div>
+<div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Fri · Sep 11</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
     </div>
-    <div class="date-badge">September 11, 2026</div>
+    <h1 class="study-title">Further Thought &amp; Discussion</h1>
+    <p class="study-sub"><span class="sub-title">Stewardship and Mission</span><span class="sub-facts"><span>Lesson 11</span><span>Day 7 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. WEEK IN REVIEW -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">Week in Review</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">This week two chapters of ancient fundraising kept turning into the gospel, because every question about giving, the reason, the plan, the face, the destination, ran straight back to the Giver.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">Week in Review</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="review">Week in Review</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="clarifies">What This Week Clarifies</button><button type="button" class="chip" data-jump="speaking">Still Speaking</button><button type="button" class="chip" data-jump="christ">Christ at the Center of the Week</button><button type="button" class="chip" data-jump="application">Weekend Practice</button><button type="button" class="chip" data-jump="prayer">Closing Prayer for the Week</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="review" aria-labelledby="review-label">
+      <h2 class="section-label" id="review-label">Week in Review</h2>
+<p class="tldr-hook">This week two chapters of ancient fundraising kept turning into the gospel, because every question about giving, the reason, the plan, the face, the destination, ran straight back to the Giver.</p>
       <ul class="week-review-list">
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sabbath:</span> Stewardship and Mission. A stalled relief fund, an offering that had to travel eight hundred miles by hand, and a memory text that tells the whole gospel in money language. The collection plate began turning into a mirror.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> The Example of Jesus. Paul restarted the pledge without one word of guilt. Macedonia's impossible generosity marched out front, and behind it stood the receipt, rich, then poor, so that beggars like us could become rich.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Monday:</span> Motivation. Four fuels that burn clean, gratitude, imitation, shared blessing, and visible love, and a fundraiser that ends by running out of words. Thanks be to God for His indescribable gift.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Tuesday:</span> Planning. The Lamb was slain from the foundation of the world. Giving that looks like God's is decided beforehand, in honest proportion, and kept like an appointment.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Wednesday:</span> Attitude. Macedonia begged for the privilege of giving. Joy plus deep poverty overflowed into rich generosity, because to God the attitude is most of the gift.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Thursday:</span> Unity. Sacred money traveled with witnesses, aimed at equality, and landed as proof that Jew and Gentile had become one family. All that from an offering.</span></li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Sabbath:</span> Stewardship and Mission. A stalled relief fund, an offering that had to travel eight hundred miles by hand, and a memory text that tells the whole gospel in money language. The collection plate began turning into a mirror.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> The Example of Jesus. Paul restarted the pledge without one word of guilt. Macedonia's impossible generosity marched out front, and behind it stood the receipt, rich, then poor, so that beggars like us could become rich.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Monday:</span> Motivation. Four fuels that burn clean, gratitude, imitation, shared blessing, and visible love, and a fundraiser that ends by running out of words. Thanks be to God for His indescribable gift.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Tuesday:</span> Planning. The Lamb was slain from the foundation of the world. Giving that looks like God's is decided beforehand, in honest proportion, and kept like an appointment.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Wednesday:</span> Attitude. Macedonia begged for the privilege of giving. Joy plus deep poverty overflowed into rich generosity, because to God the attitude is most of the gift.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Thursday:</span> Unity. Sacred money traveled with witnesses, aimed at equality, and landed as proof that Jew and Gentile had become one family. All that from an offering.</span>
+</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. HISTORICAL & CULTURAL CONTEXT (condensed capstone) -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Grace Made the Offering Move Differently</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>Grace Made the Offering Move Differently</h3>
       <p>Walk back through the week's places one last time. A road running eight hundred unpatrolled miles, where a gift could only travel as coin in somebody's grip. A midnight prison in Philippi where Macedonia's giving churches were born under rods and riots. Altars carved with the settled formula of the vow paid, religion run on the logic of the marketplace, I give so that you will give. A meeting in Antioch where a famine was announced before it arrived and a church answered with a plan. City gates where begging meant the bottom of life. Convoys of sacred temple money crossing provinces with appointed witnesses so that no single hand ever held the funds alone.</p>
       <p>The familiar giving systems of that world ran on getting, compulsion, or honor. The gods gave for a price. The city's rich gave because status demanded it, and carved their names where everyone would read them. Then a relief fund crossed the Aegean with none of those engines in it. No god was being paid. No donor was being carved in stone. Broke provinces begged to participate, wealthy Corinth was invited rather than invoiced, and the whole project moved on one strange new fuel, grace already received and passed along. Set it beside the altars and the honor rolls and the difference is the engine. Those systems moved money to obtain. This one moved money to thank. That was rather the point.</p>
-    </div>
+    </section>
 
-    <!-- 3. WHAT THIS WEEK CLARIFIES -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">💡</span>
-        <span class="section-title">What This Week Clarifies</span>
-        <div class="section-title-line"></div>
-      </div>
+    <section class="section" id="clarifies" aria-labelledby="clarifies-label">
+      <h2 class="section-label" id="clarifies-label">What This Week Clarifies</h2>
+<p>Six days inside Paul's appeal leave an honest reader holding a few live questions. Three of them deserve a real answer before Sabbath, because each one decides what actually happens the next time giving comes near your wallet.</p>
 
-      <p>Six days inside Paul's appeal leave an honest reader holding a few live questions. Three of them deserve a real answer before Sabbath, because each one decides what actually happens the next time giving comes near your wallet.</p>
-
-      <div class="section-heading">The Joy Is Grown, Not Required at the Door</div>
+      <h3>The Joy Is Grown, Not Required at the Door</h3>
       <p>Tuesday told us to give by decision, kept like an appointment. Wednesday told us God loves a cheerful giver. So what about the believer who keeps the plan faithfully and feels no bubbling gladness on the way? Is dutiful giving disqualified?</p>
 
       <!-- BSB_BLOCK: 2 Corinthians 9:7 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:63b6733ee929cf3764ae9b04089dfe97c912a5775bfdcd7874c1beeb8f1ef2ed | footnotes-stripped:1 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 9:7</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.9.7" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.9.7" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Each one should give what he has decided in his heart to give, not out of regret or compulsion. For God loves a cheerful giver.</div>
         <div class="verse-commentary">
           <p>Read the verse in order. The deciding comes first, the cheer comes after, and what stands between them is not a mood requirement but the absence of two poisons, regret and compulsion. God is not standing at the door checking faces before gifts are allowed in. He is naming what He loves to grow. Remember where Macedonia's gladness actually came from. Not from circumstances, which were ordeal and poverty, but from grace received, from selves already surrendered, from remembering the Gift until thanks needed somewhere to go. Cheerfulness is that remembering, ripened. So keep the appointment even on the flat mornings. A kept promise is not the counterfeit of cheerful giving. It is usually the soil it grows in, and the way to water it is not to work up a feeling but to walk back to the receipt. You know the grace of our Lord Jesus Christ. Gladness has never had a deeper well.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: 2 Corinthians 9:7 | 9:7 See Proverbs 22:8, LXX addition. -->
 
-      <div class="section-heading">Beyond Ability Was an Overflow, Never a Bill</div>
+      <h3>Beyond Ability Was an Overflow, Never a Bill</h3>
       <p>The week praised Macedonia for giving beyond their ability, and in the same breath taught that gifts are measured in honest proportion. Which is the standard, recklessness or reason? A tired reader could hear those as competing demands.</p>
 
       <!-- BSB_BLOCK: 2 Corinthians 8:12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:dd857a8be09a9558f2a8e700c5febbb1e32ff1af2340531953950e3901650e1b | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 8:12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.8.12" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.8.12" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">For if the eagerness is there, the gift is acceptable according to what one has, not according to what he does not have.</div>
         <div class="verse-commentary">
           <p>Here is the standard, stated as law and meant as freedom. Acceptable runs by what one has. Paul testified about Macedonia's beyond-ability giving with wonder, but notice what he never does with it. He never bills it to anyone. Overflow is what joy sometimes does when grace floods a heart, and Paul reports it the way you report a miracle, not the way you set a quota. What he commands is different, eagerness plus honesty, a real proportion of a surrendered whole. That frees two people at once. The giver of little is released from shame, because acceptable was never a dollar figure, and the giver of much is released from the comfortable lie that a large-looking gift is automatically a large one. Nobody is asked to imitate Macedonia's math. Everyone is invited to drink from Macedonia's spring. If the overflow ever comes, it will come the way theirs did, freely, gladly, and entirely unbilled.</p>
         </div>
-      </div>
+      </figure>
 
-      <div class="section-heading">Enriched Was Never a Bank Balance</div>
+      <h3>Enriched Was Never a Bank Balance</h3>
       <p>Twice this week Scripture promised that givers get enriched, and a whole industry of teaching would love to finish that sentence for you. Give, and God will make you wealthy. Is that what Paul is promising? The week's own words answer.</p>
 
       <!-- BSB_BLOCK: 2 Corinthians 9:10-11 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:0a5a30731747b0e3fe6f833c76d1b2270768411203a387691e40f26287e80e96 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 9:10-11</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.9.10-11" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 10">10</sup>Now He who supplies seed to the sower and bread for food will supply and multiply your store of seed and will increase the harvest of your righteousness. <sup class="verse-number" aria-label="Verse 11">11</sup>You will be enriched in every way to be generous on every occasion, and through us your generosity will produce thanksgiving to God.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.9.10-11" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 10">10</sup>Now He who supplies seed to the sower and bread for food will supply and multiply your store of seed and will increase the harvest of your righteousness. <sup class="verse-number" aria-label="Verse 11">11</sup>You will be enriched in every way to be generous on every occasion, and through us your generosity will produce thanksgiving to God.</div>
         <div class="verse-commentary">
           <p>Follow the purpose clauses. The multiplied supply is seed, and seed exists to be sown again. The enrichment is aimed, in every way to be generous on every occasion, and the promised harvest is righteousness and thanksgiving to God, not a portfolio. Paul is describing a pipeline, not a prize. God supplies and multiplies seed for generosity, the way a farmer's store of seed exists to be trusted to the field. And the week's witnesses close the case. Macedonia gave out of deep poverty, joyful and enriched in everything that counted. Jesus became poor and never promised His people mansions this side of His return. What He delivered through His poverty was wealth of another order, forgiveness, adoption, a family on every continent, hope with a floor under it. Anyone selling giving as an investment scheme has confused the seed with the harvest. The harvest was never money. It was you, becoming a giver like your Father.</p>
         </div>
-      </div>
+      </figure>
 
-    </div>
+    </section>
 
-    <!-- 4. STILL SPEAKING (merged Street Level + Today's World) -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Still Speaking</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Recipe Is in Her Handwriting</div>
+    <section class="section" id="speaking" aria-labelledby="speaking-label">
+      <h2 class="section-label" id="speaking-label">Still Speaking</h2>
+<h3>The Recipe Is in Her Handwriting</h3>
       <p>Somewhere in your family there is a recipe that does not really live in a book. Cornbread dressing, tamales rolled the slow way, a soup with no written measurements at all. If a card for it exists, the card is stained and soft at the corners, and the handwriting on it belongs to somebody gone or going gray. Nobody in the family ever paid for that recipe. It was handed over, usually in a kitchen, usually with your hands in the bowl while she watched and adjusted and laughed. What it cost her was a lifetime of Thursdays. What it cost you was nothing. That is how the best things a family owns have always moved, downhill, from the hands that hold them to the hands that do not, priced at everything for the giver and free to the one receiving.</p>
-      <p>And every family cook knows the strange law that comes with it. The recipe only stays alive by being given away. Guard it, hoard it, carry it to the grave uncopied, and it dies with its keeper. Press it into the next set of hands and it outlives you by a hundred years. This week ran on that law. Grace arrived first, at a cost we finally slowed down long enough to see. Though He was rich, yet for your sake He became poor (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.9" target="_blank" rel="noopener">2 Corinthians 8:9</a>). Everything Paul asked of Corinth afterward was just the recipe moving to the next kitchen. Decided on purpose, the way Sunday dinner gets planned rather than improvised. Handed over glad, since nobody has ever passed a casserole across a fence grudgingly and called it love. Aimed across every line the world draws, until strangers are eating at one table and calling each other family. Giving was never the bill for any of this. It is the family dish, made again.</p>
+      <p>And every family cook knows the strange law that comes with it. The recipe only stays alive by being given away. Guard it, hoard it, carry it to the grave uncopied, and it dies with its keeper. Press it into the next set of hands and it outlives you by a hundred years. This week ran on that law. Grace arrived first, at a cost we finally slowed down long enough to see. Though He was rich, yet for your sake He became poor (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.9" target="_blank" rel="noopener" data-verse="2-corinthians-8-9" data-ref="2 Corinthians 8:9" aria-expanded="false">2 Corinthians 8:9</a>). Everything Paul asked of Corinth afterward was just the recipe moving to the next kitchen. Decided on purpose, the way Sunday dinner gets planned rather than improvised. Handed over glad, since nobody has ever passed a casserole across a fence grudgingly and called it love. Aimed across every line the world draws, until strangers are eating at one table and calling each other family. Giving was never the bill for any of this. It is the family dish, made again.</p>
       <p>So notice what happened to the collection plate somewhere between Sabbath and tonight. It stopped being an invoice and became an heirloom. When you give, decided and glad and aimed at real need, you are not paying God back. You cannot, and He never asked. You are making the family dish with your own hands, and the resemblance shows while you make it. Maybe the slip of paper from Sabbath, the one with last month's number on it, reads differently now too. Less like a bill you underpaid. More like handwriting practice, a child copying out a word the Father has been writing since before the world existed. And the Giver at the center of it all is not a memory the family honors. He is alive, still the richest Giver at the table, still teaching the recipe to any hands that will take it. So keep the card where you can see it. Make the dish again this week, in your own kitchen, for somebody who cannot pay for it. It only stays alive if you give it away.</p>
-    </div>
+    </section>
 
-    <!-- 5. CHRIST AT THE CENTER OF THE WEEK -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">Christ at the Center of the Week</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Trace Him back through the days. Sabbath handed us one sentence, you know the grace of our Lord Jesus Christ, and the whole week has been that sentence unfolding. Sunday read it like a receipt, the glory He had before the world existed traded for a borrowed pillow and a cross, His poverty the only reason for our wealth. Monday listed every clean motive for giving and found His face behind each one, then ran out of words where Paul did, at the indescribable Gift. Tuesday found the date stamp, the Lamb slain from the foundation of the world, a Gift decided before Eden and kept like an appointment through Gethsemane. Wednesday found the attitude, for the joy set before Him He endured the cross, the original cheerful Giver whose gladness no extraction ever produced. Thursday found the destination, a prayer that they may all be one, answered in coins crossing the world's oldest wall because His body had already torn it down. The week never really taught stewardship. It introduced the Steward's older Brother, the One who gave everything, gladly, on schedule, for family. Everything He asks of our hands, He did first with His.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the Center of the Week</h2>
+<p>Trace Him back through the days. Sabbath handed us one sentence, you know the grace of our Lord Jesus Christ, and the whole week has been that sentence unfolding. Sunday read it like a receipt, the glory He had before the world existed traded for a borrowed pillow and a cross, His poverty the only reason for our wealth. Monday listed every clean motive for giving and found His face behind each one, then ran out of words where Paul did, at the indescribable Gift. Tuesday found the date stamp, the Lamb slain from the foundation of the world, a Gift decided before Eden and kept like an appointment through Gethsemane. Wednesday found the attitude, for the joy set before Him He endured the cross, the original cheerful Giver whose gladness no extraction ever produced. Thursday found the destination, a prayer that they may all be one, answered in coins crossing the world's oldest wall because His body had already torn it down. The week never really taught stewardship. It introduced the Steward's older Brother, the One who gave everything, gladly, on schedule, for family. Everything He asks of our hands, He did first with His.</p>
+    </section>
 
-    <!-- 6. WEEKEND PRACTICE -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Weekend Practice</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Weekend Practice</h2>
+<div class="application-card">
         Close the loop you opened on Sabbath. Take out the slip of paper with last month's number and set it next to this week's memory text, though He was rich, yet for your sake He became poor. Let the two talk to each other for a few honest minutes, without guilt, and then decide next month on purpose, a proportion chosen against what you actually have, a date that will keep itself, and one gift aimed across a line at believers you will never meet. Before Sabbath ends, add the gift no account can hold. Give someone your unhurried presence for a whole hour, phone down, the way God gave you His.
       </div>
-    </div>
+    </section>
 
-    <!-- 7. CLOSING PRAYER FOR THE WEEK -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer for the Week</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we began this week braced for a lecture about money, and You gave us Your Son instead. We watched Him trade the wealth of heaven for a manger and a cross so that beggars like us could inherit everything, and somewhere between Macedonia's overflowing joy and the convoy walking into Jerusalem, our grip started to loosen. Thank You for a Gift no words can get to the bottom of. Thank You for churches too poor to be asked who begged to give anyway, and for the proof that Your grace can do that in ordinary people like us. Now send us into Sabbath as different givers. Settle our plans in the quiet. Grow Your own gladness in our faces. Aim our surplus at real need, and knit us to family we have never met. We hand You ourselves first, and everything else after, cheerfully, because now we know the grace. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer for the Week</h2>
+<p>Father, we began this week braced for a lecture about money, and You gave us Your Son instead. We watched Him trade the wealth of heaven for a manger and a cross so that beggars like us could inherit everything, and somewhere between Macedonia's overflowing joy and the convoy walking into Jerusalem, our grip started to loosen. Thank You for a Gift no words can get to the bottom of. Thank You for churches too poor to be asked who begged to give anyway, and for the proof that Your grace can do that in ordinary people like us. Now send us into Sabbath as different givers. Settle our plans in the quiet. Grow Your own gladness in our faces. Aim our surplus at real need, and knit us to family we have never met. We hand You ourselves first, and everything else after, cheerfully, because now we know the grace. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+  </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-09-10.html"><span class="day-nav-kicker">← Thursday</span><span class="day-nav-title">Unity</span></a><div class="day-nav-item is-pending" aria-disabled="true">
+<span class="day-nav-kicker">Saturday →</span><span class="day-nav-title">Not published yet</span>
+</div></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"2-corinthians-8-9":{"ref":"2 Corinthians 8:9","text":"For you know the grace of our Lord Jesus Christ, that though He was rich, yet for your sake He became poor, so that you through His poverty might become rich.","bibleUrl":"https://www.bible.com/bible/3034/2CO.8.9"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

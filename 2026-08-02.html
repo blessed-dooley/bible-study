@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Varieties of Gifts — Daily Bible Study</title>
 <meta name="study-title" content="Varieties of Gifts">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 6, Spiritual Gifts · Part 2 of 7">
+<meta name="study-passage" content="1 Corinthians 12:3">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 6, Spiritual Gifts · Day 2 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Varieties of Gifts">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 6, Spiritual Gifts · Part 2 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 6, Spiritual Gifts · Day 2 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-08-02.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 6, Spiritual Gifts · Part 2 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 6, Spiritual Gifts · Day 2 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,324 +38,197 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Varieties of Gifts</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 6, Spiritual Gifts</span>
-      <span>Part 2 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">August 2, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Sun · Aug 2</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">9 min</span>
+    </div>
+    <h1 class="study-title">Varieties of Gifts</h1>
+    <p class="study-sub"><span class="sub-title">Spiritual Gifts</span><span class="sub-facts"><span>Lesson 6</span><span>Day 2 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>A believer stands up in a Corinthian gathering to say the shortest creed the church owns. Jesus is Lord. On the street those words sound like treason, because Lord is Caesar's title, and yet Paul says no one can truly speak them without the Holy Spirit. That confession is the Spirit's first gift, and behind it comes a whole catalog, different gifts, different ministries, different workings, one God behind all of it, handed to each person exactly as He chooses. <strong>Being spiritual starts with whose you are, not how gifted you look, and no gift on the list is optional.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday ended in a crowded living room, a hymn from one corner, a teaching from another, and Paul answering the noise with a single command. Chase love first, then welcome the gifts. Today he starts the welcome by opening the church's own letter and taking up their question about spiritual things. Corinth wanted to know who ranked as spiritual, and the city's oldest reflex was already at work, sorting members into impressive and ordinary. So Paul begins at the foundation, beneath tongues, beneath healing, beneath every ability on the coming list. What makes a person spiritual at all? His answer fits in three words.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>A believer stands up in a Corinthian gathering to say the shortest creed the church owns. Jesus is Lord. On the street those words sound like treason, because Lord is Caesar's title, and yet Paul says no one can truly speak them without the Holy Spirit. That confession is the Spirit's first gift, and behind it comes a whole catalog, different gifts, different ministries, different workings, one God behind all of it, handed to each person exactly as He chooses. <strong>Being spiritual starts with whose you are, not how gifted you look, and no gift on the list is optional.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday ended in a crowded living room, a hymn from one corner, a teaching from another, and Paul answering the noise with a single command. Chase love first, then welcome the gifts. Today he starts the welcome by opening the church's own letter and taking up their question about spiritual things. Corinth wanted to know who ranked as spiritual, and the city's oldest reflex was already at work, sorting members into impressive and ordinary. So Paul begins at the foundation, beneath tongues, beneath healing, beneath every ability on the coming list. What makes a person spiritual at all? His answer fits in three words.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Two Words Could Cost You Everything</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>Two Words Could Cost You Everything</h3>
       <p>Every city in the empire owed Caesar something, but Corinth owed him everything. Julius Caesar had rebuilt the ruined city and stocked it with Rome's freedmen, so Rome's favor was Corinth's entire business model, and gratitude had a religious address. Shrines to the imperial family stood in the city center. Civic festivals ran on the emperor's calendar. The surest ladder for an ambitious Corinthian was sponsoring the games and honors that celebrated Caesar, and the empire's loyalty shorthand, the phrase that greased contracts and courtrooms alike, was simple. Caesar is lord.</p>
-      <p>Then a tentmaker's congregation began closing its prayers with a different sentence. Jesus is Lord. To modern ears it is a chorus lyric. To Roman ears it was a rival coronation, and the movement already had a rap sheet. Remember how the priests cornered Pilate at Jesus' trial, warning that releasing Him would make the governor no friend of Caesar (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.19.12" target="_blank" rel="noopener">John 19:12</a>), until the crowd shouted the empire's creed outright, we have no king but Caesar (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.19.15" target="_blank" rel="noopener">John 19:15</a>). Saying the opposite in public could cost a contract, a friendship, a life. That is the room where Paul chooses to talk about gifts. Whatever else the Spirit was handing out in Corinth, the starter gift was nerve.</p>
-    </div>
+      <p>Then a tentmaker's congregation began closing its prayers with a different sentence. Jesus is Lord. To modern ears it is a chorus lyric. To Roman ears it was a rival coronation, and the movement already had a rap sheet. Remember how the priests cornered Pilate at Jesus' trial, warning that releasing Him would make the governor no friend of Caesar (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.19.12" target="_blank" rel="noopener" data-verse="john-19-12" data-ref="John 19:12" aria-expanded="false">John 19:12</a>), until the crowd shouted the empire's creed outright, we have no king but Caesar (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.19.15" target="_blank" rel="noopener" data-verse="john-19-15" data-ref="John 19:15" aria-expanded="false">John 19:15</a>). Saying the opposite in public could cost a contract, a friendship, a life. That is the room where Paul chooses to talk about gifts. Whatever else the Spirit was handing out in Corinth, the starter gift was nerve.</p>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Paul is answering the church's mail again. Now concerning spiritual gifts, he begins (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.1" target="_blank" rel="noopener">1 Corinthians 12:1</a>), and you can feel the room lean in, because in Corinth the gifts had become a scoreboard. Scholars still discuss whether his opening phrase means spiritual gifts or spiritual people, and the chapter answers by redefining both. Before naming a single gift, Paul resets what spiritual means at all, and he starts with the shortest, most dangerous sentence a Corinthian could say out loud. Jesus is Lord. From there the passage (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.1-6" target="_blank" rel="noopener">1 Corinthians 12:1-6</a>) opens into a variety wider than Corinth had categories for.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Paul is answering the church's mail again. Now concerning spiritual gifts, he begins (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.1" target="_blank" rel="noopener" data-verse="1-corinthians-12-1" data-ref="1 Corinthians 12:1" aria-expanded="false">1 Corinthians 12:1</a>), and you can feel the room lean in, because in Corinth the gifts had become a scoreboard. Scholars still discuss whether his opening phrase means spiritual gifts or spiritual people, and the chapter answers by redefining both. Before naming a single gift, Paul resets what spiritual means at all, and he starts with the shortest, most dangerous sentence a Corinthian could say out loud. Jesus is Lord. From there the passage (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.1-6" target="_blank" rel="noopener" data-verse="1-corinthians-12-1-6" data-ref="1 Corinthians 12:1-6" aria-expanded="false">1 Corinthians 12:1-6</a>) opens into a variety wider than Corinth had categories for.</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 12:3 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c61855cf899943a9485dc1428dfed25d35e3423b9e5106abc9c5965d52308fa8 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 12:3</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.12.3" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.12.3" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Therefore I inform you that no one who is speaking by the Spirit of God says, “Jesus be cursed,” and no one can say, “Jesus is Lord,” except by the Holy Spirit.</div>
 <div class="verse-commentary">
-          <p>Nobody in that room heard Jesus is Lord as a warm slogan. These were people God had led out from under mute idols (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.2" target="_blank" rel="noopener">1 Corinthians 12:2</a>), gods who never spoke, into the service of a Lord who does. And Lord was the title the empire liked kept for Caesar. Rome heard a rival king inside the church's shortest creed, the same charge that chased believers through Thessalonica, saying that there is another king, Jesus (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.17.7" target="_blank" rel="noopener">Acts 17:7</a>). So Paul's point cuts deep. Nobody can speak that sentence and mean it with their life apart from the Holy Spirit. The Spirit's first gift is the one hiding in plain sight. Not tongues. Not healing. The confession itself. Before you were ever gifted for anything else, the Spirit gave you the nerve to say out loud who owns you.</p>
+          <p>Nobody in that room heard Jesus is Lord as a warm slogan. These were people God had led out from under mute idols (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.2" target="_blank" rel="noopener" data-verse="1-corinthians-12-2" data-ref="1 Corinthians 12:2" aria-expanded="false">1 Corinthians 12:2</a>), gods who never spoke, into the service of a Lord who does. And Lord was the title the empire liked kept for Caesar. Rome heard a rival king inside the church's shortest creed, the same charge that chased believers through Thessalonica, saying that there is another king, Jesus (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.17.7" target="_blank" rel="noopener" data-verse="acts-17-7" data-ref="Acts 17:7" aria-expanded="false">Acts 17:7</a>). So Paul's point cuts deep. Nobody can speak that sentence and mean it with their life apart from the Holy Spirit. The Spirit's first gift is the one hiding in plain sight. Not tongues. Not healing. The confession itself. Before you were ever gifted for anything else, the Spirit gave you the nerve to say out loud who owns you.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: 1 Corinthians 12:4-6 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:cafe34a8ebaf6e62fafaa01aa3ac19852e336abd2195e7dfa0fbf6ade09b4ba9 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 12:4-6</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.12.4-6" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 4">4</sup>There are different gifts, but the same Spirit. <sup class="verse-number" aria-label="Verse 5">5</sup>There are different ministries, but the same Lord. <sup class="verse-number" aria-label="Verse 6">6</sup>There are different ways of working, but the same God works all things in all people.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.12.4-6" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 4">4</sup>There are different gifts, but the same Spirit. <sup class="verse-number" aria-label="Verse 5">5</sup>There are different ministries, but the same Lord. <sup class="verse-number" aria-label="Verse 6">6</sup>There are different ways of working, but the same God works all things in all people.</div>
 <div class="verse-commentary">
-          <p>Three sentences, three angles, one deliberate drumbeat. Different gifts, same Spirit. Different ministries, same Lord. Different activities, same God. The word behind gifts is the Greek <em>charisma</em>, a grace gift, something handed over out of sheer generosity, never earned and never invoiced, and that one word quietly deflates every Corinthian scoreboard, because nobody brags about a present. Paul plainly has gifts in view (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.4" target="_blank" rel="noopener">1 Corinthians 12:4</a>), then widens the lens twice. The same abilities counted as ministries (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.5" target="_blank" rel="noopener">1 Corinthians 12:5</a>) are ways of serving people, and counted as activities (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.6" target="_blank" rel="noopener">1 Corinthians 12:6</a>) they are God Himself energizing the work. The lines run too close together to slice apart, and notice who does all the giving. Spirit, Lord, God. Three Persons pouring different gifts through different people toward one purpose. Variety was never the threat. It is the signature.</p>
+          <p>Three sentences, three angles, one deliberate drumbeat. Different gifts, same Spirit. Different ministries, same Lord. Different activities, same God. The word behind gifts is the Greek <em>charisma</em>, a grace gift, something handed over out of sheer generosity, never earned and never invoiced, and that one word quietly deflates every Corinthian scoreboard, because nobody brags about a present. Paul plainly has gifts in view (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.4" target="_blank" rel="noopener" data-verse="1-corinthians-12-4" data-ref="1 Corinthians 12:4" aria-expanded="false">1 Corinthians 12:4</a>), then widens the lens twice. The same abilities counted as ministries (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.5" target="_blank" rel="noopener" data-verse="1-corinthians-12-5" data-ref="1 Corinthians 12:5" aria-expanded="false">1 Corinthians 12:5</a>) are ways of serving people, and counted as activities (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.6" target="_blank" rel="noopener" data-verse="1-corinthians-12-6" data-ref="1 Corinthians 12:6" aria-expanded="false">1 Corinthians 12:6</a>) they are God Himself energizing the work. The lines run too close together to slice apart, and notice who does all the giving. Spirit, Lord, God. Three Persons pouring different gifts through different people toward one purpose. Variety was never the threat. It is the signature.</p>
         </div>
-      </div>
+      </figure>
 
-      <p>One gift deserves a spotlight before the list grows. Faith. Paul will shortly name faith among the Spirit's distributed gifts (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.9" target="_blank" rel="noopener">1 Corinthians 12:9</a>), which sounds strange until you remember what it costs to keep trusting God with a death sentence hanging over your confession. Faith under fire is something the Spirit supplies, not something grit produces. It even stands first in the trio that outlasts everything else, faith, hope, and love (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.13" target="_blank" rel="noopener">1 Corinthians 13:13</a>). The most basic gift is the one that holds on.</p>
+      <p>One gift deserves a spotlight before the list grows. Faith. Paul will shortly name faith among the Spirit's distributed gifts (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.9" target="_blank" rel="noopener" data-verse="1-corinthians-12-9" data-ref="1 Corinthians 12:9" aria-expanded="false">1 Corinthians 12:9</a>), which sounds strange until you remember what it costs to keep trusting God with a death sentence hanging over your confession. Faith under fire is something the Spirit supplies, not something grit produces. It even stands first in the trio that outlasts everything else, faith, hope, and love (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.13" target="_blank" rel="noopener" data-verse="1-corinthians-13-13" data-ref="1 Corinthians 13:13" aria-expanded="false">1 Corinthians 13:13</a>). The most basic gift is the one that holds on.</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 12:11 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:41f5ef23d350c6198ad5ebff14aba2983c5397038cc75a653a3a2c14c99b95b2 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 12:11</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.12.11" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.12.11" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">All these are the work of one and the same Spirit, who apportions them to each one as He determines.</div>
 <div class="verse-commentary">
           <p>Here is the verse that ends every argument about who earned what. One and the same Spirit runs the whole distribution, and He hands out gifts as He decides. Read that slowly. Your gift was the Spirit's decision. So was your neighbor's. Complaining about your gift criticizes His judgment, and envying someone else's questions His fairness. The sentence also proves that every gift is necessary, because a wise Giver does not distribute filler. If the Spirit measured out this exact mix of gifts to this exact congregation, then the body is missing something the moment one member sits on theirs. The Corinthians wanted a ranking. Paul hands them a distribution list with the Spirit's signature at the bottom. There are no accidental gifts and no optional people.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Piece Nobody Would Have Picked</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Piece Nobody Would Have Picked</h3>
       <p>A thousand-piece puzzle takes over the kitchen table somewhere around the second week it sits there. Sky in one corner, barn in the other, three people hunched over it at ten at night insisting they are going to bed and not going. Then comes the moment. The picture is finished, the family gathers, and there is a hole. One piece, missing. Everybody drops to the floor. Couch cushions come off. The dog's bed gets searched. Nobody stands back admiring the 999 pieces already in place. Every eye in the room is locked on the one that is gone, and it is not even an interesting piece. It is a brown one. Part of a shadow. The piece nobody would have picked out of the box as special.</p>
       <p>Paul says the Spirit stocked your congregation the way a puzzle gets cut. On purpose, one of a kind, every shape an address. Nobody asks why a piece is not shaped like its neighbor, because a piece shaped like every other piece would fit nowhere and hold nothing. And nobody cuts a thousand pieces and includes filler. The quiet gift you keep discounting because it looks brown and shadow-shaped is the exact piece the picture cannot finish without. Sit on it long enough and the whole room ends up on the floor, looking for you. The Spirit decided what went in the box. The picture is not done until every piece He cut is on the table.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Field That Beats Its Best Single Crop</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Field That Beats Its Best Single Crop</h3>
       <p>For decades ecologists have run the same quiet experiment on thousands of plots. Plant one species alone, plant a mix of many, then come back year after year and weigh what grew. In 2024 a team gathered 65 of these long-running experiments into one analysis in Nature Communications, 39 grasslands and 26 forests, 166 kinds of herb and 134 kinds of tree, some plots tracked for eighteen years. The result was consistent. The diverse plots outgrew the average of their component monocultures, producing more than those same species yielded on average when each was grown alone, and that advantage kept strengthening the longer the plots ran.</p>
       <p>Here is the part that reads like Paul. The mixed field wins not because one superstar plant carries it, but because species with different strengths contribute at different times, one thriving in the drought year, another in the wet one, a plain root doing slow work underground while a showier neighbor rests. As the plots age, which species drives the advantage keeps shifting, and members that looked minor early on come into their own later. The Spirit stocked the church the way creation stocks a thriving field, not with one impressive crop but with variety, each member carrying the season that is theirs, the whole growing richer the longer they stay rooted together.</p>
       <!-- TODAYS_WORLD_SOURCE: Effects of plant diversity on productivity strengthen over time due to trait-dependent shifts in species overyielding | Nature Communications | 2024 | https://www.nature.com/articles/s41467-024-46355-z -->
-    </div>
+    <details class="disclosure source-disclosure"><summary class="disclosure-summary"><span class="disclosure-label">Source</span> <span class="disclosure-publisher">Nature Communications</span></summary><div class="disclosure-body"><p><cite>Effects of plant diversity on productivity strengthen over time due to trait-dependent shifts in species overyielding</cite>. Nature Communications, 2024. <a href="https://www.nature.com/articles/s41467-024-46355-z" target="_blank" rel="noopener noreferrer">Read the source</a>.</p></div></details></section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Follow the gifts upstream and you find a Giver with scars. The confession that opens everything, Jesus is Lord, is only sayable because the Lord in question went to a cross and walked out of a tomb. And Scripture paints the ascension not as a departure but as a coronation with gifts thrown from the platform. When He ascended on high, He took the captives captive and gave gifts to people, apostles, prophets, evangelists, shepherds, teachers (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.4.8-11" target="_blank" rel="noopener">Ephesians 4:8-11</a>). Sit with what that means. The risen Christ celebrated His victory by equipping us. The Spirit distributes as He wills, but the supply line runs straight from the throne of the Crucified. That is why the first gift is a sentence about Him. Every grace gift that follows, every act of service, every surge of power, exists to make the Lordship of Jesus visible in a world still bowing to lesser lords. The gifts were never about us. They are the risen King, still handing things out.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Follow the gifts upstream and you find a Giver with scars. The confession that opens everything, Jesus is Lord, is only sayable because the Lord in question went to a cross and walked out of a tomb. And Scripture paints the ascension not as a departure but as a coronation with gifts thrown from the platform. When He ascended on high, He took the captives captive and gave gifts to people, apostles, prophets, evangelists, shepherds, teachers (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.4.8-11" target="_blank" rel="noopener" data-verse="ephesians-4-8-11" data-ref="Ephesians 4:8-11" aria-expanded="false">Ephesians 4:8-11</a>). Sit with what that means. The risen Christ celebrated His victory by equipping us. The Spirit distributes as He wills, but the supply line runs straight from the throne of the Crucified. That is why the first gift is a sentence about Him. Every grace gift that follows, every act of service, every surge of power, exists to make the Lordship of Jesus visible in a world still bowing to lesser lords. The gifts were never about us. They are the risen King, still handing things out.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Today, say the confession somewhere real. Not in your head. Out loud, in a place where it costs at least a little. A text to the friend who knows you don't usually talk that way. A sentence at the dinner table. An honest answer to the coworker who asks about your weekend. Three words, Jesus is Lord, and one truthful follow-up, He can have whatever He wants of mine. The first gift grows the same way it arrived. By being spoken.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Holy Spirit, we owe You a debt we rarely notice. Every time we have said Jesus is Lord and meant it, that was You, giving us both the words and the will behind them. Thank You for the first gift. Forgive us for treating the rest like merchandise, wanting the impressive ones, discounting the quiet ones, grading each other by gifts You handed out as You decided. Teach us to trust Your judgment, both for what You gave us and for what You gave the person beside us. Same Spirit, same Lord, same God. Make that our peace when church feels uneven, and our courage when the confession gets expensive. Let every gift in our congregation, named or buried, find its work this week, so the watching world sees one Lord instead of a talent show. We are Yours, and so is everything You handed us. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"Where have you quietly ranked the gifts in your church, treating some people as the varsity squad and others as filler (the preacher over the nursery volunteer, the singer over the man who shovels the walk)? And what would change this week if you believed the Spirit chose every one of those gifts on purpose?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"Where have you quietly ranked the gifts in your church, treating some people as the varsity squad and others as filler (the preacher over the nursery volunteer, the singer over the man who shovels the walk)? And what would change this week if you believed the Spirit chose every one of those gifts on purpose?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Holy Spirit, we owe You a debt we rarely notice. Every time we have said Jesus is Lord and meant it, that was You, giving us both the words and the will behind them. Thank You for the first gift. Forgive us for treating the rest like merchandise, wanting the impressive ones, discounting the quiet ones, grading each other by gifts You handed out as You decided. Teach us to trust Your judgment, both for what You gave us and for what You gave the person beside us. Same Spirit, same Lord, same God. Make that our peace when church feels uneven, and our courage when the confession gets expensive. Let every gift in our congregation, named or buried, find its work this week, so the watching world sees one Lord instead of a talent show. We are Yours, and so is everything You handed us. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-08-01.html"><span class="day-nav-kicker">← Saturday</span><span class="day-nav-title">Spiritual Gifts</span></a><a class="day-nav-item" href="/bible-study/2026-08-03.html"><span class="day-nav-kicker">Monday →</span><span class="day-nav-title">Unity Through Diversity</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"john-19-12":{"ref":"John 19:12","text":"From then on, Pilate tried to release Him, but the Jews kept shouting, \u201cIf you release this man, you are no friend of Caesar. Anyone who declares himself a king is defying Caesar.\u201d","bibleUrl":"https://www.bible.com/bible/3034/JHN.19.12"},"john-19-15":{"ref":"John 19:15","text":"At this, they shouted, \u201cAway with Him! Away with Him! Crucify Him!\u201d \u201cShall I crucify your King?\u201d Pilate asked. \u201cWe have no king but Caesar,\u201d replied the chief priests.","bibleUrl":"https://www.bible.com/bible/3034/JHN.19.15"},"1-corinthians-12-1":{"ref":"1 Corinthians 12:1","text":"Now about spiritual gifts, brothers, I do not want you to be uninformed.","bibleUrl":"https://www.bible.com/bible/3034/1CO.12.1"},"1-corinthians-12-1-6":{"ref":"1 Corinthians 12:1-6","text":"Now about spiritual gifts, brothers, I do not want you to be uninformed. You know that when you were pagans, you were influenced and led astray to mute idols. Therefore I inform you that no one who is speaking by the Spirit of God says, \u201cJesus be cursed,\u201d and no one can say, \u201cJesus is Lord,\u201d except by the Holy Spirit. There are different gifts, but the same Spirit. There are different ministries, but the same Lord. There are different ways of working, but the same God works all things in all people.","bibleUrl":"https://www.bible.com/bible/3034/1CO.12.1-6"},"1-corinthians-12-2":{"ref":"1 Corinthians 12:2","text":"You know that when you were pagans, you were influenced and led astray to mute idols.","bibleUrl":"https://www.bible.com/bible/3034/1CO.12.2"},"acts-17-7":{"ref":"Acts 17:7","text":"and Jason has welcomed them into his home. They are all defying Caesar\u2019s decrees, saying that there is another king, named Jesus!\u201d","bibleUrl":"https://www.bible.com/bible/3034/ACT.17.7"},"1-corinthians-12-4":{"ref":"1 Corinthians 12:4","text":"There are different gifts, but the same Spirit.","bibleUrl":"https://www.bible.com/bible/3034/1CO.12.4"},"1-corinthians-12-5":{"ref":"1 Corinthians 12:5","text":"There are different ministries, but the same Lord.","bibleUrl":"https://www.bible.com/bible/3034/1CO.12.5"},"1-corinthians-12-6":{"ref":"1 Corinthians 12:6","text":"There are different ways of working, but the same God works all things in all people.","bibleUrl":"https://www.bible.com/bible/3034/1CO.12.6"},"1-corinthians-12-9":{"ref":"1 Corinthians 12:9","text":"to another faith by the same Spirit, to another gifts of healing by that one Spirit,","bibleUrl":"https://www.bible.com/bible/3034/1CO.12.9"},"1-corinthians-13-13":{"ref":"1 Corinthians 13:13","text":"And now these three remain: faith, hope, and love; but the greatest of these is love.","bibleUrl":"https://www.bible.com/bible/3034/1CO.13.13"},"ephesians-4-8-11":{"ref":"Ephesians 4:8-11","text":"This is why it says: \u201cWhen He ascended on high, He led captives away, and gave gifts to men.\u201d What does \u201cHe ascended\u201d mean, except that He also descended to the lower parts of the earth? He who descended is the very One who ascended above all the heavens, in order to fill all things. And it was He who gave some to be apostles, some to be prophets, some to be evangelists, and some to be pastors and teachers,","bibleUrl":"https://www.bible.com/bible/3034/EPH.4.8-11"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

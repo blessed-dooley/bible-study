@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>A Clearer Picture of God — Daily Bible Study</title>
 <meta name="study-title" content="A Clearer Picture of God">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 2, To Know God · Part 2 of 7">
+<meta name="study-passage" content="Genesis 3:1-5">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 2, To Know God · Day 2 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="A Clearer Picture of God">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 2, To Know God · Part 2 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 2, To Know God · Day 2 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-04-05.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 2, To Know God · Part 2 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 2, To Know God · Day 2 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,350 +38,228 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>A Clearer Picture of God</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 2, To Know God</span>
-      <span>Part 2 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Sun · Apr 5</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
     </div>
-    <div class="date-badge">April 5, 2026</div>
+    <h1 class="study-title">A Clearer Picture of God</h1>
+    <p class="study-sub"><span class="sub-title">To Know God</span><span class="sub-facts"><span>Lesson 2</span><span>Day 2 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">&#10022; &#9769; &#10022;</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">The Bible doesn't just tell us about God; it pulls back a curtain, giving us the clearest view of His character available this side of eternity.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p class="tldr-hook">The Bible doesn't just tell us about God; it pulls back a curtain, giving us the clearest view of His character available this side of eternity.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span> Scripture reveals a God who is holy, loving, just, merciful, wise, gracious, forgiving, purposeful, sovereign over death, and eternal</li>
-        <li><span class="bullet-icon">☩</span> Satan's strategy from Eden onward hasn't been to deny God's existence but to distort humanity's understanding of who God actually is</li>
-        <li><span class="bullet-icon">☩</span> The serpent's first move was not "God isn't real" but "God can't be trusted," which is a far more dangerous lie because it's harder to detect</li>
-        <li><span class="bullet-icon">☩</span> Getting to know God's character through His Word is how the fog of misrepresentation begins to lift</li>
+        <li>
+<span class="bullet-icon">☩</span> Scripture reveals a God who is holy, loving, just, merciful, wise, gracious, forgiving, purposeful, sovereign over death, and eternal</li>
+        <li>
+<span class="bullet-icon">☩</span> Satan's strategy from Eden onward hasn't been to deny God's existence but to distort humanity's understanding of who God actually is</li>
+        <li>
+<span class="bullet-icon">☩</span> The serpent's first move was not "God isn't real" but "God can't be trusted," which is a far more dangerous lie because it's harder to detect</li>
+        <li>
+<span class="bullet-icon">☩</span> Getting to know God's character through His Word is how the fog of misrepresentation begins to lift</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday's Sabbath opener framed the question driving this entire week: who is the God we're trying to know? We saw that Jesus Himself defined eternal life as knowing God personally, not just knowing about Him (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.17.3" target="_blank" rel="noopener">John 17:3</a>). Today we pick up the next thread: if knowing God is that important, what has gone wrong with humanity's picture of Him, and where do we go to get it corrected?</p>
-    </div>
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday's Sabbath opener framed the question driving this entire week: who is the God we're trying to know? We saw that Jesus Himself defined eternal life as knowing God personally, not just knowing about Him (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.17.3" target="_blank" rel="noopener" data-verse="john-17-3" data-ref="John 17:3" aria-expanded="false">John 17:3</a>). Today we pick up the next thread: if knowing God is that important, what has gone wrong with humanity's picture of Him, and where do we go to get it corrected?</p>
+    </section>
 
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Original Character Assassination</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Original Character Assassination</h3>
       <p>The serpent in Genesis 3 does not open with a theological argument. He opens with a question. That detail matters more than most readers realize. In the rhetoric of the ancient world, the most devastating way to undermine authority was not a frontal assault but a carefully planted seed of doubt. You didn't accuse a king of evil; you wondered aloud whether his motives were really as noble as they appeared. The question format invited the listener to do the accusing themselves, which made the conclusion feel like their own idea rather than someone else's manipulation.</p>
       <p>This is exactly the serpent's technique. "Did God really say...?" is not a request for information. It's a reframing device. By slightly exaggerating God's command ("You must not eat from <em>any</em> tree?"), the serpent paints God as restrictive, withholding, paranoid. Eve corrects the exaggeration, but the frame has already shifted. The conversation is no longer about God's generosity in giving them every other tree in the garden. It's about the one restriction. And from that foothold, the serpent builds his case: God is hiding something. God is protecting His own interests. God is not who you think He is.</p>
       <p>What's striking is that this strategy has never changed. Every distortion of God's character since Eden has followed the same pattern: take one true thing (God did set a boundary), twist the motive behind it (He must be keeping something good from you), and let the lie grow from there.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Today's anchor passage is Genesis 3:1-5, the first recorded attempt to distort God's character. But the study also surveys the Bible's own answer to that distortion: a sweeping catalog of God's attributes, from His omnipotence and justice to His mercy, grace, and eternal faithfulness. We'll walk through the anchor passage first, then let several key attribute passages speak as correctives to the lies that started in Eden.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Today's anchor passage is Genesis 3:1-5, the first recorded attempt to distort God's character. But the study also surveys the Bible's own answer to that distortion: a sweeping catalog of God's attributes, from His omnipotence and justice to His mercy, grace, and eternal faithfulness. We'll walk through the anchor passage first, then let several key attribute passages speak as correctives to the lies that started in Eden.</p>
 
       <!-- ANCHOR: Genesis 3:1-5 -->
 <!-- BSB_BLOCK: Genesis 3:1-5 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:331c3e8a1b4da0c0d891836cf4a5a9b82a4c9c4c8f0fa32177ad7678cd4c1a4c | footnotes-stripped:1 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Genesis 3:1-5</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/GEN.3.1-5" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>Now the serpent was more crafty than any beast of the field that the LORD God had made. And he said to the woman, “Did God really say, ‘You must not eat from any tree in the garden?’” <sup class="verse-number" aria-label="Verse 2">2</sup>The woman answered the serpent, “We may eat the fruit of the trees of the garden, <sup class="verse-number" aria-label="Verse 3">3</sup>but about the fruit of the tree in the middle of the garden, God has said, ‘You must not eat of it or touch it, or you will die.’” <sup class="verse-number" aria-label="Verse 4">4</sup>“You will not surely die,” the serpent told the woman. <sup class="verse-number" aria-label="Verse 5">5</sup>“For God knows that in the day you eat of it, your eyes will be opened and you will be like God, knowing good and evil.”</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/GEN.3.1-5" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 1">1</sup>Now the serpent was more crafty than any beast of the field that the LORD God had made. And he said to the woman, “Did God really say, ‘You must not eat from any tree in the garden?’” <sup class="verse-number" aria-label="Verse 2">2</sup>The woman answered the serpent, “We may eat the fruit of the trees of the garden, <sup class="verse-number" aria-label="Verse 3">3</sup>but about the fruit of the tree in the middle of the garden, God has said, ‘You must not eat of it or touch it, or you will die.’” <sup class="verse-number" aria-label="Verse 4">4</sup>“You will not surely die,” the serpent told the woman. <sup class="verse-number" aria-label="Verse 5">5</sup>“For God knows that in the day you eat of it, your eyes will be opened and you will be like God, knowing good and evil.”</div>
 <div class="verse-commentary">
           <p>The serpent's attack unfolds in three precise moves, and understanding them helps us recognize the same strategy today. First, he questions God's word: "Did God really say...?" This plants doubt about whether God has actually communicated clearly. Second, he contradicts God's word directly: "You will not surely die." This is a flat denial of the consequence God had promised, turning God into either a liar or someone who uses empty threats to control people. Third, and most devastatingly, he attacks God's motive: "God knows that in the day you eat of it, your eyes will be opened." The implication is that God is threatened by human potential, that He set the boundary not out of love but out of self-interest.</p>
           <p>Notice what the serpent does <em>not</em> do. He does not deny God's existence. He does not argue against the concept of a Creator. He takes for granted that God is real and then systematically redefines who that God is. The Hebrew word used for the serpent's craftiness is <em>arum</em>, which can mean shrewd or prudent in a neutral sense but here carries the weight of calculated deception. The serpent is not confused about God; he is deliberately constructing a false version of God for Eve to react to. And this is still the primary way people end up with a distorted picture of their Creator: not through atheism, but through a subtly rewritten version of His character.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: Genesis 3:1 | 3:1 Hebrew nachash, translated in this chapter as serpent, is translated in most cases as snake. -->
 
       <p>The Bible's answer to this distortion is not a single proof text but a whole-Bible portrait. From Genesis to Revelation, God reveals His character through action, invitation, and self-description. Here are three passages that directly counter the serpent's three lies.</p>
 
       <!-- SUPPORTING: Romans 2:4 -->
 <!-- BSB_BLOCK: Romans 2:4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:18045b5eb580de560048826f1e2986e48e9a674df5d9a3daf204e493560997e2 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Romans 2:4</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.2.4" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ROM.2.4" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Or do you disregard the riches of His kindness, tolerance, and patience, not realizing that God’s kindness leads you to repentance?</div>
 <div class="verse-commentary">
-          <p>The serpent painted God as restrictive and withholding. Paul paints the opposite picture: God is rich in kindness, restraint, and patience. The Greek word for kindness here, <em>chr&#275;stot&#275;s</em>, describes a goodness that actively benefits others at cost to itself. God's boundaries are not walls built to keep us from something good; they are guardrails built by someone whose kindness is specifically designed to lead us toward life. Every attribute on the Bible's list of God's character, from His justice (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.30.18" target="_blank" rel="noopener">Isaiah 30:18</a>) to His mercy (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.7.9" target="_blank" rel="noopener">Deuteronomy 7:9</a>) to His wisdom (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.2.7" target="_blank" rel="noopener">1 Corinthians 2:7</a>) and grace (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.12.9" target="_blank" rel="noopener">2 Corinthians 12:9</a>), orbits this same center: God acts for our benefit, not His own.</p>
+          <p>The serpent painted God as restrictive and withholding. Paul paints the opposite picture: God is rich in kindness, restraint, and patience. The Greek word for kindness here, <em>chrēstotēs</em>, describes a goodness that actively benefits others at cost to itself. God's boundaries are not walls built to keep us from something good; they are guardrails built by someone whose kindness is specifically designed to lead us toward life. Every attribute on the Bible's list of God's character, from His justice (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.30.18" target="_blank" rel="noopener" data-verse="isaiah-30-18" data-ref="Isaiah 30:18" aria-expanded="false">Isaiah 30:18</a>) to His mercy (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.7.9" target="_blank" rel="noopener" data-verse="deuteronomy-7-9" data-ref="Deuteronomy 7:9" aria-expanded="false">Deuteronomy 7:9</a>) to His wisdom (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.2.7" target="_blank" rel="noopener" data-verse="1-corinthians-2-7" data-ref="1 Corinthians 2:7" aria-expanded="false">1 Corinthians 2:7</a>) and grace (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.12.9" target="_blank" rel="noopener" data-verse="2-corinthians-12-9" data-ref="2 Corinthians 12:9" aria-expanded="false">2 Corinthians 12:9</a>), orbits this same center: God acts for our benefit, not His own.</p>
         </div>
-      </div>
+      </figure>
 
       <!-- SUPPORTING: Jeremiah 29:11 -->
 <!-- BSB_BLOCK: Jeremiah 29:11 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:31e057ee9c4afde0cc9129075b8a8e132147d22259b916661a79f7dae53c3c73 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Jeremiah 29:11</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/JER.29.11" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/JER.29.11" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">For I know the plans I have for you, declares the LORD, plans to prosper you and not to harm you, to give you a future and a hope.</div>
 <div class="verse-commentary">
           <p>The serpent's second lie was that God was hiding something, that His real agenda would harm Eve. Jeremiah delivers God's own declaration to a people in exile, a people who had every reason to wonder whether God had abandoned them. And His message is unmistakable: I know the plans I have for you, and they are for your well-being. The Hebrew word <em>shalom</em> behind "well-being" carries more weight than the English translation suggests; it means wholeness, completeness, flourishing. God is not a deity protecting His power by keeping humanity small. He is a Father whose plans are aimed at our flourishing, even when we can't see the full picture yet. This is the direct opposite of what the serpent claimed in Eden.</p>
         </div>
-      </div>
+      </figure>
 
       <!-- SUPPORTING: John 11:25 -->
 <!-- BSB_BLOCK: John 11:25 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:509567230fed177a4f5dca57a0ac7143d56146bb448886ec25e40b2f2a43c94e | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">John 11:25</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.11.25" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text">Jesus said to her, <span class="words-of-jesus">“I am the resurrection and the life. Whoever believes in Me will live, even though he dies.</span></div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/JHN.11.25" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">Jesus said to her, <span class="words-of-jesus">“I am the resurrection and the life. Whoever believes in Me will live, even though he dies.</span>
+</div>
 <div class="verse-commentary">
-          <p>The serpent's third lie was the most brazen: "You will not surely die." He promised that ignoring God's word would carry no real consequence, that death was an empty threat. John 11:25 reveals the truth on the other side of that lie. Death is real. It entered the world exactly as God warned. But God did not leave us there. Jesus stands at a tomb and declares that He Himself is the resurrection and the life, that death does not get the final word. The difference between the serpent's promise and Christ's promise is everything: the serpent said death wouldn't happen; Jesus says death happened, and He defeated it. One is a lie that pretends the problem doesn't exist. The other is a rescue that faces the problem head-on. This is the God the Bible reveals: omnipotent enough to conquer death (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.11.25" target="_blank" rel="noopener">John 11:25</a>), sovereign over all things (<a class="vlink" href="https://www.bible.com/bible/3034/PSA.47.8" target="_blank" rel="noopener">Psalm 47:8</a>), eternal in nature (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.33.27" target="_blank" rel="noopener">Deuteronomy 33:27</a>), and willing to forgive the very creatures who believed the lie about Him (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.6.14" target="_blank" rel="noopener">Matthew 6:14</a>).</p>
+          <p>The serpent's third lie was the most brazen: "You will not surely die." He promised that ignoring God's word would carry no real consequence, that death was an empty threat. John 11:25 reveals the truth on the other side of that lie. Death is real. It entered the world exactly as God warned. But God did not leave us there. Jesus stands at a tomb and declares that He Himself is the resurrection and the life, that death does not get the final word. The difference between the serpent's promise and Christ's promise is everything: the serpent said death wouldn't happen; Jesus says death happened, and He defeated it. One is a lie that pretends the problem doesn't exist. The other is a rescue that faces the problem head-on. This is the God the Bible reveals: omnipotent enough to conquer death (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.11.25" target="_blank" rel="noopener" data-verse="john-11-25" data-ref="John 11:25" aria-expanded="false">John 11:25</a>), sovereign over all things (<a class="vlink" href="https://www.bible.com/bible/3034/PSA.47.8" target="_blank" rel="noopener" data-verse="psalms-47-8" data-ref="Psalms 47:8" aria-expanded="false">Psalm 47:8</a>), eternal in nature (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.33.27" target="_blank" rel="noopener" data-verse="deuteronomy-33-27" data-ref="Deuteronomy 33:27" aria-expanded="false">Deuteronomy 33:27</a>), and willing to forgive the very creatures who believed the lie about Him (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.6.14" target="_blank" rel="noopener" data-verse="matthew-6-14" data-ref="Matthew 6:14" aria-expanded="false">Matthew 6:14</a>).</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Cover Song You Heard First</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Cover Song You Heard First</h3>
       <p>There is a disorienting experience that most music listeners have had at least once. You hear a song, you love it, you play it a hundred times, and it becomes yours. Then one day someone tells you it's a cover. You look up the original artist, press play, and something strange happens: the original sounds <em>wrong</em>. The timing is different, the production is rawer, the vocal doesn't hit the notes the way you expect. You know intellectually that this is the authentic version, the one that came first, but your ears have been trained by the copy. The cover rewired your expectations so thoroughly that the real thing feels like the imitation.</p>
       <p>That is what the serpent accomplished in Eden, and it is still working. Most people's picture of God is a cover version. It was shaped by a harsh Sunday school teacher, a parent who wielded God like a threat, a movie that portrayed Him as a cosmic scorekeeper, or just the general cultural assumption that religion is about rules and punishment. By the time they open the Bible and encounter the original, the God who pursues, who grieves, who promises restoration and means it, He sounds wrong. He doesn't match the version they learned first. The serpent doesn't need you to reject God outright. He just needs you to hear the cover before you hear the original. Today's study is about pressing play on the primary source and letting it retrain your ears.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">False Stories Still Travel Faster</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>False Stories Still Travel Faster</h3>
       <p>In 2025, a study from Georgia State University's Robinson College of Business confirmed what researchers at MIT had documented years earlier: false information spreads significantly faster than the truth on social media, reaching people roughly six times more quickly. The Georgia State team found that emotional cues, not accuracy, are what drive people to share content. We don't pass along what's true; we pass along what <em>feels</em> true, what triggers surprise, outrage, or fear.</p>
       <p>The parallel to Genesis 3 is almost too precise. The serpent's strategy was never about evidence. It was about emotional framing. "Did God really say?" appeals to suspicion. "You will not surely die" appeals to the desire for reassurance. "God knows you'll become like Him" appeals to ambition. Each move targets a feeling, not a fact. And the result is exactly what the modern research predicts: the distorted version of God's character spreads faster, sticks harder, and is more emotionally satisfying than the truth, at least in the short term.</p>
       <p>This is why the Bible's invitation to know God through Scripture is not optional. Without it, we will inevitably build our picture of God from whatever emotional narratives happen to be circulating around us. The only corrective is going back to the source.</p>
-    </div>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Every lie the serpent told in Eden finds its answer in Jesus. The serpent said God is withholding good things from you. Jesus came and "did not consider equality with God as something to be exploited" but "emptied himself" for us (<a class="vlink" href="https://www.bible.com/bible/3034/PHP.2.6-7" target="_blank" rel="noopener">Philippians 2:6-7</a>). The serpent said God can't be trusted. Jesus proved trustworthy to the point of death on a cross. The serpent said death isn't real. Jesus walked into death, stayed three days, and walked out the other side holding the keys.</p>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Every lie the serpent told in Eden finds its answer in Jesus. The serpent said God is withholding good things from you. Jesus came and "did not consider equality with God as something to be exploited" but "emptied himself" for us (<a class="vlink" href="https://www.bible.com/bible/3034/PHP.2.6-7" target="_blank" rel="noopener" data-verse="philippians-2-6-7" data-ref="Philippians 2:6-7" aria-expanded="false">Philippians 2:6-7</a>). The serpent said God can't be trusted. Jesus proved trustworthy to the point of death on a cross. The serpent said death isn't real. Jesus walked into death, stayed three days, and walked out the other side holding the keys.</p>
       <p>If you want to know what God is really like, look at Jesus. He healed the people religion had written off. He touched the ones everyone else avoided. He wept at a friend's grave even though He knew He was about to raise him. He forgave the soldiers who drove the nails. This is the clearer picture of God that the Bible offers: not a distant power broker protecting His interests, but a Father who gave everything to bring His children home.</p>
-    </div>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Pick one attribute of God from today's study: His kindness, His plans for your well-being, His power over death, or any other. Write it on a sticky note and place it where you'll see it throughout the day. Each time you notice it, ask yourself honestly: "Do I really believe this about God, or have I been believing a distorted version?" Let the Bible's picture replace whatever secondhand version you've been carrying.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, I confess that some of my picture of You has been built from things that aren't true. I've listened to secondhand descriptions, absorbed cultural assumptions, and sometimes believed the enemy's version of who You are more than Yours. Today I ask You to begin correcting that picture. Open my eyes to see You as You've revealed Yourself in Scripture: kind, patient, purposeful, sovereign, eternal, and relentlessly good. Help me recognize the serpent's voice when I hear it, even when it comes dressed up as my own thoughts. I want the clearest, truest picture of You that this life can offer. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"If you were honest about it, what is one thing you've believed about God's character that you now suspect might be more influenced by culture, past experiences, or other people's opinions than by what Scripture actually says?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"If you were honest about it, what is one thing you've believed about God's character that you now suspect might be more influenced by culture, past experiences, or other people's opinions than by what Scripture actually says?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, I confess that some of my picture of You has been built from things that aren't true. I've listened to secondhand descriptions, absorbed cultural assumptions, and sometimes believed the enemy's version of who You are more than Yours. Today I ask You to begin correcting that picture. Open my eyes to see You as You've revealed Yourself in Scripture: kind, patient, purposeful, sovereign, eternal, and relentlessly good. Help me recognize the serpent's voice when I hear it, even when it comes dressed up as my own thoughts. I want the clearest, truest picture of You that this life can offer. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-04-04.html"><span class="day-nav-kicker">← Saturday</span><span class="day-nav-title">To Know God</span></a><a class="day-nav-item" href="/bible-study/2026-04-06.html"><span class="day-nav-kicker">Monday →</span><span class="day-nav-title">God Is Holy</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"john-17-3":{"ref":"John 17:3","text":"Now this is eternal life, that they may know You, the only true God, and Jesus Christ, whom You have sent.","bibleUrl":"https://www.bible.com/bible/3034/JHN.17.3"},"isaiah-30-18":{"ref":"Isaiah 30:18","text":"Therefore the LORD longs to be gracious to you; therefore He rises to show you compassion, for the LORD is a just God. Blessed are all who wait for Him.","bibleUrl":"https://www.bible.com/bible/3034/ISA.30.18"},"deuteronomy-7-9":{"ref":"Deuteronomy 7:9","text":"Know therefore that the LORD your God is God, the faithful God who keeps His covenant of loving devotion for a thousand generations of those who love Him and keep His commandments.","bibleUrl":"https://www.bible.com/bible/3034/DEU.7.9"},"1-corinthians-2-7":{"ref":"1 Corinthians 2:7","text":"No, we speak of the mysterious and hidden wisdom of God, which He destined for our glory before time began.","bibleUrl":"https://www.bible.com/bible/3034/1CO.2.7"},"2-corinthians-12-9":{"ref":"2 Corinthians 12:9","text":"But He said to me, \u201cMy grace is sufficient for you, for My power is perfected in weakness.\u201d Therefore I will boast all the more gladly in my weaknesses, so that the power of Christ may rest on me.","bibleUrl":"https://www.bible.com/bible/3034/2CO.12.9"},"john-11-25":{"ref":"John 11:25","text":"Jesus said to her, \u201cI am the resurrection and the life. Whoever believes in Me will live, even though he dies.","bibleUrl":"https://www.bible.com/bible/3034/JHN.11.25"},"psalms-47-8":{"ref":"Psalms 47:8","text":"God reigns over the nations; God is seated on His holy throne.","bibleUrl":"https://www.bible.com/bible/3034/PSA.47.8"},"deuteronomy-33-27":{"ref":"Deuteronomy 33:27","text":"The eternal God is your dwelling place, and underneath are the everlasting arms. He drives out the enemy before you, giving the command, \u2018Destroy him!\u2019","bibleUrl":"https://www.bible.com/bible/3034/DEU.33.27"},"matthew-6-14":{"ref":"Matthew 6:14","text":"For if you forgive men their trespasses, your heavenly Father will also forgive you.","bibleUrl":"https://www.bible.com/bible/3034/MAT.6.14"},"philippians-2-6-7":{"ref":"Philippians 2:6-7","text":"Who, existing in the form of God, did not consider equality with God something to be grasped, but emptied Himself, taking the form of a servant, being made in human likeness.","bibleUrl":"https://www.bible.com/bible/3034/PHP.2.6-7"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

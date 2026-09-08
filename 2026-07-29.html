@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Warning Against Idolatry — Daily Bible Study</title>
 <meta name="study-title" content="Warning Against Idolatry">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 5, All to the Glory of God · Part 5 of 7">
+<meta name="study-passage" content="1 Corinthians 10:16">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 5, All to the Glory of God · Day 5 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Warning Against Idolatry">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 5, All to the Glory of God · Part 5 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 5, All to the Glory of God · Day 5 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-07-29.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 5, All to the Glory of God · Part 5 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 5, All to the Glory of God · Day 5 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,327 +38,203 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Warning Against Idolatry</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 5, All to the Glory of God</span>
-      <span>Part 5 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">July 29, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Wed · Jul 29</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
+    </div>
+    <h1 class="study-title">Warning Against Idolatry</h1>
+    <p class="study-sub"><span class="sub-title">All to the Glory of God</span><span class="sub-facts"><span>Lesson 5</span><span>Day 5 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>An invitation sits on a Corinthian kitchen table. Dinner in the temple dining room, the god listed as host. Some church members see no problem, since idols are nothing. Today Paul agrees the statue is hollow and then says the party is not unhosted. What pagans sacrifice goes to demons, and the man who takes communion on Sabbath cannot spend Friday at their table. Meat from the market is just meat. Worship is never just dinner. <strong>You can eat at either table, but you cannot eat at both.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday left us standing among the graves, holding a mold pressed from Israel's story. Remember the first failure on the list. The people sat down to eat and drink in front of a golden calf, and got up to party. A meal in honor of a false god, that was the crack where a rescued nation broke. Now watch Paul turn from their desert to Corinth's dinner scene, because the same crack runs straight through it. The city's temples are still setting tables, the invitations are still arriving, and some of the church is still convinced attendance is harmless. Today Paul stops describing the danger and names the host.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>An invitation sits on a Corinthian kitchen table. Dinner in the temple dining room, the god listed as host. Some church members see no problem, since idols are nothing. Today Paul agrees the statue is hollow and then says the party is not unhosted. What pagans sacrifice goes to demons, and the man who takes communion on Sabbath cannot spend Friday at their table. Meat from the market is just meat. Worship is never just dinner. <strong>You can eat at either table, but you cannot eat at both.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday left us standing among the graves, holding a mold pressed from Israel's story. Remember the first failure on the list. The people sat down to eat and drink in front of a golden calf, and got up to party. A meal in honor of a false god, that was the crack where a rescued nation broke. Now watch Paul turn from their desert to Corinth's dinner scene, because the same crack runs straight through it. The city's temples are still setting tables, the invitations are still arriving, and some of the church is still convinced attendance is harmless. Today Paul stops describing the danger and names the host.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Unseen World Was Standing Room Only</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Unseen World Was Standing Room Only</h3>
       <p>Nobody in the first century thought the air was empty. A Corinthian managed unseen powers the way we manage passwords, constantly and mostly without thinking. Little household gods watched the hearth. Spirits loitered at crossroads and doorways. Sailors tattooed vows to Poseidon, mothers hung charms on cradles, and businessmen scratched curses onto lead tablets and dropped them into wells, several of which archaeologists have pulled out of the ground at Corinth. Even the philosophers who mocked the myths kept a respectful nod for the daimones, the crowd of middling spirits thought to fill the space between gods and men. The question in that world was never whether invisible powers existed. It was which ones you were feeding.</p>
       <p>That is the world Paul writes into, and it explains the edge in his voice today. He has already agreed, twice, that an idol is nothing, a carved nothing with a famous name. But nothing-statues can still have occupied tables. Behind the harmless-looking marble, Paul says, stands something ancient and hungry that Scripture calls demonic, gladly collecting worship addressed to anyone but God. The Corinthian sophisticate smirking at the myths while reclining in the temple's dining room had made a category error. He thought he was outsmarting an empty statue. He was keeping company with what stood behind it. The statue was hollow. The party never was.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Paul has been circling the idol-meat question for two chapters. Today he lands, inside the same sweep of warning we entered yesterday (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.5-22" target="_blank" rel="noopener">1 Corinthians 10:5-22</a>), and his first word on arrival is flee. Then he does something remarkable for a man drawing a hard line. He reasons with them, sensible people that you are, judge for yourselves, as he takes the meat question back up (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.14-22" target="_blank" rel="noopener">1 Corinthians 10:14-22</a>). The argument he builds runs through the communion table, because you cannot understand what is wrong with the demons' table until you understand what actually happens at the Lord's.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Paul has been circling the idol-meat question for two chapters. Today he lands, inside the same sweep of warning we entered yesterday (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.5-22" target="_blank" rel="noopener" data-verse="1-corinthians-10-5-22" data-ref="1 Corinthians 10:5-22" aria-expanded="false">1 Corinthians 10:5-22</a>), and his first word on arrival is flee. Then he does something remarkable for a man drawing a hard line. He reasons with them, sensible people that you are, judge for yourselves, as he takes the meat question back up (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.14-22" target="_blank" rel="noopener" data-verse="1-corinthians-10-14-22" data-ref="1 Corinthians 10:14-22" aria-expanded="false">1 Corinthians 10:14-22</a>). The argument he builds runs through the communion table, because you cannot understand what is wrong with the demons' table until you understand what actually happens at the Lord's.</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 10:16 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:0cbe7cb96af877dc25776e119f923fab0b4b6e78ecf8da6a23f224e371a54f65 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 10:16</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.10.16" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.10.16" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Is not the cup of blessing that we bless a participation in the blood of Christ? And is not the bread that we break a participation in the body of Christ?</div>
 <div class="verse-commentary">
-          <p>Here is Paul's theology of the Lord's Supper in two questions, and the key word in both is <em>koinonia</em>, Greek for a sharing, a participation, a common life, the word behind "communion." Communion is not a memorial service for an absent friend. Something happens at that table. The cup and the bread are a real participation in Christ, fellowship with a living Host, and because everyone shares one loaf, the sharers become one body with each other too (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.17" target="_blank" rel="noopener">1 Corinthians 10:17</a>). Hold onto that logic, because Paul is about to run it in reverse. If eating at the Lord's table joins you to the Lord, then eating at a god's table is not a neutral social engagement either. Tables join people to hosts. That is what tables are for.</p>
+          <p>Here is Paul's theology of the Lord's Supper in two questions, and the key word in both is <em>koinonia</em>, Greek for a sharing, a participation, a common life, the word behind "communion." Communion is not a memorial service for an absent friend. Something happens at that table. The cup and the bread are a real participation in Christ, fellowship with a living Host, and because everyone shares one loaf, the sharers become one body with each other too (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.17" target="_blank" rel="noopener" data-verse="1-corinthians-10-17" data-ref="1 Corinthians 10:17" aria-expanded="false">1 Corinthians 10:17</a>). Hold onto that logic, because Paul is about to run it in reverse. If eating at the Lord's table joins you to the Lord, then eating at a god's table is not a neutral social engagement either. Tables join people to hosts. That is what tables are for.</p>
         </div>
-      </div>
+      </figure>
 
-      <p>Be clear about what Paul is not saying, because he is careful here. Meat that started at an altar and ended up at the market stall is just meat, and believers may buy it with a clean conscience, exactly as he argued when the issue first came up (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.8.1-13" target="_blank" rel="noopener">1 Corinthians 8:1-13</a>). The idol has no reality to contaminate anything (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.8.4" target="_blank" rel="noopener">1 Corinthians 8:4</a>). But participating in the pagan ceremony itself is a different act entirely (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.20-21" target="_blank" rel="noopener">1 Corinthians 10:20-21</a>). What pagans sacrifice, Paul says, they sacrifice to demons, and I do not want you to be participants with demons (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.20" target="_blank" rel="noopener">1 Corinthians 10:20</a>). He is standing on the song of Moses, which said Israel sacrificed to demons when it chased other gods (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.32.17" target="_blank" rel="noopener">Deuteronomy 32:17</a>). The statue is hollow. What collects the worship behind it is not.</p>
+      <p>Be clear about what Paul is not saying, because he is careful here. Meat that started at an altar and ended up at the market stall is just meat, and believers may buy it with a clean conscience, exactly as he argued when the issue first came up (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.8.1-13" target="_blank" rel="noopener" data-verse="1-corinthians-8-1-13" data-ref="1 Corinthians 8:1-13" aria-expanded="false">1 Corinthians 8:1-13</a>). The idol has no reality to contaminate anything (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.8.4" target="_blank" rel="noopener" data-verse="1-corinthians-8-4" data-ref="1 Corinthians 8:4" aria-expanded="false">1 Corinthians 8:4</a>). But participating in the pagan ceremony itself is a different act entirely (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.20-21" target="_blank" rel="noopener" data-verse="1-corinthians-10-20-21" data-ref="1 Corinthians 10:20-21" aria-expanded="false">1 Corinthians 10:20-21</a>). What pagans sacrifice, Paul says, they sacrifice to demons, and I do not want you to be participants with demons (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.20" target="_blank" rel="noopener" data-verse="1-corinthians-10-20" data-ref="1 Corinthians 10:20" aria-expanded="false">1 Corinthians 10:20</a>). He is standing on the song of Moses, which said Israel sacrificed to demons when it chased other gods (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.32.17" target="_blank" rel="noopener" data-verse="deuteronomy-32-17" data-ref="Deuteronomy 32:17" aria-expanded="false">Deuteronomy 32:17</a>). The statue is hollow. What collects the worship behind it is not.</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 10:21 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:94224e113e106a4c5d0fb8f10ac3122917811e046346667733d06015392a2e7e | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 10:21</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.10.21" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.10.21" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">You cannot drink the cup of the Lord and the cup of demons too; you cannot partake in the table of the Lord and the table of demons too.</div>
 <div class="verse-commentary">
-          <p>Cannot, in this sentence, is not about physical possibility. Plenty of Corinthians were managing both tables on the same calendar. Paul means the two acts annihilate each other, the way a wedding ring and an affair cannot both be true of the same marriage. Jesus had said it in His own way, no one can serve two masters (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.6.24" target="_blank" rel="noopener">Matthew 6:24</a>). And Paul knows exactly which nerve this touches, asking whether we are provoking the Lord to jealousy (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.22" target="_blank" rel="noopener">1 Corinthians 10:22</a>). God's jealousy is not insecurity. It is the fierce, faithful love of a covenant partner who will not smile politely while His beloved sets a second table. Then the closing question, quiet and enormous. Are we stronger than He? It has one honest answer.</p>
+          <p>Cannot, in this sentence, is not about physical possibility. Plenty of Corinthians were managing both tables on the same calendar. Paul means the two acts annihilate each other, the way a wedding ring and an affair cannot both be true of the same marriage. Jesus had said it in His own way, no one can serve two masters (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.6.24" target="_blank" rel="noopener" data-verse="matthew-6-24" data-ref="Matthew 6:24" aria-expanded="false">Matthew 6:24</a>). And Paul knows exactly which nerve this touches, asking whether we are provoking the Lord to jealousy (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.10.22" target="_blank" rel="noopener" data-verse="1-corinthians-10-22" data-ref="1 Corinthians 10:22" aria-expanded="false">1 Corinthians 10:22</a>). God's jealousy is not insecurity. It is the fierce, faithful love of a covenant partner who will not smile politely while His beloved sets a second table. Then the closing question, quiet and enormous. Are we stronger than He? It has one honest answer.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Deuteronomy 6:4-5 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:5aeb7290543fab326813db324a38f6d4e11be5889b48b011f9a07e9d29cea45f | footnotes-stripped:2 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Deuteronomy 6:4-5</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/DEU.6.4-5" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 4">4</sup>Hear, O Israel: The LORD our God, the LORD is One. <sup class="verse-number" aria-label="Verse 5">5</sup>And you shall love the LORD your God with all your heart and with all your soul and with all your strength.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/DEU.6.4-5" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 4">4</sup>Hear, O Israel: The LORD our God, the LORD is One. <sup class="verse-number" aria-label="Verse 5">5</sup>And you shall love the LORD your God with all your heart and with all your soul and with all your strength.</div>
 <div class="verse-commentary">
-          <p>This is the bedrock under the whole argument. Paul's one-God creed from earlier in the letter grew straight out of this soil (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.8.4-6" target="_blank" rel="noopener">1 Corinthians 8:4-6</a>), and notice again how the ancient prayer moves. First the fact, the Lord is one. Then, without a breath, the command to love Him with everything you have (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.6.5" target="_blank" rel="noopener">Deuteronomy 6:5</a>). Total love is the only security system that actually works against idolatry, because idols do not break in. They move into vacancies. And when Jesus was asked for the greatest command, He recited this prayer and then stapled a second line to it, love your neighbor as yourself (<a class="vlink" href="https://www.bible.com/bible/3034/MRK.12.31" target="_blank" rel="noopener">Mark 12:31</a>), quoting words God had already given Moses (<a class="vlink" href="https://www.bible.com/bible/3034/LEV.19.18" target="_blank" rel="noopener">Leviticus 19:18</a>). A heart fully spent on God and neighbor has no vacancy left to rent. Idolatry dies of starvation in a house that full.</p>
+          <p>This is the bedrock under the whole argument. Paul's one-God creed from earlier in the letter grew straight out of this soil (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.8.4-6" target="_blank" rel="noopener" data-verse="1-corinthians-8-4-6" data-ref="1 Corinthians 8:4-6" aria-expanded="false">1 Corinthians 8:4-6</a>), and notice again how the ancient prayer moves. First the fact, the Lord is one. Then, without a breath, the command to love Him with everything you have (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.6.5" target="_blank" rel="noopener" data-verse="deuteronomy-6-5" data-ref="Deuteronomy 6:5" aria-expanded="false">Deuteronomy 6:5</a>). Total love is the only security system that actually works against idolatry, because idols do not break in. They move into vacancies. And when Jesus was asked for the greatest command, He recited this prayer and then stapled a second line to it, love your neighbor as yourself (<a class="vlink" href="https://www.bible.com/bible/3034/MRK.12.31" target="_blank" rel="noopener" data-verse="mark-12-31" data-ref="Mark 12:31" aria-expanded="false">Mark 12:31</a>), quoting words God had already given Moses (<a class="vlink" href="https://www.bible.com/bible/3034/LEV.19.18" target="_blank" rel="noopener" data-verse="leviticus-19-18" data-ref="Leviticus 19:18" aria-expanded="false">Leviticus 19:18</a>). A heart fully spent on God and neighbor has no vacancy left to rent. Idolatry dies of starvation in a house that full.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: Deuteronomy 6:4 | 6:4 Or The LORD our God is One LORD or The LORD is our God, the LORD is One or The LORD is our God, the LORD alone; cited in Mark 12:29 -->
       <!-- BSB_FOOTNOTE: Deuteronomy 6:5 | 6:5 Cited in Matthew 22:37, Mark 12:30, and Luke 10:27 -->
-    </div>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The One Thing You Cannot Split</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The One Thing You Cannot Split</h3>
       <p>Two of your closest friends stop speaking to each other, for good this time, and you make the honorable decision not to choose. At first the arrangement holds. You get lunch with her on Tuesdays, you meet him for breakfast on Saturdays, and nobody minds, because nobody owns your calendar. The trouble starts in the inner room. She processes the whole falling-out with you, all of it, and one evening while she is mid-sentence, his name lights up your phone on the table between you, and you feel the two loyalties grind somewhere in your stomach. You never repeat a word. It does not matter. Within months she is trimming what she tells you. He has gone vague. Neither of them caught you betraying anything. They just both did the quiet math. A secret kept in the middle lives next door to the person it is about. A year later you know less about both of them than you did the week they split.</p>
       <p>Notice what died and what survived. The lunches survived. Presence was never the problem, and Paul says the same about Corinth's ordinary tables. The market meat stayed meat. The friendships with unbelieving neighbors stayed open. What cannot survive is a seat in two inner rooms, because confidence is the kind of gift that only exists whole. Splitting it does not divide it. It dissolves it. That is the cannot in you cannot drink the cup of the Lord and the cup of demons. Communion is not attendance. It is participation, the inner room where a covenant actually lives, and every idol runs its feast on the same currency. Hold a seat at both and each one empties the other, no matter how carefully you manage the calendar. God's jealousy is simply what any wholehearted love does when it is handed half. Some gifts multiply when you share them. Loyalty is not one of them.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Table That Feeds on Its Guests</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Table That Feeds on Its Guests</h3>
       <p>In 2018 the Supreme Court let states legalize sports betting, and the table filled fast. One state became thirty-eight. Annual wagers grew from under five billion dollars to more than 121 billion by 2023, with 94 percent of it placed through a phone. The industry's word for itself is entertainment, a game, nothing. The ledgers tell it differently. Researchers at UC San Diego, writing in JAMA Internal Medicine in early 2025, tracked internet searches for help with gambling addiction and found them up 23 percent nationwide since legalization began, millions of quiet cries for help typed into a search bar. A UCLA study of household finances found that in states allowing online sports gambling, the likelihood of a personal bankruptcy filing rose 25 to 30 percent in the years after legalization, while average debt-collection amounts rose 8 percent.</p>
       <p>Read those numbers again beside today's chapter. The industry sells a seat at a game, and the receipts describe a table that feeds on its guests. That is not a scandal unique to betting apps. It is the economics of every occupied table, and it is why Paul refused to call the temple banquets harmless even while agreeing the statues were hollow. Corinth's sophisticates said the idol is nothing. The app says it is just a game. Paul's answer covers both. The nothing has a table, the table has a host, and the host is hungry. One table in the world feeds its guests, at the Host's own expense. Every other table eventually reverses the direction of the meal. So before you sit down anywhere, ask the only question that matters. Who eats here, and who gets eaten.</p>
       <!-- TODAYS_WORLD_SOURCE: Study Reveals Surge in Gambling Addiction Following Legalization of Sports Betting (Ayers et al., JAMA Internal Medicine) | UC San Diego Today | 2025 | https://today.ucsd.edu/story/study-reveals-surge-in-gambling-addiction-following-legalization-of-sports-betting -->
       <!-- TODAYS_WORLD_SOURCE: As States Permitted Online Sports Gambling, Citizens’ Personal Financial Health Suffered | UCLA Anderson Review | 2026 | https://anderson-review.ucla.edu/as-states-permitted-online-sports-gambling-citizens-personal-financial-health-suffered/ -->
-    </div>
+    <details class="disclosure source-disclosure"><summary class="disclosure-summary"><span class="disclosure-label">Sources</span> <span class="disclosure-publisher">UC San Diego Today, UCLA Anderson Review</span></summary><div class="disclosure-body">
+<p><cite>Study Reveals Surge in Gambling Addiction Following Legalization of Sports Betting (Ayers et al., JAMA Internal Medicine)</cite>. UC San Diego Today, 2025. <a href="https://today.ucsd.edu/story/study-reveals-surge-in-gambling-addiction-following-legalization-of-sports-betting" target="_blank" rel="noopener noreferrer">Read the source</a>.</p>
+<p><cite>As States Permitted Online Sports Gambling, Citizens’ Personal Financial Health Suffered</cite>. UCLA Anderson Review, 2026. <a href="https://anderson-review.ucla.edu/as-states-permitted-online-sports-gambling-citizens-personal-financial-health-suffered/" target="_blank" rel="noopener noreferrer">Read the source</a>.</p>
+</div></details></section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Look closely at what Paul calls the communion cup, the cup of blessing. It did not start out that way. In Gethsemane, Jesus knelt over a different cup and asked three times whether it could pass from Him (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.26.39" target="_blank" rel="noopener">Matthew 26:39</a>). That cup held the judgment our idolatries earned, every table we set for other gods, every loyalty we split. He drank it to the bottom. That is why the cup He hands us holds only blessing. The exchange happened in the dark, His portion for ours. And it tells you everything about the difference between the two tables in today's reading. Every idol's table runs on the same economics, it feeds on its worshipers, taking their money, their devotion, their years, and returning hunger. At the Lord's table the economics run backward. The Host is the meal. His body, His blood, His life handed across the table to people who brought nothing but appetite. Demons consume their guests. Jesus feeds His. That is the whole difference, and it is everything.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Look closely at what Paul calls the communion cup, the cup of blessing. It did not start out that way. In Gethsemane, Jesus knelt over a different cup and asked three times whether it could pass from Him (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.26.39" target="_blank" rel="noopener" data-verse="matthew-26-39" data-ref="Matthew 26:39" aria-expanded="false">Matthew 26:39</a>). That cup held the judgment our idolatries earned, every table we set for other gods, every loyalty we split. He drank it to the bottom. That is why the cup He hands us holds only blessing. The exchange happened in the dark, His portion for ours. And it tells you everything about the difference between the two tables in today's reading. Every idol's table runs on the same economics, it feeds on its worshipers, taking their money, their devotion, their years, and returning hunger. At the Lord's table the economics run backward. The Host is the meal. His body, His blood, His life handed across the table to people who brought nothing but appetite. Demons consume their guests. Jesus feeds His. That is the whole difference, and it is everything.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Name your other table. Somewhere in your week there is a place your loyalty keeps eating, a feed that gets your first attention, a money goal that quietly steers your decisions, an approval you keep working for, a habit that takes and takes and calls itself harmless. Write down its name today, the honest one. Then push back from that table with one physical act before bedtime. Delete the app for a week. Decline the invitation. Move the money. Say no out loud. One table has a Host who feeds you. Stop paying for a seat at the one that feeds on you.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Lord, thank You for being jealous. We have lived long enough to know what love looks like when it stops caring who else sits at the table, and we do not want that kind of politeness from You. We confess that we have kept seats at other tables, the ones that take our attention, our money, our hunger for approval, and hand back emptiness with a smile. Forgive our split calendars and our divided hearts. Thank You, Jesus, for the cup You drank in the dark so that the cup in our hands could hold nothing but blessing. Make Your table the one we come home to. Fill our hearts so full of love for You and for the people around us that the old vacancies stay closed. We are not stronger than You, and we are done pretending we want to be. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"If you audited your last month like an accountant, where did your loyalty actually eat most often (the feed you check before you pray, the money goal that steers your choices, the person whose approval sets your mood)? And what would it cost you, honestly, to push back from that table this week, and is the cost the reason you have not done it?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"If you audited your last month like an accountant, where did your loyalty actually eat most often (the feed you check before you pray, the money goal that steers your choices, the person whose approval sets your mood)? And what would it cost you, honestly, to push back from that table this week, and is the cost the reason you have not done it?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Lord, thank You for being jealous. We have lived long enough to know what love looks like when it stops caring who else sits at the table, and we do not want that kind of politeness from You. We confess that we have kept seats at other tables, the ones that take our attention, our money, our hunger for approval, and hand back emptiness with a smile. Forgive our split calendars and our divided hearts. Thank You, Jesus, for the cup You drank in the dark so that the cup in our hands could hold nothing but blessing. Make Your table the one we come home to. Fill our hearts so full of love for You and for the people around us that the old vacancies stay closed. We are not stronger than You, and we are done pretending we want to be. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-07-28.html"><span class="day-nav-kicker">← Tuesday</span><span class="day-nav-title">Learning From the Past</span></a><a class="day-nav-item" href="/bible-study/2026-07-30.html"><span class="day-nav-kicker">Thursday →</span><span class="day-nav-title">Overcoming Idolatry</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"1-corinthians-10-5-22":{"ref":"1 Corinthians 10:5-22","text":"Nevertheless, God was not pleased with most of them, for they were struck down in the wilderness. These things took place as examples to keep us from craving evil things as they did. Do not be idolaters, as some of them were. As it is written: \u201cThe people sat down to eat and drink and got up to indulge in revelry.\u201d We should not commit sexual immorality, as some of them did, and in one day twenty-three thousand of them died. We should not test Christ, as some of them did, and were killed by snakes. And do not complain, as some of them did, and were killed by the destroying angel. Now these things happened to them as examples and were written down as warnings for us, on whom the fulfillment of the ages has come. So the one who thinks he is standing firm should be careful not to fall. No temptation has seized you except what is common to man. And God is faithful; He will not let you be tempted beyond what you can bear. But when you are tempted, He will also provide an escape, so that you can stand up under it. Therefore, my beloved, flee from idolatry. I speak to reasonable people; judge for yourselves what I say. Is not the cup of blessing that we bless a participation in the blood of Christ? And is not the bread that we break a participation in the body of Christ? Because there is one loaf, we who are many are one body; for we all partake of the one loaf. Consider the people of Israel: Are not those who eat the sacrifices fellow partakers in the altar? Am I suggesting, then, that food sacrificed to an idol is anything, or that an idol is anything? No, but the sacrifices of pagans are offered to demons, not to God. And I do not want you to be participants with demons. You cannot drink the cup of the Lord and the cup of demons too; you cannot partake in the table of the Lord and the table of demons too. Are we trying to provoke the Lord to jealousy? Are we stronger than He?","bibleUrl":"https://www.bible.com/bible/3034/1CO.10.5-22"},"1-corinthians-10-14-22":{"ref":"1 Corinthians 10:14-22","text":"Therefore, my beloved, flee from idolatry. I speak to reasonable people; judge for yourselves what I say. Is not the cup of blessing that we bless a participation in the blood of Christ? And is not the bread that we break a participation in the body of Christ? Because there is one loaf, we who are many are one body; for we all partake of the one loaf. Consider the people of Israel: Are not those who eat the sacrifices fellow partakers in the altar? Am I suggesting, then, that food sacrificed to an idol is anything, or that an idol is anything? No, but the sacrifices of pagans are offered to demons, not to God. And I do not want you to be participants with demons. You cannot drink the cup of the Lord and the cup of demons too; you cannot partake in the table of the Lord and the table of demons too. Are we trying to provoke the Lord to jealousy? Are we stronger than He?","bibleUrl":"https://www.bible.com/bible/3034/1CO.10.14-22"},"1-corinthians-10-17":{"ref":"1 Corinthians 10:17","text":"Because there is one loaf, we who are many are one body; for we all partake of the one loaf.","bibleUrl":"https://www.bible.com/bible/3034/1CO.10.17"},"1-corinthians-8-1-13":{"ref":"1 Corinthians 8:1-13","text":"Now about food sacrificed to idols: We know that we all have knowledge. Knowledge puffs up, but love builds up. The one who thinks he knows something does not yet know as he ought to know. But the one who loves God is known by God. So about eating food sacrificed to idols: We know that an idol is nothing at all in the world, and that there is no God but one. For even if there are so-called gods, whether in heaven or on earth (as there are many so-called gods and lords), yet for us there is but one God, the Father, from whom all things came and for whom we exist. And there is but one Lord, Jesus Christ, through whom all things came and through whom we exist. But not everyone has this knowledge. Some people are still so accustomed to idols that they eat such food as if it were sacrificed to an idol. And since their conscience is weak, it is defiled. But food does not bring us closer to God: We are no worse if we do not eat, and no better if we do. Be careful, however, that your freedom does not become a stumbling block to the weak. For if someone with a weak conscience sees you who are well informed eating in an idol\u2019s temple, will he not be encouraged to eat food sacrificed to idols? So this weak brother, for whom Christ died, is destroyed by your knowledge. By sinning against your brothers in this way and wounding their weak conscience, you sin against Christ. Therefore, if what I eat causes my brother to stumble, I will never eat meat again, so that I will not cause him to stumble.","bibleUrl":"https://www.bible.com/bible/3034/1CO.8.1-13"},"1-corinthians-8-4":{"ref":"1 Corinthians 8:4","text":"So about eating food sacrificed to idols: We know that an idol is nothing at all in the world, and that there is no God but one.","bibleUrl":"https://www.bible.com/bible/3034/1CO.8.4"},"1-corinthians-10-20-21":{"ref":"1 Corinthians 10:20-21","text":"No, but the sacrifices of pagans are offered to demons, not to God. And I do not want you to be participants with demons. You cannot drink the cup of the Lord and the cup of demons too; you cannot partake in the table of the Lord and the table of demons too.","bibleUrl":"https://www.bible.com/bible/3034/1CO.10.20-21"},"1-corinthians-10-20":{"ref":"1 Corinthians 10:20","text":"No, but the sacrifices of pagans are offered to demons, not to God. And I do not want you to be participants with demons.","bibleUrl":"https://www.bible.com/bible/3034/1CO.10.20"},"deuteronomy-32-17":{"ref":"Deuteronomy 32:17","text":"They sacrificed to demons, not to God, to gods they had not known, to newly arrived gods, which your fathers did not fear.","bibleUrl":"https://www.bible.com/bible/3034/DEU.32.17"},"matthew-6-24":{"ref":"Matthew 6:24","text":"No one can serve two masters: Either he will hate the one and love the other, or he will be devoted to the one and despise the other. You cannot serve both God and money.","bibleUrl":"https://www.bible.com/bible/3034/MAT.6.24"},"1-corinthians-10-22":{"ref":"1 Corinthians 10:22","text":"Are we trying to provoke the Lord to jealousy? Are we stronger than He?","bibleUrl":"https://www.bible.com/bible/3034/1CO.10.22"},"1-corinthians-8-4-6":{"ref":"1 Corinthians 8:4-6","text":"So about eating food sacrificed to idols: We know that an idol is nothing at all in the world, and that there is no God but one. For even if there are so-called gods, whether in heaven or on earth (as there are many so-called gods and lords), yet for us there is but one God, the Father, from whom all things came and for whom we exist. And there is but one Lord, Jesus Christ, through whom all things came and through whom we exist.","bibleUrl":"https://www.bible.com/bible/3034/1CO.8.4-6"},"deuteronomy-6-5":{"ref":"Deuteronomy 6:5","text":"And you shall love the LORD your God with all your heart and with all your soul and with all your strength.","bibleUrl":"https://www.bible.com/bible/3034/DEU.6.5"},"mark-12-31":{"ref":"Mark 12:31","text":"The second is this: \u2018Love your neighbor as yourself.\u2019 No other commandment is greater than these.\u201d","bibleUrl":"https://www.bible.com/bible/3034/MRK.12.31"},"leviticus-19-18":{"ref":"Leviticus 19:18","text":"Do not seek revenge or bear a grudge against any of your people, but love your neighbor as yourself. I am the LORD.","bibleUrl":"https://www.bible.com/bible/3034/LEV.19.18"},"matthew-26-39":{"ref":"Matthew 26:39","text":"Going a little farther, He fell facedown and prayed, \u201cMy Father, if it is possible, let this cup pass from Me. Yet not as I will, but as You will.\u201d","bibleUrl":"https://www.bible.com/bible/3034/MAT.26.39"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

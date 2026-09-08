@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Know Yourself — Daily Bible Study</title>
 <meta name="study-title" content="Know Yourself">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 3, Pride Versus Humility · Part 3 of 7">
+<meta name="study-passage" content="Luke 18:9-14">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 3, Pride Versus Humility · Day 3 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Know Yourself">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 3, Pride Versus Humility · Part 3 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 3, Pride Versus Humility · Day 3 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-04-13.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 3, Pride Versus Humility · Part 3 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 3, Pride Versus Humility · Day 3 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,340 +38,218 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Know Yourself</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 3, Pride Versus Humility</span>
-      <span>Part 3 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Mon · Apr 13</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
     </div>
-    <div class="date-badge">April 13, 2026</div>
+    <h1 class="study-title">Know Yourself</h1>
+    <p class="study-sub"><span class="sub-title">Pride Versus Humility</span><span class="sub-facts"><span>Lesson 3</span><span>Day 3 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">The most dangerous kind of pride is the kind that prays with its eyes open, scanning the room for someone to compare itself against.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p class="tldr-hook">The most dangerous kind of pride is the kind that prays with its eyes open, scanning the room for someone to compare itself against.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span> Jesus told a parable about two men in the temple: one who performed his righteousness and one who simply confessed his need</li>
-        <li><span class="bullet-icon">☩</span> The Pharisee's prayer was not really a prayer at all; it was a self-congratulatory monologue that used God as an audience</li>
-        <li><span class="bullet-icon">☩</span> True self-knowledge begins when we stop comparing ourselves to others and start measuring against God's holiness</li>
-        <li><span class="bullet-icon">☩</span> God actively opposes the proud but pours grace on those who come to Him with honest, empty hands</li>
+        <li>
+<span class="bullet-icon">☩</span> Jesus told a parable about two men in the temple: one who performed his righteousness and one who simply confessed his need</li>
+        <li>
+<span class="bullet-icon">☩</span> The Pharisee's prayer was not really a prayer at all; it was a self-congratulatory monologue that used God as an audience</li>
+        <li>
+<span class="bullet-icon">☩</span> True self-knowledge begins when we stop comparing ourselves to others and start measuring against God's holiness</li>
+        <li>
+<span class="bullet-icon">☩</span> God actively opposes the proud but pours grace on those who come to Him with honest, empty hands</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday we saw pride's three channels: the cravings of the flesh, the cravings of the eyes, and the arrogance that flows from possessions. We traced pride back to its origin in Lucifer's five "I will" statements and saw Christ's radical descent as the answer. Today the lens shifts inward. It is one thing to identify pride as a spiritual problem; it is another thing entirely to see it operating in your own heart. Jesus told a parable designed to make that blindness impossible to ignore.</p>
-    </div>
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday we saw pride's three channels: the cravings of the flesh, the cravings of the eyes, and the arrogance that flows from possessions. We traced pride back to its origin in Lucifer's five "I will" statements and saw Christ's radical descent as the answer. Today the lens shifts inward. It is one thing to identify pride as a spiritual problem; it is another thing entirely to see it operating in your own heart. Jesus told a parable designed to make that blindness impossible to ignore.</p>
+    </section>
 
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Who Gets to Stand Where</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>Who Gets to Stand Where</h3>
       <p>The Jerusalem temple was not a single room. It was a series of nested courts, each one more exclusive than the last, and where you stood was a public declaration of your spiritual status. The outermost Court of the Gentiles was open to everyone. Inside that stood the Court of Women, the farthest point women could go. Beyond that was the Court of Israel, reserved for ritually clean Jewish men. Then came the Court of the Priests, and finally the Holy Place and the Holy of Holies, where only the high priest entered once a year. Proximity to God's presence was physically regulated. The closer you stood, the holier you were assumed to be.</p>
-      <p>Against this backdrop, Jesus tells a story about two men who went up to the temple to pray. The Pharisee "stood by himself" (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.18.11" target="_blank" rel="noopener">Luke 18:11</a>). The Greek phrase <em>pros heauton</em> can mean "about himself" or "to himself," and both readings work: he was praying about his own excellence while standing apart from the contamination of lesser men. The tax collector, by contrast, stood "far off" and would not even raise his eyes to heaven. In the temple's spatial theology, the Pharisee occupied the privileged ground. The tax collector knew he did not belong there. Jesus' verdict demolished the entire system: the man at the back went home justified. The man at the front did not.</p>
-    </div>
+      <p>Against this backdrop, Jesus tells a story about two men who went up to the temple to pray. The Pharisee "stood by himself" (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.18.11" target="_blank" rel="noopener" data-verse="luke-18-11" data-ref="Luke 18:11" aria-expanded="false">Luke 18:11</a>). The Greek phrase <em>pros heauton</em> can mean "about himself" or "to himself," and both readings work: he was praying about his own excellence while standing apart from the contamination of lesser men. The tax collector, by contrast, stood "far off" and would not even raise his eyes to heaven. In the temple's spatial theology, the Pharisee occupied the privileged ground. The tax collector knew he did not belong there. Jesus' verdict demolished the entire system: the man at the back went home justified. The man at the front did not.</p>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Jesus targeted this parable at a specific audience: people who "trusted in their own righteousness and viewed others with contempt" (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.18.9" target="_blank" rel="noopener">Luke 18:9</a>). He was not warning against external sins but against the internal conviction that you have already arrived. The three passages today work together to show the progression: what pride looks like when it prays (Luke 18), what honesty looks like when it confesses (1 John 1:9), and what God actually does with both postures (1 Peter 5:5).</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Jesus targeted this parable at a specific audience: people who "trusted in their own righteousness and viewed others with contempt" (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.18.9" target="_blank" rel="noopener" data-verse="luke-18-9" data-ref="Luke 18:9" aria-expanded="false">Luke 18:9</a>). He was not warning against external sins but against the internal conviction that you have already arrived. The three passages today work together to show the progression: what pride looks like when it prays (Luke 18), what honesty looks like when it confesses (1 John 1:9), and what God actually does with both postures (1 Peter 5:5).</p>
 
       <!-- ANCHOR: Luke 18:9-14 -->
 <!-- BSB_BLOCK: Luke 18:9-14 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:1a36e9829c45a4965fcdca2e043d085480f0cf8737ca420bfab9b4a5ee0c4b87 | footnotes-stripped:1 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Luke 18:9-14</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/LUK.18.9-14" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 9">9</sup>To some who trusted in their own righteousness and viewed others with contempt, He also told this parable: <sup class="verse-number" aria-label="Verse 10">10</sup><span class="words-of-jesus">“Two men went up to the temple to pray. One was a Pharisee and the other a tax collector.</span> <sup class="verse-number" aria-label="Verse 11">11</sup><span class="words-of-jesus">The Pharisee stood by himself and prayed, ‘God, I thank You that I am not like other men—swindlers, evildoers, adulterers—or even like this tax collector.</span> <sup class="verse-number" aria-label="Verse 12">12</sup><span class="words-of-jesus">I fast twice a week and pay tithes of all that I acquire.’</span> <sup class="verse-number" aria-label="Verse 13">13</sup><span class="words-of-jesus">But the tax collector stood at a distance, unwilling even to lift up his eyes to heaven. Instead, he beat his breast and said, ‘God, have mercy on me, a sinner!’</span> <sup class="verse-number" aria-label="Verse 14">14</sup><span class="words-of-jesus">I tell you, this man, rather than the Pharisee, went home justified. For everyone who exalts himself will be humbled, but the one who humbles himself will be exalted.”</span></div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/LUK.18.9-14" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 9">9</sup>To some who trusted in their own righteousness and viewed others with contempt, He also told this parable: <sup class="verse-number" aria-label="Verse 10">10</sup><span class="words-of-jesus">“Two men went up to the temple to pray. One was a Pharisee and the other a tax collector.</span> <sup class="verse-number" aria-label="Verse 11">11</sup><span class="words-of-jesus">The Pharisee stood by himself and prayed, ‘God, I thank You that I am not like other men—swindlers, evildoers, adulterers—or even like this tax collector.</span> <sup class="verse-number" aria-label="Verse 12">12</sup><span class="words-of-jesus">I fast twice a week and pay tithes of all that I acquire.’</span> <sup class="verse-number" aria-label="Verse 13">13</sup><span class="words-of-jesus">But the tax collector stood at a distance, unwilling even to lift up his eyes to heaven. Instead, he beat his breast and said, ‘God, have mercy on me, a sinner!’</span> <sup class="verse-number" aria-label="Verse 14">14</sup><span class="words-of-jesus">I tell you, this man, rather than the Pharisee, went home justified. For everyone who exalts himself will be humbled, but the one who humbles himself will be exalted.”</span>
+</div>
 <div class="verse-commentary">
           <p>The Pharisee's prayer is remarkable for what it is not. He does not ask God for anything. He does not confess anything. He does not acknowledge any need. His prayer is a performance review submitted to the Almighty, and the Pharisee has given himself excellent marks. Notice the structure: he thanks God, but only for what he himself has accomplished. His "gratitude" is a thin wrapper around self-congratulation. And his measuring stick is not God's character but other people: "I am not like other men." This is the core mechanism of pride. It does not measure itself against holiness; it measures itself against whoever happens to be standing nearby and comes away feeling superior.
 
 The tax collector's prayer, by contrast, contains just seven words in the Greek: <em>ho theos, hilastheti moi to hamartolo</em>. "God, be merciful to me, the sinner." The word <em>hilastheti</em> (from <em>hilaskomai</em>) is deeply significant. It does not simply mean "be nice to me." It carries the weight of propitiation, of atonement, of a sacrifice that covers guilt. The tax collector is not just asking for general kindness. He is pleading for the kind of mercy that only a substitutionary sacrifice can provide. He knows exactly what he deserves, and he throws himself on God's provision.
 
-Jesus' verdict is devastating: <em>dedikaiomenos</em>, "justified," "declared righteous." The tax collector went home with a right standing before God. The Pharisee went home with his self-assessment intact but nothing from heaven to show for it. The parable ends with the same principle from Saturday's memory text (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.14.11" target="_blank" rel="noopener">Luke 14:11</a>): everyone who exalts himself will be humbled, and the one who humbles himself will be exalted. The upside-down kingdom that Jesus teaches is the opposite of what we expect. It is only the person who knows themselves to be a sinner that Christ can save. Self-knowledge that leads to honest confession is not weakness; it is the only doorway to justification.
+Jesus' verdict is devastating: <em>dedikaiomenos</em>, "justified," "declared righteous." The tax collector went home with a right standing before God. The Pharisee went home with his self-assessment intact but nothing from heaven to show for it. The parable ends with the same principle from Saturday's memory text (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.14.11" target="_blank" rel="noopener" data-verse="luke-14-11" data-ref="Luke 14:11" aria-expanded="false">Luke 14:11</a>): everyone who exalts himself will be humbled, and the one who humbles himself will be exalted. The upside-down kingdom that Jesus teaches is the opposite of what we expect. It is only the person who knows themselves to be a sinner that Christ can save. Self-knowledge that leads to honest confession is not weakness; it is the only doorway to justification.
 
-And what happens on the other side of that doorway? Jesus also counseled His followers to take the lowest seat and let the host elevate them in his own time (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.14.8-10" target="_blank" rel="noopener">Luke 14:8-10</a>). The closer we draw to Christ, the more clearly we see our own sinfulness. That is not discouragement; that is evidence of proximity. When you feel furthest from deserving God's presence, you may be closer to Him than you have ever been.</p>
+And what happens on the other side of that doorway? Jesus also counseled His followers to take the lowest seat and let the host elevate them in his own time (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.14.8-10" target="_blank" rel="noopener" data-verse="luke-14-8-10" data-ref="Luke 14:8-10" aria-expanded="false">Luke 14:8-10</a>). The closer we draw to Christ, the more clearly we see our own sinfulness. That is not discouragement; that is evidence of proximity. When you feel furthest from deserving God's presence, you may be closer to Him than you have ever been.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: Luke 18:11 | 18:11 Or stood and prayed to himself -->
 
-      
+
 <!-- BSB_BLOCK: 1 John 1:9 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:63483951baa9b0adc587a65347a3d4e18390201ac7cb01f4a40017a071f5d4df | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 John 1:9</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1JN.1.9" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1JN.1.9" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">If we confess our sins, He is faithful and just to forgive us our sins and to cleanse us from all unrighteousness.</div>
 <div class="verse-commentary">
           <p>This verse is the tax collector's prayer answered in doctrinal form. John does not say "if we explain our sins" or "if we minimize our sins" or "if we compare our sins favorably to someone else's." The word is <em>confess</em>: to say the same thing about our sin that God says. And the promise is anchored not in our emotional state but in God's character: He is faithful (He will not break His word) and righteous (His forgiveness is legally grounded in the cross, not in a decision to look the other way). Confession requires exactly the kind of self-knowledge the Pharisee refused to practice. It requires seeing ourselves as we actually are, not as we compare to others. But when that honest seeing leads to honest confession, God's response is not condemnation. It is complete cleansing.</p>
         </div>
-      </div>
+      </figure>
 
       <!-- SUPPORTING: 1 Peter 5:5 -->
 <!-- BSB_BLOCK: 1 Peter 5:5 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:37ff571f02112c16286db0298e592a147aeb1553fa56894ac08247bd3bf71841 | footnotes-stripped:1 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Peter 5:5</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1PE.5.5" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1PE.5.5" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Young men, in the same way, submit yourselves to your elders. And all of you, clothe yourselves with humility toward one another, because, “God opposes the proud, but gives grace to the humble.”</div>
 <div class="verse-commentary">
           <p>Peter's language could not be more direct. The Greek word <em>antitassomai</em> ("resists") is a military term: it means to arrange battle lines against an enemy. God does not simply disapprove of pride. He actively sets Himself against it. This is not passive disappointment; it is opposition. The proud person is fighting God, whether they realize it or not. And the word "clothe" (<em>egkomboomai</em>) is equally vivid: it refers to tying on a servant's apron, the garment of someone who has come to work, not to be served. Peter is telling every believer, regardless of age or status, to put on humility the way a servant puts on a work apron. It is a deliberate, visible choice, and it is the precondition for receiving grace.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: 1 Peter 5:5 | 5:5 Proverbs 3:34 (see also LXX) -->
 
-    </div>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Two Scales</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Two Scales</h3>
       <p>You have a bathroom scale that you have been stepping on every morning for years. It tells you a number. You have made peace with that number. You have built your self-image around it, bought clothes based on it, and quietly felt good about it when you compared it to what you imagined other people's numbers might be. Then you go to the doctor for a routine physical, and they ask you to step on their scale. Their scale is calibrated. It is certified. And it reads five pounds heavier than yours.</p>
       <p>Your first instinct is not to believe the doctor's scale. You want to argue with it. You wonder if your shoes are too heavy, if the floor is uneven, if the medical equipment is somehow off. Because accepting that the doctor's scale is right means accepting that your scale has been lying to you for years, and that every comparison you made using your number was based on a false reading. The problem was never that you did not weigh yourself. You weighed yourself every day. The problem was that you were measuring against a broken standard and calling the result accurate.</p>
       <p>That is what happened in the temple. The Pharisee stepped on his own scale every day. He fasted, he tithed, he prayed. By his own instrument, the reading was excellent. But Jesus brought the doctor's scale into the room. Against God's actual standard of holiness, the Pharisee's number was not just off by a little. It was in a completely different category. The tax collector, by contrast, did something the Pharisee could not bring himself to do: he accepted the reading. He did not argue, explain, or compare. He just said, "God, have mercy on me, a sinner." And Jesus said that man went home justified. The uncomfortable truth is that most of us prefer our bathroom scale. It is familiar, it is private, and it tells us what we want to hear. But it will never tell us the truth. Only God's standard does that, and the only way to stand on it is to stop comparing sideways and look up.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Bias You Cannot See in Yourself</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Bias You Cannot See in Yourself</h3>
       <p>A 2025 study published in the <em>Journal of Experimental Social Psychology</em> investigated what researchers call the "self-interest bias in moral character judgment," and the findings echo Jesus' parable with uncomfortable precision. The study found that people systematically rate their own moral character higher than others rate them, and that this bias persists regardless of how much cognitive resources a person has available. In other words, it is not that we lack the mental bandwidth to assess ourselves accurately. We have the capacity; we simply do not use it. The bias is baked into the way we process information about ourselves.</p>
       <p>What makes this research particularly relevant is the intervention finding: across multiple preregistered studies with thousands of participants, the only thing that reduced the self-interest bias was direct education about the bias itself. Making people accountable for their judgments did not help. Peer pressure did not help. Only showing people the specific pattern of their self-deception made a difference. The parallel to Jesus' parable is striking. The Pharisee had every cognitive resource available. He was educated, disciplined, and devout. But his self-assessment was catastrophically wrong because he measured himself against the wrong standard: other people instead of God. The tax collector, by contrast, had received the kind of self-education Jesus' parable was designed to deliver: he saw himself against the backdrop of God's holiness, and the result was not self-esteem but seven honest words that changed his eternal status. Sometimes the most important thing we can know about ourselves is that we cannot trust ourselves to know ourselves.</p>
-    </div>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Jesus told this parable knowing exactly where He was headed. The One who declared the tax collector justified would soon justify sinners at an infinitely greater cost: His own life. The mercy the tax collector pleaded for (<em>hilastheti</em>, "be propitiated") would be provided at the cross, where Jesus became the sacrifice that covers every honest confession. And here is the beautiful irony: Jesus Himself is the standard that makes self-knowledge possible. It is ignorance of Christ that allows people to be inflated in their own righteousness. The closer we draw to Him, the clearer we see ourselves. That is not cruelty; that is grace. Because only the person who sees their need will reach for the hand that is already extended.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Jesus told this parable knowing exactly where He was headed. The One who declared the tax collector justified would soon justify sinners at an infinitely greater cost: His own life. The mercy the tax collector pleaded for (<em>hilastheti</em>, "be propitiated") would be provided at the cross, where Jesus became the sacrifice that covers every honest confession. And here is the beautiful irony: Jesus Himself is the standard that makes self-knowledge possible. It is ignorance of Christ that allows people to be inflated in their own righteousness. The closer we draw to Him, the clearer we see ourselves. That is not cruelty; that is grace. Because only the person who sees their need will reach for the hand that is already extended.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Before you pray today, stop and ask yourself one question: am I coming to God like the Pharisee or like the tax collector? If your prayer sounds like a report on your spiritual accomplishments, start over. Try praying those seven words instead: "God, have mercy on me, a sinner." Notice what shifts when you stop performing and start confessing.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>God, be merciful to us, sinners. We confess that we have measured ourselves by the wrong standard, compared ourselves to people around us, and walked away feeling better about ourselves than we should. We have brought You prayers that were really reports on our own progress, and we have missed the point entirely. Today we come with empty hands and honest words. We need Your mercy more than we need to be right. We need Your grace more than we need to look good. Calibrate our hearts to Your standard, not our own. Strip away the comfortable lies we tell ourselves and replace them with the uncomfortable truth that sets us free. Like the tax collector, we ask for nothing but mercy, and we trust that You give it generously to everyone who asks. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"When was the last time you caught yourself mentally comparing your spiritual life to someone else's, and what would change if you measured yourself against God's holiness instead?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"When was the last time you caught yourself mentally comparing your spiritual life to someone else's, and what would change if you measured yourself against God's holiness instead?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>God, be merciful to us, sinners. We confess that we have measured ourselves by the wrong standard, compared ourselves to people around us, and walked away feeling better about ourselves than we should. We have brought You prayers that were really reports on our own progress, and we have missed the point entirely. Today we come with empty hands and honest words. We need Your mercy more than we need to be right. We need Your grace more than we need to look good. Calibrate our hearts to Your standard, not our own. Strip away the comfortable lies we tell ourselves and replace them with the uncomfortable truth that sets us free. Like the tax collector, we ask for nothing but mercy, and we trust that You give it generously to everyone who asks. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-04-12.html"><span class="day-nav-kicker">← Sunday</span><span class="day-nav-title">The Tight Fingers of Pride</span></a><a class="day-nav-item" href="/bible-study/2026-04-14.html"><span class="day-nav-kicker">Tuesday →</span><span class="day-nav-title">Moses, Humble Servant</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"luke-18-11":{"ref":"Luke 18:11","text":"The Pharisee stood by himself and prayed, \u2018God, I thank You that I am not like other men\u2014swindlers, evildoers, adulterers\u2014or even like this tax collector.","bibleUrl":"https://www.bible.com/bible/3034/LUK.18.11"},"luke-18-9":{"ref":"Luke 18:9","text":"To some who trusted in their own righteousness and viewed others with contempt, He also told this parable:","bibleUrl":"https://www.bible.com/bible/3034/LUK.18.9"},"luke-14-11":{"ref":"Luke 14:11","text":"For everyone who exalts himself will be humbled, and the one who humbles himself will be exalted.\u201d","bibleUrl":"https://www.bible.com/bible/3034/LUK.14.11"},"luke-14-8-10":{"ref":"Luke 14:8-10","text":"\u201cWhen you are invited to a wedding banquet, do not sit in the place of honor, in case someone more distinguished than you has been invited. Then the host who invited both of you will come and tell you, \u2018Give this man your seat.\u2019 And in humiliation, you will have to take the last place. But when you are invited, go and sit in the last place, so that your host will come and tell you, \u2018Friend, move up to a better place.\u2019 Then you will be honored in front of everyone at the table with you.","bibleUrl":"https://www.bible.com/bible/3034/LUK.14.8-10"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

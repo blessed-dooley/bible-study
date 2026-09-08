@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-red="on">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy &amp; reader controls — Daily Bible Study</title>
+<meta name="description" content="Exactly what this site collects, what it stores on your device, and how to change it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="theme-color" content="#1a1a1a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="icon" type="image/png" href="./assets/favicon-729135cb.png">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="./assets/apple-touch-icon-729135cb.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap">
+<link rel="stylesheet" href="./assets/study-v5_0.css">
+<script>
+/* Service-worker registration. v5.0 shipped this on index.html and every
+   study page but NOT on the four trust pages, so a reader landing on About
+   got no offline caching and no install prompt. Present on all eight now.
+   In this review sandbox the script 404s and the .catch logs a benign
+   message; no worker is installed, because the /bible-study/ scope does not
+   match the preview path. */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function (error) { console.log('SW registration failed:', error); });
+  });
+}
+</script>
+</head>
+<body class="trust-page">
+
+<a class="skip-link" href="#main">Skip to the content</a>
+
+<header class="appbar">
+  <div class="appbar-row">
+    <a class="wordmark" href="./index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span><span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
+    </div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this page</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="./index.html">All studies</a>
+    <a class="menu-row" href="./about.html">About our approach</a>
+    <a class="menu-row" href="./scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="./privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="./corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
+  </div>
+</header><div class="prose-header">
+  <div class="prose-header-inner">
+    <h1 class="prose-title">Privacy &amp; reader controls</h1>
+    <p class="prose-lede">In plain language: what leaves your device, what stays on it, and how to change either.</p>
+  </div>
+</div>
+<nav class="on-this-page" aria-label="On this page"><span class="otp-label">On this page</span><span class="otp-chips"><a class="chip" href="#short">The short version</a><a class="chip" href="#collect">What is collected</a><a class="chip" href="#controls">Reader controls</a><a class="chip" href="#notifications">Notifications</a><a class="chip" href="#corrections-link">Mistakes</a></span></nav>
+
+<main class="prose-body" id="main">
+  <section class="section" id="short" aria-labelledby="short-label">
+    <h2 class="section-label" id="short-label">The short version</h2>
+    <p>There is no account, no login, no email list, and no way for anyone here to know what you have read. Three things are worth knowing in more detail: a cookieless page counter, an optional daily notification, and two preferences kept on your device.</p>
+    <ul>
+      <li>
+<strong>Nothing you read is tied to you.</strong> No account exists, so no reading history exists.</li>
+      <li>
+<strong>Notifications are opt-in</strong> and can be turned off at any time.</li>
+      <li><strong>Your theme and red-letter settings never leave your device.</strong></li>
+    </ul>
+  </section>
+  <section class="section" id="collect" aria-labelledby="collect-label">
+    <h2 class="section-label" id="collect-label">What is collected</h2>
+    <table class="datatable">
+      <caption>Every data flow on this site</caption>
+      <thead><tr>
+<th scope="col">What</th>
+<th scope="col">Why</th>
+<th scope="col">Where it goes</th>
+</tr></thead>
+      <tbody>
+        <tr>
+<th scope="row">Page views</th>
+<td>To know roughly how many people read, and which studies</td>
+<td>GoatCounter. No cookies, no cross-site tracking, no advertising identifiers, no profile</td>
+</tr>
+        <tr>
+<th scope="row">Notification token</th>
+<td>Only if you opt in — the address your device is reachable at</td>
+<td>Firebase Cloud Messaging; the token is stored in Firestore alongside a truncated browser description</td>
+</tr>
+        <tr>
+<th scope="row">Notification choice</th>
+<td>So you are not asked twice</td>
+<td>A cookie on this site, holding only “yes” or “no”</td>
+</tr>
+        <tr>
+<th scope="row">Theme &amp; red letter</th>
+<td>So the site looks the same next visit</td>
+<td>Your browser’s local storage. Never sent anywhere</td>
+</tr>
+        <tr>
+<th scope="row">Archive study list</th>
+<td>To list published studies</td>
+<td>Requested from this site. If that list is unavailable the page falls back to GitHub, which then sees the request</td>
+</tr>
+        <tr>
+<th scope="row">Fonts</th>
+<td>Typefaces used across the site</td>
+<td>Currently the Google Fonts service, which therefore sees the request</td>
+</tr>
+      </tbody>
+    </table>
+    <div class="notice notice--info">
+      <span class="notice-mark" aria-hidden="true">i</span>
+      <span><strong>Notification records do not have a fixed expiration date.</strong> Turning notifications off here attempts to remove the device token from Firestore and Firebase. The morning sender also removes registrations that Firebase reports as invalid. GoatCounter and Google Fonts handle requests under their own privacy policies.</span>
+    </div>
+  </section>
+  <section class="section" id="controls" aria-labelledby="controls-label">
+    <h2 class="section-label" id="controls-label">Reader controls</h2>
+    <p>Everything you can change, in one place. Each of these is also in the menu at the top of any page.</p>
+
+    <div class="control-row">
+      <div class="control-copy">
+        <div class="control-name">Theme</div>
+        <p class="control-help">Dark for low light, Paper for long reading, Light for bright rooms. Remembered on this device.</p>
+      </div>
+      <div class="control-action">
+        <span class="seg">
+          <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+          <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+          <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+        </span>
+      </div>
+    </div>
+
+    <div class="control-row">
+      <div class="control-copy">
+        <div class="control-name">Words of Jesus in red</div>
+        <p class="control-help">When off, His words stay marked by their quotation marks. Printed pages always use black.</p>
+      </div>
+      <div class="control-action">
+        <button type="button" class="control-switch" data-toggle="red" role="switch" aria-checked="true" aria-label="Words of Jesus in red">
+          <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="control-row">
+      <div class="control-copy">
+        <div class="control-name">Morning reminder</div>
+        <p class="control-help">A morning reminder for that day’s study, if you choose to receive it.</p>
+      </div>
+      <div class="control-action">
+        <a class="btn btn-quiet" href="#notifications">Manage</a>
+      </div>
+    </div>
+
+    <div class="control-row">
+      <div class="control-copy">
+        <div class="control-name">Clear what this site stored</div>
+        <p class="control-help">Removes your theme, red-letter and notification choices from this device. Your browser’s notification permission is separate — see below.</p>
+      </div>
+      <div class="control-action">
+        <button type="button" class="btn btn-quiet" data-clear-local>Clear</button>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="notifications" aria-labelledby="notifications-label">
+    <h2 class="section-label" id="notifications-label">Notifications</h2>
+    <p>Notifications are off unless you turn them on.</p>
+
+    <div class="notif-card">
+      <p class="notif-card-kicker">Optional</p>
+      <h3>Get a morning reminder for today’s study</h3>
+      <p>The automated sender runs once each morning and includes the study title and a link to read it.</p>
+      <ul class="notif-facts">
+        <li>Off unless you turn it on.</li>
+        <li>Turning it on asks your browser for permission, and you can refuse.</li>
+        <li>You can turn it off again here, or in your browser, at any time.</li>
+</ul>
+      <div class="notif-actions">
+        <button type="button" class="btn btn-primary" data-notif="enable">Turn on notifications</button>
+        <button type="button" class="btn btn-quiet" data-notif="dismiss">Not now</button>
+      </div>
+      <p class="form-note">Permission belongs to your browser, not to this site — so if you ever block notifications there, this page cannot ask again.</p>
+    </div>
+
+    <div class="notif-actions" style="margin-top:var(--sp-6)">
+      <button type="button" class="btn btn-quiet" data-notif="disable">Turn notifications off</button>
+    </div>
+  </section>
+  <section class="section" id="corrections-link" aria-labelledby="corrections-link-label">
+    <h2 class="section-label" id="corrections-link-label">Mistakes</h2>
+    <p>If something here is wrong—a misquoted verse, a wrong date, or a factual claim that does not hold up—it should be fixed rather than defended. Online reports are not yet available; the <a href="corrections.html">Corrections page</a> explains the policy.</p>
+  </section>
+
+</main>
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="./about.html">About</a>
+    <a href="./scripture-sources.html">Scripture sources</a>
+    <a href="./privacy.html">Privacy</a>
+    <a href="./corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer>
+<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="./assets/notifications.js" defer></script>
+<script src="./assets/reader-controls.js" defer></script><script src="./assets/privacy-controls.js" defer></script>
+</body>
+</html>

@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Deep Bible Study — Daily Bible Study</title>
 <meta name="study-title" content="Deep Bible Study">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Part 4 of 7">
+<meta name="study-passage" content="Joshua 1:8">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Day 4 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Deep Bible Study">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Part 4 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Day 4 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-04-28.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Part 4 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Day 4 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,322 +38,197 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Deep Bible Study</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 5, How to Study the Bible</span>
-      <span>Part 4 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Tue · Apr 28</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
     </div>
-    <div class="date-badge">April 28, 2026</div>
+    <h1 class="study-title">Deep Bible Study</h1>
+    <p class="study-sub"><span class="sub-title">How to Study the Bible</span><span class="sub-facts"><span>Lesson 5</span><span>Day 4 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">A monk in sixth-century Italy looked at his brothers skimming the Scriptures and told them to slow down, read aloud, write it out, pray it back, and then sit still until the words had done their work.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p class="tldr-hook">A monk in sixth-century Italy looked at his brothers skimming the Scriptures and told them to slow down, read aloud, write it out, pray it back, and then sit still until the words had done their work.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span> Depth is the difference between reading the Bible and being read by it.</li>
-        <li><span class="bullet-icon">☩</span> Joshua was commanded to keep the Book on his lips day and night, and the Hebrew word for meditate means to mutter it low enough that only God hears.</li>
-        <li><span class="bullet-icon">☩</span> Writing the passage out by hand is the oldest trick for getting a verse from the page to the bloodstream.</li>
-        <li><span class="bullet-icon">☩</span> The Holy Spirit is the Teacher who came with the Book, and the quiet prayer for opened eyes is the first real step of deep study.</li>
+        <li>
+<span class="bullet-icon">☩</span> Depth is the difference between reading the Bible and being read by it.</li>
+        <li>
+<span class="bullet-icon">☩</span> Joshua was commanded to keep the Book on his lips day and night, and the Hebrew word for meditate means to mutter it low enough that only God hears.</li>
+        <li>
+<span class="bullet-icon">☩</span> Writing the passage out by hand is the oldest trick for getting a verse from the page to the bloodstream.</li>
+        <li>
+<span class="bullet-icon">☩</span> The Holy Spirit is the Teacher who came with the Book, and the quiet prayer for opened eyes is the first real step of deep study.</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday you walked to a specific spot, put the Bible there, and committed to letting the chair become an altar by being sat in morning after morning. The place is set. Now the question is what happens inside it. You can sit in the same corner for a year and still skim, still tick off a chapter, still close the Book wondering why nothing stuck. Place is the vessel. Method is the substance poured inside it. Today the week teaches the pouring: pray, read, write, share. Four movements that turn a quiet corner into the place where the Word actually gets under the skin.</p>
-    </div>
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday you walked to a specific spot, put the Bible there, and committed to letting the chair become an altar by being sat in morning after morning. The place is set. Now the question is what happens inside it. You can sit in the same corner for a year and still skim, still tick off a chapter, still close the Book wondering why nothing stuck. Place is the vessel. Method is the substance poured inside it. Today the week teaches the pouring: pray, read, write, share. Four movements that turn a quiet corner into the place where the Word actually gets under the skin.</p>
+    </section>
 
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Four Movements at a Desk</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>Four Movements at a Desk</h3>
       <p>In the sixth century, an Italian monk named Benedict gave his monasteries a rule that shaped Western Christian devotion for the next fifteen hundred years. Every day, every monk, was to set aside time for what he called <em>lectio divina</em>, divine reading. The practice had four unhurried movements. Read the passage slowly, aloud if possible. Meditate on it, turning every word over in the mind like a coin. Pray the text back to God in the monk's own voice. And then rest in the presence of the Author long enough to be affected by what the reading had uncovered. The point was never information. Benedict's monks were trying to be reshaped by Scripture over a lifetime, and they knew that skimming would never do it.</p>
       <p>They were drawing on something even older. The Hebrew Scriptures had already told Joshua to keep the Book on his mouth, muttering the words low and constant, so that what his tongue said his hands would do. Rabbis trained students in pairs, each taking a verse and defending it back to the other. Scribes copying the Torah counted every letter and marked the middle one of the whole scroll, a discipline of care that is hard to imagine today. Across every century, the faithful have discovered the same uncomfortable truth: the Bible does not open itself to hurry. It opens to attention, to the pen, to the whispered word, and to the prayer that asks the Spirit to show what the eye alone cannot see. Deep study is not a new method. It is what faithful people have been doing since God first handed down a book.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Joshua stood on the east bank of the Jordan with Moses freshly buried, Jericho watching from the far side of the water, and a generation of Israelites waiting to see whether the silence after Moses meant God had stopped speaking. God's first words to the new leader were not military. They were literary. Keep the Book on your mouth. Do not let it depart. The man who would lead Israel into the land was handed a scroll before he was handed a sword, and told to mutter it day and night until the words came out of him without thinking. The <a class="vlink" href="https://www.bible.com/bible/3034/PSA.119.105" target="_blank" rel="noopener">Word that lights the next step</a> is not theoretical. It walks a leader into the next foot of ground.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Joshua stood on the east bank of the Jordan with Moses freshly buried, Jericho watching from the far side of the water, and a generation of Israelites waiting to see whether the silence after Moses meant God had stopped speaking. God's first words to the new leader were not military. They were literary. Keep the Book on your mouth. Do not let it depart. The man who would lead Israel into the land was handed a scroll before he was handed a sword, and told to mutter it day and night until the words came out of him without thinking. The <a class="vlink" href="https://www.bible.com/bible/3034/PSA.119.105" target="_blank" rel="noopener">Word that lights the next step</a> is not theoretical. It walks a leader into the next foot of ground.</p>
 
       <!-- ANCHOR: Joshua 1:8 -->
 <!-- BSB_BLOCK: Joshua 1:8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:84a6d5644049e5d6de31f9e0afe8a703f6ecf149672cea730a993deafa45ff4b | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Joshua 1:8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/JOS.1.8" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/JOS.1.8" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">This Book of the Law must not depart from your mouth; meditate on it day and night, so that you may be careful to do everything written in it. For then you will prosper and succeed in all you do.</div>
 <div class="verse-commentary">
           <p>Joshua had just taken over from Moses. The older leader was dead, the river was high, the city of Jericho was watching from across the water, and an entire generation of Israelites was looking at Joshua to see whether the silence after Moses meant God had stopped speaking. God's first words to him are not military. They are literary. Keep the Book on your mouth. Do not let it depart.</p>
           <p>The Hebrew word for "meditate" here is <em>hagah</em>, and it is not a quiet mental exercise. <em>Hagah</em> is the word used for a lion growling over a kill, for a dove cooing, for a person muttering under the breath. It is noise you make with your own mouth, not thought you hold in the head. God is telling Joshua to keep the words of the Torah on his lips all day, murmuring them while he walks, whispering them while he waits, rehearsing them under his breath while the armies muster. The body is a better memorizer than the mind, and the mouth is the shortcut that gets the page into the bones.</p>
           <p>Notice the logic: "meditate on it day and night, so that you may be careful to do everything written in it." <em>Hagah</em> is not the destination. Obedience is the destination. The muttering is how the obedience becomes possible, because the tongue rehearses the word until the hand is ready to act on it. This is why writing, saying, and hearing the Bible change what mere silent reading cannot. A passage read three times is a visitor. A passage muttered under the breath for a week is a roommate. One will leave with the day. The other will still be there when the pressure of noon arrives and a choice has to be made. Deep Bible study is not a technique for retaining information. It is the lifelong slow conversion of the mouth into the language of the book, so that by the time the moment comes to obey, the right words are already there.</p>
         </div>
-      </div>
+      </figure>
 
       <!-- SUPPORTING: Psalm 119:18 -->
 <!-- BSB_BLOCK: Psalms 119:18 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:e5e78fb33b138d8aba3d02a1140576f2602d72679457b64b425ebdbed2358924 | footnotes-stripped:0 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Psalms 119:18</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.119.18" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/PSA.119.18" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Open my eyes that I may see wondrous things from Your law.</div>
 <div class="verse-commentary">
           <p>Deep study does not begin with the Bible. It begins with the prayer in front of the Bible. The psalmist assumes he could stare at the open page for a year and miss everything unless God first did something to his vision. The Hebrew verb for "open" is <em>galah</em>, to uncover, to reveal what was already there but veiled.</p>
           <p>That word lands on a specific quiet truth: the wonder is not waiting to be added to the text. It is already in the text and waiting for a reader whose eyes can catch it. Scripture is not a field you crop; it is a seam you discover. So the first move of every deep reading is to stop and ask. "Lord, open my eyes." It is a two-second prayer, but it changes the entire temperature of the page. The Spirit who authored the book is the only Teacher who can show a reader what the book actually says. Nobody opens their own eyes; they ask.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Budget You Had to Write by Hand</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Budget You Had to Write by Hand</h3>
       <p>Any adult who has sat across from a financial counselor knows the exercise. The counselor slides a notebook across the table and asks you to write down, by hand, every dollar you spend for thirty days. No app, no screenshot, no bank statement at the end of the week. Ink on paper, in the moment. Most people laugh at how low-tech it sounds. Most people stop laughing by the end of week two. The numbers that come out of that notebook are not the numbers you would have quoted. You were not lying when you said, "I mostly just spend on groceries and gas." But knowing, as your hand discovers, is a different word than seeing.</p>
       <p>The Hebrew <em>hagah</em> means to mutter and murmur a text under the breath, to chew it aloud, to slow it down until the mouth has to catch up with the eye. Modern readers assume reading happens in the head. It mostly does not. The page slides past too fast, and the skim leaves a reassuring sense that something happened. The pen, or the pencil, or the whispered voice, is the hinge. It is what turns a passage you glanced at into a passage that got through. Writing a verse by hand is the same kind of honest as handwriting a month of spending. You thought you knew what was there. The pen tells you what is actually there.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Lean Back, Lean In</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>Lean Back, Lean In</h3>
       <p>The streaming era has a name for what most of us now do with music. Industry researchers at Bridge Ratings and a line of 2025 analysis call it "lean-back listening." It is mindless, frictionless, and by design non-disruptive. Algorithms reward songs with short runtimes and immediate hooks because the revenue depends on not interrupting the scroll. We do not play the music anymore; we let the music play us. The piano in the living room has been quiet for a generation. The voice raised in harmony on a porch has followed it out the door.</p>
       <p>Neuroscience has quietly been tracking the cost. A 2025 study in <em>Frontiers in Neuroscience</em> on music and resilience found that active music making (playing an instrument, singing, dancing) was significantly correlated with psychological resilience, while passive listening after a stressful event showed no statistically meaningful correlation at all. A 2025 meta-analysis of music interventions for older adults reported that active programs (piano, drumming, structured singing) produced measurable gains in global cognition, while passive programs did not. Active engagement accounted for more than three-quarters of the trials where the brain actually changed. The difference is not aesthetic. It is neurological, and it is measurable.</p>
       <p>Joshua 1:8 has a verb for this, and it is not silence. <em>Hagah</em> is the sound the worshiper makes, a mutter or a growl, a phrase said under the breath until the body has it. Hebrew does not treat the mouth as a loudspeaker for the mind; it treats the mouth as a shortcut that moves a page into the bones. James called it a mirror you stoop into, <em>parakupto</em>. The streaming platform has trained a whole generation to consume music without ever making any, and the same default now runs a silent, rapid scan over the Bible each morning and calls it a devotion. The cure is old. Open the mouth. Pick up the pen. Play the instrument.</p>
-    </div>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Jesus studied. Luke 2:46 finds Him at twelve years old in the temple, "sitting among the teachers, listening to them and asking them questions," with the scholars of Jerusalem astonished at His understanding. He did not arrive at His public ministry improvising Scripture; He arrived having <em>hagah</em>-ed the Hebrew Bible for three decades until the words lived in His mouth without effort. When the tempter offered Him a shortcut in the wilderness, Deuteronomy came out three times without hesitation, because Deuteronomy had been rehearsed in solitude long before it was ever needed in public. And when two men walked the road to Emmaus with grief so thick it made them blind to the risen Christ standing beside them, He did not open their eyes with a miracle. He opened their eyes with a Bible study, "beginning with Moses and all the Prophets, he interpreted for them the things concerning himself in all the Scriptures." The Master of deep reading spent a seven-mile walk doing the exact practice the week is asking us to pick up. He is not asking from us what He did not live.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Jesus studied. Luke 2:46 finds Him at twelve years old in the temple, "sitting among the teachers, listening to them and asking them questions," with the scholars of Jerusalem astonished at His understanding. He did not arrive at His public ministry improvising Scripture; He arrived having <em>hagah</em>-ed the Hebrew Bible for three decades until the words lived in His mouth without effort. When the tempter offered Him a shortcut in the wilderness, Deuteronomy came out three times without hesitation, because Deuteronomy had been rehearsed in solitude long before it was ever needed in public. And when two men walked the road to Emmaus with grief so thick it made them blind to the risen Christ standing beside them, He did not open their eyes with a miracle. He opened their eyes with a Bible study, "beginning with Moses and all the Prophets, he interpreted for them the things concerning himself in all the Scriptures." The Master of deep reading spent a seven-mile walk doing the exact practice the week is asking us to pick up. He is not asking from us what He did not live.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Tonight or tomorrow morning, take one verse from the chapter you picked on Sabbath and write it out longhand in a notebook, a margin, or the back of an envelope. Not typed. Handwritten. Then read it aloud three times, slowly. Then write one sentence describing what you noticed. That is the whole practice: pray, read, write, notice. Before the day ends, send the verse and your one sentence to one person who will take it seriously.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we confess that we have often read Your Word the way we read the news, eyes skimming for the familiar, minds already halfway to the next thing. Forgive us for treating a living book like a feed. Teach us <em>hagah</em> again. Put the murmured verse back on our lips while we drive and cook and wait in line. Open our eyes, the way the psalmist prayed, to the wonders that have been in the text all along and that we have walked past for years. Put a pen in our hands. Put a friend across our table. And when the mirror of Your Word shows us something we would rather not see about ourselves, give us the courage to stoop closer instead of turning away. Make us doers, not forgetful hearers. Deepen our reading until the words of Your Book begin to come out of us before we have a chance to plan them. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"Which of the four deep-study moves (praying for opened eyes, reading slowly out loud, writing the passage by hand, or sharing it with someone) do you currently skip the most (phone instead of prayer, screen instead of voice, no pen, no conversation), and what one paragraph of Scripture will you actually walk through all four moves with before the week ends?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"Which of the four deep-study moves (praying for opened eyes, reading slowly out loud, writing the passage by hand, or sharing it with someone) do you currently skip the most (phone instead of prayer, screen instead of voice, no pen, no conversation), and what one paragraph of Scripture will you actually walk through all four moves with before the week ends?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, we confess that we have often read Your Word the way we read the news, eyes skimming for the familiar, minds already halfway to the next thing. Forgive us for treating a living book like a feed. Teach us <em>hagah</em> again. Put the murmured verse back on our lips while we drive and cook and wait in line. Open our eyes, the way the psalmist prayed, to the wonders that have been in the text all along and that we have walked past for years. Put a pen in our hands. Put a friend across our table. And when the mirror of Your Word shows us something we would rather not see about ourselves, give us the courage to stoop closer instead of turning away. Make us doers, not forgetful hearers. Deepen our reading until the words of Your Book begin to come out of us before we have a chance to plan them. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-    <!-- BIBLE APP STRIP -->
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-04-27.html"><span class="day-nav-kicker">← Monday</span><span class="day-nav-title">A Place</span></a><a class="day-nav-item" href="/bible-study/2026-04-29.html"><span class="day-nav-kicker">Wednesday →</span><span class="day-nav-title">A Double Blessing</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

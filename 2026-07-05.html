@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>The Gospel of the Cross — Daily Bible Study</title>
 <meta name="study-title" content="The Gospel of the Cross">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 2, The Message of the Cross · Part 2 of 7">
+<meta name="study-passage" content="1 Corinthians 1:17">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 2, The Message of the Cross · Day 2 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="The Gospel of the Cross">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 2, The Message of the Cross · Part 2 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 2, The Message of the Cross · Day 2 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-07-05.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 2, The Message of the Cross · Part 2 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 2, The Message of the Cross · Day 2 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,310 +38,180 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>The Gospel of the Cross</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 2, The Message of the Cross</span>
-      <span>Part 2 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">July 5, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Sun · Jul 5</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">7 min</span>
+    </div>
+    <h1 class="study-title">The Gospel of the Cross</h1>
+    <p class="study-sub"><span class="sub-title">The Message of the Cross</span><span class="sub-facts"><span>Lesson 2</span><span>Day 2 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>Paul could out-argue almost anyone, which makes what he does next so surprising. Walking into a city that treated public speakers like celebrities, he sets down every clever tool he owns and decides to preach one plain thing, Jesus Christ and Him crucified. He is not dumbing the message down. He has realized that a dressed-up cross is a disarmed cross, and that the moment people leave admiring the speaker, the power has quietly leaked out. So he chooses to be forgettable. <strong>The gospel does not need our polish, and it loses its power the second we make it about us.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday we stood in a world where the word "cross" was too shameful to say out loud, and watched Paul carry that exact word into a city addicted to looking impressive. Today we get to hear his actual strategy. You might expect a man with his education to come out swinging with brilliant arguments, the kind Corinth would stand up and applaud. He does the opposite. He sets down every tool that might make him look clever, because he has realized that a dressed-up cross is a disarmed cross. The most powerful thing he can do is get out of the way and let the message stand on its own.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Paul could out-argue almost anyone, which makes what he does next so surprising. Walking into a city that treated public speakers like celebrities, he sets down every clever tool he owns and decides to preach one plain thing, Jesus Christ and Him crucified. He is not dumbing the message down. He has realized that a dressed-up cross is a disarmed cross, and that the moment people leave admiring the speaker, the power has quietly leaked out. So he chooses to be forgettable. <strong>The gospel does not need our polish, and it loses its power the second we make it about us.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday we stood in a world where the word "cross" was too shameful to say out loud, and watched Paul carry that exact word into a city addicted to looking impressive. Today we get to hear his actual strategy. You might expect a man with his education to come out swinging with brilliant arguments, the kind Corinth would stand up and applaud. He does the opposite. He sets down every tool that might make him look clever, because he has realized that a dressed-up cross is a disarmed cross. The most powerful thing he can do is get out of the way and let the message stand on its own.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">When Speeches Were a Spectator Sport</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>When Speeches Were a Spectator Sport</h3>
       <p>In Paul's world, a great speaker was a celebrity. Cities like Corinth packed their public halls to hear traveling orators perform, and perform is the right word. These men trained for years in the art of persuasion, polished every gesture, and could hold a crowd spellbound on almost any subject, sometimes arguing a case one day and the opposite case the next just to show off their range. People paid to attend. They picked favorites. They argued afterward about whose style was better, the way fans argue about athletes.</p>
       <p>Step into that arena with the gospel and you can feel Paul's problem. The crowd is not really listening for truth. They are grading the technique. A message about a crucified carpenter has no chance in a contest like that, and Paul knows it. So he refuses to enter the contest at all. He will not compete for applause on the orators' terms, because the moment the cross becomes one more performance to be scored, its power leaks out and people walk away impressed with the speaker instead of saved by the Savior. He would rather be forgettable and have them remember Jesus.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Paul has just begged the Corinthians to stop splitting into factions, and now he tells them why their fights miss the point entirely. In <a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.17-31" target="_blank" rel="noopener">1 Corinthians 1:17-31</a>, he plants his flag. He was sent to preach the cross, and he refuses to do it with the kind of polished eloquence that would turn the gospel into a performance. Watch how he frames everything around a single danger, that human cleverness can quietly empty the cross of the very power that makes it good news.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Paul has just begged the Corinthians to stop splitting into factions, and now he tells them why their fights miss the point entirely. In <a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.17-31" target="_blank" rel="noopener" data-verse="1-corinthians-1-17-31" data-ref="1 Corinthians 1:17-31" aria-expanded="false">1 Corinthians 1:17-31</a>, he plants his flag. He was sent to preach the cross, and he refuses to do it with the kind of polished eloquence that would turn the gospel into a performance. Watch how he frames everything around a single danger, that human cleverness can quietly empty the cross of the very power that makes it good news.</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 1:17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:8d1f15805eaed1da7727ade5fd02c1caf042a8654347400760fba31489cc6b2d | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 1:17</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.17" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.1.17" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">For Christ did not send me to baptize, but to preach the gospel, not with words of wisdom, lest the cross of Christ be emptied of its power.</div>
 <div class="verse-commentary">
-          <p>Notice what Paul is and is not saying. He is not against baptism, and he is not against careful thinking. He is against anything that would make the cross depend on his own brilliance to land. The phrase "emptied of its power" is vivid in the original. The Greek verb is <em>kenoo</em>, which means to empty something out, to drain it until nothing is left, to render it pointless. Paul pictures the cross as a full cup of God's power and clever speech as a slow leak. Dress the message up enough, make it impressive enough, and people will leave admiring the messenger while the actual power drains away unnoticed. That is why the rest of the passage (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.18-31" target="_blank" rel="noopener">1 Corinthians 1:18-31</a>) becomes a head-on collision between human wisdom and God's. The gospel never needed to borrow strength from our eloquence. It needs us to stop getting in its way.</p>
+          <p>Notice what Paul is and is not saying. He is not against baptism, and he is not against careful thinking. He is against anything that would make the cross depend on his own brilliance to land. The phrase "emptied of its power" is vivid in the original. The Greek verb is <em>kenoo</em>, which means to empty something out, to drain it until nothing is left, to render it pointless. Paul pictures the cross as a full cup of God's power and clever speech as a slow leak. Dress the message up enough, make it impressive enough, and people will leave admiring the messenger while the actual power drains away unnoticed. That is why the rest of the passage (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.1.18-31" target="_blank" rel="noopener" data-verse="1-corinthians-1-18-31" data-ref="1 Corinthians 1:18-31" aria-expanded="false">1 Corinthians 1:18-31</a>) becomes a head-on collision between human wisdom and God's. The gospel never needed to borrow strength from our eloquence. It needs us to stop getting in its way.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: 1 Corinthians 2:2 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b9a795c493756bf71cf915b67c01c844ca6e3f70cc18854d226d31ce77a08f45 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 2:2</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.2.2" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.2.2" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">For I resolved to know nothing while I was with you except Jesus Christ and Him crucified.</div>
 <div class="verse-commentary">
           <p>A chapter later Paul says the same thing from the other direction. He did not arrive in Corinth with a buffet of impressive ideas and let the cross be one dish among many. He made a deliberate decision to know one thing and preach one thing, Jesus Christ and the fact that He was crucified. That is a stunning narrowing for a man who could have traded arguments with the philosophers all afternoon. He is not saying the cross was the limit of what he understood. He is saying it was the only thing worth building on. Everything else he might have said would have been scaffolding around this single, scandalous, load-bearing truth. Take Christ crucified out of the center, and the most brilliant sermon in the world is just noise.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">When the Singer Buries the Song</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>When the Singer Buries the Song</h3>
       <p>You have heard a national anthem turned into an obstacle course. A singer takes a simple, powerful melody and crams every line with runs and curls, eight notes where the song asked for one, holding the word "free" so long you forget what sentence it belonged to. The crowd claps when it ends. But listen to what people say on the way out. "Wow, what a voice." Nobody is humming the song. Nobody got the chill that a plain, straight version of that same anthem can send through a whole stadium. The performance was impressive, and somewhere inside all that impressiveness the song quietly vanished.</p>
       <p>That is exactly what Paul refused to do to the cross. He could have decorated it, run every rhetorical scale he owned, and left Corinth with people saying "what a speaker." Instead he sang it straight, because he knew the thing every honest musician knows. The more you make a crowd notice the performer, the less they actually hear the song. A dressed-up cross is a disarmed cross. Say it plainly, "Jesus died for you," and the power is free to do its own work. Gild it, perform it, make it about how clever you sound, and people will applaud you and walk out humming nothing.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Wine Was the Same the Whole Time</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Wine Was the Same the Whole Time</h3>
       <p>We would all like to think our own tongue cannot be bribed. A team of researchers at the University of Bonn proved otherwise. They had people sip the very same red wine again and again inside a brain scanner, while flashing different prices on a screen, sometimes a few dollars, sometimes closer to twenty. The wine never changed. Only the number did. And every time the price climbed, people did not merely claim the wine tasted better. Their brains handed them more actual pleasure, the reward centers glowing brighter for an identical drink. Hilke Plassmann and her colleagues, writing in the journal Scientific Reports in 2017, called it the marketing placebo effect. Put a bigger price on a thing and our senses scramble to make it true.</p>
       <p>That is the exact trick Paul refused to run on the gospel. He could have wrapped the cross in expensive packaging, all the polished delivery and impressive vocabulary Corinth admired, and watched the crowd's appreciation climb. But he knew what a price tag really does. It moves the wonder onto the wrapping, so people leave admiring the label instead of tasting the wine. So he tore the label off. He preached one plain thing and let it stand there unmarked, because the cross was never the cheap version that needed dressing up. It was always the good wine. We are the ones who keep reaching for a fancier bottle than the truth ever required.</p>
-    </div>
-    <!-- TODAYS_WORLD_SOURCE: Marketing placebo effect, identical wine rated more pleasant at higher prices (brain-imaging study) | Scientific Reports, Univ. of Bonn / INSEAD (Schmidt, Plassmann et al.) | 2017 | https://www.sciencedaily.com/releases/2017/08/170814092949.htm -->
+    </section>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Look at what Paul chose to make central, and you are looking straight at the heart of God. The world keeps score by strength, brains, and beauty. God walked past all of it and put the rescue of the human race on a cross, the one place no one would think to look for power. Jesus did not argue humanity into salvation. He did not dazzle Pilate with a defense or overwhelm the crowd with one last miracle. He let Himself be stripped, mocked, and nailed up like a criminal, and in that moment of total weakness He was doing the strongest thing that has ever been done. When Paul says he will preach nothing but Christ crucified, he is simply refusing to be embarrassed by the way God chose to save him. The cross is not the part of the gospel we apologize for. It is the gospel.</p>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Look at what Paul chose to make central, and you are looking straight at the heart of God. The world keeps score by strength, brains, and beauty. God walked past all of it and put the rescue of the human race on a cross, the one place no one would think to look for power. Jesus did not argue humanity into salvation. He did not dazzle Pilate with a defense or overwhelm the crowd with one last miracle. He let Himself be stripped, mocked, and nailed up like a criminal, and in that moment of total weakness He was doing the strongest thing that has ever been done. When Paul says he will preach nothing but Christ crucified, he is simply refusing to be embarrassed by the way God chose to save him. The cross is not the part of the gospel we apologize for. It is the gospel.</p>
-    </div>
-
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Today, pay attention to the moment you start performing. Maybe it is the urge to sound smart in a conversation about faith, to win the argument instead of point to Jesus, or to make yourself look a little more put-together than you actually are. The next time you feel it, stop and do the opposite. Say the plain, unimpressive truth out loud. "I follow Jesus because He died for me, and I would be lost without Him." Let it be simple. Let it be a little embarrassing. Then notice that the power was never in your delivery anyway.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we confess how often we would rather be impressive than faithful. We polish our words, manage our image, and quietly hope people walk away thinking well of us. Forgive us for the times we have done that with the gospel itself, treating the cross as something to upgrade instead of something to stand on. Teach us to get out of the way. Make the message clear even when that means we look small. We would so much rather have people leave amazed at Jesus than impressed with us. Thank You that Your power was never riding on our performance. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"When you talk about your faith, are you more worried about being understood or about being respected, and what would change if you let your next conversation about Jesus be plain and humble even at the risk of sounding simple?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"When you talk about your faith, are you more worried about being understood or about being respected, and what would change if you let your next conversation about Jesus be plain and humble even at the risk of sounding simple?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, we confess how often we would rather be impressive than faithful. We polish our words, manage our image, and quietly hope people walk away thinking well of us. Forgive us for the times we have done that with the gospel itself, treating the cross as something to upgrade instead of something to stand on. Teach us to get out of the way. Make the message clear even when that means we look small. We would so much rather have people leave amazed at Jesus than impressed with us. Thank You that Your power was never riding on our performance. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-07-04.html"><span class="day-nav-kicker">← Saturday</span><span class="day-nav-title">The Message of the Cross</span></a><a class="day-nav-item" href="/bible-study/2026-07-06.html"><span class="day-nav-kicker">Monday →</span><span class="day-nav-title">Foolishness to Those Who Are Perishing</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"1-corinthians-1-17-31":{"ref":"1 Corinthians 1:17-31","text":"For Christ did not send me to baptize, but to preach the gospel, not with words of wisdom, lest the cross of Christ be emptied of its power. For the message of the cross is foolishness to those who are perishing, but to us who are being saved it is the power of God. For it is written: \u201cI will destroy the wisdom of the wise; the intelligence of the intelligent I will frustrate.\u201d Where is the wise man? Where is the scribe? Where is the philosopher of this age? Has not God made foolish the wisdom of the world? For since in the wisdom of God the world through its wisdom did not know Him, God was pleased through the foolishness of what was preached to save those who believe. Jews demand signs and Greeks search for wisdom, but we preach Christ crucified, a stumbling block to Jews and foolishness to Gentiles, but to those who are called, both Jews and Greeks, Christ the power of God and the wisdom of God. For the foolishness of God is wiser than man\u2019s wisdom, and the weakness of God is stronger than man\u2019s strength. Brothers, consider the time of your calling: Not many of you were wise by human standards; not many were powerful; not many were of noble birth. But God chose the foolish things of the world to shame the wise; God chose the weak things of the world to shame the strong. He chose the lowly and despised things of the world, and the things that are not, to nullify the things that are, so that no one may boast in His presence. It is because of Him that you are in Christ Jesus, who has become for us wisdom from God: our righteousness, holiness, and redemption. Therefore, as it is written: \u201cLet him who boasts boast in the Lord.\u201d","bibleUrl":"https://www.bible.com/bible/3034/1CO.1.17-31"},"1-corinthians-1-18-31":{"ref":"1 Corinthians 1:18-31","text":"For the message of the cross is foolishness to those who are perishing, but to us who are being saved it is the power of God. For it is written: \u201cI will destroy the wisdom of the wise; the intelligence of the intelligent I will frustrate.\u201d Where is the wise man? Where is the scribe? Where is the philosopher of this age? Has not God made foolish the wisdom of the world? For since in the wisdom of God the world through its wisdom did not know Him, God was pleased through the foolishness of what was preached to save those who believe. Jews demand signs and Greeks search for wisdom, but we preach Christ crucified, a stumbling block to Jews and foolishness to Gentiles, but to those who are called, both Jews and Greeks, Christ the power of God and the wisdom of God. For the foolishness of God is wiser than man\u2019s wisdom, and the weakness of God is stronger than man\u2019s strength. Brothers, consider the time of your calling: Not many of you were wise by human standards; not many were powerful; not many were of noble birth. But God chose the foolish things of the world to shame the wise; God chose the weak things of the world to shame the strong. He chose the lowly and despised things of the world, and the things that are not, to nullify the things that are, so that no one may boast in His presence. It is because of Him that you are in Christ Jesus, who has become for us wisdom from God: our righteousness, holiness, and redemption. Therefore, as it is written: \u201cLet him who boasts boast in the Lord.\u201d","bibleUrl":"https://www.bible.com/bible/3034/1CO.1.18-31"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

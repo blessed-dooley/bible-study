@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Comfort and Joy — Daily Bible Study</title>
 <meta name="study-title" content="Comfort and Joy">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Part 6 of 7">
+<meta name="study-passage" content="2 Corinthians 7:4">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Day 6 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Comfort and Joy">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Part 6 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Day 6 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-09-03.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Part 6 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Day 6 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,323 +38,203 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Comfort and Joy</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 10, Authentic Christian Ministry</span>
-      <span>Part 6 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">September 3, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Thu · Sep 3</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">12 min</span>
+    </div>
+    <h1 class="study-title">Comfort and Joy</h1>
+    <p class="study-sub"><span class="sub-title">Authentic Christian Ministry</span><span class="sub-facts"><span>Lesson 10</span><span>Day 6 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>A worn-out apostle stands in Macedonia with no rest in his body, conflicts outside, fears within, scanning the road for one familiar face. Then Titus arrives carrying the news Paul had barely let himself hope for. The hard letter worked. The church wept, turned, and came back, and the man who wrote it through tears now cannot stop the joy, great is my confidence, great is my pride, my joy overflows. Two sorrows were possible, and Corinth chose the one that heals. <strong>Godly sorrow turns toward God and lives, and that turning is an authentic minister's deepest joy.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday ended in the family house, washed people learning the family resemblance, unhitching from whatever pulled against the God who had moved in. But a question was left standing in the doorway. Does any of it actually happen? Do real congregations really weep, turn, and change, or is holiness a beautiful theory? Today the letter answers with a chapter full of relief. The command to cleanse gives way to an embrace, make room for us in your hearts, and then to news from up the road that turns a shaking apostle into a man who cannot stop smiling. Repentance is real. Here is what it does to the person who risked everything asking for it.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>A worn-out apostle stands in Macedonia with no rest in his body, conflicts outside, fears within, scanning the road for one familiar face. Then Titus arrives carrying the news Paul had barely let himself hope for. The hard letter worked. The church wept, turned, and came back, and the man who wrote it through tears now cannot stop the joy, great is my confidence, great is my pride, my joy overflows. Two sorrows were possible, and Corinth chose the one that heals. <strong>Godly sorrow turns toward God and lives, and that turning is an authentic minister's deepest joy.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday ended in the family house, washed people learning the family resemblance, unhitching from whatever pulled against the God who had moved in. But a question was left standing in the doorway. Does any of it actually happen? Do real congregations really weep, turn, and change, or is holiness a beautiful theory? Today the letter answers with a chapter full of relief. The command to cleanse gives way to an embrace, make room for us in your hearts, and then to news from up the road that turns a shaking apostle into a man who cannot stop smiling. Repentance is real. Here is what it does to the person who risked everything asking for it.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Regret Was a Flaw in the Philosopher's Mirror</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>Regret Was a Flaw in the Philosopher's Mirror</h3>
       <p>The wise man, the philosophers taught, does not waver. Their ideal human stood like a statue in a storm, judgments settled, emotions mastered, course unchanged, and in that picture of greatness there was no honorable room for regret. To look back at your own conduct and grieve it was, on their reckoning, a double failure. It proved your original judgment was faulty, and it proved the present disturbance was ungoverned. Remorse was not a doorway to anything. It was a crack in the statue, an embarrassment to manage, and the serious moral schools coached their students toward a life so consistent that turning around would never be required.</p>
       <p>Now read this chapter against that backdrop. An entire congregation is described as mourning its own conduct, longing and weeping and burning to make things right, and the apostle reporting it is not embarrassed for them. He is bursting with pride over them. He calls their grief the sorrow God intended, celebrates its produce like a farmer at harvest, and files the whole tearful episode under joy. Nothing in the Greek or Roman moral world threw a party over a turnaround. The gospel does. In this house, the crack in the statue is where the living person finally moves, and the day somebody turns is not the day they are diminished. It is the day everyone rejoices.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Everyone who has ever sent a hard, honest message knows the silence that follows it. You reread what you wrote. You imagine it landing wrong. You check for a reply and put the phone down and pick it up again. Paul lived inside that silence for months, with a sea between him and the church he loved, and today's chapter is the moment the reply finally comes up the road in the person of Titus. The day's question is one the week has been saving. When truth-telling love finally works, what does it feel like? Start with the sound of the answer.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Everyone who has ever sent a hard, honest message knows the silence that follows it. You reread what you wrote. You imagine it landing wrong. You check for a reply and put the phone down and pick it up again. Paul lived inside that silence for months, with a sea between him and the church he loved, and today's chapter is the moment the reply finally comes up the road in the person of Titus. The day's question is one the week has been saving. When truth-telling love finally works, what does it feel like? Start with the sound of the answer.</p>
 
       <!-- BSB_BLOCK: 2 Corinthians 7:4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:76a77e9f8db17831a8daabbf660945bd47302448809e0eb6b8c523c91fa713e0 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 7:4</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.7.4" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.7.4" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Great is my confidence in you; great is my pride in you; I am filled with encouragement; in all our troubles my joy overflows.</div>
         <div class="verse-commentary">
-          <p>Count the exclamations of a relieved father. Great confidence, great pride, encouragement filled to the brim, and joy that overflows its banks in the middle of tribulation, not after it. This is the same voice that begged yesterday, make room for us in your hearts (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.7.2" target="_blank" rel="noopener">2 Corinthians 7:2</a>), the voice that insisted its love was no rhetorical flourish, you so occupy our hearts that we live and die together with you (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.7.3" target="_blank" rel="noopener">2 Corinthians 7:3</a>), the heart he had already thrown open wide (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.6.11" target="_blank" rel="noopener">2 Corinthians 6:11</a>). Ministers are not supposed to admit they need their people this much. Paul admits it without blinking, because authentic ministry is not a service rendered from a safe professional distance. It is a shared bloodstream. What the church does with God echoes in the chest of the man who serves them. Corinth turned, and Paul's joy hit flood stage.</p>
+          <p>Count the exclamations of a relieved father. Great confidence, great pride, encouragement filled to the brim, and joy that overflows its banks in the middle of tribulation, not after it. This is the same voice that begged yesterday, make room for us in your hearts (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.7.2" target="_blank" rel="noopener" data-verse="2-corinthians-7-2" data-ref="2 Corinthians 7:2" aria-expanded="false">2 Corinthians 7:2</a>), the voice that insisted its love was no rhetorical flourish, you so occupy our hearts that we live and die together with you (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.7.3" target="_blank" rel="noopener" data-verse="2-corinthians-7-3" data-ref="2 Corinthians 7:3" aria-expanded="false">2 Corinthians 7:3</a>), the heart he had already thrown open wide (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.6.11" target="_blank" rel="noopener" data-verse="2-corinthians-6-11" data-ref="2 Corinthians 6:11" aria-expanded="false">2 Corinthians 6:11</a>). Ministers are not supposed to admit they need their people this much. Paul admits it without blinking, because authentic ministry is not a service rendered from a safe professional distance. It is a shared bloodstream. What the church does with God echoes in the chest of the man who serves them. Corinth turned, and Paul's joy hit flood stage.</p>
         </div>
-      </div>
+      </figure>
 
-      <p>How did a relationship hanging by a thread get here? The whole chapter runs the arc, from cleansing to complete confidence (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.7.1-16" target="_blank" rel="noopener">2 Corinthians 7:1-16</a>), and its hinge is a road in Macedonia where an exhausted man kept watching the horizon.</p>
+      <p>How did a relationship hanging by a thread get here? The whole chapter runs the arc, from cleansing to complete confidence (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.7.1-16" target="_blank" rel="noopener" data-verse="2-corinthians-7-1-16" data-ref="2 Corinthians 7:1-16" aria-expanded="false">2 Corinthians 7:1-16</a>), and its hinge is a road in Macedonia where an exhausted man kept watching the horizon.</p>
 
       <!-- BSB_BLOCK: 2 Corinthians 7:5-16 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:f2558edaf2faf31dca74cde69d163364349f97379928b0cb1aeeb7b4d1d651c0 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 7:5-16</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.7.5-16" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 5">5</sup>For when we arrived in Macedonia, our bodies had no rest, but we were pressed from every direction—conflicts on the outside, fears within. <sup class="verse-number" aria-label="Verse 6">6</sup>But God, who comforts the downcast, comforted us by the arrival of Titus, <sup class="verse-number" aria-label="Verse 7">7</sup>and not only by his arrival, but also by the comfort he had received from you. He told us about your longing, your mourning, and your zeal for me, so that I rejoiced all the more. <sup class="verse-number" aria-label="Verse 8">8</sup>Even if I caused you sorrow by my letter, I do not regret it. Although I did regret it—for I see that my letter caused you sorrow, but only for a short time— <sup class="verse-number" aria-label="Verse 9">9</sup>yet now I rejoice, not because you were made sorrowful, but because your sorrow led you to repentance. For you felt the sorrow that God had intended, and so were not harmed in any way by us. <sup class="verse-number" aria-label="Verse 10">10</sup>Godly sorrow brings repentance that leads to salvation without regret, but worldly sorrow brings death. <sup class="verse-number" aria-label="Verse 11">11</sup>Consider what this godly sorrow has produced in you: what earnestness, what eagerness to clear yourselves, what indignation, what alarm, what longing, what zeal, what vindication! In every way you have proved yourselves to be innocent in this matter. <sup class="verse-number" aria-label="Verse 12">12</sup>So even though I wrote to you, it was not on account of the one who did wrong or the one who was harmed, but rather that your earnestness on our behalf would be made clear to you in the sight of God. <sup class="verse-number" aria-label="Verse 13">13</sup>On account of this, we are encouraged. In addition to our own encouragement, we were even more delighted by the joy of Titus. For his spirit has been refreshed by all of you. <sup class="verse-number" aria-label="Verse 14">14</sup>Indeed, I was not embarrassed by anything I had boasted to him about you. But just as everything we said to you was true, so our boasting to Titus has proved to be true as well. <sup class="verse-number" aria-label="Verse 15">15</sup>And his affection for you is even greater when he remembers that you were all obedient as you welcomed him with fear and trembling. <sup class="verse-number" aria-label="Verse 16">16</sup>I rejoice that I can have complete confidence in you.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.7.5-16" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 5">5</sup>For when we arrived in Macedonia, our bodies had no rest, but we were pressed from every direction—conflicts on the outside, fears within. <sup class="verse-number" aria-label="Verse 6">6</sup>But God, who comforts the downcast, comforted us by the arrival of Titus, <sup class="verse-number" aria-label="Verse 7">7</sup>and not only by his arrival, but also by the comfort he had received from you. He told us about your longing, your mourning, and your zeal for me, so that I rejoiced all the more. <sup class="verse-number" aria-label="Verse 8">8</sup>Even if I caused you sorrow by my letter, I do not regret it. Although I did regret it—for I see that my letter caused you sorrow, but only for a short time— <sup class="verse-number" aria-label="Verse 9">9</sup>yet now I rejoice, not because you were made sorrowful, but because your sorrow led you to repentance. For you felt the sorrow that God had intended, and so were not harmed in any way by us. <sup class="verse-number" aria-label="Verse 10">10</sup>Godly sorrow brings repentance that leads to salvation without regret, but worldly sorrow brings death. <sup class="verse-number" aria-label="Verse 11">11</sup>Consider what this godly sorrow has produced in you: what earnestness, what eagerness to clear yourselves, what indignation, what alarm, what longing, what zeal, what vindication! In every way you have proved yourselves to be innocent in this matter. <sup class="verse-number" aria-label="Verse 12">12</sup>So even though I wrote to you, it was not on account of the one who did wrong or the one who was harmed, but rather that your earnestness on our behalf would be made clear to you in the sight of God. <sup class="verse-number" aria-label="Verse 13">13</sup>On account of this, we are encouraged. In addition to our own encouragement, we were even more delighted by the joy of Titus. For his spirit has been refreshed by all of you. <sup class="verse-number" aria-label="Verse 14">14</sup>Indeed, I was not embarrassed by anything I had boasted to him about you. But just as everything we said to you was true, so our boasting to Titus has proved to be true as well. <sup class="verse-number" aria-label="Verse 15">15</sup>And his affection for you is even greater when he remembers that you were all obedient as you welcomed him with fear and trembling. <sup class="verse-number" aria-label="Verse 16">16</sup>I rejoice that I can have complete confidence in you.</div>
         <div class="verse-commentary">
-          <p>Read the reunion as one movement. Paul arrives in Macedonia running on empty, no rest in his body, conflicts outside, fears within, and God, who comforts the downcast, comforts him the way God loves to do it, with a person coming up the road (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.7.6" target="_blank" rel="noopener">2 Corinthians 7:6</a>). Titus brings more than his own face. He carries Corinth's longing, mourning, and zeal, comfort he himself received from them (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.7.7" target="_blank" rel="noopener">2 Corinthians 7:7</a>), until even Titus's refreshed spirit becomes part of Paul's delight (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.7.13" target="_blank" rel="noopener">2 Corinthians 7:13</a>). At the center of the story stands the sorrow itself, the grief God intended (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.7.9-11" target="_blank" rel="noopener">2 Corinthians 7:9-11</a>). Paul's word for what it produced is <em>metanoia</em>, Greek for repentance, a change of mind that turns the whole person around, and the fruit spills out in verse 11, earnestness, eagerness, longing, zeal, a church scrambling to make things right (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.7.11" target="_blank" rel="noopener">2 Corinthians 7:11</a>). The letter hurt for a short time. The turning it produced has no expiration date.</p>
+          <p>Read the reunion as one movement. Paul arrives in Macedonia running on empty, no rest in his body, conflicts outside, fears within, and God, who comforts the downcast, comforts him the way God loves to do it, with a person coming up the road (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.7.6" target="_blank" rel="noopener" data-verse="2-corinthians-7-6" data-ref="2 Corinthians 7:6" aria-expanded="false">2 Corinthians 7:6</a>). Titus brings more than his own face. He carries Corinth's longing, mourning, and zeal, comfort he himself received from them (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.7.7" target="_blank" rel="noopener" data-verse="2-corinthians-7-7" data-ref="2 Corinthians 7:7" aria-expanded="false">2 Corinthians 7:7</a>), until even Titus's refreshed spirit becomes part of Paul's delight (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.7.13" target="_blank" rel="noopener" data-verse="2-corinthians-7-13" data-ref="2 Corinthians 7:13" aria-expanded="false">2 Corinthians 7:13</a>). At the center of the story stands the sorrow itself, the grief God intended (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.7.9-11" target="_blank" rel="noopener" data-verse="2-corinthians-7-9-11" data-ref="2 Corinthians 7:9-11" aria-expanded="false">2 Corinthians 7:9-11</a>). Paul's word for what it produced is <em>metanoia</em>, Greek for repentance, a change of mind that turns the whole person around, and the fruit spills out in verse 11, earnestness, eagerness, longing, zeal, a church scrambling to make things right (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.7.11" target="_blank" rel="noopener" data-verse="2-corinthians-7-11" data-ref="2 Corinthians 7:11" aria-expanded="false">2 Corinthians 7:11</a>). The letter hurt for a short time. The turning it produced has no expiration date.</p>
         </div>
-      </div>
+      </figure>
 
-      <p>Verse 10 deserves to be carved somewhere, because it splits all human sorrow into two roads. Godly sorrow brings repentance leading to salvation without regret, but worldly sorrow brings death (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.7.10" target="_blank" rel="noopener">2 Corinthians 7:10</a>). One grief looks up, turns, and walks home lighter. The other circles the self, rehearsing the failure until shame finishes what the sin began. Same tears at the start. Opposite destinations. And where does all this comfort ultimately come from? Paul has been telling us since his opening sentences.</p>
+      <p>Verse 10 deserves to be carved somewhere, because it splits all human sorrow into two roads. Godly sorrow brings repentance leading to salvation without regret, but worldly sorrow brings death (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.7.10" target="_blank" rel="noopener" data-verse="2-corinthians-7-10" data-ref="2 Corinthians 7:10" aria-expanded="false">2 Corinthians 7:10</a>). One grief looks up, turns, and walks home lighter. The other circles the self, rehearsing the failure until shame finishes what the sin began. Same tears at the start. Opposite destinations. And where does all this comfort ultimately come from? Paul has been telling us since his opening sentences.</p>
 
       <!-- BSB_BLOCK: 2 Corinthians 1:3-7 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:ee2cee21afd2c3149cc2f1ca639b1dfa107e0c2a7d931b9a4907b547c285a6cc | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 1:3-7</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.1.3-7" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 3">3</sup>Blessed be the God and Father of our Lord Jesus Christ, the Father of compassion and the God of all comfort, <sup class="verse-number" aria-label="Verse 4">4</sup>who comforts us in all our troubles, so that we can comfort those in any trouble with the comfort we ourselves have received from God. <sup class="verse-number" aria-label="Verse 5">5</sup>For just as the sufferings of Christ overflow to us, so also through Christ our comfort overflows. <sup class="verse-number" aria-label="Verse 6">6</sup>If we are afflicted, it is for your comfort and salvation; if we are comforted, it is for your comfort, which accomplishes in you patient endurance of the same sufferings we experience. <sup class="verse-number" aria-label="Verse 7">7</sup>And our hope for you is sure, because we know that just as you share in our sufferings, so also you will share in our comfort.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.1.3-7" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 3">3</sup>Blessed be the God and Father of our Lord Jesus Christ, the Father of compassion and the God of all comfort, <sup class="verse-number" aria-label="Verse 4">4</sup>who comforts us in all our troubles, so that we can comfort those in any trouble with the comfort we ourselves have received from God. <sup class="verse-number" aria-label="Verse 5">5</sup>For just as the sufferings of Christ overflow to us, so also through Christ our comfort overflows. <sup class="verse-number" aria-label="Verse 6">6</sup>If we are afflicted, it is for your comfort and salvation; if we are comforted, it is for your comfort, which accomplishes in you patient endurance of the same sufferings we experience. <sup class="verse-number" aria-label="Verse 7">7</sup>And our hope for you is sure, because we know that just as you share in our sufferings, so also you will share in our comfort.</div>
         <div class="verse-commentary">
-          <p>The chapter of reunion ends exactly where the letter began, in the overflow of the Father of compassion, and the echo is no accident. Comfort words stack up seven times in this one chapter of reunion, as if Paul cannot stop using the word now that it has come true in his own body. He had opened the letter blessing the God of all comfort who comforts us in all our troubles so that we can pass it on (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.1.3-4" target="_blank" rel="noopener">2 Corinthians 1:3-4</a>), and now the doctrine has feet. God comforted Paul through Titus. He comforted Titus through Corinth. He comforted Corinth through a letter written in tears. Nobody in the chain manufactured an ounce of it. They carried it, hand to hand, until the current Paul preached in chapter one came back up the wire and found him on a Macedonian road. That is how the God of all comfort runs His economy. Nothing is hoarded. Everything moves.</p>
+          <p>The chapter of reunion ends exactly where the letter began, in the overflow of the Father of compassion, and the echo is no accident. Comfort words stack up seven times in this one chapter of reunion, as if Paul cannot stop using the word now that it has come true in his own body. He had opened the letter blessing the God of all comfort who comforts us in all our troubles so that we can pass it on (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.1.3-4" target="_blank" rel="noopener" data-verse="2-corinthians-1-3-4" data-ref="2 Corinthians 1:3-4" aria-expanded="false">2 Corinthians 1:3-4</a>), and now the doctrine has feet. God comforted Paul through Titus. He comforted Titus through Corinth. He comforted Corinth through a letter written in tears. Nobody in the chain manufactured an ounce of it. They carried it, hand to hand, until the current Paul preached in chapter one came back up the wire and found him on a Macedonian road. That is how the God of all comfort runs His economy. Nothing is hoarded. Everything moves.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Turned Pile and the Sealed Bag</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Turned Pile and the Sealed Bag</h3>
       <p>Two containers can hold the exact same scraps. The first is the bag in the back of the refrigerator, the one that got sealed shut and pushed out of sight. Open that drawer months later and nothing in it has changed except for the worse. Closed off from air, folded in on itself, the same lettuce and peels have gone dark and sour, and the longer it sits the harder you work to avoid looking at it. The second container sits out in the yard holding identical scraps, the same peels, the same eggshells, the same wilted leaves. But somebody keeps turning it. Every week the buried stuff gets brought up into the air and light, and by the end of the summer you can run that pile through your bare hands and never find the orange peel. It is not garbage anymore. It is the richest soil on the property, and the tomatoes know it.</p>
       <p>Same scraps. Opposite endings. The only difference between them is the turning, and Paul says sorrow obeys the same law. Grief that gets sealed inside the self, gone over and over in the dark, only ferments, and it will quietly sour the whole drawer around it. Grief that gets turned, opened up to God, opened toward the person you wronged, aired out in honest confession and set moving toward change, becomes the exact soil new life grows in. That is why Paul can promise a repentance without regret. Go look for the peel in finished compost. The failure that got turned is not preserved anywhere in you. It has become something growing.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Hospital Retired Deny and Defend</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Hospital Retired Deny and Defend</h3>
       <p>For generations, the traditional playbook in American malpractice, the adversarial approach many health systems used, was one lawyers actually called deny and defend. After an error harmed a patient, the hospital went silent, admitted nothing, and fought every claim, while families begged for answers and clinicians carried what happened alone. Michigan Medicine, the University of Michigan's health system, built a communication-and-resolution program instead, committing to tell harmed patients the truth, apologize, offer fair compensation for real error, and fix the systems behind the failure. A 2024 study in the Journal of Patient Safety and Risk Management followed the program's most recent decade, 2013 through 2022, and the numbers describe a culture, not just a policy. Reports of safety events rose 37.5 percent, an increase consistent with greater reporting, and the share of reported events that actually harmed anyone fell from 10.5 percent to 6.7 percent. Of the 989 claims reviewed, care was deemed reasonable in 638, and 564 of those 638 were closed or dismissed without payment. Of the 349 claims where care was deemed unreasonable, 288 were settled. The median resolution time was eleven months.</p>
       <p>Look at what that program put side by side. Two kinds of institutional sorrow, and they map onto today's verse with eerie precision. Deny and defend is worldly sorrow with a legal budget. The wrong gets sealed, guarded, and rehearsed for years, everyone involved keeps hurting, and nothing turns. The Michigan way is the anatomy of godly sorrow, what earnestness, what eagerness to make things right. The wrong is named out loud to the person it harmed, the apology is delivered, the repair is paid for, and the failure is worked into changes that protect the next patient. The data moved in the same direction, more events reported and a smaller share of them involving harm. Repentance does what shame never does. God's conviction of you was never a lawsuit to be fought or a file to be sealed. It is an invitation to the only sorrow that ends without regret.</p>
       <!-- TODAYS_WORLD_SOURCE: Outcomes of Michigan Medicine's integrated patient safety and communication and resolution program, 2013-2022 | Journal of Patient Safety and Risk Management | 2024 | https://journals.sagepub.com/doi/10.1177/25160435241282042 -->
       <!-- TODAYS_WORLD_SOURCE: Outcomes of Michigan Medicine's integrated patient safety and communication and resolution program | AHRQ PSNet | 2024 | https://psnet.ahrq.gov/issue/outcomes-michigan-medicines-integrated-patient-safety-and-communication-and-resolution -->
-    </div>
+    <details class="disclosure source-disclosure"><summary class="disclosure-summary"><span class="disclosure-label">Sources</span> <span class="disclosure-publisher">Journal of Patient Safety and Risk Management, AHRQ PSNet</span></summary><div class="disclosure-body">
+<p><cite>Outcomes of Michigan Medicine's integrated patient safety and communication and resolution program, 2013-2022</cite>. Journal of Patient Safety and Risk Management, 2024. <a href="https://journals.sagepub.com/doi/10.1177/25160435241282042" target="_blank" rel="noopener noreferrer">Read the source</a>.</p>
+<p><cite>Outcomes of Michigan Medicine's integrated patient safety and communication and resolution program</cite>. AHRQ PSNet, 2024. <a href="https://psnet.ahrq.gov/issue/outcomes-michigan-medicines-integrated-patient-safety-and-communication-and-resolution" target="_blank" rel="noopener noreferrer">Read the source</a>.</p>
+</div></details></section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Paul's overflowing joy at a church's repentance is not a personality quirk. It is a family trait, and Jesus is where we learn the family's face. Ask Him what happens in heaven when one sinner turns around, and He answers with parties, three stories in a row. A shepherd hoists a found sheep onto his shoulders rejoicing, a woman calls her neighbors over one recovered coin, and a father sprints down a road to bury a rehearsed apology in an embrace. Each story lands the same line, there is more joy in heaven over one sinner who repents (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.15.7" target="_blank" rel="noopener">Luke 15:7</a>). Nobody in those three stories celebrates the sin. They celebrate the turning, exactly as Paul does in today's chapter. And the joy did not stay theoretical for Jesus. For the joy set before Him, He endured a cross (<a class="vlink" href="https://www.bible.com/bible/3034/HEB.12.2" target="_blank" rel="noopener">Hebrews 12:2</a>), and the joy set before Him was us, coming home. When your sorrow over sin finally turns you toward God, you are not walking into a frown. You are walking into the gladdest room in the universe. The Father's face at your turning looks like the father on that road.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Paul's overflowing joy at a church's repentance is not a personality quirk. It is a family trait, and Jesus is where we learn the family's face. Ask Him what happens in heaven when one sinner turns around, and He answers with parties, three stories in a row. A shepherd hoists a found sheep onto his shoulders rejoicing, a woman calls her neighbors over one recovered coin, and a father sprints down a road to bury a rehearsed apology in an embrace. Each story lands the same line, there is more joy in heaven over one sinner who repents (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.15.7" target="_blank" rel="noopener" data-verse="luke-15-7" data-ref="Luke 15:7" aria-expanded="false">Luke 15:7</a>). Nobody in those three stories celebrates the sin. They celebrate the turning, exactly as Paul does in today's chapter. And the joy did not stay theoretical for Jesus. For the joy set before Him, He endured a cross (<a class="vlink" href="https://www.bible.com/bible/3034/HEB.12.2" target="_blank" rel="noopener" data-verse="hebrews-12-2" data-ref="Hebrews 12:2" aria-expanded="false">Hebrews 12:2</a>), and the joy set before Him was us, coming home. When your sorrow over sin finally turns you toward God, you are not walking into a frown. You are walking into the gladdest room in the universe. The Father's face at your turning looks like the father on that road.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Deliver a Titus report. Somewhere behind your growth stands a person who risked the relationship to tell you a hard truth, a parent, a pastor, a friend who would not let it slide, and odds are they still wonder whether it did any good. Today, close the loop. Write or call and tell them plainly what their courage produced in you. You will hand them the exact joy Titus carried up that Macedonian road, and you may be the only person who ever does.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father of compassion, God of all comfort, we have felt both sorrows, and You know which one we tend to choose. We know the grief that circles the self, rehearsing the failure at three in the morning, paying for the same sin twice. Teach us the other road. When You convict us, let the sorrow turn us instead of burying us, all the way into repentance, all the way home, where the regret is gone and the joy is waiting. Thank You for every Titus You have sent up the road to us, and for every hard letter that loved us enough to hurt for a short time. Make our church the kind of family whose turning refreshes weary ministers, and make us people who carry comfort the way Titus carried it, in person, over distance, at cost. Fill our house with the sound of heaven's parties. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"Think of the last time you felt truly sorry about something. Which road did the sorrow take you down, the one that circled shame or the one that actually turned you (changed what you did next, moved you toward God and the person affected)? And who in your life is still waiting on a Titus report, one plain word from you about the good their hard honesty produced?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"Think of the last time you felt truly sorry about something. Which road did the sorrow take you down, the one that circled shame or the one that actually turned you (changed what you did next, moved you toward God and the person affected)? And who in your life is still waiting on a Titus report, one plain word from you about the good their hard honesty produced?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father of compassion, God of all comfort, we have felt both sorrows, and You know which one we tend to choose. We know the grief that circles the self, rehearsing the failure at three in the morning, paying for the same sin twice. Teach us the other road. When You convict us, let the sorrow turn us instead of burying us, all the way into repentance, all the way home, where the regret is gone and the joy is waiting. Thank You for every Titus You have sent up the road to us, and for every hard letter that loved us enough to hurt for a short time. Make our church the kind of family whose turning refreshes weary ministers, and make us people who carry comfort the way Titus carried it, in person, over distance, at cost. Fill our house with the sound of heaven's parties. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
-
-<!-- Firebase SDK for push notifications -->
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-09-02.html"><span class="day-nav-kicker">← Wednesday</span><span class="day-nav-title">Call to Holiness</span></a><a class="day-nav-item" href="/bible-study/2026-09-04.html"><span class="day-nav-kicker">Friday →</span><span class="day-nav-title">Further Thought &amp; Discussion</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"2-corinthians-7-2":{"ref":"2 Corinthians 7:2","text":"Make room for us in your hearts. We have wronged no one, we have corrupted no one, we have exploited no one.","bibleUrl":"https://www.bible.com/bible/3034/2CO.7.2"},"2-corinthians-7-3":{"ref":"2 Corinthians 7:3","text":"I do not say this to condemn you. I have said before that you so occupy our hearts that we live and die together with you.","bibleUrl":"https://www.bible.com/bible/3034/2CO.7.3"},"2-corinthians-6-11":{"ref":"2 Corinthians 6:11","text":"We have spoken freely to you, Corinthians. Our hearts are open wide.","bibleUrl":"https://www.bible.com/bible/3034/2CO.6.11"},"2-corinthians-7-1-16":{"ref":"2 Corinthians 7:1-16","text":"Therefore, beloved, since we have these promises, let us cleanse ourselves from everything that defiles body and spirit, perfecting holiness in the fear of God. Make room for us in your hearts. We have wronged no one, we have corrupted no one, we have exploited no one. I do not say this to condemn you. I have said before that you so occupy our hearts that we live and die together with you. Great is my confidence in you; great is my pride in you; I am filled with encouragement; in all our troubles my joy overflows. For when we arrived in Macedonia, our bodies had no rest, but we were pressed from every direction\u2014conflicts on the outside, fears within. But God, who comforts the downcast, comforted us by the arrival of Titus, and not only by his arrival, but also by the comfort he had received from you. He told us about your longing, your mourning, and your zeal for me, so that I rejoiced all the more. Even if I caused you sorrow by my letter, I do not regret it. Although I did regret it\u2014for I see that my letter caused you sorrow, but only for a short time\u2014 yet now I rejoice, not because you were made sorrowful, but because your sorrow led you to repentance. For you felt the sorrow that God had intended, and so were not harmed in any way by us. Godly sorrow brings repentance that leads to salvation without regret, but worldly sorrow brings death. Consider what this godly sorrow has produced in you: what earnestness, what eagerness to clear yourselves, what indignation, what alarm, what longing, what zeal, what vindication! In every way you have proved yourselves to be innocent in this matter. So even though I wrote to you, it was not on account of the one who did wrong or the one who was harmed, but rather that your earnestness on our behalf would be made clear to you in the sight of God. On account of this, we are encouraged. In addition to our own encouragement, we were even more delighted by the joy of Titus. For his spirit has been refreshed by all of you. Indeed, I was not embarrassed by anything I had boasted to him about you. But just as everything we said to you was true, so our boasting to Titus has proved to be true as well. And his affection for you is even greater when he remembers that you were all obedient as you welcomed him with fear and trembling. I rejoice that I can have complete confidence in you.","bibleUrl":"https://www.bible.com/bible/3034/2CO.7.1-16"},"2-corinthians-7-6":{"ref":"2 Corinthians 7:6","text":"But God, who comforts the downcast, comforted us by the arrival of Titus,","bibleUrl":"https://www.bible.com/bible/3034/2CO.7.6"},"2-corinthians-7-7":{"ref":"2 Corinthians 7:7","text":"and not only by his arrival, but also by the comfort he had received from you. He told us about your longing, your mourning, and your zeal for me, so that I rejoiced all the more.","bibleUrl":"https://www.bible.com/bible/3034/2CO.7.7"},"2-corinthians-7-13":{"ref":"2 Corinthians 7:13","text":"On account of this, we are encouraged. In addition to our own encouragement, we were even more delighted by the joy of Titus. For his spirit has been refreshed by all of you.","bibleUrl":"https://www.bible.com/bible/3034/2CO.7.13"},"2-corinthians-7-9-11":{"ref":"2 Corinthians 7:9-11","text":"yet now I rejoice, not because you were made sorrowful, but because your sorrow led you to repentance. For you felt the sorrow that God had intended, and so were not harmed in any way by us. Godly sorrow brings repentance that leads to salvation without regret, but worldly sorrow brings death. Consider what this godly sorrow has produced in you: what earnestness, what eagerness to clear yourselves, what indignation, what alarm, what longing, what zeal, what vindication! In every way you have proved yourselves to be innocent in this matter.","bibleUrl":"https://www.bible.com/bible/3034/2CO.7.9-11"},"2-corinthians-7-11":{"ref":"2 Corinthians 7:11","text":"Consider what this godly sorrow has produced in you: what earnestness, what eagerness to clear yourselves, what indignation, what alarm, what longing, what zeal, what vindication! In every way you have proved yourselves to be innocent in this matter.","bibleUrl":"https://www.bible.com/bible/3034/2CO.7.11"},"2-corinthians-7-10":{"ref":"2 Corinthians 7:10","text":"Godly sorrow brings repentance that leads to salvation without regret, but worldly sorrow brings death.","bibleUrl":"https://www.bible.com/bible/3034/2CO.7.10"},"2-corinthians-1-3-4":{"ref":"2 Corinthians 1:3-4","text":"Blessed be the God and Father of our Lord Jesus Christ, the Father of compassion and the God of all comfort, who comforts us in all our troubles, so that we can comfort those in any trouble with the comfort we ourselves have received from God.","bibleUrl":"https://www.bible.com/bible/3034/2CO.1.3-4"},"luke-15-7":{"ref":"Luke 15:7","text":"I tell you that in the same way there will be more joy in heaven over one sinner who repents than over ninety-nine righteous ones who do not need to repent.","bibleUrl":"https://www.bible.com/bible/3034/LUK.15.7"},"hebrews-12-2":{"ref":"Hebrews 12:2","text":"Let us fix our eyes on Jesus, the author and perfecter of our faith, who for the joy set before Him endured the cross, scorning its shame, and sat down at the right hand of the throne of God.","bibleUrl":"https://www.bible.com/bible/3034/HEB.12.2"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

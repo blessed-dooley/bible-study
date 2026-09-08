@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Further Thought &amp; Discussion — Daily Bible Study</title>
 <meta name="study-title" content="Further Thought &amp; Discussion">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Part 7 of 7">
+<meta name="study-passage" content="2 Corinthians 6:8-10">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Day 7 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Further Thought &amp; Discussion">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Part 7 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Day 7 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-09-04.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Part 7 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Day 7 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,307 +38,209 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--friday">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Further Thought &amp; Discussion</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 10, Authentic Christian Ministry</span>
-      <span>Part 7 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Fri · Sep 4</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
     </div>
-    <div class="date-badge">September 4, 2026</div>
+    <h1 class="study-title">Further Thought &amp; Discussion</h1>
+    <p class="study-sub"><span class="sub-title">Authentic Christian Ministry</span><span class="sub-facts"><span>Lesson 10</span><span>Day 7 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. WEEK IN REVIEW -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">Week in Review</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">This week Paul answered the credential question with exhibits nobody would have chosen, living letters instead of paper, treasure riding in cracked clay, an embassy sent by the wronged King, a temple unhitching from its idols, and a father's overflowing joy at a church's tears.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">Week in Review</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="review">Week in Review</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="clarifies">What This Week Clarifies</button><button type="button" class="chip" data-jump="speaking">Still Speaking</button><button type="button" class="chip" data-jump="christ">Christ at the Center of the Week</button><button type="button" class="chip" data-jump="application">Weekend Practice</button><button type="button" class="chip" data-jump="prayer">Closing Prayer for the Week</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="review" aria-labelledby="review-label">
+      <h2 class="section-label" id="review-label">Week in Review</h2>
+<p class="tldr-hook">This week Paul answered the credential question with exhibits nobody would have chosen, living letters instead of paper, treasure riding in cracked clay, an embassy sent by the wronged King, a temple unhitching from its idols, and a father's overflowing joy at a church's tears.</p>
       <ul class="week-review-list">
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sabbath:</span> Authentic Christian Ministry. The famous teachers arrived polished and papered, and a beaten tentmaker claimed the opposite credential. Hard pressed but not crushed, carrying the dying of Jesus so that His life could show.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> Fruits of an Authentic Ministry. Do we need letters? You are our letter. The church itself is Christ's correspondence, written by the Spirit on human hearts, fruit of the one gospel that has saved by grace since before time began.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Monday:</span> Suffering and Glory. God ships His treasure in cheap, breakable jars on purpose, so the surpassing power is legibly His. The tent groans toward the building, and death itself has a grave on the schedule.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Tuesday:</span> Christ-focused Ministry of Reconciliation. The wronged King sent the peace delegation. The sinless One was made sin, the trespasses stopped being counted, and now His ambassadors implore the rebels to come home.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Wednesday:</span> Call to Holiness. Seven promises before three commands. God moves in first, and His address changes what a life can stay hitched to, which is why the mismatched yoke has to go.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Thursday:</span> Comfort and Joy. Titus came up the Macedonian road carrying the news. Godly sorrow had done its turning work, and the apostle who wrote through tears got his joy back at flood stage.</span></li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Sabbath:</span> Authentic Christian Ministry. The famous teachers arrived polished and papered, and a beaten tentmaker claimed the opposite credential. Hard pressed but not crushed, carrying the dying of Jesus so that His life could show.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> Fruits of an Authentic Ministry. Do we need letters? You are our letter. The church itself is Christ's correspondence, written by the Spirit on human hearts, fruit of the one gospel that has saved by grace since before time began.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Monday:</span> Suffering and Glory. God ships His treasure in cheap, breakable jars on purpose, so the surpassing power is legibly His. The tent groans toward the building, and death itself has a grave on the schedule.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Tuesday:</span> Christ-focused Ministry of Reconciliation. The wronged King sent the peace delegation. The sinless One was made sin, the trespasses stopped being counted, and now His ambassadors implore the rebels to come home.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Wednesday:</span> Call to Holiness. Seven promises before three commands. God moves in first, and His address changes what a life can stay hitched to, which is why the mismatched yoke has to go.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Thursday:</span> Comfort and Joy. Titus came up the Macedonian road carrying the news. Godly sorrow had done its turning work, and the apostle who wrote through tears got his joy back at flood stage.</span>
+</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. HISTORICAL & CULTURAL CONTEXT (condensed capstone) -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Every Credential Could Be Faked but One</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>Every Credential Could Be Faked but One</h3>
       <p>Gather up the week's places one last time. A colonnade where crowds read a teacher's worth off his robes and his jawline, because appearance counted as evidence. A port where a stranger was whoever his letter said he was, and the letters flattered in interchangeable phrases. A market stacked with disposable clay pots, the cheapest of which might be guarding a family's treasure. A defeated city's gate, opening for the procession of suppliants walking to beg the victor's terms. A farm lane where a mismatched team ground a crooked furrow. A classroom where the wise man never wavered and regret was a crack in the statue.</p>
       <p>Every institution in that list could be gamed. Letters could be forged, entrances rehearsed, credentials borrowed, praise purchased, composure performed. Corinth was fluent in all of it, which is exactly why Paul staked his ministry on the things no one can counterfeit. A congregation of changed lives. Power that shows up strongest where the container is weakest. A love that moves toward offenders first. An allegiance that quietly unhitches from what everyone else stays harnessed to. Tears that turn into transformation, and a father's joy too specific to fake. The city had a test for everything except a life like that. It still does.</p>
-    </div>
+    </section>
 
-    <!-- 3. WHAT THIS WEEK CLARIFIES -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">💡</span>
-        <span class="section-title">What This Week Clarifies</span>
-        <div class="section-title-line"></div>
-      </div>
+    <section class="section" id="clarifies" aria-labelledby="clarifies-label">
+      <h2 class="section-label" id="clarifies-label">What This Week Clarifies</h2>
+<p>Six days inside Paul's defense of real ministry leave a reader holding a few live wires. Three of them deserve one more honest look before Sabbath, because each one touches the person actually reading this page.</p>
 
-      <p>Six days inside Paul's defense of real ministry leave a reader holding a few live wires. Three of them deserve one more honest look before Sabbath, because each one touches the person actually reading this page.</p>
-
-      <div class="section-heading">Feeling Fake Does Not Make You Fake</div>
+      <h3>Feeling Fake Does Not Make You Fake</h3>
       <p>The week dismantled polish as proof, and that cuts both ways. If impressive does not mean authentic, then unimpressive does not mean fraud. But try telling that to the believer who serves all week and still feels like an imposter. Paul knew the label personally.</p>
 
       <!-- BSB_BLOCK: 2 Corinthians 6:8-10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:50c2ff582418052b6494ec89c48f627d742d26b4115d501be6c21a5bc3d4625d | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 6:8-10</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.6.8-10" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 8">8</sup>through glory and dishonor, slander and praise; viewed as imposters, yet genuine; <sup class="verse-number" aria-label="Verse 9">9</sup>unknown, yet well-known; dying, and yet we live on; punished, yet not killed; <sup class="verse-number" aria-label="Verse 10">10</sup>sorrowful, yet always rejoicing; poor, yet making many rich; having nothing, and yet possessing everything.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.6.8-10" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 8">8</sup>through glory and dishonor, slander and praise; viewed as imposters, yet genuine; <sup class="verse-number" aria-label="Verse 9">9</sup>unknown, yet well-known; dying, and yet we live on; punished, yet not killed; <sup class="verse-number" aria-label="Verse 10">10</sup>sorrowful, yet always rejoicing; poor, yet making many rich; having nothing, and yet possessing everything.</div>
         <div class="verse-commentary">
           <p>Look at where imposter sits in Paul's résumé. It is one of the things people called him, filed right beside genuine, because the two verdicts always coexist on a real servant of God. Paul did not win the argument by feeling authentic. Some mornings he was despairing, sorrowful, poor, and unknown, and the file his critics kept was full of true entries. What settled the question was never his reputation or his mood. It was the traffic moving through his life, the many being made rich out of his poverty, and the God to whom everything was already clear. What we are is clear to God, he told this same church, and he let that be enough.</p>
           <p>So take the fraud feeling off the judge's bench. The question was never whether you feel adequate, and the design, as Monday showed, actually requires that you are not. The question is what keeps flowing through the jar anyway, the prayer that steadied a coworker, the patience your family drinks daily and never thinks to thank, the name you have prayed over all week. Feelings read the container. God reads the current.</p>
         </div>
-      </div>
+      </figure>
 
-      <div class="section-heading">The Power Was Never Going to Patch the Jar</div>
+      <h3>The Power Was Never Going to Patch the Jar</h3>
       <p>All week, surpassing power and visible suffering sat on the same page without apology. That raises the question every honest believer eventually asks in a hospital hallway. If the power is real, why does the vessel keep cracking?</p>
 
       <!-- BSB_BLOCK: 2 Corinthians 4:7 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:54feef9ae4a98dac2799a5c3403a878f0424face06e1cc6c0d3491b1ce3b3928 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 4:7</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.4.7" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.4.7" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Now we have this treasure in jars of clay to show that this surpassingly great power is from God and not from us.</div>
         <div class="verse-commentary">
           <p>The answer hides in the purpose clause. The treasure rides in clay to show that the power is from God and not from us, and a patched, gleaming, invulnerable jar would sabotage the exhibit. Guard the vessel from every blow and the watching world learns only that the vessel is sturdy. Let the blows land, and let the not-crushed, not-in-despair, not-forsaken, not-destroyed floors hold anyway, and everyone can see that something other than clay is carrying the weight. The power's signature is not exemption. It is sustained collapse that never finishes collapsing, dying that keeps producing life in other people.</p>
           <p>And the jar is not abandoned to its cracks forever. The week put a horizon behind the endurance, a building from God behind the groaning tent, a trumpet behind the obituaries, a morning when death itself is thrown down. Repair is absolutely coming. Scripture just never calls it maintenance. It calls it resurrection.</p>
         </div>
-      </div>
+      </figure>
 
-      <div class="section-heading">Ambassadors Travel Unhitched</div>
+      <h3>Ambassadors Travel Unhitched</h3>
       <p>Tuesday sent us out among the rebels with a plea. Wednesday commanded us to come out from among them and be separate. A reader could be forgiven for asking which letter Paul wants us to obey.</p>
 
       <!-- BSB_BLOCK: 2 Corinthians 5:20 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:267985e0646d97e4b910399bc5ff1c43be89c72de2d35c58194658afb830774a | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 5:20</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.5.20" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.5.20" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Therefore we are ambassadors for Christ, as though God were making His appeal through us. We implore you on behalf of Christ: Be reconciled to God.</div>
         <div class="verse-commentary">
           <p>Both, and the ambassador is how. An ambassador lives his whole assignment among the people he is sent to. He learns their streets, eats at their tables, loves them enough to plead. What he never does is enlist in their army, swear by their king, or let their interests harness his steps, because the moment his allegiance blurs, he has nothing left to offer them. That was Wednesday's yoke rule all along. Come out was never a call to distance from people. It was a call to unhitch from masters, the way Jesus could eat with sinners all the way to a cross without once pulling in their direction. The church goes deepest into the world precisely by refusing to be harnessed by it. Separation is not the opposite of the embassy. It is the embassy's credentials.</p>
         </div>
-      </div>
+      </figure>
 
-    </div>
+    </section>
 
-    <!-- 4. STILL SPEAKING (merged Street Level + Today's World) -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Still Speaking</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">You Cannot Buy Broken In</div>
+    <section class="section" id="speaking" aria-labelledby="speaking-label">
+      <h2 class="section-label" id="speaking-label">Still Speaking</h2>
+<h3>You Cannot Buy Broken In</h3>
       <p>Walk through any clothing store and count what has been damaged on purpose. Jeans arrive already ripped at the knee, shredded in a factory before you ever wear them. Boots come pre-scuffed. Jackets are washed into looking like a decade of weather they never saw, and furniture ships with its corners sanded round, as though somebody's grandmother had polished them for fifty years. We pay extra for all of it, and it is worth asking why. Because everyone on earth already knows that broken in is more trustworthy than brand new. Marks of real use are the one credential nobody argues with. So the market manufactures the costume of a life, since the costume can be produced in an afternoon and the life cannot.</p>
-      <p>That was Corinth's whole mistake, and this week was Paul refusing the costume. The church wanted its apostle showroom-new, polished and papered and impressive. Paul kept holding up wear instead. Hard pressed, perplexed, persecuted, struck down, and under every blow the same four floors that would not give way (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.4.8-9" target="_blank" rel="noopener">2 Corinthians 4:8-9</a>). His references were not printed. They were people, living letters written by the Spirit where the whole city could read them (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.3.2-3" target="_blank" rel="noopener">2 Corinthians 3:2-3</a>). His résumé ran through beatings and sleepless nights and ended in arithmetic only grace can balance, having nothing, and yet possessing everything (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.6.10" target="_blank" rel="noopener">2 Corinthians 6:10</a>). None of it could be bought, rushed, or imitated, because marks like those form in only one place. Where a life actually knelt, and served, and kept showing up, and got spent.</p>
-      <p>And the pattern has a source. When the risen Jesus wanted to prove He was really Himself, He did not smooth the damage away. He kept the scars and offered them for inspection, reach out your hand and put it into My side (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.20.27" target="_blank" rel="noopener">John 20:27</a>). Dying, and yet alive. That is the credential, and it repeats. It moves toward the people who wronged it, the way this week's embassy moved. It breaks into joy when somebody turns, the way Thursday's whole chapter did. So here is the week's relief for everyone worn out from curating a presentable faith. You were never supposed to arrive pre-distressed from the factory, and you do not have to fake a single rip. Live the actual life. Love the person whose name you have carried since Sabbath. Kneel where your knees actually wear. Let God spend you right where He has placed you, and the authenticating marks will appear where they always do, in the exact places you gave yourself away. The world can buy the look. It has never once been able to buy the life. And yours can be the real thing, because the One whose scars still show is alive, and He is still writing letters.</p>
-    </div>
+      <p>That was Corinth's whole mistake, and this week was Paul refusing the costume. The church wanted its apostle showroom-new, polished and papered and impressive. Paul kept holding up wear instead. Hard pressed, perplexed, persecuted, struck down, and under every blow the same four floors that would not give way (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.4.8-9" target="_blank" rel="noopener" data-verse="2-corinthians-4-8-9" data-ref="2 Corinthians 4:8-9" aria-expanded="false">2 Corinthians 4:8-9</a>). His references were not printed. They were people, living letters written by the Spirit where the whole city could read them (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.3.2-3" target="_blank" rel="noopener" data-verse="2-corinthians-3-2-3" data-ref="2 Corinthians 3:2-3" aria-expanded="false">2 Corinthians 3:2-3</a>). His résumé ran through beatings and sleepless nights and ended in arithmetic only grace can balance, having nothing, and yet possessing everything (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.6.10" target="_blank" rel="noopener" data-verse="2-corinthians-6-10" data-ref="2 Corinthians 6:10" aria-expanded="false">2 Corinthians 6:10</a>). None of it could be bought, rushed, or imitated, because marks like those form in only one place. Where a life actually knelt, and served, and kept showing up, and got spent.</p>
+      <p>And the pattern has a source. When the risen Jesus wanted to prove He was really Himself, He did not smooth the damage away. He kept the scars and offered them for inspection, reach out your hand and put it into My side (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.20.27" target="_blank" rel="noopener" data-verse="john-20-27" data-ref="John 20:27" aria-expanded="false">John 20:27</a>). Dying, and yet alive. That is the credential, and it repeats. It moves toward the people who wronged it, the way this week's embassy moved. It breaks into joy when somebody turns, the way Thursday's whole chapter did. So here is the week's relief for everyone worn out from curating a presentable faith. You were never supposed to arrive pre-distressed from the factory, and you do not have to fake a single rip. Live the actual life. Love the person whose name you have carried since Sabbath. Kneel where your knees actually wear. Let God spend you right where He has placed you, and the authenticating marks will appear where they always do, in the exact places you gave yourself away. The world can buy the look. It has never once been able to buy the life. And yours can be the real thing, because the One whose scars still show is alive, and He is still writing letters.</p>
+    </section>
 
-    <!-- 5. CHRIST AT THE CENTER OF THE WEEK -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">Christ at the Center of the Week</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Trace Him back through the days. Sabbath's memory text read like a job description for ministers until you noticed whose biography it was, afflicted, struck down, not destroyed, a death carried in a body and a life that burst out of it. Sunday's living letters carry His handwriting, the risen Christ still publishing Himself in changed people, His ink the Spirit of the living God. Monday's treasure-in-clay was His method before it was ours, the fullness of God in a breakable newborn, the jar shattered on Friday and the glory pouring out, scars kept on a risen body like cracks that let the light through. Tuesday's embassy exists because He is the peace in person, the sinless One made sin, the wronged King absorbing the war on the rebels' own soil. Wednesday's promises put on skin in Emmanuel, the Temple who walked through unclean territory reversing the contagion, holiness flowing outward at a touch. And Thursday's joy is His family trait, the shepherd rejoicing with the sheep across his shoulders, the father sprinting past a rehearsed apology, heaven's gladdest room throwing open its doors over one turning sinner. The week never defined authentic ministry after all. It pointed at a Person and said, that, repeating in you.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the Center of the Week</h2>
+<p>Trace Him back through the days. Sabbath's memory text read like a job description for ministers until you noticed whose biography it was, afflicted, struck down, not destroyed, a death carried in a body and a life that burst out of it. Sunday's living letters carry His handwriting, the risen Christ still publishing Himself in changed people, His ink the Spirit of the living God. Monday's treasure-in-clay was His method before it was ours, the fullness of God in a breakable newborn, the jar shattered on Friday and the glory pouring out, scars kept on a risen body like cracks that let the light through. Tuesday's embassy exists because He is the peace in person, the sinless One made sin, the wronged King absorbing the war on the rebels' own soil. Wednesday's promises put on skin in Emmanuel, the Temple who walked through unclean territory reversing the contagion, holiness flowing outward at a touch. And Thursday's joy is His family trait, the shepherd rejoicing with the sheep across his shoulders, the father sprinting past a rehearsed apology, heaven's gladdest room throwing open its doors over one turning sinner. The week never defined authentic ministry after all. It pointed at a Person and said, that, repeating in you.</p>
+    </section>
 
-    <!-- 6. WEEKEND PRACTICE -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Weekend Practice</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Weekend Practice</h2>
+<div class="application-card">
         Before the weekend ends, write the memory text's four pairs on a card or in your phone, hard pressed but not crushed, perplexed but not in despair, persecuted but not forsaken, struck down but not destroyed, and put it where Monday morning will find it. Then finish the week's assignment in person. For the one whose name you have prayed all week, do one act of unpolished, unexplained service, and let them see the ordinary jar it came out of. No performance, no caption. Just treasure, leaking through a crack, the way it was designed to.
       </div>
-    </div>
+    </section>
 
-    <!-- 7. CLOSING PRAYER FOR THE WEEK -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer for the Week</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we end this week asking You to make us real. We have watched a beaten tentmaker hold up his credentials, people instead of paper, cracks instead of polish, a plea instead of a demand, tears instead of applause, and something in us has stopped wanting the other kind. Forgive us for the energy we have spent looking sent instead of being sent. Write Your Son so plainly in us that somebody reads Him this weekend without our saying a word. Carry Your treasure through our breakable days, and when we crack, let what spills out be recognizably Yours. Keep us unhitched from every yoke that pulls against You, and keep us moving toward the people everyone else has written off, since that is the direction Your love has always traveled. Give us sorrow that turns instead of circles, joy that throws its head back at every homecoming, and rest this Sabbath in the God of all comfort, whose power has never once needed an impressive jar. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer for the Week</h2>
+<p>Father, we end this week asking You to make us real. We have watched a beaten tentmaker hold up his credentials, people instead of paper, cracks instead of polish, a plea instead of a demand, tears instead of applause, and something in us has stopped wanting the other kind. Forgive us for the energy we have spent looking sent instead of being sent. Write Your Son so plainly in us that somebody reads Him this weekend without our saying a word. Carry Your treasure through our breakable days, and when we crack, let what spills out be recognizably Yours. Keep us unhitched from every yoke that pulls against You, and keep us moving toward the people everyone else has written off, since that is the direction Your love has always traveled. Give us sorrow that turns instead of circles, joy that throws its head back at every homecoming, and rest this Sabbath in the God of all comfort, whose power has never once needed an impressive jar. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+  </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
-
-<!-- Firebase SDK for push notifications -->
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-09-03.html"><span class="day-nav-kicker">← Thursday</span><span class="day-nav-title">Comfort and Joy</span></a><a class="day-nav-item" href="/bible-study/2026-09-05.html"><span class="day-nav-kicker">Saturday →</span><span class="day-nav-title">Stewardship and Mission</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"2-corinthians-4-8-9":{"ref":"2 Corinthians 4:8-9","text":"We are hard pressed on all sides, but not crushed; perplexed, but not in despair; persecuted, but not forsaken; struck down, but not destroyed.","bibleUrl":"https://www.bible.com/bible/3034/2CO.4.8-9"},"2-corinthians-3-2-3":{"ref":"2 Corinthians 3:2-3","text":"You yourselves are our letter, inscribed on our hearts, known and read by everyone. It is clear that you are a letter from Christ, the result of our ministry, written not with ink but with the Spirit of the living God, not on tablets of stone but on tablets of human hearts.","bibleUrl":"https://www.bible.com/bible/3034/2CO.3.2-3"},"2-corinthians-6-10":{"ref":"2 Corinthians 6:10","text":"sorrowful, yet always rejoicing; poor, yet making many rich; having nothing, and yet possessing everything.","bibleUrl":"https://www.bible.com/bible/3034/2CO.6.10"},"john-20-27":{"ref":"John 20:27","text":"Then Jesus said to Thomas, \u201cPut your finger here and look at My hands. Reach out your hand and put it into My side. Stop doubting and believe.\u201d","bibleUrl":"https://www.bible.com/bible/3034/JHN.20.27"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

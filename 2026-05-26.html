@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>The Law — Daily Bible Study</title>
 <meta name="study-title" content="The Law">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Part 4 of 7">
+<meta name="study-passage" content="Romans 3:20">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Day 4 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="The Law">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Part 4 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Day 4 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-05-26.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Part 4 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Day 4 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,335 +38,217 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>The Law</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 9, Sin, the Gospel, and the Law</span>
-      <span>Part 4 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Tue · May 26</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">12 min</span>
     </div>
-    <div class="date-badge">May 26, 2026</div>
+    <h1 class="study-title">The Law</h1>
+    <p class="study-sub"><span class="sub-title">Sin, the Gospel, and the Law</span><span class="sub-facts"><span>Lesson 9</span><span>Day 4 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">The Hebrew word for "law" comes from a root that means to point or to shoot an arrow, and the law's first job has always been to aim the human heart in the direction it was made to fly.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p class="tldr-hook">The Hebrew word for "law" comes from a root that means to point or to shoot an arrow, and the law's first job has always been to aim the human heart in the direction it was made to fly.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span><span>Without the law, sin is a fog. With the law, sin is a face in the mirror. The law's first work is not to condemn but to name.</span></li>
-        <li><span class="bullet-icon">☩</span><span>Paul says the knowledge of sin comes through the law. John says sin is lawlessness itself. They are the same diagnosis from two angles.</span></li>
-        <li><span class="bullet-icon">☩</span><span>Jesus folded the Ten Commandments into one Hebrew sentence (love God) and one Hebrew sentence (love neighbor), then said the entire Bible hangs on those two hooks.</span></li>
-        <li><span class="bullet-icon">☩</span><span>The law was never the fence keeping us small. It was the floor under our feet, and the apostle John says the commandments of God are not heavy.</span></li>
+        <li>
+<span class="bullet-icon">☩</span><span>Without the law, sin is a fog. With the law, sin is a face in the mirror. The law's first work is not to condemn but to name.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span>Paul says the knowledge of sin comes through the law. John says sin is lawlessness itself. They are the same diagnosis from two angles.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span>Jesus folded the Ten Commandments into one Hebrew sentence (love God) and one Hebrew sentence (love neighbor), then said the entire Bible hangs on those two hooks.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span>The law was never the fence keeping us small. It was the floor under our feet, and the apostle John says the commandments of God are not heavy.</span>
+</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday Jesus prescribed the surgery: cut off the hand, the foot, the eye that keeps tripping the trap. We named the strongholds the enemy has built in the actual rooms of our lives. Today we step back to the prior question. How do we know what counts as a stronghold in the first place? What is the standard the eye is measured by? Without the law, the eye does not know what it has been looking at. Without a standard outside ourselves, the only court we have is the one Samson trusted on Sunday morning, <em>yashar hi b'einay</em>, "right in my own eyes." The law is the older mirror. It does not flatter and it does not lie, and the man who keeps looking into it is the only man who can see what needs to be cut.</p>
-    </div>
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday Jesus prescribed the surgery: cut off the hand, the foot, the eye that keeps tripping the trap. We named the strongholds the enemy has built in the actual rooms of our lives. Today we step back to the prior question. How do we know what counts as a stronghold in the first place? What is the standard the eye is measured by? Without the law, the eye does not know what it has been looking at. Without a standard outside ourselves, the only court we have is the one Samson trusted on Sunday morning, <em>yashar hi b'einay</em>, "right in my own eyes." The law is the older mirror. It does not flatter and it does not lie, and the man who keeps looking into it is the only man who can see what needs to be cut.</p>
+    </section>
 
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">A Code Unlike Any Other in the Ancient World</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>A Code Unlike Any Other in the Ancient World</h3>
       <p>By the time Israel stood at the foot of Sinai, the ancient Near East already had a long shelf of legal codes. The Code of Hammurabi from Babylon (around 1750 BC) carved hundreds of clauses onto a stone stele showing the king receiving justice from the sun-god Shamash. The Hittite Laws regulated marriage, theft, and ritual purity for a kingdom stretching across modern Turkey. The Middle Assyrian Laws set out brutal penalties for women caught in adultery and detailed property rules. All of them were royal codes. All of them were promulgated through a king as the human guarantor of order. All of them began with the king's name and his honor as the reason the code existed.</p>
       <p>The Sinai Ten were structured differently in ways the audience would have noticed instantly. The code was given to an entire people, not handed down through a king. It was spoken aloud by God Himself, the only time in human history a national assembly heard the divine voice giving its founding law (Exod. 19-20). It opened not with a royal name but with a relational claim: "I am the LORD your God, who brought you out of the land of Egypt, out of the house of slavery." Identity first, then instruction. The Hebrew word for "law" is <em>torah</em>, and its root verb <em>yarah</em> means to throw an arrow, to point in a direction, to teach. The same root gives Hebrew the word <em>moreh</em>, a teacher. <em>Torah</em> in Hebrew was never primarily punitive. It was directional, the older word for what a Father gives a child the morning they go off into a world full of cliffs.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Two short verses together do the entire diagnostic work the rest of the week will treat. Paul names what the law does. John names what sin is. Then Jesus walks in and tells us the whole Old Testament library hangs on two hooks, and both of them are about love.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Two short verses together do the entire diagnostic work the rest of the week will treat. Paul names what the law does. John names what sin is. Then Jesus walks in and tells us the whole Old Testament library hangs on two hooks, and both of them are about love.</p>
 
 <!-- BSB_BLOCK: Romans 3:20 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:f2ba3dba1051e0b9e84528b98e9d574a8d03366f0e10affd1b7e69fc39658db2 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Romans 3:20</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.3.20" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ROM.3.20" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Therefore no one will be justified in His sight by works of the law. For the law merely brings awareness of sin.</div>
 <div class="verse-commentary">
           <p>Paul writes this sentence in Romans 3, after a sustained two-and-a-half-chapter argument that Jew and Gentile both stand condemned. The verse has two halves and they must be held together or one will swallow the other. The first half closes a door. No one gets right with God by performing the law's demands; if we could earn standing through obedience, Christ's death would be unnecessary. The second half opens a different door. The knowledge of sin comes <em>through</em> the law. The Greek phrase is <em>dia nomou epignosis hamartias</em>, "through law, the full knowledge of sin." The preposition <em>dia</em> means the law is the conduit, the lens, the X-ray. The compound <em>epignosis</em> is stronger than ordinary knowledge; it carries the idea of recognition, the moment a vague shape resolves into something you can name.</p>
-          <p>Paul is making a careful distinction. He is not saying the law saves. He is saying the law is how we see what we are being saved <em>from</em>. Without the law, "sin" is a word like "weather," a generic background condition we shrug at. With the law, sin is the specific shape of the wound in our specific life. We met that same dynamic on Sabbath in the Hebrew cabinet (<em>chattat</em>, missing the mark; <em>pesha</em>, covenant breach; <em>avon</em>, bent and twisted), and the cabinet has labels on it precisely because the law is the source of the labels. Two interior witnesses sit alongside Paul's sentence: David's confession that the bent began at birth (<a class="vlink" href="https://www.bible.com/bible/3034/PSA.51.5" target="_blank" rel="noopener">Psalm 51:5</a>) and Jeremiah's verdict that the heart is "deceitful above all things" (<a class="vlink" href="https://www.bible.com/bible/3034/JER.17.9" target="_blank" rel="noopener">Jeremiah 17:9</a>). The law is not telling us anything we did not already half-know. It is telling us the thing our hearts have been trying to hide from us since Eden.</p>
+          <p>Paul is making a careful distinction. He is not saying the law saves. He is saying the law is how we see what we are being saved <em>from</em>. Without the law, "sin" is a word like "weather," a generic background condition we shrug at. With the law, sin is the specific shape of the wound in our specific life. We met that same dynamic on Sabbath in the Hebrew cabinet (<em>chattat</em>, missing the mark; <em>pesha</em>, covenant breach; <em>avon</em>, bent and twisted), and the cabinet has labels on it precisely because the law is the source of the labels. Two interior witnesses sit alongside Paul's sentence: David's confession that the bent began at birth (<a class="vlink" href="https://www.bible.com/bible/3034/PSA.51.5" target="_blank" rel="noopener" data-verse="psalms-51-5" data-ref="Psalms 51:5" aria-expanded="false">Psalm 51:5</a>) and Jeremiah's verdict that the heart is "deceitful above all things" (<a class="vlink" href="https://www.bible.com/bible/3034/JER.17.9" target="_blank" rel="noopener" data-verse="jeremiah-17-9" data-ref="Jeremiah 17:9" aria-expanded="false">Jeremiah 17:9</a>). The law is not telling us anything we did not already half-know. It is telling us the thing our hearts have been trying to hide from us since Eden.</p>
           <p>This is why a faithful reading of Romans 3:20 never produces despair. The X-ray that names the tumor is the same X-ray the Surgeon will follow tomorrow to remove it. The law does not save, but the law makes us savable. It clears the fog so we can see Whose hand is reaching for us.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: 1 John 3:4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:e7c644be2542dc8f50ff77325ac12d1c52679ef014ede50cf2fd71245342990d | footnotes-stripped:1 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 John 3:4</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1JN.3.4" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1JN.3.4" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Everyone who practices sin practices lawlessness as well. Indeed, sin is lawlessness.</div>
 <div class="verse-commentary">
           <p>John's definition is one verse long and built around a single Greek word: <em>anomia</em>. Break the word into its pieces and you get the privative prefix <em>a-</em> ("without," "non-") plus the noun <em>nomos</em> (law). <em>Anomia</em> is literally "no-law-ness," the condition of a life unhitched from the standard. John is not just saying sin <em>breaks</em> the law. He is saying sin <em>is</em> living as if no law applied. The English word "lawless" carries the right edge. A lawless intersection has no traffic lights, and the people who use it long enough stop noticing that the cars keep colliding.</p>
           <p>Notice what this does for the modern question, "Is something a sin?" The Bible's first move is not to ask whether the action feels wrong to us, whether it harms anyone visible, or whether the culture currently approves it. Its first move is to ask whether it lives within the law God spoke at Sinai and Jesus restated on the Galilean hillside. If the action is unhitched from the standard, the action is sin, regardless of how acceptably it has been re-narrated. Yesterday we named the entrenched compromises the enemy builds in our lives. Today's verse explains why they accumulate. We have been treating large pieces of our days as if the standard did not apply to them. <em>Anomia</em> is not a dramatic posture of rebellion. <em>Anomia</em> is just an inch outside the lane line, sustained for years.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: 1 John 3:4 | 3:4 Or is violation of the Law -->
 
 <!-- BSB_BLOCK: Mark 12:30-31 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:53f653e67282a7d278966398df9a81c5b1a02d5cf6c9792a879efacd34509158 | footnotes-stripped:2 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Mark 12:30-31</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/MRK.12.30-31" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 30">30</sup><span class="words-of-jesus">Love the Lord your God with all your heart and with all your soul and with all your mind and with all your strength.’</span> <sup class="verse-number" aria-label="Verse 31">31</sup><span class="words-of-jesus">The second is this: ‘Love your neighbor as yourself.’ No other commandment is greater than these.”</span></div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/MRK.12.30-31" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 30">30</sup><span class="words-of-jesus">Love the Lord your God with all your heart and with all your soul and with all your mind and with all your strength.’</span> <sup class="verse-number" aria-label="Verse 31">31</sup><span class="words-of-jesus">The second is this: ‘Love your neighbor as yourself.’ No other commandment is greater than these.”</span>
+</div>
 <div class="verse-commentary">
-          <p>A scribe has just asked Jesus which commandment is the greatest. He answers with two sentences. The first is the Shema, the prayer every faithful Jew prayed every morning and every evening, from <a class="vlink" href="https://www.bible.com/bible/3034/DEU.6.5" target="_blank" rel="noopener">Deuteronomy 6:5</a>. The second is from <a class="vlink" href="https://www.bible.com/bible/3034/LEV.19.18" target="_blank" rel="noopener">Leviticus 19:18</a>, buried inside a chapter of seemingly miscellaneous holiness laws. Jesus's move was to pick those two verses, set them side by side, and announce that the entire Mosaic library hung on them. <a class="vlink" href="https://www.bible.com/bible/3034/MAT.22.40" target="_blank" rel="noopener">Matthew 22:40</a> records the metaphor: "On these two commands all the Law and the Prophets depend." The Greek verb is <em>kremannumi</em>, the picture of hanging a heavy coat on a peg. The whole canon, in Jesus's mouth, hangs on two hooks.</p>
-          <p>This is the architecture the Decalogue itself was built to teach. The first four commandments of <a class="vlink" href="https://www.bible.com/bible/3034/EXO.20.3-17" target="_blank" rel="noopener">Exodus 20:3-17</a> are God-ward; the last six are neighbor-ward. Two tables, two hooks, one love. The God who in <a class="vlink" href="https://www.bible.com/bible/3034/HEB.1.1-2" target="_blank" rel="noopener">Hebrews 1:1-2</a> spoke to the fathers through prophets and in these last days has spoken to us through His Son is the same God in both tables. And the apostle John, who watched Jesus do all of this for three years, lands the matter with a sentence that ought to settle every modern argument about whether the law is harsh: "For this is what love for God is: to keep his commands. And his commands are not a burden" (<a class="vlink" href="https://www.bible.com/bible/3034/1JN.5.3" target="_blank" rel="noopener">1 John 5:3</a>). The law is not the cage that traps the bird. The law is the wing.</p>
+          <p>A scribe has just asked Jesus which commandment is the greatest. He answers with two sentences. The first is the Shema, the prayer every faithful Jew prayed every morning and every evening, from <a class="vlink" href="https://www.bible.com/bible/3034/DEU.6.5" target="_blank" rel="noopener" data-verse="deuteronomy-6-5" data-ref="Deuteronomy 6:5" aria-expanded="false">Deuteronomy 6:5</a>. The second is from <a class="vlink" href="https://www.bible.com/bible/3034/LEV.19.18" target="_blank" rel="noopener" data-verse="leviticus-19-18" data-ref="Leviticus 19:18" aria-expanded="false">Leviticus 19:18</a>, buried inside a chapter of seemingly miscellaneous holiness laws. Jesus's move was to pick those two verses, set them side by side, and announce that the entire Mosaic library hung on them. <a class="vlink" href="https://www.bible.com/bible/3034/MAT.22.40" target="_blank" rel="noopener" data-verse="matthew-22-40" data-ref="Matthew 22:40" aria-expanded="false">Matthew 22:40</a> records the metaphor: "On these two commands all the Law and the Prophets depend." The Greek verb is <em>kremannumi</em>, the picture of hanging a heavy coat on a peg. The whole canon, in Jesus's mouth, hangs on two hooks.</p>
+          <p>This is the architecture the Decalogue itself was built to teach. The first four commandments of <a class="vlink" href="https://www.bible.com/bible/3034/EXO.20.3-17" target="_blank" rel="noopener" data-verse="exodus-20-3-17" data-ref="Exodus 20:3-17" aria-expanded="false">Exodus 20:3-17</a> are God-ward; the last six are neighbor-ward. Two tables, two hooks, one love. The God who in <a class="vlink" href="https://www.bible.com/bible/3034/HEB.1.1-2" target="_blank" rel="noopener" data-verse="hebrews-1-1-2" data-ref="Hebrews 1:1-2" aria-expanded="false">Hebrews 1:1-2</a> spoke to the fathers through prophets and in these last days has spoken to us through His Son is the same God in both tables. And the apostle John, who watched Jesus do all of this for three years, lands the matter with a sentence that ought to settle every modern argument about whether the law is harsh: "For this is what love for God is: to keep his commands. And his commands are not a burden" (<a class="vlink" href="https://www.bible.com/bible/3034/1JN.5.3" target="_blank" rel="noopener" data-verse="1-john-5-3" data-ref="1 John 5:3" aria-expanded="false">1 John 5:3</a>). The law is not the cage that traps the bird. The law is the wing.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: Mark 12:30 | 12:30 Deuteronomy 6:4–5 -->
       <!-- BSB_FOOTNOTE: Mark 12:31 | 12:31 Leviticus 19:18 -->
-    </div>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Tuning Fork at the Piano</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Tuning Fork at the Piano</h3>
       <p>Walk into any concert hall in the world an hour before a performance and you will hear the same sound. A tuning fork being struck against a stand. The fork is a small steel U on a wooden handle. You tap it, and it sings a single note: middle A, four hundred and forty vibrations per second, the same pitch in 1885 as it is today. The tuning fork does not tune anything. It cannot reach inside the piano. It cannot adjust the tension on a single string. All it can do is sound the true note, hold it in the air, and let the human ear hear how far the piano has drifted since the last time it was tuned.</p>
       <p>That is the entire job of the law. <em>Torah</em>, the Hebrew word with the arrow root, sounds the true note. It does not tune the human heart. It cannot reach inside us and adjust what is out of pitch. What it can do, and what nothing else in the universe can do quite the same way, is hold a perfect A in the air long enough for us to hear how flat we have gone. Romans 3:20 has been saying this for two thousand years: the knowledge of sin comes through the law. The tuner is somebody else. The fork is doing exactly what it was made to do when it tells you the truth about the piano. The discomfort you feel when the law lands on a specific corner of your week is not the law's failure. It is the sound of a true note next to an honest ear.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Forty Years of Code Made Visible in Sixty Seconds</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>Forty Years of Code Made Visible in Sixty Seconds</h3>
       <p>On February 6, 2023, two earthquakes struck southern Turkey within hours of each other along the East Anatolian Fault. The combined death toll across Turkey and Syria passed fifty-five thousand. Two and a half years later, a 2025 paper in the engineering journal <em>Applied Sciences</em>, part of the steady stream of follow-up research published since the disaster, quantified what the rubble had already told the world. The buildings that came down were not random. The pattern was a generation of code compliance, or the lack of it.</p>
       <p>Buildings constructed under Turkey's 1998 seismic code and its later revisions, properly inspected, properly engineered, properly built to the modern standard, generally held. Buildings constructed under the older 1975 code, or more commonly constructed with the modern code on the paperwork but not on the rebar (the steel skipped, the columns thinned, the inspections paid off), were where most of the bodies came from. Cambridge University's post-quake field report named the same finding in starker terms: deficiencies in structure and construction shortcuts were the main cause of casualties. A natural disaster did the killing through the gaps in the code, and the code itself had been on the books long enough to have saved everyone underneath it.</p>
       <p>That is what Paul means in Romans 3:20 when he says the knowledge of sin comes through the law. The law does not cause the earthquake. Sin causes the earthquake. The law is what lets us name which buildings were not put up the way they were supposed to be. Without the code the rubble is just rubble and we shake our heads at fate. With the code the rubble is a diagnosis, a specific failure with a specific name at a specific address. The law was always doing this exact work in the human heart. It names the gaps that fate alone could never explain.</p>
-    </div>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Jesus is the only Person who ever fulfilled the two hooks the rest of the canon hangs on. He loved His Father with all His heart and soul and mind and strength, every breath of His thirty-three years, and He loved His neighbor as Himself all the way to a cross where the neighbor was beating Him. Tomorrow we will see what that perfect fulfillment cost Him. Today the news is simpler. The law that names our sin is the same law Jesus walked through without one misstep, and the obedience He earned has been written under our names. He did not abolish the standard. He did not lower the bar. He stood under the bar Himself and held it up so we could walk underneath it inside Him. The law tells us what love looks like; the cross is where love stood up to its own definition. Every time we read Romans 3:20 and feel the X-ray naming the tumor, we are reading words written by a man who knew the Surgeon by name.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Jesus is the only Person who ever fulfilled the two hooks the rest of the canon hangs on. He loved His Father with all His heart and soul and mind and strength, every breath of His thirty-three years, and He loved His neighbor as Himself all the way to a cross where the neighbor was beating Him. Tomorrow we will see what that perfect fulfillment cost Him. Today the news is simpler. The law that names our sin is the same law Jesus walked through without one misstep, and the obedience He earned has been written under our names. He did not abolish the standard. He did not lower the bar. He stood under the bar Himself and held it up so we could walk underneath it inside Him. The law tells us what love looks like; the cross is where love stood up to its own definition. Every time we read Romans 3:20 and feel the X-ray naming the tumor, we are reading words written by a man who knew the Surgeon by name.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Read Exodus 20:3-17 out loud today. Not silently. Out loud. The whole Ten, slowly, with your name in the second-person verbs. Take six or seven minutes. Then sit with two questions for five more. Which commandment does the Hebrew arrow seem to be pointing at this week of my life? And what would change tomorrow if I treated that commandment less as a fence keeping me small and more as the floor my Father has put under me so I do not fall through?
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we have spent too long treating Your law as a list of restrictions instead of as the love letter it actually is. We have read it grudgingly when we read it at all, and we have been quick to call it a burden every time it told us something about ourselves we did not want to hear. Forgive us. Today open our eyes to <em>torah</em> the way Your psalmist opened his: as the arrow You shoot to point us toward a life we would never aim at on our own. Show us today the specific commandment our week needs. Help us not to flinch when it names the wound; let it do its diagnostic work all the way through. And keep us from despair when the naming lands, because the same Voice that spoke from Sinai walked among us in Galilee and stood under the bar for us at Calvary. Your commands are not heavy. Make our hearts light enough to lift them. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"When you hear the phrase 'God's law,' what is the first picture that rises in your chest, and how honest does that picture feel under the Bible's own language for it? (A courtroom and a verdict. A fence around a garden. A list of demands you keep failing. A mirror you do not look at if you do not have to. A floor under your feet you stopped noticing.) What would it look like this week to read one stretch of Scripture (Psalm 119, Exodus 20, the Sermon on the Mount) the way a child reads a love letter from a parent who is trying to keep him alive?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"When you hear the phrase 'God's law,' what is the first picture that rises in your chest, and how honest does that picture feel under the Bible's own language for it? (A courtroom and a verdict. A fence around a garden. A list of demands you keep failing. A mirror you do not look at if you do not have to. A floor under your feet you stopped noticing.) What would it look like this week to read one stretch of Scripture (Psalm 119, Exodus 20, the Sermon on the Mount) the way a child reads a love letter from a parent who is trying to keep him alive?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, we have spent too long treating Your law as a list of restrictions instead of as the love letter it actually is. We have read it grudgingly when we read it at all, and we have been quick to call it a burden every time it told us something about ourselves we did not want to hear. Forgive us. Today open our eyes to <em>torah</em> the way Your psalmist opened his: as the arrow You shoot to point us toward a life we would never aim at on our own. Show us today the specific commandment our week needs. Help us not to flinch when it names the wound; let it do its diagnostic work all the way through. And keep us from despair when the naming lands, because the same Voice that spoke from Sinai walked among us in Galilee and stood under the bar for us at Calvary. Your commands are not heavy. Make our hearts light enough to lift them. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-05-25.html"><span class="day-nav-kicker">← Monday</span><span class="day-nav-title">Strongholds in My Relationship With God</span></a><a class="day-nav-item" href="/bible-study/2026-05-27.html"><span class="day-nav-kicker">Wednesday →</span><span class="day-nav-title">The Law and the Gospel</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"psalms-51-5":{"ref":"Psalms 51:5","text":"Surely I was brought forth in iniquity; I was sinful when my mother conceived me.","bibleUrl":"https://www.bible.com/bible/3034/PSA.51.5"},"jeremiah-17-9":{"ref":"Jeremiah 17:9","text":"The heart is deceitful above all things and beyond cure. Who can understand it?","bibleUrl":"https://www.bible.com/bible/3034/JER.17.9"},"deuteronomy-6-5":{"ref":"Deuteronomy 6:5","text":"And you shall love the LORD your God with all your heart and with all your soul and with all your strength.","bibleUrl":"https://www.bible.com/bible/3034/DEU.6.5"},"leviticus-19-18":{"ref":"Leviticus 19:18","text":"Do not seek revenge or bear a grudge against any of your people, but love your neighbor as yourself. I am the LORD.","bibleUrl":"https://www.bible.com/bible/3034/LEV.19.18"},"matthew-22-40":{"ref":"Matthew 22:40","text":"All the Law and the Prophets hang on these two commandments.\u201d","bibleUrl":"https://www.bible.com/bible/3034/MAT.22.40"},"exodus-20-3-17":{"ref":"Exodus 20:3-17","text":"You shall have no other gods before Me. You shall not make for yourself an idol in the form of anything in the heavens above, on the earth below, or in the waters beneath. You shall not bow down to them or worship them; for I, the LORD your God, am a jealous God, visiting the iniquity of the fathers on their children to the third and fourth generations of those who hate Me, but showing loving devotion to a thousand generations of those who love Me and keep My commandments. You shall not take the name of the LORD your God in vain, for the LORD will not leave anyone unpunished who takes His name in vain. Remember the Sabbath day by keeping it holy. Six days you shall labor and do all your work, but the seventh day is a Sabbath to the LORD your God, on which you must not do any work\u2014neither you, nor your son or daughter, nor your manservant or maidservant or livestock, nor the foreigner within your gates. For in six days the LORD made the heavens and the earth and the sea and all that is in them, but on the seventh day He rested. Therefore the LORD blessed the Sabbath day and set it apart as holy. Honor your father and mother, so that your days may be long in the land that the LORD your God is giving you. You shall not murder. You shall not commit adultery. You shall not steal. You shall not bear false witness against your neighbor. You shall not covet your neighbor\u2019s house. You shall not covet your neighbor\u2019s wife, or his manservant or maidservant, or his ox or donkey, or anything that belongs to your neighbor.\u201d","bibleUrl":"https://www.bible.com/bible/3034/EXO.20.3-17"},"hebrews-1-1-2":{"ref":"Hebrews 1:1-2","text":"On many past occasions and in many different ways, God spoke to our fathers through the prophets. But in these last days He has spoken to us by His Son, whom He appointed heir of all things, and through whom He made the universe.","bibleUrl":"https://www.bible.com/bible/3034/HEB.1.1-2"},"1-john-5-3":{"ref":"1 John 5:3","text":"For this is the love of God, that we keep His commandments. And His commandments are not burdensome,","bibleUrl":"https://www.bible.com/bible/3034/1JN.5.3"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

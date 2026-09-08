@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Christ, the Firstfruits — Daily Bible Study</title>
 <meta name="study-title" content="Christ, the Firstfruits">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 8, The Power of Christ&#x27;s Resurrection · Part 4 of 7">
+<meta name="study-passage" content="1 Corinthians 15:20-23">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 8, The Power of Christ's Resurrection · Day 4 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Christ, the Firstfruits">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 8, The Power of Christ&#x27;s Resurrection · Part 4 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 8, The Power of Christ's Resurrection · Day 4 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-08-18.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 8, The Power of Christ&#x27;s Resurrection · Part 4 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 8, The Power of Christ's Resurrection · Day 4 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,326 +38,200 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Christ, the Firstfruits</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 8, The Power of Christ's Resurrection</span>
-      <span>Part 4 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">August 18, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Tue · Aug 18</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
+    </div>
+    <h1 class="study-title">Christ, the Firstfruits</h1>
+    <p class="study-sub"><span class="sub-title">The Power of Christ's Resurrection</span><span class="sub-facts"><span>Lesson 8</span><span>Day 4 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>Yesterday's walk ended at a cliff, a world where the dead stay dead and hope deserves pity. Today Paul spins around with the sentence that carries all the weight. But Christ has indeed been raised from the dead. Then he reaches for a farmer's word to say what that means. Firstfruits. The first armful cut from the field, lifted up as proof and promise that the whole harvest follows. <strong>Jesus did not rise away from us. He rose ahead of us, and everyone who belongs to Him is standing in a field He has already claimed.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday Paul walked us to the edge of the world his opponents were proposing and made us look over. Seven consequences, one darker than the next, down to the unbearable last line about believers who have perished, their graves keeping them forever (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.12-19" target="_blank" rel="noopener" data-verse="1-corinthians-15-12-19" data-ref="1 Corinthians 15:12-19" aria-expanded="false">1 Corinthians 15:12-19</a>). He left us standing at that edge on purpose, long enough to feel the cold coming up from below. Today he takes us by the shoulder and turns us around, and what he shows us is not a philosophy. It is a field at harvest time, and the first armful is already cut.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday's walk ended at a cliff, a world where the dead stay dead and hope deserves pity. Today Paul spins around with the sentence that carries all the weight. But Christ has indeed been raised from the dead. Then he reaches for a farmer's word to say what that means. Firstfruits. The first armful cut from the field, lifted up as proof and promise that the whole harvest follows. <strong>Jesus did not rise away from us. He rose ahead of us, and everyone who belongs to Him is standing in a field He has already claimed.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday Paul walked us to the edge of the world his opponents were proposing and made us look over. Seven consequences, one darker than the next, down to the unbearable last line about believers who have perished, their graves keeping them forever (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.12-19" target="_blank" rel="noopener">1 Corinthians 15:12-19</a>). He left us standing at that edge on purpose, long enough to feel the cold coming up from below. Today he takes us by the shoulder and turns us around, and what he shows us is not a philosophy. It is a field at harvest time, and the first armful is already cut.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The First Armful of the Harvest</div>
-      <p>Early on a spring morning in Israel, a farmer stood at the edge of his barley field with a sickle and cut exactly one armful. Not the whole crop. One sheaf, the first to ripen, carried to the priest and lifted up before the Lord on the day after the Sabbath of Passover week (<a class="vlink" href="https://www.bible.com/bible/3034/LEV.23.10-11" target="_blank" rel="noopener">Leviticus 23:10-11</a>). Until that sheaf went up, nobody in the land ate a bite of the new grain. The first armful stood in for every field in Israel, consecrating a harvest that was still rooted in the ground.</p>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The First Armful of the Harvest</h3>
+      <p>Early on a spring morning in Israel, a farmer stood at the edge of his barley field with a sickle and cut exactly one armful. Not the whole crop. One sheaf, the first to ripen, carried to the priest and lifted up before the Lord on the day after the Sabbath of Passover week (<a class="vlink" href="https://www.bible.com/bible/3034/LEV.23.10-11" target="_blank" rel="noopener" data-verse="leviticus-23-10-11" data-ref="Leviticus 23:10-11" aria-expanded="false">Leviticus 23:10-11</a>). Until that sheaf went up, nobody in the land ate a bite of the new grain. The first armful stood in for every field in Israel, consecrating a harvest that was still rooted in the ground.</p>
       <p>The sheaf did two jobs at once. It declared the harvest holy, and it guaranteed the harvest was coming, because what had happened to the first armful would happen to the rest. Same crop. Same soil. Same life. Now count the calendar. Jesus of Nazareth walked out of His tomb on the morning after the Sabbath of Passover week, the exact slot where the wave sheaf was lifted. When Paul calls the risen Christ the firstfruits, he is not decorating his sentence with farm imagery. He is reading the festival calendar out loud. God had been rehearsing Easter every spring for fifteen hundred years.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>After eight verses inside the world where the dead stay dead, Paul has earned the right to his turn, and he takes it in a single ringing sentence. But Christ has indeed been raised from the dead (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.20" target="_blank" rel="noopener">1 Corinthians 15:20</a>). Every expectation about the future darkens or brightens on that hinge. The delusion Paul dangled in front of Corinth evaporates, and in its place he sets a picture borrowed from the nearest farm. Firstfruits. One harvest word, and suddenly the resurrection is not only something to believe about Jesus. It is something to expect for everyone who belongs to Him.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>After eight verses inside the world where the dead stay dead, Paul has earned the right to his turn, and he takes it in a single ringing sentence. But Christ has indeed been raised from the dead (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.20" target="_blank" rel="noopener" data-verse="1-corinthians-15-20" data-ref="1 Corinthians 15:20" aria-expanded="false">1 Corinthians 15:20</a>). Every expectation about the future darkens or brightens on that hinge. The delusion Paul dangled in front of Corinth evaporates, and in its place he sets a picture borrowed from the nearest farm. Firstfruits. One harvest word, and suddenly the resurrection is not only something to believe about Jesus. It is something to expect for everyone who belongs to Him.</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 15:20-23 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:653a5bbcafca7450ab0f1195f644baea360915f89aee9f5532a8aad611dd8829 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 15:20-23</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.15.20-23" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 20">20</sup>But Christ has indeed been raised from the dead, the firstfruits of those who have fallen asleep. <sup class="verse-number" aria-label="Verse 21">21</sup>For since death came through a man, the resurrection of the dead comes also through a man. <sup class="verse-number" aria-label="Verse 22">22</sup>For as in Adam all die, so in Christ all will be made alive. <sup class="verse-number" aria-label="Verse 23">23</sup>But each in his own turn: Christ the firstfruits; then at His coming, those who belong to Him.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.15.20-23" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 20">20</sup>But Christ has indeed been raised from the dead, the firstfruits of those who have fallen asleep. <sup class="verse-number" aria-label="Verse 21">21</sup>For since death came through a man, the resurrection of the dead comes also through a man. <sup class="verse-number" aria-label="Verse 22">22</sup>For as in Adam all die, so in Christ all will be made alive. <sup class="verse-number" aria-label="Verse 23">23</sup>But each in his own turn: Christ the firstfruits; then at His coming, those who belong to Him.</div>
         <div class="verse-commentary">
-          <p>Paul answers despair with agriculture. His word is <em>aparchē</em>, Greek for firstfruits, the first armful cut and lifted before God while the rest of the crop still stands in the field. A sample is a promise. What happened to the sheaf happens to the harvest, because they are one crop grown in one ground. Then Paul widens the lens to the whole human story. Death entered through one man, and resurrection enters through one Man. In Adam all die, and in Christ all will be made alive, each in strict order, Christ first, then those who belong to Him at His coming (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.22-23" target="_blank" rel="noopener">1 Corinthians 15:22-23</a>). That coming is when the bodily resurrection of those who died in Him closes this present evil age, the moment John calls the first resurrection, its people blessed and holy (<a class="vlink" href="https://www.bible.com/bible/3034/REV.20.5-6" target="_blank" rel="noopener">Revelation 20:5-6</a>). We live between the sheaf and the harvest. The first armful is already home.</p>
+          <p>Paul answers despair with agriculture. His word is <em>aparchē</em>, Greek for firstfruits, the first armful cut and lifted before God while the rest of the crop still stands in the field. A sample is a promise. What happened to the sheaf happens to the harvest, because they are one crop grown in one ground. Then Paul widens the lens to the whole human story. Death entered through one man, and resurrection enters through one Man. In Adam all die, and in Christ all will be made alive, each in strict order, Christ first, then those who belong to Him at His coming (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.22-23" target="_blank" rel="noopener" data-verse="1-corinthians-15-22-23" data-ref="1 Corinthians 15:22-23" aria-expanded="false">1 Corinthians 15:22-23</a>). That coming is when the bodily resurrection of those who died in Him closes this present evil age, the moment John calls the first resurrection, its people blessed and holy (<a class="vlink" href="https://www.bible.com/bible/3034/REV.20.5-6" target="_blank" rel="noopener" data-verse="revelation-20-5-6" data-ref="Revelation 20:5-6" aria-expanded="false">Revelation 20:5-6</a>). We live between the sheaf and the harvest. The first armful is already home.</p>
         </div>
-      </div>
+      </figure>
 
-      <p>Notice where the risen Christ carries it all. As the ultimate Adam in the plan of redemption (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.45" target="_blank" rel="noopener">1 Corinthians 15:45</a>), He succeeds exactly where the first Adam failed, reigning until every enemy is under His feet and then delivering the kingdom back to His Father (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.25-28" target="_blank" rel="noopener">1 Corinthians 15:25-28</a>). Even His final act is submission, the Son Himself gladly subject to God (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.28" target="_blank" rel="noopener">1 Corinthians 15:28</a>), so that God may be all in all. Adam grasped. Christ hands everything home.</p>
+      <p>Notice where the risen Christ carries it all. As the ultimate Adam in the plan of redemption (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.45" target="_blank" rel="noopener" data-verse="1-corinthians-15-45" data-ref="1 Corinthians 15:45" aria-expanded="false">1 Corinthians 15:45</a>), He succeeds exactly where the first Adam failed, reigning until every enemy is under His feet and then delivering the kingdom back to His Father (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.25-28" target="_blank" rel="noopener" data-verse="1-corinthians-15-25-28" data-ref="1 Corinthians 15:25-28" aria-expanded="false">1 Corinthians 15:25-28</a>). Even His final act is submission, the Son Himself gladly subject to God (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.28" target="_blank" rel="noopener" data-verse="1-corinthians-15-28" data-ref="1 Corinthians 15:28" aria-expanded="false">1 Corinthians 15:28</a>), so that God may be all in all. Adam grasped. Christ hands everything home.</p>
 
 <!-- BSB_BLOCK: Colossians 2:12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:4d902521469fec2412f766b0d8c150c222184f6fbdfb175e3e303fa882d70ca9 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Colossians 2:12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/COL.2.12" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/COL.2.12" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">And having been buried with Him in baptism, you were raised with Him through your faith in the power of God, who raised Him from the dead.</div>
         <div class="verse-commentary">
-          <p>Baptism is a funeral with a sunrise built into it. Going under the water buries the old life with Christ, and coming up out of it rehearses the morning God will raise the new one, because believers are joined to both His death and His rising (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.6.3-4" target="_blank" rel="noopener">Romans 6:3-4</a>). That is why Paul, resuming his case against the resurrection-deniers (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.29-34" target="_blank" rel="noopener">1 Corinthians 15:29-34</a>), points straight at the baptistry. His puzzling line about those baptized for the dead (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.29" target="_blank" rel="noopener">1 Corinthians 15:29</a>) is best understood as people moved to baptism because of believers who had died, some longing to be reunited with them at the resurrection, others answering the pull of a faithful life they had watched end in peace. Whatever its exact edge, the logic stands only if the dead are raised. Nobody rehearses a resurrection that is never going to come.</p>
+          <p>Baptism is a funeral with a sunrise built into it. Going under the water buries the old life with Christ, and coming up out of it rehearses the morning God will raise the new one, because believers are joined to both His death and His rising (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.6.3-4" target="_blank" rel="noopener" data-verse="romans-6-3-4" data-ref="Romans 6:3-4" aria-expanded="false">Romans 6:3-4</a>). That is why Paul, resuming his case against the resurrection-deniers (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.29-34" target="_blank" rel="noopener" data-verse="1-corinthians-15-29-34" data-ref="1 Corinthians 15:29-34" aria-expanded="false">1 Corinthians 15:29-34</a>), points straight at the baptistry. His puzzling line about those baptized for the dead (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.29" target="_blank" rel="noopener" data-verse="1-corinthians-15-29" data-ref="1 Corinthians 15:29" aria-expanded="false">1 Corinthians 15:29</a>) is best understood as people moved to baptism because of believers who had died, some longing to be reunited with them at the resurrection, others answering the pull of a faithful life they had watched end in peace. Whatever its exact edge, the logic stands only if the dead are raised. Nobody rehearses a resurrection that is never going to come.</p>
         </div>
-      </div>
+      </figure>
 
-      <p>Then Paul calls a second witness, his own calendar. Why would he stand in danger every hour (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.30-32" target="_blank" rel="noopener">1 Corinthians 15:30-32</a>)? If the dead are not raised, the sane schedule is the old drinking song, let us eat and drink, for tomorrow we die (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.32" target="_blank" rel="noopener">1 Corinthians 15:32</a>). Nobody faces wild beasts in Ephesus for a metaphor. Paul bet his body on the harvest.</p>
+      <p>Then Paul calls a second witness, his own calendar. Why would he stand in danger every hour (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.30-32" target="_blank" rel="noopener" data-verse="1-corinthians-15-30-32" data-ref="1 Corinthians 15:30-32" aria-expanded="false">1 Corinthians 15:30-32</a>)? If the dead are not raised, the sane schedule is the old drinking song, let us eat and drink, for tomorrow we die (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.15.32" target="_blank" rel="noopener" data-verse="1-corinthians-15-32" data-ref="1 Corinthians 15:32" aria-expanded="false">1 Corinthians 15:32</a>). Nobody faces wild beasts in Ephesus for a metaphor. Paul bet his body on the harvest.</p>
 
 <!-- BSB_BLOCK: 2 Timothy 1:12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:bfb5cd0262e6881b72bf92f1e7936544736415fbef00b2cd13aa9c3d97ed278a | footnotes-stripped:1 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Timothy 1:12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2TI.1.12" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2TI.1.12" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">For this reason, even though I suffer as I do, I am not ashamed; for I know whom I have believed, and I am convinced that He is able to guard what I have entrusted to Him for that day.</div>
         <div class="verse-commentary">
           <p>These are nearly the last words we have from Paul, written from a Roman cell with his execution in view, and there is not a tremor in them. Listen to where his certainty lives. Not I know what I have believed, though he certainly did, but I know whom. Assurance about the future grew out of a relationship in the present. Whatever rested in those hands, his life, his work, his sleeping friends, his own unraveling tomorrow, Paul had entrusted it all to Him, convinced He was able to guard it for that day, the same day this whole chapter leans toward, when the Firstfruits returns for His field. That is how the sheaf becomes personal. Paul was not sure of tomorrow because he could see it. He was sure because he knew the One already holding it.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: 2 Timothy 1:12 | 1:12 Or what He has entrusted to me -->
-    </div>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The First Band Around the Corner</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The First Band Around the Corner</h3>
       <p>Every small town knows the moment. You stake out a curb spot early, unfold the chairs, and the kids start asking the only question kids bring to a parade. Is it coming? You cannot see anything yet. Then you hear it, drums bouncing off the buildings from somewhere out of sight, and finally the first band swings around the corner in full uniform, and the asking stops. Notice what nobody in the crowd thinks. Nobody thinks one band happened to march today and maybe more will follow. The front of a parade is not a preview of the parade. It is the parade, arriving. One procession, stretched blocks out of sight, and every float, fire truck, and Scout troop is already in motion behind the lead, in the exact order the lineup assigned.</p>
       <p>Paul says Christ's resurrection works like that front band. He is the firstfruits, the first of one connected company to come up the street, and the rest follow in order. Christ first. Then, at His coming, everyone who belongs to Him. So His empty tomb is not an isolated miracle to admire from the curb, the way the world treats it. It is the head of a procession turning the corner, and if you are His, you are in the lineup, along with everyone you have ever loved who fell asleep holding on to Him. We live in the strange, wonderful stretch where the drums are already audible and our block has not seen the front yet. Waiting is not wondering. The parade has turned the corner. The rest is order of march.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">One Shot Turned Someday Into a Date</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>One Shot Turned Someday Into a Date</h3>
       <p>For seventy years, fusion power was the running joke of the energy world, always thirty years away, always someday. The sun runs on it, but no lab on earth had ever coaxed the reaction into giving back more energy than it took to start. Then, in the early hours of December 5, 2022, at the National Ignition Facility in Livermore, California, 192 lasers delivered 2.05 megajoules to a fuel capsule the size of a peppercorn, and the capsule gave back 3.15. Ignition. For the first time, a fusion reaction had produced more energy than the laser energy delivered to the target capsule that sparked it. That is a scientific line, not a commercial one, and the difference matters. Running the whole facility still took far more energy than the shot gave back. And it was no fluke. NIF has now reached ignition eleven times, and in April 2025 a single shot returned 8.6 megajoules, more than four times the laser energy that went in. One morning moved fusion from someday to demonstrated, repeatable fact, the kind of result that advances the prospects for fusion energy. But a working power plant is a different summit, still years of substantial engineering away.</p>
       <p>Paul's word for Easter morning works the same way, and it worked first. The <em>aparchē</em>, the firstfruits, is the first armful that settles the question for the whole field. For all of human history the grave had kept everyone it claimed. A few had been called back before, but only to mortal life, and the grave took each of them again. Every hope of beating death for good was filed under someday. Then one morning outside Jerusalem a body came back, seen, touched, and watched eating, never to die again, and the question changed tense forever. But watch where the parallel deepens and then breaks in our favor. A proof of physics guarantees only that a thing can be done. Everything after still depends on funding, engineering, and decades of follow-through. The Firstfruits guarantees more, because resurrection is not a technology waiting to scale. It is a harvest already owned. What binds you to that first morning is not a roadmap but a Person, and He does the raising Himself, each in his own turn, on a date already set on His calendar. Fusion turned someday into a prospect. Christ turned it into a promise with your name in it.</p>
       <!-- TODAYS_WORLD_SOURCE: Achieving Fusion Ignition | Lawrence Livermore National Laboratory (National Ignition Facility) | 2026 | https://lasers.llnl.gov/science/achieving-fusion-ignition -->
-    </div>
+    <details class="disclosure source-disclosure"><summary class="disclosure-summary"><span class="disclosure-label">Source</span> <span class="disclosure-publisher">Lawrence Livermore National Laboratory (National Ignition Facility)</span></summary><div class="disclosure-body"><p><cite>Achieving Fusion Ignition</cite>. Lawrence Livermore National Laboratory (National Ignition Facility), 2026. <a href="https://lasers.llnl.gov/science/achieving-fusion-ignition" target="_blank" rel="noopener noreferrer">Read the source</a>.</p></div></details></section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Follow the two Adams home. The first Adam stood in a garden, grasped at being like God, and pulled the whole family down with him. Death through a man. The last Adam knelt in a garden, surrendered, and now pulls the whole believing family up with Him. Resurrection through a Man. Here is the part worth sitting with today. Christ did not rise away from us, the way a rescued miner climbs out and leaves the shaft behind. He rose ahead of us, the first of the crop, and firstfruits means the rest of the field is not a wish. It is a schedule. Each in his own turn. He has already walked through death and come out the far side holding the keys to it. If you belong to Him, your resurrection is not pending approval. It is pending arrival.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Follow the two Adams home. The first Adam stood in a garden, grasped at being like God, and pulled the whole family down with him. Death through a man. The last Adam knelt in a garden, surrendered, and now pulls the whole believing family up with Him. Resurrection through a Man. Here is the part worth sitting with today. Christ did not rise away from us, the way a rescued miner climbs out and leaves the shaft behind. He rose ahead of us, the first of the crop, and firstfruits means the rest of the field is not a wish. It is a schedule. Each in his own turn. He has already walked through death and come out the far side holding the keys to it. If you belong to Him, your resurrection is not pending approval. It is pending arrival.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Name the one piece of your future you grip hardest, your health, your kids' faith, the money that has to last, the person you cannot imagine losing. Today, formally hand it over, entrusting it to Him by name. Then say out loud, in the old prisoner's words, I know whom I have believed, and I am convinced that He is able to guard what I have entrusted to Him for that day. Say it once this morning and once before you sleep. Deposits belong with the only Guard who has already beaten death.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, thank You for the sentence that turns the whole chapter, and thank You that it is true. But Christ has indeed been raised from the dead. Thank You for writing Easter into Your calendar centuries ahead of time, a sheaf lifted every spring until the morning Your Son fulfilled it in person. Teach us to live like people standing between the firstfruits and the harvest, neither despairing as if the field were lost nor grasping as if the crop depended on us. Remind us, every time we witness a baptism, that we have already rehearsed resurrection morning. Take the futures we clutch so tightly and hold them for us until that day. And when fear whispers that tomorrow is uncertain, teach us to answer with a name instead of an argument, because we know whom we have believed. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"Where does your confidence about the future actually live right now (a savings balance, a health report, a person you lean on, Christ Himself)? And what would have to shift this week for you to say about the thing you most fear losing, with an old prisoner's calm, I know whom I have believed?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"Where does your confidence about the future actually live right now (a savings balance, a health report, a person you lean on, Christ Himself)? And what would have to shift this week for you to say about the thing you most fear losing, with an old prisoner's calm, I know whom I have believed?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, thank You for the sentence that turns the whole chapter, and thank You that it is true. But Christ has indeed been raised from the dead. Thank You for writing Easter into Your calendar centuries ahead of time, a sheaf lifted every spring until the morning Your Son fulfilled it in person. Teach us to live like people standing between the firstfruits and the harvest, neither despairing as if the field were lost nor grasping as if the crop depended on us. Remind us, every time we witness a baptism, that we have already rehearsed resurrection morning. Take the futures we clutch so tightly and hold them for us until that day. And when fear whispers that tomorrow is uncertain, teach us to answer with a name instead of an argument, because we know whom we have believed. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-08-17.html"><span class="day-nav-kicker">← Monday</span><span class="day-nav-title">The Risen Christ, Our Only Hope!</span></a><a class="day-nav-item" href="/bible-study/2026-08-19.html"><span class="day-nav-kicker">Wednesday →</span><span class="day-nav-title">The Resurrected Body</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"1-corinthians-15-12-19":{"ref":"1 Corinthians 15:12-19","text":"But if it is preached that Christ has been raised from the dead, how can some of you say that there is no resurrection of the dead? If there is no resurrection of the dead, then not even Christ has been raised. And if Christ has not been raised, our preaching is worthless, and so is your faith. In that case, we are also exposed as false witnesses about God. For we have testified about God that He raised Christ from the dead, but He did not raise Him if in fact the dead are not raised. For if the dead are not raised, then not even Christ has been raised. And if Christ has not been raised, your faith is futile; you are still in your sins. Then those also who have fallen asleep in Christ have perished. If our hope in Christ is for this life alone, we are to be pitied more than all men.","bibleUrl":"https://www.bible.com/bible/3034/1CO.15.12-19"},"leviticus-23-10-11":{"ref":"Leviticus 23:10-11","text":"\u201cSpeak to the Israelites and say, \u2018When you enter the land that I am giving you and you reap its harvest, you are to bring to the priest a sheaf of the firstfruits of your harvest. And he shall wave the sheaf before the LORD so that it may be accepted on your behalf; the priest is to wave it on the day after the Sabbath.","bibleUrl":"https://www.bible.com/bible/3034/LEV.23.10-11"},"1-corinthians-15-20":{"ref":"1 Corinthians 15:20","text":"But Christ has indeed been raised from the dead, the firstfruits of those who have fallen asleep.","bibleUrl":"https://www.bible.com/bible/3034/1CO.15.20"},"1-corinthians-15-22-23":{"ref":"1 Corinthians 15:22-23","text":"For as in Adam all die, so in Christ all will be made alive. But each in his own turn: Christ the firstfruits; then at His coming, those who belong to Him.","bibleUrl":"https://www.bible.com/bible/3034/1CO.15.22-23"},"revelation-20-5-6":{"ref":"Revelation 20:5-6","text":"The rest of the dead did not come back to life until the thousand years were complete. This is the first resurrection. Blessed and holy are those who share in the first resurrection! The second death has no power over them, but they will be priests of God and of Christ and will reign with Him for a thousand years.","bibleUrl":"https://www.bible.com/bible/3034/REV.20.5-6"},"1-corinthians-15-45":{"ref":"1 Corinthians 15:45","text":"So it is written: \u201cThe first man Adam became a living being\u201d; the last Adam a life-giving spirit.","bibleUrl":"https://www.bible.com/bible/3034/1CO.15.45"},"1-corinthians-15-25-28":{"ref":"1 Corinthians 15:25-28","text":"For He must reign until He has put all His enemies under His feet. The last enemy to be destroyed is death. For \u201cGod has put everything under His feet.\u201d Now when it says that everything has been put under Him, this clearly does not include the One who put everything under Him. And when all things have been subjected to Him, then the Son Himself will be made subject to Him who put all things under Him, so that God may be all in all.","bibleUrl":"https://www.bible.com/bible/3034/1CO.15.25-28"},"1-corinthians-15-28":{"ref":"1 Corinthians 15:28","text":"And when all things have been subjected to Him, then the Son Himself will be made subject to Him who put all things under Him, so that God may be all in all.","bibleUrl":"https://www.bible.com/bible/3034/1CO.15.28"},"romans-6-3-4":{"ref":"Romans 6:3-4","text":"Or aren\u2019t you aware that all of us who were baptized into Christ Jesus were baptized into His death? We were therefore buried with Him through baptism into death, in order that, just as Christ was raised from the dead through the glory of the Father, we too may walk in newness of life.","bibleUrl":"https://www.bible.com/bible/3034/ROM.6.3-4"},"1-corinthians-15-29-34":{"ref":"1 Corinthians 15:29-34","text":"If these things are not so, what will those do who are baptized for the dead? If the dead are not raised at all, why are people baptized for them? And why do we endanger ourselves every hour? I face death every day, brothers, as surely as I boast about you in Christ Jesus our Lord. If I fought wild beasts in Ephesus for human motives, what did I gain? If the dead are not raised, \u201cLet us eat and drink, for tomorrow we die.\u201d Do not be deceived: \u201cBad company corrupts good character.\u201d Sober up as you ought, and stop sinning; for some of you are ignorant of God. I say this to your shame.","bibleUrl":"https://www.bible.com/bible/3034/1CO.15.29-34"},"1-corinthians-15-29":{"ref":"1 Corinthians 15:29","text":"If these things are not so, what will those do who are baptized for the dead? If the dead are not raised at all, why are people baptized for them?","bibleUrl":"https://www.bible.com/bible/3034/1CO.15.29"},"1-corinthians-15-30-32":{"ref":"1 Corinthians 15:30-32","text":"And why do we endanger ourselves every hour? I face death every day, brothers, as surely as I boast about you in Christ Jesus our Lord. If I fought wild beasts in Ephesus for human motives, what did I gain? If the dead are not raised, \u201cLet us eat and drink, for tomorrow we die.\u201d","bibleUrl":"https://www.bible.com/bible/3034/1CO.15.30-32"},"1-corinthians-15-32":{"ref":"1 Corinthians 15:32","text":"If I fought wild beasts in Ephesus for human motives, what did I gain? If the dead are not raised, \u201cLet us eat and drink, for tomorrow we die.\u201d","bibleUrl":"https://www.bible.com/bible/3034/1CO.15.32"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

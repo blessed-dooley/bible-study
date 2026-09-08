@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>State of the Heart — Daily Bible Study</title>
 <meta name="study-title" content="State of the Heart">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Part 6 of 7">
+<meta name="study-passage" content="1 Corinthians 2:14">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Day 6 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="State of the Heart">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Part 6 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Day 6 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-04-23.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Part 6 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Day 6 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,93 +38,115 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>State of the Heart</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 4, The Role of the Bible</span>
-      <span>Part 6 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Thu · Apr 23</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">11 min</span>
     </div>
-    <div class="date-badge">April 23, 2026</div>
+    <h1 class="study-title">State of the Heart</h1>
+    <p class="study-sub"><span class="sub-title">The Role of the Bible</span><span class="sub-facts"><span>Lesson 4</span><span>Day 6 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">Two people sit down with the exact same Bible, read the exact same chapter, and one stands up changed while the other stands up bored. The Bible is not what is different in that room. The readers are.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p class="tldr-hook">Two people sit down with the exact same Bible, read the exact same chapter, and one stands up changed while the other stands up bored. The Bible is not what is different in that room. The readers are.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span> Paul tells the Corinthians that the "natural person" cannot receive spiritual things, and the Greek word he uses is not about intelligence but about which frequency you are tuned to.</li>
-        <li><span class="bullet-icon">☩</span> In 1 Thessalonians 2:13, the verb for how God's Word works in the believer is the root of our word "energy." It is not static information. It is a live current.</li>
-        <li><span class="bullet-icon">☩</span> When a father cried out, "I do believe; help my unbelief," Jesus healed his son without waiting for bigger faith. Small faith with an open heart still opens the book.</li>
-        <li><span class="bullet-icon">☩</span> How you approach the Bible determines more of what you receive from the Bible than most people are willing to admit.</li>
+        <li>
+<span class="bullet-icon">☩</span> Paul tells the Corinthians that the "natural person" cannot receive spiritual things, and the Greek word he uses is not about intelligence but about which frequency you are tuned to.</li>
+        <li>
+<span class="bullet-icon">☩</span> In 1 Thessalonians 2:13, the verb for how God's Word works in the believer is the root of our word "energy." It is not static information. It is a live current.</li>
+        <li>
+<span class="bullet-icon">☩</span> When a father cried out, "I do believe; help my unbelief," Jesus healed his son without waiting for bigger faith. Small faith with an open heart still opens the book.</li>
+        <li>
+<span class="bullet-icon">☩</span> How you approach the Bible determines more of what you receive from the Bible than most people are willing to admit.</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday David buried the Word in his heart like a peasant burying silver under the floorboards. Today we are forced to ask the uncomfortable follow-up. Is the floor of my heart soft enough to hide anything? David's image assumes a receiver. A hard, packed, closed-over heart can have the Word dropped on top of it all day and never take any of it in. Wednesday described the treasure. Thursday asks whether the ground can hold it.</p>
-    </div>
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday David buried the Word in his heart like a peasant burying silver under the floorboards. Today we are forced to ask the uncomfortable follow-up. Is the floor of my heart soft enough to hide anything? David's image assumes a receiver. A hard, packed, closed-over heart can have the Word dropped on top of it all day and never take any of it in. Wednesday described the treasure. Thursday asks whether the ground can hold it.</p>
+    </section>
 
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The City That Paid to Be Impressed</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The City That Paid to Be Impressed</h3>
       <p>Paul wrote 1 Corinthians to a church inside one of the most rhetoric-obsessed cities in the Roman Empire. Corinth sat on the isthmus that linked the Greek mainland to the Peloponnese, and every two years it hosted the Isthmian Games, second in prestige only to the Olympics. Between the games the city ran on trade, tourism, and schools of oratory. A well-paid Corinthian speaker could pack a hall the way a modern concert artist sells out an arena. Wisdom, in this city, was a performance. It wore expensive robes. It paid a voice coach. It made you want to applaud.</p>
-      <p>Paul came to town and refused to play the role. In the chapter just before our anchor verse he tells them, "I did not come to you with eloquence or a superior wisdom as I proclaimed the testimony of God. I resolved to know nothing while I was with you except Jesus Christ and him crucified" (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.2.1-2" target="_blank" rel="noopener">1 Corinthians 2:1&ndash;2</a>). To a city that paid good money to be dazzled, the apostle showed up plain. Then he wrote them a letter that diagnosed the problem underneath their itch for eloquent teachers. The problem was not that God's truth was missing. The problem was that the listeners were still listening through the wrong organ. They were treating the gospel the way they treated a speech at the games, grading it on style. And Paul tells them, you cannot receive what the Spirit is saying if the receiver is not spiritual. The issue is not the signal. The issue is the antenna.</p>
-    </div>
+      <p>Paul came to town and refused to play the role. In the chapter just before our anchor verse he tells them, "I did not come to you with eloquence or a superior wisdom as I proclaimed the testimony of God. I resolved to know nothing while I was with you except Jesus Christ and him crucified" (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.2.1-2" target="_blank" rel="noopener" data-verse="1-corinthians-2-1-2" data-ref="1 Corinthians 2:1-2" aria-expanded="false">1 Corinthians 2:1–2</a>). To a city that paid good money to be dazzled, the apostle showed up plain. Then he wrote them a letter that diagnosed the problem underneath their itch for eloquent teachers. The problem was not that God's truth was missing. The problem was that the listeners were still listening through the wrong organ. They were treating the gospel the way they treated a speech at the games, grading it on style. And Paul tells them, you cannot receive what the Spirit is saying if the receiver is not spiritual. The issue is not the signal. The issue is the antenna.</p>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>The anchor today is 1 Corinthians 2:14, a verse that sounds insulting until you understand the Greek. Paul is not saying anyone is stupid. He is saying that spiritual truth arrives on a frequency that only a spiritually open heart can hear. The supporting verses widen the lens. Job's friend Eliphaz, for all his mistakes elsewhere, hands us one of the cleanest invitations in Scripture: receive instruction from His mouth. Paul's Thessalonian letter describes what happens when someone does receive it. And Jesus, in a crowd at the foot of the transfiguration mountain, lets a father with a mustard seed of faith in a shaking hand walk away with a son made whole.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>The anchor today is 1 Corinthians 2:14, a verse that sounds insulting until you understand the Greek. Paul is not saying anyone is stupid. He is saying that spiritual truth arrives on a frequency that only a spiritually open heart can hear. The supporting verses widen the lens. Job's friend Eliphaz, for all his mistakes elsewhere, hands us one of the cleanest invitations in Scripture: receive instruction from His mouth. Paul's Thessalonian letter describes what happens when someone does receive it. And Jesus, in a crowd at the foot of the transfiguration mountain, lets a father with a mustard seed of faith in a shaking hand walk away with a son made whole.</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 2:14 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:66920c7056cc6036ee0a1c7a40b6599ebafa9d95b2b3bdbe678744dd05bd9e7a | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 2:14</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.2.14" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.2.14" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">The natural man does not accept the things that come from the Spirit of God. For they are foolishness to him, and he cannot understand them, because they are spiritually discerned.</div>
 <div class="verse-commentary">
         <p>The word behind "natural man" is <em>psychikos</em>. It comes from <em>psyche</em>, soul, and in Greek philosophy it named the merely human, merely appetite-driven layer of a person. Paul is not saying the unbeliever is dumb. Corinth had plenty of credentialed minds. He is saying that a person operating only on the <em>psychikos</em> level, the level of natural intellect and natural appetite, is tuned to a different station than the one Scripture broadcasts on.</p>
@@ -132,241 +155,98 @@ if ('serviceWorker' in navigator) {
 
 <p>The last phrase pins it down. These things are <em>pneumatikos anakrinetai</em>, spiritually discerned. <em>Anakrino</em> is a courtroom word. It means to examine, to sift, to put something on trial in a careful way. Spiritual things stand up under a spiritual examination. They fall apart under a merely rational one, not because they are irrational, but because you are using the wrong court. A coroner's office cannot diagnose a broken heart, because that is not what that office is for. Scripture requires the right examining room.</p>
 
-<p>Which is why the state of your heart matters more than the state of your library. You can own twenty translations and a Greek lexicon and still leave your Bible the same way you picked it up. Or you can come to a cheap paperback Bible with a heart that has already said yes, and stand up changed.</p></div>
-      </div>
+<p>Which is why the state of your heart matters more than the state of your library. You can own twenty translations and a Greek lexicon and still leave your Bible the same way you picked it up. Or you can come to a cheap paperback Bible with a heart that has already said yes, and stand up changed.</p>
+</div>
+      </figure>
 
 <!-- BSB_BLOCK: 1 Thessalonians 2:13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:84047c326535495f787ad35a1f04e9ad9d72febecd4efe7a091b44184d3679be | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Thessalonians 2:13</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1TH.2.13" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1TH.2.13" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">And we continually thank God because, when you received the word of God that you heard from us, you accepted it not as the word of men, but as it truly is, the word of God, which is also now at work in you who believe.</div>
 <div class="verse-commentary">
         <p>The verb "effectively works" is the Greek <em>energeitai</em>. It is the root of our word <em>energy</em>. Paul is not describing Scripture as information that sits there waiting to be understood. He is describing it as a live current running through a believer's life. The Thessalonians welcomed the word, and the word began to work. It did not wait for a permission slip. It started rewiring them.</p>
 
-<p>The key word earlier in the verse is the same <em>dechomai</em> family we met in 1 Corinthians, welcoming a guest. They received it "not as the word of men, but as it truly is, the word of God." That is the posture change that unlocks the power. Job's friend, for all his other faults, says the same thing the right way around: "Receive instruction from His mouth, and lay up His words in your heart" (<a class="vlink" href="https://www.bible.com/bible/3034/JOB.22.22" target="_blank" rel="noopener">Job 22:22</a>). First you receive. Then it works. The state of the heart at the moment of opening the book is not a side issue. It is the permission the Holy Spirit was waiting for.</p></div>
-      </div>
+<p>The key word earlier in the verse is the same <em>dechomai</em> family we met in 1 Corinthians, welcoming a guest. They received it "not as the word of men, but as it truly is, the word of God." That is the posture change that unlocks the power. Job's friend, for all his other faults, says the same thing the right way around: "Receive instruction from His mouth, and lay up His words in your heart" (<a class="vlink" href="https://www.bible.com/bible/3034/JOB.22.22" target="_blank" rel="noopener" data-verse="job-22-22" data-ref="Job 22:22" aria-expanded="false">Job 22:22</a>). First you receive. Then it works. The state of the heart at the moment of opening the book is not a side issue. It is the permission the Holy Spirit was waiting for.</p>
+</div>
+      </figure>
 
 <!-- BSB_BLOCK: Mark 9:24 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:be6993207cae038814c3990b8c6533c088ef9a92b4ef0a34a1cf9632bb72a828 | footnotes-stripped:1 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Mark 9:24</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/MRK.9.24" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/MRK.9.24" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Immediately the boy’s father cried out, “I do believe; help my unbelief!”</div>
 <div class="verse-commentary">
         <p>The boy at the bottom of the mountain was being torn apart by something the disciples could not handle. The father had already been disappointed by nine men in robes. When Jesus arrived, the father's faith was a small, trembling thing, full of honest confession. "I do believe; help my unbelief!" And Jesus healed the boy. Not after the father mustered bigger faith. Right then, with the faith he had.</p>
 
-<p>Put that next to Jesus' words in <a class="vlink" href="https://www.bible.com/bible/3034/LUK.17.6" target="_blank" rel="noopener">Luke 17:6</a>. "If you have faith as a mustard seed, you can say to this mulberry tree, 'Be pulled up by the roots and be planted in the sea,' and it would obey you." And put that next to Paul's reminder to Timothy that the Scriptures are "able to make you wise for salvation through faith in Christ Jesus" (<a class="vlink" href="https://www.bible.com/bible/3034/2TI.3.15" target="_blank" rel="noopener">2 Timothy 3:15</a>). Three verses, one relief. The Bible does not require heroic faith before it will open up. It requires honest faith. An open hand. A heart that says, even shakily, yes. A believer who still struggles with doubt is not locked out of what Scripture can do. The mustard seed opens the book. The humble confession opens the book. The prayer "I do believe; help my unbelief" opens the book. What closes the book is not the size of the faith. It is the hardness of the heart.</p></div>
-      </div>
+<p>Put that next to Jesus' words in <a class="vlink" href="https://www.bible.com/bible/3034/LUK.17.6" target="_blank" rel="noopener" data-verse="luke-17-6" data-ref="Luke 17:6" aria-expanded="false">Luke 17:6</a>. "If you have faith as a mustard seed, you can say to this mulberry tree, 'Be pulled up by the roots and be planted in the sea,' and it would obey you." And put that next to Paul's reminder to Timothy that the Scriptures are "able to make you wise for salvation through faith in Christ Jesus" (<a class="vlink" href="https://www.bible.com/bible/3034/2TI.3.15" target="_blank" rel="noopener" data-verse="2-timothy-3-15" data-ref="2 Timothy 3:15" aria-expanded="false">2 Timothy 3:15</a>). Three verses, one relief. The Bible does not require heroic faith before it will open up. It requires honest faith. An open hand. A heart that says, even shakily, yes. A believer who still struggles with doubt is not locked out of what Scripture can do. The mustard seed opens the book. The humble confession opens the book. The prayer "I do believe; help my unbelief" opens the book. What closes the book is not the size of the faith. It is the hardness of the heart.</p>
+</div>
+      </figure>
       <!-- BSB_FOOTNOTE: Mark 9:24 | 9:24 BYZ and TR cried out with tears -->
-    </div>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Dolphin in the Static</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Dolphin in the Static</h3>
       <p>If you were alive in the nineties, you probably stood in a shopping mall somewhere in front of a framed print of colorful static. The sign next to it said something like "Hidden Image Inside." A crowd gathered. Half of the crowd saw nothing. A guy to your left gasped, "There it is! A dolphin!" and his girlfriend squinted for ten more minutes and gave up. Those posters were autostereograms, commonly called Magic Eye pictures. The image was really in there. It was a three-dimensional scene deliberately encoded in the pattern. But the eyes had to stop focusing on the surface and learn to look through the page. Until the viewer relaxed their gaze in a specific way, the dolphin stayed hidden. Two people at the same poster. Same artwork. Two entirely different experiences. Nothing changed on the page. Something had to change in the eyes.</p>
       <p>That is 1 Corinthians 2:14 in one image. The Bible's spiritual reality is really on the page. A Spirit-encoded message of God's love, God's plan, and God's invitation is in there on every sheet, the way the dolphin is in the pattern. But the <em>psychikos</em> reader, staring at the surface with hardened focus, sees only static. Paragraphs. Names they cannot pronounce. Rules that sound arbitrary. They are not stupid. They are looking correctly for a two-dimensional book, and this book is three-dimensional. What makes the image appear is not a new set of eyes. It is a new way of looking with the eyes you already have. The Spirit teaches a humble reader how to relax the gaze, look through the page, and suddenly the whole Bible lights up with the Person who was there the whole time. The dolphin was never the problem. The focus was.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Mirror That Reads You Back</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Mirror That Reads You Back</h3>
       <p>Psychologists have been studying a quirk of the human brain for half a century, and the 2024 to 2025 research has only sharpened the picture. It is called <em>confirmation bias</em>, the well-documented tendency to search for, notice, and remember evidence that supports what we already believe, while quietly filtering out the evidence that does not. A 2025 study in <em>bioRxiv</em> using cortical population analysis found that confirmation bias is not mainly a matter of what the brain takes <em>in</em>; it is a matter of what the brain selectively <em>reads out</em> later. The posterior parietal cortex, the region that decides what information gets promoted to conscious awareness, is literally giving more weight to data that confirms our existing positions. We do not just think with a bias. We remember with a bias. We read with a bias.</p>
       <p>A 2024 to 2025 study of college students published in the <em>International Journal of Research and Innovation in Social Science</em> added a sobering wrinkle: improving basic reading comprehension does not fix the problem. Students with strong literacy skills were still prone to interpret a text to match their prior convictions. The researchers concluded that comprehension skill and bias are "related yet distinct" faculties, and that explicit metacognitive training (pausing to ask, "Am I reading this or am I using it?") is required to close the gap. Put plainly, a better reader is not automatically a humbler reader. It is possible to be excellent at understanding sentences and still refuse to be reshaped by them.</p>
       <p>Paul saw this two thousand years before the brain scans. <em>Psychikos</em> readers, he said, cannot receive what is not on their wavelength. The modern version is a person who opens the Bible every morning and somehow comes out of the chapter with every opinion they walked in with. Jesus' warning at the end of the Sermon on the Mount fits here: the wise builder is not the one who <em>hears</em>, but the one who hears and <em>acts</em>. A mirror that only reflects you back is not reading Scripture. It is reading yourself with a Bible propped open as a prop.</p>
-    </div>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>When Jesus walked with two disciples on the Emmaus road, He did not hand them new information. He opened up the Scriptures they had already read and let them hear their own Bible on the right frequency. Later they would say, "Were not our hearts burning within us while He talked with us on the road and opened the Scriptures to us?" (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.24.32" target="_blank" rel="noopener">Luke 24:32</a>). The fire was not in the scroll. The fire had been in the scroll all along. What changed was the Teacher who walked beside them and the heart that finally opened to receive. That is what Christ does for every humble reader. He is both the Word the Bible is about and the Spirit who tunes the receiver. He does not bring a new text. He brings a new pair of ears. A heart softened by Jesus is a heart Scripture will speak into. Always.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>When Jesus walked with two disciples on the Emmaus road, He did not hand them new information. He opened up the Scriptures they had already read and let them hear their own Bible on the right frequency. Later they would say, "Were not our hearts burning within us while He talked with us on the road and opened the Scriptures to us?" (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.24.32" target="_blank" rel="noopener" data-verse="luke-24-32" data-ref="Luke 24:32" aria-expanded="false">Luke 24:32</a>). The fire was not in the scroll. The fire had been in the scroll all along. What changed was the Teacher who walked beside them and the heart that finally opened to receive. That is what Christ does for every humble reader. He is both the Word the Bible is about and the Spirit who tunes the receiver. He does not bring a new text. He brings a new pair of ears. A heart softened by Jesus is a heart Scripture will speak into. Always.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Before you open your Bible tomorrow, pray this one sentence out loud: "Holy Spirit, I am coming as a student, not a judge. Teach me what I cannot see on my own." Then read. Do this every morning through Sabbath and notice, on Sabbath evening, how the week landed compared to weeks when you opened the book on autopilot.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we confess we have often opened Your Word like a mirror, hoping to see our own opinions reflected back. We have come as judges instead of students, as debaters instead of disciples, as <em>psychikos</em> people trying to pick up a <em>pneumatikos</em> signal. Forgive us. Soften the ground. Tune the receiver. Give us the Thessalonian posture that welcomes Your word not as the word of men but as the word of God, so that it can begin its own work inside us. And where our faith is mustard-seed small and shaking in our hands, remind us that You never waited for heroic faith before You healed a son or opened a Scripture. You met the trembling father where he was, and You will meet us too. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"Be honest about the last time you opened your Bible. Were you coming as a judge (looking for something to agree or disagree with) or as a student (asking what God wants to say to you)? What would have to change in your morning routine, or in the five minutes before you open the book, for the state of your heart to shift from one posture to the other?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"Be honest about the last time you opened your Bible. Were you coming as a judge (looking for something to agree or disagree with) or as a student (asking what God wants to say to you)? What would have to change in your morning routine, or in the five minutes before you open the book, for the state of your heart to shift from one posture to the other?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, we confess we have often opened Your Word like a mirror, hoping to see our own opinions reflected back. We have come as judges instead of students, as debaters instead of disciples, as <em>psychikos</em> people trying to pick up a <em>pneumatikos</em> signal. Forgive us. Soften the ground. Tune the receiver. Give us the Thessalonian posture that welcomes Your word not as the word of men but as the word of God, so that it can begin its own work inside us. And where our faith is mustard-seed small and shaking in our hands, remind us that You never waited for heroic faith before You healed a son or opened a Scripture. You met the trembling father where he was, and You will meet us too. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-04-22.html"><span class="day-nav-kicker">← Wednesday</span><span class="day-nav-title">Bible Claims</span></a><a class="day-nav-item" href="/bible-study/2026-04-24.html"><span class="day-nav-kicker">Friday →</span><span class="day-nav-title">Further Thought &amp; Discussion</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"1-corinthians-2-1-2":{"ref":"1 Corinthians 2:1-2","text":"When I came to you, brothers, I did not come with eloquence or wisdom as I proclaimed to you the testimony about God. For I resolved to know nothing while I was with you except Jesus Christ and Him crucified.","bibleUrl":"https://www.bible.com/bible/3034/1CO.2.1-2"},"job-22-22":{"ref":"Job 22:22","text":"Receive instruction from His mouth, and lay up His words in your heart.","bibleUrl":"https://www.bible.com/bible/3034/JOB.22.22"},"luke-17-6":{"ref":"Luke 17:6","text":"And the Lord answered, \u201cIf you have faith the size of a mustard seed, you can say to this mulberry tree, \u2018Be uprooted and planted in the sea,\u2019 and it will obey you.","bibleUrl":"https://www.bible.com/bible/3034/LUK.17.6"},"2-timothy-3-15":{"ref":"2 Timothy 3:15","text":"From infancy you have known the Holy Scriptures, which are able to make you wise for salvation through faith in Christ Jesus.","bibleUrl":"https://www.bible.com/bible/3034/2TI.3.15"},"luke-24-32":{"ref":"Luke 24:32","text":"They asked each other, \u201cWere not our hearts burning within us as He spoke with us on the road and opened the Scriptures to us?\u201d","bibleUrl":"https://www.bible.com/bible/3034/LUK.24.32"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

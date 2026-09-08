@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Fruits of an Authentic Ministry — Daily Bible Study</title>
 <meta name="study-title" content="Fruits of an Authentic Ministry">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Part 2 of 7">
+<meta name="study-passage" content="2 Corinthians 3:1-9">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Day 2 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Fruits of an Authentic Ministry">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Part 2 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Day 2 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-08-30.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Part 2 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 10, Authentic Christian Ministry · Day 2 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,324 +38,200 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Fruits of an Authentic Ministry</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 10, Authentic Christian Ministry</span>
-      <span>Part 2 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">August 30, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Sun · Aug 30</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">11 min</span>
+    </div>
+    <h1 class="study-title">Fruits of an Authentic Ministry</h1>
+    <p class="study-sub"><span class="sub-title">Authentic Christian Ministry</span><span class="sub-facts"><span>Lesson 10</span><span>Day 2 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>The visiting teachers came papered, letters from important men praising them in identical phrases, and somebody asked why Paul never produced his. His answer still stings. Do we need letters, to you or from you? You are our letter. The church itself is his paperwork, authored by Christ, inked with the Spirit, written on hearts where the whole city can read it. Behind the comeback stands a bigger claim, one gospel running from Abraham to Corinth, saving by grace and never by résumé. <strong>The proof of real ministry is not paper. It is people the Spirit has rewritten.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday we stood on the colonnade watching the famous teacher arrive, robes and reputation and sponsors' letters, and we left holding one question. If real ministry cannot be measured by shine, what is it measured by? Today Paul reaches into the mailbag and answers with the very thing his rivals kept waving around. Letters. His opponents carried parchment praise from patrons. Paul says his letter is alive, and it has a pulse, and it is reading this week with you. Keep close the name you wrote down before today, because the person behind that name is exactly what Paul means. Somebody is reading you.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>The visiting teachers came papered, letters from important men praising them in identical phrases, and somebody asked why Paul never produced his. His answer still stings. Do we need letters, to you or from you? You are our letter. The church itself is his paperwork, authored by Christ, inked with the Spirit, written on hearts where the whole city can read it. Behind the comeback stands a bigger claim, one gospel running from Abraham to Corinth, saving by grace and never by résumé. <strong>The proof of real ministry is not paper. It is people the Spirit has rewritten.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday we stood on the colonnade watching the famous teacher arrive, robes and reputation and sponsors' letters, and we left holding one question. If real ministry cannot be measured by shine, what is it measured by? Today Paul reaches into the mailbag and answers with the very thing his rivals kept waving around. Letters. His opponents carried parchment praise from patrons. Paul says his letter is alive, and it has a pulse, and it is reading this week with you. Keep close the name you wrote down before today, because the person behind that name is exactly what Paul means. Somebody is reading you.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">You Were Whoever Your Letter Said You Were</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>You Were Whoever Your Letter Said You Were</h3>
       <p>A stranger steps off a ship in a Roman port with no passport, no photo, no way on earth to prove who he is. Everything depends on the folded papyrus in his bag. A letter of recommendation from a respected name could open a home for the night, credit at a merchant's table, an audience with the city's leading men. Without one, a traveler was nobody, and possibly dangerous. So the letters flowed in rivers. Patrons wrote them for clients, officials for friends, teachers for students, and everyone learned to read the genre's inflated praise with a grain of salt, because a recommendation cost its writer nothing. A file of such letters survives from a famous Roman statesman, and the flattery in them runs together until the men being praised become interchangeable.</p>
       <p>Traveling teachers depended on this system most of all. Their letters were their livelihood, collected city by city like references on a résumé, and the newest teachers in Corinth had apparently arrived well papered. That is the world behind Paul's question. Do we need letters of recommendation to you, or from you? He is not mocking the custom. He is claiming something better. A letter written in ink praises a man. A congregation transformed by the Spirit proves God has worked through him. Corinth could forge, borrow, or buy a parchment credential. Nobody forges a changed life. Paul's file was sitting in the pews, and the whole city could check his references by watching them live.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Paul has just insisted that he is not one of the peddlers, and he can feel the next question coming. Says who? Every credentialed teacher in Corinth would answer with references, and Paul is holding none. What he does next turns the whole credential system upside down, and it opens the deepest question of the week. When God authenticates a ministry, what does He point to? Not to paperwork, it turns out. To people. Watch where Paul locates his proof, and then watch how far back he traces the gospel that produced it.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Paul has just insisted that he is not one of the peddlers, and he can feel the next question coming. Says who? Every credentialed teacher in Corinth would answer with references, and Paul is holding none. What he does next turns the whole credential system upside down, and it opens the deepest question of the week. When God authenticates a ministry, what does He point to? Not to paperwork, it turns out. To people. Watch where Paul locates his proof, and then watch how far back he traces the gospel that produced it.</p>
 
       <!-- BSB_BLOCK: 2 Corinthians 3:1-9 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:99a6fced121b82c2671af66a06f58148302e973f545293a30d51f21c97a95d90 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 3:1-9</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.3.1-9" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>Are we beginning to commend ourselves again? Or do we need, like some people, letters of recommendation to you or from you? <sup class="verse-number" aria-label="Verse 2">2</sup>You yourselves are our letter, inscribed on our hearts, known and read by everyone. <sup class="verse-number" aria-label="Verse 3">3</sup>It is clear that you are a letter from Christ, the result of our ministry, written not with ink but with the Spirit of the living God, not on tablets of stone but on tablets of human hearts. <sup class="verse-number" aria-label="Verse 4">4</sup>Such confidence before God is ours through Christ. <sup class="verse-number" aria-label="Verse 5">5</sup>Not that we are competent in ourselves to claim that anything comes from us, but our competence comes from God. <sup class="verse-number" aria-label="Verse 6">6</sup>And He has qualified us as ministers of a new covenant, not of the letter but of the Spirit; for the letter kills, but the Spirit gives life. <sup class="verse-number" aria-label="Verse 7">7</sup>Now if the ministry of death, which was engraved in letters on stone, came with such glory that the Israelites could not gaze at the face of Moses because of its fleeting glory, <sup class="verse-number" aria-label="Verse 8">8</sup>will not the ministry of the Spirit be even more glorious? <sup class="verse-number" aria-label="Verse 9">9</sup>For if the ministry of condemnation was glorious, how much more glorious is the ministry of righteousness!</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.3.1-9" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 1">1</sup>Are we beginning to commend ourselves again? Or do we need, like some people, letters of recommendation to you or from you? <sup class="verse-number" aria-label="Verse 2">2</sup>You yourselves are our letter, inscribed on our hearts, known and read by everyone. <sup class="verse-number" aria-label="Verse 3">3</sup>It is clear that you are a letter from Christ, the result of our ministry, written not with ink but with the Spirit of the living God, not on tablets of stone but on tablets of human hearts. <sup class="verse-number" aria-label="Verse 4">4</sup>Such confidence before God is ours through Christ. <sup class="verse-number" aria-label="Verse 5">5</sup>Not that we are competent in ourselves to claim that anything comes from us, but our competence comes from God. <sup class="verse-number" aria-label="Verse 6">6</sup>And He has qualified us as ministers of a new covenant, not of the letter but of the Spirit; for the letter kills, but the Spirit gives life. <sup class="verse-number" aria-label="Verse 7">7</sup>Now if the ministry of death, which was engraved in letters on stone, came with such glory that the Israelites could not gaze at the face of Moses because of its fleeting glory, <sup class="verse-number" aria-label="Verse 8">8</sup>will not the ministry of the Spirit be even more glorious? <sup class="verse-number" aria-label="Verse 9">9</sup>For if the ministry of condemnation was glorious, how much more glorious is the ministry of righteousness!</div>
         <div class="verse-commentary">
-          <p>You are our letter. The only document Paul carries is the church reading this sentence, authored by Christ, delivered through Paul's service, written with the Spirit of the living God on human hearts instead of stone. His word for what he does in verse 6 comes from <em>diakonos</em>, Greek for a servant, somebody who waits tables and runs errands, and that is the week's word for ministry, a serving rather than a status. Notice how carefully Paul keeps his hands off the credit. He was not promoting himself, this man who had resolved to know nothing among them except Jesus Christ and Him crucified (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.2.2" target="_blank" rel="noopener">1 Corinthians 2:2</a>). The confidence is his through Christ (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.3.4-6" target="_blank" rel="noopener">2 Corinthians 3:4-6</a>), and the competence comes from God alone (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.3.5" target="_blank" rel="noopener">2 Corinthians 3:5</a>). Engraved stone could tell Israel the truth and still leave them dead. The Spirit writes the same truth into people, and they live. Paul's evidence was never what he wrote. It is who got written.</p>
+          <p>You are our letter. The only document Paul carries is the church reading this sentence, authored by Christ, delivered through Paul's service, written with the Spirit of the living God on human hearts instead of stone. His word for what he does in verse 6 comes from <em>diakonos</em>, Greek for a servant, somebody who waits tables and runs errands, and that is the week's word for ministry, a serving rather than a status. Notice how carefully Paul keeps his hands off the credit. He was not promoting himself, this man who had resolved to know nothing among them except Jesus Christ and Him crucified (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.2.2" target="_blank" rel="noopener" data-verse="1-corinthians-2-2" data-ref="1 Corinthians 2:2" aria-expanded="false">1 Corinthians 2:2</a>). The confidence is his through Christ (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.3.4-6" target="_blank" rel="noopener" data-verse="2-corinthians-3-4-6" data-ref="2 Corinthians 3:4-6" aria-expanded="false">2 Corinthians 3:4-6</a>), and the competence comes from God alone (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.3.5" target="_blank" rel="noopener" data-verse="2-corinthians-3-5" data-ref="2 Corinthians 3:5" aria-expanded="false">2 Corinthians 3:5</a>). Engraved stone could tell Israel the truth and still leave them dead. The Spirit writes the same truth into people, and they live. Paul's evidence was never what he wrote. It is who got written.</p>
         </div>
-      </div>
+      </figure>
 
       <p>But the contrast between letter and Spirit can be misheard, and Paul knows it. If the letter kills, was the old covenant a failed gospel, a Plan A that never saved anybody? Before the argument goes one step further, Scripture itself answers, and the answer reaches back centuries before Sinai.</p>
 
       <!-- BSB_BLOCK: Galatians 3:8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:17068a2d890696a1232699c62464a885f7a6272a30890cab2f00f8cafca5bf52 | footnotes-stripped:1 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Galatians 3:8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/GAL.3.8" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/GAL.3.8" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">The Scripture foresaw that God would justify the Gentiles by faith, and foretold the gospel to Abraham: “All nations will be blessed through you.”</div>
         <div class="verse-commentary">
           <p>The gospel is older than Moses. Paul finds it already announced to Abraham, God declaring in advance that He would justify the nations by faith, which means the old covenant was never a rival rescue plan. It was the gospel in advance, salvation available then exactly as now. What killed was not God's word on the stone. It was the attempt to climb the stone like a ladder, hearts depending on their own obedience to reach a God who had already come down to them in promise. Two covenants, then, but never two gospels. The difference between them is the difference between two responses, a heart working to earn what only grace can give, and a heart resting its whole weight on the God who promised. Abraham simply believed. That has always been the way home.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: Galatians 3:8 | 3:8 See Genesis 12:3, Genesis 18:18, and Genesis 22:18. -->
 
       <p>How far back does that one gospel go? Paul, writing to a young pastor near the end of his life, gives the answer its full reach, and it is further back than Abraham. Further back than everything.</p>
 
       <!-- BSB_BLOCK: 2 Timothy 1:9 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:02202714d090a31d0bae29dbf8cbb91100db1079497574830b943e987afec141 | footnotes-stripped:1 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Timothy 1:9</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2TI.1.9" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2TI.1.9" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">He has saved us and called us to a holy calling, not because of our works, but by His own purpose and by the grace He granted us in Christ Jesus before time began.</div>
         <div class="verse-commentary">
-          <p>Before time began. Grace was granted to us in Christ Jesus before there was a universe to be graceful in, which settles the covenant question for good. A salvation issued before time cannot be earned inside it. Nobody was ever saved by rule-keeping, and nobody ever will be. That is why the same message keeps splitting every room it enters, the one aroma reaching those who are being saved and those who are perishing (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.2.15" target="_blank" rel="noopener">2 Corinthians 2:15</a>). Met with closed hearts, even Moses' glorious ministry read as condemnation and death. Met with faith in Corinth, Paul's service became a ministry of the Spirit who gives life. The long argument running from the fragrance to the light (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.2.14-4.6" target="_blank" rel="noopener">2 Corinthians 2:14-4:6</a>), through veil after veil to unveiled faces (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.3.1-4.6" target="_blank" rel="noopener">2 Corinthians 3:1-4:6</a>), all hangs on that difference. The message never changed. The response did. And where the response is faith, the fruit is a living letter.</p>
+          <p>Before time began. Grace was granted to us in Christ Jesus before there was a universe to be graceful in, which settles the covenant question for good. A salvation issued before time cannot be earned inside it. Nobody was ever saved by rule-keeping, and nobody ever will be. That is why the same message keeps splitting every room it enters, the one aroma reaching those who are being saved and those who are perishing (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.2.15" target="_blank" rel="noopener" data-verse="2-corinthians-2-15" data-ref="2 Corinthians 2:15" aria-expanded="false">2 Corinthians 2:15</a>). Met with closed hearts, even Moses' glorious ministry read as condemnation and death. Met with faith in Corinth, Paul's service became a ministry of the Spirit who gives life. The long argument running from the fragrance to the light (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.2.14-4.6" target="_blank" rel="noopener" data-verse="2-corinthians-2-14-4-6" data-ref="2 Corinthians 2:14-4:6" aria-expanded="false">2 Corinthians 2:14-4:6</a>), through veil after veil to unveiled faces (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.3.1-4.6" target="_blank" rel="noopener" data-verse="2-corinthians-3-1-4-6" data-ref="2 Corinthians 3:1-4:6" aria-expanded="false">2 Corinthians 3:1-4:6</a>), all hangs on that difference. The message never changed. The response did. And where the response is faith, the fruit is a living letter.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: 2 Timothy 1:9 | 1:9 Literally before times eternal -->
-    </div>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Reference Walks on Four Legs</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Reference Walks on Four Legs</h3>
       <p>Every dog rescue has paperwork. Nonprofit status, vet records, adoption contracts, a binder thick enough to stop a door. Nobody has ever fostered a dog because of the binder. What convinces people is the dog who arrived in October pressed flat against the back wall of a crate, flinching at fast hands, refusing to eat until the room emptied. The same volunteer kept showing up anyway. Same voice, same routine, same patience, week after unimpressive week. Then one Saturday in spring, at a park full of strangers, that same dog walks over to a six-year-old he has never met and leans his whole weight against her knee. Everyone who sees it asks the same question. What happened to this dog?</p>
       <p>The answer is never a document. It is a person, hours of quiet presence written into an animal until his whole body carries the proof. A crate-corner dog cannot be coached into that lean, and everybody watching knows it. That is exactly the claim Paul makes today. His letter was written not with ink but with the Spirit of the living God, and the church at Corinth was his leaning dog, fear rewritten into trust where the whole city could watch. Paper credentials can be printed, borrowed, or bought. A rewritten life can only be authored, slowly, by Someone who kept showing up. So the neighbor reading your life is not checking your doctrine. He is watching an anxious life go calm, a sharp tongue go kind, and sooner or later he will ask the question every living letter exists to raise. What happened to you?</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Only Credential Is 48 Hours Sober</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Only Credential Is 48 Hours Sober</h3>
       <p>The Phoenix is a nationwide community of people recovering from addiction, and it runs on a strange admissions policy. Its boxing classes, climbing nights, yoga sessions, and race teams are all free, and the only membership requirement is 48 hours of sobriety. No diploma, no insurance card, no letter from anybody. Founder Scott Strode, sober himself for nearly three decades, built the first gym in Denver in 2006, and in October 2025 the organization announced it had reached more than one million people across all fifty states, carried by a small staff and more than 4,000 volunteers. By the group's own accounting, more than 80 percent of its members remain sober at three months, in a field where relapse after treatment is the ordinary story.</p>
-      <p>Strode has said the million is not really a number but a million individual stories, and that is exactly why the model works. Nobody at a Phoenix class is persuaded by a brochure. The argument is the person across the room, somebody who was in the ambulance two years ago and is teaching the workout today, change written into an actual body where a skeptical newcomer can read it up close. That is <a class="vlink" href="https://www.bible.com/bible/3034/2CO.3.1-9" target="_blank" rel="noopener">2 Corinthians 3:1-9</a> in gym clothes. Paul's rivals arrived papered, and he pointed at people. You are our letter, known and read by everyone. A slogan can be scripted and a testimonial can be staged, but a rewritten life persuades because it cannot be produced any other way. The Spirit is still publishing in the same medium. If your church vanished this weekend, the neighborhood should miss its living proof, the readable, walking evidence that God still rewrites people. That has always been the credential, and there has never been a substitute.</p>
+      <p>Strode has said the million is not really a number but a million individual stories, and that is exactly why the model works. Nobody at a Phoenix class is persuaded by a brochure. The argument is the person across the room, somebody who was in the ambulance two years ago and is teaching the workout today, change written into an actual body where a skeptical newcomer can read it up close. That is <a class="vlink" href="https://www.bible.com/bible/3034/2CO.3.1-9" target="_blank" rel="noopener" data-verse="2-corinthians-3-1-9" data-ref="2 Corinthians 3:1-9" aria-expanded="false">2 Corinthians 3:1-9</a> in gym clothes. Paul's rivals arrived papered, and he pointed at people. You are our letter, known and read by everyone. A slogan can be scripted and a testimonial can be staged, but a rewritten life persuades because it cannot be produced any other way. The Spirit is still publishing in the same medium. If your church vanished this weekend, the neighborhood should miss its living proof, the readable, walking evidence that God still rewrites people. That has always been the credential, and there has never been a substitute.</p>
       <!-- TODAYS_WORLD_SOURCE: The Phoenix, Transformative National Sober Movement, Surges Past One Million People Impacted | PR Newswire | 2025 | https://www.prnewswire.com/news-releases/the-phoenix-transformative-national-sober-movement-surges-past-one-million-people-impacted-302578402.html -->
-    </div>
+    <details class="disclosure source-disclosure"><summary class="disclosure-summary"><span class="disclosure-label">Source</span> <span class="disclosure-publisher">PR Newswire</span></summary><div class="disclosure-body"><p><cite>The Phoenix, Transformative National Sober Movement, Surges Past One Million People Impacted</cite>. PR Newswire, 2025. <a href="https://www.prnewswire.com/news-releases/the-phoenix-transformative-national-sober-movement-surges-past-one-million-people-impacted-302578402.html" target="_blank" rel="noopener noreferrer">Read the source</a>.</p></div></details></section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Look again at whose letter Corinth is. Not Paul's, in the end. You are a letter from Christ, he writes, and the phrase deserves a full stop. The risen Jesus is still publishing. His medium is not parchment but people, His ink is the Spirit of the living God, and His handwriting is unmistakable, the same strokes He wrote across Galilee, fishermen turned shepherds, a tax collector turned evangelist, a persecutor turned into the man writing this letter. When God wanted the world to know what He was like, He did not circulate a document. He sent a Person, and when that Person wanted the world to keep knowing, He wrote Himself into His people. By this everyone will know that you are My disciples, He said, if you love one another (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.13.35" target="_blank" rel="noopener">John 13:35</a>). The church has always been Christ's open letter to a watching city. He has never needed better paper. He keeps writing on hearts.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Look again at whose letter Corinth is. Not Paul's, in the end. You are a letter from Christ, he writes, and the phrase deserves a full stop. The risen Jesus is still publishing. His medium is not parchment but people, His ink is the Spirit of the living God, and His handwriting is unmistakable, the same strokes He wrote across Galilee, fishermen turned shepherds, a tax collector turned evangelist, a persecutor turned into the man writing this letter. When God wanted the world to know what He was like, He did not circulate a document. He sent a Person, and when that Person wanted the world to keep knowing, He wrote Himself into His people. By this everyone will know that you are My disciples, He said, if you love one another (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.13.35" target="_blank" rel="noopener" data-verse="john-13-35" data-ref="John 13:35" aria-expanded="false">John 13:35</a>). The church has always been Christ's open letter to a watching city. He has never needed better paper. He keeps writing on hearts.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Today, let one legible sentence get written. Take the person you named before Sunday and do one unglamorous act of service where they can see it or feel it. Cover the errand, take the harder shift, answer the message you have been avoiding, show up early to help. No explanation, no spiritual commentary, no credit collected. Just one line of the letter, written plainly enough to be read.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Lord Jesus, You have written Yourself into human lives for two thousand years, and today we are asking You to write in us. We confess that we have spent real energy on our paper credentials, the achievements, the reputations, the versions of ourselves we curate for the people watching, and meanwhile the letter You are actually writing has pages we neglect. Forgive us for the days our lives were hard to read, and for the days they read like something other than You. Spirit of the living God, take up the pen. Write patience where we have been sharp, honesty where we have managed appearances, warmth where we have gone cold. We are not competent for this, and we have stopped pretending to be. Our competence comes from God. Make our ordinary week legible, so that somebody near us reads a line of Christ without knowing why they suddenly want more. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"If the people closest to you could judge Christ only by what they read in your life this month (your patience in traffic, your tone at the dinner table, how you speak about people who are not in the room), what would they conclude He is like? And what is one line you would ask the Spirit to rewrite in you this week?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"If the people closest to you could judge Christ only by what they read in your life this month (your patience in traffic, your tone at the dinner table, how you speak about people who are not in the room), what would they conclude He is like? And what is one line you would ask the Spirit to rewrite in you this week?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Lord Jesus, You have written Yourself into human lives for two thousand years, and today we are asking You to write in us. We confess that we have spent real energy on our paper credentials, the achievements, the reputations, the versions of ourselves we curate for the people watching, and meanwhile the letter You are actually writing has pages we neglect. Forgive us for the days our lives were hard to read, and for the days they read like something other than You. Spirit of the living God, take up the pen. Write patience where we have been sharp, honesty where we have managed appearances, warmth where we have gone cold. We are not competent for this, and we have stopped pretending to be. Our competence comes from God. Make our ordinary week legible, so that somebody near us reads a line of Christ without knowing why they suddenly want more. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
-
-<!-- Firebase SDK for push notifications -->
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-08-29.html"><span class="day-nav-kicker">← Saturday</span><span class="day-nav-title">Authentic Christian Ministry</span></a><a class="day-nav-item" href="/bible-study/2026-08-31.html"><span class="day-nav-kicker">Monday →</span><span class="day-nav-title">Suffering and Glory</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"1-corinthians-2-2":{"ref":"1 Corinthians 2:2","text":"For I resolved to know nothing while I was with you except Jesus Christ and Him crucified.","bibleUrl":"https://www.bible.com/bible/3034/1CO.2.2"},"2-corinthians-3-4-6":{"ref":"2 Corinthians 3:4-6","text":"Such confidence before God is ours through Christ. Not that we are competent in ourselves to claim that anything comes from us, but our competence comes from God. And He has qualified us as ministers of a new covenant, not of the letter but of the Spirit; for the letter kills, but the Spirit gives life.","bibleUrl":"https://www.bible.com/bible/3034/2CO.3.4-6"},"2-corinthians-3-5":{"ref":"2 Corinthians 3:5","text":"Not that we are competent in ourselves to claim that anything comes from us, but our competence comes from God.","bibleUrl":"https://www.bible.com/bible/3034/2CO.3.5"},"2-corinthians-2-15":{"ref":"2 Corinthians 2:15","text":"For we are to God the sweet aroma of Christ among those who are being saved and those who are perishing.","bibleUrl":"https://www.bible.com/bible/3034/2CO.2.15"},"2-corinthians-2-14-4-6":{"ref":"2 Corinthians 2:14-4:6","text":"But thanks be to God, who always leads us triumphantly as captives in Christ and through us spreads everywhere the fragrance of the knowledge of Him. For we are to God the sweet aroma of Christ among those who are being saved and those who are perishing. To the one we are an odor that brings death, to the other a fragrance that brings life. And who is qualified for such a task? For we are not like so many others, who peddle the word of God for profit. On the contrary, in Christ we speak before God with sincerity, as men sent from God. Are we beginning to commend ourselves again? Or do we need, like some people, letters of recommendation to you or from you? You yourselves are our letter, inscribed on our hearts, known and read by everyone. It is clear that you are a letter from Christ, the result of our ministry, written not with ink but with the Spirit of the living God, not on tablets of stone but on tablets of human hearts. Such confidence before God is ours through Christ. Not that we are competent in ourselves to claim that anything comes from us, but our competence comes from God. And He has qualified us as ministers of a new covenant, not of the letter but of the Spirit; for the letter kills, but the Spirit gives life. Now if the ministry of death, which was engraved in letters on stone, came with such glory that the Israelites could not gaze at the face of Moses because of its fleeting glory, will not the ministry of the Spirit be even more glorious? For if the ministry of condemnation was glorious, how much more glorious is the ministry of righteousness! Indeed, what was once glorious has no glory now in comparison to the glory that surpasses it. For if what was fading away came with glory, how much greater is the glory of that which endures! Therefore, since we have such a hope, we are very bold. We are not like Moses, who would put a veil over his face to keep the Israelites from gazing at the end of what was fading away. But their minds were closed. For to this day the same veil remains at the reading of the old covenant. It has not been lifted, because only in Christ can it be removed. And even to this day when Moses is read, a veil covers their hearts. But whenever anyone turns to the Lord, the veil is taken away. Now the Lord is the Spirit, and where the Spirit of the Lord is, there is freedom. And we, who with unveiled faces all reflect the glory of the Lord, are being transformed into His image with intensifying glory, which comes from the Lord, who is the Spirit. Therefore, since God in His mercy has given us this ministry, we do not lose heart. Instead, we have renounced secret and shameful ways. We do not practice deceit, nor do we distort the word of God. On the contrary, by open proclamation of the truth, we commend ourselves to every man\u2019s conscience in the sight of God. And even if our gospel is veiled, it is veiled to those who are perishing. The god of this age has blinded the minds of unbelievers, so they cannot see the light of the gospel of the glory of Christ, who is the image of God. For we do not proclaim ourselves, but Jesus Christ as Lord, and ourselves as your servants for Jesus\u2019 sake. For God, who said, \u201cLet light shine out of darkness,\u201d made His light shine in our hearts to give us the light of the knowledge of the glory of God in the face of Jesus Christ.","bibleUrl":"https://www.bible.com/bible/3034/2CO.2.14-4.6"},"2-corinthians-3-1-4-6":{"ref":"2 Corinthians 3:1-4:6","text":"Are we beginning to commend ourselves again? Or do we need, like some people, letters of recommendation to you or from you? You yourselves are our letter, inscribed on our hearts, known and read by everyone. It is clear that you are a letter from Christ, the result of our ministry, written not with ink but with the Spirit of the living God, not on tablets of stone but on tablets of human hearts. Such confidence before God is ours through Christ. Not that we are competent in ourselves to claim that anything comes from us, but our competence comes from God. And He has qualified us as ministers of a new covenant, not of the letter but of the Spirit; for the letter kills, but the Spirit gives life. Now if the ministry of death, which was engraved in letters on stone, came with such glory that the Israelites could not gaze at the face of Moses because of its fleeting glory, will not the ministry of the Spirit be even more glorious? For if the ministry of condemnation was glorious, how much more glorious is the ministry of righteousness! Indeed, what was once glorious has no glory now in comparison to the glory that surpasses it. For if what was fading away came with glory, how much greater is the glory of that which endures! Therefore, since we have such a hope, we are very bold. We are not like Moses, who would put a veil over his face to keep the Israelites from gazing at the end of what was fading away. But their minds were closed. For to this day the same veil remains at the reading of the old covenant. It has not been lifted, because only in Christ can it be removed. And even to this day when Moses is read, a veil covers their hearts. But whenever anyone turns to the Lord, the veil is taken away. Now the Lord is the Spirit, and where the Spirit of the Lord is, there is freedom. And we, who with unveiled faces all reflect the glory of the Lord, are being transformed into His image with intensifying glory, which comes from the Lord, who is the Spirit. Therefore, since God in His mercy has given us this ministry, we do not lose heart. Instead, we have renounced secret and shameful ways. We do not practice deceit, nor do we distort the word of God. On the contrary, by open proclamation of the truth, we commend ourselves to every man\u2019s conscience in the sight of God. And even if our gospel is veiled, it is veiled to those who are perishing. The god of this age has blinded the minds of unbelievers, so they cannot see the light of the gospel of the glory of Christ, who is the image of God. For we do not proclaim ourselves, but Jesus Christ as Lord, and ourselves as your servants for Jesus\u2019 sake. For God, who said, \u201cLet light shine out of darkness,\u201d made His light shine in our hearts to give us the light of the knowledge of the glory of God in the face of Jesus Christ.","bibleUrl":"https://www.bible.com/bible/3034/2CO.3.1-4.6"},"2-corinthians-3-1-9":{"ref":"2 Corinthians 3:1-9","text":"Are we beginning to commend ourselves again? Or do we need, like some people, letters of recommendation to you or from you? You yourselves are our letter, inscribed on our hearts, known and read by everyone. It is clear that you are a letter from Christ, the result of our ministry, written not with ink but with the Spirit of the living God, not on tablets of stone but on tablets of human hearts. Such confidence before God is ours through Christ. Not that we are competent in ourselves to claim that anything comes from us, but our competence comes from God. And He has qualified us as ministers of a new covenant, not of the letter but of the Spirit; for the letter kills, but the Spirit gives life. Now if the ministry of death, which was engraved in letters on stone, came with such glory that the Israelites could not gaze at the face of Moses because of its fleeting glory, will not the ministry of the Spirit be even more glorious? For if the ministry of condemnation was glorious, how much more glorious is the ministry of righteousness!","bibleUrl":"https://www.bible.com/bible/3034/2CO.3.1-9"},"john-13-35":{"ref":"John 13:35","text":"By this everyone will know that you are My disciples, if you love one another.\u201d","bibleUrl":"https://www.bible.com/bible/3034/JHN.13.35"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

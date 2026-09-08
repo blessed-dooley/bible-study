@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Immanuel, God With Us — Daily Bible Study</title>
 <meta name="study-title" content="Immanuel, God With Us">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 2, To Know God · Part 6 of 7">
+<meta name="study-passage" content="Matthew 1:23">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 2, To Know God · Day 6 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Immanuel, God With Us">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 2, To Know God · Part 6 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 2, To Know God · Day 6 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-04-09.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 2, To Know God · Part 6 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 2, To Know God · Day 6 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,354 +38,232 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Immanuel, God With Us</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 2, To Know God</span>
-      <span>Part 6 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Thu · Apr 9</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">12 min</span>
     </div>
-    <div class="date-badge">April 9, 2026</div>
+    <h1 class="study-title">Immanuel, God With Us</h1>
+    <p class="study-sub"><span class="sub-title">To Know God</span><span class="sub-facts"><span>Lesson 2</span><span>Day 6 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">&#10022; &#9769; &#10022;</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">If you want to know what God is like, look at Jesus. Every question about God's character finds its clearest answer in the person who said, "The one who has seen Me has seen the Father."</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p class="tldr-hook">If you want to know what God is like, look at Jesus. Every question about God's character finds its clearest answer in the person who said, "The one who has seen Me has seen the Father."</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span> God did not stay at a distance and send instructions; He entered the human experience Himself, permanently and irreversibly</li>
-        <li><span class="bullet-icon">☩</span> The name Immanuel, "God with us," is not a title Jesus outgrew; it is a promise that bookends the entire Gospel of Matthew and extends to the end of the age</li>
-        <li><span class="bullet-icon">☩</span> The four Gospels give us four complementary portraits of Jesus because no single angle could capture the full picture of who He is</li>
-        <li><span class="bullet-icon">☩</span> Everything this week has built toward this truth: the holy, loving, creative God is most fully known in Jesus, who made the invisible God visible by becoming one of us</li>
+        <li>
+<span class="bullet-icon">☩</span> God did not stay at a distance and send instructions; He entered the human experience Himself, permanently and irreversibly</li>
+        <li>
+<span class="bullet-icon">☩</span> The name Immanuel, "God with us," is not a title Jesus outgrew; it is a promise that bookends the entire Gospel of Matthew and extends to the end of the age</li>
+        <li>
+<span class="bullet-icon">☩</span> The four Gospels give us four complementary portraits of Jesus because no single angle could capture the full picture of who He is</li>
+        <li>
+<span class="bullet-icon">☩</span> Everything this week has built toward this truth: the holy, loving, creative God is most fully known in Jesus, who made the invisible God visible by becoming one of us</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday we saw God as both the transcendent Elohim who spoke galaxies into existence and the intimate Yahweh who knelt in the dust to shape a human being with His own hands. Today, those two realities converge in a single person. The God who is bigger than the universe and closer than your next breath did something no one could have predicted: He became one of us. Everything we have studied this week, God's holiness on Monday, His love on Tuesday, His creative power on Wednesday, finds its fullest and clearest expression in Jesus. This is the day the whole week has been building toward.</p>
-    </div>
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday we saw God as both the transcendent Elohim who spoke galaxies into existence and the intimate Yahweh who knelt in the dust to shape a human being with His own hands. Today, those two realities converge in a single person. The God who is bigger than the universe and closer than your next breath did something no one could have predicted: He became one of us. Everything we have studied this week, God's holiness on Monday, His love on Tuesday, His creative power on Wednesday, finds its fullest and clearest expression in Jesus. This is the day the whole week has been building toward.</p>
+    </section>
 
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The God Who Pitched His Tent</div>
-      <p>When John wrote that "the Word became flesh and dwelt among us" (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.1.14" target="_blank" rel="noopener">John 1:14</a>), the Greek word he chose for "dwelt" was <em>skenoo</em>, which literally means "pitched a tent" or "tabernacled." Every Jewish reader would have caught the reference immediately. The tabernacle, the <em>mishkan</em> in Hebrew, was the portable dwelling where God's presence lived among the Israelites during their wilderness wandering. It was the place where heaven and earth overlapped, where the infinite God chose to be locatable among His finite people. John is saying that Jesus is the new tabernacle: God's presence has moved into the neighborhood, this time not in a tent of curtains and gold but in human flesh.</p>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The God Who Pitched His Tent</h3>
+      <p>When John wrote that "the Word became flesh and dwelt among us" (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.1.14" target="_blank" rel="noopener" data-verse="john-1-14" data-ref="John 1:14" aria-expanded="false">John 1:14</a>), the Greek word he chose for "dwelt" was <em>skenoo</em>, which literally means "pitched a tent" or "tabernacled." Every Jewish reader would have caught the reference immediately. The tabernacle, the <em>mishkan</em> in Hebrew, was the portable dwelling where God's presence lived among the Israelites during their wilderness wandering. It was the place where heaven and earth overlapped, where the infinite God chose to be locatable among His finite people. John is saying that Jesus is the new tabernacle: God's presence has moved into the neighborhood, this time not in a tent of curtains and gold but in human flesh.</p>
       <p>This was without precedent in the ancient world. Greek and Roman gods occasionally disguised themselves as humans, visiting earth in borrowed forms the way someone might put on a costume, always ready to shed it and return to Olympus. Hindu tradition speaks of divine avatars who descend but retain their fundamental otherness. In no major religious tradition did the supreme deity permanently and irrevocably become a human being: born helpless, hungry, tired, grieving, bleeding, dying. The incarnation was not a divine visit. It was a divine relocation. God did not come dressed as one of us; He became one of us. And He never stopped being one of us. The risen, ascended Jesus still bears a human body. The tabernacle was never taken down.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Today's passages reveal the most extraordinary claim in all of Scripture: that the infinite, invisible God made Himself fully knowable by becoming a human being. We begin with the name that announced it, move to the words Jesus spoke about it, and close with the theological vision of what it means.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Today's passages reveal the most extraordinary claim in all of Scripture: that the infinite, invisible God made Himself fully knowable by becoming a human being. We begin with the name that announced it, move to the words Jesus spoke about it, and close with the theological vision of what it means.</p>
 
       <!-- Matthew 1:23 (anchor) -->
 <!-- BSB_BLOCK: Matthew 1:23 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b9751148136c4e3832e852db102bdce35154dd9618523136e493b15390102674 | footnotes-stripped:2 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Matthew 1:23</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.1.23" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/MAT.1.23" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">“Behold, the virgin will be with child and will give birth to a son, and they will call Him Immanuel” (which means, “God with us”).</div>
 <div class="verse-commentary">
           <p>Matthew's Gospel opens with a name that redefines everything. Immanuel is not a description of what God does; it is a declaration of who God is in relation to us. "God with us" means God is not observing from a distance, not delegating through intermediaries, not sending messages through prophets alone. He is <em>with</em> us. The preposition carries the full weight of personal presence, proximity, and participation in human life.</p>
-          <p>This name reaches back to Isaiah's original prophecy (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.7.14" target="_blank" rel="noopener">Isaiah 7:14</a>) and fulfills it in a way no one anticipated. Isaiah spoke the name into a specific political crisis, assuring King Ahaz that God had not abandoned His people. Matthew sees that promise finding its ultimate fulfillment in a baby born in Bethlehem. God's answer to every fear, every crisis, every moment of feeling abandoned, is not an explanation; it is a presence. He shows up.</p>
+          <p>This name reaches back to Isaiah's original prophecy (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.7.14" target="_blank" rel="noopener" data-verse="isaiah-7-14" data-ref="Isaiah 7:14" aria-expanded="false">Isaiah 7:14</a>) and fulfills it in a way no one anticipated. Isaiah spoke the name into a specific political crisis, assuring King Ahaz that God had not abandoned His people. Matthew sees that promise finding its ultimate fulfillment in a baby born in Bethlehem. God's answer to every fear, every crisis, every moment of feeling abandoned, is not an explanation; it is a presence. He shows up.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: Matthew 1:23 | 1:23 Literally they will call His name Immanuel; Isaiah 7:14 (see also DSS) -->
       <!-- BSB_FOOTNOTE: Matthew 1:23 | 1:23 See Isaiah 7:14, Isaiah 8:8, and Isaiah 8:10. -->
 
       <!-- Matthew 28:20 -->
 <!-- BSB_BLOCK: Matthew 28:20 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:701f4cf2d3210e3150288782481db0f49513fc7bbe15f266ab29238e5ce40f98 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Matthew 28:20</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.28.20" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/MAT.28.20" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text"><span class="words-of-jesus">and teaching them to obey all that I have commanded you. And surely I am with you always, even to the end of the age.”</span></div>
 <div class="verse-commentary">
           <p>Now compare this with Matthew 1:23. Matthew's Gospel begins with the promise "God with us" and ends with Jesus Himself declaring "I am with you always." This is not a coincidence; it is a literary and theological frame that holds the entire Gospel together. The name given at His birth becomes the promise spoken from His own lips after His resurrection. The Immanuel of the manger is the Immanuel of the commission.</p>
           <p>Notice what Jesus does not say. He does not say "I will send someone to be with you" or "My teachings will be with you" or "My memory will be with you." He says <em>I</em> am with you. Always. To the end of the age. The God who entered human experience at Bethlehem did not leave it at the ascension. His presence with His people is not a temporary arrangement; it is the permanent reality of the universe.</p>
         </div>
-      </div>
+      </figure>
 
-      
+
 <!-- BSB_BLOCK: John 14:9 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:74735c2564d3b4341587a2c53112e71134675a4bcbb8aa494378e45236a92b1d | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">John 14:9</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.14.9" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text">Jesus replied, <span class="words-of-jesus">“Philip, I have been with you all this time, and still you do not know Me? Anyone who has seen Me has seen the Father. How can you say, ‘Show us the Father’?</span></div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/JHN.14.9" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">Jesus replied, <span class="words-of-jesus">“Philip, I have been with you all this time, and still you do not know Me? Anyone who has seen Me has seen the Father. How can you say, ‘Show us the Father’?</span>
+</div>
 <div class="verse-commentary">
           <p>This is one of the most direct statements Jesus ever made about His relationship to the Father, and it answers the question the entire week has been asking: who is the God we are trying to know? Philip's request, "Show us the Father," was reasonable enough. He wanted something definitive, some unmistakable revelation of God. Jesus' response must have been staggering: you've been looking at Him this entire time.</p>
           <p>Every act of compassion Jesus showed, every word of truth He spoke, every moment of patience with slow-learning disciples, every tear He shed at a friend's grave, every meal He shared with outsiders, was the Father's character on display. Jesus is not a partial reflection of God or an approximate likeness. He is the complete, unfiltered, undistorted revelation of who God is. If you want to know whether God is angry or gracious, distant or near, indifferent or deeply invested in your life, stop speculating and look at Jesus. What you see is what the Father is like. All the way through. No exceptions.</p>
         </div>
-      </div>
+      </figure>
 
       <!-- Philippians 2:5-8 -->
 <!-- BSB_BLOCK: Philippians 2:5-8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:8714d87a0097735de7a8f865ea8606c73b9b29a6ef027da6f90626e07033d358 | footnotes-stripped:1 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Philippians 2:5-8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/PHP.2.5-8" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 5">5</sup>Let this mind be in you which was also in Christ Jesus: <sup class="verse-number" aria-label="Verse 6">6</sup>Who, existing in the form of God, did not consider equality with God something to be grasped, <sup class="verse-number" aria-label="Verse 7">7</sup>but emptied Himself, taking the form of a servant, being made in human likeness. <sup class="verse-number" aria-label="Verse 8">8</sup>And being found in appearance as a man, He humbled Himself and became obedient to death—even death on a cross.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/PHP.2.5-8" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 5">5</sup>Let this mind be in you which was also in Christ Jesus: <sup class="verse-number" aria-label="Verse 6">6</sup>Who, existing in the form of God, did not consider equality with God something to be grasped, <sup class="verse-number" aria-label="Verse 7">7</sup>but emptied Himself, taking the form of a servant, being made in human likeness. <sup class="verse-number" aria-label="Verse 8">8</sup>And being found in appearance as a man, He humbled Himself and became obedient to death—even death on a cross.</div>
 <div class="verse-commentary">
           <p>Paul pulls back the curtain on what the incarnation cost. Jesus was "existing in the form of God," not play-acting divinity but possessing the full reality of it. And He "did not consider equality with God something to be grasped." That word "exploited" reveals the heart of God more than almost any other word in Scripture. A being with unlimited power who refuses to use it for His own advantage and instead empties Himself for the sake of others is the exact opposite of the serpent's portrait from Sunday's study, which accused God of withholding good things to maintain His own position.</p>
           <p>The downward trajectory here is breathtaking: from the form of God to the form of a servant, from the likeness of God to the likeness of humanity, from the throne of heaven to death on a cross. At each step, Jesus had the power to stop. He never did. This passage does not merely tell us that God loves us; it shows us what that love looks like when it is put into action at the highest possible cost. The God who is holy, loving, and all-powerful used every one of those attributes in the service of rescue, not domination.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: Philippians 2:6 | 2:6 Or something to be exploited -->
 
-      <p>Several other passages illuminate this truth from different angles. <a class="vlink" href="https://www.bible.com/bible/3034/HEB.1.3" target="_blank" rel="noopener">Hebrews 1:3</a> calls Jesus "the radiance of God's glory and the exact expression of his nature," language that means He is not a copy of God but the very outshining of who God is. <a class="vlink" href="https://www.bible.com/bible/3034/COL.1.15" target="_blank" rel="noopener">Colossians 1:15</a> calls Him "the image of the invisible God," the one who makes the unseeable seeable. And <a class="vlink" href="https://www.bible.com/bible/3034/JHN.1.14" target="_blank" rel="noopener">John 1:14</a> declares that "the Word became flesh and dwelt among us," the eternal communication of God taking on a body so that we could encounter Him face to face. Each of the four Gospel writers brings a distinct perspective to this portrait: Matthew shows the promised Messiah who fulfills the Hebrew Scriptures, Mark reveals the tireless servant who pours Himself out for others, Luke (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.1.3-4" target="_blank" rel="noopener">Luke 1:3-4</a>) carefully documents the human Jesus with compassion and historical precision, and John unveils the divine Son who invites us to believe and find life. Four angles on the same person, because no single perspective could hold the fullness of who He is.</p>
-    </div>
+      <p>Several other passages illuminate this truth from different angles. <a class="vlink" href="https://www.bible.com/bible/3034/HEB.1.3" target="_blank" rel="noopener" data-verse="hebrews-1-3" data-ref="Hebrews 1:3" aria-expanded="false">Hebrews 1:3</a> calls Jesus "the radiance of God's glory and the exact expression of his nature," language that means He is not a copy of God but the very outshining of who God is. <a class="vlink" href="https://www.bible.com/bible/3034/COL.1.15" target="_blank" rel="noopener" data-verse="colossians-1-15" data-ref="Colossians 1:15" aria-expanded="false">Colossians 1:15</a> calls Him "the image of the invisible God," the one who makes the unseeable seeable. And <a class="vlink" href="https://www.bible.com/bible/3034/JHN.1.14" target="_blank" rel="noopener" data-verse="john-1-14" data-ref="John 1:14" aria-expanded="false">John 1:14</a> declares that "the Word became flesh and dwelt among us," the eternal communication of God taking on a body so that we could encounter Him face to face. Each of the four Gospel writers brings a distinct perspective to this portrait: Matthew shows the promised Messiah who fulfills the Hebrew Scriptures, Mark reveals the tireless servant who pours Himself out for others, Luke (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.1.3-4" target="_blank" rel="noopener" data-verse="luke-1-3-4" data-ref="Luke 1:3-4" aria-expanded="false">Luke 1:3-4</a>) carefully documents the human Jesus with compassion and historical precision, and John unveils the divine Son who invites us to believe and find life. Four angles on the same person, because no single perspective could hold the fullness of who He is.</p>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Contractor Who Moved In</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Contractor Who Moved In</h3>
       <p>Imagine you own an old house with a serious foundation problem. Not a cosmetic issue, not a squeaky floorboard, but the kind of deep structural damage that makes the walls crack a little wider every year. You have hired contractors before. They send crews, drop off materials, leave detailed plans. Good work gets done on the surface. But the foundation keeps shifting, because no one who shows up for an eight-hour shift can understand a problem that only reveals itself at 3 AM when the house settles, or during the first hard freeze when the cracks groan under pressure. The problem lives in the bones of the building, and you can only find it by living there.</p>
       <p>So one day the contractor does something unprecedented. He moves in. Not to inspect and leave. Not for a weekend assessment. He brings his tools, sets up in the spare room, and starts living in the house he is repairing. He hears every creak in the floorboard at midnight. He feels the cold draft that seeps through the fracture lines in February. He understands the problem from the inside, the way only someone who lives with it every day can. And because he is there, inside the structure, he can fix things no outside crew ever could.</p>
       <p>That is the incarnation. For centuries, God sent prophets, delivered messages, provided instructions from the outside, and all of it was real. But the human condition has a foundation problem that no external repair can reach. So God did what no one expected. He moved in. He took on flesh, felt hunger, wept at funerals, absorbed betrayal, and experienced death. Not as a visitor. As a resident. <em>Immanuel</em> means God relocated permanently into the structure He came to save, and He is still here, still repairing from the inside out, to the end of the age.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Why We Still Want Someone in the Room</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>Why We Still Want Someone in the Room</h3>
       <p>The explosion of telehealth during and after the COVID-19 pandemic gave researchers a massive natural experiment on the question of presence. The results have been revealing. A 2025 systematic review published in the journal <em>Clinics and Practice</em> found that while telemedicine improves access and reduces certain costs, patient surveys consistently show that for first-time diagnoses, complex conditions, and emotionally difficult conversations, the majority of patients still want a physician in the room. A 2026 analysis by Philomath Research documented the same pattern across healthcare systems worldwide: technology can transmit information efficiently, but patients associate trust, empathy, and genuine understanding with physical presence. The screen is useful; the person in the room is different.</p>
       <p>This is not a failure of technology. It is a revelation about how human beings are wired. We were made for presence, not just information. We can receive data remotely, but we experience care personally. God could have continued communicating with humanity through prophets, visions, and written revelation, and all of those channels were real and effective. But He knew something about us that modern medicine is rediscovering: for the most important diagnosis, the deepest healing, and the most transformative encounter, someone has to be in the room. So He came.</p>
-    </div>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>This entire week has been building to this moment. On Sunday, we saw the serpent's lie: that God is withholding, untrustworthy, and self-interested. On Monday, we encountered God's holiness and discovered it is the attribute that makes everything else about Him safe. On Tuesday, we plunged into God's love and found it is not a feeling but His fundamental nature, proven at the cross. On Wednesday, we stood before the Creator who is both vast enough to speak galaxies into being and intimate enough to form a human from dust with His own hands. Now, on Thursday, all of those threads come together in a single person.</p>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>This entire week has been building to this moment. On Sunday, we saw the serpent's lie: that God is withholding, untrustworthy, and self-interested. On Monday, we encountered God's holiness and discovered it is the attribute that makes everything else about Him safe. On Tuesday, we plunged into God's love and found it is not a feeling but His fundamental nature, proven at the cross. On Wednesday, we stood before the Creator who is both vast enough to speak galaxies into being and intimate enough to form a human from dust with His own hands. Now, on Thursday, all of those threads come together in a single person.</p>
       <p>Jesus is the holy God walking among sinners without being contaminated. He is the love of God poured out in actions so concrete you can trace them through four eyewitness accounts. He is the Creator kneeling to wash feet, the Almighty choosing to be vulnerable, the One whose name is Holy choosing to be called "friend of sinners." Every attribute of God that we have studied this week is not an abstract concept; it is a portrait of Jesus. He is what God looks like when God shows up. And the most stunning part is that He is still showing up, still present, still Immanuel, to the end of the age.</p>
-    </div>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Open your Bible to Matthew 1:23 and Matthew 28:20. Read them side by side. One is a prophecy about who Jesus will be; the other is a promise from Jesus about who He still is. Notice how the same truth, "God with us," frames the entire Gospel. Now make it personal: write down one specific area of your life where you have been operating as if God is distant, absent, or uninvolved. Read Matthew 28:20 into that specific situation and let the promise land. He is with you. Always. To the end of the age. Then close with a specific prayer of praise. "Thank You, God, for being _____, as You tell me in _____." Fill in the blanks with something you have learned about God this week, and be specific.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, I am overwhelmed by the truth that You did not stay at a distance. You could have remained in the high and holy place forever, governing the universe from beyond the reach of human suffering. Instead, You emptied Yourself, took on flesh, entered our mess, and made Yourself knowable in the most personal way possible. Thank You for Jesus, who shows me exactly what You are like. Thank You that Immanuel is not a title from the past but a promise that stretches to the end of the age. I confess that I have too often tried to know You from a distance, reading about You instead of recognizing that You are with me right now. Open my eyes to see You the way Philip should have: not far away and difficult to find, but standing right in front of me, saying, "The one who has seen Me has seen the Father." In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"Of the four Gospels, Matthew, Mark, Luke, and John, which portrait of Jesus has shaped your understanding of God the most, and is there one you have spent less time in that might give you a dimension of God's character you have been missing?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"Of the four Gospels, Matthew, Mark, Luke, and John, which portrait of Jesus has shaped your understanding of God the most, and is there one you have spent less time in that might give you a dimension of God's character you have been missing?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, I am overwhelmed by the truth that You did not stay at a distance. You could have remained in the high and holy place forever, governing the universe from beyond the reach of human suffering. Instead, You emptied Yourself, took on flesh, entered our mess, and made Yourself knowable in the most personal way possible. Thank You for Jesus, who shows me exactly what You are like. Thank You that Immanuel is not a title from the past but a promise that stretches to the end of the age. I confess that I have too often tried to know You from a distance, reading about You instead of recognizing that You are with me right now. Open my eyes to see You the way Philip should have: not far away and difficult to find, but standing right in front of me, saying, "The one who has seen Me has seen the Father." In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-04-08.html"><span class="day-nav-kicker">← Wednesday</span><span class="day-nav-title">God in Creation</span></a><a class="day-nav-item" href="/bible-study/2026-04-10.html"><span class="day-nav-kicker">Friday →</span><span class="day-nav-title">Further Thought &amp; Discussion</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"john-1-14":{"ref":"John 1:14","text":"The Word became flesh and made His dwelling among us. We have seen His glory, the glory of the one and only Son from the Father, full of grace and truth.","bibleUrl":"https://www.bible.com/bible/3034/JHN.1.14"},"isaiah-7-14":{"ref":"Isaiah 7:14","text":"Therefore the Lord Himself will give you a sign: Behold, the virgin will be with child and give birth to a son, and will call Him Immanuel.","bibleUrl":"https://www.bible.com/bible/3034/ISA.7.14"},"hebrews-1-3":{"ref":"Hebrews 1:3","text":"The Son is the radiance of God\u2019s glory and the exact representation of His nature, upholding all things by His powerful word. After He had provided purification for sins, He sat down at the right hand of the Majesty on high.","bibleUrl":"https://www.bible.com/bible/3034/HEB.1.3"},"colossians-1-15":{"ref":"Colossians 1:15","text":"The Son is the image of the invisible God, the firstborn over all creation.","bibleUrl":"https://www.bible.com/bible/3034/COL.1.15"},"luke-1-3-4":{"ref":"Luke 1:3-4","text":"Therefore, having carefully investigated everything from the beginning, it seemed good also to me to write an orderly account for you, most excellent Theophilus, so that you may know the certainty of the things you have been taught.","bibleUrl":"https://www.bible.com/bible/3034/LUK.1.3-4"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

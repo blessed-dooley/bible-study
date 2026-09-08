@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>From Athens to Corinth — Daily Bible Study</title>
 <meta name="study-title" content="From Athens to Corinth">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 1, Paul&#x27;s Ministry in Corinth · Part 3 of 7">
+<meta name="study-passage" content="1 Corinthians 2:2">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 1, Paul's Ministry in Corinth · Day 3 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="From Athens to Corinth">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 1, Paul&#x27;s Ministry in Corinth · Part 3 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 1, Paul's Ministry in Corinth · Day 3 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-06-29.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 1, Paul&#x27;s Ministry in Corinth · Part 3 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 1, Paul's Ministry in Corinth · Day 3 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,333 +38,205 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>From Athens to Corinth</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 1, Paul's Ministry in Corinth</span>
-      <span>Part 3 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">June 29, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Mon · Jun 29</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">9 min</span>
+    </div>
+    <h1 class="study-title">From Athens to Corinth</h1>
+    <p class="study-sub"><span class="sub-title">Paul's Ministry in Corinth</span><span class="sub-facts"><span>Lesson 1</span><span>Day 3 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>Paul stands in Athens, the smartest city in the world, surrounded by altars and philosophers who treat new ideas like sport. He gives them his best, and a handful believe. Then he walks the fifty miles to Corinth alone, broke, and shaken, and makes a stunning decision. He will not try to out-clever the clever city. He will preach one thing, Jesus Christ and Him crucified, and let the message be as plain and offensive as it really is. The gospel does not win by being impressive. <strong>It wins because a crucified Savior is the actual power of God, even when He looks like foolishness.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday Paul signed his name as a sent one, an envoy under orders, with all his confidence resting on a call he did not give himself. But a calling is not a desk job. Today we watch those orders actually hit the road, and the road is rough. Being sent by God did not mean smooth sailing for Paul. It meant being chased out of one city, standing nearly alone in another, and arriving in a third with no money, no team, and no guarantee anyone would listen. The man who was so sure of his calling spends this day looking very much like a failure on paper. Watch what he does with that, because it tells you what he really believed his calling was for.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Paul stands in Athens, the smartest city in the world, surrounded by altars and philosophers who treat new ideas like sport. He gives them his best, and a handful believe. Then he walks the fifty miles to Corinth alone, broke, and shaken, and makes a stunning decision. He will not try to out-clever the clever city. He will preach one thing, Jesus Christ and Him crucified, and let the message be as plain and offensive as it really is. The gospel does not win by being impressive. <strong>It wins because a crucified Savior is the actual power of God, even when He looks like foolishness.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday Paul signed his name as a sent one, an envoy under orders, with all his confidence resting on a call he did not give himself. But a calling is not a desk job. Today we watch those orders actually hit the road, and the road is rough. Being sent by God did not mean smooth sailing for Paul. It meant being chased out of one city, standing nearly alone in another, and arriving in a third with no money, no team, and no guarantee anyone would listen. The man who was so sure of his calling spends this day looking very much like a failure on paper. Watch what he does with that, because it tells you what he really believed his calling was for.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The City That Treated New Ideas as Entertainment</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The City That Treated New Ideas as Entertainment</h3>
       <p>When Paul reached Athens, he walked into a living museum. The city's glory days were three centuries behind it, but it was still the intellectual capital of the world, thick with temples, statues, and schools of thought. Luke says Paul's spirit was stirred because the place was full of idols, a forest of gods carved in marble on every corner. The locals had a hobby that doubled as a religion, and Luke names it dryly. They spent their days doing nothing but telling or hearing some new thing. Ideas were the city's sport. A traveling teacher with a fresh angle was an afternoon's amusement, applauded and then forgotten by dinner.</p>
       <p>So when Paul was invited to speak at the Areopagus, the council that met on a rocky outcrop near the Acropolis, he was stepping onto the most prestigious debate stage on earth, in front of Stoics and Epicureans who had heard every argument twice. He preached the resurrection. Some sneered, a few wanted to hear more, and only a small handful believed. No riot, no revival, just polite curiosity that mostly drifted off. Paul left Athens having given a brilliant speech to a city that clapped and moved on. That experience is the unspoken backdrop to the bold, almost stubborn decision he makes the moment he arrives in Corinth.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Trace the road with him. Driven out of Berea, hurried down to Athens, then sending word back for Timothy and Silas to catch up (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.17.13-15" target="_blank" rel="noopener">Acts 17:13-15</a>), Paul preaches to the philosophers and gets a shrug (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.17.16-34" target="_blank" rel="noopener">Acts 17:16-34</a>). Then he travels on to Corinth, finds work, and settles in for what will become a year and a half of ministry (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.18.1-11" target="_blank" rel="noopener">Acts 18:1-11</a>). Somewhere between the applause of Athens and the grind of Corinth, Paul makes a choice about what he will and will not do with the gospel, and he tells us about it years later in his own words.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Trace the road with him. Driven out of Berea, hurried down to Athens, then sending word back for Timothy and Silas to catch up (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.17.13-15" target="_blank" rel="noopener" data-verse="acts-17-13-15" data-ref="Acts 17:13-15" aria-expanded="false">Acts 17:13-15</a>), Paul preaches to the philosophers and gets a shrug (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.17.16-34" target="_blank" rel="noopener" data-verse="acts-17-16-34" data-ref="Acts 17:16-34" aria-expanded="false">Acts 17:16-34</a>). Then he travels on to Corinth, finds work, and settles in for what will become a year and a half of ministry (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.18.1-11" target="_blank" rel="noopener" data-verse="acts-18-1-11" data-ref="Acts 18:1-11" aria-expanded="false">Acts 18:1-11</a>). Somewhere between the applause of Athens and the grind of Corinth, Paul makes a choice about what he will and will not do with the gospel, and he tells us about it years later in his own words.</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 2:2 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b9a795c493756bf71cf915b67c01c844ca6e3f70cc18854d226d31ce77a08f45 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 2:2</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.2.2" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.2.2" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">For I resolved to know nothing while I was with you except Jesus Christ and Him crucified.</div>
 <div class="verse-commentary">
           <p>This is one of the boldest sentences Paul ever wrote, and the city it was written to makes it bolder. Corinth worshiped cleverness and success, and a crucified man was the opposite of both. Crucifixion was Rome's tool for humiliating slaves and rebels. To build your whole message on a crucified Savior was, by every worldly measure, a marketing disaster. Yet Paul deliberately narrows his focus down to that one scandal. The phrase "him crucified" is a single word in Greek, <em>estauromenon</em>, and it sits in a tense that means a finished action with permanent results. Paul does not preach a Jesus who was once crucified and has moved on. He preaches the forever-crucified One, the risen Lord who still bears the marks, whose lowest moment is the very center of His glory. After Athens, Paul refuses to trim the offensive part to win a hearing. He plants his flag on the part the world calls foolish.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Acts 18:5 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:37a3914ca8614c6c273eeb693c0972c7767b28ef528203acbb8d6deea02a8c98 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Acts 18:5</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ACT.18.5" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ACT.18.5" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">And when Silas and Timothy came down from Macedonia, Paul devoted himself fully to the word, testifying to the Jews that Jesus is the Christ.</div>
 <div class="verse-commentary">
-          <p>For a while in Corinth, Paul had been splitting his time, making tents during the week and reasoning in the synagogue on the Sabbath. Then Silas and Timothy show up, almost certainly carrying a gift from the Macedonian churches that freed him from the workbench. The moment the financial pressure lifts, Luke says Paul "devoted himself" wholly to the word. He poured himself into one thing, testifying that Jesus is the Messiah. Following his usual pattern, he started in the synagogue, his custom in every new city (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.17.1-2" target="_blank" rel="noopener">Acts 17:1-2</a>), and when the resistance there grew fierce, he turned to the Gentiles (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.18.4-6" target="_blank" rel="noopener">Acts 18:4-6</a>). He did not drift through Corinth. He dug in, eventually staying a year and a half, far longer than his stops in Athens or Berea (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.18.11" target="_blank" rel="noopener">Acts 18:11</a>).</p>
+          <p>For a while in Corinth, Paul had been splitting his time, making tents during the week and reasoning in the synagogue on the Sabbath. Then Silas and Timothy show up, almost certainly carrying a gift from the Macedonian churches that freed him from the workbench. The moment the financial pressure lifts, Luke says Paul "devoted himself" wholly to the word. He poured himself into one thing, testifying that Jesus is the Messiah. Following his usual pattern, he started in the synagogue, his custom in every new city (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.17.1-2" target="_blank" rel="noopener" data-verse="acts-17-1-2" data-ref="Acts 17:1-2" aria-expanded="false">Acts 17:1-2</a>), and when the resistance there grew fierce, he turned to the Gentiles (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.18.4-6" target="_blank" rel="noopener" data-verse="acts-18-4-6" data-ref="Acts 18:4-6" aria-expanded="false">Acts 18:4-6</a>). He did not drift through Corinth. He dug in, eventually staying a year and a half, far longer than his stops in Athens or Berea (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.18.11" target="_blank" rel="noopener" data-verse="acts-18-11" data-ref="Acts 18:11" aria-expanded="false">Acts 18:11</a>).</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Romans 1:16 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b1375ccb14369cada76aaf0ececdc190b21ecb925828a78ff72614277a35df6f | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Romans 1:16</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.1.16" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ROM.1.16" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">I am not ashamed of the gospel, because it is the power of God for salvation to everyone who believes, first to the Jew, then to the Greek.</div>
 <div class="verse-commentary">
-          <p>Here is the conviction underneath the Corinth decision. Paul is "not ashamed" of the gospel, and that is not a man working up his courage. It is a man who has done the math and concluded the message itself carries the power, not the messenger's polish. Notice his order, "first to the Jew, then to the Greek." That is why he keeps starting in the synagogue even when it keeps getting him thrown out. It was a deliberate strategy, not a habit, the same one he names when he tells a hostile crowd that the word of God had to be offered to them first (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.13.46" target="_blank" rel="noopener">Acts 13:46</a>). Paul never softened the gospel to make it acceptable, because he was convinced the unsoftened version was the only one with the power to actually save anybody.</p>
+          <p>Here is the conviction underneath the Corinth decision. Paul is "not ashamed" of the gospel, and that is not a man working up his courage. It is a man who has done the math and concluded the message itself carries the power, not the messenger's polish. Notice his order, "first to the Jew, then to the Greek." That is why he keeps starting in the synagogue even when it keeps getting him thrown out. It was a deliberate strategy, not a habit, the same one he names when he tells a hostile crowd that the word of God had to be offered to them first (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.13.46" target="_blank" rel="noopener" data-verse="acts-13-46" data-ref="Acts 13:46" aria-expanded="false">Acts 13:46</a>). Paul never softened the gospel to make it acceptable, because he was convinced the unsoftened version was the only one with the power to actually save anybody.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Acts 1:8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:baea54e720a41978c07a7979db5bb641504aa295d4caff1e83cbbcc1f1ccd201 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Acts 1:8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ACT.1.8" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ACT.1.8" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text"><span class="words-of-jesus">But you will receive power when the Holy Spirit comes upon you, and you will be My witnesses in Jerusalem, and in all Judea and Samaria, and to the ends of the earth.”</span></div>
 <div class="verse-commentary">
           <p>Step back and the whole journey makes sense. Jesus had handed His followers a map that moved outward in rings, from Jerusalem to the ends of the earth, and Paul was living it one hard mile at a time. Athens and Corinth were dots on that map, the gospel pressing west into Greece. But look at the promise attached to the marching orders. The power to do this was never going to be Paul's eloquence or stamina. It was the Holy Spirit. That is the quiet answer to why a lonely, underfunded preacher kept going after a city shrugged him off. He was not the engine. He was a witness, and the One who sent him supplied the power. The mission belonged to God, and so did the fuel for it.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Toast Everyone Actually Remembers</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Toast Everyone Actually Remembers</h3>
       <p>Think about the speeches at the last wedding reception you sat through. There is almost always one best man who came with a whole set piece, five minutes of rehearsed jokes, callbacks, a bit on his phone he keeps glancing down at. People chuckle politely and check their drinks. Then someone else stands up with no notes and just says one true thing. "He showed up the night my dad died, and he didn't say anything clever. He just sat with me on the porch until morning." The room goes quiet. That is the line people are still repeating in the parking lot.</p>
       <p>Paul had just come from Athens, the most rehearsed-jokes city on earth, where a new idea was an evening's entertainment and his brilliant speech earned a polite shrug. So walking into Corinth he made a decision. He would stop trying to win the room and would say the one plain, almost embarrassing thing that was actually true, that Jesus Christ was crucified for them. He was fully capable of the clever speech. He had just given one in Athens. He had simply learned that the plain word carries a weight the polished performance never will, because it is true, and the truth does not need a costume to do its work.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Even the Lawyers Wanted It Plain</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>Even the Lawyers Wanted It Plain</h3>
       <p>Sign a mortgage or scroll a terms-of-service agreement and you wade through a swamp of "heretofores" and "parties of the first part," and you assume all that density must be doing something, that it is the necessary price of being taken seriously. Researchers at MIT decided to test that assumption. In a study published by the National Academy of Sciences, they handed lawyers the same contracts written two ways, once in thick legalese and once in plain English. The verdict was lopsided. The lawyers themselves overwhelmingly preferred the plain version. They rated it higher in quality, just as enforceable, and more likely to actually get signed. The fancy wording was not adding power. It was only getting in the way.</p>
       <p>Paul had just walked out of Athens, a city where dense cleverness was the local currency, and he made the opposite bet. He set the polished speech down and said the one plain, almost embarrassing thing that was true, that Jesus Christ was crucified for them. Twenty centuries later a roomful of lawyers, of all people, quietly proved his instinct right. When even the professional masters of complicated language admit they would rather have it straight, you start to see what Paul saw in Corinth. The plain truth was never the watered-down version of the message. It was always the strong one.</p>
-    </div>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>The thing Paul refused to be ashamed of is the thing the whole world was built to be ashamed of. A cross was designed to shame its victim, to strip him naked, lift him up where everyone could see, and broadcast that this man was nothing. And God took that exact instrument of humiliation and made it the throne. Jesus did not avoid the cross to protect His dignity. He walked into it, because the only way to rescue a proud, status-sick world was to save it through the one thing it would never respect. This is why Paul could lose the debate in Athens and still be unshaken in Corinth. He had seen that God's power does not look like power. It looks like a man dying for His enemies. The cross is not the embarrassing part of the story we hurry past to get to the resurrection. It is the place where the love of God hits the ground, and it is still the only thing strong enough to break a hard heart.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>The thing Paul refused to be ashamed of is the thing the whole world was built to be ashamed of. A cross was designed to shame its victim, to strip him naked, lift him up where everyone could see, and broadcast that this man was nothing. And God took that exact instrument of humiliation and made it the throne. Jesus did not avoid the cross to protect His dignity. He walked into it, because the only way to rescue a proud, status-sick world was to save it through the one thing it would never respect. This is why Paul could lose the debate in Athens and still be unshaken in Corinth. He had seen that God's power does not look like power. It looks like a man dying for His enemies. The cross is not the embarrassing part of the story we hurry past to get to the resurrection. It is the place where the love of God hits the ground, and it is still the only thing strong enough to break a hard heart.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Think of one relationship where you have been quietly editing your faith to make it more acceptable, softening the parts you are afraid will sound foolish or offensive. Today, do not pick a fight, but do stop hiding. In your next honest conversation with that person, say one true thing about Jesus you would normally leave out to keep things comfortable. Then trust that the message carries its own power, and that it is not your job to make the cross impressive.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we confess how often we trim the gospel to fit the room, embarrassed by the parts that sound foolish to the people we want to impress. Forgive us for trusting our own cleverness more than Your cross. Give us Paul's settled nerve, the freedom of a person who has stopped trying to win and simply tells the truth and leaves the power to You. When we feel like a failure on paper, broke and tired and ignored like he was, remind us that the mission was always Yours and so is the strength for it. Let us not be ashamed of the One who was not ashamed to be crucified for us. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"Where are you most tempted to make your faith sound more impressive or less offensive than it really is (at work, online, with skeptical friends), and what would it look like this week to trust the plain message instead of your own ability to sell it?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"Where are you most tempted to make your faith sound more impressive or less offensive than it really is (at work, online, with skeptical friends), and what would it look like this week to trust the plain message instead of your own ability to sell it?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, we confess how often we trim the gospel to fit the room, embarrassed by the parts that sound foolish to the people we want to impress. Forgive us for trusting our own cleverness more than Your cross. Give us Paul's settled nerve, the freedom of a person who has stopped trying to win and simply tells the truth and leaves the power to You. When we feel like a failure on paper, broke and tired and ignored like he was, remind us that the mission was always Yours and so is the strength for it. Let us not be ashamed of the One who was not ashamed to be crucified for us. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-06-28.html"><span class="day-nav-kicker">← Sunday</span><span class="day-nav-title">Paul, a God-called Apostle of Jesus</span></a><a class="day-nav-item" href="/bible-study/2026-06-30.html"><span class="day-nav-kicker">Tuesday →</span><span class="day-nav-title">The City of Corinth</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"acts-17-13-15":{"ref":"Acts 17:13-15","text":"But when the Jews from Thessalonica learned that Paul was also proclaiming the word of God in Berea, they went there themselves to incite and agitate the crowds. The brothers immediately sent Paul to the coast, but Silas and Timothy remained in Berea. Those who escorted Paul brought him to Athens and then returned with instructions for Silas and Timothy to join him as soon as possible.","bibleUrl":"https://www.bible.com/bible/3034/ACT.17.13-15"},"acts-17-16-34":{"ref":"Acts 17:16-34","text":"While Paul was waiting for them in Athens, he was deeply disturbed in his spirit to see that the city was full of idols. So he reasoned in the synagogue with the Jews and God-fearing Gentiles, and in the marketplace with those he met each day. Some Epicurean and Stoic philosophers also began to debate with him. Some of them asked, \u201cWhat is this babbler trying to say?\u201d Others said, \u201cHe seems to be advocating foreign gods.\u201d They said this because Paul was proclaiming the good news of Jesus and the resurrection. So they took Paul and brought him to the Areopagus, where they asked him, \u201cMay we know what this new teaching is that you are presenting? For you are bringing some strange notions to our ears, and we want to know what they mean.\u201d Now all the Athenians and foreigners who lived there spent their time doing nothing more than hearing and articulating new ideas. Then Paul stood up in the meeting of the Areopagus and said, \u201cMen of Athens, I see that in every way you are very religious. For as I walked around and examined your objects of worship, I even found an altar with this inscription: TO AN UNKNOWN GOD. Therefore what you worship as something unknown, I now proclaim to you. The God who made the world and everything in it is the Lord of heaven and earth and does not live in temples made by human hands. Nor is He served by human hands, as if He needed anything, because He Himself gives everyone life and breath and everything else. From one man He made every nation of men, that they should inhabit the whole earth; and He determined their appointed times and the boundaries of their lands. God intended that they would seek Him and perhaps reach out for Him and find Him, though He is not far from each one of us. \u2018For in Him we live and move and have our being.\u2019 As some of your own poets have said, \u2018We are His offspring.\u2019 Therefore, being offspring of God, we should not think that the Divine Being is like gold or silver or stone, an image formed by man\u2019s skill and imagination. Although God overlooked the ignorance of earlier times, He now commands all people everywhere to repent. For He has set a day when He will judge the world with justice by the Man He has appointed. He has given proof of this to everyone by raising Him from the dead.\u201d When they heard about the resurrection of the dead, some began to mock him, but others said, \u201cWe want to hear you again on this topic.\u201d At that, Paul left the Areopagus. But some joined him and believed, including Dionysius the Areopagite, a woman named Damaris, and others who were with them.","bibleUrl":"https://www.bible.com/bible/3034/ACT.17.16-34"},"acts-18-1-11":{"ref":"Acts 18:1-11","text":"After this, Paul left Athens and went to Corinth. There he found a Jew named Aquila, a native of Pontus, who had recently come from Italy with his wife Priscilla because Claudius had ordered all the Jews to leave Rome. Paul went to visit them, and he stayed and worked with them because they were tentmakers by trade, just as he was. Every Sabbath he reasoned in the synagogue, trying to persuade Jews and Greeks alike. And when Silas and Timothy came down from Macedonia, Paul devoted himself fully to the word, testifying to the Jews that Jesus is the Christ. But when they opposed and insulted him, he shook out his garments and told them, \u201cYour blood be on your own heads! I am innocent of it. From now on I will go to the Gentiles.\u201d So Paul left the synagogue and went next door to the house of Titus Justus, a worshiper of God. Crispus, the synagogue leader, and his whole household believed in the Lord. And many of the Corinthians who heard the message believed and were baptized. One night the Lord spoke to Paul in a vision: \u201cDo not be afraid; keep on speaking; do not be silent. For I am with you and no one will lay a hand on you, because I have many people in this city.\u201d So Paul stayed for a year and a half, teaching the word of God among the Corinthians.","bibleUrl":"https://www.bible.com/bible/3034/ACT.18.1-11"},"acts-17-1-2":{"ref":"Acts 17:1-2","text":"When they had passed through Amphipolis and Apollonia, they came to Thessalonica, where there was a Jewish synagogue. As was his custom, Paul went into the synagogue, and on three Sabbaths he reasoned with them from the Scriptures,","bibleUrl":"https://www.bible.com/bible/3034/ACT.17.1-2"},"acts-18-4-6":{"ref":"Acts 18:4-6","text":"Every Sabbath he reasoned in the synagogue, trying to persuade Jews and Greeks alike. And when Silas and Timothy came down from Macedonia, Paul devoted himself fully to the word, testifying to the Jews that Jesus is the Christ. But when they opposed and insulted him, he shook out his garments and told them, \u201cYour blood be on your own heads! I am innocent of it. From now on I will go to the Gentiles.\u201d","bibleUrl":"https://www.bible.com/bible/3034/ACT.18.4-6"},"acts-18-11":{"ref":"Acts 18:11","text":"So Paul stayed for a year and a half, teaching the word of God among the Corinthians.","bibleUrl":"https://www.bible.com/bible/3034/ACT.18.11"},"acts-13-46":{"ref":"Acts 13:46","text":"Then Paul and Barnabas answered them boldly: \u201cIt was necessary to speak the word of God to you first. But since you reject it and do not consider yourselves worthy of eternal life, we now turn to the Gentiles.","bibleUrl":"https://www.bible.com/bible/3034/ACT.13.46"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

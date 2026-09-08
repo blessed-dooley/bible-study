@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Further Thought &amp; Discussion — Daily Bible Study</title>
 <meta name="study-title" content="Further Thought &amp; Discussion">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Part 7 of 7">
+<meta name="study-passage" content="Psalms 119:93-94">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Day 7 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Further Thought &amp; Discussion">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Part 7 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Day 7 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-05-29.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Part 7 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 9, Sin, the Gospel, and the Law · Day 7 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,310 +38,210 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--friday">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Further Thought &amp; Discussion</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 9, Sin, the Gospel, and the Law</span>
-      <span>Part 7 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Fri · May 29</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">11 min</span>
     </div>
-    <div class="date-badge">May 29, 2026</div>
+    <h1 class="study-title">Further Thought &amp; Discussion</h1>
+    <p class="study-sub"><span class="sub-title">Sin, the Gospel, and the Law</span><span class="sub-facts"><span>Lesson 9</span><span>Day 7 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. WEEK IN REVIEW -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">Week in Review</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">A week that opened with a psalmist who said the precepts had kept him alive ends with a Galilean wadi after a storm, two houses, and a question about whether the words we heard this week were also done.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">Week in Review</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="review">Week in Review</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="clarifies">What This Week Clarifies</button><button type="button" class="chip" data-jump="speaking">Still Speaking</button><button type="button" class="chip" data-jump="christ">Christ at the Center of the Week</button><button type="button" class="chip" data-jump="application">Weekend Practice</button><button type="button" class="chip" data-jump="prayer">Closing Prayer for the Week</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="review" aria-labelledby="review-label">
+      <h2 class="section-label" id="review-label">Week in Review</h2>
+<p class="tldr-hook">A week that opened with a psalmist who said the precepts had kept him alive ends with a Galilean wadi after a storm, two houses, and a question about whether the words we heard this week were also done.</p>
       <ul class="week-review-list">
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sabbath:</span> Sin, the Gospel, and the Law. We hung two Hebrew cabinets on the wall, the words for the wound (<em>chattat</em>, <em>pesha</em>, <em>avon</em>) and the words for the floor God put under our feet (<em>piqqudim</em>, <em>mitzvot</em>, <em>huqqim</em>, <em>torah</em>), and met a man under siege whose Memory Text said the precepts gave him his life back.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> Distractions and Temptations. Samson "went down to Timnah" and never came back up. The Hebrew verb <em>ra'ah</em> opened his story the way it opened Eve's and David's. Sin does not start at the wedding feast. It starts at the first look that decides not to look away.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Monday:</span> Strongholds in My Relationship With God. Jesus the Surgeon used the Greek verb <em>skandalizo</em>, the trigger-stick on a hunter's trap, and prescribed a radical-cut response. Better to enter life maimed than to walk whole into the trash-fire valley south of Jerusalem.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Tuesday:</span> The Law. Paul named what the law does (it makes sin visible). John named what sin is (<em>anomia</em>, lawlessness). And Jesus, asked which command is greatest, folded the whole Old Testament onto two hooks: love God, love neighbor.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Wednesday:</span> The Law and the Gospel. Two Greek verbs in one sentence on a Galilean hillside, <em>kataluo</em> (demolish) and <em>pleroo</em> (fill to the brim). Jesus did not abolish the law. He filled it full of His obedience and absorbed its verdict in our place. Romans 3:28 is now ours.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Thursday:</span> Knowing and Doing. Two builders, two houses, one storm, and one Greek verb that separated them. <em>Poieo</em>: to do. The wise life is the one that digs to the bedrock <em>before</em> the rain. Hearing without doing is sand in a wadi.</span></li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Sabbath:</span> Sin, the Gospel, and the Law. We hung two Hebrew cabinets on the wall, the words for the wound (<em>chattat</em>, <em>pesha</em>, <em>avon</em>) and the words for the floor God put under our feet (<em>piqqudim</em>, <em>mitzvot</em>, <em>huqqim</em>, <em>torah</em>), and met a man under siege whose Memory Text said the precepts gave him his life back.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> Distractions and Temptations. Samson "went down to Timnah" and never came back up. The Hebrew verb <em>ra'ah</em> opened his story the way it opened Eve's and David's. Sin does not start at the wedding feast. It starts at the first look that decides not to look away.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Monday:</span> Strongholds in My Relationship With God. Jesus the Surgeon used the Greek verb <em>skandalizo</em>, the trigger-stick on a hunter's trap, and prescribed a radical-cut response. Better to enter life maimed than to walk whole into the trash-fire valley south of Jerusalem.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Tuesday:</span> The Law. Paul named what the law does (it makes sin visible). John named what sin is (<em>anomia</em>, lawlessness). And Jesus, asked which command is greatest, folded the whole Old Testament onto two hooks: love God, love neighbor.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Wednesday:</span> The Law and the Gospel. Two Greek verbs in one sentence on a Galilean hillside, <em>kataluo</em> (demolish) and <em>pleroo</em> (fill to the brim). Jesus did not abolish the law. He filled it full of His obedience and absorbed its verdict in our place. Romans 3:28 is now ours.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Thursday:</span> Knowing and Doing. Two builders, two houses, one storm, and one Greek verb that separated them. <em>Poieo</em>: to do. The wise life is the one that digs to the bedrock <em>before</em> the rain. Hearing without doing is sand in a wadi.</span>
+</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Three Words and the Stone Beneath Them</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Three Words and the Stone Beneath Them</h3>
       <p>The week assembled three Greek verbs and held them up against three Hebrew words, and the synthesis fits in one line. <em>Pleroo</em>, to fill to the brim, is what Jesus came to do to the law. <em>Kataluo</em>, to demolish, is what He did <em>not</em> come to do. <em>Poieo</em>, to do, is what the law-keeping life looks like on the inside of a person who has trusted Him. The Hebrew underneath all three of them is older. <em>Torah</em>, from the root <em>yarah</em> ("to shoot an arrow, to point"), is the directional gift God gave a people He had just rescued out of slavery, written into the architecture of their week, recited in their kitchens, sung by their psalmist. <em>Chattat</em> (missing the mark) is what the law diagnoses. <em>Salah</em> (the verb the Old Testament uses only of God forgiving) is what the cross supplies.</p>
       <p>The Sermon on the Mount and the Decalogue at Sinai are not two laws. They are one law spoken by one Voice through two different microphones. On Sinai the Voice was in fire and smoke and the trembling of a mountain. On the southern slope of the Galilean hills the same Voice was sitting on a stone bench at the edge of a meadow. The audience in both places heard the same God say the same things, with the cross now visible between them as the bridge that makes living the second sermon possible for people who could not live the first one on their own. By the end of this week we have walked the full distance from Exodus 20 to Matthew 7, and the surprise has been how short the distance really is. The law was always pointing at the Person who would fill it. The Person has come.</p>
-    </div>
+    </section>
 
-    <!-- 3. WHAT THIS WEEK CLARIFIES -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">💡</span>
-        <span class="section-title">What This Week Clarifies</span>
-        <div class="section-title-line"></div>
-      </div>
+    <section class="section" id="clarifies" aria-labelledby="clarifies-label">
+      <h2 class="section-label" id="clarifies-label">What This Week Clarifies</h2>
+<p>A week that walks from Sinai to a Galilean hillside leaves a reader holding a few live tensions. The most precept-rich man in Israel ended up blind between two pillars. The verse that sounds like the law's failure turns out to be its job description. And a gospel of faith apart from works still closed the week on a verb of doing. The week built its own answers as it went. Three of them deserve a slow second look.</p>
 
-      <p>A week that walks from Sinai to a Galilean hillside leaves a reader holding a few live tensions. The most precept-rich man in Israel ended up blind between two pillars. The verse that sounds like the law's failure turns out to be its job description. And a gospel of faith apart from works still closed the week on a verb of doing. The week built its own answers as it went. Three of them deserve a slow second look.</p>
-
-      <div class="section-heading">Samson Could Recite the Vow He Was Breaking</div>
+      <h3>Samson Could Recite the Vow He Was Breaking</h3>
       <p>Sabbath's Memory Text made a large claim. The precepts revive. They keep a man alive. Then Sunday introduced the man who had more precepts than anyone in Israel, a Nazirite set apart before his own birth, and watched him explain his vow, word for word, from Delilah's lap. Samson never lost the information. The precept that was supposed to give life did not save him, and the week owed us an explanation.</p>
 
 <!-- BSB_BLOCK: Psalms 119:93-94 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:9fdefbac482968938faa76369b15004b9ba70bd0c8caf20ae04ca2e4be357070 | footnotes-stripped:0 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Psalms 119:93-94</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.119.93-94" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 93">93</sup>I will never forget Your precepts, for by them You have revived me. <sup class="verse-number" aria-label="Verse 94">94</sup>I am Yours; save me, for I have sought Your precepts.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/PSA.119.93-94" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 93">93</sup>I will never forget Your precepts, for by them You have revived me. <sup class="verse-number" aria-label="Verse 94">94</sup>I am Yours; save me, for I have sought Your precepts.</div>
         <div class="verse-commentary">
           <p>Set the two men side by side and the difference is not knowledge. It is weight. Samson's vow had become a fact about him, a story from his childhood, a relic on the side of his head that no longer carried any load. The psalmist talks about the same precepts the way a man under siege talks about the floor holding him up. He digs in them like his life depends on the digging, and look where his hope actually lands. He does not ask the precepts to rescue him. He tells God he belongs to Him, and he asks his Owner for the saving. That is the week's first clarification. The law gives life to the person who leans his weight on it and on the God behind it. Kept at arm's length, the same vow is just hair.</p>
         </div>
-      </div>
+      </figure>
 
-      <div class="section-heading">An X-Ray Never Healed Anyone</div>
+      <h3>An X-Ray Never Healed Anyone</h3>
       <p>Tuesday put the week's hardest sentence on the table. No one will be justified by works of the law. For people raised to think of commandment keeping as the whole point, that lands like a demotion. The longest psalm in the Bible sings one hundred seventy-six verses to a law that apparently cannot save the singer, and Jesus still insisted not one stroke of it would pass away. A law that permanent, and that powerless to justify, needs its actual job named.</p>
 
 <!-- BSB_BLOCK: Romans 3:20 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:f2ba3dba1051e0b9e84528b98e9d574a8d03366f0e10affd1b7e69fc39658db2 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Romans 3:20</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.3.20" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ROM.3.20" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Therefore no one will be justified in His sight by works of the law. For the law merely brings awareness of sin.</div>
         <div class="verse-commentary">
           <p>The week named the job with pictures. The law is the X-ray that resolves a vague ache into a tumor with a location. It is the tuning fork holding one true note in the air so the piano can hear how far it has drifted. It is the building code that explains why the rubble fell, when fate alone explains nothing. None of those tools fixes what it finds, and nobody calls them failures for it, because naming is their whole assignment. Without the law, sin is weather, a background condition we shrug at. With it, sin has a name, an address, and a Surgeon already on the way. The law does not save. It makes us savable, and a diagnosis this accurate is not condemnation. It is the first mercy.</p>
         </div>
-      </div>
+      </figure>
 
-      <div class="section-heading">Saved Without Works, Sorted by Doing</div>
+      <h3>Saved Without Works, Sorted by Doing</h3>
       <p>Wednesday and Thursday look, at first, like a contradiction in back-to-back days. Wednesday announced that a person is justified by faith apart from works of the law. Thursday ended the same Sermon on the Mount with two builders separated by nothing except doing, and pious people saying Lord, Lord being turned away at the door. The week put the freest verse in Paul and the most demanding parable in Matthew a day apart, and it did not blink.</p>
 
 <!-- BSB_BLOCK: John 14:15 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:7531e3fcd0396da6996e4ef23aef58958a1f251d06a04ecd0185f6de2c39c8aa | footnotes-stripped:1 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">John 14:15</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.14.15" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/JHN.14.15" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text"><span class="words-of-jesus">If you love Me, you will keep My commandments.</span></div>
         <div class="verse-commentary">
           <p>This sentence from the upper room is the hinge the week hung both days on. Jesus does not say keep My commandments so that I will love you. The direction never runs that way. Love comes first, and the keeping grows out of it as naturally as the next heartbeat. The grammar itself is less a command than a forecast. Where love for Him is real, obedience follows. So Wednesday stands. Nothing we do buys the verdict, because the obedience that satisfied the law was His. And Thursday stands beside it. The doing Jesus watches for is not a payment plan. It is the pulse of a heart that actually knows Him, which is why the verdict that chills the Lord, Lord crowd is not you never worked. It is "I never knew you."</p>
           <p>That is where the week lands. The law Jesus filled to the brim comes back to us not as a ladder but as a love language. The psalmist sang to it because it kept him alive. Samson recited his and went down to Timnah. The wise builder does the words because he loves the One who said them. What we heard this week is finished. What we do with it starts now.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: John 14:15 | 14:15 Or If you love Me, keep -->
 
-    </div>
+    </section>
 
-    <!-- 4. STILL SPEAKING -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Still Speaking</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Every Reformation Began at the Same Page</div>
+    <section class="section" id="speaking" aria-labelledby="speaking-label">
+      <h2 class="section-label" id="speaking-label">Still Speaking</h2>
+<h3>Every Reformation Began at the Same Page</h3>
       <p>Trace the line through the Old Testament. Every time the people of God recovered their relationship with Him after a long drift, the recovery began the same way. The reformation under Hezekiah started when the priests reopened the temple and read the law again. The reformation under Josiah started when the scroll of the Law was found in the renovation rubble and read aloud to a king who tore his robes when he heard what his ancestors had been ignoring. The prophet Elijah called Israel back to the LORD on Mount Carmel with the question, "How long will you waver between two opinions?" The question was only meaningful if there was a settled standard against which "wavering" could be measured. Jeremiah, walking the streets of a city about to fall, kept appealing to the Scriptures of truth as Israel's richest inheritance. David's strongest years and Solomon's earliest years had one thing in common with all of those moments. They were years in which God's Holy Word was reverenced in the hearts of the people, and that reverence is what gave the nation the strength to fulfill its calling.</p>
       <p>Every reformation in every generation since has followed the same pattern. The Word recovered. The Word read aloud. The Word taken seriously enough to do something about. The Reformation in sixteenth-century Europe started when Tyndale and Luther put the Bible in the hands of farmers and bakers in their own languages. The Great Awakenings in colonial America happened when preachers and people returned to the Book and let it judge them. Every revival in the modern world has been a generation of people opening Scripture again and discovering, sometimes to their alarm, what it actually says. The pattern is so consistent it may as well be a law of spiritual life. God's people drift. The Word is recovered. The people return.</p>
       <p>Our generation is no different. The drift is the drift of every generation. The Word is still on our shelves. The question this week has been planting in our chests is whether we will pick it up not just to know its words but to do them, until the house of our lives is built on the rock the Builder Himself has supplied.</p>
-    </div>
+    </section>
 
-    <!-- 5. CHRIST AT THE CENTER OF THE WEEK -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">Christ at the Center of the Week</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Walk the week's hallway one more time and notice the Face in every room. The Memory Text on Sabbath was sung by a man whose precepts had kept him alive, and the Person those precepts were always pointing at is the One who fulfilled them. Sunday's Samson is the strong man who could not save himself; Christ is the strong Man who emptied Himself and saved us. Monday's Jesus prescribed the surgical cut of the hand and the eye, and the next thing we saw was His own hand and His own eye absorbed in the surgery we deserved. Tuesday's law makes sin known; Christ stood under the law's verdict so that the news of Wednesday could be true. Wednesday's <em>pleroo</em> is one Greek word for everything Jesus did in His life and in His death. Thursday's wise builder dug to the rock; the Rock is Him, and the foundation has been laid for us before we ever picked up the shovel. Friday's reformation pattern has always pointed to a Word that became flesh, the Person at the center of every page. <em>Ten pistin Iesou</em>, the phrase we held in our pocket all of last week, sits next to "the commandments of God" in Revelation 14:12, and now we know how the two belong together. The law tells us what love looks like. The Cross tells us what it cost. The Spirit gives us the power to live the family resemblance.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the Center of the Week</h2>
+<p>Walk the week's hallway one more time and notice the Face in every room. The Memory Text on Sabbath was sung by a man whose precepts had kept him alive, and the Person those precepts were always pointing at is the One who fulfilled them. Sunday's Samson is the strong man who could not save himself; Christ is the strong Man who emptied Himself and saved us. Monday's Jesus prescribed the surgical cut of the hand and the eye, and the next thing we saw was His own hand and His own eye absorbed in the surgery we deserved. Tuesday's law makes sin known; Christ stood under the law's verdict so that the news of Wednesday could be true. Wednesday's <em>pleroo</em> is one Greek word for everything Jesus did in His life and in His death. Thursday's wise builder dug to the rock; the Rock is Him, and the foundation has been laid for us before we ever picked up the shovel. Friday's reformation pattern has always pointed to a Word that became flesh, the Person at the center of every page. <em>Ten pistin Iesou</em>, the phrase we held in our pocket all of last week, sits next to "the commandments of God" in Revelation 14:12, and now we know how the two belong together. The law tells us what love looks like. The Cross tells us what it cost. The Spirit gives us the power to live the family resemblance.</p>
+    </section>
 
-    <!-- 6. WEEKEND PRACTICE -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Weekend Practice</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Weekend Practice</h2>
+<div class="application-card">
         Some time this weekend, before Sabbath closes, take fifteen minutes with one Bible and one open page. Read Exodus 20:3-17 (the Ten) and Matthew 5:17 through 7:29 (the Sermon on the Mount). Take them in that order. Read aloud. Move slowly. Mark with a pencil the one commandment from Exodus 20 and the one paragraph from the Sermon on the Mount that the Holy Spirit underlines for you. Then write, in one sentence each, what you are going to do about each one next week. Not "what I am going to think about." Not "what I would do in a perfect world." What I am going to do, by Friday, in this actual life. Tape the sentence to the dashboard or the bathroom mirror. The Word read becomes the house built when it crosses from the page into the week.
       </div>
-    </div>
+    </section>
 
-    <!-- 7. CLOSING PRAYER FOR THE WEEK -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer for the Week</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we close a week in which You walked us all the way from Sinai to the Sermon on the Mount and showed us, slowly, that they were one Voice speaking the same words. We have seen the Hebrew cabinet of words for our wound, and we have seen Your cabinet of words for the floor You put under our feet, and we have stopped pretending that one is more honest than the other. Thank You for not abolishing Your standard. Thank You for not leaving us under it. Thank You for the Son who filled it full of His own obedience and absorbed its verdict on our behalf, so that Romans 3:28 could read like our own names on a deed. Make us, by Your Spirit, the doing-people the rest of the world needs us to be. Pull our small reformations along the same line every reformation has ever followed: back to the Word, back to its weight, back to the Person it has always been pointing at. The law is not a burden. Your commands are not heavy. Make our hearts light enough to lift them. And keep us, when the storm comes, on the rock that is Your Son. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer for the Week</h2>
+<p>Father, we close a week in which You walked us all the way from Sinai to the Sermon on the Mount and showed us, slowly, that they were one Voice speaking the same words. We have seen the Hebrew cabinet of words for our wound, and we have seen Your cabinet of words for the floor You put under our feet, and we have stopped pretending that one is more honest than the other. Thank You for not abolishing Your standard. Thank You for not leaving us under it. Thank You for the Son who filled it full of His own obedience and absorbed its verdict on our behalf, so that Romans 3:28 could read like our own names on a deed. Make us, by Your Spirit, the doing-people the rest of the world needs us to be. Pull our small reformations along the same line every reformation has ever followed: back to the Word, back to its weight, back to the Person it has always been pointing at. The law is not a burden. Your commands are not heavy. Make our hearts light enough to lift them. And keep us, when the storm comes, on the rock that is Your Son. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+  </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-05-28.html"><span class="day-nav-kicker">← Thursday</span><span class="day-nav-title">Knowing and Doing</span></a><a class="day-nav-item" href="/bible-study/2026-05-30.html"><span class="day-nav-kicker">Saturday →</span><span class="day-nav-title">Repentance and Forgiveness</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

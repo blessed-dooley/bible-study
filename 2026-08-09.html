@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>The Essentialness of Love — Daily Bible Study</title>
 <meta name="study-title" content="The Essentialness of Love">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Part 2 of 7">
+<meta name="study-passage" content="1 Corinthians 13:3">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Day 2 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="The Essentialness of Love">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Part 2 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Day 2 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-08-09.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Part 2 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Day 2 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,313 +38,185 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>The Essentialness of Love</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 7, A Portrait of Love</span>
-      <span>Part 2 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">August 9, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Sun · Aug 9</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">8 min</span>
+    </div>
+    <h1 class="study-title">The Essentialness of Love</h1>
+    <p class="study-sub"><span class="sub-title">A Portrait of Love</span><span class="sub-facts"><span>Lesson 7</span><span>Day 2 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>Paul stacks up the most impressive spiritual résumé imaginable. The languages of angels. Prophecy that sees everything. Faith that relocates mountains. Every possession given away, his own body handed over. Then he runs the total, and it is zero. Nothing. No gain. One missing ingredient bankrupts the whole portfolio, and Jesus adds the quiet warning that this ingredient does not shatter when it dies. It cools. <strong>Love is not the bonus feature of the Christian life. It is the only thing that makes the rest of it count.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday you taped a phrase to your mirror, one line from the famous chapter that stung a little on the way past. We met the blank Greek word the first Christians filled with the love of Jesus, and we agreed to sit for the portrait this week. Today Paul does what any good painter does first. He clears the room. Before a single verb of love goes on the canvas, he removes everything we might pose with, the gifts, the knowledge, the sacrifice, the spiritual trophies, and he shows us what they weigh without love. It is a shorter list than we think.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Paul stacks up the most impressive spiritual résumé imaginable. The languages of angels. Prophecy that sees everything. Faith that relocates mountains. Every possession given away, his own body handed over. Then he runs the total, and it is zero. Nothing. No gain. One missing ingredient bankrupts the whole portfolio, and Jesus adds the quiet warning that this ingredient does not shatter when it dies. It cools. <strong>Love is not the bonus feature of the Christian life. It is the only thing that makes the rest of it count.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday you taped a phrase to your mirror, one line from the famous chapter that stung a little on the way past. We met the blank Greek word the first Christians filled with the love of Jesus, and we agreed to sit for the portrait this week. Today Paul does what any good painter does first. He clears the room. Before a single verb of love goes on the canvas, he removes everything we might pose with, the gifts, the knowledge, the sacrifice, the spiritual trophies, and he shows us what they weigh without love. It is a shorter list than we think.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Generosity Always Sent an Invoice</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>Generosity Always Sent an Invoice</h3>
       <p>Walk through first-century Corinth and read the walls. Carved into stone after stone are the names of givers. This man paved the plaza at his own expense. That man funded the games, repaired the temple roof, fed the city during the shortage. The inscriptions were the receipts of a system historians call benefaction, and it ran the Roman world. A wealthy person gave lavishly, publicly, and the city paid them back in the only currency that mattered, honor. Front-row seats. Statues. Titles read aloud at festivals. Generosity was real, and it was never free. Every gift sent an invoice for glory.</p>
       <p>Now listen to Paul's escalation with Corinthian ears. If I give away everything I own, he writes, even if I hand over my body itself, and love is not the engine underneath, I gain nothing. To a culture where giving everything was the ultimate power move, the surest route to a name carved in stone, that sentence lands like a hammer on marble. Paul is naming the loophole the whole system depended on. You can perform every generous act in the catalog for an audience of admirers and never love a single human being in the process. The city knew how to fund a plaza. It did not know how to want nothing back.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Imagine the church member Corinth would have voted most spiritual. She prays in languages no one has taught her. He explains mysteries that make elders lean forward. Their faith gets results, their giving is legendary, and the whole congregation feels lucky to have them. Paul opens the love chapter (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13" target="_blank" rel="noopener">1 Corinthians 13</a>) by building exactly that person, trait by gleaming trait, and then he asks the question nobody in Corinth thought to ask. What is all of it worth if love is not the thing driving it? His arithmetic is about to be brutal.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Imagine the church member Corinth would have voted most spiritual. She prays in languages no one has taught her. He explains mysteries that make elders lean forward. Their faith gets results, their giving is legendary, and the whole congregation feels lucky to have them. Paul opens the love chapter (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13" target="_blank" rel="noopener">1 Corinthians 13</a>) by building exactly that person, trait by gleaming trait, and then he asks the question nobody in Corinth thought to ask. What is all of it worth if love is not the thing driving it? His arithmetic is about to be brutal.</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 13:3 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:33782eca60957caa8c205c57053921891b2bc7d25b14f49b295b4bdf4194d8a5 | footnotes-stripped:1 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 13:3</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.13.3" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.13.3" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">If I give all I possess to the poor and exult in the surrender of my body, but have not love, I gain nothing.</div>
 <div class="verse-commentary">
-          <p>This is the top of a three-rung ladder, and every rung ends in the same place. Tongues of men and of angels without love are noise (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.1" target="_blank" rel="noopener">1 Corinthians 13:1</a>). Prophecy, all mysteries, all knowledge, mountain-moving faith without love are nothing (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.2" target="_blank" rel="noopener">1 Corinthians 13:2</a>). Then Paul reaches the summit, total generosity, the body itself given over, and the verdict actually gets worse. I gain nothing. Notice he never calls the gifts useless. Tongues are real, prophecy is real, faith and sacrifice are real, and all of them are good. They are useless only when love is not the engine driving them. The résumé was never the problem. The problem is a résumé with no heart behind it, and God, who reads hearts, refuses to be impressed.</p>
+          <p>This is the top of a three-rung ladder, and every rung ends in the same place. Tongues of men and of angels without love are noise (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.1" target="_blank" rel="noopener" data-verse="1-corinthians-13-1" data-ref="1 Corinthians 13:1" aria-expanded="false">1 Corinthians 13:1</a>). Prophecy, all mysteries, all knowledge, mountain-moving faith without love are nothing (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.2" target="_blank" rel="noopener" data-verse="1-corinthians-13-2" data-ref="1 Corinthians 13:2" aria-expanded="false">1 Corinthians 13:2</a>). Then Paul reaches the summit, total generosity, the body itself given over, and the verdict actually gets worse. I gain nothing. Notice he never calls the gifts useless. Tongues are real, prophecy is real, faith and sacrifice are real, and all of them are good. They are useless only when love is not the engine driving them. The résumé was never the problem. The problem is a résumé with no heart behind it, and God, who reads hearts, refuses to be impressed.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: 1 Corinthians 13:3 | 13:3 SBL, NE, BYZ, and TR surrender my body to be burned -->
 
       <p>So what is this love that carries so much weight? Not the word we spend on strawberries and playlists, and not the chemistry the movies sell. The love of this chapter is a grace the Spirit plants, a settled commitment of our actions, our feelings, and our thoughts toward Christ and toward the people in front of us. Affection, charity, virtue, and kindness are its fingerprints, but none of them is the hand. And because this love is living, Jesus warns that it can also die, not with a bang but by degrees.</p>
 
 <!-- BSB_BLOCK: Matthew 24:12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c9078c415230e3bc93da7eaaa4856537f74c424f19cb2ce0a0faa8a697a5d273 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Matthew 24:12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.24.12" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/MAT.24.12" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text"><span class="words-of-jesus">Because of the multiplication of wickedness, the love of most will grow cold.</span></div>
 <div class="verse-commentary">
           <p>Jesus is describing the last days, and the danger He names is not persecution or false teaching. It is temperature. The Greek verb here is <em>psychō</em>, to cool, the word for something hot losing its heat one unnoticed degree at a time. Love rarely dies in an explosion. It dies like coffee on a desk, cooling because it sat untouched while we handled more urgent things. Notice the physics of the verse. Lawlessness multiplies in the world outside, and love loses temperature in the people who were supposed to stay warm. The surrounding cold seeps in wherever love is not actively tended. That is why Paul's arithmetic matters so much. A church can keep every program running at full power, cooling the whole time, and never hear an alarm go off.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Model Home Nobody Ever Lived In</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Model Home Nobody Ever Lived In</h3>
       <p>In every new subdivision there is one house that exists to be walked through. The model home. The builder furnishes it down to the toothbrush cups. Cookies cool on the counter, the fireplace is on, and a paperback waits on the nightstand with a bookmark a third of the way in. None of it is fake, exactly. The oven really bakes. The granite is real granite. But look at the picture frames. The smiling family in them came with the frames, and it is the same family in the next model, and the next. Nothing in this house has ever actually happened. Nobody has burned a grilled cheese here, or waited up past midnight for a teenager's headlights, or fallen asleep mid-sentence on that couch. It has every feature of a home and has never been one, because the one thing it lacks is not a feature. It is people who love each other inside it.</p>
       <p>Paul says a spiritual life can be staged the same way. Tongues, prophecy, mountain-moving faith, generosity arranged where visitors will notice it. All of it real, the way the model's oven is real. And his verdict is not that such a life is a smaller home. It is no home at all. I am nothing, he says. Vacant. Love is not the final upgrade on the spiritual feature list. Love is the family moving in, and it is the only thing that has ever turned a house into a home, or a résumé into a life.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Age That Measured Its Own Cold</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Age That Measured Its Own Cold</h3>
       <p>In June 2025 the World Health Organization's Commission on Social Connection, co-chaired by former United States Surgeon General Vivek Murthy, published a report with a plain title and a grim ledger. It counted something nobody thought could be counted. Roughly one person in six on this planet is lonely. Loneliness and isolation are linked to about 871,000 deaths a year, around a hundred every hour, by raising the risk of stroke, heart disease, and cognitive decline and by doubling the odds of depression. And the coldest rooms are not the ones we would have guessed. The loneliest people on earth right now are the young, with about one in five teenagers and young adults reporting loneliness, a generation carrying phones that can reach anyone alive in under a second. The commission named the paradox itself. In an age when the ways to connect are endless, more and more people are ending up alone.</p>
       <p>Jesus made a forecast about temperature. Because lawlessness would multiply, He said, the love of many would grow cold, and twenty centuries later the cooling has epidemiologists. Sit with what their numbers are actually saying. Our generation holds the greatest connective toolkit in human history, tongues of men and of angels at planetary scale, and a hundred people an hour are dying for lack of the one ingredient the toolkit cannot ship. Nobody is lonely for bandwidth. People are lonely for somebody who is glad they exist, and no network can generate that. It has to walk in the door. Which means the oldest assignment in the church is suddenly urgent public health work. Warm somebody. The world has finished proving Paul's arithmetic. Everything minus love still equals nothing.</p>
       <!-- TODAYS_WORLD_SOURCE: From loneliness to social connection: charting a path to healthier societies | World Health Organization, Commission on Social Connection | 2025 | https://www.who.int/publications/b/79027 -->
-    </div>
+    <details class="disclosure source-disclosure"><summary class="disclosure-summary"><span class="disclosure-label">Source</span> <span class="disclosure-publisher">World Health Organization, Commission on Social Connection</span></summary><div class="disclosure-body"><p><cite>From loneliness to social connection: charting a path to healthier societies</cite>. World Health Organization, Commission on Social Connection, 2025. <a href="https://www.who.int/publications/b/79027" target="_blank" rel="noopener noreferrer">Read the source</a>.</p></div></details></section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>There is one place in history where the whole résumé of 1 Corinthians 13 shows up with the engine intact. At the cross, every item on Paul's list converges. Here is a body given over. Here is everything handed away, not a fortune but a life, down to the seamless robe the soldiers gambled for. And this time the sentence ends differently, because love was driving all of it. He was not performing generosity for an audience of admirers. Most of the audience was mocking Him. He was loving specific people on purpose, the thief beside Him, the soldiers under Him, the friends who had scattered, and us, at the greatest possible cost. The benefactors of Corinth gave to be praised. Christ gave to be with us. That is the difference between charity and love, and it is the difference between gaining nothing and gaining everything He came for.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>There is one place in history where the whole résumé of 1 Corinthians 13 shows up with the engine intact. At the cross, every item on Paul's list converges. Here is a body given over. Here is everything handed away, not a fortune but a life, down to the seamless robe the soldiers gambled for. And this time the sentence ends differently, because love was driving all of it. He was not performing generosity for an audience of admirers. Most of the audience was mocking Him. He was loving specific people on purpose, the thief beside Him, the soldiers under Him, the friends who had scattered, and us, at the greatest possible cost. The benefactors of Corinth gave to be praised. Christ gave to be with us. That is the difference between charity and love, and it is the difference between gaining nothing and gaining everything He came for.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Think of one person who recently got your competence but not your love. You solved their problem, answered their question, did your job. Today, go back for the part you skipped. Send the follow-up text that has no task in it. Ask how they are actually doing, and stay for the answer. One person, one return trip, today.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, Your math unsettles us, and we need it to. We have counted the wrong things for a long time, the abilities, the accomplishments, the acts of service everyone could see, and today You showed us a total we did not expect. Forgive us for every gift we have run without love in the engine. Forgive us for the times someone needed warmth from us and received efficiency instead. And keep us honest about temperature. We do not plan to grow cold. Nobody does. So tend the fire in us daily, Lord, because the world outside is not getting warmer. Fill us with the love that comes only from Your Spirit, the kind that wants nothing back, and aim it at the people You have put within our reach. We would rather be nothing impressive and full of love than everything impressive and empty. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"Looking back, when did someone need love from you more than anything else and get something less (advice when they needed presence, a fix when they needed a friend, silence when they needed a call)? If a moment like that came back around this week, what would doing it with love actually look like?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"Looking back, when did someone need love from you more than anything else and get something less (advice when they needed presence, a fix when they needed a friend, silence when they needed a call)? If a moment like that came back around this week, what would doing it with love actually look like?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, Your math unsettles us, and we need it to. We have counted the wrong things for a long time, the abilities, the accomplishments, the acts of service everyone could see, and today You showed us a total we did not expect. Forgive us for every gift we have run without love in the engine. Forgive us for the times someone needed warmth from us and received efficiency instead. And keep us honest about temperature. We do not plan to grow cold. Nobody does. So tend the fire in us daily, Lord, because the world outside is not getting warmer. Fill us with the love that comes only from Your Spirit, the kind that wants nothing back, and aim it at the people You have put within our reach. We would rather be nothing impressive and full of love than everything impressive and empty. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-08-08.html"><span class="day-nav-kicker">← Saturday</span><span class="day-nav-title">A Portrait of Love</span></a><a class="day-nav-item" href="/bible-study/2026-08-10.html"><span class="day-nav-kicker">Monday →</span><span class="day-nav-title">What Love Does</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"1-corinthians-13-1":{"ref":"1 Corinthians 13:1","text":"If I speak in the tongues of men and of angels, but have not love, I am only a ringing gong or a clanging cymbal.","bibleUrl":"https://www.bible.com/bible/3034/1CO.13.1"},"1-corinthians-13-2":{"ref":"1 Corinthians 13:2","text":"If I have the gift of prophecy and can fathom all mysteries and all knowledge, and if I have absolute faith so as to move mountains, but have not love, I am nothing.","bibleUrl":"https://www.bible.com/bible/3034/1CO.13.2"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

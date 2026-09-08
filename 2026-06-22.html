@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Finally, Face-to-Face — Daily Bible Study</title>
 <meta name="study-title" content="Finally, Face-to-Face">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 13, Into Eternity · Part 3 of 7">
+<meta name="study-passage" content="Philippians 3:20-21">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 13, Into Eternity · Day 3 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Finally, Face-to-Face">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 13, Into Eternity · Part 3 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 13, Into Eternity · Day 3 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-06-22.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 13, Into Eternity · Part 3 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 13, Into Eternity · Day 3 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,333 +38,207 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Finally, Face-to-Face</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 13, Into Eternity</span>
-      <span>Part 3 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">June 22, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Mon · Jun 22</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
+    </div>
+    <h1 class="study-title">Finally, Face-to-Face</h1>
+    <p class="study-sub"><span class="sub-title">Into Eternity</span><span class="sub-facts"><span>Lesson 13</span><span>Day 3 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>You have prayed to Him for years without hearing a voice back. You have read about Him, sung to Him, defended Him to a skeptical coworker, never once seeing His face. Today the Bible promises that distance ends. A dark cloud appears in the east, every eye turns at once, the graves of those who loved Him crack open, and His people rise to meet the One they have known only by faith. The point is not the spectacle. It is the reunion. <strong>One day we will see the face we have loved without seeing, and it will have been worth every year of the wait.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday we learned to pray the songwriter's prayer in a frightening age: "cause Your face to shine upon us." It is a prayer for nearness, for a God who turns toward us instead of away. But there is a day coming when that prayer graduates from words into sight. The shining face we ask for now, and trust by faith we already have, we will one day see with our own eyes. Sunday taught us to live today as people whose God has turned toward them. Today shows us where that turning is finally headed: a face-to-face reunion that the whole Bible has been quietly building toward from its first pages.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>You have prayed to Him for years without hearing a voice back. You have read about Him, sung to Him, defended Him to a skeptical coworker, never once seeing His face. Today the Bible promises that distance ends. A dark cloud appears in the east, every eye turns at once, the graves of those who loved Him crack open, and His people rise to meet the One they have known only by faith. The point is not the spectacle. It is the reunion. <strong>One day we will see the face we have loved without seeing, and it will have been worth every year of the wait.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday we learned to pray the songwriter's prayer in a frightening age: "cause Your face to shine upon us." It is a prayer for nearness, for a God who turns toward us instead of away. But there is a day coming when that prayer graduates from words into sight. The shining face we ask for now, and trust by faith we already have, we will one day see with our own eyes. Sunday taught us to live today as people whose God has turned toward them. Today shows us where that turning is finally headed: a face-to-face reunion that the whole Bible has been quietly building toward from its first pages.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Highest Privilege Was to See the King's Face</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Highest Privilege Was to See the King's Face</h3>
       <p>In the ancient royal courts, the single greatest honor a person could hold was access to the king's face. The Persian Empire even had a formal inner circle, "the seven princes who had access to the king and were highest in the kingdom," described literally as the ones who "saw the king's face." To see the face was to have standing, favor, the right to walk into the throne room and be heard. To be cut off from it was the harshest non-lethal punishment imaginable. When Absalom returned to Jerusalem in disgrace, the sentence on him was precise and cruel: he could live in the city, but he "must not see my face." For two years he lived blocks from his father and was forbidden the one thing he wanted.</p>
       <p>That is the world the Bible's language about seeing God's face comes out of. A face turned toward you meant you were welcomed, secure, family. A face turned away meant exile. For most of human history, even the most devout believer lived like Absalom in the good sense and the hard sense at once: inside the kingdom, genuinely loved, but never yet permitted to actually look at the King. Today's reading announces the end of that long wait. The exile from God's face, opened back in a garden, is about to close forever.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>We were built for closeness with God from the very first breath, when He shaped a body from dust and breathed life into it (<a class="vlink" href="https://www.bible.com/bible/3034/GEN.2.7" target="_blank" rel="noopener">Genesis 2:7</a>). Sin tore that closeness apart, and ever since, God has spent everything to win it back, up to and including His own Son (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.3.16" target="_blank" rel="noopener">John 3:16</a>). He even planted a homesickness for forever inside us that nothing in this life can satisfy (<a class="vlink" href="https://www.bible.com/bible/3034/ECC.3.11" target="_blank" rel="noopener">Ecclesiastes 3:11</a>). Today's passage traces where that long rescue is heading: not just to forgiveness, but to a face-to-face reunion.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>We were built for closeness with God from the very first breath, when He shaped a body from dust and breathed life into it (<a class="vlink" href="https://www.bible.com/bible/3034/GEN.2.7" target="_blank" rel="noopener" data-verse="genesis-2-7" data-ref="Genesis 2:7" aria-expanded="false">Genesis 2:7</a>). Sin tore that closeness apart, and ever since, God has spent everything to win it back, up to and including His own Son (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.3.16" target="_blank" rel="noopener" data-verse="john-3-16" data-ref="John 3:16" aria-expanded="false">John 3:16</a>). He even planted a homesickness for forever inside us that nothing in this life can satisfy (<a class="vlink" href="https://www.bible.com/bible/3034/ECC.3.11" target="_blank" rel="noopener" data-verse="ecclesiastes-3-11" data-ref="Ecclesiastes 3:11" aria-expanded="false">Ecclesiastes 3:11</a>). Today's passage traces where that long rescue is heading: not just to forgiveness, but to a face-to-face reunion.</p>
 
 <!-- BSB_BLOCK: Philippians 3:20-21 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c95b1e201b5089283e287ee3dd5eb877b1a5b984e4b5a5be67b8097a0df09eb2 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Philippians 3:20-21</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/PHP.3.20-21" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 20">20</sup>But our citizenship is in heaven, and we eagerly await a Savior from there, the Lord Jesus Christ, <sup class="verse-number" aria-label="Verse 21">21</sup>who, by the power that enables Him to subject all things to Himself, will transform our lowly bodies to be like His glorious body.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/PHP.3.20-21" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 20">20</sup>But our citizenship is in heaven, and we eagerly await a Savior from there, the Lord Jesus Christ, <sup class="verse-number" aria-label="Verse 21">21</sup>who, by the power that enables Him to subject all things to Himself, will transform our lowly bodies to be like His glorious body.</div>
 <div class="verse-commentary">
-          <p>Paul tells a group of people living in a Roman colony that their real citizenship is somewhere else, and that they are "eagerly waiting" for a Savior to arrive from their true home. The word for waiting carries the picture of someone craning their neck, watching the road. And what arrives is not just rescue from this world but the upgrade of these very bodies, the tired, aching, dying ones, remade in the likeness of His own. This is not the soul floating off while the body rots, the way the Greeks imagined it. It is resurrection, the whole person restored. The same power that will one day bring every knee in the universe to the ground (<a class="vlink" href="https://www.bible.com/bible/3034/PHP.2.10-11" target="_blank" rel="noopener">Philippians 2:10-11</a>) is the power He will gently use to fix what is broken in you. Heaven is not where we escape our bodies. It is where we finally get them back the way they were meant to be.</p>
+          <p>Paul tells a group of people living in a Roman colony that their real citizenship is somewhere else, and that they are "eagerly waiting" for a Savior to arrive from their true home. The word for waiting carries the picture of someone craning their neck, watching the road. And what arrives is not just rescue from this world but the upgrade of these very bodies, the tired, aching, dying ones, remade in the likeness of His own. This is not the soul floating off while the body rots, the way the Greeks imagined it. It is resurrection, the whole person restored. The same power that will one day bring every knee in the universe to the ground (<a class="vlink" href="https://www.bible.com/bible/3034/PHP.2.10-11" target="_blank" rel="noopener" data-verse="philippians-2-10-11" data-ref="Philippians 2:10-11" aria-expanded="false">Philippians 2:10-11</a>) is the power He will gently use to fix what is broken in you. Heaven is not where we escape our bodies. It is where we finally get them back the way they were meant to be.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: 1 Thessalonians 4:16-17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:9ed296da27a4117ef317dd0ead6ae33dc0e4e4d6ce454121e8538739dad5e214 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Thessalonians 4:16-17</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1TH.4.16-17" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 16">16</sup>For the Lord Himself will descend from heaven with a loud command, with the voice of an archangel, and with the trumpet of God, and the dead in Christ will be the first to rise. <sup class="verse-number" aria-label="Verse 17">17</sup>After that, we who are alive and remain will be caught up together with them in the clouds to meet the Lord in the air. And so we will always be with the Lord.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1TH.4.16-17" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 16">16</sup>For the Lord Himself will descend from heaven with a loud command, with the voice of an archangel, and with the trumpet of God, and the dead in Christ will be the first to rise. <sup class="verse-number" aria-label="Verse 17">17</sup>After that, we who are alive and remain will be caught up together with them in the clouds to meet the Lord in the air. And so we will always be with the Lord.</div>
 <div class="verse-commentary">
-          <p>This is the moment the whole reading has been climbing toward. A cloud appears in the east, and on it sits One like the Son of Man, crowned (<a class="vlink" href="https://www.bible.com/bible/3034/REV.14.14" target="_blank" rel="noopener">Revelation 14:14</a>), surrounded by uncountable angels (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.25.31" target="_blank" rel="noopener">Matthew 25:31</a>). But look at Paul's verbs: descend, shout, rise, caught up, meet. This is not God evacuating a few souls off a doomed planet. It is a King coming down to collect His people in person. His voice is loud enough to wake the dead (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.5.28" target="_blank" rel="noopener">John 5:28</a> says all in the graves will hear that voice), and it opens the tombs of everyone who fell asleep trusting Him. Then the living and the raised go up together. The phrase that matters most is the last one: "so we will always be with the Lord." The point of His coming is not the clouds. It is the togetherness that never ends.</p>
+          <p>This is the moment the whole reading has been climbing toward. A cloud appears in the east, and on it sits One like the Son of Man, crowned (<a class="vlink" href="https://www.bible.com/bible/3034/REV.14.14" target="_blank" rel="noopener" data-verse="revelation-14-14" data-ref="Revelation 14:14" aria-expanded="false">Revelation 14:14</a>), surrounded by uncountable angels (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.25.31" target="_blank" rel="noopener" data-verse="matthew-25-31" data-ref="Matthew 25:31" aria-expanded="false">Matthew 25:31</a>). But look at Paul's verbs: descend, shout, rise, caught up, meet. This is not God evacuating a few souls off a doomed planet. It is a King coming down to collect His people in person. His voice is loud enough to wake the dead (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.5.28" target="_blank" rel="noopener" data-verse="john-5-28" data-ref="John 5:28" aria-expanded="false">John 5:28</a> says all in the graves will hear that voice), and it opens the tombs of everyone who fell asleep trusting Him. Then the living and the raised go up together. The phrase that matters most is the last one: "so we will always be with the Lord." The point of His coming is not the clouds. It is the togetherness that never ends.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Revelation 1:7 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:3a3dde0e56494de5092f6dce21dcbde3d12dcc1c477da05579d3681ed3450ee9 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Revelation 1:7</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/REV.1.7" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/REV.1.7" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Behold, He is coming with the clouds, and every eye will see Him—even those who pierced Him. And all the tribes of the earth will mourn because of Him. So shall it be! Amen.</div>
 <div class="verse-commentary">
           <p>"Every eye will see Him." Not a select few, not a private vision, not a rumor people will have to take on faith. The most public event in the history of the world. For those who pierced Him and never turned, the sight brings mourning, because the One they refused turns out to be exactly who He said He was. But for those who have loved Him from a distance, this same instant is the answer to a lifetime of longing. The difference between dread and joy on that day is not whether you see Him; everyone sees Him. The difference is whether the face you finally see is the face of a Stranger you ignored or the face of a Friend you have been waiting for.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Revelation 22:4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:cbd36c9239fb33851ea4645e59ff6fc5715370be11f0b9fa839780290b35e9be | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Revelation 22:4</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/REV.22.4" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/REV.22.4" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">They will see His face, and His name will be on their foreheads.</div>
 <div class="verse-commentary">
-          <p>These five words hold the deepest promise in the Bible. "They will see his face." The Greek word for face here is <em>prosopon</em>, the actual front of a person, the part that smiles or weeps and tells you what is going on inside. Back in the garden, Adam and Eve hid. Moses was told no one could see God's face and live. The whole Bible is a face turned away by sin and a God moving heaven and earth to turn it back. And here, on the last page, the exile ends. We will look into His face, and His name will be written for all to see, marking us forever as His. We can stake everything on this, because the God who promised it is faithful and true (<a class="vlink" href="https://www.bible.com/bible/3034/REV.22.6" target="_blank" rel="noopener">Revelation 22:6</a>). The face we prayed toward in the dark, we will finally see in the light.</p>
+          <p>These five words hold the deepest promise in the Bible. "They will see his face." The Greek word for face here is <em>prosopon</em>, the actual front of a person, the part that smiles or weeps and tells you what is going on inside. Back in the garden, Adam and Eve hid. Moses was told no one could see God's face and live. The whole Bible is a face turned away by sin and a God moving heaven and earth to turn it back. And here, on the last page, the exile ends. We will look into His face, and His name will be written for all to see, marking us forever as His. We can stake everything on this, because the God who promised it is faithful and true (<a class="vlink" href="https://www.bible.com/bible/3034/REV.22.6" target="_blank" rel="noopener" data-verse="revelation-22-6" data-ref="Revelation 22:6" aria-expanded="false">Revelation 22:6</a>). The face we prayed toward in the dark, we will finally see in the light.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Letters on the Kitchen Table</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Letters on the Kitchen Table</h3>
       <p>There was a time when people kept whole friendships alive for years entirely through letters. A pen pal across an ocean. A soldier and the family back home. Two old friends in different cities who wrote every week. You would know the person's handwriting before you ever knew their voice. You would learn how their mind worked, what made them laugh, what they were afraid of, all of it carried in ink across a great distance. You could love someone deeply and genuinely that way. But every letter-writer knows the same ache. It was never quite enough. You were always reading words about them instead of looking at them, and some part of you was always waiting for the day the train pulled in and the letters finally had a face.</p>
       <p>That is the relationship we have had with Jesus this whole quarter. We have known Him truly, the way you can truly know a faithful correspondent, through His letters to us and our prayers sent back the other way. We have learned His heart, leaned on Him, loved Him. But we have been doing it in the dim light, reading words about Him, waiting. Monday's promise is that the waiting ends. One day the long correspondence closes, the train finally pulls in, and the One we have loved without ever once seeing is simply there in front of us, looking back. The letters were real. The face is better.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Face the Screen Could Not Carry</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Face the Screen Could Not Carry</h3>
       <p>A few years ago a Yale neuroscientist named Joy Hirsch put two people in conversation and watched their brains in real time. When the two talked face to face, whole networks lit up, the regions that read a smile, hold eye contact, and track what another person is feeling, firing in a kind of synchronized dance between the two skulls. Then she sat the same people down to talk over a video call, the way most of us now do for work and for family. The signal collapsed. The brain regions that read a face went quiet. Her conclusion was blunt: an image of a face on a screen does not have the same "privileged access" to our social wiring that a real, present face does.</p>
       <p>We half-knew that already. It is why a video call with someone you love is genuinely good and still leaves you a little hungry, why grandparents will drive four hours to hold a baby they video-chat with every week. We were wired for presence, and a screen, however sharp, is still glass. That is the ache underneath this whole quarter. We have known Jesus truly, but through the glass of prayer and Scripture, never yet face to face. The promise on the last pages of the Bible is that the glass comes down. "They will see his face." The day is coming when the One we have loved through a screen of faith will simply be there, in the room, in person, and our hearts will finally get what they were built for.</p>
-    </div>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Why can we be sure the face we see will be a Friend's and not a stranger's? Because of what that face has already been through for us. Revelation says every eye will see "those who pierced Him," and that the Lamb still bears the marks. The hands that will reach down to lift us up are scarred hands. The reason the reunion is even possible is that the King did not wait in His palace for us to earn an audience. He left it. He came down the first time not on a cloud of glory but as a baby in a feed trough, and He walked straight into the exile we created, all the way to a cross where the Father's face turned away from Him. He absorbed the banishment we deserved so the face could be turned permanently toward us. The second coming is loud and bright, but it is only the sequel. The face-to-face reunion was purchased on a quiet, dark Friday when the only face turned away in the universe was His.</p>
+    </section>
+
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
+        Think of one believer you love who has already died. Today, picture the specific moment <a class="vlink" href="https://www.bible.com/bible/3034/1TH.4.16-17" target="_blank" rel="noopener" data-verse="1-thessalonians-4-16-17" data-ref="1 Thessalonians 4:16-17" aria-expanded="false">1 Thessalonians 4:16-17</a> describes: their grave opening at the sound of His voice, the two of you lifted up together, both of you seeing His face at the same instant. Let that scene be real for sixty seconds instead of abstract. Then write that person's name next to the words "see His face" somewhere you will keep, as a reminder that for those who are His, death set the reunion date, it did not cancel it.
       </div>
-      <p>Why can we be sure the face we see will be a Friend's and not a stranger's? Because of what that face has already been through for us. Revelation says every eye will see "those who pierced Him," and that the Lamb still bears the marks. The hands that will reach down to lift us up are scarred hands. The reason the reunion is even possible is that the King did not wait in His palace for us to earn an audience. He left it. He came down the first time not on a cloud of glory but as a baby in a feed trough, and He walked straight into the exile we created, all the way to a cross where the Father's face turned away from Him. He absorbed the banishment we deserved so the face could be turned permanently toward us. The second coming is loud and bright, but it is only the sequel. The face-to-face reunion was purchased on a quiet, dark Friday when the only face turned away in the universe was His.</p>
-    </div>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
-        Think of one believer you love who has already died. Today, picture the specific moment <a class="vlink" href="https://www.bible.com/bible/3034/1TH.4.16-17" target="_blank" rel="noopener">1 Thessalonians 4:16-17</a> describes: their grave opening at the sound of His voice, the two of you lifted up together, both of you seeing His face at the same instant. Let that scene be real for sixty seconds instead of abstract. Then write that person's name next to the words "see His face" somewhere you will keep, as a reminder that for those who are His, death set the reunion date, it did not cancel it.
-      </div>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"When you imagine actually seeing Jesus face-to-face, what do you honestly expect to feel first (joy, relief, shame, awe, something else)? And how does knowing that the face you will see belongs to the One who was pierced for you change what you expect?"</div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Lord Jesus, we have loved You without ever seeing You, and most days we do not even realize how strange and wonderful that is. Thank You that the distance is temporary. Thank You that You are coming back in person, that Your voice will empty the graves, and that the face we have prayed toward in the dark we will one day look into in the light. Keep that reunion in front of us this week. When grief and waiting press in, remind us that for those who are Yours, the date is set and the wait is worth it. We eagerly wait for You, our Savior. In Jesus' name, Amen.</p>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Lord Jesus, we have loved You without ever seeing You, and most days we do not even realize how strange and wonderful that is. Thank You that the distance is temporary. Thank You that You are coming back in person, that Your voice will empty the graves, and that the face we have prayed toward in the dark we will one day look into in the light. Keep that reunion in front of us this week. When grief and waiting press in, remind us that for those who are Yours, the date is set and the wait is worth it. We eagerly wait for You, our Savior. In Jesus' name, Amen.</p>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"When you imagine actually seeing Jesus face-to-face, what do you honestly expect to feel first (joy, relief, shame, awe, something else)? And how does knowing that the face you will see belongs to the One who was pierced for you change what you expect?"</div>
-    </div>
-
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-06-21.html"><span class="day-nav-kicker">← Sunday</span><span class="day-nav-title">Living Today</span></a><a class="day-nav-item" href="/bible-study/2026-06-23.html"><span class="day-nav-kicker">Tuesday →</span><span class="day-nav-title">The Bride</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"genesis-2-7":{"ref":"Genesis 2:7","text":"Then the LORD God formed man from the dust of the ground and breathed the breath of life into his nostrils, and the man became a living being.","bibleUrl":"https://www.bible.com/bible/3034/GEN.2.7"},"john-3-16":{"ref":"John 3:16","text":"For God so loved the world that He gave His one and only Son, that everyone who believes in Him shall not perish but have eternal life.","bibleUrl":"https://www.bible.com/bible/3034/JHN.3.16"},"ecclesiastes-3-11":{"ref":"Ecclesiastes 3:11","text":"He has made everything beautiful in its time. He has also set eternity in the hearts of men, yet they cannot fathom the work that God has done from beginning to end.","bibleUrl":"https://www.bible.com/bible/3034/ECC.3.11"},"philippians-2-10-11":{"ref":"Philippians 2:10-11","text":"that at the name of Jesus every knee should bow, in heaven and on earth and under the earth, and every tongue confess that Jesus Christ is Lord, to the glory of God the Father.","bibleUrl":"https://www.bible.com/bible/3034/PHP.2.10-11"},"revelation-14-14":{"ref":"Revelation 14:14","text":"And I looked and saw a white cloud, and seated on the cloud was One like the Son of Man, with a golden crown on His head and a sharp sickle in His hand.","bibleUrl":"https://www.bible.com/bible/3034/REV.14.14"},"matthew-25-31":{"ref":"Matthew 25:31","text":"When the Son of Man comes in His glory, and all the angels with Him, He will sit on His glorious throne.","bibleUrl":"https://www.bible.com/bible/3034/MAT.25.31"},"john-5-28":{"ref":"John 5:28","text":"Do not be amazed at this, for the hour is coming when all who are in their graves will hear His voice","bibleUrl":"https://www.bible.com/bible/3034/JHN.5.28"},"revelation-22-6":{"ref":"Revelation 22:6","text":"Then the angel said to me, \u201cThese words are faithful and true. The Lord, the God of the spirits of the prophets, has sent His angel to show His servants what must soon take place.\u201d","bibleUrl":"https://www.bible.com/bible/3034/REV.22.6"},"1-thessalonians-4-16-17":{"ref":"1 Thessalonians 4:16-17","text":"For the Lord Himself will descend from heaven with a loud command, with the voice of an archangel, and with the trumpet of God, and the dead in Christ will be the first to rise. After that, we who are alive and remain will be caught up together with them in the clouds to meet the Lord in the air. And so we will always be with the Lord.","bibleUrl":"https://www.bible.com/bible/3034/1TH.4.16-17"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

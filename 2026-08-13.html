@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Faith, Hope, and Love — Daily Bible Study</title>
 <meta name="study-title" content="Faith, Hope, and Love">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Part 6 of 7">
+<meta name="study-passage" content="1 Corinthians 13:8">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Day 6 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Faith, Hope, and Love">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Part 6 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Day 6 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-08-13.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Part 6 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 7, A Portrait of Love · Day 6 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,326 +38,199 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Faith, Hope, and Love</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 7, A Portrait of Love</span>
-      <span>Part 6 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">August 13, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Thu · Aug 13</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
+    </div>
+    <h1 class="study-title">Faith, Hope, and Love</h1>
+    <p class="study-sub"><span class="sub-title">A Portrait of Love</span><span class="sub-facts"><span>Lesson 7</span><span>Day 6 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>Paul ends the love chapter at the end of the world. Prophecy has finished its work. Tongues have gone quiet. The partial knowledge we prized has been swallowed up by knowing fully, and the dim bronze mirror has finally turned face to face. Almost everything the Corinthians were fighting over turns out to have an expiration date. Three things walk across that horizon intact, faith, hope, and love, and Paul crowns the third. <strong>The gifts are for now. Faith and hope carry us home. Love is the one thing we will still be doing forever.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday the portrait turned out to be looking back at us. We watched every verb of the love chapter come alive in Jesus, patient with the worst of sinners, believing an apostle into existence inside a persecutor, loving His own to the end. One question remains, and it is the question we ask about everything precious. How long does it last? Paul answers today by fast-forwarding the film past prophecy, past tongues, past knowledge itself, all the way to the edge of eternity, and then he shows us what is still standing there. The answer is shorter than the Corinthians expected, and better.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Paul ends the love chapter at the end of the world. Prophecy has finished its work. Tongues have gone quiet. The partial knowledge we prized has been swallowed up by knowing fully, and the dim bronze mirror has finally turned face to face. Almost everything the Corinthians were fighting over turns out to have an expiration date. Three things walk across that horizon intact, faith, hope, and love, and Paul crowns the third. <strong>The gifts are for now. Faith and hope carry us home. Love is the one thing we will still be doing forever.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday the portrait turned out to be looking back at us. We watched every verb of the love chapter come alive in Jesus, patient with the worst of sinners, believing an apostle into existence inside a persecutor, loving His own to the end. One question remains, and it is the question we ask about everything precious. How long does it last? Paul answers today by fast-forwarding the film past prophecy, past tongues, past knowledge itself, all the way to the edge of eternity, and then he shows us what is still standing there. The answer is shorter than the Corinthians expected, and better.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Finest Mirror Still Showed a Shadow</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Finest Mirror Still Showed a Shadow</h3>
       <p>A bride in Corinth tilts a polished disc of bronze toward the window light and studies the warm, wavering shape looking back at her. It is the best reflection money can buy. Corinth's workshops turned out bronze mirrors prized across the empire, ground flat, polished for hours with fine abrasives until they gleamed like honey. And even the finest of them could not do what the cheapest glass mirror does today. The image came back dim, tinted, slightly bent, a shadow of a face rather than a face. Every Corinthian who owned one knew the peculiar frustration of almost seeing yourself.</p>
       <p>So when Paul writes that for now we see only a reflection as in a mirror, but then face to face, he is not reaching for an exotic image. He is picking up the pride of local industry and telling the truth about it. Your best look at ultimate things, he says, your sharpest prophecy, your deepest study, is a Corinthian mirror, real but dim, true but partial. The gap between the bronze blur and a face across the table is the gap between what we know of God now and what is coming. The mirror was never the destination. It existed to keep you looking until the door opened and the Face walked in.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Everything the Corinthians ranked each other by came stamped with a date they could not read. That is the quiet bombshell at the end of the love chapter. The gifts they treated as permanent trophies were temporary tools, issued for the church's construction season and scheduled for retirement the moment the work is done. Paul is not diminishing the gifts. He spent two chapters honoring them. He is measuring them against eternity, and against the one thing in the room that eternity will not touch.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Everything the Corinthians ranked each other by came stamped with a date they could not read. That is the quiet bombshell at the end of the love chapter. The gifts they treated as permanent trophies were temporary tools, issued for the church's construction season and scheduled for retirement the moment the work is done. Paul is not diminishing the gifts. He spent two chapters honoring them. He is measuring them against eternity, and against the one thing in the room that eternity will not touch.</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 13:8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:25cbe721f63aa8c5cf961371a4010176bb09ca6465ced458b9968ad40597f821 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 13:8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.13.8" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.13.8" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Love never fails. But where there are prophecies, they will cease; where there are tongues, they will be restrained; where there is knowledge, it will be dismissed.</div>
 <div class="verse-commentary">
-          <p>The Greek behind never ends is the verb <em>piptō</em>, to fall, and Paul puts it in the strongest form he has. Love never falls. Buildings fall, empires fall, and every gift on Corinth's trophy shelf will one day stand down, not because the gifts fail but because they finish. Prophecy is a flashlight for a dark road, unnecessary at sunrise. Tongues are for a church still gathering the nations. Knowledge, the partial kind we piece together now, retires the moment the full picture arrives, when the perfect comes and the partial goes (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.10" target="_blank" rel="noopener">1 Corinthians 13:10</a>). The gifts cease only when the purpose they exist for is fulfilled. Love has no such clause in its contract, because love is not a tool for reaching the goal. Love is the goal. Scaffolding comes down. The building stays.</p>
+          <p>The Greek behind never ends is the verb <em>piptō</em>, to fall, and Paul puts it in the strongest form he has. Love never falls. Buildings fall, empires fall, and every gift on Corinth's trophy shelf will one day stand down, not because the gifts fail but because they finish. Prophecy is a flashlight for a dark road, unnecessary at sunrise. Tongues are for a church still gathering the nations. Knowledge, the partial kind we piece together now, retires the moment the full picture arrives, when the perfect comes and the partial goes (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.10" target="_blank" rel="noopener" data-verse="1-corinthians-13-10" data-ref="1 Corinthians 13:10" aria-expanded="false">1 Corinthians 13:10</a>). The gifts cease only when the purpose they exist for is fulfilled. Love has no such clause in its contract, because love is not a tool for reaching the goal. Love is the goal. Scaffolding comes down. The building stays.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: 1 Corinthians 13:12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:8ec162ba363b92625988fdd3a4559857271b67e49ee6c870ef35a93a60553639 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 13:12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.13.12" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.13.12" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Now we see but a dim reflection as in a mirror; then we shall see face to face. Now I know in part; then I shall know fully, even as I am fully known.</div>
 <div class="verse-commentary">
           <p>Here is the timeline behind the whole day. Now, and then. Now is the bronze mirror, the dim tinted almost-image, and Paul includes himself in it. I know in part, says the man who wrote a third of the New Testament. Then is face to face, a phrase Scripture saves for its most staggering promises, and very soon it will be literal. We will see our Lord, not a reflection of Him, not a doctrine about Him, Him. And catch the last clause, because it is the best one. I will know fully, as I am fully known. We are not walking toward a stranger. We are walking toward Someone who has known us completely the whole time, through every day we understood so little, and loved us anyway. The mirror ends. The knowing does not. It finally runs both directions.</p>
         </div>
-      </div>
+      </figure>
 
-      <p>So what happens to faith and hope when sight arrives? In one sense they graduate. Faith, the walking-without-seeing kind (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.5.7" target="_blank" rel="noopener">2 Corinthians 5:7</a>), gives way to sight, and hope, which by definition waits for what it cannot yet see (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.8.24" target="_blank" rel="noopener">Romans 8:24</a>), finally holds what it waited for. Yet neither one simply vanishes. Faith as trust, the believing that God credited to Abraham as righteousness (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.4.3" target="_blank" rel="noopener">Romans 4:3</a>), and hope as the appetite for new delights in a new earth will mark the redeemed forever. Trusting and anticipating are what living creatures do with an infinite God. Still, Paul ranks them, and the reason is worth the whole chapter. Faith and hope are how creatures hold on to God. Love is what God is.</p>
+      <p>So what happens to faith and hope when sight arrives? In one sense they graduate. Faith, the walking-without-seeing kind (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.5.7" target="_blank" rel="noopener" data-verse="2-corinthians-5-7" data-ref="2 Corinthians 5:7" aria-expanded="false">2 Corinthians 5:7</a>), gives way to sight, and hope, which by definition waits for what it cannot yet see (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.8.24" target="_blank" rel="noopener" data-verse="romans-8-24" data-ref="Romans 8:24" aria-expanded="false">Romans 8:24</a>), finally holds what it waited for. Yet neither one simply vanishes. Faith as trust, the believing that God credited to Abraham as righteousness (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.4.3" target="_blank" rel="noopener" data-verse="romans-4-3" data-ref="Romans 4:3" aria-expanded="false">Romans 4:3</a>), and hope as the appetite for new delights in a new earth will mark the redeemed forever. Trusting and anticipating are what living creatures do with an infinite God. Still, Paul ranks them, and the reason is worth the whole chapter. Faith and hope are how creatures hold on to God. Love is what God is.</p>
 
 <!-- BSB_BLOCK: Romans 5:1-5 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:d734531a0d793e34334ef4bba3427da471b37ad2491d4b170465444f52b7dc8e | footnotes-stripped:2 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Romans 5:1-5</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.5.1-5" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup>Therefore, since we have been justified through faith, we have peace with God through our Lord Jesus Christ, <sup class="verse-number" aria-label="Verse 2">2</sup>through whom we have gained access by faith into this grace in which we stand. And we rejoice in the hope of the glory of God. <sup class="verse-number" aria-label="Verse 3">3</sup>Not only that, but we also rejoice in our sufferings, because we know that suffering produces perseverance; <sup class="verse-number" aria-label="Verse 4">4</sup>perseverance, character; and character, hope. <sup class="verse-number" aria-label="Verse 5">5</sup>And hope does not disappoint us, because God has poured out His love into our hearts through the Holy Spirit, whom He has given us.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ROM.5.1-5" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 1">1</sup>Therefore, since we have been justified through faith, we have peace with God through our Lord Jesus Christ, <sup class="verse-number" aria-label="Verse 2">2</sup>through whom we have gained access by faith into this grace in which we stand. And we rejoice in the hope of the glory of God. <sup class="verse-number" aria-label="Verse 3">3</sup>Not only that, but we also rejoice in our sufferings, because we know that suffering produces perseverance; <sup class="verse-number" aria-label="Verse 4">4</sup>perseverance, character; and character, hope. <sup class="verse-number" aria-label="Verse 5">5</sup>And hope does not disappoint us, because God has poured out His love into our hearts through the Holy Spirit, whom He has given us.</div>
 <div class="verse-commentary">
-          <p>The triad was never Paul's private signature for one letter. It is how the early church talked about the whole Christian life, faith and love in Ephesus (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.1.15" target="_blank" rel="noopener">Ephesians 1:15</a>) with eyes opened to hope (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.1.18" target="_blank" rel="noopener">Ephesians 1:18</a>), one body walking in one hope, one faith, one love (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.4.1-5" target="_blank" rel="noopener">Ephesians 4:1-5</a>), faith working through love while hope waits eagerly (<a class="vlink" href="https://www.bible.com/bible/3034/GAL.5.5-6" target="_blank" rel="noopener">Galatians 5:5, 6</a>). And here in Romans the three are shown growing in real soil. Faith brings peace with God. Affliction, of all things, gets worked into endurance, character, and hope. Then the chain ends at its power source, God's love poured out in our hearts by the Spirit. The triad is not three separate achievements. It is one life, and love is the part of it that is most like God Himself (<a class="vlink" href="https://www.bible.com/bible/3034/1JN.4.8" target="_blank" rel="noopener">1 John 4:8</a>).</p>
+          <p>The triad was never Paul's private signature for one letter. It is how the early church talked about the whole Christian life, faith and love in Ephesus (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.1.15" target="_blank" rel="noopener" data-verse="ephesians-1-15" data-ref="Ephesians 1:15" aria-expanded="false">Ephesians 1:15</a>) with eyes opened to hope (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.1.18" target="_blank" rel="noopener" data-verse="ephesians-1-18" data-ref="Ephesians 1:18" aria-expanded="false">Ephesians 1:18</a>), one body walking in one hope, one faith, one love (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.4.1-5" target="_blank" rel="noopener" data-verse="ephesians-4-1-5" data-ref="Ephesians 4:1-5" aria-expanded="false">Ephesians 4:1-5</a>), faith working through love while hope waits eagerly (<a class="vlink" href="https://www.bible.com/bible/3034/GAL.5.5-6" target="_blank" rel="noopener">Galatians 5:5, 6</a>). And here in Romans the three are shown growing in real soil. Faith brings peace with God. Affliction, of all things, gets worked into endurance, character, and hope. Then the chain ends at its power source, God's love poured out in our hearts by the Spirit. The triad is not three separate achievements. It is one life, and love is the part of it that is most like God Himself (<a class="vlink" href="https://www.bible.com/bible/3034/1JN.4.8" target="_blank" rel="noopener" data-verse="1-john-4-8" data-ref="1 John 4:8" aria-expanded="false">1 John 4:8</a>).</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: Romans 5:1 | 5:1 Or let us have -->
       <!-- BSB_FOOTNOTE: Romans 5:2 | 5:2 Or exult; also in verses 3 and 11 -->
-    </div>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Built to Fall Away</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>Built to Fall Away</h3>
       <p>Watch a rocket launch with a six-year-old and you get to relive the best plot twist in engineering. About two minutes up, the biggest, loudest part of the whole machine, the part doing almost all the work, shuts down, lets go, and falls away toward the ocean. On purpose. The first stage drinks most of the fuel and does the brutal lifting through the thickest air, and when it drops, nobody in mission control gasps. They cheer. Stage separation is not a breakdown. It is a milestone, planned before the rocket was ever built, because the booster was never going where the mission is going. It exists to lift something else, and the surest proof that it worked is the moment it is no longer needed.</p>
       <p>Paul says the gifts Corinth kept ranking work exactly like that. Prophecy, tongues, knowledge, all of them real thrust, all of them lifting the church through the thick air of a broken world, and every one of them is scheduled to shut down, not because it failed but because it finished. When we finally stand face to face with Him, the last stage falls away with its work complete. Faith and hope make the whole flight with us, and love turns out to be the cargo they were guarding all along, the one thing the entire stack existed to carry home. So spend your strength accordingly. The loudest parts of a life all drop away on schedule. Pack the payload.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Eighty-Seven Years of Data Landed on Love</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>Eighty-Seven Years of Data Landed on Love</h3>
       <p>In 1938, Harvard researchers began following 724 men, hoping to learn what makes a life turn out well. Then the study refused to end. It has now run for 87 years, widening over time to roughly 2,500 people as wives and descendants joined, and its evidence fills every form a lifetime can leave behind, medical records, brain scans, interviews, questionnaires answered decade after decade. A study that long gets to check the answers everybody assumes. Wealth did not turn out to hold the central answer. Neither did fame. What kept surfacing instead, as the files thickened, was plainer and harder to buy. Strong relationships. Again and again, the people with warm, strong bonds were the ones the records found happy and healthy, and that emerged as the study's central finding.</p>
       <p>Paul stood at the end of the world and said the impressive things all stand down, prophecy finished, tongues quiet, knowledge outgrown, while love never falls. Set the Harvard files beside that claim and the resonance is hard to miss. The prizes our age bets on hardest, wealth and fame, did not hold the central answer to a life turning out well. Strong relationships held it, in the study's own central finding. And what is a strong relationship, at street level, but love given and received across ordinary decades? To be fair to the researchers, their data can trace the tie between good relationships and happier, healthier people. It cannot see past the horizon, and it does not claim to. Paul does. What an eighty-seven-year window glimpses in miniature, eternity will show in full. Faith and hope will walk us all the way to His face. Love is what we will still be doing when we arrive. The study is long. Scripture got there first.</p>
       <!-- TODAYS_WORLD_SOURCE: Things money can’t buy — like happiness and better health | Harvard Gazette | 2025 | https://news.harvard.edu/gazette/story/2025/05/things-money-cant-buy-like-happiness-and-better-health -->
-    </div>
+    <details class="disclosure source-disclosure"><summary class="disclosure-summary"><span class="disclosure-label">Source</span> <span class="disclosure-publisher">Harvard Gazette</span></summary><div class="disclosure-body"><p><cite>Things money can’t buy — like happiness and better health</cite>. Harvard Gazette, 2025. <a href="https://news.harvard.edu/gazette/story/2025/05/things-money-cant-buy-like-happiness-and-better-health" target="_blank" rel="noopener noreferrer">Read the source</a>.</p></div></details></section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Face to face is not an abstraction. It is a particular Face, and we already know something about it. It is the face that was set like flint toward Jerusalem, the face they spat on and struck, the face that looked at Peter across the courtyard after the third denial and did not look away. When faith finally becomes sight, this is the sight it becomes. And notice what survives the crossing with us. Not our gift inventories. Not our theology grades. The love poured into us, practiced by us, spent on unimpressive people in unrecorded moments, walks straight through the door into eternity like it built the place. Of course it does. It did. Faith will retire into seeing Him. Hope will retire into being home. Love will not retire at all, because love is not our ticket to God. It is the family resemblance, and the resemblance is to a Son with scars.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Face to face is not an abstraction. It is a particular Face, and we already know something about it. It is the face that was set like flint toward Jerusalem, the face they spat on and struck, the face that looked at Peter across the courtyard after the third denial and did not look away. When faith finally becomes sight, this is the sight it becomes. And notice what survives the crossing with us. Not our gift inventories. Not our theology grades. The love poured into us, practiced by us, spent on unimpressive people in unrecorded moments, walks straight through the door into eternity like it built the place. Of course it does. It did. Faith will retire into seeing Him. Hope will retire into being home. Love will not retire at all, because love is not our ticket to God. It is the family resemblance, and the resemblance is to a Son with scars.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Spend today's effort on eternity's currency. Before you sleep tonight, tell one person, specifically and out loud, what you have watched God's love do through them. Name the moment. The meal they brought, the call they made, the patience they showed your family. It will take ninety seconds and feel slightly awkward, and it will outlast every deadline you hit this week. You will be practicing the one skill you will still be using a million years from now.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we spend most of our strength on things with expiration dates, and today You showed us the three that remain. Thank You that our dim view of You is not Your view of us, that we are fully known even now, on the days our knowing feels like a bronze blur. Grow real faith in us, the kind that trusts You in the dark. Grow real hope in us, the kind that leans toward Your return like a child watching the driveway. And above them both, pour out Your love in our hearts by Your Spirit, because we cannot manufacture what only comes from You. When we are tempted to measure our lives by gifts and accomplishments that will one day stand down, remind us what walks into eternity. We want to meet You face to face having practiced Your favorite thing. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"If you audited last month by eternity's ledger, how much of your best energy went to things that expire (the inbox, the scoreboard, the renovation) versus the one thing that never falls? And what is one standing commitment you could trade this month for a direct investment in loving someone, so the exchange actually happens instead of staying a nice idea?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"If you audited last month by eternity's ledger, how much of your best energy went to things that expire (the inbox, the scoreboard, the renovation) versus the one thing that never falls? And what is one standing commitment you could trade this month for a direct investment in loving someone, so the exchange actually happens instead of staying a nice idea?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, we spend most of our strength on things with expiration dates, and today You showed us the three that remain. Thank You that our dim view of You is not Your view of us, that we are fully known even now, on the days our knowing feels like a bronze blur. Grow real faith in us, the kind that trusts You in the dark. Grow real hope in us, the kind that leans toward Your return like a child watching the driveway. And above them both, pour out Your love in our hearts by Your Spirit, because we cannot manufacture what only comes from You. When we are tempted to measure our lives by gifts and accomplishments that will one day stand down, remind us what walks into eternity. We want to meet You face to face having practiced Your favorite thing. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-08-12.html"><span class="day-nav-kicker">← Wednesday</span><span class="day-nav-title">A Portrait of Jesus</span></a><a class="day-nav-item" href="/bible-study/2026-08-14.html"><span class="day-nav-kicker">Friday →</span><span class="day-nav-title">Further Thought &amp; Discussion</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"1-corinthians-13-10":{"ref":"1 Corinthians 13:10","text":"but when the perfect comes, the partial passes away.","bibleUrl":"https://www.bible.com/bible/3034/1CO.13.10"},"2-corinthians-5-7":{"ref":"2 Corinthians 5:7","text":"For we walk by faith, not by sight.","bibleUrl":"https://www.bible.com/bible/3034/2CO.5.7"},"romans-8-24":{"ref":"Romans 8:24","text":"For in this hope we were saved; but hope that is seen is no hope at all. Who hopes for what he can already see?","bibleUrl":"https://www.bible.com/bible/3034/ROM.8.24"},"romans-4-3":{"ref":"Romans 4:3","text":"For what does the Scripture say? \u201cAbraham believed God, and it was credited to him as righteousness.\u201d","bibleUrl":"https://www.bible.com/bible/3034/ROM.4.3"},"ephesians-1-15":{"ref":"Ephesians 1:15","text":"For this reason, ever since I heard about your faith in the Lord Jesus and your love for all the saints,","bibleUrl":"https://www.bible.com/bible/3034/EPH.1.15"},"ephesians-1-18":{"ref":"Ephesians 1:18","text":"I ask that the eyes of your heart may be enlightened, so that you may know the hope of His calling, the riches of His glorious inheritance in the saints,","bibleUrl":"https://www.bible.com/bible/3034/EPH.1.18"},"ephesians-4-1-5":{"ref":"Ephesians 4:1-5","text":"As a prisoner in the Lord, then, I urge you to walk in a manner worthy of the calling you have received: with all humility and gentleness, with patience, bearing with one another in love, and with diligence to preserve the unity of the Spirit through the bond of peace. There is one body and one Spirit, just as you were called to one hope when you were called; one Lord, one faith, one baptism;","bibleUrl":"https://www.bible.com/bible/3034/EPH.4.1-5"},"1-john-4-8":{"ref":"1 John 4:8","text":"Whoever does not love does not know God, because God is love.","bibleUrl":"https://www.bible.com/bible/3034/1JN.4.8"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

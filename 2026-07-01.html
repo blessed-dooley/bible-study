@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Many in This City — Daily Bible Study</title>
 <meta name="study-title" content="Many in This City">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 1, Paul&#x27;s Ministry in Corinth · Part 5 of 7">
+<meta name="study-passage" content="Acts 18:6">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 1, Paul's Ministry in Corinth · Day 5 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Many in This City">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 1, Paul&#x27;s Ministry in Corinth · Part 5 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 1, Paul's Ministry in Corinth · Day 5 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-07-01.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 1, Paul&#x27;s Ministry in Corinth · Part 5 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 1, Paul's Ministry in Corinth · Day 5 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,333 +38,207 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Many in This City</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 1, Paul's Ministry in Corinth</span>
-      <span>Part 5 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">July 1, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Wed · Jul 1</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">9 min</span>
+    </div>
+    <h1 class="study-title">Many in This City</h1>
+    <p class="study-sub"><span class="sub-title">Paul's Ministry in Corinth</span><span class="sub-facts"><span>Lesson 1</span><span>Day 5 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>Paul keeps preaching, and the synagogue turns ugly. They resist, they curse, and he finally shakes out his clothes and walks next door. Then comes the shock. The synagogue's own leader believes, and so do many others. But Paul is rattled, worn down by the fight and bracing for worse. So one night Jesus stands beside him in a vision with a command and a promise. Stop being afraid. Keep talking. I have many people in this city. The people Paul could not see were already God's. <strong>When the work feels like it is failing, God may be counting a harvest you have not met yet.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday we walked Corinth's idol-soaked streets and felt the sheer weight of the place, a city where immorality and false gods were simply the air everyone breathed. The obvious question hangs in the air: could the gospel actually take root in soil like that? Today we get the answer, and it comes in two parts. First, real opposition, the kind that wears a person down and makes them want to quit. But then, woven right through it, real fruit, and a word from God that reframes the whole struggle. Paul is about to learn that the resistance he can see is not the whole story of what God is doing in Corinth.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Paul keeps preaching, and the synagogue turns ugly. They resist, they curse, and he finally shakes out his clothes and walks next door. Then comes the shock. The synagogue's own leader believes, and so do many others. But Paul is rattled, worn down by the fight and bracing for worse. So one night Jesus stands beside him in a vision with a command and a promise. Stop being afraid. Keep talking. I have many people in this city. The people Paul could not see were already God's. <strong>When the work feels like it is failing, God may be counting a harvest you have not met yet.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday we walked Corinth's idol-soaked streets and felt the sheer weight of the place, a city where immorality and false gods were simply the air everyone breathed. The obvious question hangs in the air: could the gospel actually take root in soil like that? Today we get the answer, and it comes in two parts. First, real opposition, the kind that wears a person down and makes them want to quit. But then, woven right through it, real fruit, and a word from God that reframes the whole struggle. Paul is about to learn that the resistance he can see is not the whole story of what God is doing in Corinth.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">When the Synagogue Ruler Crossed the Line</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>When the Synagogue Ruler Crossed the Line</h3>
       <p>Every synagogue had a ruler, the man responsible for the building, the services, and the honor of the community. He was a pillar, a person of standing, and in a tight-knit minority like the Jews of Corinth, his loyalty held the group together. So when Luke reports that Crispus, the synagogue ruler himself, came to believe in Jesus, this was not a quiet personal decision. It was a public earthquake. The most respected man in the room had crossed over to the message that was tearing the community apart, and he brought his whole household with him.</p>
       <p>Make it sharper still. After being driven out of the synagogue, Paul did not leave the neighborhood. He simply moved his meetings to the house of a God-fearing Gentile named Titius Justus, whose home stood right next door. Picture that. The new church now met one wall away from the synagogue that had just rejected its message, with the synagogue's former leader sitting in the congregation. It was bold, almost provocative, a daily visible reminder that the gospel had not retreated. That was the charged, high-tension setting in which Paul was quietly running out of steam, and in which God chose to speak to him in the night.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>The story moves fast here, from rejection to breakthrough to a private moment of fear. Paul preaches in the synagogue until the hostility boils over, then turns to the Gentiles, and against all odds the church grows, even pulling in the synagogue's own leader (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.18.4-8" target="_blank" rel="noopener">Acts 18:4-8</a>). But success and opposition together can be their own kind of exhausting, and that is exactly when God shows up. Watch the human cost of ministry and the divine encouragement that meets it.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>The story moves fast here, from rejection to breakthrough to a private moment of fear. Paul preaches in the synagogue until the hostility boils over, then turns to the Gentiles, and against all odds the church grows, even pulling in the synagogue's own leader (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.18.4-8" target="_blank" rel="noopener" data-verse="acts-18-4-8" data-ref="Acts 18:4-8" aria-expanded="false">Acts 18:4-8</a>). But success and opposition together can be their own kind of exhausting, and that is exactly when God shows up. Watch the human cost of ministry and the divine encouragement that meets it.</p>
 
 <!-- BSB_BLOCK: Acts 18:6 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:ee6c9d1cef71c642ce81e14bcba2a2774a617f96291c03239104d5d4908b5c08 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Acts 18:6</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ACT.18.6" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ACT.18.6" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">But when they opposed and insulted him, he shook out his garments and told them, “Your blood be on your own heads! I am innocent of it. From now on I will go to the Gentiles.”</div>
 <div class="verse-commentary">
           <p>This is what rejection looked like for Paul, up close. The people he loved most, his own kin, did not just disagree. They resisted and blasphemed, mocking the name of Jesus to his face. Shaking out his clothes was a deliberate, dramatic act, the same kind of gesture Jesus described when He told His followers to shake the dust off their feet. It said, in effect, I have done my part, and what you do with it is now on you, not me. There is grief in this, but also a clean release. Paul does not rage and he does not collapse. He hands the responsibility back to them and keeps moving toward the people who will listen. Sometimes faithfulness means staying. Sometimes it means setting down what is not yours to carry and walking through the next open door.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Acts 18:8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:02cf8ee41fff3c7e8fa919add3e870482b734f5bd237d0b0abadf351b6998b99 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Acts 18:8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ACT.18.8" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ACT.18.8" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Crispus, the synagogue leader, and his whole household believed in the Lord. And many of the Corinthians who heard the message believed and were baptized.</div>
 <div class="verse-commentary">
-          <p>Right on the heels of that painful scene comes a stunning turn. The very leader of the synagogue that opposed Paul, a man with everything to lose, believes. And he is not alone. Many Corinthians hear, believe, and are baptized. This is the gospel doing exactly what God promised His word would do, never returning to Him empty but always accomplishing what He sent it for (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.55.11" target="_blank" rel="noopener">Isaiah 55:11</a>). Notice the pairing. The same season that brought blasphemy and rejection also brought a respected leader and a crowd of new believers into the kingdom. Opposition and harvest were happening at the same time, in the same place. Paul could see both, and it is worth asking which one he felt more in his body at the end of a long day. The next verses suggest the fear was winning.</p>
+          <p>Right on the heels of that painful scene comes a stunning turn. The very leader of the synagogue that opposed Paul, a man with everything to lose, believes. And he is not alone. Many Corinthians hear, believe, and are baptized. This is the gospel doing exactly what God promised His word would do, never returning to Him empty but always accomplishing what He sent it for (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.55.11" target="_blank" rel="noopener" data-verse="isaiah-55-11" data-ref="Isaiah 55:11" aria-expanded="false">Isaiah 55:11</a>). Notice the pairing. The same season that brought blasphemy and rejection also brought a respected leader and a crowd of new believers into the kingdom. Opposition and harvest were happening at the same time, in the same place. Paul could see both, and it is worth asking which one he felt more in his body at the end of a long day. The next verses suggest the fear was winning.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Acts 18:9-10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:68f9f12cf72b0c021f46473c50be4598b0dc30825cce66a10eb1f76470b5cd72 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Acts 18:9-10</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ACT.18.9-10" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 9">9</sup>One night the Lord spoke to Paul in a vision: <span class="words-of-jesus">“Do not be afraid; keep on speaking; do not be silent.</span> <sup class="verse-number" aria-label="Verse 10">10</sup><span class="words-of-jesus">For I am with you and no one will lay a hand on you, because I have many people in this city.”</span></div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ACT.18.9-10" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 9">9</sup>One night the Lord spoke to Paul in a vision: <span class="words-of-jesus">“Do not be afraid; keep on speaking; do not be silent.</span> <sup class="verse-number" aria-label="Verse 10">10</sup><span class="words-of-jesus">For I am with you and no one will lay a hand on you, because I have many people in this city.”</span>
+</div>
 <div class="verse-commentary">
-          <p>God does not rebuke Paul for being afraid. He meets it. The command to stop fearing and keep speaking comes wrapped in three reasons, and they build. I am with you. No one will harm you. And then the one that changes everything, that God already has many people in this city. Paul was bracing himself against a crowd of enemies, and Jesus tells him the crowd is full of future believers Paul has not even met yet. This was the same man who later admitted he had come to Corinth "in weakness, in fear, and in much trembling" (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.2.3" target="_blank" rel="noopener">1 Corinthians 2:3</a>). The bold apostle was scared, and God's answer was not a pep talk about Paul's courage. It was a fact about Corinth. The harvest was guaranteed because the people were already His (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.18.10" target="_blank" rel="noopener">Acts 18:10</a>).</p>
+          <p>God does not rebuke Paul for being afraid. He meets it. The command to stop fearing and keep speaking comes wrapped in three reasons, and they build. I am with you. No one will harm you. And then the one that changes everything, that God already has many people in this city. Paul was bracing himself against a crowd of enemies, and Jesus tells him the crowd is full of future believers Paul has not even met yet. This was the same man who later admitted he had come to Corinth "in weakness, in fear, and in much trembling" (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.2.3" target="_blank" rel="noopener" data-verse="1-corinthians-2-3" data-ref="1 Corinthians 2:3" aria-expanded="false">1 Corinthians 2:3</a>). The bold apostle was scared, and God's answer was not a pep talk about Paul's courage. It was a fact about Corinth. The harvest was guaranteed because the people were already His (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.18.10" target="_blank" rel="noopener" data-verse="acts-18-10" data-ref="Acts 18:10" aria-expanded="false">Acts 18:10</a>).</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Isaiah 41:10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:0a0c34b82cae8fd8e71fb9afd2135a63d0d44a5ae0e3cc679a51d047dd585601 | footnotes-stripped:0 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Isaiah 41:10</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ISA.41.10" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ISA.41.10" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Do not fear, for I am with you; do not be afraid, for I am your God. I will strengthen you; I will surely help you; I will uphold you with My righteous right hand.</div>
 <div class="verse-commentary">
           <p>What God told Paul in Corinth, He had been telling His people for centuries. This promise to a frightened, exiled nation reads like the script behind the night vision. Same opening, "do not fear." Same anchor, "I am with you." The Hebrew behind "I will strengthen you" is <em>amats</em>, which means to make firm, to brace, to put steel into someone who is about to buckle. It is not a soft word. It is what you do to a sagging beam or a shaking knee. God does not just tell the afraid to feel better. He promises to do the strengthening Himself, to grip them with His own right hand so they cannot be swept away. Paul's vision was not a one-time favor. It was God being exactly who He has always been to the people who serve Him scared.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Voice in the Empty Studio</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Voice in the Empty Studio</h3>
       <p>There is something lonely about a late-night radio host. Picture one alone in a small booth at two in the morning, headphones on, talking into a microphone in an empty room. No audience to see, no applause, no laughter, just a red light and the sound of their own voice and the very real feeling that they might be talking to nobody at all. Some nights it must seem pointless, like shouting down a well. Then a letter arrives weeks later from a long-haul trucker who says that voice was the only thing that kept him awake and alive on a thousand miles of dark highway, and he had been out there listening the whole time.</p>
       <p>Paul was preaching into what felt like an empty studio. The synagogue had turned on him, the opposition was loud, and the feeling in his body at the end of a long day was that he was failing. So Jesus stood beside him in the night with the one fact that changes how you count everything, that He already had many people in this city. The audience Paul could not see was real, already there, already God's. When the work in front of you looks like talking to nobody, that feeling is not the truth of the room. The red light is on, and Someone has people out in the dark you simply have not met yet.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Impact You Cannot Feel</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Impact You Cannot Feel</h3>
       <p>There is a particular discouragement that comes with quiet, frontline work, the gnawing sense that your text will not matter, that your check-in is a bother, that nobody is really out there. Researchers put that feeling to the test. Across a set of 13 careful experiments involving nearly 6,000 people, published in the Journal of Personality and Social Psychology, they had some folks reach out to others, sometimes just a short message, sometimes a small gift like a coffee or a plant, then asked the people on the receiving end how much it actually meant. The results leaned the same way every single time. The ones reaching out badly underestimated how much their gesture landed. And the gap was widest exactly where it felt riskiest, when the contact was a surprise or the relationship felt distant.</p>
       <p>That is the precise lie Paul was up against in Corinth. At the end of a long, hostile day the feeling in his chest was that he was failing, shouting down an empty well. Then Jesus stood beside him in the night with the one fact his feelings could not reach, that He already had many people in this city. The discouragement was real. It simply was not accurate. What feels like talking to nobody is so often a room far fuller than you can sense, a harvest already out there in the dark that you just have not met yet.</p>
-    </div>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Look closely at who shows up in that night vision. It is Jesus, standing beside a frightened man and saying, "I am with you." This is the same Lord who, on His own worst night, knelt in a garden so afraid that He sweat blood, and an angel came to strengthen Him. He knows from the inside what it is to keep going when fear says stop. So He does not lecture Paul about courage. He simply comes near. And the reason He can promise a harvest is that He has already paid for it. When Jesus says, "I have many people in this city," He is not guessing about Corinth's odds. He is speaking as the One whose cross has already purchased every person who will ever say yes to Him there. The people Paul feared were people Christ had already bought. That is why the mission is never as fragile as it feels. The outcome was secured at Calvary before Paul ever opened his mouth.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Look closely at who shows up in that night vision. It is Jesus, standing beside a frightened man and saying, "I am with you." This is the same Lord who, on His own worst night, knelt in a garden so afraid that He sweat blood, and an angel came to strengthen Him. He knows from the inside what it is to keep going when fear says stop. So He does not lecture Paul about courage. He simply comes near. And the reason He can promise a harvest is that He has already paid for it. When Jesus says, "I have many people in this city," He is not guessing about Corinth's odds. He is speaking as the One whose cross has already purchased every person who will ever say yes to Him there. The people Paul feared were people Christ had already bought. That is why the mission is never as fragile as it feels. The outcome was secured at Calvary before Paul ever opened his mouth.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Where are you tempted to quit because it feels like nothing is working, a prayer for someone, a ministry, a hard conversation you keep having? Today, do not measure it by what you can see. Take the exact fear you would use to justify giving up and write it down, then write God's reply over it, "I am with you, and I have people here you cannot see yet." Then do the next small faithful thing anyway, once more, this week.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we know what it is to keep working at something and feel only the resistance, the closed doors and the cold shoulders, while the fruit stays hidden from us. Thank You that You do not shame us for being afraid. You come near, the way You came near to Paul, and You promise to strengthen us with Your own hand. Help us to believe that the people and the outcomes we cannot see are already in Your keeping. When we are ready to walk away, steady us, brace what is sagging in us, and give us the courage to keep speaking and not be silent. We trust that the harvest is Yours, bought and certain. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"When you feel like giving up on something God has called you to, what are you usually measuring it by, and how might it change things to believe that some of the most important results are people and outcomes you simply cannot see yet?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"When you feel like giving up on something God has called you to, what are you usually measuring it by, and how might it change things to believe that some of the most important results are people and outcomes you simply cannot see yet?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, we know what it is to keep working at something and feel only the resistance, the closed doors and the cold shoulders, while the fruit stays hidden from us. Thank You that You do not shame us for being afraid. You come near, the way You came near to Paul, and You promise to strengthen us with Your own hand. Help us to believe that the people and the outcomes we cannot see are already in Your keeping. When we are ready to walk away, steady us, brace what is sagging in us, and give us the courage to keep speaking and not be silent. We trust that the harvest is Yours, bought and certain. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-06-30.html"><span class="day-nav-kicker">← Tuesday</span><span class="day-nav-title">The City of Corinth</span></a><a class="day-nav-item" href="/bible-study/2026-07-02.html"><span class="day-nav-kicker">Thursday →</span><span class="day-nav-title">Paul&#x27;s Letters to the Corinthians</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"acts-18-4-8":{"ref":"Acts 18:4-8","text":"Every Sabbath he reasoned in the synagogue, trying to persuade Jews and Greeks alike. And when Silas and Timothy came down from Macedonia, Paul devoted himself fully to the word, testifying to the Jews that Jesus is the Christ. But when they opposed and insulted him, he shook out his garments and told them, \u201cYour blood be on your own heads! I am innocent of it. From now on I will go to the Gentiles.\u201d So Paul left the synagogue and went next door to the house of Titus Justus, a worshiper of God. Crispus, the synagogue leader, and his whole household believed in the Lord. And many of the Corinthians who heard the message believed and were baptized.","bibleUrl":"https://www.bible.com/bible/3034/ACT.18.4-8"},"isaiah-55-11":{"ref":"Isaiah 55:11","text":"so My word that proceeds from My mouth will not return to Me empty, but it will accomplish what I please, and it will prosper where I send it.","bibleUrl":"https://www.bible.com/bible/3034/ISA.55.11"},"1-corinthians-2-3":{"ref":"1 Corinthians 2:3","text":"I came to you in weakness and fear, and with much trembling.","bibleUrl":"https://www.bible.com/bible/3034/1CO.2.3"},"acts-18-10":{"ref":"Acts 18:10","text":"For I am with you and no one will lay a hand on you, because I have many people in this city.\u201d","bibleUrl":"https://www.bible.com/bible/3034/ACT.18.10"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

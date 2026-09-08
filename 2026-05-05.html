@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Enoch Walked and Talked — Daily Bible Study</title>
 <meta name="study-title" content="Enoch Walked and Talked">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 6, Prayer Warriors · Part 4 of 7">
+<meta name="study-passage" content="Genesis 5:22-24">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 6, Prayer Warriors · Day 4 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Enoch Walked and Talked">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 6, Prayer Warriors · Part 4 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 6, Prayer Warriors · Day 4 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-05-05.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 6, Prayer Warriors · Part 4 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 6, Prayer Warriors · Day 4 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,321 +38,199 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Enoch Walked and Talked</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 6, Prayer Warriors</span>
-      <span>Part 4 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Tue · May 5</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
     </div>
-    <div class="date-badge">May 5, 2026</div>
+    <h1 class="study-title">Enoch Walked and Talked</h1>
+    <p class="study-sub"><span class="sub-title">Prayer Warriors</span><span class="sub-facts"><span>Lesson 6</span><span>Day 4 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">Enoch walked with God for three hundred years until earth could no longer keep him, and the Bible records the whole story in three short sentences.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p class="tldr-hook">Enoch walked with God for three hundred years until earth could no longer keep him, and the Bible records the whole story in three short sentences.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span> Enoch's life is described in twelve Hebrew words and one quiet ending; everything else is what God could fit between the lines.</li>
-        <li><span class="bullet-icon">☩</span> He was not a hermit; he raised children, did the work in front of him, and kept company with God in the same hours he kept company with everyone else.</li>
-        <li><span class="bullet-icon">☩</span> The Hebrew verb for "walked with" suggests two travelers on the same road, neither hurrying the other.</li>
-        <li><span class="bullet-icon">☩</span> When the time came, God did not interrupt Enoch's day; He just kept walking, Enoch kept walking, and at some point earth was behind them.</li>
+        <li>
+<span class="bullet-icon">☩</span> Enoch's life is described in twelve Hebrew words and one quiet ending; everything else is what God could fit between the lines.</li>
+        <li>
+<span class="bullet-icon">☩</span> He was not a hermit; he raised children, did the work in front of him, and kept company with God in the same hours he kept company with everyone else.</li>
+        <li>
+<span class="bullet-icon">☩</span> The Hebrew verb for "walked with" suggests two travelers on the same road, neither hurrying the other.</li>
+        <li>
+<span class="bullet-icon">☩</span> When the time came, God did not interrupt Enoch's day; He just kept walking, Enoch kept walking, and at some point earth was behind them.</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday the body knelt; today the body walks. We have moved from a single moment of posture in a single room to a posture so steady it became a way of life. Enoch did not pause at a window three times a day. The Bible suggests he was praying as he walked, raising his children, taking meals, doing the work in front of him. The posture survived motion because the conversation never ended. If yesterday's lesson was that the body answers what the soul is saying, today's is that the body and the soul can keep that answer going for three hundred years.</p>
-    </div>
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday the body knelt; today the body walks. We have moved from a single moment of posture in a single room to a posture so steady it became a way of life. Enoch did not pause at a window three times a day. The Bible suggests he was praying as he walked, raising his children, taking meals, doing the work in front of him. The posture survived motion because the conversation never ended. If yesterday's lesson was that the body answers what the soul is saying, today's is that the body and the soul can keep that answer going for three hundred years.</p>
+    </section>
 
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Twelve Hebrew Words</div>
-      <p>The Bible spends one verse on Enoch's birth, two verses on his walk with God, and one half-sentence on his disappearance. The economy is staggering. Genesis 5 lists ten generations from Adam to Noah and gives most of them only their birth, age, and death. Enoch breaks the pattern. He gets a verb (*halakh*, walked) and a preposition (*et*, with), and the rest of his life happens off-camera in a Hebrew that does not need to fill the silence. He fathered Methuselah at sixty-five. He walked with God three hundred years. The New Testament will later describe what those three hundred years sounded like in a single phrase from <a class="vlink" href="https://www.bible.com/bible/3034/ROM.12.12" target="_blank" rel="noopener">Romans 12:12</a>: continuing steadfastly in prayer. He walked with God, then he was no more.</p>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Twelve Hebrew Words</h3>
+      <p>The Bible spends one verse on Enoch's birth, two verses on his walk with God, and one half-sentence on his disappearance. The economy is staggering. Genesis 5 lists ten generations from Adam to Noah and gives most of them only their birth, age, and death. Enoch breaks the pattern. He gets a verb (*halakh*, walked) and a preposition (*et*, with), and the rest of his life happens off-camera in a Hebrew that does not need to fill the silence. He fathered Methuselah at sixty-five. He walked with God three hundred years. The New Testament will later describe what those three hundred years sounded like in a single phrase from <a class="vlink" href="https://www.bible.com/bible/3034/ROM.12.12" target="_blank" rel="noopener" data-verse="romans-12-12" data-ref="Romans 12:12" aria-expanded="false">Romans 12:12</a>: continuing steadfastly in prayer. He walked with God, then he was no more.</p>
       <p>The pre-flood world Enoch inhabited was not a quiet meadow. The next chapter of Genesis describes the earth as "corrupt and full of violence," and the New Testament's brief mention of him in Jude calls him a prophet to that violent age. He preached judgment in the same century the line of Cain was building cities and inventing musical instruments. The walking that Genesis records was not a leisurely escape from the noise. It was the only sustainable way to live as a believer when the surrounding culture made unbelief the easier path. The Hebrew construction *halakh et-Elohim* (walked with God) is used later of Noah in Genesis 6:9 and prescriptively of Israel: walking alongside God, in step, on the same road. The road does not end at the last verse of Enoch's chapter. The road just changes addresses.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Twelve Hebrew words, three hundred years, one ending the language has never quite found a way to translate. Enoch's biography is a master class in what the Bible chooses to leave out. The most important details about a man whose life ended without a funeral are the ones our verses do not say.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Twelve Hebrew words, three hundred years, one ending the language has never quite found a way to translate. Enoch's biography is a master class in what the Bible chooses to leave out. The most important details about a man whose life ended without a funeral are the ones our verses do not say.</p>
 
 <!-- BSB_BLOCK: Genesis 5:22-24 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:f22541621296c9c083985f6346e189d9a56d496c57fb5f5677886d16aca600f6 | footnotes-stripped:2 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Genesis 5:22-24</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/GEN.5.22-24" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 22">22</sup>And after he had become the father of Methuselah, Enoch walked with God 300 years and had other sons and daughters. <sup class="verse-number" aria-label="Verse 23">23</sup>So Enoch lived a total of 365 years. <sup class="verse-number" aria-label="Verse 24">24</sup>Enoch walked with God, and then he was no more, because God had taken him away.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/GEN.5.22-24" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 22">22</sup>And after he had become the father of Methuselah, Enoch walked with God 300 years and had other sons and daughters. <sup class="verse-number" aria-label="Verse 23">23</sup>So Enoch lived a total of 365 years. <sup class="verse-number" aria-label="Verse 24">24</sup>Enoch walked with God, and then he was no more, because God had taken him away.</div>
 <div class="verse-commentary">
           <p>Genesis 5 is a cemetery of a chapter. "And he died" closes verse after verse with the rhythm of a slow drumbeat. Adam died. Seth died. Enosh died. Kenan died. Mahalalel died. Jared died. Then comes Enoch, and the formula breaks. The verse that should say "and he died" instead says "God had taken him away." The whole chapter, in one sense, exists to set up that broken pattern. Mortality is the loud refrain; Enoch is the quiet exception that names the loophole.</p>
           <p>The Hebrew verb behind "walked" is *halakh*, the ordinary word for going from one place to another. The construction *halakh et-ha'elohim* (walked with God) is used of only a handful of figures in the entire Old Testament: Enoch here, Noah in Genesis 6:9, and prescriptively of how Israel was meant to live. *Halakh* in this construction is reflexive in form, literally "caused himself to walk." Enoch is not being carried. He is choosing the same direction every step, year after year, with God as his companion on the road.</p>
           <p>The verb tense for the disappearance ("he was no more") is sudden in Hebrew but soft in tone. The text does not describe ascension, light, or a chariot. The disappearance is the natural end of the walking. After three hundred years of going the same direction, the walk simply continued past where the witnesses could see. Enoch did not retire from his life and turn into a mystic. He stayed in his life until his life ran out of geography. Hebrews 11:5 will eventually summarize all of this as "taken up so that he did not experience death," and Jude 14 will mention him as a prophet who preached coming judgment to a culture going the other way. None of those later descriptions add a word to what Genesis already said. They just spell out the obvious.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: Genesis 5:22 | 5:22 LXX pleased God; also in verse 24 -->
       <!-- BSB_FOOTNOTE: Genesis 5:24 | 5:24 LXX and he was no more found, because God had taken him away; cited in Hebrews 11:5 -->
 
 <!-- BSB_BLOCK: Psalms 139:7-12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:843172186bacfb9109fdb4074f0cba400d65788dba523e1fbc23783df518e7ab | footnotes-stripped:0 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Psalms 139:7-12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.139.7-12" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 7">7</sup>Where can I go to escape Your Spirit? Where can I flee from Your presence? <sup class="verse-number" aria-label="Verse 8">8</sup>If I ascend to the heavens, You are there; if I make my bed in Sheol, You are there. <sup class="verse-number" aria-label="Verse 9">9</sup>If I rise on the wings of the dawn, if I settle by the farthest sea, <sup class="verse-number" aria-label="Verse 10">10</sup>even there Your hand will guide me; Your right hand will hold me fast. <sup class="verse-number" aria-label="Verse 11">11</sup>If I say, “Surely the darkness will hide me, and the light become night around me”— <sup class="verse-number" aria-label="Verse 12">12</sup>even the darkness is not dark to You, but the night shines like the day, for darkness is as light to You.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/PSA.139.7-12" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 7">7</sup>Where can I go to escape Your Spirit? Where can I flee from Your presence? <sup class="verse-number" aria-label="Verse 8">8</sup>If I ascend to the heavens, You are there; if I make my bed in Sheol, You are there. <sup class="verse-number" aria-label="Verse 9">9</sup>If I rise on the wings of the dawn, if I settle by the farthest sea, <sup class="verse-number" aria-label="Verse 10">10</sup>even there Your hand will guide me; Your right hand will hold me fast. <sup class="verse-number" aria-label="Verse 11">11</sup>If I say, “Surely the darkness will hide me, and the light become night around me”— <sup class="verse-number" aria-label="Verse 12">12</sup>even the darkness is not dark to You, but the night shines like the day, for darkness is as light to You.</div>
 <div class="verse-commentary">
-          <p>The grammar of Enoch's three hundred years is hidden in this Davidic poem. The reason a believer can walk with God in the middle of a violent civilization is that God does not stay in one place to be visited. There is nowhere a person can go that He is not already there. David is not asking the question philosophically; he is praying it, naming places his soul has wanted to hide. He has wanted to climb into the heavens to be away from accountability. He has wanted to crawl into Sheol to be away from shame. He has wanted to go far enough east, far enough west, deep enough into the night, that he could finally not be seen. None of it works. The omnipresence that makes hiding impossible is the same omnipresence that makes walking with God possible at any address. Enoch did not need a special temple. The cradle in Methuselah's room and the workshop in the courtyard were both already the road. The same is true for the cab of a delivery truck, the kitchen sink, the school-pickup lane, and the prison pit Jeremiah described in <a class="vlink" href="https://www.bible.com/bible/3034/LAM.3.55-57" target="_blank" rel="noopener">Lamentations 3:55-57</a>, where he called from the depths and heard God's "do not fear" answer back.</p>
+          <p>The grammar of Enoch's three hundred years is hidden in this Davidic poem. The reason a believer can walk with God in the middle of a violent civilization is that God does not stay in one place to be visited. There is nowhere a person can go that He is not already there. David is not asking the question philosophically; he is praying it, naming places his soul has wanted to hide. He has wanted to climb into the heavens to be away from accountability. He has wanted to crawl into Sheol to be away from shame. He has wanted to go far enough east, far enough west, deep enough into the night, that he could finally not be seen. None of it works. The omnipresence that makes hiding impossible is the same omnipresence that makes walking with God possible at any address. Enoch did not need a special temple. The cradle in Methuselah's room and the workshop in the courtyard were both already the road. The same is true for the cab of a delivery truck, the kitchen sink, the school-pickup lane, and the prison pit Jeremiah described in <a class="vlink" href="https://www.bible.com/bible/3034/LAM.3.55-57" target="_blank" rel="noopener" data-verse="lamentations-3-55-57" data-ref="Lamentations 3:55-57" aria-expanded="false">Lamentations 3:55-57</a>, where he called from the depths and heard God's "do not fear" answer back.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Third Presence</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Third Presence</h3>
       <p>Anyone who has lived with a cat for any length of time has noticed the same strange pattern. She is not in your lap. She is not pressing against your leg. She is not loudly demanding food. She is just somewhere in the next room. You move from the kitchen to the couch and after a while you notice she has drifted into the den. You go upstairs to fold laundry, and twenty minutes later there is a tail flicking on the corner of the bed. She has not interrupted your day, and she has not been absent from it. She has been the soft third presence in every room you have entered.</p>
       <p>The first few months it was surprising, even a little unnerving. After nine years it has become invisible, the way a clock you have lived with stops ticking in your awareness. Asking where the cat is becomes a non-question. The cat is part of the room.</p>
       <p>Enoch's three hundred years of walking with God look like the cat. There is no record of long set-aside prayer times. There is no shrine, no schedule, no weekly retreat. There is just the third presence in every room of his life: raising children, doing the work, walking through a violent century. After nine years, the cat is not a project; she is just home. After three hundred years, God was not a meeting on Enoch's calendar; He was the room.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Trickle, Not the Meeting</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Trickle, Not the Meeting</h3>
       <p>Two college roommates have moved to opposite coasts after graduation. They text each other through the day, not about anything in particular. A picture of breakfast. A complaint about traffic. A line from a podcast that neither one has any reason to send the other. Six months later they will both say, without coordinating, "I feel like we still live together." The bandwidth of their friendship is not the long phone call on Sunday night. It is the steady pulse of nothing-in-particular through a Tuesday afternoon.</p>
       <p>Communication researchers have been quietly cataloging the pattern. A study in the <em>Journal of Social and Personal Relationships</em> reported that more frequent and responsive texting predicted significantly greater relationship satisfaction in long-distance relationships, while the same finding did not hold for couples who already lived in the same house. A 2025 review of long-distance digital communication identified the same mechanism by a different name: "ambient awareness," the steady low-level sharing of current activity or mood that creates a feeling of continuous presence without any one message having to do the work of presence by itself. Closeness, the literature now says, is not maintained by long important conversations. It is maintained by the trickle.</p>
       <p>Enoch had three hundred years of trickle. There is no record of long set-aside prayer hours, and the Bible's silence is not an oversight; it is the observation. The Hebrew verb behind "walked with" is in the imperfect aspect, the form Hebrew uses for ongoing, repeated, low-frequency action: walking and walking and walking. Enoch did not have a Sunday morning; he had every minute. Modern research has finally documented what he had been doing the whole time. Closeness with God is not a weekly meeting. It is the half-thought offered while the kettle boils. The breath of thanks before the answer is given. The line whispered under the breath that does not need to be heard by anyone but Him. By the three-hundredth year, the Friend was the room.</p>
-    </div>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Three hundred years of unbroken communion in a violent age is impossible without the One who would later become incarnate as the way back to the Father. Enoch had what we have been promised: not a guarantee against the dark, but a Companion through it. The road Enoch walked is the road Jesus said He came to be. "I am the way," Jesus told the disciples on the night before He died, while a violent generation closed in on Him too. And on the morning of resurrection, two travelers on the road to Emmaus walked seven miles next to a stranger who was the Living Word, and the only thing more astonishing than the walk itself was how ordinary it felt to be in His presence. Enoch's three hundred years are a long quiet preview of the eternal walking that John describes in Revelation, where the redeemed walk in God's presence with the Lamb at the head of the procession. The destination has always been the same. Enoch just got an early showing.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Three hundred years of unbroken communion in a violent age is impossible without the One who would later become incarnate as the way back to the Father. Enoch had what we have been promised: not a guarantee against the dark, but a Companion through it. The road Enoch walked is the road Jesus said He came to be. "I am the way," Jesus told the disciples on the night before He died, while a violent generation closed in on Him too. And on the morning of resurrection, two travelers on the road to Emmaus walked seven miles next to a stranger who was the Living Word, and the only thing more astonishing than the walk itself was how ordinary it felt to be in His presence. Enoch's three hundred years are a long quiet preview of the eternal walking that John describes in Revelation, where the redeemed walk in God's presence with the Lamb at the head of the procession. The destination has always been the same. Enoch just got an early showing.</p>
+    </section>
 
-    <!-- 8. PERSONAL APPLICATION CHALLENGE -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Whisper one prayer this afternoon while you are doing something else. While you are walking from the parking lot to the office. While the kettle is boiling. While the dog is sniffing the same patch of grass for the third time. Do not stop and pose. Just keep moving and talk to God under your breath. Enoch's three hundred years are out of reach today; one walked-with-God minute is not.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. CLOSING PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, the kind of walking Enoch did is what we want, and we know we cannot manufacture it on demand. We confess that our prayer life still tends to be transactional, paused, and self-conscious. We pray when we sit down to pray, and the rest of the day runs without You. Forgive us. Teach us the steady kind of conversation that survives traffic, dinner prep, deadlines, and the kids. Make our walking a low hum of communion that does not turn off. We do not need to disappear into heaven; we need to walk in our own kitchens with You. Be with us in the cab of the truck and in the booth of the diner and in the line at the pharmacy, until the road just continues past where the witnesses can see. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"Where in your everyday motion (driving, dishes, school dropoffs, lunch breaks, sleepless 3 a.m. ceilings) is God already trying to walk with you, and what would have to change about your inner soundtrack for you to notice? What is one specific stretch of tomorrow's day you could turn into a walked-with-Him stretch on purpose?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION QUESTION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"Where in your everyday motion (driving, dishes, school dropoffs, lunch breaks, sleepless 3 a.m. ceilings) is God already trying to walk with you, and what would have to change about your inner soundtrack for you to notice? What is one specific stretch of tomorrow's day you could turn into a walked-with-Him stretch on purpose?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, the kind of walking Enoch did is what we want, and we know we cannot manufacture it on demand. We confess that our prayer life still tends to be transactional, paused, and self-conscious. We pray when we sit down to pray, and the rest of the day runs without You. Forgive us. Teach us the steady kind of conversation that survives traffic, dinner prep, deadlines, and the kids. Make our walking a low hum of communion that does not turn off. We do not need to disappear into heaven; we need to walk in our own kitchens with You. Be with us in the cab of the truck and in the booth of the diner and in the line at the pharmacy, until the road just continues past where the witnesses can see. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-05-04.html"><span class="day-nav-kicker">← Monday</span><span class="day-nav-title">The Posture of Prayer</span></a><a class="day-nav-item" href="/bible-study/2026-05-06.html"><span class="day-nav-kicker">Wednesday →</span><span class="day-nav-title">Moses, Godly Leader</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"romans-12-12":{"ref":"Romans 12:12","text":"Be joyful in hope, patient in affliction, persistent in prayer.","bibleUrl":"https://www.bible.com/bible/3034/ROM.12.12"},"lamentations-3-55-57":{"ref":"Lamentations 3:55-57","text":"I called on Your name, O LORD, out of the depths of the Pit. You heard my plea: \u201cDo not ignore my cry for relief.\u201d You drew near when I called on You; You said, \u201cDo not be afraid.\u201d","bibleUrl":"https://www.bible.com/bible/3034/LAM.3.55-57"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Jesus Teaches Us How to Pray — Daily Bible Study</title>
 <meta name="study-title" content="Jesus Teaches Us How to Pray">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 7, Practical Prayer · Part 4 of 7">
+<meta name="study-passage" content="Matthew 6:5-15">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 7, Practical Prayer · Day 4 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Jesus Teaches Us How to Pray">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 7, Practical Prayer · Part 4 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 7, Practical Prayer · Day 4 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-05-12.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 7, Practical Prayer · Part 4 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 7, Practical Prayer · Day 4 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,324 +38,208 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Jesus Teaches Us How to Pray</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 7, Practical Prayer</span>
-      <span>Part 4 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Tue · May 12</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">12 min</span>
     </div>
-    <div class="date-badge">May 12, 2026</div>
+    <h1 class="study-title">Jesus Teaches Us How to Pray</h1>
+    <p class="study-sub"><span class="sub-title">Practical Prayer</span><span class="sub-facts"><span>Lesson 7</span><span>Day 4 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">Twelve men who had been reciting Jewish prayer their whole lives watched their Rabbi pray once and asked Him a question they had never asked anyone: teach us how You do that.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p class="tldr-hook">Twelve men who had been reciting Jewish prayer their whole lives watched their Rabbi pray once and asked Him a question they had never asked anyone: teach us how You do that.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span><span>Jesus opens His teaching by warning against ostentatious public prayer and against the multiplied-words prayer of the Gentiles, then gives the disciples nine plain lines.</span></li>
-        <li><span class="bullet-icon">☩</span><span>The address "Our Father in heaven" is the prayer's most radical move: the Son who has been calling the Father Abba from before time hands the family word to the disciples.</span></li>
-        <li><span class="bullet-icon">☩</span><span>The first three petitions are God-ward (Your name, Your kingdom, Your will), and the next three are us-ward (bread, forgiveness, deliverance), in that exact order.</span></li>
-        <li><span class="bullet-icon">☩</span><span>The whole prayer is a template, not a script. Luke records a shorter version. Both come from the same Teacher; the rhythm is what matters, not the exact words.</span></li>
+        <li>
+<span class="bullet-icon">☩</span><span>Jesus opens His teaching by warning against ostentatious public prayer and against the multiplied-words prayer of the Gentiles, then gives the disciples nine plain lines.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span>The address "Our Father in heaven" is the prayer's most radical move: the Son who has been calling the Father Abba from before time hands the family word to the disciples.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span>The first three petitions are God-ward (Your name, Your kingdom, Your will), and the next three are us-ward (bread, forgiveness, deliverance), in that exact order.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span>The whole prayer is a template, not a script. Luke records a shorter version. Both come from the same Teacher; the rhythm is what matters, not the exact words.</span>
+</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday Hannah's lips were moving at the doorpost of the tabernacle, and the priest mistook her silent prayer for drunkenness. Today the disciples are watching their Teacher do something they had never seen before. Jewish prayer life was not something they had to be introduced to. They had been reciting the Shema since they could speak, and the Eighteen Benedictions had been on their lips three times a day for as long as they could remember. They were not asking Jesus for words. They had plenty of words. They were asking Him for whatever it was He had that they had been missing. And the Greek verb behind their request, <em>didasko</em>, "teach," is the same verb a rabbi's students used to say "make us your apprentices in this." The day Hannah ran out of words was the day the verb <em>shaphak</em> got its silent test case. The day the disciples ran out of theirs is the day the verb finally hears its Master answer.</p>
-    </div>
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday Hannah's lips were moving at the doorpost of the tabernacle, and the priest mistook her silent prayer for drunkenness. Today the disciples are watching their Teacher do something they had never seen before. Jewish prayer life was not something they had to be introduced to. They had been reciting the Shema since they could speak, and the Eighteen Benedictions had been on their lips three times a day for as long as they could remember. They were not asking Jesus for words. They had plenty of words. They were asking Him for whatever it was He had that they had been missing. And the Greek verb behind their request, <em>didasko</em>, "teach," is the same verb a rabbi's students used to say "make us your apprentices in this." The day Hannah ran out of words was the day the verb <em>shaphak</em> got its silent test case. The day the disciples ran out of theirs is the day the verb finally hears its Master answer.</p>
+    </section>
 
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Prayer in the Synagogue Court</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>Prayer in the Synagogue Court</h3>
       <p>By the first century, Jewish prayer life had a rhythm older than the temple. Three times a day a faithful Jew prayed: Shacharit at sunrise, Mincha in the afternoon, Maariv after dark. The centerpiece of each was the Amidah, "the Standing," eighteen benedictions covering everything from the patriarchs to the dispersion to the coming of Messiah. On Sabbaths and feasts there were extra liturgies. The Shema, recited morning and evening, anchored the day in the confession that the LORD is one. Children memorized large portions of the Psalter before they could read. The disciples had been doing this for thirty years. None of them needed Jesus to teach them a prayer.</p>
       <p>What they needed was something else. Pharisaic teachers in their day had built a culture of public prayer that turned a worship act into a status display. Long, elaborate, carefully constructed prayers were spoken on the corner of major streets at the appointed hour, where there happened to be a maximum audience. The Greek world had its own version: pile up beautiful phrases, name as many divine epithets as you could fit, hope the gods notice the rhetoric. Both reflexes were alive in the courtyards Jesus walked through. The disciples watched Jesus slip away before sunrise to a quiet hillside, and they watched Him come back changed. They had been raised in a religious culture that prayed louder and longer than anyone in the ancient world. He showed them that prayer was a private fire in a quiet room, lit before the morning made any noise. The Lord's Prayer is short partly because it was given to a generation already drowning in long prayers, and the Teacher knew the difference between volume and intimacy.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>The disciples saw their Rabbi pray. Luke tells us they saw Him slip away "to deserted places" in <a class="vlink" href="https://www.bible.com/bible/3034/LUK.5.16" target="_blank" rel="noopener">Luke 5:16</a>, spend a whole night in prayer before choosing the Twelve in <a class="vlink" href="https://www.bible.com/bible/3034/LUK.6.12" target="_blank" rel="noopener">Luke 6:12</a>, and pray alone on the way to the cross in <a class="vlink" href="https://www.bible.com/bible/3034/LUK.9.18" target="_blank" rel="noopener">Luke 9:18</a> and <a class="vlink" href="https://www.bible.com/bible/3034/LUK.22.41" target="_blank" rel="noopener">Luke 22:41</a>. Even the meal prayers in <a class="vlink" href="https://www.bible.com/bible/3034/LUK.24.30" target="_blank" rel="noopener">Luke 24:30</a> opened blind eyes. Mark adds the early-morning desolate place in <a class="vlink" href="https://www.bible.com/bible/3034/MRK.1.35" target="_blank" rel="noopener">Mark 1:35</a> and the after-supper mountain in <a class="vlink" href="https://www.bible.com/bible/3034/MRK.6.46" target="_blank" rel="noopener">Mark 6:46</a>. The disciples were not asking out of ignorance; they were asking out of hunger. "Lord, teach us to pray" lands in <a class="vlink" href="https://www.bible.com/bible/3034/LUK.11.1" target="_blank" rel="noopener">Luke 11:1</a>, and the Teacher does not refuse.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>The disciples saw their Rabbi pray. Luke tells us they saw Him slip away "to deserted places" in <a class="vlink" href="https://www.bible.com/bible/3034/LUK.5.16" target="_blank" rel="noopener" data-verse="luke-5-16" data-ref="Luke 5:16" aria-expanded="false">Luke 5:16</a>, spend a whole night in prayer before choosing the Twelve in <a class="vlink" href="https://www.bible.com/bible/3034/LUK.6.12" target="_blank" rel="noopener" data-verse="luke-6-12" data-ref="Luke 6:12" aria-expanded="false">Luke 6:12</a>, and pray alone on the way to the cross in <a class="vlink" href="https://www.bible.com/bible/3034/LUK.9.18" target="_blank" rel="noopener" data-verse="luke-9-18" data-ref="Luke 9:18" aria-expanded="false">Luke 9:18</a> and <a class="vlink" href="https://www.bible.com/bible/3034/LUK.22.41" target="_blank" rel="noopener" data-verse="luke-22-41" data-ref="Luke 22:41" aria-expanded="false">Luke 22:41</a>. Even the meal prayers in <a class="vlink" href="https://www.bible.com/bible/3034/LUK.24.30" target="_blank" rel="noopener" data-verse="luke-24-30" data-ref="Luke 24:30" aria-expanded="false">Luke 24:30</a> opened blind eyes. Mark adds the early-morning desolate place in <a class="vlink" href="https://www.bible.com/bible/3034/MRK.1.35" target="_blank" rel="noopener" data-verse="mark-1-35" data-ref="Mark 1:35" aria-expanded="false">Mark 1:35</a> and the after-supper mountain in <a class="vlink" href="https://www.bible.com/bible/3034/MRK.6.46" target="_blank" rel="noopener" data-verse="mark-6-46" data-ref="Mark 6:46" aria-expanded="false">Mark 6:46</a>. The disciples were not asking out of ignorance; they were asking out of hunger. "Lord, teach us to pray" lands in <a class="vlink" href="https://www.bible.com/bible/3034/LUK.11.1" target="_blank" rel="noopener" data-verse="luke-11-1" data-ref="Luke 11:1" aria-expanded="false">Luke 11:1</a>, and the Teacher does not refuse.</p>
 
 <!-- BSB_BLOCK: Matthew 6:5-15 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:3394174087e29443ae6e5a1e5c5510d9dc7731733abdfb70c5e6f6f9aadd7735 | footnotes-stripped:1 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Matthew 6:5-15</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.6.5-15" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 5">5</sup><span class="words-of-jesus">And when you pray, do not be like the hypocrites. For they love to pray standing in the synagogues and on the street corners to be seen by men. Truly I tell you, they already have their full reward.</span> <sup class="verse-number" aria-label="Verse 6">6</sup><span class="words-of-jesus">But when you pray, go into your inner room, shut your door, and pray to your Father, who is unseen. And your Father, who sees what is done in secret, will reward you.</span> <sup class="verse-number" aria-label="Verse 7">7</sup><span class="words-of-jesus">And when you pray, do not babble on like pagans, for they think that by their many words they will be heard.</span> <sup class="verse-number" aria-label="Verse 8">8</sup><span class="words-of-jesus">Do not be like them, for your Father knows what you need before you ask Him.</span> <sup class="verse-number" aria-label="Verse 9">9</sup><span class="words-of-jesus">So then, this is how you should pray: ‘Our Father in heaven, hallowed be Your name.</span> <sup class="verse-number" aria-label="Verse 10">10</sup><span class="words-of-jesus">Your kingdom come, Your will be done, on earth as it is in heaven.</span> <sup class="verse-number" aria-label="Verse 11">11</sup><span class="words-of-jesus">Give us this day our daily bread.</span> <sup class="verse-number" aria-label="Verse 12">12</sup><span class="words-of-jesus">And forgive us our debts, as we also have forgiven our debtors.</span> <sup class="verse-number" aria-label="Verse 13">13</sup><span class="words-of-jesus">And lead us not into temptation, but deliver us from the evil one.’</span> <sup class="verse-number" aria-label="Verse 14">14</sup><span class="words-of-jesus">For if you forgive men their trespasses, your heavenly Father will also forgive you.</span> <sup class="verse-number" aria-label="Verse 15">15</sup><span class="words-of-jesus">But if you do not forgive men their trespasses, neither will your Father forgive yours.</span></div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/MAT.6.5-15" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 5">5</sup><span class="words-of-jesus">And when you pray, do not be like the hypocrites. For they love to pray standing in the synagogues and on the street corners to be seen by men. Truly I tell you, they already have their full reward.</span> <sup class="verse-number" aria-label="Verse 6">6</sup><span class="words-of-jesus">But when you pray, go into your inner room, shut your door, and pray to your Father, who is unseen. And your Father, who sees what is done in secret, will reward you.</span> <sup class="verse-number" aria-label="Verse 7">7</sup><span class="words-of-jesus">And when you pray, do not babble on like pagans, for they think that by their many words they will be heard.</span> <sup class="verse-number" aria-label="Verse 8">8</sup><span class="words-of-jesus">Do not be like them, for your Father knows what you need before you ask Him.</span> <sup class="verse-number" aria-label="Verse 9">9</sup><span class="words-of-jesus">So then, this is how you should pray: ‘Our Father in heaven, hallowed be Your name.</span> <sup class="verse-number" aria-label="Verse 10">10</sup><span class="words-of-jesus">Your kingdom come, Your will be done, on earth as it is in heaven.</span> <sup class="verse-number" aria-label="Verse 11">11</sup><span class="words-of-jesus">Give us this day our daily bread.</span> <sup class="verse-number" aria-label="Verse 12">12</sup><span class="words-of-jesus">And forgive us our debts, as we also have forgiven our debtors.</span> <sup class="verse-number" aria-label="Verse 13">13</sup><span class="words-of-jesus">And lead us not into temptation, but deliver us from the evil one.’</span> <sup class="verse-number" aria-label="Verse 14">14</sup><span class="words-of-jesus">For if you forgive men their trespasses, your heavenly Father will also forgive you.</span> <sup class="verse-number" aria-label="Verse 15">15</sup><span class="words-of-jesus">But if you do not forgive men their trespasses, neither will your Father forgive yours.</span>
+</div>
 <div class="verse-commentary">
-          <p>Jesus opens with two warnings before He gives the prayer. Don't pray to be seen, and don't pile up words trying to be heard. The hypocrites had the audience problem; the Gentiles had the volume problem. Authentic prayer dies in either failure mode. The fix in <a class="vlink" href="https://www.bible.com/bible/3034/MAT.6.5-8" target="_blank" rel="noopener">Matthew 6:5-8</a> is a private room and a shut door, and the reason is that the Father "knows what you need before you ask Him." Prayer is not informing God of facts He missed. It is meeting the Father who already knows.</p>
+          <p>Jesus opens with two warnings before He gives the prayer. Don't pray to be seen, and don't pile up words trying to be heard. The hypocrites had the audience problem; the Gentiles had the volume problem. Authentic prayer dies in either failure mode. The fix in <a class="vlink" href="https://www.bible.com/bible/3034/MAT.6.5-8" target="_blank" rel="noopener" data-verse="matthew-6-5-8" data-ref="Matthew 6:5-8" aria-expanded="false">Matthew 6:5-8</a> is a private room and a shut door, and the reason is that the Father "knows what you need before you ask Him." Prayer is not informing God of facts He missed. It is meeting the Father who already knows.</p>
           <p>The address is the prayer's most radical line. <em>Pater hemon</em>, "Our Father." The Aramaic word Jesus probably used in everyday speech was <em>Abba</em>, the small intimate word a Jewish child used at the kitchen table. The Son who has been calling the Father by that name from before the foundation of the world hands creatures the same address. "Our" is not a mistake either. The disciples were being taught a corporate prayer for a corporate family, even when they prayed it alone in a closet. The first three petitions are God-ward. <em>Hagiastheto to onoma sou</em>, "hallowed be Your name"; <em>eltheto he basileia sou</em>, "your kingdom come"; <em>genetheto to thelema sou</em>, "your will be done." Three deliberate orientations of the heart before any request for ourselves shows up. By Friday we will see how Daniel's prayer used the same instinct, four centuries earlier, on a Babylonian afternoon.</p>
-          <p>Then the prayer turns toward us. The Greek word in "Give us this day our daily bread" is <em>epiousion</em>, an oddly shaped word that does not appear anywhere else in Greek literature outside the Lord's Prayer. The early church wrestled with whether it meant "for the day," "for tomorrow," or "for our existence." Jerome translated it "supersubstantial." The honest answer is that the Greek itself is bent toward bread that is just enough, and only enough, for the present and the next step. Then the prayer asks for what is harder than bread: forgiveness, in the same currency we have offered other people. Then deliverance from temptation, in the language of <a class="vlink" href="https://www.bible.com/bible/3034/PSA.91" target="_blank" rel="noopener">Psalm 91</a>'s shelter under the wing. The doxology that historically closes the prayer ("for thine is the kingdom and the power and the glory") echoes <a class="vlink" href="https://www.bible.com/bible/3034/1CH.29.11" target="_blank" rel="noopener">1 Chronicles 29:11</a>, David's prayer over the temple offering, where the king publicly handed back to the LORD everything he had been given.</p>
+          <p>Then the prayer turns toward us. The Greek word in "Give us this day our daily bread" is <em>epiousion</em>, an oddly shaped word that does not appear anywhere else in Greek literature outside the Lord's Prayer. The early church wrestled with whether it meant "for the day," "for tomorrow," or "for our existence." Jerome translated it "supersubstantial." The honest answer is that the Greek itself is bent toward bread that is just enough, and only enough, for the present and the next step. Then the prayer asks for what is harder than bread: forgiveness, in the same currency we have offered other people. Then deliverance from temptation, in the language of <a class="vlink" href="https://www.bible.com/bible/3034/PSA.91" target="_blank" rel="noopener">Psalm 91</a>'s shelter under the wing. The doxology that historically closes the prayer ("for thine is the kingdom and the power and the glory") echoes <a class="vlink" href="https://www.bible.com/bible/3034/1CH.29.11" target="_blank" rel="noopener" data-verse="1-chronicles-29-11" data-ref="1 Chronicles 29:11" aria-expanded="false">1 Chronicles 29:11</a>, David's prayer over the temple offering, where the king publicly handed back to the LORD everything he had been given.</p>
           <p>Then verses 14 and 15 do something a little startling. Of all the petitions, Jesus circles back to the forgiveness one and underlines it twice. Forgive others, He says, or you will not be forgiven yourself. The hardest line of the whole prayer is also the line He repeats. Practical prayer, by His definition, is bound up with practical mercy. You cannot pour out a clenched fist.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: Matthew 6:13 | 6:13 Or from evil; BYZ and TR include For Yours is the kingdom and the power and the glory, forever. Amen. -->
 
 <!-- BSB_BLOCK: Luke 11:2-4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:a8c707b52843cfcd81c03b0f07b440f19cf536c93b30f56def48bbec89c8f70f | footnotes-stripped:3 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Luke 11:2-4</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/LUK.11.2-4" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 2">2</sup>So Jesus told them, <span class="words-of-jesus">“When you pray, say: ‘Father, hallowed be Your name. Your kingdom come.</span> <sup class="verse-number" aria-label="Verse 3">3</sup><span class="words-of-jesus">Give us each day our daily bread.</span> <sup class="verse-number" aria-label="Verse 4">4</sup><span class="words-of-jesus">And forgive us our sins, for we also forgive everyone who sins against us. And lead us not into temptation.’”</span></div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/LUK.11.2-4" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 2">2</sup>So Jesus told them, <span class="words-of-jesus">“When you pray, say: ‘Father, hallowed be Your name. Your kingdom come.</span> <sup class="verse-number" aria-label="Verse 3">3</sup><span class="words-of-jesus">Give us each day our daily bread.</span> <sup class="verse-number" aria-label="Verse 4">4</sup><span class="words-of-jesus">And forgive us our sins, for we also forgive everyone who sins against us. And lead us not into temptation.’”</span>
+</div>
 <div class="verse-commentary">
           <p>Luke's version is shorter. The opening drops "Our" and "in heaven" and just says "Father." The third God-ward petition (Your will be done) is missing. The deliverance line is shorter. The closing doxology is not in Luke at all. The disciples almost certainly heard Jesus pray something close to this prayer many times over many months. The two Gospel writers are not contradicting each other; they are remembering two different occasions, or two slightly different deliveries of the same teaching. The point of comparing them is not to figure out which is "the original," but to see the freedom Jesus left us inside the rhythm.</p>
           <p>"Father" alone is enough. The address is the prayer. Everything that follows is just opening doors inside a relationship that already exists. Sincerity, simplicity, daily, intimate, willing to forgive: this is the architecture. The reader who memorizes Matthew's longer version is doing something good; the reader who memorizes Luke's shorter version is doing something good; the reader who internalizes the rhythm of both and prays in their own words is closest to what the Teacher actually had in mind.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: Luke 11:2 | 11:2 BYZ and TR Our Father in heaven; see Matthew 6:9. -->
       <!-- BSB_FOOTNOTE: Luke 11:2 | 11:2 BYZ and TR include Your will be done, on earth as it is in heaven; see Matthew 6:10. -->
       <!-- BSB_FOOTNOTE: Luke 11:4 | 11:4 BYZ and TR include but deliver us from the evil one; see Matthew 6:13. -->
-    </div>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Help-Line Voice</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Help-Line Voice</h3>
       <p>There is a voice we use on customer-service calls that we do not use anywhere else. It is bright, slightly elevated, full of unnecessary please-and-thank-yous. "Yes, I would just love to know if you might possibly be able to..." The person on the other end does not know who we really are, and the voice is calibrated for that. Then we hang up. Whoever is in the room with us hears something else entirely. "That didn't work" or "I'm exhausted" or "we're going to have to figure something out." The customer-service voice was for a stranger. The room voice is for the people who know us.</p>
       <p>That is exactly the difference Jesus drew. The hypocrites had been praying in the help-line voice on the corner of Main Street. The volume was correct. The vocabulary was decorated. The audience had no idea who they really were, and that was the whole appeal. Jesus told the disciples to drop the voice in a closet with the door shut. Pray to the Father in the room voice. He is the one who knows. "Our Father" is not a more religious phrase than "yes, please" on a help line; it is what a child says at the kitchen table. The closet door is what makes the room voice possible. The Father has been listening for it the whole time.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Familect at the Kitchen Table</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Familect at the Kitchen Table</h3>
       <p>Linguists and family-communication researchers have a name for the inside-the-house dialect every close household develops over time. They call it a "familect." The term has been working its way through academic communication studies for a decade, and a wave of attention since 2024 (in popular psychology articles, news features, and a flood of viral TikTok videos in which couples and families translate their own private vocabulary for outsiders) has put it in front of a much broader audience. The pattern is consistent. Long relationships generate shared idioms, nicknames, mispronunciations that became canon, and one-word references that stand in for whole stories. Earlier studies in the <em>Journal of Social and Personal Relationships</em> found that couples who reported higher marital satisfaction also recalled using more shared idioms with each other. The "culture of two" was correlated with thriving, not with childishness.</p>
       <p>The strangest part of the data is the brevity. The closer the relationship, the shorter the messages get. A spouse looks at a partner across a busy room and one raised eyebrow communicates a paragraph. A parent says one nicknamed phrase and a child stops doing the thing the rules of the house forbid. By contrast, when we talk to strangers (a customer-service representative, a job interviewer, a guest we are trying to impress), our sentences get longer, our vocabulary gets more decorated, our inflections get more deliberate. The same speaker carries two registers in the same body. We use one with strangers and the other with the people who already know us.</p>
       <p>That is the linguistic shape of the prayer Jesus taught. The hypocrites had been speaking the customer-service register on the corner of Main Street, with extra syllables and nice-to-meet-you cadences. The Lord's Prayer is a familect. Nine plain lines. "Our Father" is the address a child uses at the kitchen table, in a household where the listener already knows everything you might say. The closet door is what makes the familect possible. Long, decorated prayers are what the household never needed.</p>
-    </div>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>The most radical word in the prayer is the first one. "Father." The Son has been calling Him that for all eternity, and now, in a Galilean field, He hands the word to a circle of fishermen, tax collectors, and zealots and says: this is your address too. The cross is what makes the address actually true. Adoption is not a metaphor in the New Testament; it is a legal fact secured by Christ's blood. By the time we reach <a class="vlink" href="https://www.bible.com/bible/3034/ROM.8" target="_blank" rel="noopener">Romans 8</a> on Thursday, Paul will say the Spirit Himself cries "Abba, Father" inside us, because the Spirit is teaching us to pray the very prayer the Son has been praying since before the world existed. The Lord's Prayer is therefore not a polite way to start a religious exercise. It is the family prayer book of those who have been adopted into the household of God by the Son's life, death, and resurrection. We do not pray "Our Father" because we are very religious. We pray it because Jesus made it true.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>The most radical word in the prayer is the first one. "Father." The Son has been calling Him that for all eternity, and now, in a Galilean field, He hands the word to a circle of fishermen, tax collectors, and zealots and says: this is your address too. The cross is what makes the address actually true. Adoption is not a metaphor in the New Testament; it is a legal fact secured by Christ's blood. By the time we reach <a class="vlink" href="https://www.bible.com/bible/3034/ROM.8" target="_blank" rel="noopener">Romans 8</a> on Thursday, Paul will say the Spirit Himself cries "Abba, Father" inside us, because the Spirit is teaching us to pray the very prayer the Son has been praying since before the world existed. The Lord's Prayer is therefore not a polite way to start a religious exercise. It is the family prayer book of those who have been adopted into the household of God by the Son's life, death, and resurrection. We do not pray "Our Father" because we are very religious. We pray it because Jesus made it true.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Tomorrow morning, before you read another word, pray the Lord's Prayer slowly out loud in your private room with the door shut. Pause after each line and let your heart fill in the specifics. "Hallowed be Your name" with whom in your life today? "Your kingdom come" where, exactly? "Your will be done" instead of which of mine? "Give us this day our daily bread" where in your budget or pantry? "Forgive us as we forgive" who, by name? Pray the prayer the way Jesus prayed it: short, sincere, and done before anyone else in the house is awake.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we have prayed long prayers in front of people we wanted to impress, and silly short prayers when no one was watching, and sometimes nothing at all. Forgive us for the times we have used Your name as a stage prop and the times we have buried our heads in our pillows because we did not know what to say. Teach us today the way You taught the twelve. Show us the closet, the closed door, the early hour, the few honest words. Make "Our Father" the most personal sentence we know. Hallow Your name on our lips and in our days. Bring Your kingdom into the rooms we live in. Bend our wills to Yours, and trust us with daily bread instead of next month's. Make us forgive others the way You have forgiven us, even when it costs more than we want to spend. Lead us out of temptation and deliver us from the evil one. Because the kingdom and the power and the glory are Yours, today and always. We pour out our hearts before You, because You are our refuge. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"Which line of the Lord's Prayer do you find yourself rushing through the fastest (the hallowing, the surrender, the bread, the forgiveness, the deliverance, the doxology)? And what is one specific situation in your life this week that, if you actually slowed down on that line and prayed it on purpose, would change before Sabbath?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"Which line of the Lord's Prayer do you find yourself rushing through the fastest (the hallowing, the surrender, the bread, the forgiveness, the deliverance, the doxology)? And what is one specific situation in your life this week that, if you actually slowed down on that line and prayed it on purpose, would change before Sabbath?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, we have prayed long prayers in front of people we wanted to impress, and silly short prayers when no one was watching, and sometimes nothing at all. Forgive us for the times we have used Your name as a stage prop and the times we have buried our heads in our pillows because we did not know what to say. Teach us today the way You taught the twelve. Show us the closet, the closed door, the early hour, the few honest words. Make "Our Father" the most personal sentence we know. Hallow Your name on our lips and in our days. Bring Your kingdom into the rooms we live in. Bend our wills to Yours, and trust us with daily bread instead of next month's. Make us forgive others the way You have forgiven us, even when it costs more than we want to spend. Lead us out of temptation and deliver us from the evil one. Because the kingdom and the power and the glory are Yours, today and always. We pour out our hearts before You, because You are our refuge. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-05-11.html"><span class="day-nav-kicker">← Monday</span><span class="day-nav-title">When Prayers Seem Unanswered</span></a><a class="day-nav-item" href="/bible-study/2026-05-13.html"><span class="day-nav-kicker">Wednesday →</span><span class="day-nav-title">Praise, Confession, Requests, Thanksgiving</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"luke-5-16":{"ref":"Luke 5:16","text":"Yet He frequently withdrew to the wilderness to pray.","bibleUrl":"https://www.bible.com/bible/3034/LUK.5.16"},"luke-6-12":{"ref":"Luke 6:12","text":"In those days Jesus went out to the mountain to pray, and He spent the night in prayer to God.","bibleUrl":"https://www.bible.com/bible/3034/LUK.6.12"},"luke-9-18":{"ref":"Luke 9:18","text":"One day as Jesus was praying in private and the disciples were with Him, He questioned them: \u201cWho do the crowds say I am?\u201d","bibleUrl":"https://www.bible.com/bible/3034/LUK.9.18"},"luke-22-41":{"ref":"Luke 22:41","text":"And He withdrew about a stone\u2019s throw beyond them, where He knelt down and prayed,","bibleUrl":"https://www.bible.com/bible/3034/LUK.22.41"},"luke-24-30":{"ref":"Luke 24:30","text":"While He was reclining at the table with them, He took bread, spoke a blessing and broke it, and gave it to them.","bibleUrl":"https://www.bible.com/bible/3034/LUK.24.30"},"mark-1-35":{"ref":"Mark 1:35","text":"Early in the morning, while it was still dark, Jesus got up and went out to a solitary place to pray.","bibleUrl":"https://www.bible.com/bible/3034/MRK.1.35"},"mark-6-46":{"ref":"Mark 6:46","text":"After bidding them farewell, He went up on the mountain to pray.","bibleUrl":"https://www.bible.com/bible/3034/MRK.6.46"},"luke-11-1":{"ref":"Luke 11:1","text":"One day in a place where Jesus had just finished praying, one of His disciples requested, \u201cLord, teach us to pray, just as John taught his disciples.\u201d","bibleUrl":"https://www.bible.com/bible/3034/LUK.11.1"},"matthew-6-5-8":{"ref":"Matthew 6:5-8","text":"And when you pray, do not be like the hypocrites. For they love to pray standing in the synagogues and on the street corners to be seen by men. Truly I tell you, they already have their full reward. But when you pray, go into your inner room, shut your door, and pray to your Father, who is unseen. And your Father, who sees what is done in secret, will reward you. And when you pray, do not babble on like pagans, for they think that by their many words they will be heard. Do not be like them, for your Father knows what you need before you ask Him.","bibleUrl":"https://www.bible.com/bible/3034/MAT.6.5-8"},"1-chronicles-29-11":{"ref":"1 Chronicles 29:11","text":"Yours, O LORD, is the greatness and the power and the glory and the splendor and the majesty, for everything in heaven and on earth belongs to You. Yours, O LORD, is the kingdom, and You are exalted as head over all.","bibleUrl":"https://www.bible.com/bible/3034/1CH.29.11"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

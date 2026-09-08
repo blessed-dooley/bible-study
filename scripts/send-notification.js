@@ -1,6 +1,6 @@
 /**
  * Send Daily Bible Study push notification via Firebase Cloud Messaging.
- * Runs as a GitHub Action at 8 AM Central daily.
+ * Runs as a GitHub Action each morning.
  *
  * Reads all FCM tokens from Firestore, checks that today's study file
  * exists in the repo, then sends a notification to each subscriber.
@@ -19,20 +19,21 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-// Day names for notification text
-const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Sabbath'];
-
 async function main() {
-  // Get today's date in YYYY-MM-DD format (Central time)
+  // Resolve the calendar date in Central Time without a seasonal UTC offset.
   const now = new Date();
-  // Adjust to Central time (UTC-5 or UTC-6)
-  const centralOffset = -5; // CDT; change to -6 for CST in November
-  const central = new Date(now.getTime() + (centralOffset * 60 * 60 * 1000));
-  const year = central.getUTCFullYear();
-  const month = String(central.getUTCMonth() + 1).padStart(2, '0');
-  const day = String(central.getUTCDate()).padStart(2, '0');
+  const parts = Object.fromEntries(
+    new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/Chicago', year: 'numeric', month: '2-digit',
+      day: '2-digit', weekday: 'long'
+    }).formatToParts(now).filter(part => part.type !== 'literal')
+      .map(part => [part.type, part.value])
+  );
+  const year = parts.year;
+  const month = parts.month;
+  const day = parts.day;
   const dateStr = `${year}-${month}-${day}`;
-  const dayOfWeek = DAYS[central.getUTCDay()];
+  const dayOfWeek = parts.weekday === 'Saturday' ? 'Sabbath' : parts.weekday;
 
   console.log(`Date: ${dateStr} (${dayOfWeek})`);
 

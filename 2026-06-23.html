@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>The Bride — Daily Bible Study</title>
 <meta name="study-title" content="The Bride">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 13, Into Eternity · Part 4 of 7">
+<meta name="study-passage" content="John 14:1-3">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 13, Into Eternity · Day 4 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="The Bride">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 13, Into Eternity · Part 4 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 13, Into Eternity · Day 4 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-06-23.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 13, Into Eternity · Part 4 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 13, Into Eternity · Day 4 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,335 +38,210 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>The Bride</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 13, Into Eternity</span>
-      <span>Part 4 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">June 23, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Tue · Jun 23</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
+    </div>
+    <h1 class="study-title">The Bride</h1>
+    <p class="study-sub"><span class="sub-title">Into Eternity</span><span class="sub-facts"><span>Lesson 13</span><span>Day 4 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>An old man, exiled and alone on a prison island, is handed the most beautiful vision in the Bible, and of all the images God could have chosen for the end of the story, He picks a wedding. An angel offers to show John "the bride," then points to an entire shining city coming down from heaven. The future is not a reward or a retirement. It is a marriage, the moment two who have loved at a distance finally belong to each other completely. <strong>What waits for us is not mainly a place but a belonging, the wedding the whole story has been moving toward.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday ended at the reunion: every eye seeing Him, the graves opening, the people of God lifted up to look at last into the face they had only known by faith. But what kind of reunion is it? Today gives it a shape, and the shape is surprising and tender. The Bible does not picture the end as employees finally meeting the boss, or citizens glimpsing a distant king. It pictures a wedding. The face we will see is the face of a Bridegroom who has spent the whole engagement building a home for the one He loves. Monday told us we will see Him. Today tells us what seeing Him will feel like: a homecoming into a love that is finally, fully ours.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>An old man, exiled and alone on a prison island, is handed the most beautiful vision in the Bible, and of all the images God could have chosen for the end of the story, He picks a wedding. An angel offers to show John "the bride," then points to an entire shining city coming down from heaven. The future is not a reward or a retirement. It is a marriage, the moment two who have loved at a distance finally belong to each other completely. <strong>What waits for us is not mainly a place but a belonging, the wedding the whole story has been moving toward.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday ended at the reunion: every eye seeing Him, the graves opening, the people of God lifted up to look at last into the face they had only known by faith. But what kind of reunion is it? Today gives it a shape, and the shape is surprising and tender. The Bible does not picture the end as employees finally meeting the boss, or citizens glimpsing a distant king. It pictures a wedding. The face we will see is the face of a Bridegroom who has spent the whole engagement building a home for the one He loves. Monday told us we will see Him. Today tells us what seeing Him will feel like: a homecoming into a love that is finally, fully ours.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">How a Galilean Wedding Actually Worked</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>How a Galilean Wedding Actually Worked</h3>
       <p>When Jesus said "I go to prepare a place for you," every person listening pictured the same thing, because that is exactly how a wedding worked in their world. A marriage began with the betrothal, a binding agreement far more serious than a modern engagement; the couple were legally bound, though they did not yet live together. Then the groom went home. His job during the engagement was to build, usually adding a room or a small wing onto his father's house, so that when he brought his bride back there would be a place that was theirs. He did not get to set his own wedding date. His father judged when the addition was ready, and only then released him to go get her.</p>
       <p>So the groom would leave, sometimes for the better part of a year, and the bride would wait, never knowing the exact day. Then one evening, often after dark, a shout would go up in the street and a torchlit procession would come for her. The groom had returned. She had kept herself ready for exactly this, and now the long engagement ended in a feast that could run for days. Hold that whole picture in your mind, because Jesus and the apostles did not reach for the wedding image by accident. Every beat of it, the binding promise, the building groom, the unknown date, the sudden shout, the waiting bride, is the gospel told in the language of a love story.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Heaven is almost impossible to describe, and the Bible knows it. No set of human words is big enough to hold the glory of what God has prepared, and Scripture admits as much rather than pretending otherwise. So instead of measurements, God hands John a relationship. The vision John receives on Patmos does not lead with architecture. It leads with a wedding, because the truest thing about our future is not where we will be but Whose we will be.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Heaven is almost impossible to describe, and the Bible knows it. No set of human words is big enough to hold the glory of what God has prepared, and Scripture admits as much rather than pretending otherwise. So instead of measurements, God hands John a relationship. The vision John receives on Patmos does not lead with architecture. It leads with a wedding, because the truest thing about our future is not where we will be but Whose we will be.</p>
 
 <!-- BSB_BLOCK: John 14:1-3 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c9781bdff12cfaffee9410713a9cf9d22cd7d007250a42d2f9a7541f548313d7 | footnotes-stripped:2 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">John 14:1-3</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.14.1-3" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup><span class="words-of-jesus">“Do not let your hearts be troubled. You believe in God; believe in Me as well.</span> <sup class="verse-number" aria-label="Verse 2">2</sup><span class="words-of-jesus">In My Father’s house are many rooms. If it were not so, would I have told you that I am going there to prepare a place for you?</span> <sup class="verse-number" aria-label="Verse 3">3</sup><span class="words-of-jesus">And if I go and prepare a place for you, I will come back and welcome you into My presence, so that you also may be where I am.</span></div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/JHN.14.1-3" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 1">1</sup><span class="words-of-jesus">“Do not let your hearts be troubled. You believe in God; believe in Me as well.</span> <sup class="verse-number" aria-label="Verse 2">2</sup><span class="words-of-jesus">In My Father’s house are many rooms. If it were not so, would I have told you that I am going there to prepare a place for you?</span> <sup class="verse-number" aria-label="Verse 3">3</sup><span class="words-of-jesus">And if I go and prepare a place for you, I will come back and welcome you into My presence, so that you also may be where I am.</span>
+</div>
 <div class="verse-commentary">
           <p>Jesus says these words on the worst night of the disciples' lives, hours before the cross, and He says them in the exact cadence of a groom leaving for the engagement. In My Father's house there is room. I am going to prepare a place. I will come again and take you to Myself. Every listener would have heard a wedding in it. This is why He opens with "Do not let your hearts be troubled." A bride does not panic when the groom leaves to build; the leaving is the proof that he is coming back. And notice the final clause, because it is the whole point: not so you can have a mansion, but "so that you also may be where I am." The destination is not the real estate. The destination is being with Him. The rooms only matter because of Whose house they are in.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: John 14:1 | 14:1 Or Believe in God -->
       <!-- BSB_FOOTNOTE: John 14:2 | 14:2 Or If it were not so, I would have told you. I am going there to prepare a place for you. -->
 
 <!-- BSB_BLOCK: Revelation 21:9-11 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c5bd243e312244a9c1e5ae4b66cf9b142487d6d096b732f9f473723ee63ebb17 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Revelation 21:9-11</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/REV.21.9-11" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 9">9</sup>Then one of the seven angels with the seven bowls full of the seven final plagues came and said to me, “Come, I will show you the bride, the wife of the Lamb.” <sup class="verse-number" aria-label="Verse 10">10</sup>And he carried me away in the Spirit to a mountain great and high, and showed me the holy city of Jerusalem coming down out of heaven from God, <sup class="verse-number" aria-label="Verse 11">11</sup>shining with the glory of God. Its radiance was like a most precious jewel, like a jasper, as clear as crystal.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/REV.21.9-11" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 9">9</sup>Then one of the seven angels with the seven bowls full of the seven final plagues came and said to me, “Come, I will show you the bride, the wife of the Lamb.” <sup class="verse-number" aria-label="Verse 10">10</sup>And he carried me away in the Spirit to a mountain great and high, and showed me the holy city of Jerusalem coming down out of heaven from God, <sup class="verse-number" aria-label="Verse 11">11</sup>shining with the glory of God. Its radiance was like a most precious jewel, like a jasper, as clear as crystal.</div>
 <div class="verse-commentary">
-          <p>Watch the sleight of hand the angel performs, because it is the heart of the day. He says, "Come, I will show you the bride," and then he shows John a city. The word for bride here is the Greek <em>nymphe</em>, and the whole vision turns on the fact that the bride and the city are the same thing. The dazzling place coming down out of heaven, glowing like a flawless jewel, is not just where the people of God will live; it is a portrait of the people of God themselves, made radiant by His glory. So when you read the long, jaw-dropping description of the city's gates and walls and light (<a class="vlink" href="https://www.bible.com/bible/3034/REV.21.9-27" target="_blank" rel="noopener">Revelation 21:9-27</a>), do not read it as a real-estate listing. Read it as a wedding portrait. That is how beautiful God intends to make the bride. The radiance is not the gold; it is the glory of God resting on His people at last.</p>
+          <p>Watch the sleight of hand the angel performs, because it is the heart of the day. He says, "Come, I will show you the bride," and then he shows John a city. The word for bride here is the Greek <em>nymphe</em>, and the whole vision turns on the fact that the bride and the city are the same thing. The dazzling place coming down out of heaven, glowing like a flawless jewel, is not just where the people of God will live; it is a portrait of the people of God themselves, made radiant by His glory. So when you read the long, jaw-dropping description of the city's gates and walls and light (<a class="vlink" href="https://www.bible.com/bible/3034/REV.21.9-27" target="_blank" rel="noopener" data-verse="revelation-21-9-27" data-ref="Revelation 21:9-27" aria-expanded="false">Revelation 21:9-27</a>), do not read it as a real-estate listing. Read it as a wedding portrait. That is how beautiful God intends to make the bride. The radiance is not the gold; it is the glory of God resting on His people at last.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Revelation 19:7 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b631c0b5d2768189f1d24bfccf454ea62fec1035249d3c9ed40a8d91f2029b0c | footnotes-stripped:0 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Revelation 19:7</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/REV.19.7" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/REV.19.7" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Let us rejoice and be glad and give Him the glory. For the marriage of the Lamb has come, and His bride has made herself ready.</div>
 <div class="verse-commentary">
-          <p>All of heaven erupts, and the reason is a wedding. "The marriage of the Lamb has come." This is the moment the long engagement ends, the moment the whole universe has been waiting to celebrate. And there is one small phrase here that protects us from a lazy reading: "His bride has made herself ready." The waiting was never meant to be passive. Just as the Galilean bride kept herself ready for a date she could not predict, the people of God live in the engagement on purpose, keeping our hearts turned toward Him, setting our minds on things above rather than getting swallowed by what is below (<a class="vlink" href="https://www.bible.com/bible/3034/COL.3.2" target="_blank" rel="noopener">Colossians 3:2</a>). We do not prepare ourselves to earn the wedding. We prepare ourselves because we are already promised, and a promised bride lives differently.</p>
+          <p>All of heaven erupts, and the reason is a wedding. "The marriage of the Lamb has come." This is the moment the long engagement ends, the moment the whole universe has been waiting to celebrate. And there is one small phrase here that protects us from a lazy reading: "His bride has made herself ready." The waiting was never meant to be passive. Just as the Galilean bride kept herself ready for a date she could not predict, the people of God live in the engagement on purpose, keeping our hearts turned toward Him, setting our minds on things above rather than getting swallowed by what is below (<a class="vlink" href="https://www.bible.com/bible/3034/COL.3.2" target="_blank" rel="noopener" data-verse="colossians-3-2" data-ref="Colossians 3:2" aria-expanded="false">Colossians 3:2</a>). We do not prepare ourselves to earn the wedding. We prepare ourselves because we are already promised, and a promised bride lives differently.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Revelation 21:2 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:0c99be08f8f2ddf77b6f74ba949af21e30378b415d9bb40e0cd41c138ca7ffac | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Revelation 21:2</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/REV.21.2" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/REV.21.2" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">I saw the holy city, the new Jerusalem, coming down out of heaven from God, prepared as a bride adorned for her husband.</div>
 <div class="verse-commentary">
-          <p>Here the two pictures fuse completely: the holy city comes down "prepared as a bride adorned for her husband." A bride on her wedding day is the one person every eye in the room wants to see, dressed and ready, walking toward the one she loves. That is the image God leaves us with for the end of all things. And the warnings Jesus told about being ready (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.22.1-14" target="_blank" rel="noopener">Matthew 22:1-14</a> and the ten who waited for the bridegroom in <a class="vlink" href="https://www.bible.com/bible/3034/MAT.25.1-13" target="_blank" rel="noopener">Matthew 25:1-13</a>) are not meant to frighten us but to keep us from missing the very feast we were invited to. He does not want the wedding to take us by surprise. He wants us at the table. The God of the whole Bible is not arranging an evacuation. He is throwing a wedding, and we are the bride.</p>
+          <p>Here the two pictures fuse completely: the holy city comes down "prepared as a bride adorned for her husband." A bride on her wedding day is the one person every eye in the room wants to see, dressed and ready, walking toward the one she loves. That is the image God leaves us with for the end of all things. And the warnings Jesus told about being ready (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.22.1-14" target="_blank" rel="noopener" data-verse="matthew-22-1-14" data-ref="Matthew 22:1-14" aria-expanded="false">Matthew 22:1-14</a> and the ten who waited for the bridegroom in <a class="vlink" href="https://www.bible.com/bible/3034/MAT.25.1-13" target="_blank" rel="noopener" data-verse="matthew-25-1-13" data-ref="Matthew 25:1-13" aria-expanded="false">Matthew 25:1-13</a>) are not meant to frighten us but to keep us from missing the very feast we were invited to. He does not want the wedding to take us by surprise. He wants us at the table. The God of the whole Bible is not arranging an evacuation. He is throwing a wedding, and we are the bride.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The House He Went Ahead to Get Ready</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The House He Went Ahead to Get Ready</h3>
       <p>Picture the way a family sometimes moves to a new city. One of them goes ahead. The dad takes the job and drives out first, or the mom flies out to start, and for a stretch of weeks or months they are apart, the one ahead getting everything ready. They find the house. They figure out which room is the kids' and get the beds set up, learn where the grocery store is and which way the school bus comes. And the whole time, the family left behind is not sitting still either. They are packing, sorting, saying their goodbyes, getting ready to go. Then one day the one who went ahead comes back, not to stay, but to drive everybody home to the place that is finally ready.</p>
       <p>Listen to how Jesus talks on the worst night of His friends' lives. In My Father's house there is room. I am going to prepare a place. I will come again and take you to Myself. That is the language of someone who has gone ahead to get the home ready and is coming back for his people. And here is the part we keep missing. When we daydream about heaven, we picture the scenery, the gold and the gates and the jewels. But a family driving to a new city does not ache for the square footage. They ache to be together again, all of them, in one place. The rooms only ever mattered because of who would be inside them. Heaven is not a nicer house. It is finally being home with Him.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Day the Family Becomes Forever</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Day the Family Becomes Forever</h3>
       <p>In courthouses all over the country there is a kind of hearing unlike any other, the day an adoption is finalized. The papers are signed, a judge says a few words, sometimes a small gavel comes down, and a child who has been living in a home becomes, permanently and legally, a daughter or a son. Agencies call it gaining a "forever family," and the word doing all the work is forever. Ask the people who walk families through it and they will tell you the same thing. What a child most needs is not a bigger bedroom or a nicer neighborhood but the settled certainty that they belong, that this is permanent, that no one is going to send them back. The security of being fully and finally chosen does more for a child than any upgrade in square footage ever could.</p>
       <p>That is exactly the promise hiding inside the wedding and the prepared home. When Jesus says "I will come back and welcome you into My presence," He is not mainly offering us better scenery. He is offering us a forever family. The deepest thing a human heart aches for is not an upgrade in square footage but the certainty that we belong somewhere, to someone, for good. Heaven is the day that hearing is finalized for everyone who is His. The gavel comes down, the belonging is made permanent, and the One who went ahead to prepare the home turns out to have wanted, all along, simply to bring us in and call us His own.</p>
-    </div>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Every wedding has a cost, and this one cost the Groom everything. In the ancient world a groom paid a bride-price, a sum that proved how serious the promise was. Look at what our Bridegroom paid. He is called the Lamb in the very verse where He is called the Husband, and that is not a coincidence. The marriage of the Lamb is only possible because the Lamb was slain. The radiance that will rest on the bride was bought with blood; the white the bride wears was washed clean at the cross. When Jesus left the upper room saying "I go to prepare a place," the first thing He went to prepare was not a mansion. It was a cross. He secured the bride before He built the house. So the city coming down from heaven is not a monument to human goodness. It is the wedding gift of a Groom who loved His bride enough to die for her first, and is now counting down the days until He can come and take her home.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Every wedding has a cost, and this one cost the Groom everything. In the ancient world a groom paid a bride-price, a sum that proved how serious the promise was. Look at what our Bridegroom paid. He is called the Lamb in the very verse where He is called the Husband, and that is not a coincidence. The marriage of the Lamb is only possible because the Lamb was slain. The radiance that will rest on the bride was bought with blood; the white the bride wears was washed clean at the cross. When Jesus left the upper room saying "I go to prepare a place," the first thing He went to prepare was not a mansion. It was a cross. He secured the bride before He built the house. So the city coming down from heaven is not a monument to human goodness. It is the wedding gift of a Groom who loved His bride enough to die for her first, and is now counting down the days until He can come and take her home.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Ask yourself one honest question today: am I living like a promised bride or like someone who has forgotten she is engaged? Pick one concrete way to "keep yourself ready" this week, not to earn the wedding but because you belong to Him already. Maybe it is clearing out one thing that has been quietly competing for your heart, or maybe it is simply telling Him, out loud, that you are waiting for Him. Then go about your day as someone the King is building a home for.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Lord Jesus, we are stunned that of all the ways You could describe the end, You chose a wedding, and that You call us the bride. Thank You that You did not just plan a place for us but paid for us, that the home You are building was secured at the cross. Forgive us for the days we live as though we have forgotten we are promised to You. Keep our hearts ready and turned toward home. Help us wait the way a bride waits, not anxiously, but expectantly, certain that the shout will come and You will take us to Yourself. We are longing for the wedding. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"When you picture heaven, do you tend to imagine a place (streets, gates, mansions) or a relationship (finally being fully His)? How might it change the way you wait if you really believed the best part of the future is not the scenery but belonging completely to the One who is building it?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"When you picture heaven, do you tend to imagine a place (streets, gates, mansions) or a relationship (finally being fully His)? How might it change the way you wait if you really believed the best part of the future is not the scenery but belonging completely to the One who is building it?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Lord Jesus, we are stunned that of all the ways You could describe the end, You chose a wedding, and that You call us the bride. Thank You that You did not just plan a place for us but paid for us, that the home You are building was secured at the cross. Forgive us for the days we live as though we have forgotten we are promised to You. Keep our hearts ready and turned toward home. Help us wait the way a bride waits, not anxiously, but expectantly, certain that the shout will come and You will take us to Yourself. We are longing for the wedding. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-06-22.html"><span class="day-nav-kicker">← Monday</span><span class="day-nav-title">Finally, Face-to-Face</span></a><a class="day-nav-item" href="/bible-study/2026-06-24.html"><span class="day-nav-kicker">Wednesday →</span><span class="day-nav-title">Follow the Lamb</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"revelation-21-9-27":{"ref":"Revelation 21:9-27","text":"Then one of the seven angels with the seven bowls full of the seven final plagues came and said to me, \u201cCome, I will show you the bride, the wife of the Lamb.\u201d And he carried me away in the Spirit to a mountain great and high, and showed me the holy city of Jerusalem coming down out of heaven from God, shining with the glory of God. Its radiance was like a most precious jewel, like a jasper, as clear as crystal. The city had a great and high wall with twelve gates inscribed with the names of the twelve tribes of Israel, and twelve angels at the gates. There were three gates on the east, three on the north, three on the south, and three on the west. The wall of the city had twelve foundations bearing the names of the twelve apostles of the Lamb. The angel who spoke with me had a golden measuring rod to measure the city and its gates and walls. The city lies foursquare, with its width the same as its length. And he measured the city with the rod, and all its dimensions were equal\u201412,000 stadia in length and width and height. And he measured its wall to be 144 cubits, by the human measure the angel was using. The wall was made of jasper, and the city itself of pure gold, as pure as glass. The foundations of the city walls were adorned with every kind of precious stone: The first foundation was jasper, the second sapphire, the third chalcedony, the fourth emerald, the fifth sardonyx, the sixth carnelian, the seventh chrysolite, the eighth beryl, the ninth topaz, the tenth chrysoprase, the eleventh jacinth, and the twelfth amethyst. And the twelve gates were twelve pearls, with each gate consisting of a single pearl. The main street of the city was pure gold, as clear as glass. But I saw no temple in the city, because the Lord God Almighty and the Lamb are its temple. And the city has no need of sun or moon to shine on it, because the glory of God illuminates the city, and the Lamb is its lamp. By its light the nations will walk, and into it the kings of the earth will bring their glory. Its gates will never be shut at the end of the day, because there will be no night there. And into the city will be brought the glory and honor of the nations. But nothing unclean will ever enter it, nor anyone who practices an abomination or a lie, but only those whose names are written in the Lamb\u2019s Book of Life.","bibleUrl":"https://www.bible.com/bible/3034/REV.21.9-27"},"colossians-3-2":{"ref":"Colossians 3:2","text":"Set your minds on things above, not on earthly things.","bibleUrl":"https://www.bible.com/bible/3034/COL.3.2"},"matthew-22-1-14":{"ref":"Matthew 22:1-14","text":"Once again, Jesus spoke to them in parables: \u201cThe kingdom of heaven is like a king who prepared a wedding banquet for his son. He sent his servants to call those he had invited to the banquet, but they refused to come. Again, he sent other servants and said, \u2018Tell those who have been invited that I have prepared my dinner. My oxen and fattened cattle have been killed, and everything is ready. Come to the wedding banquet.\u2019 But they paid no attention and went away, one to his field, another to his business. The rest seized his servants, mistreated them, and killed them. The king was enraged, and he sent his troops to destroy those murderers and burn their city. Then he said to his servants, \u2018The wedding banquet is ready, but those I invited were not worthy. Go therefore to the crossroads and invite to the banquet as many as you can find.\u2019 So the servants went out into the streets and gathered everyone they could find, both evil and good, and the wedding hall was filled with guests. But when the king came in to see the guests, he spotted a man who was not dressed in wedding clothes. \u2018Friend,\u2019 he asked, \u2018how did you get in here without wedding clothes?\u2019 But the man was speechless. Then the king told the servants, \u2018Tie him hand and foot, and throw him into the outer darkness, where there will be weeping and gnashing of teeth.\u2019 For many are called, but few are chosen.\u201d","bibleUrl":"https://www.bible.com/bible/3034/MAT.22.1-14"},"matthew-25-1-13":{"ref":"Matthew 25:1-13","text":"\u201cAt that time the kingdom of heaven will be like ten virgins who took their lamps and went out to meet the bridegroom. Five of them were foolish, and five were wise. The foolish ones took their lamps but did not take along any extra oil. But the wise ones took oil in flasks along with their lamps. When the bridegroom was delayed, they all became drowsy and fell asleep. At midnight the cry rang out: \u2018Here is the bridegroom! Come out to meet him!\u2019 Then all the virgins woke up and trimmed their lamps. The foolish ones said to the wise, \u2018Give us some of your oil; our lamps are going out.\u2019 \u2018No,\u2019 said the wise ones, \u2018or there may not be enough for both us and you. Instead, go to those who sell oil and buy some for yourselves.\u2019 But while they were on their way to buy it, the bridegroom arrived. Those who were ready went in with him to the wedding banquet, and the door was shut. Later the other virgins arrived and said, \u2018Lord, lord, open the door for us!\u2019 But he replied, \u2018Truly I tell you, I do not know you.\u2019 Therefore keep watch, because you do not know the day or the hour.","bibleUrl":"https://www.bible.com/bible/3034/MAT.25.1-13"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

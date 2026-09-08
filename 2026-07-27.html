@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Selfless Love — Daily Bible Study</title>
 <meta name="study-title" content="Selfless Love">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 5, All to the Glory of God · Part 3 of 7">
+<meta name="study-passage" content="1 Corinthians 9:4-6">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 5, All to the Glory of God · Day 3 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Selfless Love">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 5, All to the Glory of God · Part 3 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 5, All to the Glory of God · Day 3 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-07-27.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 5, All to the Glory of God · Part 3 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 5, All to the Glory of God · Day 3 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,327 +38,200 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Selfless Love</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 5, All to the Glory of God</span>
-      <span>Part 3 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">July 27, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Mon · Jul 27</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
+    </div>
+    <h1 class="study-title">Selfless Love</h1>
+    <p class="study-sub"><span class="sub-title">All to the Glory of God</span><span class="sub-facts"><span>Lesson 5</span><span>Day 3 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>Before the harbor wakes, Paul is already at the workbench, cutting leather to fund a message he could have preached for pay. Today he reads out his rights like a lawyer. Meals, a wife's travel, a working wage, each one legitimate, one of them commanded by the Lord Himself. Then comes the strangest word a man with a resume like his ever wrote. Nevertheless. He leaves the whole list on the table so no one can say the gospel was ever about his paycheck. <strong>A right laid down for love preaches louder than a right enforced.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday ended with a trophy nobody should want, the strong winning their meat debate while a weak brother tore inside. Paul told the confident crowd to surrender the trophy, and it would be fair to ask whether he has ever done that himself. Today he answers by opening his own ledger. It turns out the man asking Corinth to set down a steak has been setting down his salary for years. The argument moves from their kitchen to his workshop, and the principle gets a face. Knowledge asks what I am allowed to do. Love asks what I am willing to lose. Paul shows us his losses on purpose.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Before the harbor wakes, Paul is already at the workbench, cutting leather to fund a message he could have preached for pay. Today he reads out his rights like a lawyer. Meals, a wife's travel, a working wage, each one legitimate, one of them commanded by the Lord Himself. Then comes the strangest word a man with a resume like his ever wrote. Nevertheless. He leaves the whole list on the table so no one can say the gospel was ever about his paycheck. <strong>A right laid down for love preaches louder than a right enforced.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday ended with a trophy nobody should want, the strong winning their meat debate while a weak brother tore inside. Paul told the confident crowd to surrender the trophy, and it would be fair to ask whether he has ever done that himself. Today he answers by opening his own ledger. It turns out the man asking Corinth to set down a steak has been setting down his salary for years. The argument moves from their kitchen to his workshop, and the principle gets a face. Knowledge asks what I am allowed to do. Love asks what I am willing to lose. Paul shows us his losses on purpose.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Hand That Paid You Owned Your Voice</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Hand That Paid You Owned Your Voice</h3>
       <p>In Paul's world, a public teacher had two respectable funding models, and both came with a leash. He could charge fees the way the traveling professionals did, which meant shaping the product to keep customers happy. Or he could land a wealthy patron, move into the great house, eat at the great table, and become part of the household's glory. That second arrangement had a price everyone understood. The philosopher on retainer flattered his host, laughed at his jokes, trimmed his lectures to fit the room. Money in that culture was never just money. It was a thread, and the person holding the other end could pull. Corinth, a city built by freedmen who had clawed their way up the patronage ladder, knew exactly how the game worked.</p>
-      <p>Which is why Paul's third option scandalized people. The apostle to the Gentiles rented bench space in a leather shop and made tents with his own scarred hands (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.18.3" target="_blank" rel="noopener">Acts 18:3</a>). Manual labor was slave's work in the eyes of Corinth's upwardly mobile, an embarrassment in an apostle's resume. Paul wore the embarrassment like a uniform. No fee meant no customer to please. No patron meant no strings on the message. When he stood up to preach the crucified Messiah, every listener in the room knew one thing for certain. Nobody was paying him to say it.</p>
-    </div>
+      <p>Which is why Paul's third option scandalized people. The apostle to the Gentiles rented bench space in a leather shop and made tents with his own scarred hands (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.18.3" target="_blank" rel="noopener" data-verse="acts-18-3" data-ref="Acts 18:3" aria-expanded="false">Acts 18:3</a>). Manual labor was slave's work in the eyes of Corinth's upwardly mobile, an embarrassment in an apostle's resume. Paul wore the embarrassment like a uniform. No fee meant no customer to please. No patron meant no strings on the message. When he stood up to preach the crucified Messiah, every listener in the room knew one thing for certain. Nobody was paying him to say it.</p>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>The light comes up over the workbench before it reaches the harbor, and the apostle is already cutting leather. He has seen the risen Lord. He has planted this very church. And he is doing slave's work for bench rent, on purpose. In today's passage Paul finally explains the strangest line item in his ministry (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.1-6" target="_blank" rel="noopener">1 Corinthians 9:1-6</a>). He is not defensive about his rights. He lists them, proves them, and then shows Corinth his open hand, because the confident crowd from yesterday needed to see what laying down a right actually looks like when it costs something.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>The light comes up over the workbench before it reaches the harbor, and the apostle is already cutting leather. He has seen the risen Lord. He has planted this very church. And he is doing slave's work for bench rent, on purpose. In today's passage Paul finally explains the strangest line item in his ministry (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.1-6" target="_blank" rel="noopener" data-verse="1-corinthians-9-1-6" data-ref="1 Corinthians 9:1-6" aria-expanded="false">1 Corinthians 9:1-6</a>). He is not defensive about his rights. He lists them, proves them, and then shows Corinth his open hand, because the confident crowd from yesterday needed to see what laying down a right actually looks like when it costs something.</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 9:4-6 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:7c46e1ea71d07c5671b50c29a8cb7bafb08076ebb21a4b425db197a9a5254507 | footnotes-stripped:3 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 9:4-6</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.9.4-6" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 4">4</sup>Have we no right to food and to drink? <sup class="verse-number" aria-label="Verse 5">5</sup>Have we no right to take along a believing wife, as do the other apostles and the Lord’s brothers and Cephas? <sup class="verse-number" aria-label="Verse 6">6</sup>Or are Barnabas and I the only apostles who must work for a living?</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.9.4-6" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 4">4</sup>Have we no right to food and to drink? <sup class="verse-number" aria-label="Verse 5">5</sup>Have we no right to take along a believing wife, as do the other apostles and the Lord’s brothers and Cephas? <sup class="verse-number" aria-label="Verse 6">6</sup>Or are Barnabas and I the only apostles who must work for a living?</div>
 <div class="verse-commentary">
-          <p>Three questions, three entitlements. The word Paul keeps using is <em>exousia</em>, Greek for a right or authority, something genuinely owed to you, and he is not being theoretical. The right to eat and drink (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.4" target="_blank" rel="noopener">1 Corinthians 9:4</a>) meant financial support, a minister living from the ministry. The right to a believing wife (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.5" target="_blank" rel="noopener">1 Corinthians 9:5</a>) meant the church funding a ministry couple's travel, as it did for others. The right to refrain from working (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.6" target="_blank" rel="noopener">1 Corinthians 9:6</a>) meant not needing a second job to survive. Every other apostle drew on these. Paul establishes that the rights are real precisely because he is about to waive them, and a waiver only means something when the claim is valid.</p>
+          <p>Three questions, three entitlements. The word Paul keeps using is <em>exousia</em>, Greek for a right or authority, something genuinely owed to you, and he is not being theoretical. The right to eat and drink (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.4" target="_blank" rel="noopener" data-verse="1-corinthians-9-4" data-ref="1 Corinthians 9:4" aria-expanded="false">1 Corinthians 9:4</a>) meant financial support, a minister living from the ministry. The right to a believing wife (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.5" target="_blank" rel="noopener" data-verse="1-corinthians-9-5" data-ref="1 Corinthians 9:5" aria-expanded="false">1 Corinthians 9:5</a>) meant the church funding a ministry couple's travel, as it did for others. The right to refrain from working (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.6" target="_blank" rel="noopener" data-verse="1-corinthians-9-6" data-ref="1 Corinthians 9:6" aria-expanded="false">1 Corinthians 9:6</a>) meant not needing a second job to survive. Every other apostle drew on these. Paul establishes that the rights are real precisely because he is about to waive them, and a waiver only means something when the claim is valid.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: 1 Corinthians 9:5 | 9:5 Literally take along a sister—a wife— -->
       <!-- BSB_FOOTNOTE: 1 Corinthians 9:5 | 9:5 That is, Peter -->
       <!-- BSB_FOOTNOTE: 1 Corinthians 9:6 | 9:6 Literally Or is it only Barnabas and I who do not have authority not to work? -->
 
-      <p>Each of those rights had faces attached. Priscilla and Aquila traveled as a married ministry team (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.16.3" target="_blank" rel="noopener">Romans 16:3</a>), and so did Andronicus and Junia (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.16.7" target="_blank" rel="noopener">Romans 16:7</a>). Paul happened to be unmarried (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.7.8" target="_blank" rel="noopener">1 Corinthians 7:8</a>), but the door was open, and the church would have carried them both. As for working, his partner Barnabas was the man who once sold a field and laid the money at the apostles' feet (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.4.36-37" target="_blank" rel="noopener">Acts 4:36-37</a>), generous to the bone and still earning his own bread. These were not men who could not collect. They were men who chose not to.</p>
+      <p>Each of those rights had faces attached. Priscilla and Aquila traveled as a married ministry team (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.16.3" target="_blank" rel="noopener" data-verse="romans-16-3" data-ref="Romans 16:3" aria-expanded="false">Romans 16:3</a>), and so did Andronicus and Junia (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.16.7" target="_blank" rel="noopener" data-verse="romans-16-7" data-ref="Romans 16:7" aria-expanded="false">Romans 16:7</a>). Paul happened to be unmarried (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.7.8" target="_blank" rel="noopener" data-verse="1-corinthians-7-8" data-ref="1 Corinthians 7:8" aria-expanded="false">1 Corinthians 7:8</a>), but the door was open, and the church would have carried them both. As for working, his partner Barnabas was the man who once sold a field and laid the money at the apostles' feet (<a class="vlink" href="https://www.bible.com/bible/3034/ACT.4.36-37" target="_blank" rel="noopener" data-verse="acts-4-36-37" data-ref="Acts 4:36-37" aria-expanded="false">Acts 4:36-37</a>), generous to the bone and still earning his own bread. These were not men who could not collect. They were men who chose not to.</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 9:14 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:61f77e27401ce3058a926a4a21069adce00bab827e19e736ac612d380f7933eb | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 9:14</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.9.14" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.9.14" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">In the same way, the Lord has prescribed that those who preach the gospel should receive their living from the gospel.</div>
 <div class="verse-commentary">
-          <p>Paul argues the point like a lawyer stacking exhibits. Soldiers eat from the army's budget, vineyard workers eat the grapes, the ox treading grain gets to eat the grain, and if ministers sow spiritual seed, reaping material support is only fair (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.7-11" target="_blank" rel="noopener">1 Corinthians 9:7-11</a>). If other teachers in Corinth drew support, Paul had a stronger claim than any of them (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.11-12" target="_blank" rel="noopener">1 Corinthians 9:11-12</a>). Then he closes the case with the highest authority there is. The Lord Himself commanded it, the same principle Scripture states as the worker being worthy of his wages (<a class="vlink" href="https://www.bible.com/bible/3034/1TI.5.18" target="_blank" rel="noopener">1 Timothy 5:18</a>). Supporting gospel workers is not a loophole or a favor. It is Jesus' own design. Hold that firmly, because it makes what Paul does next astonishing.</p>
+          <p>Paul argues the point like a lawyer stacking exhibits. Soldiers eat from the army's budget, vineyard workers eat the grapes, the ox treading grain gets to eat the grain, and if ministers sow spiritual seed, reaping material support is only fair (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.7-11" target="_blank" rel="noopener" data-verse="1-corinthians-9-7-11" data-ref="1 Corinthians 9:7-11" aria-expanded="false">1 Corinthians 9:7-11</a>). If other teachers in Corinth drew support, Paul had a stronger claim than any of them (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.11-12" target="_blank" rel="noopener" data-verse="1-corinthians-9-11-12" data-ref="1 Corinthians 9:11-12" aria-expanded="false">1 Corinthians 9:11-12</a>). Then he closes the case with the highest authority there is. The Lord Himself commanded it, the same principle Scripture states as the worker being worthy of his wages (<a class="vlink" href="https://www.bible.com/bible/3034/1TI.5.18" target="_blank" rel="noopener" data-verse="1-timothy-5-18" data-ref="1 Timothy 5:18" aria-expanded="false">1 Timothy 5:18</a>). Supporting gospel workers is not a loophole or a favor. It is Jesus' own design. Hold that firmly, because it makes what Paul does next astonishing.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: 1 Corinthians 9:12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:188dda3319554e9ee73e25434efa39488086394fe9d98b796bb7e1bce995f7a8 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 9:12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.9.12" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.9.12" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">If others have this right to your support, shouldn’t we have it all the more? But we did not exercise this right. Instead, we put up with anything rather than hinder the gospel of Christ.</div>
 <div class="verse-commentary">
-          <p>Nevertheless. The entire chapter pivots on that one word. Paul wins the argument and then declines the winnings, and he tells us exactly why. In Corinth, taking the money would have tied strings to the message, made him one more hired voice in a city full of them, given every cynic a reason to plug their ears. So he absorbs the cost in his own body, the early mornings, the calloused hands, the lean weeks, and offers himself as a living example of self-denial for the sake of others (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.1-18" target="_blank" rel="noopener">1 Corinthians 9:1-18</a>). The goal was never martyrdom for its own sake. He became all things to all people to win as many as possible, so that they may be saved (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.19-23" target="_blank" rel="noopener">1 Corinthians 9:19-23</a>). The gospel was free. Paul made sure it looked free.</p>
+          <p>Nevertheless. The entire chapter pivots on that one word. Paul wins the argument and then declines the winnings, and he tells us exactly why. In Corinth, taking the money would have tied strings to the message, made him one more hired voice in a city full of them, given every cynic a reason to plug their ears. So he absorbs the cost in his own body, the early mornings, the calloused hands, the lean weeks, and offers himself as a living example of self-denial for the sake of others (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.1-18" target="_blank" rel="noopener" data-verse="1-corinthians-9-1-18" data-ref="1 Corinthians 9:1-18" aria-expanded="false">1 Corinthians 9:1-18</a>). The goal was never martyrdom for its own sake. He became all things to all people to win as many as possible, so that they may be saved (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.9.19-23" target="_blank" rel="noopener" data-verse="1-corinthians-9-19-23" data-ref="1 Corinthians 9:19-23" aria-expanded="false">1 Corinthians 9:19-23</a>). The gospel was free. Paul made sure it looked free.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Salesman Who Talked You Out of It</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Salesman Who Talked You Out of It</h3>
       <p>You walk into the phone store the way everyone does, braced. The man who greets you works on commission. You know it, he knows you know it, and every word he says has to climb over that fact to reach you. Then something strange happens. He looks at the model in your hand, the one with the price tag that would make his week, and tells you the cheaper one suits you better. Bigger battery, same camera, four hundred dollars less. He says it plainly and waits. You stand there doing the math on what that sentence just cost him, and the whole room changes. Suddenly you believe his answer about the warranty. You believe him about the case. You will come back to this man for a decade and send your mother to him by name, all because he left his own money on the table in front of you.</p>
       <p>Paul understood exactly what that salesman understands. He spends most of the chapter proving he had every right to be paid, soldiers eat from the budget, the ox eats the grain, the Lord Himself commanded it, and then he leaves the whole claim uncollected. In Corinth, every traveling teacher had a fee, and every listener had learned to hear messages as pitches. One more hired voice would have changed nothing. An apostle cutting leather for bench rent could not be explained away, because nobody could name what he was getting out of it. That is still the move love makes. Waive the favor owed, the credit deserved, the fee you could have charged, and something happens to the words you say next. They stop sounding like a pitch. The people around us have heard a lifetime of messages with strings attached, and they check for the strings first. Nobody wonders what the unpaid man is selling.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Giver Who Kept No Strings</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Giver Who Kept No Strings</h3>
       <p>Since 2019, MacKenzie Scott has given away more than 19 billion dollars to over 2,000 nonprofits, and the strangest part is not the amount. It is what she refuses to collect. There is no application to fill out. Her team researches organizations quietly, and the first contact is usually the news that the money is coming. No naming rights, no seat on the board, no required reports, no restrictions on how to spend it. Every string a donor at that scale is entitled to hold, she drops. The philanthropy world predicted disaster, dependency, waste, a financial cliff when the gifts ran out. So the Center for Effective Philanthropy spent three years checking, surveying 813 nonprofit leaders and combing the tax filings of more than a thousand recipient organizations. Nearly ninety percent said the gift strengthened their long-term stability. Recipients held roughly twice the operating reserves of similar organizations. The feared misuse never materialized.</p>
       <p>Here is the part Paul would recognize from his workbench. The gifts work because of what she declined. A donation with strings keeps the donor at the center, and everyone involved quietly performs for the hand that funds them, which is exactly how patronage ran Corinth. Scott removed herself so completely that the organizations became the story, and the researchers found their leaders standing taller, staying longer, burning out less, trusted people rising to the trust. Paul cut leather for the same reason, so that no one could ever ask what the preacher was getting out of it. The principle has not aged a day. When someone with a valid claim leaves it uncollected, the people watching stop hunting for the angle and start believing the message. Love that pays its own way is the most convincing argument most people will ever see.</p>
       <!-- TODAYS_WORLD_SOURCE: Breaking the Mold: The Transformative Effect of MacKenzie Scott's Big Gifts | Center for Effective Philanthropy | 2025 | https://cep.org/news/press-releases/research-shows-mackenzie-scotts-large-unrestricted-gifts-create-sustained-impact-for-nonprofits-and-communities/ -->
-    </div>
+    <details class="disclosure source-disclosure"><summary class="disclosure-summary"><span class="disclosure-label">Source</span> <span class="disclosure-publisher">Center for Effective Philanthropy</span></summary><div class="disclosure-body"><p><cite>Breaking the Mold: The Transformative Effect of MacKenzie Scott's Big Gifts</cite>. Center for Effective Philanthropy, 2025. <a href="https://cep.org/news/press-releases/research-shows-mackenzie-scotts-large-unrestricted-gifts-create-sustained-impact-for-nonprofits-and-communities/" target="_blank" rel="noopener noreferrer">Read the source</a>.</p></div></details></section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Paul's list of unclaimed rights is a photocopy, and the original hangs in Bethlehem, Nazareth, and Jerusalem. Though He was rich, for your sake He became poor, so that by His poverty you might become rich (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.9" target="_blank" rel="noopener">2 Corinthians 8:9</a>). Jesus had the right to be worshiped without interruption, and He took a feeding trough. He had the right to a home, and foxes ended up better housed than He was (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.8.20" target="_blank" rel="noopener">Matthew 8:20</a>). In the garden He named the right most of us would have used, twelve legions of angels a single word away (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.26.53" target="_blank" rel="noopener">Matthew 26:53</a>), and He left the word unsaid. The Son of Man did not come to be served but to serve, and to give His life as a ransom for many (<a class="vlink" href="https://www.bible.com/bible/3034/MRK.10.45" target="_blank" rel="noopener">Mark 10:45</a>). Every unclaimed right of Jesus became a claimed sinner. That is the arithmetic of the cross, and Paul was just doing the same math with a smaller number.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Paul's list of unclaimed rights is a photocopy, and the original hangs in Bethlehem, Nazareth, and Jerusalem. Though He was rich, for your sake He became poor, so that by His poverty you might become rich (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.8.9" target="_blank" rel="noopener" data-verse="2-corinthians-8-9" data-ref="2 Corinthians 8:9" aria-expanded="false">2 Corinthians 8:9</a>). Jesus had the right to be worshiped without interruption, and He took a feeding trough. He had the right to a home, and foxes ended up better housed than He was (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.8.20" target="_blank" rel="noopener" data-verse="matthew-8-20" data-ref="Matthew 8:20" aria-expanded="false">Matthew 8:20</a>). In the garden He named the right most of us would have used, twelve legions of angels a single word away (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.26.53" target="_blank" rel="noopener" data-verse="matthew-26-53" data-ref="Matthew 26:53" aria-expanded="false">Matthew 26:53</a>), and He left the word unsaid. The Son of Man did not come to be served but to serve, and to give His life as a ransom for many (<a class="vlink" href="https://www.bible.com/bible/3034/MRK.10.45" target="_blank" rel="noopener" data-verse="mark-10-45" data-ref="Mark 10:45" aria-expanded="false">Mark 10:45</a>). Every unclaimed right of Jesus became a claimed sinner. That is the arithmetic of the cross, and Paul was just doing the same math with a smaller number.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Today, leave one legitimate claim uncollected, on purpose, for a named person's good. Pick something genuinely owed to you. The credit for work someone else is getting praised for. Your turn to choose. The apology you are still waiting on before you warm up. The twenty dollars a friend forgot. The last word you could easily win. Choose one, decide before God that you will not collect it this week, and do not announce the sacrifice to anyone. Watch what uncollected debts do to a relationship when love is the one absorbing the cost.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we came to You today holding our list of rights, and we found Jesus holding His, unclaimed. We confess that we are quick to collect. Quick to defend our time, our credit, our comfort, our turn, quick to invoice the people around us for everything they owe us. Thank You for the Son who had every right to stay rich and chose our poverty instead, who could have called the angels and stretched out His hands for the nails. Teach us His arithmetic. Show each of us the one claim You are asking us to leave on the table this week, and give us the quiet strength to leave it there without applause. Let the people near us find the gospel easier to believe because we made it look free. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"What is genuinely owed to you right now that you have been quickest to collect (credit at work, deference at home, payback in a conflict, comfort in your budget)? And if you left one of those debts uncollected for a whole month so the gospel would be easier for someone to believe, which one would it be, and who is the someone?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"What is genuinely owed to you right now that you have been quickest to collect (credit at work, deference at home, payback in a conflict, comfort in your budget)? And if you left one of those debts uncollected for a whole month so the gospel would be easier for someone to believe, which one would it be, and who is the someone?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, we came to You today holding our list of rights, and we found Jesus holding His, unclaimed. We confess that we are quick to collect. Quick to defend our time, our credit, our comfort, our turn, quick to invoice the people around us for everything they owe us. Thank You for the Son who had every right to stay rich and chose our poverty instead, who could have called the angels and stretched out His hands for the nails. Teach us His arithmetic. Show each of us the one claim You are asking us to leave on the table this week, and give us the quiet strength to leave it there without applause. Let the people near us find the gospel easier to believe because we made it look free. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-07-26.html"><span class="day-nav-kicker">← Sunday</span><span class="day-nav-title">Knowledge Versus Love</span></a><a class="day-nav-item" href="/bible-study/2026-07-28.html"><span class="day-nav-kicker">Tuesday →</span><span class="day-nav-title">Learning From the Past</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"acts-18-3":{"ref":"Acts 18:3","text":"and he stayed and worked with them because they were tentmakers by trade, just as he was.","bibleUrl":"https://www.bible.com/bible/3034/ACT.18.3"},"1-corinthians-9-1-6":{"ref":"1 Corinthians 9:1-6","text":"Am I not free? Am I not an apostle? Have I not seen Jesus our Lord? Are you yourselves not my workmanship in the Lord? Even if I am not an apostle to others, surely I am to you. For you are the seal of my apostleship in the Lord. This is my defense to those who scrutinize me: Have we no right to food and to drink? Have we no right to take along a believing wife, as do the other apostles and the Lord\u2019s brothers and Cephas? Or are Barnabas and I the only apostles who must work for a living?","bibleUrl":"https://www.bible.com/bible/3034/1CO.9.1-6"},"1-corinthians-9-4":{"ref":"1 Corinthians 9:4","text":"Have we no right to food and to drink?","bibleUrl":"https://www.bible.com/bible/3034/1CO.9.4"},"1-corinthians-9-5":{"ref":"1 Corinthians 9:5","text":"Have we no right to take along a believing wife, as do the other apostles and the Lord\u2019s brothers and Cephas?","bibleUrl":"https://www.bible.com/bible/3034/1CO.9.5"},"1-corinthians-9-6":{"ref":"1 Corinthians 9:6","text":"Or are Barnabas and I the only apostles who must work for a living?","bibleUrl":"https://www.bible.com/bible/3034/1CO.9.6"},"romans-16-3":{"ref":"Romans 16:3","text":"Greet Prisca and Aquila, my fellow workers in Christ Jesus,","bibleUrl":"https://www.bible.com/bible/3034/ROM.16.3"},"romans-16-7":{"ref":"Romans 16:7","text":"Greet Andronicus and Junia, my fellow countrymen and fellow prisoners. They are outstanding among the apostles, and they were in Christ before I was.","bibleUrl":"https://www.bible.com/bible/3034/ROM.16.7"},"1-corinthians-7-8":{"ref":"1 Corinthians 7:8","text":"Now to the unmarried and widows I say this: It is good for them to remain unmarried, as I am.","bibleUrl":"https://www.bible.com/bible/3034/1CO.7.8"},"acts-4-36-37":{"ref":"Acts 4:36-37","text":"Joseph, a Levite from Cyprus, whom the apostles called Barnabas (meaning Son of Encouragement), sold a field he owned, brought the money, and laid it at the apostles\u2019 feet.","bibleUrl":"https://www.bible.com/bible/3034/ACT.4.36-37"},"1-corinthians-9-7-11":{"ref":"1 Corinthians 9:7-11","text":"Who serves as a soldier at his own expense? Who plants a vineyard and does not eat of its fruit? Who tends a flock and does not drink of its milk? Do I say this from a human perspective? Doesn\u2019t the Law say the same thing? For it is written in the Law of Moses: \u201cDo not muzzle an ox while it is treading out the grain.\u201d Is it about oxen that God is concerned? Isn\u2019t He actually speaking on our behalf? Indeed, this was written for us, because when the plowman plows and the thresher threshes, they should also expect to share in the harvest. If we have sown spiritual seed among you, is it too much for us to reap a material harvest from you?","bibleUrl":"https://www.bible.com/bible/3034/1CO.9.7-11"},"1-corinthians-9-11-12":{"ref":"1 Corinthians 9:11-12","text":"If we have sown spiritual seed among you, is it too much for us to reap a material harvest from you? If others have this right to your support, shouldn\u2019t we have it all the more? But we did not exercise this right. Instead, we put up with anything rather than hinder the gospel of Christ.","bibleUrl":"https://www.bible.com/bible/3034/1CO.9.11-12"},"1-timothy-5-18":{"ref":"1 Timothy 5:18","text":"For the Scripture says, \u201cDo not muzzle an ox while it is treading out the grain,\u201d and, \u201cThe worker is worthy of his wages.\u201d","bibleUrl":"https://www.bible.com/bible/3034/1TI.5.18"},"1-corinthians-9-1-18":{"ref":"1 Corinthians 9:1-18","text":"Am I not free? Am I not an apostle? Have I not seen Jesus our Lord? Are you yourselves not my workmanship in the Lord? Even if I am not an apostle to others, surely I am to you. For you are the seal of my apostleship in the Lord. This is my defense to those who scrutinize me: Have we no right to food and to drink? Have we no right to take along a believing wife, as do the other apostles and the Lord\u2019s brothers and Cephas? Or are Barnabas and I the only apostles who must work for a living? Who serves as a soldier at his own expense? Who plants a vineyard and does not eat of its fruit? Who tends a flock and does not drink of its milk? Do I say this from a human perspective? Doesn\u2019t the Law say the same thing? For it is written in the Law of Moses: \u201cDo not muzzle an ox while it is treading out the grain.\u201d Is it about oxen that God is concerned? Isn\u2019t He actually speaking on our behalf? Indeed, this was written for us, because when the plowman plows and the thresher threshes, they should also expect to share in the harvest. If we have sown spiritual seed among you, is it too much for us to reap a material harvest from you? If others have this right to your support, shouldn\u2019t we have it all the more? But we did not exercise this right. Instead, we put up with anything rather than hinder the gospel of Christ. Do you not know that those who work in the temple eat of its food, and those who serve at the altar partake of its offerings? In the same way, the Lord has prescribed that those who preach the gospel should receive their living from the gospel. But I have not used any of these rights. And I am not writing this to suggest that something be done for me. Indeed, I would rather die than let anyone nullify my boast. Yet when I preach the gospel, I have no reason to boast, because I am obligated to preach. Woe to me if I do not preach the gospel! If my preaching is voluntary, I have a reward. But if it is not voluntary, I am still entrusted with a responsibility. What then is my reward? That in preaching the gospel I may offer it free of charge, and so not use up my rights in preaching it.","bibleUrl":"https://www.bible.com/bible/3034/1CO.9.1-18"},"1-corinthians-9-19-23":{"ref":"1 Corinthians 9:19-23","text":"Though I am free of obligation to anyone, I make myself a slave to everyone, to win as many as possible. To the Jews I became like a Jew, to win the Jews. To those under the law I became like one under the law (though I myself am not under the law), to win those under the law. To those without the law I became like one without the law (though I am not outside the law of God but am under the law of Christ), to win those without the law. To the weak I became weak, to win the weak. I have become all things to all people so that by all possible means I might save some. I do all this for the sake of the gospel, so that I may share in its blessings.","bibleUrl":"https://www.bible.com/bible/3034/1CO.9.19-23"},"2-corinthians-8-9":{"ref":"2 Corinthians 8:9","text":"For you know the grace of our Lord Jesus Christ, that though He was rich, yet for your sake He became poor, so that you through His poverty might become rich.","bibleUrl":"https://www.bible.com/bible/3034/2CO.8.9"},"matthew-8-20":{"ref":"Matthew 8:20","text":"Jesus replied, \u201cFoxes have dens and birds of the air have nests, but the Son of Man has no place to lay His head.\u201d","bibleUrl":"https://www.bible.com/bible/3034/MAT.8.20"},"matthew-26-53":{"ref":"Matthew 26:53","text":"Are you not aware that I can call on My Father, and He will at once put at My disposal more than twelve legions of angels?","bibleUrl":"https://www.bible.com/bible/3034/MAT.26.53"},"mark-10-45":{"ref":"Mark 10:45","text":"For even the Son of Man did not come to be served, but to serve, and to give His life as a ransom for many.\u201d","bibleUrl":"https://www.bible.com/bible/3034/MRK.10.45"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

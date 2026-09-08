@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Practical Prayer — Daily Bible Study</title>
 <meta name="study-title" content="Practical Prayer">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 7, Practical Prayer · Part 1 of 7">
+<meta name="study-passage" content="Psalms 62:8">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 7, Practical Prayer · Day 1 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Practical Prayer">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 7, Practical Prayer · Part 1 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 7, Practical Prayer · Day 1 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-05-09.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 7, Practical Prayer · Part 1 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 7, Practical Prayer · Day 1 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,296 +38,193 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--sabbath">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Practical Prayer</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 7, Practical Prayer</span>
-      <span>Part 1 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Sat · May 9</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">7 min</span>
     </div>
-    <div class="date-badge">May 9, 2026</div>
+    <h1 class="study-title">Practical Prayer</h1>
+    <p class="study-sub"><span class="sub-title">Practical Prayer</span><span class="sub-facts"><span>Lesson 7</span><span>Day 1 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. TL;DR (week preview) -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">A prophet collapsed under a desert shrub, a barren woman moving her lips with no sound coming out, a circle of disciples asking their Teacher one question they had never asked anyone before, and the Spirit Himself groaning the prayers we cannot finish.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Last week</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="memory">This Week’s Memory Text</button><button type="button" class="chip" data-jump="roadmap">This Week’s Road Map</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Opening Question for the Week</button><button type="button" class="chip" data-jump="prayer">Opening Prayer for the Week</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p class="tldr-hook">A prophet collapsed under a desert shrub, a barren woman moving her lips with no sound coming out, a circle of disciples asking their Teacher one question they had never asked anyone before, and the Spirit Himself groaning the prayers we cannot finish.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span><span>This week trades the question "what should I say to God?" for the older question: who taught these people to pray when they did not know what to say?</span></li>
-        <li><span class="bullet-icon">☩</span><span>Elijah pours out exhausted despair under a broom tree, and God answers first with food and water and a long sleep before He says a single theological word.</span></li>
-        <li><span class="bullet-icon">☩</span><span>The disciples interrupt Jesus exactly once with the request "Lord, teach us to pray," and the answer is nine lines the church has never stopped praying.</span></li>
-        <li><span class="bullet-icon">☩</span><span>The Memory Text gives the week one verb: pour out. Trust first, then pour. Everything else is a way of practicing that one move.</span></li>
+        <li>
+<span class="bullet-icon">☩</span><span>This week trades the question "what should I say to God?" for the older question: who taught these people to pray when they did not know what to say?</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span>Elijah pours out exhausted despair under a broom tree, and God answers first with food and water and a long sleep before He says a single theological word.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span>The disciples interrupt Jesus exactly once with the request "Lord, teach us to pray," and the answer is nine lines the church has never stopped praying.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span>The Memory Text gives the week one verb: pour out. Trust first, then pour. Everything else is a way of practicing that one move.</span>
+</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. CONNECTION TO LAST WEEK -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Last Week</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Last week three teachers stood at three doors. Daniel kept his window open on schedule, Enoch walked with God for three hundred years until earth could not hold him, and Moses lay face-down for forty days with a calf-worshiping nation's name on the line. Each of them stood inside the same conviction: that the Ear of <a class="vlink" href="https://www.bible.com/bible/3034/PSA.116" target="_blank" rel="noopener">Psalm 116</a> is actually inclined. This week the faculty expands and the verb sharpens. The same inclined Ear that bent toward Daniel's whisper now bends toward a prophet who cannot finish his sentences, a wife whose prayer has to be lip-read because no sound is coming out, a teacher who folds the whole vocabulary of access into nine lines, and a Spirit who completes our prayers when we run out of language.</p>
-    </div>
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Last week</h2>
+<p>Last week three teachers stood at three doors. Daniel kept his window open on schedule, Enoch walked with God for three hundred years until earth could not hold him, and Moses lay face-down for forty days with a calf-worshiping nation's name on the line. Each of them stood inside the same conviction: that the Ear of <a class="vlink" href="https://www.bible.com/bible/3034/PSA.116" target="_blank" rel="noopener">Psalm 116</a> is actually inclined. This week the faculty expands and the verb sharpens. The same inclined Ear that bent toward Daniel's whisper now bends toward a prophet who cannot finish his sentences, a wife whose prayer has to be lip-read because no sound is coming out, a teacher who folds the whole vocabulary of access into nine lines, and a Spirit who completes our prayers when we run out of language.</p>
+    </section>
 
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The School Where Words Run Out</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The School Where Words Run Out</h3>
       <p>Open the Bible's prayer book and the first thing that strikes you is the audio. People are not composing. A prophet sleeps under a juniper, exhausted enough to ask the LORD to take his life. A barren wife stands at the temple door with her lips moving and no voice coming out, and the priest mistakes her for drunk. Twelve men interrupt their Rabbi and ask Him a question Jewish students did not normally ask: teach us to pray. A statesman in his late seventies bows over a Hebrew scroll in Babylon and prays sixteen verses of corporate confession for a nation that is not in the room. And in a letter written from a rented house in Rome under guard, an apostle tries to describe the Spirit's prayer life inside us and gives up on language: He intercedes "with unspoken groanings."</p>
       <p>The Bible's school of prayer is older and stranger than any modern manual, because it teaches in a single tongue no one was ever fluent in: the tongue of saying it anyway. Last week the inclined Ear of <a class="vlink" href="https://www.bible.com/bible/3034/PSA.116" target="_blank" rel="noopener">Psalm 116</a> was the foundation. This week the foundation gets a verb. The same Father who bends down to hear a child also waits while that child tells Him what is actually going on, not what should be. The week's faculty (Elijah on Horeb, Hannah at Shiloh, the disciples at the Sermon on the Mount, Daniel by the rivers of Babylon, Paul under Roman house arrest) does not represent five solutions to a single problem. It represents one practice (pour out) five times rehearsed, in five different rooms, by people who had no other option left.</p>
-    </div>
+    </section>
 
-    <!-- 4. THIS WEEK'S MEMORY TEXT -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">This Week's Memory Text</span>
-        <div class="section-title-line"></div>
-      </div>
-
+    <section class="section" id="memory" aria-labelledby="memory-label">
+      <h2 class="section-label" id="memory-label">This Week’s Memory Text</h2>
 <!-- BSB_BLOCK: Psalms 62:8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:2f2ee58c5b5d52216fd50cf3b5cf3fed55a9a4a93663994c29b1cf7f9d39527f | footnotes-stripped:0 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Psalms 62:8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.62.8" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/PSA.62.8" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Trust in Him at all times, O people; pour out your hearts before Him. God is our refuge. Selah</div>
 <div class="verse-commentary">
           <p>David almost certainly wrote this psalm on the run. The setting is some long night between palaces, when the only roof over his head was the night sky and the only people who knew where he was wanted him dead. The verse is not advice from a quiet study. It is the conclusion of a man whose own heart had been spilled all over the wilderness and had survived.</p>
           <p>The Hebrew verb behind "pour out" is <em>shaphak</em>, the word the priests used for blood spilled at the base of the altar, the word Moses used for water poured on the dry ground that could not be gathered up again. Prayer in this verse is not a polished offering laid neatly on a tray. It is the whole contents of the inner life going somewhere it cannot be retrieved. And the order matters. "Trust in Him at all times" comes first; "pour out your hearts" comes second. Trust is the precondition that makes the pouring safe. You cannot pour anything fragile into a vessel you do not trust to hold it. The week ahead is going to keep asking us to pour, and the Memory Text is the reminder that we are pouring into a refuge.</p>
-          <p>This week's faculty teaches that one verb in five different rooms. Elijah pours out exhausted despair in <a class="vlink" href="https://www.bible.com/bible/3034/1KI.19.1-18" target="_blank" rel="noopener">1 Kings 19:1-18</a>, and God answers him with food before He answers him with words. Jesus, on a hillside in Galilee, hands His disciples nine lines of direct address in <a class="vlink" href="https://www.bible.com/bible/3034/MAT.6.5-15" target="_blank" rel="noopener">Matthew 6:5-15</a> and warns them in the same breath against the polished performance prayer in <a class="vlink" href="https://www.bible.com/bible/3034/MAT.6.5-8" target="_blank" rel="noopener">Matthew 6:5-8</a>. The disciples ask Him to teach them again in <a class="vlink" href="https://www.bible.com/bible/3034/LUK.11.2-4" target="_blank" rel="noopener">Luke 11:2-4</a>, and the Lord's Prayer enters the church a second time. Daniel pours out sixteen verses of corporate confession in <a class="vlink" href="https://www.bible.com/bible/3034/DAN.9.4-19" target="_blank" rel="noopener">Daniel 9:4-19</a> for a people who are still in exile and still off-key. And the apostle Paul, trying to describe what happens inside a believer when the words simply will not come, writes in <a class="vlink" href="https://www.bible.com/bible/3034/ROM.8.26-27" target="_blank" rel="noopener">Romans 8:26-27</a> that the Spirit Himself takes up the prayer with unspoken groans. Hannah's silent vigil in <a class="vlink" href="https://www.bible.com/bible/3034/1SA.1" target="_blank" rel="noopener">1 Samuel 1</a>, where she "poured out" her soul (the same <em>shaphak</em>) in front of the priest, will join the chorus on Monday. Five voices, one verb, one inclined Ear.</p>
+          <p>This week's faculty teaches that one verb in five different rooms. Elijah pours out exhausted despair in <a class="vlink" href="https://www.bible.com/bible/3034/1KI.19.1-18" target="_blank" rel="noopener" data-verse="1-kings-19-1-18" data-ref="1 Kings 19:1-18" aria-expanded="false">1 Kings 19:1-18</a>, and God answers him with food before He answers him with words. Jesus, on a hillside in Galilee, hands His disciples nine lines of direct address in <a class="vlink" href="https://www.bible.com/bible/3034/MAT.6.5-15" target="_blank" rel="noopener" data-verse="matthew-6-5-15" data-ref="Matthew 6:5-15" aria-expanded="false">Matthew 6:5-15</a> and warns them in the same breath against the polished performance prayer in <a class="vlink" href="https://www.bible.com/bible/3034/MAT.6.5-8" target="_blank" rel="noopener" data-verse="matthew-6-5-8" data-ref="Matthew 6:5-8" aria-expanded="false">Matthew 6:5-8</a>. The disciples ask Him to teach them again in <a class="vlink" href="https://www.bible.com/bible/3034/LUK.11.2-4" target="_blank" rel="noopener" data-verse="luke-11-2-4" data-ref="Luke 11:2-4" aria-expanded="false">Luke 11:2-4</a>, and the Lord's Prayer enters the church a second time. Daniel pours out sixteen verses of corporate confession in <a class="vlink" href="https://www.bible.com/bible/3034/DAN.9.4-19" target="_blank" rel="noopener" data-verse="daniel-9-4-19" data-ref="Daniel 9:4-19" aria-expanded="false">Daniel 9:4-19</a> for a people who are still in exile and still off-key. And the apostle Paul, trying to describe what happens inside a believer when the words simply will not come, writes in <a class="vlink" href="https://www.bible.com/bible/3034/ROM.8.26-27" target="_blank" rel="noopener" data-verse="romans-8-26-27" data-ref="Romans 8:26-27" aria-expanded="false">Romans 8:26-27</a> that the Spirit Himself takes up the prayer with unspoken groans. Hannah's silent vigil in <a class="vlink" href="https://www.bible.com/bible/3034/1SA.1" target="_blank" rel="noopener">1 Samuel 1</a>, where she "poured out" her soul (the same <em>shaphak</em>) in front of the priest, will join the chorus on Monday. Five voices, one verb, one inclined Ear.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. THIS WEEK'S ROAD MAP -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🗓️</span>
-        <span class="section-title">This Week's Road Map</span>
-        <div class="section-title-line"></div>
-      </div>
-      <ul class="road-map-list">
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> Elijah, Praying in Crisis</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Monday:</span> When Prayers Seem Unanswered</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Tuesday:</span> Jesus Teaches Us How to Pray</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Wednesday:</span> Praise, Confession, Requests, Thanksgiving</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Thursday:</span> Other Questions About Prayer</span></li>
-        <li class="friday-item"><span class="bullet-icon">☩</span><span><span class="day-label">Friday:</span> Further Thought &amp; Discussion</span></li>
+    <section class="section" id="roadmap" aria-labelledby="roadmap-label">
+      <h2 class="section-label" id="roadmap-label">This Week’s Road Map</h2>
+<ul class="road-map-list">
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> Elijah, Praying in Crisis</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Monday:</span> When Prayers Seem Unanswered</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Tuesday:</span> Jesus Teaches Us How to Pray</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Wednesday:</span> Praise, Confession, Requests, Thanksgiving</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Thursday:</span> Other Questions About Prayer</span>
+</li>
+        <li class="friday-item">
+<span class="bullet-icon">☩</span><span><span class="day-label">Friday:</span> Further Thought &amp; Discussion</span>
+</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 6. CHRIST CONNECTION (anticipatory seed) -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>"Our Father." Two words this week to watch. The Son who has shared the Father's name from before the foundation of the world hands that name to the people standing on a Galilean hillside, and tells them to use it. By Tuesday the breath of the Trinity will be moving through nine plain English words, and the church will never be the same. But the Son's role this week is wider than the Lord's Prayer. Elijah's broom-tree exhaustion will look familiar by Sunday afternoon, because Jesus took something very like it into Gethsemane and came out praying. Hannah's silent vigil will look familiar by Monday, because Hebrews remembers Christ offering prayers "with loud cries and tears." Daniel's solidarity-with-sinners confession will look familiar by Wednesday, because what Daniel could only offer in words, Christ completed at the cross. And the Spirit's unspoken groans in <a class="vlink" href="https://www.bible.com/bible/3034/ROM.8" target="_blank" rel="noopener">Romans 8</a> will turn out, by Thursday, to be the third Person of the Trinity finishing the prayers the Son's atonement opened. The week is built around the Trinity's own prayer life. The Father who hears, the Son who teaches the address, and the Spirit who finishes our sentences when we cannot.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>"Our Father." Two words this week to watch. The Son who has shared the Father's name from before the foundation of the world hands that name to the people standing on a Galilean hillside, and tells them to use it. By Tuesday the breath of the Trinity will be moving through nine plain English words, and the church will never be the same. But the Son's role this week is wider than the Lord's Prayer. Elijah's broom-tree exhaustion will look familiar by Sunday afternoon, because Jesus took something very like it into Gethsemane and came out praying. Hannah's silent vigil will look familiar by Monday, because Hebrews remembers Christ offering prayers "with loud cries and tears." Daniel's solidarity-with-sinners confession will look familiar by Wednesday, because what Daniel could only offer in words, Christ completed at the cross. And the Spirit's unspoken groans in <a class="vlink" href="https://www.bible.com/bible/3034/ROM.8" target="_blank" rel="noopener">Romans 8</a> will turn out, by Thursday, to be the third Person of the Trinity finishing the prayers the Son's atonement opened. The week is built around the Trinity's own prayer life. The Father who hears, the Son who teaches the address, and the Spirit who finishes our sentences when we cannot.</p>
+    </section>
 
-    <!-- 7. PERSONAL APPLICATION CHALLENGE -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box action-box-sabbath">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Find the prayer you keep almost-starting and never finishing, the one about your marriage, or your kids, or your fear, or the secret thing you have not even told your spouse. Write one sentence that names it honestly on a small piece of paper. Not the polished version. The pour-out version. Tuck the paper into your Bible at this week's pages. Each morning before you read the day's passage, read your sentence aloud once. Do not fix it. Do not pretty it up. Pour it out, then pick up the Bible at <a class="vlink" href="https://www.bible.com/bible/3034/1KI.19" target="_blank" rel="noopener">1 Kings 19</a> and let Elijah be the first teacher.
       </div>
-    </div>
+    </section>
 
-    <!-- 8. OPENING PRAYER FOR THE WEEK -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Opening Prayer for the Week</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we come into this week not as students who already know the right answers, but as people who have run out of words more often than we like to admit. We confess that our prayers have sometimes been performances, sometimes shopping lists, sometimes silences we never broke. Open us. Open the part of us that is afraid to tell You what is actually wrong, and the part of us that has quietly stopped believing You hear, and the part of us that keeps showing up anyway because somewhere underneath we know You do. Teach us this week the way Elijah collapsed into prayer, the way Hannah moved her lips with no sound coming out, the way the disciples interrupted Jesus to ask, and the way Daniel bowed for sixteen verses of confession on behalf of a people who would not bow. And when our words run out before our hearts do, intercede in us by Your Spirit, who has never run out of language for us. We pour out our hearts before You, because You are our refuge. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Opening Question for the Week</h2>
+<div class="discussion-question">"What is the prayer you keep almost-starting and never finishing? And what would it cost you, this week, to pour it out before God exactly as it is, with no editing, the way Hannah did at Shiloh and Elijah did under the juniper?"</div>
+    </section>
 
-    <!-- 9. OPENING QUESTION FOR THE WEEK -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Opening Question for the Week</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"What is the prayer you keep almost-starting and never finishing? And what would it cost you, this week, to pour it out before God exactly as it is, with no editing, the way Hannah did at Shiloh and Elijah did under the juniper?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Opening Prayer for the Week</h2>
+<p>Father, we come into this week not as students who already know the right answers, but as people who have run out of words more often than we like to admit. We confess that our prayers have sometimes been performances, sometimes shopping lists, sometimes silences we never broke. Open us. Open the part of us that is afraid to tell You what is actually wrong, and the part of us that has quietly stopped believing You hear, and the part of us that keeps showing up anyway because somewhere underneath we know You do. Teach us this week the way Elijah collapsed into prayer, the way Hannah moved her lips with no sound coming out, the way the disciples interrupted Jesus to ask, and the way Daniel bowed for sixteen verses of confession on behalf of a people who would not bow. And when our words run out before our hearts do, intercede in us by Your Spirit, who has never run out of language for us. We pour out our hearts before You, because You are our refuge. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-05-08.html"><span class="day-nav-kicker">← Friday</span><span class="day-nav-title">Further Thought &amp; Discussion</span></a><a class="day-nav-item" href="/bible-study/2026-05-10.html"><span class="day-nav-kicker">Sunday →</span><span class="day-nav-title">Elijah, Praying in Crisis</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"1-kings-19-1-18":{"ref":"1 Kings 19:1-18","text":"Now Ahab told Jezebel everything that Elijah had done and how he had killed all the prophets with the sword. So Jezebel sent a messenger to Elijah, saying, \u201cMay the gods deal with me, and ever so severely, if by this time tomorrow I have not made your life like the lives of those you killed!\u201d And Elijah was afraid and ran for his life. When he came to Beersheba in Judah, he left his servant there, while he himself went a day\u2019s journey into the wilderness. He sat down under a broom tree and prayed that he might die. \u201cI have had enough, LORD,\u201d he said. \u201cTake my life, for I am no better than my fathers.\u201d Then he lay down under the broom tree and fell asleep. Suddenly an angel touched him and said, \u201cGet up and eat.\u201d And he looked around, and there by his head was a cake of bread baked over hot coals, and a jar of water. So he ate and drank and lay down again. A second time the angel of the LORD returned and touched him, saying, \u201cGet up and eat, or the journey will be too much for you.\u201d So he got up and ate and drank. And strengthened by that food, he walked forty days and forty nights until he reached Horeb, the mountain of God. There Elijah entered a cave and spent the night. And the word of the LORD came to him, saying, \u201cWhat are you doing here, Elijah?\u201d \u201cI have been very zealous for the LORD, the God of Hosts,\u201d he replied, \u201cbut the Israelites have forsaken Your covenant, torn down Your altars, and killed Your prophets with the sword. I am the only one left, and they are seeking my life as well.\u201d Then the LORD said, \u201cGo out and stand on the mountain before the LORD. Behold, the LORD is about to pass by.\u201d And a great and mighty wind tore into the mountains and shattered the rocks before the LORD, but the LORD was not in the wind. After the wind there was an earthquake, but the LORD was not in the earthquake. After the earthquake there was a fire, but the LORD was not in the fire. And after the fire came a still, small voice. When Elijah heard it, he wrapped his face in his cloak and went out and stood at the mouth of the cave. Suddenly a voice came to him and said, \u201cWhat are you doing here, Elijah?\u201d \u201cI have been very zealous for the LORD, the God of Hosts,\u201d he replied, \u201cbut the Israelites have forsaken Your covenant, torn down Your altars, and killed Your prophets with the sword. I am the only one left, and they are seeking my life as well.\u201d Then the LORD said to him, \u201cGo back by the way you came, and go to the Desert of Damascus. When you arrive, you are to anoint Hazael as king over Aram. You are also to anoint Jehu son of Nimshi as king over Israel and Elisha son of Shaphat from Abel-meholah to succeed you as prophet. Then Jehu will put to death whoever escapes the sword of Hazael, and Elisha will put to death whoever escapes the sword of Jehu. Nevertheless, I have reserved seven thousand in Israel\u2014all whose knees have not bowed to Baal and whose mouths have not kissed him.\u201d","bibleUrl":"https://www.bible.com/bible/3034/1KI.19.1-18"},"matthew-6-5-15":{"ref":"Matthew 6:5-15","text":"And when you pray, do not be like the hypocrites. For they love to pray standing in the synagogues and on the street corners to be seen by men. Truly I tell you, they already have their full reward. But when you pray, go into your inner room, shut your door, and pray to your Father, who is unseen. And your Father, who sees what is done in secret, will reward you. And when you pray, do not babble on like pagans, for they think that by their many words they will be heard. Do not be like them, for your Father knows what you need before you ask Him. So then, this is how you should pray: \u2018Our Father in heaven, hallowed be Your name. Your kingdom come, Your will be done, on earth as it is in heaven. Give us this day our daily bread. And forgive us our debts, as we also have forgiven our debtors. And lead us not into temptation, but deliver us from the evil one.\u2019 For if you forgive men their trespasses, your heavenly Father will also forgive you. But if you do not forgive men their trespasses, neither will your Father forgive yours.","bibleUrl":"https://www.bible.com/bible/3034/MAT.6.5-15"},"matthew-6-5-8":{"ref":"Matthew 6:5-8","text":"And when you pray, do not be like the hypocrites. For they love to pray standing in the synagogues and on the street corners to be seen by men. Truly I tell you, they already have their full reward. But when you pray, go into your inner room, shut your door, and pray to your Father, who is unseen. And your Father, who sees what is done in secret, will reward you. And when you pray, do not babble on like pagans, for they think that by their many words they will be heard. Do not be like them, for your Father knows what you need before you ask Him.","bibleUrl":"https://www.bible.com/bible/3034/MAT.6.5-8"},"luke-11-2-4":{"ref":"Luke 11:2-4","text":"So Jesus told them, \u201cWhen you pray, say: \u2018Father, hallowed be Your name. Your kingdom come. Give us each day our daily bread. And forgive us our sins, for we also forgive everyone who sins against us. And lead us not into temptation.\u2019\u201d","bibleUrl":"https://www.bible.com/bible/3034/LUK.11.2-4"},"daniel-9-4-19":{"ref":"Daniel 9:4-19","text":"And I prayed to the LORD my God and confessed, \u201cO, Lord, the great and awesome God, who keeps His covenant of loving devotion to those who love Him and keep His commandments, we have sinned and done wrong. We have acted wickedly and rebelled. We have turned away from Your commandments and ordinances. We have not listened to Your servants the prophets, who spoke in Your name to our kings, leaders, fathers, and all the people of the land. To You, O Lord, belongs righteousness, but this day we are covered with shame\u2014the men of Judah, the people of Jerusalem, and all Israel near and far, in all the countries to which You have driven us because of our unfaithfulness to You. O LORD, we are covered with shame\u2014our kings, our leaders, and our fathers\u2014because we have sinned against You. To the Lord our God belong compassion and forgiveness, even though we have rebelled against Him and have not obeyed the voice of the LORD our God to walk in His laws, which He set before us through His servants the prophets. All Israel has transgressed Your law and turned away, refusing to obey Your voice; so the oath and the curse written in the Law of Moses the servant of God has been poured out on us, because we have sinned against You. You have carried out the words spoken against us and against our rulers by bringing upon us a great disaster. For under all of heaven, nothing has ever been done like what has been done to Jerusalem. Just as it is written in the Law of Moses, all this disaster has come upon us, yet we have not sought the favor of the LORD our God by turning from our iniquities and giving attention to Your truth. Therefore the LORD has kept the calamity in store and brought it upon us. For the LORD our God is righteous in all He does; yet we have not obeyed His voice. Now, O Lord our God, who brought Your people out of the land of Egypt with a mighty hand, and who made for Yourself a name renowned to this day, we have sinned; we have acted wickedly. O Lord, in keeping with all Your righteous acts, I pray that Your anger and wrath may turn away from Your city Jerusalem, Your holy mountain; for because of our sins and the iniquities of our fathers, Jerusalem and Your people are a reproach to all around us. So now, our God, hear the prayers and petitions of Your servant. For Your sake, O Lord, cause Your face to shine upon Your desolate sanctuary. Incline Your ear, O my God, and hear; open Your eyes and see the desolation of the city that bears Your name. For we are not presenting our petitions before You because of our righteous acts, but because of Your great compassion. O Lord, listen! O Lord, forgive! O Lord, hear and act! For Your sake, O my God, do not delay, because Your city and Your people bear Your name.\u201d","bibleUrl":"https://www.bible.com/bible/3034/DAN.9.4-19"},"romans-8-26-27":{"ref":"Romans 8:26-27","text":"In the same way, the Spirit helps us in our weakness. For we do not know how we ought to pray, but the Spirit Himself intercedes for us with groans too deep for words. And He who searches our hearts knows the mind of the Spirit, because the Spirit intercedes for the saints according to the will of God.","bibleUrl":"https://www.bible.com/bible/3034/ROM.8.26-27"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

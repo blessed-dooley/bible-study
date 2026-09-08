@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>God Is Love — Daily Bible Study</title>
 <meta name="study-title" content="God Is Love">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 2, To Know God · Part 4 of 7">
+<meta name="study-passage" content="1 John 4:7-12">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 2, To Know God · Day 4 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="God Is Love">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 2, To Know God · Part 4 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 2, To Know God · Day 4 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-04-07.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 2, To Know God · Part 4 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 2, To Know God · Day 4 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,352 +38,231 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>God Is Love</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 2, To Know God</span>
-      <span>Part 4 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Tue · Apr 7</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">12 min</span>
     </div>
-    <div class="date-badge">April 7, 2026</div>
+    <h1 class="study-title">God Is Love</h1>
+    <p class="study-sub"><span class="sub-title">To Know God</span><span class="sub-facts"><span>Lesson 2</span><span>Day 4 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">&#10022; &#9769; &#10022;</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">John doesn't say God is loving. He says God <em>is</em> love, which means love isn't something God does when He feels like it; it is who He is at every level of His being.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p class="tldr-hook">John doesn't say God is loving. He says God <em>is</em> love, which means love isn't something God does when He feels like it; it is who He is at every level of His being.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span> The Bible's definition of love starts with God, not with us; our human experience of love is the copy, His is the original</li>
-        <li><span class="bullet-icon">☩</span> God's love is not reactive; He loved us first, while we were still sinners, before we did anything to earn it or even wanted it</li>
-        <li><span class="bullet-icon">☩</span> Yesterday's holiness and today's love are not in tension; God's love is holy love, pure and trustworthy precisely because it flows from a character with no corruption</li>
-        <li><span class="bullet-icon">☩</span> The greatest proof of God's love is not a feeling or a concept but a Person: Jesus, sent into a world that didn't ask for Him, dying for people who didn't deserve it</li>
+        <li>
+<span class="bullet-icon">☩</span> The Bible's definition of love starts with God, not with us; our human experience of love is the copy, His is the original</li>
+        <li>
+<span class="bullet-icon">☩</span> God's love is not reactive; He loved us first, while we were still sinners, before we did anything to earn it or even wanted it</li>
+        <li>
+<span class="bullet-icon">☩</span> Yesterday's holiness and today's love are not in tension; God's love is holy love, pure and trustworthy precisely because it flows from a character with no corruption</li>
+        <li>
+<span class="bullet-icon">☩</span> The greatest proof of God's love is not a feeling or a concept but a Person: Jesus, sent into a world that didn't ask for Him, dying for people who didn't deserve it</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday we explored how God's holiness is the attribute that makes every other attribute safe. Today we see why that matters so much: because God is love. And love, when it comes from a Being who is perfectly holy, is the most powerful force in the universe. A love backed by flawed character can be possessive, manipulative, or conditional. But a love backed by complete holiness? That love can be trusted absolutely. Today's study doesn't replace yesterday's; it builds on it. God's holiness is the foundation. His love is what He builds on it.</p>
-    </div>
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday we explored how God's holiness is the attribute that makes every other attribute safe. Today we see why that matters so much: because God is love. And love, when it comes from a Being who is perfectly holy, is the most powerful force in the universe. A love backed by flawed character can be possessive, manipulative, or conditional. But a love backed by complete holiness? That love can be trusted absolutely. Today's study doesn't replace yesterday's; it builds on it. God's holiness is the foundation. His love is what He builds on it.</p>
+    </section>
 
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">A Word the Greeks Didn't Have a Category For</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>A Word the Greeks Didn't Have a Category For</h3>
       <p>The Greek language had an unusually rich vocabulary for love. <em>Eros</em> described romantic, passionate desire. <em>Philia</em> described the deep bond of friendship and loyalty. <em>Storge</em> described the natural affection between family members. Each word carved out a specific territory in the landscape of human relationships, and each was well understood in the Greco-Roman world. But when the early Christians needed a word for the love of God, none of these fit.</p>
       <p>They reached for <em>agape</em>, a word that existed in Greek but was rarely used and had no strong cultural associations. It was, in a sense, an empty vessel waiting to be filled. And the early church filled it with a definition that had no parallel in any culture: love that is initiated by the lover regardless of the worthiness of the beloved, love that gives at cost to itself without expectation of return, love that persists even when rejected. The Hebrew Scriptures had already been building this concept through the word <em>hesed</em>, covenant love, which described God's loyal, steadfast, protective commitment to His people. <em>Hesed</em> wasn't a feeling; it was a binding decision backed by God's own character.</p>
       <p>When John wrote "God is love," he was making a claim that no Greek philosopher would have understood and no pagan religion would have recognized. The gods of the ancient world could desire you, use you, or reward you. They did not <em>agape</em> you. That kind of love was a Jewish and Christian invention, because it was a description of a God no other tradition had ever encountered.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Today's anchor is 1 John 4:7-19, one of the most concentrated explorations of God's love in all of Scripture. John builds a complete theology of love in thirteen verses: where it comes from, how God proved it, what it drives out, and what it produces in those who receive it. We'll walk through the passage in two movements, then let Romans 5:8 and 1 Corinthians 13 add depth to the picture.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Today's anchor is 1 John 4:7-19, one of the most concentrated explorations of God's love in all of Scripture. John builds a complete theology of love in thirteen verses: where it comes from, how God proved it, what it drives out, and what it produces in those who receive it. We'll walk through the passage in two movements, then let Romans 5:8 and 1 Corinthians 13 add depth to the picture.</p>
 
       <!-- ANCHOR: 1 John 4:7-12 -->
 <!-- BSB_BLOCK: 1 John 4:7-12 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:7da8812e3d2706f8dd9450d3d85c244dcb9ca1d21fcb9275df385f2f3f84225a | footnotes-stripped:2 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 John 4:7-12</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1JN.4.7-12" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 7">7</sup>Beloved, let us love one another, because love comes from God. Everyone who loves has been born of God and knows God. <sup class="verse-number" aria-label="Verse 8">8</sup>Whoever does not love does not know God, because God is love. <sup class="verse-number" aria-label="Verse 9">9</sup>This is how God’s love was revealed among us: God sent His one and only Son into the world, so that we might live through Him. <sup class="verse-number" aria-label="Verse 10">10</sup>And love consists in this: not that we loved God, but that He loved us and sent His Son as the atoning sacrifice for our sins. <sup class="verse-number" aria-label="Verse 11">11</sup>Beloved, if God so loved us, we also ought to love one another. <sup class="verse-number" aria-label="Verse 12">12</sup>No one has ever seen God; but if we love one another, God remains in us, and His love is perfected in us.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1JN.4.7-12" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 7">7</sup>Beloved, let us love one another, because love comes from God. Everyone who loves has been born of God and knows God. <sup class="verse-number" aria-label="Verse 8">8</sup>Whoever does not love does not know God, because God is love. <sup class="verse-number" aria-label="Verse 9">9</sup>This is how God’s love was revealed among us: God sent His one and only Son into the world, so that we might live through Him. <sup class="verse-number" aria-label="Verse 10">10</sup>And love consists in this: not that we loved God, but that He loved us and sent His Son as the atoning sacrifice for our sins. <sup class="verse-number" aria-label="Verse 11">11</sup>Beloved, if God so loved us, we also ought to love one another. <sup class="verse-number" aria-label="Verse 12">12</sup>No one has ever seen God; but if we love one another, God remains in us, and His love is perfected in us.</div>
 <div class="verse-commentary">
           <p>John's logic is striking in its simplicity: love comes from God, God <em>is</em> love, and therefore anyone who truly loves is drawing from God whether they realize it or not. The phrase "God is love" (verse 8) is not a metaphor. It is an identity statement. John does not say God has love or God shows love; he says God <em>is</em> love, the way light <em>is</em> light. Love is not one of God's moods; it is His nature.</p>
           <p>But notice how John immediately defines what that love looks like in practice. Verse 9 gives the definition: God sent His Son so that we might live. Verse 10 sharpens it further: love is not that we loved God first, but that He loved us and sent His Son as the atoning sacrifice. This is the radical heart of <em>agape</em>. God's love does not respond to our lovability. It initiates. It moves first. It bears the cost. The Greek word for "atoning sacrifice" here, <em>hilasmos</em>, carries the weight of propitiation, the turning away of wrath through a substitute. God's love is not sentimental; it solved a real problem at a real cost.</p>
           <p>Verse 12 then makes an astonishing claim: no one has ever seen God, but when we love one another, God's love becomes visible and complete in us. We become the evidence. God's love, which is invisible in its source, becomes visible through its recipients. This is why John insists that love for one another is not optional for those who claim to know God. It is the proof that we actually do.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: 1 John 4:9 | 4:9 Or only begotten or unique -->
       <!-- BSB_FOOTNOTE: 1 John 4:10 | 4:10 Or as a propitiation -->
 
       <!-- ANCHOR: 1 John 4:13-19 -->
 <!-- BSB_BLOCK: 1 John 4:13-19 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:027c3853b6858b05c514c4bd896a3fd6c2ee3728533e2782b9630cae9ec00252 | footnotes-stripped:1 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 John 4:13-19</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1JN.4.13-19" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 13">13</sup>By this we know that we remain in Him, and He in us: He has given us of His Spirit. <sup class="verse-number" aria-label="Verse 14">14</sup>And we have seen and testify that the Father has sent His Son to be the Savior of the world. <sup class="verse-number" aria-label="Verse 15">15</sup>If anyone confesses that Jesus is the Son of God, God abides in him, and he in God. <sup class="verse-number" aria-label="Verse 16">16</sup>And we have come to know and believe the love that God has for us. God is love; whoever abides in love abides in God, and God in him. <sup class="verse-number" aria-label="Verse 17">17</sup>In this way, love has been perfected among us, so that we may have confidence on the day of judgment; for in this world we are just like Him. <sup class="verse-number" aria-label="Verse 18">18</sup>There is no fear in love, but perfect love drives out fear, because fear involves punishment. The one who fears has not been perfected in love. <sup class="verse-number" aria-label="Verse 19">19</sup>We love because He first loved us.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1JN.4.13-19" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 13">13</sup>By this we know that we remain in Him, and He in us: He has given us of His Spirit. <sup class="verse-number" aria-label="Verse 14">14</sup>And we have seen and testify that the Father has sent His Son to be the Savior of the world. <sup class="verse-number" aria-label="Verse 15">15</sup>If anyone confesses that Jesus is the Son of God, God abides in him, and he in God. <sup class="verse-number" aria-label="Verse 16">16</sup>And we have come to know and believe the love that God has for us. God is love; whoever abides in love abides in God, and God in him. <sup class="verse-number" aria-label="Verse 17">17</sup>In this way, love has been perfected among us, so that we may have confidence on the day of judgment; for in this world we are just like Him. <sup class="verse-number" aria-label="Verse 18">18</sup>There is no fear in love, but perfect love drives out fear, because fear involves punishment. The one who fears has not been perfected in love. <sup class="verse-number" aria-label="Verse 19">19</sup>We love because He first loved us.</div>
 <div class="verse-commentary">
           <p>The second movement of John's argument reaches its climax in verses 18-19. "Perfect love drives out fear." This is not a bumper sticker; it is a theological statement with teeth. Fear and love cannot coexist in their completed forms. If you are afraid of God, John says, you have not yet fully grasped His love. Fear assumes punishment is coming. Perfect love says the punishment has already been absorbed by Someone else.</p>
           <p>Verse 19 is perhaps the most important sentence in the passage: "We love because he first loved us." Five words in English. The entire theology of love in a single clause. Our capacity to love is not self-generated. It is a response. God's love is the cause; ours is the effect. He is the initiator; we are the responders. This demolishes any version of Christianity that starts with human effort and works toward God's approval. The order is fixed: He loved first. We love back. Everything else flows from that sequence.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: 1 John 4:19 | 4:19 BYZ and TR We love Him -->
 
       <!-- SUPPORTING: Romans 5:8 -->
 <!-- BSB_BLOCK: Romans 5:8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:b7ff6de6826fc50b39750ade6b300dc28e1dabb5268bff63df725d438571fd5f | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Romans 5:8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.5.8" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ROM.5.8" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">But God proves His love for us in this: While we were still sinners, Christ died for us.</div>
 <div class="verse-commentary">
           <p>Paul's contribution to the definition of God's love is the word "proves." God's love is not asserted; it is demonstrated. And the demonstration has a specific timestamp: "while we were still sinners." Not after we cleaned up. Not once we showed interest. While we were actively opposed to Him. The cross is God's love with a receipt. It is the proof that <em>agape</em> is not theoretical. He did it. It cost Him everything. And He did it for people who, at the time, didn't want it. That is the love John is talking about.</p>
         </div>
-      </div>
+      </figure>
 
-      
+
 <!-- BSB_BLOCK: 1 Corinthians 13:4-8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:cb575499d095ff14d5912b369a8e67b10f2ac3d8de330549ed4f940ca2b9bd77 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 13:4-8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.13.4-8" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 4">4</sup>Love is patient, love is kind. It does not envy, it does not boast, it is not proud. <sup class="verse-number" aria-label="Verse 5">5</sup>It is not rude, it is not self-seeking, it is not easily angered, it keeps no account of wrongs. <sup class="verse-number" aria-label="Verse 6">6</sup>Love takes no pleasure in evil, but rejoices in the truth. <sup class="verse-number" aria-label="Verse 7">7</sup>It bears all things, believes all things, hopes all things, endures all things. <sup class="verse-number" aria-label="Verse 8">8</sup>Love never fails. But where there are prophecies, they will cease; where there are tongues, they will be restrained; where there is knowledge, it will be dismissed.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.13.4-8" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 4">4</sup>Love is patient, love is kind. It does not envy, it does not boast, it is not proud. <sup class="verse-number" aria-label="Verse 5">5</sup>It is not rude, it is not self-seeking, it is not easily angered, it keeps no account of wrongs. <sup class="verse-number" aria-label="Verse 6">6</sup>Love takes no pleasure in evil, but rejoices in the truth. <sup class="verse-number" aria-label="Verse 7">7</sup>It bears all things, believes all things, hopes all things, endures all things. <sup class="verse-number" aria-label="Verse 8">8</sup>Love never fails. But where there are prophecies, they will cease; where there are tongues, they will be restrained; where there is knowledge, it will be dismissed.</div>
 <div class="verse-commentary">
           <p>Try something with this passage: read it again, but replace every instance of "love" with "God." God is patient. God is kind. God does not envy. God is not boastful. God does not keep a record of wrongs. God bears all things, believes all things, hopes all things, endures all things. God never fails. Every line holds. This is not a coincidence; it is a description of His character. Now try putting your own name in place of "love." The gap between what holds and what doesn't is the distance between who God is and who we are becoming. That gap is not meant to shame you. It is meant to show you the direction you're growing in, powered by a love that never ends.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Hot Spring in January</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Hot Spring in January</h3>
       <p>You are hiking in January. The ground is frozen. Your breath hangs in the air. Every stream you've crossed has been locked under a sheet of ice. Then the trail drops into a valley and you see steam rising from a pool of water. You step closer and feel it: warmth, pouring off the surface in waves. A natural hot spring. The water is nearly scalding. You dip your hand in and the cold that has been pressing into your bones for hours just dissolves.</p>
       <p>Here is what makes the spring remarkable. It is not warm because the sun is shining. It is not warm because the air around it is pleasant. The January air is brutal, and the spring does not care. Its heat comes from deep underground, from the earth's core, from a source so far below the surface that nothing happening at the top can cool it. The air can freeze. Snow can pile on the rocks around it. The spring just keeps pouring out heat, because heat is what it <em>is</em>, all the way down.</p>
       <p>That is 1 John 4:8. Human love is more like a campfire: it needs fuel, it needs tending, it gutters in the wind, and sometimes it just goes out. You can love someone deeply on a Tuesday and feel nothing on a Thursday. Your love rises and falls with your energy, your mood, your sense of being loved in return. God's love is the hot spring. It does not fluctuate with conditions. It does not depend on your performance or your lovability. It flows from a source so deep in His nature that nothing you do, or fail to do, can turn it off. That is what John means when he says God <em>is</em> love. Not that He feels it. Not that He chooses it when it's convenient. He radiates it the way the earth radiates heat: constantly, inexhaustibly, from the core of who He is.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Your First Relationship Is Still Shaping Your Picture of God</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>Your First Relationship Is Still Shaping Your Picture of God</h3>
       <p>A 2025 study published in Frontiers in Neurology confirmed what psychologists of religion have long suspected: a person's attachment style, the relational pattern formed in early childhood, directly shapes how they experience a connection to God. Individuals with secure attachment, those who grew up with caregivers who were consistently available and responsive, tend to perceive God as loving, present, and safe. Those with insecure attachment, whether anxious or avoidant, tend to perceive God as distant, unpredictable, or punishing, even when they intellectually believe He is loving.</p>
       <p>The implications for today's study are significant. When John says people's picture of God "emerges from their human definition of love, which is always distorted and imperfect," modern psychology backs him up at the neurological level. Our brains literally wire themselves around our earliest relational experiences, and those wires don't automatically rewire when we hear a sermon about God's love. This is why John doesn't just tell us God is love and leave it there. He gives us proof: the cross, the sending of the Son, the initiative of a God who loved first. John is building a case strong enough to override the default settings our childhood installed. And the research suggests that is exactly what's needed.</p>
-    </div>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>If you want to know what God's love actually looks like when it walks into a room, look at Jesus. He is the proof text of 1 John 4:9: "God sent his one and only Son into the world so that we might live through him." Jesus is <em>agape</em> incarnate. He healed people who couldn't pay Him back. He sought out the ones everyone else had given up on. He washed the feet of a man He knew would betray Him within hours. And when the full weight of human sin pressed down on Him in a garden and then on a cross, He didn't withdraw. He absorbed it.</p>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>If you want to know what God's love actually looks like when it walks into a room, look at Jesus. He is the proof text of 1 John 4:9: "God sent his one and only Son into the world so that we might live through him." Jesus is <em>agape</em> incarnate. He healed people who couldn't pay Him back. He sought out the ones everyone else had given up on. He washed the feet of a man He knew would betray Him within hours. And when the full weight of human sin pressed down on Him in a garden and then on a cross, He didn't withdraw. He absorbed it.</p>
       <p>The cross is not just a theological concept. It is the moment when God proved, with blood and breath and broken body, that His love is not a word. It is the most costly action ever taken in the history of the universe, taken by Someone who didn't owe us anything, for people who had done nothing to deserve it. "We love because he first loved us." Jesus is the "first." Everything else is response.</p>
-    </div>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Read 1 Corinthians 13:4-8 twice today. The first time, replace "love" with "God" and let the truth of His character wash over you. The second time, replace "love" with your own name and sit honestly with the result. Don't rush to fix the gap. Just notice it. Then ask God to do in you what only His love can do: slowly reshape your definition of love, and your capacity for it, from the inside out.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, I am beginning to see that my definition of love has been too small and too shaped by my own experience. Today Your Word tells me that love doesn't start with me; it starts with You. You loved first. You loved at cost. You loved while I was still turned away from You. I confess that fear still lives in places where Your perfect love has not yet fully reached, and I ask You to drive it out, not all at once if that's not how You work, but steadily, persistently, the way You do everything. Reshape my understanding of love from the ground up. Let it start with who You are, not with what I've experienced. And let it overflow into every relationship I touch today. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"John says 'perfect love drives out fear.' Is there a specific fear in your relationship with God that you suspect might be rooted in a distorted picture of His love rather than in who He actually is?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"John says 'perfect love drives out fear.' Is there a specific fear in your relationship with God that you suspect might be rooted in a distorted picture of His love rather than in who He actually is?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, I am beginning to see that my definition of love has been too small and too shaped by my own experience. Today Your Word tells me that love doesn't start with me; it starts with You. You loved first. You loved at cost. You loved while I was still turned away from You. I confess that fear still lives in places where Your perfect love has not yet fully reached, and I ask You to drive it out, not all at once if that's not how You work, but steadily, persistently, the way You do everything. Reshape my understanding of love from the ground up. Let it start with who You are, not with what I've experienced. And let it overflow into every relationship I touch today. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-04-06.html"><span class="day-nav-kicker">← Monday</span><span class="day-nav-title">God Is Holy</span></a><a class="day-nav-item" href="/bible-study/2026-04-08.html"><span class="day-nav-kicker">Wednesday →</span><span class="day-nav-title">God in Creation</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

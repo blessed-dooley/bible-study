@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Further Thought &amp; Discussion — Daily Bible Study</title>
 <meta name="study-title" content="Further Thought &amp; Discussion">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 10, Repentance and Forgiveness · Part 7 of 7">
+<meta name="study-passage" content="Isaiah 64:6">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 10, Repentance and Forgiveness · Day 7 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Further Thought &amp; Discussion">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 10, Repentance and Forgiveness · Part 7 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 10, Repentance and Forgiveness · Day 7 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-06-05.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 10, Repentance and Forgiveness · Part 7 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 10, Repentance and Forgiveness · Day 7 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,309 +38,208 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--friday">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Further Thought &amp; Discussion</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 10, Repentance and Forgiveness</span>
-      <span>Part 7 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Fri · Jun 5</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
     </div>
-    <div class="date-badge">June 5, 2026</div>
+    <h1 class="study-title">Further Thought &amp; Discussion</h1>
+    <p class="study-sub"><span class="sub-title">Repentance and Forgiveness</span><span class="sub-facts"><span>Lesson 10</span><span>Day 7 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. WEEK IN REVIEW -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">Week in Review</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">A week begins at the foot of Sinai with smashed tablets and a calf still smoking, and ends at the door of a wedding banquet where the King is handing out the robe Himself, and every day in between was the same Voice in a different room.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">Week in Review</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="review">Week in Review</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="clarifies">What This Week Clarifies</button><button type="button" class="chip" data-jump="speaking">Still Speaking</button><button type="button" class="chip" data-jump="christ">Christ at the Center of the Week</button><button type="button" class="chip" data-jump="application">Weekend Practice</button><button type="button" class="chip" data-jump="prayer">Closing Prayer for the Week</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="review" aria-labelledby="review-label">
+      <h2 class="section-label" id="review-label">Week in Review</h2>
+<p class="tldr-hook">A week begins at the foot of Sinai with smashed tablets and a calf still smoking, and ends at the door of a wedding banquet where the King is handing out the robe Himself, and every day in between was the same Voice in a different room.</p>
       <ul class="week-review-list">
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sabbath:</span> Repentance and Forgiveness. The hardest day in Israel's history was the day God walked past Moses in the cleft of a rock and named Himself "merciful and gracious," and 1 John's Memory Text held the two sides of one healing in one sentence.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> The Rush of Life. A woman on Sabbath morning saw herself for one second mid-iron and realized she was Martha, and Isaiah handed her the robe trade that had been waiting in the closet the whole time.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Monday:</span> Holy Spirit Promptings. Jesus's first listed job for the <em>Parakletos</em> was to expose, not to accuse, and the Spirit grieved was the same Spirit who had already sealed us as His.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Tuesday:</span> Real Repentance. The first sermon recorded from both John and Jesus opened with the same Greek verb, and Peter named what is on the other side of the turn: cool breath after the climb.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Wednesday:</span> Sufficient Grace. The seven Hebrew words God spoke to Moses became the Bible's most-quoted line, and all three of last quarter's sin words appeared together as the things the verb <em>nose</em> lifts.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Thursday:</span> The Most Expensive Robe. The first death in the Bible was an animal in Eden whose skin clothed two sinners, and the wedding parable on Jesus's last week ended on the one man who refused what the King provided at the door.</span></li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Sabbath:</span> Repentance and Forgiveness. The hardest day in Israel's history was the day God walked past Moses in the cleft of a rock and named Himself "merciful and gracious," and 1 John's Memory Text held the two sides of one healing in one sentence.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> The Rush of Life. A woman on Sabbath morning saw herself for one second mid-iron and realized she was Martha, and Isaiah handed her the robe trade that had been waiting in the closet the whole time.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Monday:</span> Holy Spirit Promptings. Jesus's first listed job for the <em>Parakletos</em> was to expose, not to accuse, and the Spirit grieved was the same Spirit who had already sealed us as His.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Tuesday:</span> Real Repentance. The first sermon recorded from both John and Jesus opened with the same Greek verb, and Peter named what is on the other side of the turn: cool breath after the climb.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Wednesday:</span> Sufficient Grace. The seven Hebrew words God spoke to Moses became the Bible's most-quoted line, and all three of last quarter's sin words appeared together as the things the verb <em>nose</em> lifts.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Thursday:</span> The Most Expensive Robe. The first death in the Bible was an animal in Eden whose skin clothed two sinners, and the wedding parable on Jesus's last week ended on the one man who refused what the King provided at the door.</span>
+</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. HISTORICAL & CULTURAL CONTEXT (condensed capstone) -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Sanctuary at the Center of Every Room</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Sanctuary at the Center of Every Room</h3>
       <p>Every scene the week walked through was already happening inside the architecture of one building. The Hebrew word for the tabernacle Moses built at Sinai is <em>mishkan</em>, "dwelling place," the portable sanctuary that traveled with Israel through the wilderness and was later replaced by Solomon's stone temple in Jerusalem. The sanctuary was a teaching diagram in three dimensions. An outer court with an altar where the animal died for the worshiper. An inner Holy Place where the priest stood between the people and the throne. A Most Holy Place behind a curtain where God's glory rested over the ark, the same mercy seat from which He spoke Exodus 34's seven-word self-introduction in another generation. Once a year on the Day of Atonement (<em>Yom Kippur</em>), the high priest entered the Most Holy with blood, and the sins of the people for the year were "lifted" (the verb is <em>nose</em> again, the same verb Exodus 34:7 used) onto a scapegoat that carried them away into the wilderness.</p>
-      <p>Hebrews tells us that whole sanctuary was a copy of a heavenly one (<a class="vlink" href="https://www.bible.com/bible/3034/HEB.8.5" target="_blank" rel="noopener">Hebrews 8:5</a>), and that Christ is now the High Priest there, ministering on our behalf with the blood of a sacrifice He offered once for all. Every garment the week named (Adam's tunic of skin in Eden, Joshua's festal robe in Zechariah, the wedding garment in Matthew 22, the fine linen in Revelation 19) is the same robe in different rooms of the same sanctuary. The repentance Tuesday named is the worshiper crossing the outer court. The forgiveness Wednesday named is the High Priest entering the Most Holy. The robe Thursday named is the garment the worshiper is given at the door because the High Priest's blood has already been poured at the altar. Hosea's agricultural metaphor sits in this same architecture. The hard soil of our hearts is the outer court; the rain of righteousness is what falls from the inner sanctuary onto the prepared ground.</p>
-    </div>
+      <p>Hebrews tells us that whole sanctuary was a copy of a heavenly one (<a class="vlink" href="https://www.bible.com/bible/3034/HEB.8.5" target="_blank" rel="noopener" data-verse="hebrews-8-5" data-ref="Hebrews 8:5" aria-expanded="false">Hebrews 8:5</a>), and that Christ is now the High Priest there, ministering on our behalf with the blood of a sacrifice He offered once for all. Every garment the week named (Adam's tunic of skin in Eden, Joshua's festal robe in Zechariah, the wedding garment in Matthew 22, the fine linen in Revelation 19) is the same robe in different rooms of the same sanctuary. The repentance Tuesday named is the worshiper crossing the outer court. The forgiveness Wednesday named is the High Priest entering the Most Holy. The robe Thursday named is the garment the worshiper is given at the door because the High Priest's blood has already been poured at the altar. Hosea's agricultural metaphor sits in this same architecture. The hard soil of our hearts is the outer court; the rain of righteousness is what falls from the inner sanctuary onto the prepared ground.</p>
+    </section>
 
-    <!-- 3. WHAT THIS WEEK CLARIFIES -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">💡</span>
-        <span class="section-title">What This Week Clarifies</span>
-        <div class="section-title-line"></div>
-      </div>
+    <section class="section" id="clarifies" aria-labelledby="clarifies-label">
+      <h2 class="section-label" id="clarifies-label">What This Week Clarifies</h2>
+<p>Put the six days in one room and they raise a few honest tensions. A week about repentance opened on a woman who was not doing anything wrong. The God who tears and prunes turned out to move people by kindness. And the freest forgiveness in the Bible arrived wearing an if. Each of these has an answer the week already built. Here are the three, one at a time.</p>
 
-      <p>Put the six days in one room and they raise a few honest tensions. A week about repentance opened on a woman who was not doing anything wrong. The God who tears and prunes turned out to move people by kindness. And the freest forgiveness in the Bible arrived wearing an if. Each of these has an answer the week already built. Here are the three, one at a time.</p>
-
-      <div class="section-heading">Nothing Was Wrong in Martha's Kitchen</div>
+      <h3>Nothing Was Wrong in Martha's Kitchen</h3>
       <p>Sunday made a strange opening move for a week about repentance. Martha was not sinning. Her kitchen was full of love and her hands were busy serving Jesus's own dinner. Yet this is the room where the week began its call to turn around, a good woman doing good work, and it chose that room on purpose.</p>
 
 <!-- BSB_BLOCK: Isaiah 64:6 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:a5244fb1fed007a98b187008d87336f4999ec13cab819762965221b7b1dd550b | footnotes-stripped:1 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Isaiah 64:6</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ISA.64.6" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ISA.64.6" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Each of us has become like something unclean, and all our righteous acts are like filthy rags; we all wither like a leaf, and our iniquities carry us away like the wind.</div>
         <div class="verse-commentary">
           <p>Isaiah explains the choice of room. When he puts our righteous acts on the scale, the rags he names are not the sins we already regret. They are the good things, the clean house, the ironed shirt, the bread in the oven for guests. None of it is bad, and that was never his point. The point is what all of it cannot do. Our best days still cannot dress us for God, which is why repentance does not start with a list of crimes. It starts with sight, the one second the iron goes down and we see what our striving has actually been wearing. The week gave that sight a follow-up, because the same prophet watched God wrap a bride in a robe she did not sew. We supply the rags. He supplies the robe.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: Isaiah 64:6 | 64:6 Or like a stained menstrual garment -->
 
-      <div class="section-heading">The Hand That Tears Is the Hand That Bandages</div>
+      <h3>The Hand That Tears Is the Hand That Bandages</h3>
       <p>The week did not soften what God does with sin. The Spirit convicts like a lawyer laying out evidence. The Gardener carries a pruning knife. Hosea's people are told plainly that God has torn. Set beside all of that, Paul's claim sounds almost out of place. What leads a person to repentance, he says, is not the pressure of any of it. It is kindness.</p>
 
 <!-- BSB_BLOCK: Romans 2:4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:18045b5eb580de560048826f1e2986e48e9a674df5d9a3daf204e493560997e2 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Romans 2:4</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ROM.2.4" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ROM.2.4" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Or do you disregard the riches of His kindness, tolerance, and patience, not realizing that God’s kindness leads you to repentance?</div>
         <div class="verse-commentary">
           <p>The week resolved this by watching how the conviction actually arrives. The Helper Jesus promised is not a voice on a loudspeaker announcing our failure to the room. He is the teacher who crosses the floor while the music keeps playing and corrects with a touch at the shoulder, the Friend called alongside, standing with the accused instead of across from him. So the exposing, the pruning, and the tearing are not the opposite of the kindness. They are the kindness, doing the only kind of cutting a healer does, the cut that closes. Hosea said it first. The hand that tears is the hand that binds up, and it wounds only for the healing's sake. Nobody is shamed into turning around. We are loved into it, by a patience that holds the door open one more year.</p>
         </div>
-      </div>
+      </figure>
 
-      <div class="section-heading">The If Was Never a Price Tag</div>
+      <h3>The If Was Never a Price Tag</h3>
       <p>The Memory Text hangs the whole week on a conditional. If we confess, He forgives. Read quickly, that if sounds like a fee at the window, as though the forgiveness the cross already paid for still costs one payment of sorrow at the door. The week kept insisting the gift is free, and then kept repeating a sentence with a condition at the front of it.</p>
 
 <!-- BSB_BLOCK: 1 John 1:9 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:63483951baa9b0adc587a65347a3d4e18390201ac7cb01f4a40017a071f5d4df | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 John 1:9</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1JN.1.9" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1JN.1.9" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">If we confess our sins, He is faithful and just to forgive us our sins and to cleanse us from all unrighteousness.</div>
         <div class="verse-commentary">
           <p>The week's answer is that confession does not buy anything. It receives. Confessing means saying the same thing about our sin that God says about it, not a softer word, and John's two names for God in this verse are courtroom names. He is faithful and just to forgive, not lenient and easygoing, because the price was paid somewhere else, at the cross. That is why the if never functions as a fee. It functions like the open hand at the door of the banquet, where the robe was already bought, already sized, already hanging, and the only remaining question was whether the guest would let the King put it on him. Confession is how a person stops stitching leaves and holds still long enough to be dressed.</p>
           <p>That is the healing the week held up from two sides. Our side is small on purpose, a sin said out loud and a body turned around. His side is everything else, the lifted iniquity, the emptied ledger, the robe provided at the door. A week that opened beside smashed tablets and a smoking calf ends inside a wedding hall, and nothing about that journey was earned along the way. The seven words God spoke on the mountain still hold. Confession is just the moment we finally agree with them.</p>
         </div>
-      </div>
+      </figure>
 
-    </div>
+    </section>
 
-    <!-- 4. STILL SPEAKING (merged Street Level + Today's World) -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Still Speaking</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Robe That Walks Out of the Sanctuary on a Friday</div>
+    <section class="section" id="speaking" aria-labelledby="speaking-label">
+      <h2 class="section-label" id="speaking-label">Still Speaking</h2>
+<h3>The Robe That Walks Out of the Sanctuary on a Friday</h3>
       <p>The most transformative experience available to a human being is to be completely forgiven and completely covered by Someone else's righteousness. Every other repair we attempt on ourselves runs on the leaf-thin Genesis-3 fabric Sunday named. The pastor's polished sermon. The therapist's hard-won self-acceptance. The activist's purifying cause. The hobbyist's mastery. None of them are bad, but none of them is the wedding garment. The white linen <em>is</em> the righteousness of Christ, His own unblemished character, that through faith is wrapped around every soul who receives Him. We do not graduate from this trade. We make it again every morning, the way Adam and Eve had to walk out of Eden every day with the tunic on instead of the leaves.</p>
       <p>Look at the week with this in mind and the geography clarifies. Sabbath's "if we confess" is not the climbing instruction to a far-off summit; it is the open hand at the sanctuary door. Sunday's Mary at the feet is the worshiper sitting where the High Priest is teaching. Monday's <em>Parakletos</em> is the one bringing us into the building from the parking lot. Tuesday's <em>metanoeite</em> is the turn that walks the threshold. Wednesday's seven Hebrew words are the inscription over the lintel naming Whose house this is. Thursday's wedding robe is the garment the attendant hands us at the door, woven on a different hill. Friday is the day we walk out wearing it. The week did not end with us closing a book on a lesson. It ended with the building still open, and a Voice that still says all seven words, and a robe that still has our name on the hook.</p>
-    </div>
+    </section>
 
-    <!-- 5. CHRIST AT THE CENTER OF THE WEEK -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">Christ at the Center of the Week</span>
-        <div class="section-title-line"></div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the Center of the Week</h2>
+<p>The face in every room of the week was the same Face. The God who walked past Moses on Sabbath saying His own name was Christ. The "good part" Mary chose on Sunday was Christ. The <em>Parakletos</em> Monday introduced was sent <em>by</em> Christ. The inaugural verb of the gospel Tuesday opened on came out of Christ's own mouth. The seven Hebrew words Wednesday spelled were already the job description Christ would walk out on a hill outside Jerusalem to fulfill. The robe Thursday handed us at the door was made of His perfect obedience and dipped in His blood. Friday's sanctuary architecture renders Him as the altar's Lamb, the Holy Place's Priest, and the Most Holy's Presence, all at once. Repentance and forgiveness are not two doctrines we juggle. They are two sides of one Person. The repentance is what we bring to Him. The forgiveness is what He brings to us. And the robe is the garment He wore in the place we should have stood, now hanging in the closet at the door of every morning we will wake up between now and the wedding supper.</p>
+    </section>
+
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Weekend Practice</h2>
+<div class="application-card">
+        Between now and Sabbath dinner, find one trusted person (spouse, friend, small-group brother or sister) and tell them one of two things. Either the sentence Tuesday's <em>Parakletos</em> named in your chest this week, with the concrete turn you took on the back of it. Or the question of the week that you still have not gotten an answer to (the one of God's seven Hebrew descriptors you are having the hardest time believing). Do not recap the week. Speak from your own kitchen. Then ask them to do the same in return. The robe at the door is for both of you. James says we confess our sins to one another and pray for one another, "so that you may be healed" (<a class="vlink" href="https://www.bible.com/bible/3034/JAS.5.16" target="_blank" rel="noopener" data-verse="james-5-16" data-ref="James 5:16" aria-expanded="false">James 5:16</a>); this is one of the rare practices the Bible names by its outcome. Walk into next week with at least one other person who knows what God did in yours.
       </div>
-      <p>The face in every room of the week was the same Face. The God who walked past Moses on Sabbath saying His own name was Christ. The "good part" Mary chose on Sunday was Christ. The <em>Parakletos</em> Monday introduced was sent <em>by</em> Christ. The inaugural verb of the gospel Tuesday opened on came out of Christ's own mouth. The seven Hebrew words Wednesday spelled were already the job description Christ would walk out on a hill outside Jerusalem to fulfill. The robe Thursday handed us at the door was made of His perfect obedience and dipped in His blood. Friday's sanctuary architecture renders Him as the altar's Lamb, the Holy Place's Priest, and the Most Holy's Presence, all at once. Repentance and forgiveness are not two doctrines we juggle. They are two sides of one Person. The repentance is what we bring to Him. The forgiveness is what He brings to us. And the robe is the garment He wore in the place we should have stood, now hanging in the closet at the door of every morning we will wake up between now and the wedding supper.</p>
-    </div>
+    </section>
 
-    <!-- 6. WEEKEND PRACTICE -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Weekend Practice</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
-        Between now and Sabbath dinner, find one trusted person (spouse, friend, small-group brother or sister) and tell them one of two things. Either the sentence Tuesday's <em>Parakletos</em> named in your chest this week, with the concrete turn you took on the back of it. Or the question of the week that you still have not gotten an answer to (the one of God's seven Hebrew descriptors you are having the hardest time believing). Do not recap the week. Speak from your own kitchen. Then ask them to do the same in return. The robe at the door is for both of you. James says we confess our sins to one another and pray for one another, "so that you may be healed" (<a class="vlink" href="https://www.bible.com/bible/3034/JAS.5.16" target="_blank" rel="noopener">James 5:16</a>); this is one of the rare practices the Bible names by its outcome. Walk into next week with at least one other person who knows what God did in yours.
-      </div>
-    </div>
+    <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer for the Week</h2>
+<p>Father, the week opened at the foot of a mountain that should have ended us, and closes at the door of a banquet hall we did not build. Thank You. We did not deserve the seven Hebrew words You spoke to Moses, and we did not deserve the wedding robe You handed us at the door. You gave both. We confess that we have been Aaron's people more days than we like to admit, melting our gold into something we could see, deciding by lunchtime that You had gone silent. Forgive us. Make us a household where the iron gets set down on a Sunday morning, where the <em>Parakletos</em> is welcomed in the kitchen, where the inaugural verb is the verb our feet actually walk, where the seven words are louder than the sentences we have been writing about ourselves, and where the robe at the door is the actual thing on our actual shoulders. We hold fast to You. We do not let go. Send us into next week with the sanctuary's whole gospel pressed against our chest, and a wedding garment we did not stitch around our shoulders, and a name on a card in our pocket that You said over Yourself in the cleft of a rock three thousand years ago and still mean today. We need You. In Jesus' name, Amen.</p>
+    </section>
 
-    <!-- 7. CLOSING PRAYER FOR THE WEEK -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer for the Week</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, the week opened at the foot of a mountain that should have ended us, and closes at the door of a banquet hall we did not build. Thank You. We did not deserve the seven Hebrew words You spoke to Moses, and we did not deserve the wedding robe You handed us at the door. You gave both. We confess that we have been Aaron's people more days than we like to admit, melting our gold into something we could see, deciding by lunchtime that You had gone silent. Forgive us. Make us a household where the iron gets set down on a Sunday morning, where the <em>Parakletos</em> is welcomed in the kitchen, where the inaugural verb is the verb our feet actually walk, where the seven words are louder than the sentences we have been writing about ourselves, and where the robe at the door is the actual thing on our actual shoulders. We hold fast to You. We do not let go. Send us into next week with the sanctuary's whole gospel pressed against our chest, and a wedding garment we did not stitch around our shoulders, and a name on a card in our pocket that You said over Yourself in the cleft of a rock three thousand years ago and still mean today. We need You. In Jesus' name, Amen.</p>
-    </div>
-
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+  </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-06-04.html"><span class="day-nav-kicker">← Thursday</span><span class="day-nav-title">The Most Expensive Robe</span></a><a class="day-nav-item" href="/bible-study/2026-06-06.html"><span class="day-nav-kicker">Saturday →</span><span class="day-nav-title">Setbacks</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"hebrews-8-5":{"ref":"Hebrews 8:5","text":"The place where they serve is a copy and shadow of what is in heaven. This is why Moses was warned when he was about to build the tabernacle: \u201cSee to it that you make everything according to the pattern shown you on the mountain.\u201d","bibleUrl":"https://www.bible.com/bible/3034/HEB.8.5"},"james-5-16":{"ref":"James 5:16","text":"Therefore confess your sins to each other and pray for each other so that you may be healed. The prayer of a righteous man has great power to prevail.","bibleUrl":"https://www.bible.com/bible/3034/JAS.5.16"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

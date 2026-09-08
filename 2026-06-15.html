@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Unforced but With Power — Daily Bible Study</title>
 <meta name="study-title" content="Unforced but With Power">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 12, Share Him · Part 3 of 7">
+<meta name="study-passage" content="Matthew 9:36">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 12, Share Him · Day 3 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Unforced but With Power">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 12, Share Him · Part 3 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 12, Share Him · Day 3 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-06-15.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 12, Share Him · Part 3 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 12, Share Him · Day 3 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,335 +38,207 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Unforced but With Power</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 12, Share Him</span>
-      <span>Part 3 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">June 15, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Mon · Jun 15</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">9 min</span>
+    </div>
+    <h1 class="study-title">Unforced but With Power</h1>
+    <p class="study-sub"><span class="sub-title">Share Him</span><span class="sub-facts"><span>Lesson 12</span><span>Day 3 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>Jesus looks out at a crowd and something twists in His gut. They look like sheep nobody is shepherding. That ache, not ambition, is what kept Him healing and teaching day after day. Jeremiah knew the same engine from the inside, a fire in his bones he was too tired to hold in. And yet the God who feels all of that has never once forced a soul. Not in Eden, not at the ark, not over Jerusalem. He feeds, heals, invites, and weeps, and leaves the door unbarred. <strong>God's love compels us from the inside, but it never forces anyone from the outside.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday we stood with the council in Jerusalem as they ran a credentials check on two fishermen and came up with only one explanation for their boldness: they had been with Jesus. Witnesses, we said, not lawyers. People who tell what they saw. But that raises two questions the moment you try to live it. What keeps a witness going when the telling gets exhausting? And where is the line between sharing the truth and pushing it on someone? Today the Bible answers both with the same word. Love is the fuel, and love is also the limit. The God who powers the witness is the God who refuses to force a single heart open.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Jesus looks out at a crowd and something twists in His gut. They look like sheep nobody is shepherding. That ache, not ambition, is what kept Him healing and teaching day after day. Jeremiah knew the same engine from the inside, a fire in his bones he was too tired to hold in. And yet the God who feels all of that has never once forced a soul. Not in Eden, not at the ark, not over Jerusalem. He feeds, heals, invites, and weeps, and leaves the door unbarred. <strong>God's love compels us from the inside, but it never forces anyone from the outside.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday we stood with the council in Jerusalem as they ran a credentials check on two fishermen and came up with only one explanation for their boldness: they had been with Jesus. Witnesses, we said, not lawyers. People who tell what they saw. But that raises two questions the moment you try to live it. What keeps a witness going when the telling gets exhausting? And where is the line between sharing the truth and pushing it on someone? Today the Bible answers both with the same word. Love is the fuel, and love is also the limit. The God who powers the witness is the God who refuses to force a single heart open.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Empire That Required Incense</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Empire That Required Incense</h3>
       <p>In the year 250, a Roman citizen could be handed a small slip of papyrus called a libellus. It was a receipt, signed by witnesses, certifying that the holder had burned a pinch of incense to the emperor's gods. The emperor Decius had ordered every inhabitant of the empire to sacrifice publicly and carry the proof. Archaeologists have dug dozens of these certificates out of the Egyptian sand. That was how the most powerful state on earth handled religion. Belief was a matter of compliance, and compliance could be commanded, audited, and filed.</p>
       <p>Hold that papyrus next to the Bible's story and the contrast is startling. The God with actual "all authority" posted one command in Eden and left the tree within reach. He had Noah build the ark in public for years and forced no one up the ramp. He let Israel walk away from the covenant and promised they would find Him whenever they searched with all their heart. The empire, with far less authority, compelled everything and produced incense receipts. God, with all of it, compels nothing and wants hearts. Whenever the church has forgotten that difference and reached for the empire's tools, pressure, threat, social force, it has produced exactly what Decius produced: paperwork instead of love.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Matthew gives us one sentence that explains how Jesus kept going through the endless days of preaching, healing, and being needed: He saw the crowds and felt it in His gut. Matthew 9:36 anchors the day because everything else hangs on what moved Him. From there the texts trace the same energy through Jeremiah's burning bones, then watch it stop, every single time, at the door of the human will. A hen spreads her wings over a city that says no. Power and restraint, in the same heart.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Matthew gives us one sentence that explains how Jesus kept going through the endless days of preaching, healing, and being needed: He saw the crowds and felt it in His gut. Matthew 9:36 anchors the day because everything else hangs on what moved Him. From there the texts trace the same energy through Jeremiah's burning bones, then watch it stop, every single time, at the door of the human will. A hen spreads her wings over a city that says no. Power and restraint, in the same heart.</p>
 
 <!-- BSB_BLOCK: Matthew 9:36 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:22856c5468b0c3d92b537db8fb8f6074cb4b03d9a97130bce383136172e7120c | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Matthew 9:36</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.9.36" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/MAT.9.36" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">When He saw the crowds, He was moved with compassion for them, because they were harassed and helpless, like sheep without a shepherd.</div>
 <div class="verse-commentary">
-          <p>The Greek word behind "felt compassion" is <em>splanchnizomai</em>, and it literally means to be moved in your inward parts, your stomach, your gut. This is not polite sympathy from a distance. It is the physical ache you feel when you see a child lost in a parking lot. That ache is what drove Jesus' relentless labor, and Paul says the same force is meant to drive ours: "the love of Christ compels us" (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.5.14" target="_blank" rel="noopener">2 Corinthians 5:14</a>). Notice what the crowds looked like to Him. Not projects. Not numbers. Sheep without a shepherd, weary and scattered. When we look at the faces in our own crowded days and feel nothing, the problem is not our schedule. It is our eyes.</p>
+          <p>The Greek word behind "felt compassion" is <em>splanchnizomai</em>, and it literally means to be moved in your inward parts, your stomach, your gut. This is not polite sympathy from a distance. It is the physical ache you feel when you see a child lost in a parking lot. That ache is what drove Jesus' relentless labor, and Paul says the same force is meant to drive ours: "the love of Christ compels us" (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.5.14" target="_blank" rel="noopener" data-verse="2-corinthians-5-14" data-ref="2 Corinthians 5:14" aria-expanded="false">2 Corinthians 5:14</a>). Notice what the crowds looked like to Him. Not projects. Not numbers. Sheep without a shepherd, weary and scattered. When we look at the faces in our own crowded days and feel nothing, the problem is not our schedule. It is our eyes.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Jeremiah 20:9 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:cf870abd1079063e51a64e8898a28968525c72a096dd77e0aa411bee931cc053 | footnotes-stripped:0 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Jeremiah 20:9</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/JER.20.9" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/JER.20.9" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">If I say, “I will not mention Him or speak any more in His name,” His message becomes a fire burning in my heart, shut up in my bones, and I become weary of holding it in, and I cannot prevail.</div>
 <div class="verse-commentary">
           <p>Jeremiah had every reason to quit. He had just been beaten and locked in stocks for preaching, and this verse is him trying to resign. He cannot do it. The word of God in him behaves like banked coals in his skeleton, and holding it in is more exhausting than letting it out. That is what witnessing feels like when it is real. It is not a quota you grudgingly fill. It is a fire you cannot comfortably contain. Peter and John said the same thing to the council, that they were unable to stop speaking about what they had seen and heard. If sharing God has come to feel like pure obligation, the honest first prayer is not "give me courage" but "Lord, relight the fire."</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Matthew 23:37 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:09e36768c89934240c053997974c33933675177a7802c06d5a1da376bed4158e | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Matthew 23:37</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.23.37" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/MAT.23.37" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text"><span class="words-of-jesus">O Jerusalem, Jerusalem, who kills the prophets and stones those sent to her, how often I have longed to gather your children together, as a hen gathers her chicks under her wings, but you were unwilling!</span></div>
 <div class="verse-commentary">
-          <p>Here is the fire and the restraint in one cry. Jesus stands over the city that will kill Him within the week, and the image He reaches for is a mother hen spreading her wings in a barnyard fire. How often I wanted. But you were not willing. He does not say "so I will make you." The God who never forced Adam and Eve away from the tree (<a class="vlink" href="https://www.bible.com/bible/3034/GEN.2.16-17" target="_blank" rel="noopener">Genesis 2:16-17</a>), never forced anyone onto the ark (<a class="vlink" href="https://www.bible.com/bible/3034/GEN.7.1" target="_blank" rel="noopener">Genesis 7:1</a>), and never forced Israel to stay in covenant (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.4.29-31" target="_blank" rel="noopener">Deuteronomy 4:29-31</a>) will not start coercing now. Instead He met needs first, healing and feeding whole regions (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.4.23-25" target="_blank" rel="noopener">Matthew 4:23-25</a>), and then invited. The urge to pressure, corner, or punish someone into truth never comes from heaven. The disposition to force a conscience is the enemy's signature, not Christ's. And yet the wings stay spread. He never gives up on us.</p>
+          <p>Here is the fire and the restraint in one cry. Jesus stands over the city that will kill Him within the week, and the image He reaches for is a mother hen spreading her wings in a barnyard fire. How often I wanted. But you were not willing. He does not say "so I will make you." The God who never forced Adam and Eve away from the tree (<a class="vlink" href="https://www.bible.com/bible/3034/GEN.2.16-17" target="_blank" rel="noopener" data-verse="genesis-2-16-17" data-ref="Genesis 2:16-17" aria-expanded="false">Genesis 2:16-17</a>), never forced anyone onto the ark (<a class="vlink" href="https://www.bible.com/bible/3034/GEN.7.1" target="_blank" rel="noopener" data-verse="genesis-7-1" data-ref="Genesis 7:1" aria-expanded="false">Genesis 7:1</a>), and never forced Israel to stay in covenant (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.4.29-31" target="_blank" rel="noopener" data-verse="deuteronomy-4-29-31" data-ref="Deuteronomy 4:29-31" aria-expanded="false">Deuteronomy 4:29-31</a>) will not start coercing now. Instead He met needs first, healing and feeding whole regions (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.4.23-25" target="_blank" rel="noopener" data-verse="matthew-4-23-25" data-ref="Matthew 4:23-25" aria-expanded="false">Matthew 4:23-25</a>), and then invited. The urge to pressure, corner, or punish someone into truth never comes from heaven. The disposition to force a conscience is the enemy's signature, not Christ's. And yet the wings stay spread. He never gives up on us.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: 2 Peter 3:18 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:7d53be55e25790fd39998917514e7d29f52c85d4e5284cf2860d04757a2dcd97 | footnotes-stripped:1 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Peter 3:18</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2PE.3.18" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2PE.3.18" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">But grow in the grace and knowledge of our Lord and Savior Jesus Christ. To Him be the glory both now and to the day of eternity. Amen.</div>
 <div class="verse-commentary">
-          <p>Peter's last recorded sentence is a growth chart. Grace and knowledge, both of them growing, both of them centered on a Person. This is where the unforced power actually comes from in daily life, because nobody can leak what they are not full of. A believer who is growing, even slowly, has something fresh to tell. A believer who stopped growing years ago has only a stale story and a set of opinions, and people can tell the difference in about a minute. The overcomers in Revelation conquer the enemy "by the blood of the Lamb and by the word of their testimony" (<a class="vlink" href="https://www.bible.com/bible/3034/REV.12.11" target="_blank" rel="noopener">Revelation 12:11</a>). Your testimony is simply your growth, told out loud. Keep growing and the witnessing largely takes care of itself.</p>
+          <p>Peter's last recorded sentence is a growth chart. Grace and knowledge, both of them growing, both of them centered on a Person. This is where the unforced power actually comes from in daily life, because nobody can leak what they are not full of. A believer who is growing, even slowly, has something fresh to tell. A believer who stopped growing years ago has only a stale story and a set of opinions, and people can tell the difference in about a minute. The overcomers in Revelation conquer the enemy "by the blood of the Lamb and by the word of their testimony" (<a class="vlink" href="https://www.bible.com/bible/3034/REV.12.11" target="_blank" rel="noopener" data-verse="revelation-12-11" data-ref="Revelation 12:11" aria-expanded="false">Revelation 12:11</a>). Your testimony is simply your growth, told out loud. Keep growing and the witnessing largely takes care of itself.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: 2 Peter 3:18 | 3:18 NE, WH, and NA do not include Amen. -->
-    </div>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Bird Only Lands on a Still Hand</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Bird Only Lands on a Still Hand</h3>
       <p>There is a trick to getting a wild chickadee to eat from your hand, and everyone who has pulled it off says the same thing. You stand near the feeder in the cold, sunflower seeds in your open palm, and you hold still. That is the entire technique. The bird sees the food from the branch and wants it badly, but it takes its time anyway, sizing you up, hopping two twigs closer, vanishing, coming back. You cannot rush a single second of it. And the one move guaranteed to end it forever is the one your muscles are begging to make. Close the hand. Grab. Do that once and no bird lands on you again. Nothing that ever settled on an open palm was forced there.</p>
       <p>That open palm is God's posture in every scene we just read. He fills the hand first: bread for the hungry, healing for whole regions, kindness ahead of any sermon. And then He holds still. The tree in Eden stayed within reach. The ramp of the ark stayed open. Jerusalem got spread wings, not a cage. When we share Him with someone, the same physics apply. The moment they feel our fingers start to curl, the cornering question, the guilt trip, the scoreboard, they are back on the branch, and the trust takes years to rebuild. Love fills the hand, holds it open, and lets the landing belong to them.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Message That Pushes People Away</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Message That Pushes People Away</h3>
       <!-- TODAYS_WORLD_SOURCES: Ma, Ma, Kalny & Walter, "Words that trigger: a meta-analysis of threatening language, reactance, and persuasion in health," Journal of Communication 75(5), October 2025; k=35 studies, N=10,658. Verified at https://academic.oup.com/joc/article-abstract/75/5/348/8098161 (Codex's earlier search missed it; the claims as written are accurate). -->
       <p>In October 2025, the <em>Journal of Communication</em> published a meta-analysis with a blunt title, "Words That Trigger." Researchers pooled 35 studies covering 10,658 people to answer one question about health messages. What happens when the wording gets forceful, all "you must," "you have to," "there is no excuse"? The answer was consistent across the whole pile of data. Controlling language backfires. Readers felt their freedom being grabbed, got angry, started arguing back in their heads, and walked away less likely to take the advice than people who were handed the same facts with their freedom intact. Scientists call the reflex psychological reactance. Human beings are built with an alarm that trips the moment someone reaches for the steering wheel of their will, even when the driver is right.</p>
       <p>That alarm is not a design flaw. It is a clue about the Designer. The God who wired us to resist coercion is the same God who posted one command in Eden and left the tree in reach, and the same Jesus who spread His wings over a city and accepted its no. He never triggers the alarm, because He never grabs. He feeds, heals, invites, and waits with an open hand. So when we corner someone about faith, we are not just being un-Christlike. We are setting off the exact alarm God built to protect the freedom He refuses to violate. Force has never once made a believer. It only ever made paperwork.</p>
-    </div>
+    <details class="disclosure source-disclosure"><summary class="disclosure-summary"><span class="disclosure-label">Source</span> <span class="disclosure-publisher">academic.oup.com</span></summary><div class="disclosure-body"><p><cite>Supporting source</cite>. academic.oup.com. <a href="https://academic.oup.com/joc/article-abstract/75/5/348/8098161" target="_blank" rel="noopener noreferrer">Read the source</a>.</p></div></details></section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>The cross is where "unforced but with power" stops being a slogan and becomes a Friday afternoon. Jesus told Peter He could call twelve legions of angels, and then He let men with hammers stretch out His hands. All authority in heaven and on earth, and He used none of it to save Himself and none of it to compel a single onlooker. One thief mocked. The other believed. Both watched the same dying Savior, and He forced neither verdict. That is the heart of God under maximum pressure: power fully present, coercion fully absent, love fully spent. And here is the wonder Paul could never get over: this uncoercive cross turned out to be the most compelling force in human history. "The love of Christ compels us." Not drives us like cattle. Draws us, the way that hen's spread wings were always meant to draw the chicks. The cross does not push anyone. It pulls everyone who will look at it long enough.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>The cross is where "unforced but with power" stops being a slogan and becomes a Friday afternoon. Jesus told Peter He could call twelve legions of angels, and then He let men with hammers stretch out His hands. All authority in heaven and on earth, and He used none of it to save Himself and none of it to compel a single onlooker. One thief mocked. The other believed. Both watched the same dying Savior, and He forced neither verdict. That is the heart of God under maximum pressure: power fully present, coercion fully absent, love fully spent. And here is the wonder Paul could never get over: this uncoercive cross turned out to be the most compelling force in human history. "The love of Christ compels us." Not drives us like cattle. Draws us, the way that hen's spread wings were always meant to draw the chicks. The cross does not push anyone. It pulls everyone who will look at it long enough.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Jesus met needs first and invited second. Today, pick one person in your life who is far from God and do something concrete for them with no agenda attached: bring the coffee they like, take a chore off their plate, check on the thing they mentioned last week. Do not steer the conversation to spiritual things. Let the kindness be the sermon today, and ask God to relight the fire in your bones so that when the door opens later, the words are already warm.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p><em>Father, give us Your eyes for the crowds we move through, the checkout lines and break rooms and bleachers full of people who look fine and are not. Let what moved Jesus move us, that ache for sheep without a shepherd. We confess that we have sometimes confused pressure with passion, and pushed when You were inviting. Forgive us for reaching for the empire's tools. Teach us Your way instead: meet the need, spread the wings, leave the door unbarred, and never give up. And Lord, where our fire has gone cold and witnessing has become a duty we avoid, do what You did for Jeremiah. Put Your word in our hearts like a fire shut up in our bones, until holding it in is harder than letting it out. In Jesus' name, Amen.</em></p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"Think about the people you most want to see come to Jesus (a spouse, a child, a close friend). Honestly, has your approach with them felt more like a hen's spread wings or more like pressure they can feel? What would 'meet the need first, invite second' look like with that specific person this month?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"Think about the people you most want to see come to Jesus (a spouse, a child, a close friend). Honestly, has your approach with them felt more like a hen's spread wings or more like pressure they can feel? What would 'meet the need first, invite second' look like with that specific person this month?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p><em>Father, give us Your eyes for the crowds we move through, the checkout lines and break rooms and bleachers full of people who look fine and are not. Let what moved Jesus move us, that ache for sheep without a shepherd. We confess that we have sometimes confused pressure with passion, and pushed when You were inviting. Forgive us for reaching for the empire's tools. Teach us Your way instead: meet the need, spread the wings, leave the door unbarred, and never give up. And Lord, where our fire has gone cold and witnessing has become a duty we avoid, do what You did for Jeremiah. Put Your word in our hearts like a fire shut up in our bones, until holding it in is harder than letting it out. In Jesus' name, Amen.</em></p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-06-14.html"><span class="day-nav-kicker">← Sunday</span><span class="day-nav-title">Out of the Overflow</span></a><a class="day-nav-item" href="/bible-study/2026-06-16.html"><span class="day-nav-kicker">Tuesday →</span><span class="day-nav-title">Tips for Sharing Jesus</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"2-corinthians-5-14":{"ref":"2 Corinthians 5:14","text":"For Christ\u2019s love compels us, because we are convinced that One died for all, therefore all died.","bibleUrl":"https://www.bible.com/bible/3034/2CO.5.14"},"genesis-2-16-17":{"ref":"Genesis 2:16-17","text":"And the LORD God commanded him, \u201cYou may eat freely from every tree of the garden, but you must not eat from the tree of the knowledge of good and evil; for in the day that you eat of it, you will surely die.\u201d","bibleUrl":"https://www.bible.com/bible/3034/GEN.2.16-17"},"genesis-7-1":{"ref":"Genesis 7:1","text":"Then the LORD said to Noah, \u201cGo into the ark, you and all your family, because I have found you righteous in this generation.","bibleUrl":"https://www.bible.com/bible/3034/GEN.7.1"},"deuteronomy-4-29-31":{"ref":"Deuteronomy 4:29-31","text":"But if from there you will seek the LORD your God, you will find Him if you seek Him with all your heart and with all your soul. When you are in distress and all these things have happened to you, then in later days you will return to the LORD your God and listen to His voice. For the LORD your God is a merciful God; He will not abandon you or destroy you or forget the covenant with your fathers, which He swore to them by oath.","bibleUrl":"https://www.bible.com/bible/3034/DEU.4.29-31"},"matthew-4-23-25":{"ref":"Matthew 4:23-25","text":"Jesus went throughout Galilee, teaching in their synagogues, preaching the gospel of the kingdom, and healing every disease and sickness among the people. News about Him spread all over Syria, and people brought to Him all who were ill with various diseases, those suffering acute pain, the demon-possessed, those having seizures, and the paralyzed, and He healed them. Large crowds followed Him, having come from Galilee, the Decapolis, Jerusalem, Judea, and beyond the Jordan.","bibleUrl":"https://www.bible.com/bible/3034/MAT.4.23-25"},"revelation-12-11":{"ref":"Revelation 12:11","text":"They have conquered him by the blood of the Lamb and by the word of their testimony. And they did not love their lives so as to shy away from death.","bibleUrl":"https://www.bible.com/bible/3034/REV.12.11"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

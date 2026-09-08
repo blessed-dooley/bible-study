@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>A More Excellent Way — Daily Bible Study</title>
 <meta name="study-title" content="A More Excellent Way">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 6, Spiritual Gifts · Part 4 of 7">
+<meta name="study-passage" content="1 Corinthians 13:2">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 6, Spiritual Gifts · Day 4 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="A More Excellent Way">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 6, Spiritual Gifts · Part 4 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 6, Spiritual Gifts · Day 4 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-08-04.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 6, Spiritual Gifts · Part 4 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 6, Spiritual Gifts · Day 4 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,337 +38,211 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>A More Excellent Way</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 6, Spiritual Gifts</span>
-      <span>Part 4 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">August 4, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Tue · Aug 4</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
+    </div>
+    <h1 class="study-title">A More Excellent Way</h1>
+    <p class="study-sub"><span class="sub-title">Spiritual Gifts</span><span class="sub-facts"><span>Lesson 6</span><span>Day 4 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>Corinth's proudest export was a bronze that rang like nothing else on earth, and its church was getting famous for the same thing. Impressive sound. Right in the middle of his teaching on gifts, Paul stops the catalog and writes a portrait instead. Tongues without love are that bronze, ringing empty. Prophecy without love is nothing. Mountain-moving faith without love is nothing. Then come fifteen verbs, patient, kind, keeping no record, bearing all things, that show what love actually does all day. <strong>Love is not one gift among many. It is the way every gift becomes worth having.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday ended mid-thought on purpose. Desire the greater gifts, Paul said, and I will show you an even better way, and then the chapter break left us standing in the doorway. Today he opens the door. The Corinthians surely expected the ranking conversation to resume, a final verdict on which gift outranks the rest. Instead Paul sets every gift down and describes the current they are all meant to run on. Yesterday's body had many parts and one life. Today we find out what that life feels like from the inside, and it turns out to have fifteen verbs.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Corinth's proudest export was a bronze that rang like nothing else on earth, and its church was getting famous for the same thing. Impressive sound. Right in the middle of his teaching on gifts, Paul stops the catalog and writes a portrait instead. Tongues without love are that bronze, ringing empty. Prophecy without love is nothing. Mountain-moving faith without love is nothing. Then come fifteen verbs, patient, kind, keeping no record, bearing all things, that show what love actually does all day. <strong>Love is not one gift among many. It is the way every gift becomes worth having.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday ended mid-thought on purpose. Desire the greater gifts, Paul said, and I will show you an even better way, and then the chapter break left us standing in the doorway. Today he opens the door. The Corinthians surely expected the ranking conversation to resume, a final verdict on which gift outranks the rest. Instead Paul sets every gift down and describes the current they are all meant to run on. Yesterday's body had many parts and one life. Today we find out what that life feels like from the inside, and it turns out to have fifteen verbs.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Most Expensive Noise in the World</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Most Expensive Noise in the World</h3>
       <p>Collectors in Rome paid fortunes for it. Corinthian bronze, an alloy the ancients swore glowed with traces of gold and silver, was the single most coveted luxury metal in the empire, so famous that writers used the phrase as shorthand for extravagance itself. Legend said the alloy was born the day Corinth burned, precious metals melting together in the ruins. Whatever the truth, the city's foundries had turned sound and shine into its signature product. And bronze had a second career in the ancient world. Theaters seated bronze resonance jars among the audience, tuned vessels that caught an actor's voice and rang it louder, and the ecstatic cults that filled Corinth's streets drove their processions with clashing bronze cymbals. Bronze was the sound of performance, of religion at maximum volume, of wealth announcing itself.</p>
       <p>So when Paul writes that a person with every tongue and no love is a resounding gong or a clanging cymbal, Corinth does not hear a random image. It hears its own export. A bronze jar amplifies whatever strikes it and produces nothing of its own. It is brilliant, costly, loud, and hollow, and it cannot love you. Paul's warning lands with the precision of a local joke told at the city's expense. A church can become the very thing its city was famous for. Impressive noise, beautifully made, ringing on every corner, and empty in the middle.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Picture the reader in Corinth reaching the end of the gift lists, pen ready to tally which members hold the greater gifts. Then the page turns and the scoring sheet dissolves. Paul suspends the catalog and writes the most famous chapter he ever produced (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.1-7" target="_blank" rel="noopener" data-verse="1-corinthians-13-1-7" data-ref="1 Corinthians 13:1-7" aria-expanded="false">1 Corinthians 13:1-7</a>), and Peter, writing to scattered churches years later, will press the same claim from another direction (<a class="vlink" href="https://www.bible.com/bible/3034/1PE.4.8-11" target="_blank" rel="noopener" data-verse="1-peter-4-8-11" data-ref="1 Peter 4:8-11" aria-expanded="false">1 Peter 4:8-11</a>). Between them the question changes shape. Not which gift is greatest, but what makes any gift worth anything at all.</p>
 
-      <p>Picture the reader in Corinth reaching the end of the gift lists, pen ready to tally which members hold the greater gifts. Then the page turns and the scoring sheet dissolves. Paul suspends the catalog and writes the most famous chapter he ever produced (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.1-7" target="_blank" rel="noopener">1 Corinthians 13:1-7</a>), and Peter, writing to scattered churches years later, will press the same claim from another direction (<a class="vlink" href="https://www.bible.com/bible/3034/1PE.4.8-11" target="_blank" rel="noopener">1 Peter 4:8-11</a>). Between them the question changes shape. Not which gift is greatest, but what makes any gift worth anything at all.</p>
-
-      <p>Paul begins by running Corinth's favorite gifts at full volume with the love removed. Tongues first, the congregation's showpiece, a real gift the Spirit really gives (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.10" target="_blank" rel="noopener">1 Corinthians 12:10</a>), listed among God's own appointments (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.28" target="_blank" rel="noopener">1 Corinthians 12:28</a>) and never expected of everyone (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.30" target="_blank" rel="noopener">1 Corinthians 12:30</a>). Crank it to angelic registers with love subtracted and Paul hears only the city's bronze, a resounding gong, a clanging cymbal (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.1" target="_blank" rel="noopener">1 Corinthians 13:1</a>). Expensive sound. Nothing inside.</p>
+      <p>Paul begins by running Corinth's favorite gifts at full volume with the love removed. Tongues first, the congregation's showpiece, a real gift the Spirit really gives (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.10" target="_blank" rel="noopener" data-verse="1-corinthians-12-10" data-ref="1 Corinthians 12:10" aria-expanded="false">1 Corinthians 12:10</a>), listed among God's own appointments (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.28" target="_blank" rel="noopener" data-verse="1-corinthians-12-28" data-ref="1 Corinthians 12:28" aria-expanded="false">1 Corinthians 12:28</a>) and never expected of everyone (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.30" target="_blank" rel="noopener" data-verse="1-corinthians-12-30" data-ref="1 Corinthians 12:30" aria-expanded="false">1 Corinthians 12:30</a>). Crank it to angelic registers with love subtracted and Paul hears only the city's bronze, a resounding gong, a clanging cymbal (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.13.1" target="_blank" rel="noopener" data-verse="1-corinthians-13-1" data-ref="1 Corinthians 13:1" aria-expanded="false">1 Corinthians 13:1</a>). Expensive sound. Nothing inside.</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 13:2 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:561f6fa8a1073a3e8f8adcbbf7db275ad6b59af900aef72e30f53156ef710757 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 13:2</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.13.2" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.13.2" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">If I have the gift of prophecy and can fathom all mysteries and all knowledge, and if I have absolute faith so as to move mountains, but have not love, I am nothing.</div>
 <div class="verse-commentary">
-          <p>Paul keeps raising the stakes on himself. Prophecy, the gift he will call the one to desire most. All mysteries, all knowledge, the very word of knowledge the Spirit distributes (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.8" target="_blank" rel="noopener">1 Corinthians 12:8</a>). Then faith, the most basic gift of all (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.9" target="_blank" rel="noopener">1 Corinthians 12:9</a>), inflated to its absolute ceiling, faith that relocates mountains. Every item on the list is good. Every item comes from God. And the verdict on the whole loveless pile is two words long. I am nothing. Notice Paul does not say I accomplish nothing. He says I am nothing, because gifts describe what a person can do, and love describes what a person is. Subtract love and there is no remainder. The gift inventory was never the measure of the man.</p>
+          <p>Paul keeps raising the stakes on himself. Prophecy, the gift he will call the one to desire most. All mysteries, all knowledge, the very word of knowledge the Spirit distributes (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.8" target="_blank" rel="noopener" data-verse="1-corinthians-12-8" data-ref="1 Corinthians 12:8" aria-expanded="false">1 Corinthians 12:8</a>). Then faith, the most basic gift of all (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.12.9" target="_blank" rel="noopener" data-verse="1-corinthians-12-9" data-ref="1 Corinthians 12:9" aria-expanded="false">1 Corinthians 12:9</a>), inflated to its absolute ceiling, faith that relocates mountains. Every item on the list is good. Every item comes from God. And the verdict on the whole loveless pile is two words long. I am nothing. Notice Paul does not say I accomplish nothing. He says I am nothing, because gifts describe what a person can do, and love describes what a person is. Subtract love and there is no remainder. The gift inventory was never the measure of the man.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: 1 Corinthians 13:4-7 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:0e9dc8f7826c8de2c3b444349df0554c95f46c1e8645834aaa343304504143e6 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 13:4-7</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.13.4-7" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 4">4</sup>Love is patient, love is kind. It does not envy, it does not boast, it is not proud. <sup class="verse-number" aria-label="Verse 5">5</sup>It is not rude, it is not self-seeking, it is not easily angered, it keeps no account of wrongs. <sup class="verse-number" aria-label="Verse 6">6</sup>Love takes no pleasure in evil, but rejoices in the truth. <sup class="verse-number" aria-label="Verse 7">7</sup>It bears all things, believes all things, hopes all things, endures all things.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.13.4-7" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 4">4</sup>Love is patient, love is kind. It does not envy, it does not boast, it is not proud. <sup class="verse-number" aria-label="Verse 5">5</sup>It is not rude, it is not self-seeking, it is not easily angered, it keeps no account of wrongs. <sup class="verse-number" aria-label="Verse 6">6</sup>Love takes no pleasure in evil, but rejoices in the truth. <sup class="verse-number" aria-label="Verse 7">7</sup>It bears all things, believes all things, hopes all things, endures all things.</div>
 <div class="verse-commentary">
           <p>Read it again and count what is missing. No feelings. In Paul's language these are fifteen verbs, seven things love keeps doing and eight things love refuses to do, and the first one sets the tone. The Greek verb behind patient is <em>makrothymeō</em>, to have a long fuse, to take a long time to reach the boiling point. Love waits well, works kindly, celebrates the truth, carries what is heavy, keeps trusting, keeps hoping, outlasts everything. And love declines a whole catalog of satisfying behaviors, the envying, the boasting, the sharp reply, the score kept in the drawer for later. Nothing here requires talent. All of it requires practice. Which means love is not so much something we feel as something we do until it becomes who we are. Corinth measured spirituality in volume. This list measures it in verbs.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: 1 Peter 4:8-11 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:82c88c849bedea9cfd8205557b48d6fe1677b16496a368682b18500b55b681c1 | footnotes-stripped:1 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Peter 4:8-11</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1PE.4.8-11" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 8">8</sup>Above all, love one another deeply, because love covers over a multitude of sins. <sup class="verse-number" aria-label="Verse 9">9</sup>Show hospitality to one another without complaining. <sup class="verse-number" aria-label="Verse 10">10</sup>As good stewards of the manifold grace of God, each of you should use whatever gift he has received to serve one another. <sup class="verse-number" aria-label="Verse 11">11</sup>If anyone speaks, he should speak as one conveying the words of God. If anyone serves, he should serve with the strength God provides, so that in all things God may be glorified through Jesus Christ, to whom be the glory and the power forever and ever. Amen.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1PE.4.8-11" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 8">8</sup>Above all, love one another deeply, because love covers over a multitude of sins. <sup class="verse-number" aria-label="Verse 9">9</sup>Show hospitality to one another without complaining. <sup class="verse-number" aria-label="Verse 10">10</sup>As good stewards of the manifold grace of God, each of you should use whatever gift he has received to serve one another. <sup class="verse-number" aria-label="Verse 11">11</sup>If anyone speaks, he should speak as one conveying the words of God. If anyone serves, he should serve with the strength God provides, so that in all things God may be glorified through Jesus Christ, to whom be the glory and the power forever and ever. Amen.</div>
 <div class="verse-commentary">
           <p>Peter never sat in Corinth's living room, and he lands on the same conclusion. Above all, love, and then the gifts, in that order. His picture of a gift is a steward's household key, something entrusted, never owned, held for the good of everyone under the roof. Varied grace, he calls it, God's generosity showing up in more shades than any one person can carry, which is why every believer received a serving assignment. Speak as if handling God's own words. Serve from God's own strength. And notice where the whole passage drains. Not toward the gifted, toward the glory of God through Jesus Christ. Last week's compass just reappeared in Peter's handwriting. Gifts spent in love make God look like who He is.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: 1 Peter 4:8 | 4:8 See Proverbs 10:12 -->
 
 <!-- BSB_BLOCK: 1 Corinthians 13:13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:6ebd2f2a031201d6cc0c21331b51f913557595d0092a65fca83b04e8df7ab6d1 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 13:13</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.13.13" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.13.13" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">And now these three remain: faith, hope, and love; but the greatest of these is love.</div>
 <div class="verse-commentary">
           <p>It matters where this chapter sits. Paul placed the love chapter deliberately between the gift lists and the gift corrections, the calm center of a storm about tongues and prophecy, because love is the key to using any gift wisely. Love is not one gift among many. It is the channel every gift travels to reach its purpose, the reason a word of knowledge builds instead of bruises, the reason serving refreshes instead of resents. And at the very end Paul holds up the three things that survive when everything else is finished, faith, hope, and love, and crowns one of them. Faith will someday become sight. Hope will someday be fulfilled. Love has no someday. It is the only thing we practice now that we will still be doing in eternity. The greatest gift is the one that never has to end.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Nobody Was Ever Loved by Thread Count</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>Nobody Was Ever Loved by Thread Count</h3>
       <p>A nice hotel does everything right. The sheets are four hundred thread count, the towels are warm, the front desk smiles and uses your name, and a mint waits on the pillow like a tiny reward for existing. Every detail is executed by trained professionals, and none of it is for you. It is for anyone. You could be swapped tonight for any other traveler with a credit card and the room would never notice. Now think of the other bed you know. The guest room at your grandmother's house, with a mattress shaped like a canoe and towels older than you are. On the nightstand sits a fan, already plugged in and aimed at the pillow, because she remembers you sleep hot. In the pantry is the cereal you loved when you were nine. She bought it Tuesday.</p>
       <p>Every measurable category goes to the hotel. Skill, budget, equipment, polish. And you sleep better in the canoe, because the fan and the cereal are not amenities. They are evidence. Somebody thought about you before you arrived. That is the difference Paul is naming when he says a person with every gift and no love adds up to nothing. Talent can turn down a bed. Only love notices you sleep hot. A church full of impressive abilities can still feel exactly like a hotel, excellent, efficient, and for anyone. The fifteen verbs are how it becomes a grandmother's house instead. Love is not the mint on the pillow. It is the fan, aimed ahead of time, at you.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Medicine Was Being Held</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Medicine Was Being Held</h3>
       <p>For generations the smallest, most fragile newborns were treated the way you would expect. Lifted away from the mother, placed alone in a warm high-tech incubator, watched by machines. It seemed obvious. Then researchers tried the opposite. In a trial across Ghana, India, Malawi, Nigeria, and Tanzania, more than 3,200 babies weighing under four pounds were given immediate kangaroo mother care, laid skin to skin on a parent's bare chest within the first hours after birth and kept there. Deaths dropped by 25 percent, deaths from infection by more than a third. The World Health Organization now recommends immediate kangaroo mother care for preterm or low-birth-weight babies.</p>
       <p>Notice what the treatment was. Not a new drug, not a better machine. A parent, holding a child. The most advanced incubator in the world can hold a steady temperature, but it cannot do the one thing a mother's chest does, which is love a specific baby on purpose, warmth and heartbeat and breath aimed at this one. That is the difference Paul refuses to let the Corinthians miss. Every gift in the room can be running at full power, the equipment flawless, the competence real, and it still adds up to nothing if love is not the thing being practiced. The fifteen verbs are not decoration laid over the skill. They are the medicine. Sometimes the more excellent way is simply to hold on.</p>
       <!-- TODAYS_WORLD_SOURCE: Immediate kangaroo mother care reduces risk of sepsis for babies born early or small | World Health Organization | 2023 | https://www.who.int/news/item/05-06-2023-immediate-kangaroo-mother-care-reduces-risk-of-sepsis-for-babies-born-early-or-small -->
-    </div>
+    <details class="disclosure source-disclosure"><summary class="disclosure-summary"><span class="disclosure-label">Source</span> <span class="disclosure-publisher">World Health Organization</span></summary><div class="disclosure-body"><p><cite>Immediate kangaroo mother care reduces risk of sepsis for babies born early or small</cite>. World Health Organization, 2023. <a href="https://www.who.int/news/item/05-06-2023-immediate-kangaroo-mother-care-reduces-risk-of-sepsis-for-babies-born-early-or-small" target="_blank" rel="noopener noreferrer">Read the source</a>.</p></div></details></section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Try an old exercise with fresh eyes. Read the fifteen verbs and put a name where love stands. Jesus is patient, and Peter can testify. Jesus is kind, and the lepers He touched can testify. Jesus does not envy, though He owned nothing. Jesus is not rude, though He was interrupted, crowded, and cornered for three years. Jesus keeps no record of wrongs, and from the cross He said Father, forgive them, with the nails still in. The paragraph reads like a biography because it is one, the character of Christ written out in verbs. Now put your own name in the blanks and feel where the sentences break. That gap is why the cross exists. Every verb on the list, He conjugated to the very end, bearing all things up a hill, believing all things in a garden, enduring all things until it was finished. Paul promised a way more excellent than any gift. The way has a name and scarred hands. We do not just admire this love. We are loved by it.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Try an old exercise with fresh eyes. Read the fifteen verbs and put a name where love stands. Jesus is patient, and Peter can testify. Jesus is kind, and the lepers He touched can testify. Jesus does not envy, though He owned nothing. Jesus is not rude, though He was interrupted, crowded, and cornered for three years. Jesus keeps no record of wrongs, and from the cross He said Father, forgive them, with the nails still in. The paragraph reads like a biography because it is one, the character of Christ written out in verbs. Now put your own name in the blanks and feel where the sentences break. That gap is why the cross exists. Every verb on the list, He conjugated to the very end, bearing all things up a hill, believing all things in a garden, enduring all things until it was finished. Paul promised a way more excellent than any gift. The way has a name and scarred hands. We do not just admire this love. We are loved by it.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Read the fifteen verbs slowly today and let one of them sting. That is your verb. Long fuse, kindness, no scorekeeping, not seeking your own, whichever one names the place your love goes thin. Then aim it at one person before the day ends. Answer the slow text without the edge. Do the kind thing for the family member who irritates you fastest. Tear up one grudge you have been keeping in the drawer. One verb, one person, on purpose. That is how a feeling becomes a way.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Lord Jesus, we have wanted the gifts more than the love, and we confess it. We have practiced our abilities and left our patience unrehearsed. We have kept records You died to erase. Today Your word read us, verb by verb, and we felt where our sentences break. Thank You for being the portrait we could not paint, patient with us, kind to us, keeping no record against us. Now write those verbs into our reflexes. Give us the long fuse at home, where it is hardest. Give us kindness that costs something before sundown. Where our gifts have been making noise, wire them to love until they start making disciples. We do not ask to feel more loving. We ask to love, the way You love us, until the feeling catches up. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"Which of love's fifteen verbs breaks down first in your closest relationships (the long fuse in traffic with your family, keeping no record in your marriage, not seeking your own with friends)? And what would practicing that single verb on one specific person look like this week?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"Which of love's fifteen verbs breaks down first in your closest relationships (the long fuse in traffic with your family, keeping no record in your marriage, not seeking your own with friends)? And what would practicing that single verb on one specific person look like this week?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Lord Jesus, we have wanted the gifts more than the love, and we confess it. We have practiced our abilities and left our patience unrehearsed. We have kept records You died to erase. Today Your word read us, verb by verb, and we felt where our sentences break. Thank You for being the portrait we could not paint, patient with us, kind to us, keeping no record against us. Now write those verbs into our reflexes. Give us the long fuse at home, where it is hardest. Give us kindness that costs something before sundown. Where our gifts have been making noise, wire them to love until they start making disciples. We do not ask to feel more loving. We ask to love, the way You love us, until the feeling catches up. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-08-03.html"><span class="day-nav-kicker">← Monday</span><span class="day-nav-title">Unity Through Diversity</span></a><a class="day-nav-item" href="/bible-study/2026-08-05.html"><span class="day-nav-kicker">Wednesday →</span><span class="day-nav-title">The Gift of Tongues</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"1-corinthians-13-1-7":{"ref":"1 Corinthians 13:1-7","text":"If I speak in the tongues of men and of angels, but have not love, I am only a ringing gong or a clanging cymbal. If I have the gift of prophecy and can fathom all mysteries and all knowledge, and if I have absolute faith so as to move mountains, but have not love, I am nothing. If I give all I possess to the poor and exult in the surrender of my body, but have not love, I gain nothing. Love is patient, love is kind. It does not envy, it does not boast, it is not proud. It is not rude, it is not self-seeking, it is not easily angered, it keeps no account of wrongs. Love takes no pleasure in evil, but rejoices in the truth. It bears all things, believes all things, hopes all things, endures all things.","bibleUrl":"https://www.bible.com/bible/3034/1CO.13.1-7"},"1-peter-4-8-11":{"ref":"1 Peter 4:8-11","text":"Above all, love one another deeply, because love covers over a multitude of sins. Show hospitality to one another without complaining. As good stewards of the manifold grace of God, each of you should use whatever gift he has received to serve one another. If anyone speaks, he should speak as one conveying the words of God. If anyone serves, he should serve with the strength God provides, so that in all things God may be glorified through Jesus Christ, to whom be the glory and the power forever and ever. Amen.","bibleUrl":"https://www.bible.com/bible/3034/1PE.4.8-11"},"1-corinthians-12-10":{"ref":"1 Corinthians 12:10","text":"to another the working of miracles, to another prophecy, to another distinguishing between spirits, to another speaking in various tongues, and to still another the interpretation of tongues.","bibleUrl":"https://www.bible.com/bible/3034/1CO.12.10"},"1-corinthians-12-28":{"ref":"1 Corinthians 12:28","text":"And in the church God has appointed first of all apostles, second prophets, third teachers, then workers of miracles, and those with gifts of healing, helping, administration, and various tongues.","bibleUrl":"https://www.bible.com/bible/3034/1CO.12.28"},"1-corinthians-12-30":{"ref":"1 Corinthians 12:30","text":"Do all have gifts of healing? Do all speak in tongues? Do all interpret?","bibleUrl":"https://www.bible.com/bible/3034/1CO.12.30"},"1-corinthians-13-1":{"ref":"1 Corinthians 13:1","text":"If I speak in the tongues of men and of angels, but have not love, I am only a ringing gong or a clanging cymbal.","bibleUrl":"https://www.bible.com/bible/3034/1CO.13.1"},"1-corinthians-12-8":{"ref":"1 Corinthians 12:8","text":"To one there is given through the Spirit the message of wisdom, to another the message of knowledge by the same Spirit,","bibleUrl":"https://www.bible.com/bible/3034/1CO.12.8"},"1-corinthians-12-9":{"ref":"1 Corinthians 12:9","text":"to another faith by the same Spirit, to another gifts of healing by that one Spirit,","bibleUrl":"https://www.bible.com/bible/3034/1CO.12.9"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

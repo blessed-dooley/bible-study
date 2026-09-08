@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>A Double Blessing — Daily Bible Study</title>
 <meta name="study-title" content="A Double Blessing">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Part 5 of 7">
+<meta name="study-passage" content="Isaiah 50:4">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Day 5 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="A Double Blessing">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Part 5 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Day 5 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-04-29.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Part 5 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 5, How to Study the Bible · Day 5 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,337 +38,213 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>A Double Blessing</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 5, How to Study the Bible</span>
-      <span>Part 5 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Wed · Apr 29</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">11 min</span>
     </div>
-    <div class="date-badge">April 29, 2026</div>
+    <h1 class="study-title">A Double Blessing</h1>
+    <p class="study-sub"><span class="sub-title">How to Study the Bible</span><span class="sub-facts"><span>Lesson 5</span><span>Day 5 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">Two students sit knee to knee at the same table with one paragraph between them, and they will argue it for four hours without raising a voice, because the argument is how they love each other.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p class="tldr-hook">Two students sit knee to knee at the same table with one paragraph between them, and they will argue it for four hours without raising a voice, because the argument is how they love each other.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span> The Bible was never meant to be read alone; a companion is built into the practice.</li>
-        <li><span class="bullet-icon">☩</span> Isaiah's servant was given a tongue for the weary, but only after he was first given an awakened ear in the morning.</li>
-        <li><span class="bullet-icon">☩</span> Jesus sent the disciples out two by two because Scripture discussed between two believers travels further than Scripture kept by one.</li>
-        <li><span class="bullet-icon">☩</span> Iron sharpens iron, and a believer with no one to sharpen them dulls no matter how many hours they put in alone.</li>
+        <li>
+<span class="bullet-icon">☩</span> The Bible was never meant to be read alone; a companion is built into the practice.</li>
+        <li>
+<span class="bullet-icon">☩</span> Isaiah's servant was given a tongue for the weary, but only after he was first given an awakened ear in the morning.</li>
+        <li>
+<span class="bullet-icon">☩</span> Jesus sent the disciples out two by two because Scripture discussed between two believers travels further than Scripture kept by one.</li>
+        <li>
+<span class="bullet-icon">☩</span> Iron sharpens iron, and a believer with no one to sharpen them dulls no matter how many hours they put in alone.</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday the pen came out. The verse got copied in your handwriting. You read it out loud in a room where no one was listening except God. And then, before the day absorbed you, you were asked to send a single sentence to a single person who would take it seriously. Today shows you why that last step was not an add-on. The sharing is where the depth <em>doubles</em>. What the murmured verse (<em>hagah</em>) planted in you yesterday is built to travel. Today the week teaches the traveling.</p>
-    </div>
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday the pen came out. The verse got copied in your handwriting. You read it out loud in a room where no one was listening except God. And then, before the day absorbed you, you were asked to send a single sentence to a single person who would take it seriously. Today shows you why that last step was not an add-on. The sharing is where the depth <em>doubles</em>. What the murmured verse (<em>hagah</em>) planted in you yesterday is built to travel. Today the week teaches the traveling.</p>
+    </section>
 
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Knee to Knee</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>Knee to Knee</h3>
       <p>In the Jewish world since at least the Second Temple period, one of the most common ways to study Scripture was not alone. It was in pairs. The practice was called <em>chavruta</em>, from the Hebrew word for "companion," and it is still the dominant method in yeshivot today. Two students sit at the same table, knee to knee, with a single text between them. One reads a line. The other challenges. They argue the meaning, defend their readings, switch sides, double back, and push each other until both of them understand the passage better than either could have alone. The principle is simple: every reader has blind spots, and the only cure for a blind spot is a friend with a different angle of sight.</p>
       <p>Jesus taught in the <em>chavruta</em> pattern without ever using the word. He walked with the disciples while He explained; He let them ask questions that revealed what they had not yet seen; He answered in parables that required their effort to unlock. When He sent them out in Mark 6, He sent them "two by two," not one by one, because a gospel carried by a pair goes further than a gospel carried by a solo. Paul took Barnabas, then Silas, then Timothy. The early church preserved the Gospels not as solo reading projects but as texts read aloud in assembly, paused for discussion, argued over in letters, and handed down by companions. The New Testament itself is essentially a conversation between believers in different cities about the same Lord. Deep Bible study has always been a shared act. A single reader is the exception in the whole story; the pair is the rule.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Watch two iron blades pressed together hard enough to make sparks. Neither one stays the same. Both of them leave the bench sharper than they arrived, because sharpness is not something a blade can do to itself alone. That is the picture Solomon reached for when he tried to describe what serious believers do to each other at close range, and it is the picture the Servant in Isaiah 50 steps into when he confesses that the useful tongue he carries for the weary did not start in his mouth. It started in his ear. Paul called this shared devotion a <a class="vlink" href="https://www.bible.com/bible/3034/PHP.3.14" target="_blank" rel="noopener">long press toward the goal</a>, and Jesus named its destination with the same words He used for eternal life itself: <a class="vlink" href="https://www.bible.com/bible/3034/JHN.17.3" target="_blank" rel="noopener">knowing the Father</a>, and knowing Him together.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Watch two iron blades pressed together hard enough to make sparks. Neither one stays the same. Both of them leave the bench sharper than they arrived, because sharpness is not something a blade can do to itself alone. That is the picture Solomon reached for when he tried to describe what serious believers do to each other at close range, and it is the picture the Servant in Isaiah 50 steps into when he confesses that the useful tongue he carries for the weary did not start in his mouth. It started in his ear. Paul called this shared devotion a <a class="vlink" href="https://www.bible.com/bible/3034/PHP.3.14" target="_blank" rel="noopener">long press toward the goal</a>, and Jesus named its destination with the same words He used for eternal life itself: <a class="vlink" href="https://www.bible.com/bible/3034/JHN.17.3" target="_blank" rel="noopener">knowing the Father</a>, and knowing Him together.</p>
 
       <!-- ANCHOR: Isaiah 50:4 -->
 <!-- BSB_BLOCK: Isaiah 50:4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:449d09c31764af5d48929f649509aa64560fb7158fe80d57e2d07cc5ab880440 | footnotes-stripped:0 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Isaiah 50:4</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ISA.50.4" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ISA.50.4" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">The Lord GOD has given Me the tongue of discipleship, to sustain the weary with a word. He awakens Me morning by morning; He awakens My ear to listen as a disciple.</div>
 <div class="verse-commentary">
           <p>This is the third of the four Servant Songs, a passage that describes the coming Messiah and, in the process, describes every disciple who walks with Him. Notice the direction of traffic. The servant does not begin with the tongue. The servant begins with the ear. God "awakens" his ear each morning, and the awakened ear is what eventually produces the useful tongue.</p>
           <p>The Hebrew phrase translated "the tongue of discipleship" is <em>leshon limmudim</em>, which literally means "the tongue of the taught ones," the tongue of students who have sat under a teacher long enough that the teacher's words have reshaped their mouths. This tongue is not natively eloquent. It is trained. It has listened. It has been formed by repeated exposure to a voice that knows what it is saying. And the purpose of the training is targeted: "to sustain the weary with a word." Not to impress anyone. Not to win arguments. Not to perform expertise. One specific function, which is to put a life-giving word under the elbow of a tired person who is about to give up.</p>
           <p>This verse is the hidden architecture of the "double blessing." The weary neighbor at work, the discouraged spouse at dinner, the teenager who is slipping, the friend whose marriage is unraveling, the coworker whose mother just died, the delivery driver at the door: these are the weary, and every single one of them is within reach of a believer whose ear has been awakened that morning. What God whispers to an attentive student at dawn is what that student will carry in the tongue at noon. The morning is not self-care. It is preparation for somebody else. The Word is received vertically, so that it can be passed horizontally, and the same passage that sustained you at sunrise can sustain a weary human being before bed. That is what the week has been building toward. Not a fuller you. A useful you.</p>
         </div>
-      </div>
+      </figure>
 
       <!-- SUPPORTING: Proverbs 27:17 -->
 <!-- BSB_BLOCK: Proverbs 27:17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:bc4c917b59c914caaf50e3127b950d0255beba325f9b9f089a7c2c94b63f55a9 | footnotes-stripped:1 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Proverbs 27:17</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/PRO.27.17" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/PRO.27.17" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">As iron sharpens iron, so one man sharpens another.</div>
 <div class="verse-commentary">
           <p>The Hebrew sentence is even sharper than the English. The verb <em>chadad</em> means to be pointed, to have an edge, to cut clean. It is metallurgy vocabulary. Iron does not get sharp by sitting in a box. It gets sharp by being pressed against another piece of iron, with enough friction that sparks fly off both sides at once.</p>
           <p>Shared Bible study is exactly that kind of friction. A reader alone can protect a misreading for decades because nothing pushes against it. A reader with a friend who loves them enough to disagree will lose the misreading in an afternoon. The sharpening is mutual; both blades leave the session more useful than they started. That is why even the Christian with thirty years of private devotion still needs one honest companion to bring the chapter to. The blade sitting in the drawer alone is duller today than it was yesterday.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: Proverbs 27:17 | 27:17 Hebrew sharpens the face of another or sharpens the countenance of a friend -->
 
       <!-- SUPPORTING: Ecclesiastes 4:9-10 -->
 <!-- BSB_BLOCK: Ecclesiastes 4:9-10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:6ca566a2ca28a1191a8d1060a661eb4526c5459de53ae615fc77f91854522f1e | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Ecclesiastes 4:9-10</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ECC.4.9-10" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 9">9</sup>Two are better than one, because they have a good return for their labor. <sup class="verse-number" aria-label="Verse 10">10</sup>For if one falls down, his companion can lift him up; but pity the one who falls without another to help him up!</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ECC.4.9-10" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 9">9</sup>Two are better than one, because they have a good return for their labor. <sup class="verse-number" aria-label="Verse 10">10</sup>For if one falls down, his companion can lift him up; but pity the one who falls without another to help him up!</div>
 <div class="verse-commentary">
           <p>The preacher in Ecclesiastes is not a sentimental man. He has just finished watching the vanity of wealth, labor, and status with his eyes open. His verdict on the solo life is clinical: two are better than one. Not emotionally better. Structurally better. The math of a spiritual life includes falling, and a fall without a companion close by is much harder to recover from than a fall inside a friendship that is already watching.</p>
           <p>Apply this to Bible study and the force of the verse sharpens. Every serious reader eventually falls. They fall into a misunderstanding, a discouragement, a season of dryness, a misapplication, a prideful reading that would have embarrassed them if they had heard themselves out loud. A companion who is also reading the Book hears it. A companion can say, "I don't think that's what that chapter is doing." A companion can pray when the pages have gone silent for two weeks. The Bible's own wisdom refuses to treat the solo reader as the standard; it treats the pair as the baseline and the solo as the exposure.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The New Hire's Question</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The New Hire's Question</h3>
       <p>You have been doing the same job for three years. You know every menu, every shortcut, every unwritten rule about which reports get skimmed and which ones people actually read. Then on a Tuesday morning the new hire sits next to you for training, and after watching you work for an hour, she asks, "Why do we do step four like that?" You open your mouth to answer. Nothing comes out. You did step four that way because somebody showed you once, eighteen months ago, and it worked, and you kept doing it. You have done it every day since. But you have never once had to say what it is for. In the pause before you manage an answer, you learn something about your own job that three years of doing it had hidden. Then, telling her, you hear yourself explain it, and for the first time you understand it yourself.</p>
       <p>The servant of Isaiah 50 is given the <em>leshon limmudim</em>, the tongue of the taught ones, only after the ear has first been awakened. What God whispers to an attentive student at dawn is what the student will carry in the tongue at noon. The morning alone is not self-care; it is preparation for somebody else, and the preparation only finishes when somebody else asks. Say a passage out loud to a friend. Walk a verse to a spouse. Explain a chapter to a child. Not to perform, but because something you had been circling all week will land in your own ear the moment it leaves your own mouth. Chavruta is not a teaching tool. It is how the Word finishes its work.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Law School Still Knows This</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>Law School Still Knows This</h3>
       <p>American law schools are one of the last graduate institutions in the country that refuse to outgrow the pedagogical method they started with in 1870. Christopher Columbus Langdell at Harvard replaced lecture and recitation with the case method and the Socratic dialogue, and a century and a half later the method is still in force. The professor does not deliver the law. The professor calls on a student, hands them a case, and asks five questions the student has only one night of preparation to answer. Classmates listen. Classmates dissent. Nobody gets to be quiet. Recent pedagogy research on the method has been unusually blunt: studies cited in the <em>Journal of Legal Education</em> have found statistically significant correlations between the hours of Socratic instruction a student has received and that student's performance on syllogistic reasoning tasks. Moot court, a courtroom simulation fought between paired students, remains a graduation requirement at most of the top schools in the country.</p>
       <p>The explanation turns out to be simple, and it generalizes far outside the law. Peer-to-peer argument forces a student to hold a position out loud, defend it under live objection, and revise it in front of an audience that has no incentive to be kind. You cannot fake readiness in a room like that. What lawyers call "arguing the case" is, in educational terms, the learning-by-teaching effect: the measurable retention boost that shows up when a learner has to explain a concept to a peer rather than absorb it silently. Every serious bar-prep program builds the study group in as a non-optional component. Nobody passes alone, and almost everyone who has tried has failed more expensively.</p>
       <p>Isaiah 50:4 called this <em>leshon limmudim</em>, "the tongue of the taught ones," and wired it directly to an ear God had opened that same morning. Proverbs 27:17 is <em>chadad</em>, iron striking iron until both blades have an edge. Jesus never handed his disciples a syllabus. He handed them each other. The chavruta tradition had been solving the learning-by-teaching problem for a thousand years before Langdell ran his first cold call. If you are trying to grow in the Word alone, you have chosen the slowest, loneliest, and historically rarest path the Bible ever describes. Pick one friend. Pick one chapter. Pick a standing morning, and begin.</p>
-    </div>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Jesus did not establish a correspondence course. He established a table. For three years His disciples ate with Him, walked with Him, asked Him questions that exposed how little they understood, and listened as He turned parables inside out for their benefit. He could have handed each of them a scroll and sent them home. He did not. He put them next to Himself, and next to each other, and let the discussion itself become the classroom. When Matthew 18 promises that where two or three gather in His name, there He is among them, the promise is not decorative; it is telling us how the Lord of the Word prefers to be encountered. Not in the sealed private room. In the pair. In the three who meet in the kitchen. The upper room that the Spirit filled at Pentecost was a shared room before it was a filled one. The church Jesus built is, at its oldest level, a <em>chavruta</em> with the risen Christ included as the third voice at the table. Open your Bible alone this morning. Close it tonight with someone who will hear what you found. That is not a method. That is the shape of the Body.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Jesus did not establish a correspondence course. He established a table. For three years His disciples ate with Him, walked with Him, asked Him questions that exposed how little they understood, and listened as He turned parables inside out for their benefit. He could have handed each of them a scroll and sent them home. He did not. He put them next to Himself, and next to each other, and let the discussion itself become the classroom. When Matthew 18 promises that where two or three gather in His name, there He is among them, the promise is not decorative; it is telling us how the Lord of the Word prefers to be encountered. Not in the sealed private room. In the pair. In the three who meet in the kitchen. The upper room that the Spirit filled at Pentecost was a shared room before it was a filled one. The church Jesus built is, at its oldest level, a <em>chavruta</em> with the risen Christ included as the third voice at the table. Open your Bible alone this morning. Close it tonight with someone who will hear what you found. That is not a method. That is the shape of the Body.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Today, pick one person you know who could handle a real conversation about the Bible: a spouse, a friend, a sibling, a coworker, the neighbor you have been meaning to call. Text, call, or ask in person: "I am sitting with [your chapter] this week. Would you read one chapter with me this weekend and tell me what you see?" Send it before you talk yourself out of it. The awakened ear of Isaiah 50 becomes the learned tongue the minute you actually use it.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we confess that we have often preferred the private Bible to the shared one, because the private Bible cannot ask us a question we do not want to answer. We have called that "personal devotion" and hidden behind it. Teach us <em>chavruta</em> again. Awaken our ears in the morning so that by noon we have a word that will hold someone else up. Put a companion across our table, an old friend, a new one, the person we would have overlooked. Let the conversation we have this week about Your Word sharpen both of us until there are sparks on both sides. And when we fall, and we will fall, let us be standing close enough to another believer that a hand is already reaching before our knee hits the floor. You did not save us into solitude. You saved us into a family of readers. Help us live there. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"Who in your life right now is already likely to say yes if you invited them to read one chapter with you each week (a spouse, an adult child, a coworker on break, the friend you text about everything except God), and what is the specific first message you would have to send before the weekend to turn that from an idea into an actual pair?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"Who in your life right now is already likely to say yes if you invited them to read one chapter with you each week (a spouse, an adult child, a coworker on break, the friend you text about everything except God), and what is the specific first message you would have to send before the weekend to turn that from an idea into an actual pair?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, we confess that we have often preferred the private Bible to the shared one, because the private Bible cannot ask us a question we do not want to answer. We have called that "personal devotion" and hidden behind it. Teach us <em>chavruta</em> again. Awaken our ears in the morning so that by noon we have a word that will hold someone else up. Put a companion across our table, an old friend, a new one, the person we would have overlooked. Let the conversation we have this week about Your Word sharpen both of us until there are sparks on both sides. And when we fall, and we will fall, let us be standing close enough to another believer that a hand is already reaching before our knee hits the floor. You did not save us into solitude. You saved us into a family of readers. Help us live there. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-    <!-- BIBLE APP STRIP -->
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-04-28.html"><span class="day-nav-kicker">← Tuesday</span><span class="day-nav-title">Deep Bible Study</span></a><a class="day-nav-item" href="/bible-study/2026-04-30.html"><span class="day-nav-kicker">Thursday →</span><span class="day-nav-title">&#x27;Tis So Sweet</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

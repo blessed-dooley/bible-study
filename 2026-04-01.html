@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Abide — Daily Bible Study</title>
 <meta name="study-title" content="Abide">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 1, Reality Check · Part 5 of 7">
+<meta name="study-passage" content="John 15:1-5">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 1, Reality Check · Day 5 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Abide">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 1, Reality Check · Part 5 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 1, Reality Check · Day 5 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-04-01.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 1, Reality Check · Part 5 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 1, Reality Check · Day 5 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,353 +38,235 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Abide</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 1, Reality Check</span>
-      <span>Part 5 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Wed · Apr 1</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">11 min</span>
     </div>
-    <div class="date-badge">April 1, 2026</div>
+    <h1 class="study-title">Abide</h1>
+    <p class="study-sub"><span class="sub-title">Reality Check</span><span class="sub-facts"><span>Lesson 1</span><span>Day 5 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">Jesus used one word ten times in eleven verses because He knew we would spend our whole lives trying to learn what it means.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p class="tldr-hook">Jesus used one word ten times in eleven verses because He knew we would spend our whole lives trying to learn what it means.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span> Abiding in Jesus is not a one-time decision but a continuous, living connection to the true Vine.</li>
-        <li><span class="bullet-icon">☩</span> The tension: we want fruit in our lives, but we keep trying to produce it on our own instead of staying connected to the Source.</li>
-        <li><span class="bullet-icon">☩</span> Jesus makes the relationship simple: remain in Him, keep His commands, and His joy becomes yours.</li>
-        <li><span class="bullet-icon">☩</span> The challenge today is honest self-evaluation: are you truly abiding, or just going through the motions?</li>
+        <li>
+<span class="bullet-icon">☩</span> Abiding in Jesus is not a one-time decision but a continuous, living connection to the true Vine.</li>
+        <li>
+<span class="bullet-icon">☩</span> The tension: we want fruit in our lives, but we keep trying to produce it on our own instead of staying connected to the Source.</li>
+        <li>
+<span class="bullet-icon">☩</span> Jesus makes the relationship simple: remain in Him, keep His commands, and His joy becomes yours.</li>
+        <li>
+<span class="bullet-icon">☩</span> The challenge today is honest self-evaluation: are you truly abiding, or just going through the motions?</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday we explored God's everlasting, pursuing love, from the intimacy of Eden through Jeremiah's declaration that He draws us with lovingkindness. Today we discover what our response to that love actually looks like in practice. God has always been the One who initiates. Now Jesus gives us the most vivid picture in all of Scripture for what it means to stay connected once He has found us: the vine and the branches. Tuesday established that God's love precedes our response. Wednesday shows us what that response is, reduced to a single word that Jesus repeats ten times so we cannot possibly miss it.</p>
-    </div>
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday we explored God's everlasting, pursuing love, from the intimacy of Eden through Jeremiah's declaration that He draws us with lovingkindness. Today we discover what our response to that love actually looks like in practice. God has always been the One who initiates. Now Jesus gives us the most vivid picture in all of Scripture for what it means to stay connected once He has found us: the vine and the branches. Tuesday established that God's love precedes our response. Wednesday shows us what that response is, reduced to a single word that Jesus repeats ten times so we cannot possibly miss it.</p>
+    </section>
 
-    <!-- CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical & Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Last Walk Before the Cross</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Last Walk Before the Cross</h3>
       <p>The disciples had just left the upper room. It was Thursday night of Passion Week, and they were walking together through the darkened streets of Jerusalem toward Gethsemane. Within hours, Jesus would be arrested, tried, and crucified. Everything He said on this walk carried the weight of a farewell, and He knew it even if they did not.</p>
-      <p>As they passed through the Kidron Valley, they likely walked past the massive golden vine that adorned the entrance to Herod's Temple, a famous decorative sculpture with clusters of grapes as tall as a person, symbolizing Israel as God's chosen vine. It was the perfect backdrop for what Jesus was about to say. Israel had long been called God's vine in the prophets, yet the prophets consistently lamented that the vine had gone wild and produced sour fruit (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.5.1" target="_blank" rel="noopener">Isaiah 5:1-7</a>; <a class="vlink" href="https://www.bible.com/bible/3034/JER.2.21" target="_blank" rel="noopener">Jeremiah 2:21</a>). Now Jesus made a stunning claim: "I am the true vine." Not the temple, not the nation, not the religious system. Him. Everything His disciples needed for life and fruitfulness would come from staying connected to Him personally.</p>
-    </div>
+      <p>As they passed through the Kidron Valley, they likely walked past the massive golden vine that adorned the entrance to Herod's Temple, a famous decorative sculpture with clusters of grapes as tall as a person, symbolizing Israel as God's chosen vine. It was the perfect backdrop for what Jesus was about to say. Israel had long been called God's vine in the prophets, yet the prophets consistently lamented that the vine had gone wild and produced sour fruit (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.5.1" target="_blank" rel="noopener" data-verse="isaiah-5-1-7" data-ref="Isaiah 5:1-7" aria-expanded="false">Isaiah 5:1-7</a>; <a class="vlink" href="https://www.bible.com/bible/3034/JER.2.21" target="_blank" rel="noopener" data-verse="jeremiah-2-21" data-ref="Jeremiah 2:21" aria-expanded="false">Jeremiah 2:21</a>). Now Jesus made a stunning claim: "I am the true vine." Not the temple, not the nation, not the religious system. Him. Everything His disciples needed for life and fruitfulness would come from staying connected to Him personally.</p>
+    </section>
 
-    <!-- INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Today's anchor passage is <a class="vlink" href="https://www.bible.com/bible/3034/JHN.15.1-11" target="_blank" rel="noopener">John 15:1-11</a>, where Jesus delivers the Vine and Branches discourse on the night before His crucifixion. The central question is deceptively simple: what does it actually mean to abide in Christ? The word "remain" in the BSB appears ten times in these eleven verses, making it the unmistakable heartbeat of the passage. We will also look at <a class="vlink" href="https://www.bible.com/bible/3034/1JN.5.3" target="_blank" rel="noopener">1 John 5:3</a> and <a class="vlink" href="https://www.bible.com/bible/3034/REV.3.20" target="_blank" rel="noopener">Revelation 3:20</a> as supporting texts that deepen our understanding of what abiding looks like and what happens when we stop.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Today's anchor passage is <a class="vlink" href="https://www.bible.com/bible/3034/JHN.15.1-11" target="_blank" rel="noopener" data-verse="john-15-1-11" data-ref="John 15:1-11" aria-expanded="false">John 15:1-11</a>, where Jesus delivers the Vine and Branches discourse on the night before His crucifixion. The central question is deceptively simple: what does it actually mean to abide in Christ? The word "remain" in the BSB appears ten times in these eleven verses, making it the unmistakable heartbeat of the passage. We will also look at <a class="vlink" href="https://www.bible.com/bible/3034/1JN.5.3" target="_blank" rel="noopener" data-verse="1-john-5-3" data-ref="1 John 5:3" aria-expanded="false">1 John 5:3</a> and <a class="vlink" href="https://www.bible.com/bible/3034/REV.3.20" target="_blank" rel="noopener" data-verse="revelation-3-20" data-ref="Revelation 3:20" aria-expanded="false">Revelation 3:20</a> as supporting texts that deepen our understanding of what abiding looks like and what happens when we stop.</p>
 
 <!-- BSB_BLOCK: John 15:1-5 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:31b94bc9469422e3089ede4aec3cdcf7c8fbd77f6ec79ae77a3e7cbba45683ed | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">John 15:1-5</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.15.1-5" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 1">1</sup><span class="words-of-jesus">“I am the true vine, and My Father is the keeper of the vineyard.</span> <sup class="verse-number" aria-label="Verse 2">2</sup><span class="words-of-jesus">He cuts off every branch in Me that bears no fruit, and every branch that does bear fruit, He prunes to make it even more fruitful.</span> <sup class="verse-number" aria-label="Verse 3">3</sup><span class="words-of-jesus">You are already clean because of the word I have spoken to you.</span> <sup class="verse-number" aria-label="Verse 4">4</sup><span class="words-of-jesus">Remain in Me, and I will remain in you. Just as no branch can bear fruit by itself unless it remains in the vine, neither can you bear fruit unless you remain in Me.</span> <sup class="verse-number" aria-label="Verse 5">5</sup><span class="words-of-jesus">I am the vine and you are the branches. The one who remains in Me, and I in him, will bear much fruit. For apart from Me you can do nothing.</span></div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/JHN.15.1-5" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 1">1</sup><span class="words-of-jesus">“I am the true vine, and My Father is the keeper of the vineyard.</span> <sup class="verse-number" aria-label="Verse 2">2</sup><span class="words-of-jesus">He cuts off every branch in Me that bears no fruit, and every branch that does bear fruit, He prunes to make it even more fruitful.</span> <sup class="verse-number" aria-label="Verse 3">3</sup><span class="words-of-jesus">You are already clean because of the word I have spoken to you.</span> <sup class="verse-number" aria-label="Verse 4">4</sup><span class="words-of-jesus">Remain in Me, and I will remain in you. Just as no branch can bear fruit by itself unless it remains in the vine, neither can you bear fruit unless you remain in Me.</span> <sup class="verse-number" aria-label="Verse 5">5</sup><span class="words-of-jesus">I am the vine and you are the branches. The one who remains in Me, and I in him, will bear much fruit. For apart from Me you can do nothing.</span>
+</div>
 <div class="verse-commentary">
-          <p>The Greek word at the center of this passage is <em>meno</em> (μένω), and it means far more than simply "staying put." It carries the sense of dwelling, remaining permanently, making your home in someone. It is the same word John used when he described two of John the Baptist's disciples asking Jesus, "Where are you staying?" and then going to <em>stay</em> with Him that day (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.1.38" target="_blank" rel="noopener">John 1:38-39</a>). Jesus is not asking for occasional visits. He is describing a continuous, moment-by-moment dependence, the way a branch draws sap from the vine without interruption. Notice the organic nature of the metaphor: a branch does not strain to produce grapes through willpower. Fruit is the natural result of connection. Disconnection does not just reduce productivity; it causes the branch to wither and die. The phrase "apart from Me you can do nothing" is not hyperbole. It is agricultural fact applied to the spiritual life. A severed branch does not produce smaller fruit; it produces no fruit at all.</p>
+          <p>The Greek word at the center of this passage is <em>meno</em> (μένω), and it means far more than simply "staying put." It carries the sense of dwelling, remaining permanently, making your home in someone. It is the same word John used when he described two of John the Baptist's disciples asking Jesus, "Where are you staying?" and then going to <em>stay</em> with Him that day (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.1.38" target="_blank" rel="noopener" data-verse="john-1-38-39" data-ref="John 1:38-39" aria-expanded="false">John 1:38-39</a>). Jesus is not asking for occasional visits. He is describing a continuous, moment-by-moment dependence, the way a branch draws sap from the vine without interruption. Notice the organic nature of the metaphor: a branch does not strain to produce grapes through willpower. Fruit is the natural result of connection. Disconnection does not just reduce productivity; it causes the branch to wither and die. The phrase "apart from Me you can do nothing" is not hyperbole. It is agricultural fact applied to the spiritual life. A severed branch does not produce smaller fruit; it produces no fruit at all.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: John 15:6-8 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:d453c7b6c34477e031e3263801f34b8996450f22d7f6e99dfd5dab4b53017a7b | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">John 15:6-8</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.15.6-8" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 6">6</sup><span class="words-of-jesus">If anyone does not remain in Me, he is like a branch that is thrown away and withers. Such branches are gathered up, thrown into the fire, and burned.</span> <sup class="verse-number" aria-label="Verse 7">7</sup><span class="words-of-jesus">If you remain in Me and My words remain in you, ask whatever you wish, and it will be done for you.</span> <sup class="verse-number" aria-label="Verse 8">8</sup><span class="words-of-jesus">This is to My Father’s glory, that you bear much fruit, proving yourselves to be My disciples.</span></div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/JHN.15.6-8" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 6">6</sup><span class="words-of-jesus">If anyone does not remain in Me, he is like a branch that is thrown away and withers. Such branches are gathered up, thrown into the fire, and burned.</span> <sup class="verse-number" aria-label="Verse 7">7</sup><span class="words-of-jesus">If you remain in Me and My words remain in you, ask whatever you wish, and it will be done for you.</span> <sup class="verse-number" aria-label="Verse 8">8</sup><span class="words-of-jesus">This is to My Father’s glory, that you bear much fruit, proving yourselves to be My disciples.</span>
+</div>
 <div class="verse-commentary">
           <p>Jesus presents two outcomes with no middle ground. The branch that remains produces much fruit and brings glory to the Father. The branch that disconnects withers and is gathered for burning. This is not a threat; it is simply what happens to branches that cut themselves off from their life source. There is a beautiful promise tucked inside the warning: "If you remain in Me and My words remain in you, ask whatever you wish, and it will be done for you." This is not a blank check for material wishes. When we are truly abiding, our desires begin to align with His, so what we ask for reflects what He already wants to give. The Father's glory is the ultimate purpose of our fruit-bearing, and the word "prove" (or "become") suggests that fruitfulness is not just evidence of discipleship; it is part of the process of <em>becoming</em> a disciple.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: John 15:9-11 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:a2e4e90452dbfa63364ef789d216752a85025737f060364a41f6447cd8047596 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">John 15:9-11</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/JHN.15.9-11" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 9">9</sup><span class="words-of-jesus">As the Father has loved Me, so have I loved you. Remain in My love.</span> <sup class="verse-number" aria-label="Verse 10">10</sup><span class="words-of-jesus">If you keep My commandments, you will remain in My love, just as I have kept My Father’s commandments and remain in His love.</span> <sup class="verse-number" aria-label="Verse 11">11</sup><span class="words-of-jesus">I have told you these things so that My joy may be in you and your joy may be complete.</span></div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/JHN.15.9-11" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 9">9</sup><span class="words-of-jesus">As the Father has loved Me, so have I loved you. Remain in My love.</span> <sup class="verse-number" aria-label="Verse 10">10</sup><span class="words-of-jesus">If you keep My commandments, you will remain in My love, just as I have kept My Father’s commandments and remain in His love.</span> <sup class="verse-number" aria-label="Verse 11">11</sup><span class="words-of-jesus">I have told you these things so that My joy may be in you and your joy may be complete.</span>
+</div>
 <div class="verse-commentary">
           <p>Here Jesus reveals the deepest layer of abiding: it is rooted in love, not duty. The love that flows between the Father and the Son, that same quality and intensity of love, is what flows from Jesus to us. "Remain in my love" is not a command to earn love but an invitation to stay inside the love that already surrounds us. And obedience is the evidence that we are remaining, not the price of admission. Jesus kept His Father's commands and remained in His Father's love; we keep Jesus' commands and remain in His love. This is the rhythm of a relationship, not the terms of a contract. The payoff line is verse 11: all of this, every word about vines and branches and commands and love, has one goal: "that my joy may be in you and your joy may be complete." Abiding is not grim religious discipline. It is the path to the deepest joy a human being can experience.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: 1 John 5:3 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:86ff0a8fb470ce25735c988dea212c265c02dda4058f21e7f209ef6d16497547 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 John 5:3</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1JN.5.3" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1JN.5.3" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">For this is the love of God, that we keep His commandments. And His commandments are not burdensome,</div>
 <div class="verse-commentary">
           <p>John echoes the same vine-and-branches theology decades later. If abiding in Jesus means keeping His commands, and keeping His commands equals loving God, then the whole thing is relational, not transactional. Notice the crucial last phrase: "His commandments are not burdensome." When religion becomes burdensome, drudgery-like, and heavy, something has gone wrong with the connection. A branch that is genuinely drawing life from the vine does not experience growth as a chore. If following Jesus feels like nothing but obligation, that may be a signal that we have drifted from abiding into performing, and the solution is not to try harder but to reconnect.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Revelation 3:20 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:cefbd8ff679c3f4025f5632a979835e212202a1fb465cc3a10a68563876c5559 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Revelation 3:20</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/REV.3.20" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/REV.3.20" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text"><span class="words-of-jesus">Behold, I stand at the door and knock. If anyone hears My voice and opens the door, I will come in and dine with him, and he with Me.</span></div>
 <div class="verse-commentary">
-          <p>This verse comes from Jesus' message to the church in Laodicea, the church that thought it had everything but was actually spiritually lukewarm, wretched, and blind (<a class="vlink" href="https://www.bible.com/bible/3034/REV.3.17" target="_blank" rel="noopener">Revelation 3:17</a>). It is the ultimate picture of what happens when abiding stops: Jesus ends up on the outside of His own church, knocking. The Laodicean condition is the opposite of John 15. Instead of a branch connected to the vine and flowing with life, it is a closed door with Jesus standing on the other side. And yet even here, the grace is staggering. He does not kick the door down. He does not walk away. He stands and knocks, patiently offering to come in and share a meal, the most intimate act of fellowship in the ancient world. The antidote to the Laodicean condition is not more effort; it is simply opening the door and letting Him back in. That is what abiding looks like when it has been lost and then restored.</p>
+          <p>This verse comes from Jesus' message to the church in Laodicea, the church that thought it had everything but was actually spiritually lukewarm, wretched, and blind (<a class="vlink" href="https://www.bible.com/bible/3034/REV.3.17" target="_blank" rel="noopener" data-verse="revelation-3-17" data-ref="Revelation 3:17" aria-expanded="false">Revelation 3:17</a>). It is the ultimate picture of what happens when abiding stops: Jesus ends up on the outside of His own church, knocking. The Laodicean condition is the opposite of John 15. Instead of a branch connected to the vine and flowing with life, it is a closed door with Jesus standing on the other side. And yet even here, the grace is staggering. He does not kick the door down. He does not walk away. He stands and knocks, patiently offering to come in and share a meal, the most intimate act of fellowship in the ancient world. The antidote to the Laodicean condition is not more effort; it is simply opening the door and letting Him back in. That is what abiding looks like when it has been lost and then restored.</p>
         </div>
-      </div>
+      </figure>
 
-    </div>
+    </section>
 
-    <!-- STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Phone That Never Gets Plugged In</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Phone That Never Gets Plugged In</h3>
       <p>You know how your phone works when it is at 100% battery. Everything is fast, the screen is bright, the apps load instantly, and you can handle anything the day throws at you. But somewhere around 15%, things start to change. The screen dims. Apps crash. The phone starts making desperate choices about what to shut down to survive a few more minutes. And if you never plug it back in, eventually it just goes dark.</p>
       <p>Most of us would never let our phone die on purpose. We carry chargers, hunt for outlets, borrow cables from strangers in airports. But spiritually, we do this all the time. We run on whatever charge we got from last Sunday's sermon or last month's prayer retreat, and then we wonder why everything feels dim and sluggish by Wednesday. Jesus is not describing a weekly recharge. He is describing a phone that stays plugged in while it is being used. That is what "abide" means: continuous connection, not periodic top-ups. The fruit in your life is not about how hard you are working; it is about whether you are still plugged in.</p>
-    </div>
+    </section>
 
-    <!-- TODAY'S WORLD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">America's Disconnection Epidemic Proves Jesus Right</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>America's Disconnection Epidemic Proves Jesus Right</h3>
       <p>In December 2025, AARP Research published "Disconnected: The Escalating Challenge of Loneliness Among Adults 45-Plus," a survey of over 3,200 Americans conducted by Ipsos. The findings were striking: 4 in 10 adults over 45 now report feeling lonely, up significantly from 35% in previous surveys. Adults in their 40s and 50s are the most vulnerable, and the study found that shrinking social networks are one of the strongest predictors of loneliness. Community engagement, including attendance at religious services, volunteering, and involvement in local groups, is declining across the board.</p>
       <p>The researchers noted something that reads like a commentary on John 15: technology offers the appearance of connection, but it rarely creates the deep, sustained relationships that actually address loneliness. People who are already disconnected tend to turn to passive activities like scrolling social media, which provide a feeling of proximity without genuine attachment. Nearly a quarter of lonely adults expressed interest in AI companionship as a substitute for human relationship. Jesus' vine-and-branches metaphor speaks directly into this cultural moment. Surface-level connection is not abiding. Proximity is not relationship. What the research calls "meaningful, in-person interactions," Jesus called remaining: a real, living, reciprocal bond that actually sustains life.</p>
-    </div>
+    </section>
 
-    <!-- CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Jesus did not say "I am <em>like</em> a vine." He said, "I am the true vine." He is not offering an illustration; He is making an identity claim. Every branch in the Old Testament vineyard that went wild and sour finds its correction in Him. He is the vine that Israel was always supposed to be, and the only way we bear fruit is by drawing our life directly from Him.</p>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Jesus did not say "I am <em>like</em> a vine." He said, "I am the true vine." He is not offering an illustration; He is making an identity claim. Every branch in the Old Testament vineyard that went wild and sour finds its correction in Him. He is the vine that Israel was always supposed to be, and the only way we bear fruit is by drawing our life directly from Him.</p>
       <p>And consider the timing: He spoke these words hours before the Cross. The vine was about to be crushed. The One who said "remain in me" was about to be torn from His disciples, buried in a tomb, and seemingly cut off from everyone. Yet it was precisely through the crushing, through the Cross and the resurrection, that the vine became capable of sustaining every branch for all of history. His death was not a severing; it was a planting. And now, risen and alive, He offers what no dead religious system ever could: a living connection that produces real fruit, real joy, and real transformation. Every other source of spiritual life eventually dries up. He never does.</p>
-    </div>
+    </section>
 
-    <!-- APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Set a recurring alarm on your phone for three different times today (morning, midday, and evening). When each alarm goes off, pause for 60 seconds, take a breath, and silently pray one sentence: "Jesus, I am choosing to remain in You right now." Do not add anything else. Do not make a list of requests. Just reconnect. Three times. Sixty seconds each. This is what it looks like to practice abiding in the middle of a real day.
       </div>
-    </div>
+    </section>
 
-    <!-- PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Lord Jesus, You are the true Vine, and we confess that we have spent too many days trying to produce fruit on our own. We have treated our relationship with You like a weekend appointment instead of a continuous connection. Forgive us for the times we have let the door close and tried to live on yesterday's grace. Teach us what it really means to remain, to dwell in You the way a branch draws life from the vine, moment by moment, without straining or performing. Thank You that Your commands are not a burden, that Your yoke is easy, and that the goal of all of this is joy, Your joy, made complete in us. We open the door today. Come in. Stay. We want to abide. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">If someone watched your daily routine for a week without you knowing, would they see evidence that you are abiding in Christ, or would they see someone running on reserve power? What would need to change?</div>
+    </section>
 
-    <!-- DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">If someone watched your daily routine for a week without you knowing, would they see evidence that you are abiding in Christ, or would they see someone running on reserve power? What would need to change?</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Lord Jesus, You are the true Vine, and we confess that we have spent too many days trying to produce fruit on our own. We have treated our relationship with You like a weekend appointment instead of a continuous connection. Forgive us for the times we have let the door close and tried to live on yesterday's grace. Teach us what it really means to remain, to dwell in You the way a branch draws life from the vine, moment by moment, without straining or performing. Thank You that Your commands are not a burden, that Your yoke is easy, and that the goal of all of this is joy, Your joy, made complete in us. We open the door today. Come in. Stay. We want to abide. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-03-31.html"><span class="day-nav-kicker">← Tuesday</span><span class="day-nav-title">Everlasting Love</span></a><a class="day-nav-item" href="/bible-study/2026-04-02.html"><span class="day-nav-kicker">Thursday →</span><span class="day-nav-title">Linked to the Vine</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"isaiah-5-1-7":{"ref":"Isaiah 5:1-7","text":"I will sing for my beloved a song of his vineyard: My beloved had a vineyard on a very fertile hill. He dug it up and cleared the stones and planted the finest vines. He built a watchtower in the middle and dug out a winepress as well. He waited for the vineyard to yield good grapes, but the fruit it produced was sour! \u201cAnd now, O dwellers of Jerusalem and men of Judah, I exhort you to judge between Me and My vineyard. What more could have been done for My vineyard than I have done for it? Why, when I expected sweet grapes, did it bring forth sour fruit? Now I will tell you what I am about to do to My vineyard: I will take away its hedge, and it will be consumed; I will tear down its wall, and it will be trampled. I will make it a wasteland, neither pruned nor cultivated, and thorns and briers will grow up. I will command the clouds that rain shall not fall on it.\u201d For the vineyard of the LORD of Hosts is the house of Israel, and the men of Judah are the plant of His delight. He looked for justice, but saw bloodshed; for righteousness, but heard a cry of distress.","bibleUrl":"https://www.bible.com/bible/3034/ISA.5.1"},"jeremiah-2-21":{"ref":"Jeremiah 2:21","text":"I had planted you like a choice vine from the very best seed. How could you turn yourself before Me into a rotten, wild vine?","bibleUrl":"https://www.bible.com/bible/3034/JER.2.21"},"john-15-1-11":{"ref":"John 15:1-11","text":"\u201cI am the true vine, and My Father is the keeper of the vineyard. He cuts off every branch in Me that bears no fruit, and every branch that does bear fruit, He prunes to make it even more fruitful. You are already clean because of the word I have spoken to you. Remain in Me, and I will remain in you. Just as no branch can bear fruit by itself unless it remains in the vine, neither can you bear fruit unless you remain in Me. I am the vine and you are the branches. The one who remains in Me, and I in him, will bear much fruit. For apart from Me you can do nothing. If anyone does not remain in Me, he is like a branch that is thrown away and withers. Such branches are gathered up, thrown into the fire, and burned. If you remain in Me and My words remain in you, ask whatever you wish, and it will be done for you. This is to My Father\u2019s glory, that you bear much fruit, proving yourselves to be My disciples. As the Father has loved Me, so have I loved you. Remain in My love. If you keep My commandments, you will remain in My love, just as I have kept My Father\u2019s commandments and remain in His love. I have told you these things so that My joy may be in you and your joy may be complete.","bibleUrl":"https://www.bible.com/bible/3034/JHN.15.1-11"},"1-john-5-3":{"ref":"1 John 5:3","text":"For this is the love of God, that we keep His commandments. And His commandments are not burdensome,","bibleUrl":"https://www.bible.com/bible/3034/1JN.5.3"},"revelation-3-20":{"ref":"Revelation 3:20","text":"Behold, I stand at the door and knock. If anyone hears My voice and opens the door, I will come in and dine with him, and he with Me.","bibleUrl":"https://www.bible.com/bible/3034/REV.3.20"},"john-1-38-39":{"ref":"John 1:38-39","text":"Jesus turned and saw them following. \u201cWhat do you want?\u201d He asked. They said to Him, \u201cRabbi\u201d (which means Teacher), \u201cwhere are You staying?\u201d \u201cCome and see,\u201d He replied. So they went and saw where He was staying, and spent that day with Him. It was about the tenth hour.","bibleUrl":"https://www.bible.com/bible/3034/JHN.1.38"},"revelation-3-17":{"ref":"Revelation 3:17","text":"You say, \u2018I am rich; I have grown wealthy and need nothing.\u2019 But you do not realize that you are wretched, pitiful, poor, blind, and naked.","bibleUrl":"https://www.bible.com/bible/3034/REV.3.17"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

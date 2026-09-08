@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
-<meta name="study-title" content="Protecting the Church&#x27;s Identity">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 4, Sin in the Church · Part 4 of 7">
+<title>Protecting the Church's Identity — Daily Bible Study</title>
+<meta name="study-title" content="Protecting the Church's Identity">
+<meta name="study-passage" content="1 Corinthians 6:1">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 4, Sin in the Church · Day 4 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
-<meta property="og:title" content="Protecting the Church&#x27;s Identity">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 4, Sin in the Church · Part 4 of 7 · Daily Bible Study">
+<meta property="og:title" content="Protecting the Church's Identity">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 4, Sin in the Church · Day 4 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-07-21.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 4, Sin in the Church · Part 4 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 4, Sin in the Church · Day 4 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,326 +38,203 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Protecting the Church's Identity</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 4, Sin in the Church</span>
-      <span>Part 4 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">July 21, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Tue · Jul 21</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
+    </div>
+    <h1 class="study-title">Protecting the Church's Identity</h1>
+    <p class="study-sub"><span class="sub-title">Sin in the Church</span><span class="sub-facts"><span>Lesson 4</span><span>Day 4 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>Picture the scene the city could not stop watching. Two members of the same small church stand in Corinth's forum, suing each other before a pagan judge while the neighbors enjoy the show. Paul is nearly speechless. Is there really no one wise among you? People destined to judge angels are hiring the world to referee a business squabble. Underneath the lawsuits he finds the real problem, a church forgetting who it is, and he answers with a list of everything they used to be. <strong>You were washed. Do not let a dispute talk you out of your name.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday the church learned the difference between God's jurisdiction and its own. God judges outsiders, Paul said. The family tends what happens under its own roof. Today we watch the Corinthians run that principle exactly backwards. Matters that belonged inside the family, disputes between brothers, are being marched downtown and handed to outsiders to decide. The same church that had no stomach for judging a scandal inside its walls found plenty of stomach for suing its own members in front of pagans. Tolerance where there should have been grief, and litigation where there should have been family. Paul reads both as symptoms of the same amnesia. They have forgotten who they are.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Picture the scene the city could not stop watching. Two members of the same small church stand in Corinth's forum, suing each other before a pagan judge while the neighbors enjoy the show. Paul is nearly speechless. Is there really no one wise among you? People destined to judge angels are hiring the world to referee a business squabble. Underneath the lawsuits he finds the real problem, a church forgetting who it is, and he answers with a list of everything they used to be. <strong>You were washed. Do not let a dispute talk you out of your name.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday the church learned the difference between God's jurisdiction and its own. God judges outsiders, Paul said. The family tends what happens under its own roof. Today we watch the Corinthians run that principle exactly backwards. Matters that belonged inside the family, disputes between brothers, are being marched downtown and handed to outsiders to decide. The same church that had no stomach for judging a scandal inside its walls found plenty of stomach for suing its own members in front of pagans. Tolerance where there should have been grief, and litigation where there should have been family. Paul reads both as symptoms of the same amnesia. They have forgotten who they are.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Synagogue Next Door Settled Its Own Quarrels</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Synagogue Next Door Settled Its Own Quarrels</h3>
       <p>Two Jewish merchants in a Roman city had a problem, a shipment paid for and never delivered, and everyone in their community knew exactly where that problem would go. Not to the governor's tribunal. To a quiet room near the synagogue, where a panel of respected elders would hear both men out, weigh the Torah, and settle the matter. For centuries, scattered Jewish communities had carried their own justice with them, a court of their own wherever enough families gathered. Rome, pragmatic as ever, mostly let them. Moses had commanded Israel to appoint judges within the community back in the wilderness years, and the habit survived exile, empire, and every hostile neighborhood in between. Family matters stayed in the family. Dragging a fellow Jew before a pagan magistrate was close to unthinkable, a public announcement that your community could not govern itself.</p>
       <p>The church in Corinth was born inside that inheritance. Its first members had watched internal justice work their whole lives, patient, private, anchored in God's law. And they walked away from it. Believers with disputes went downtown instead, to the public tribunal where orators performed and rank quietly tipped the scales, and where the city could watch Jesus' people tear at each other for sport. Paul's astonishment in this chapter is not that Christians had conflicts. Every family does. It is that the family with the oldest tradition of settling its own matters, and the greatest Judge to imitate, had chosen the world's stage for its fights. The church did not just have a legal problem. It had an identity problem.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>There is a question hiding in the middle of this passage that drips with irony. Is there really not one wise person among you? This is Corinth, the church that boasted about wisdom, sorted itself by clever teachers, and rated preachers like entertainment. Paul has spent three chapters deflating that pride, and now it lands with a thud. All that wisdom, and nobody can arbitrate a dispute between brothers. Today's reading (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.1-13" target="_blank" rel="noopener">1 Corinthians 6:1-13</a>) follows the lawsuits down to the appetites underneath them, and it keeps asking the church one question. Do you remember whose you are?</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>There is a question hiding in the middle of this passage that drips with irony. Is there really not one wise person among you? This is Corinth, the church that boasted about wisdom, sorted itself by clever teachers, and rated preachers like entertainment. Paul has spent three chapters deflating that pride, and now it lands with a thud. All that wisdom, and nobody can arbitrate a dispute between brothers. Today's reading (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.1-13" target="_blank" rel="noopener" data-verse="1-corinthians-6-1-13" data-ref="1 Corinthians 6:1-13" aria-expanded="false">1 Corinthians 6:1-13</a>) follows the lawsuits down to the appetites underneath them, and it keeps asking the church one question. Do you remember whose you are?</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 6:1 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:e795ff291a8a16dbe40dd2e5b788b9a3f55af62fce9b59c6ce3cb74e80dbf27c | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 6:1</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.6.1" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.6.1" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">If any of you has a grievance against another, how dare he go to law before the unrighteous instead of before the saints!</div>
 <div class="verse-commentary">
-          <p>Paul's word for the dispute is <em>pragma</em>, Greek for a thing, a matter, an ordinary piece of business, and the ordinariness is part of his point. This was not a criminal case. Crimes belonged to the state's courts, whose God-given authority Paul affirms elsewhere (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.13.1-5" target="_blank" rel="noopener">Romans 13:1-5</a>). This was civil, a contract, a debt, a property line, the small change of life together. And for that, believers marched each other in front of judges Paul calls the unrighteous, not because every magistrate was corrupt but because they stood outside the covenant, strangers to the Lord both parties claimed. How dare you is strong language for a small-claims fight. Paul uses it because of what the venue announced. Taking the family's matter to the world's referees told the whole city that the family had no Father worth consulting.</p>
+          <p>Paul's word for the dispute is <em>pragma</em>, Greek for a thing, a matter, an ordinary piece of business, and the ordinariness is part of his point. This was not a criminal case. Crimes belonged to the state's courts, whose God-given authority Paul affirms elsewhere (<a class="vlink" href="https://www.bible.com/bible/3034/ROM.13.1-5" target="_blank" rel="noopener" data-verse="romans-13-1-5" data-ref="Romans 13:1-5" aria-expanded="false">Romans 13:1-5</a>). This was civil, a contract, a debt, a property line, the small change of life together. And for that, believers marched each other in front of judges Paul calls the unrighteous, not because every magistrate was corrupt but because they stood outside the covenant, strangers to the Lord both parties claimed. How dare you is strong language for a small-claims fight. Paul uses it because of what the venue announced. Taking the family's matter to the world's referees told the whole city that the family had no Father worth consulting.</p>
         </div>
-      </div>
+      </figure>
 
-      <p>We never learn what the case was about. The passage sits bracketed by sexual scandal on both sides (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5" target="_blank" rel="noopener">1 Corinthians 5</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.12-20" target="_blank" rel="noopener">1 Corinthians 6:12-20</a>), so the matter may have been tangled in the same mess, and some readers have wondered whether the litigants were the father and son of the affair itself (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.1" target="_blank" rel="noopener">1 Corinthians 5:1</a>). Paul never says, and he does not need to. Whatever the case was (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.1-11" target="_blank" rel="noopener">1 Corinthians 6:1-11</a>), his grief was the spectacle, brother against brother, in front of unbelievers (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.6" target="_blank" rel="noopener">1 Corinthians 6:6</a>), in courts where rank and rhetoric tipped the scales while the city kept score. Even Paul's outline here is borrowed. Moses, too, set legal process right beside sexual sin (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.22.22-24" target="_blank" rel="noopener">Deuteronomy 22:22-24</a>), and Paul walks the same path, handling the church's problems on the Torah's rails rather than Rome's.</p>
+      <p>We never learn what the case was about. The passage sits bracketed by sexual scandal on both sides (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5" target="_blank" rel="noopener">1 Corinthians 5</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.12-20" target="_blank" rel="noopener" data-verse="1-corinthians-6-12-20" data-ref="1 Corinthians 6:12-20" aria-expanded="false">1 Corinthians 6:12-20</a>), so the matter may have been tangled in the same mess, and some readers have wondered whether the litigants were the father and son of the affair itself (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.1" target="_blank" rel="noopener" data-verse="1-corinthians-5-1" data-ref="1 Corinthians 5:1" aria-expanded="false">1 Corinthians 5:1</a>). Paul never says, and he does not need to. Whatever the case was (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.1-11" target="_blank" rel="noopener" data-verse="1-corinthians-6-1-11" data-ref="1 Corinthians 6:1-11" aria-expanded="false">1 Corinthians 6:1-11</a>), his grief was the spectacle, brother against brother, in front of unbelievers (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.6" target="_blank" rel="noopener" data-verse="1-corinthians-6-6" data-ref="1 Corinthians 6:6" aria-expanded="false">1 Corinthians 6:6</a>), in courts where rank and rhetoric tipped the scales while the city kept score. Even Paul's outline here is borrowed. Moses, too, set legal process right beside sexual sin (<a class="vlink" href="https://www.bible.com/bible/3034/DEU.22.22-24" target="_blank" rel="noopener" data-verse="deuteronomy-22-22-24" data-ref="Deuteronomy 22:22-24" aria-expanded="false">Deuteronomy 22:22-24</a>), and Paul walks the same path, handling the church's problems on the Torah's rails rather than Rome's.</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 5:12-13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:ed0b0a52eb6300ffdf616dacdcbc612f0dfe5b1fc13d9ea4cbee6f6b6ae07aa7 | footnotes-stripped:1 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 5:12-13</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.5.12-13" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 12">12</sup>What business of mine is it to judge those outside the church? Are you not to judge those inside? <sup class="verse-number" aria-label="Verse 13">13</sup>God will judge those outside. “Expel the wicked man from among you.”</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.5.12-13" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 12">12</sup>What business of mine is it to judge those outside the church? Are you not to judge those inside? <sup class="verse-number" aria-label="Verse 13">13</sup>God will judge those outside. “Expel the wicked man from among you.”</div>
 <div class="verse-commentary">
-          <p>Here is the principle underneath both days. The church has a jurisdiction, and it is not the world. Paul refuses to hand out verdicts on outsiders, because God will handle the world's judgment in His own time. But insiders are different. Those who are inside have taken one Lord, joined one body, and handed each other their trust, and that gives the family both the right and the responsibility to settle its own matters. Paul had exercised exactly that inside-jurisdiction over the scandal, judging the case from a distance (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.3" target="_blank" rel="noopener">1 Corinthians 5:3</a>) while the locals dithered. Now he lays the same map over the lawsuits. A dispute between brothers is inside business. Marching it downtown does not just misplace a court case. It redraws the family's borders and seats the world on the bench.</p>
+          <p>Here is the principle underneath both days. The church has a jurisdiction, and it is not the world. Paul refuses to hand out verdicts on outsiders, because God will handle the world's judgment in His own time. But insiders are different. Those who are inside have taken one Lord, joined one body, and handed each other their trust, and that gives the family both the right and the responsibility to settle its own matters. Paul had exercised exactly that inside-jurisdiction over the scandal, judging the case from a distance (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.3" target="_blank" rel="noopener" data-verse="1-corinthians-5-3" data-ref="1 Corinthians 5:3" aria-expanded="false">1 Corinthians 5:3</a>) while the locals dithered. Now he lays the same map over the lawsuits. A dispute between brothers is inside business. Marching it downtown does not just misplace a court case. It redraws the family's borders and seats the world on the bench.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: 1 Corinthians 5:13 | 5:13 Literally Expel the evil from among you; Deuteronomy 13:5, 17:7, 19:19, 21:21, 22:21, 22:24, and 24:7 -->
 
 <!-- BSB_BLOCK: 1 Corinthians 6:9-10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:d82cb4e5216603bcfb75526f6655bfd922c2019ea61d32cb5dbc8d8e21612e9a | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 6:9-10</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.6.9-10" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 9">9</sup>Do you not know that the wicked will not inherit the kingdom of God? Do not be deceived: Neither the sexually immoral, nor idolaters, nor adulterers, nor men who submit to or perform homosexual acts, <sup class="verse-number" aria-label="Verse 10">10</sup>nor thieves, nor the greedy, nor drunkards, nor verbal abusers, nor swindlers, will inherit the kingdom of God.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.6.9-10" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 9">9</sup>Do you not know that the wicked will not inherit the kingdom of God? Do not be deceived: Neither the sexually immoral, nor idolaters, nor adulterers, nor men who submit to or perform homosexual acts, <sup class="verse-number" aria-label="Verse 10">10</sup>nor thieves, nor the greedy, nor drunkards, nor verbal abusers, nor swindlers, will inherit the kingdom of God.</div>
 <div class="verse-commentary">
-          <p>Why does a paragraph about lawsuits suddenly break into a list of sins? Because Paul can smell what is underneath the litigation, greed, swindling, taking what is not yours, the same appetites driving the sexual chaos, and he has already filed lists like this while dealing with the scandal (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.10-11" target="_blank" rel="noopener">1 Corinthians 5:10-11</a>). Notice that sexual sins sit shoulder to shoulder with theft, greed, drunkenness, and abusive speech. Corinth ranked sins by respectability. Paul refuses to, because every entry on the list is the same move, an appetite enthroned where the Lord belongs. The unrighteous, he warns, do not inherit God's kingdom, and unrighteous is the very word he just used for the pagan judges. Act like the world long enough and the question stops being rhetorical. Whose are you? But the list is not a wall to keep sinners out, and the next breath proves it. That is what some of you were (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.11" target="_blank" rel="noopener">1 Corinthians 6:11</a>). Were. You were washed, sanctified, justified in the name of the Lord Jesus. The vice list is a mirror with a caption underneath. Not anymore.</p>
+          <p>Why does a paragraph about lawsuits suddenly break into a list of sins? Because Paul can smell what is underneath the litigation, greed, swindling, taking what is not yours, the same appetites driving the sexual chaos, and he has already filed lists like this while dealing with the scandal (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.5.10-11" target="_blank" rel="noopener" data-verse="1-corinthians-5-10-11" data-ref="1 Corinthians 5:10-11" aria-expanded="false">1 Corinthians 5:10-11</a>). Notice that sexual sins sit shoulder to shoulder with theft, greed, drunkenness, and abusive speech. Corinth ranked sins by respectability. Paul refuses to, because every entry on the list is the same move, an appetite enthroned where the Lord belongs. The unrighteous, he warns, do not inherit God's kingdom, and unrighteous is the very word he just used for the pagan judges. Act like the world long enough and the question stops being rhetorical. Whose are you? But the list is not a wall to keep sinners out, and the next breath proves it. That is what some of you were (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.11" target="_blank" rel="noopener" data-verse="1-corinthians-6-11" data-ref="1 Corinthians 6:11" aria-expanded="false">1 Corinthians 6:11</a>). Were. You were washed, sanctified, justified in the name of the Lord Jesus. The vice list is a mirror with a caption underneath. Not anymore.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Name on the Front of the Jersey</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Name on the Front of the Jersey</h3>
       <p>Late in a blowout loss, the cameras find two teammates on the same sideline, helmets off, chests together, screaming at each other over a blown assignment. Every phone in the stadium is already up and recording. By morning the clip has ten million views and a one-word caption. Meltdown. Nobody in the comments knows what the assignment was. Nobody cares. The score is forgotten, the opponent is forgotten, and all anyone remembers is that this team turned on itself in public. Which is why every veteran locker room lives by the same unwritten rule. Have it out in here if you have to. Grab a facemask, clear the air, say the hard thing behind that door. Never out there.</p>
       <p>Paul is the old captain in this chapter. He never pretends believers will not collide. Families do, teams do, churches do. His grief is the venue. Two brothers marched their quarrel into Corinth's forum and let a city that despised their Lord hand down the family's verdict, and whatever that verdict was, the loss was already total, because the city did not learn who was right. It learned that Jesus' people fight like everyone else. Remember what a team jersey teaches. The name on the back is yours. The name on the front belongs to everybody, and it is the only one the crowd can read from the stands. You can win the argument and stain that name, or take the loss and keep it clean. The captain only ever cares about the front of the jersey.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Fight Two of Every Five Websites Watched</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Fight Two of Every Five Websites Watched</h3>
       <p>WordPress is the free software quietly running roughly two of every five websites on earth, built over twenty years by a worldwide community of volunteers who mostly liked each other. Then, in September 2024, at the community's own flagship conference, WordPress's co-founder stood on stage and publicly declared war on one of the ecosystem's biggest hosting companies, WP Engine, calling it "a cancer to WordPress" in a dispute over trademarks and contributions. Within weeks the fight was everywhere the public could see it. Blocked access that stranded thousands of sites, a federal lawsuit, a court injunction, banned contributors, resignations, and a running stream of blog posts and interviews. An independent timeline that tracks the conflict had logged 74 separate events by early 2026, with the case still grinding through court. Meanwhile the trackers that measure such things recorded a turn of their own. WordPress's long-growing share of the web has been slipping across the same stretch, a fact the usage charts report without explaining.</p>
       <p>Here is the detail worth sitting with. Almost nobody watching ever learned the merits. Whether the original grievance was righteous is a question the internet never answered, because it never asked. What the watching world saw was simpler and worse, the family that built the open web tearing at itself in public. No tracker can prove what the fight has cost the platform, and a slipping market share can have many causes. But a witness does not wait on proof. That is Paul's grief in Corinth, updated. When brothers take the family quarrel to a venue the world can watch, the world does not learn who was right. It learns that the name on the front cannot hold its own house together. You can win the case and lose the witness. Twenty years of trust can shrink in one keynote.</p>
       <!-- TODAYS_WORLD_SOURCE: WordPress vs WP Engine Conflict Timeline: Complete History | wpvswpe.report (independent timeline, updated March 2026) | 2026 | https://wpvswpe.report/ -->
       <!-- TODAYS_WORLD_SOURCE: Usage Statistics and Market Share of WordPress (usage trend, share of all websites) | W3Techs | 2026 | https://w3techs.com/technologies/comparison/cm-wordpress -->
-    </div>
+    <details class="disclosure source-disclosure"><summary class="disclosure-summary"><span class="disclosure-label">Sources</span> <span class="disclosure-publisher">wpvswpe.report (independent timeline, updated March 2026), W3Techs</span></summary><div class="disclosure-body">
+<p><cite>WordPress vs WP Engine Conflict Timeline: Complete History</cite>. wpvswpe.report (independent timeline, updated March 2026), 2026. <a href="https://wpvswpe.report/" target="_blank" rel="noopener noreferrer">Read the source</a>.</p>
+<p><cite>Usage Statistics and Market Share of WordPress (usage trend, share of all websites)</cite>. W3Techs, 2026. <a href="https://w3techs.com/technologies/comparison/cm-wordpress" target="_blank" rel="noopener noreferrer">Read the source</a>.</p>
+</div></details></section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>The most Jesus-shaped sentence in this chapter is a question nobody wants to ask. Why not rather be wronged? (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.7" target="_blank" rel="noopener">1 Corinthians 6:7</a>). Paul dares to suggest that losing on purpose can be the most Christian move on the table, and he learned that from his Lord. Jesus once refused to arbitrate an inheritance fight between brothers, asking who had appointed Him their judge (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.12.14" target="_blank" rel="noopener">Luke 12:14</a>), and then went on to do something far stranger than judging. He absorbed the loss Himself. Falsely accused, He offered no defense. Entitled to armies of angels, He took the nails. The only man who ever deserved to win every case chose to be wronged, cheated, and condemned, and that unjust verdict is the reason we can be called justified at all. Paul tips the same irony toward Corinth, reminding them that the saints will one day judge the world and even angels (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.2" target="_blank" rel="noopener">1 Corinthians 6:2</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.3" target="_blank" rel="noopener">1 Corinthians 6:3</a>). People with that future can afford to lose a property dispute. The cross does not just forgive our fights. It embarrasses them.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>The most Jesus-shaped sentence in this chapter is a question nobody wants to ask. Why not rather be wronged? (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.7" target="_blank" rel="noopener" data-verse="1-corinthians-6-7" data-ref="1 Corinthians 6:7" aria-expanded="false">1 Corinthians 6:7</a>). Paul dares to suggest that losing on purpose can be the most Christian move on the table, and he learned that from his Lord. Jesus once refused to arbitrate an inheritance fight between brothers, asking who had appointed Him their judge (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.12.14" target="_blank" rel="noopener" data-verse="luke-12-14" data-ref="Luke 12:14" aria-expanded="false">Luke 12:14</a>), and then went on to do something far stranger than judging. He absorbed the loss Himself. Falsely accused, He offered no defense. Entitled to armies of angels, He took the nails. The only man who ever deserved to win every case chose to be wronged, cheated, and condemned, and that unjust verdict is the reason we can be called justified at all. Paul tips the same irony toward Corinth, reminding them that the saints will one day judge the world and even angels (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.2" target="_blank" rel="noopener" data-verse="1-corinthians-6-2" data-ref="1 Corinthians 6:2" aria-expanded="false">1 Corinthians 6:2</a>, <a class="vlink" href="https://www.bible.com/bible/3034/1CO.6.3" target="_blank" rel="noopener" data-verse="1-corinthians-6-3" data-ref="1 Corinthians 6:3" aria-expanded="false">1 Corinthians 6:3</a>). People with that future can afford to lose a property dispute. The cross does not just forgive our fights. It embarrasses them.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Name the dispute you are closest to right now, the simmering conflict with another believer, the money someone owes you, the public callout you have half-drafted. Before you take the next step, do the math Paul forces on Corinth. What would it cost you to absorb this wrong, and what will winning it cost the family's witness? Then take one concrete de-escalating step today. Propose a mediator you both trust, make the phone call instead of the post, or decide, in writing, what you are willing to lose to keep a brother.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we confess how much we like to win. We keep score in our churches, our marriages, our group chats, and we can turn even Your family into a courtroom when we feel shortchanged. Forgive us for the fights we have staged in front of a watching world, and for the times we made unbelievers the referees of Your household. Remind us who we are, washed, sanctified, justified, not because we won our case but because Jesus lost His on purpose, for us. Give us one wise friend when conflict comes, the humility to sit down with them, and the strange courage to be wronged rather than to wound. Guard Your church's name in our neighborhoods this week, and let the way we handle our worst disagreements make somebody curious about our Lord. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"Where are you in a standoff with another believer right now, and who is the audience watching you fight it (a comment section, a family text thread, the coworkers who hear your side first)? And in that one specific conflict, what would it actually cost you to take Paul's question seriously, why not rather be wronged?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"Where are you in a standoff with another believer right now, and who is the audience watching you fight it (a comment section, a family text thread, the coworkers who hear your side first)? And in that one specific conflict, what would it actually cost you to take Paul's question seriously, why not rather be wronged?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, we confess how much we like to win. We keep score in our churches, our marriages, our group chats, and we can turn even Your family into a courtroom when we feel shortchanged. Forgive us for the fights we have staged in front of a watching world, and for the times we made unbelievers the referees of Your household. Remind us who we are, washed, sanctified, justified, not because we won our case but because Jesus lost His on purpose, for us. Give us one wise friend when conflict comes, the humility to sit down with them, and the strange courage to be wronged rather than to wound. Guard Your church's name in our neighborhoods this week, and let the way we handle our worst disagreements make somebody curious about our Lord. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-07-20.html"><span class="day-nav-kicker">← Monday</span><span class="day-nav-title">Dealing With Scandals</span></a><a class="day-nav-item" href="/bible-study/2026-07-22.html"><span class="day-nav-kicker">Wednesday →</span><span class="day-nav-title">Antidote Against Sexual Immorality</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"1-corinthians-6-1-13":{"ref":"1 Corinthians 6:1-13","text":"If any of you has a grievance against another, how dare he go to law before the unrighteous instead of before the saints! Do you not know that the saints will judge the world? And if you are to judge the world, are you not competent to judge trivial cases? Do you not know that we will judge angels? How much more the things of this life! So if you need to settle everyday matters, do you appoint as judges those of no standing in the church? I say this to your shame. Is there really no one among you wise enough to arbitrate between his brothers? Instead, one brother goes to law against another, and this in front of unbelievers! The very fact that you have lawsuits among you means that you are thoroughly defeated already. Why not rather be wronged? Why not rather be cheated? Instead, you yourselves cheat and do wrong, even against your own brothers! Do you not know that the wicked will not inherit the kingdom of God? Do not be deceived: Neither the sexually immoral, nor idolaters, nor adulterers, nor men who submit to or perform homosexual acts, nor thieves, nor the greedy, nor drunkards, nor verbal abusers, nor swindlers, will inherit the kingdom of God. And that is what some of you were. But you were washed, you were sanctified, you were justified, in the name of the Lord Jesus Christ and by the Spirit of our God. \u201cEverything is permissible for me,\u201d but not everything is beneficial. \u201cEverything is permissible for me,\u201d but I will not be mastered by anything. \u201cFood for the stomach and the stomach for food,\u201d but God will destroy them both. The body is not intended for sexual immorality, but for the Lord, and the Lord for the body.","bibleUrl":"https://www.bible.com/bible/3034/1CO.6.1-13"},"romans-13-1-5":{"ref":"Romans 13:1-5","text":"Everyone must submit himself to the governing authorities, for there is no authority except that which is from God. The authorities that exist have been appointed by God. Consequently, whoever resists authority is opposing what God has set in place, and those who do so will bring judgment on themselves. For rulers are not a terror to good conduct, but to bad. Do you want to be unafraid of the one in authority? Then do what is right, and you will have his approval. For he is God\u2019s servant for your good. But if you do wrong, be afraid, for he does not carry the sword in vain. He is God\u2019s servant, an agent of retribution to the wrongdoer. Therefore it is necessary to submit to authority, not only to avoid punishment, but also as a matter of conscience.","bibleUrl":"https://www.bible.com/bible/3034/ROM.13.1-5"},"1-corinthians-6-12-20":{"ref":"1 Corinthians 6:12-20","text":"\u201cEverything is permissible for me,\u201d but not everything is beneficial. \u201cEverything is permissible for me,\u201d but I will not be mastered by anything. \u201cFood for the stomach and the stomach for food,\u201d but God will destroy them both. The body is not intended for sexual immorality, but for the Lord, and the Lord for the body. By His power God raised the Lord from the dead, and He will raise us also. Do you not know that your bodies are members of Christ? Shall I then take the members of Christ and unite them with a prostitute? Never! Or don\u2019t you know that he who unites himself with a prostitute is one with her in body? For it is said, \u201cThe two will become one flesh.\u201d But he who unites himself with the Lord is one with Him in spirit. Flee from sexual immorality. Every other sin a man can commit is outside his body, but he who sins sexually sins against his own body. Do you not know that your body is a temple of the Holy Spirit who is in you, whom you have received from God? You are not your own; you were bought at a price. Therefore glorify God with your body.","bibleUrl":"https://www.bible.com/bible/3034/1CO.6.12-20"},"1-corinthians-5-1":{"ref":"1 Corinthians 5:1","text":"It is actually reported that there is sexual immorality among you, and of a kind that is intolerable even among pagans: A man has his father\u2019s wife.","bibleUrl":"https://www.bible.com/bible/3034/1CO.5.1"},"1-corinthians-6-1-11":{"ref":"1 Corinthians 6:1-11","text":"If any of you has a grievance against another, how dare he go to law before the unrighteous instead of before the saints! Do you not know that the saints will judge the world? And if you are to judge the world, are you not competent to judge trivial cases? Do you not know that we will judge angels? How much more the things of this life! So if you need to settle everyday matters, do you appoint as judges those of no standing in the church? I say this to your shame. Is there really no one among you wise enough to arbitrate between his brothers? Instead, one brother goes to law against another, and this in front of unbelievers! The very fact that you have lawsuits among you means that you are thoroughly defeated already. Why not rather be wronged? Why not rather be cheated? Instead, you yourselves cheat and do wrong, even against your own brothers! Do you not know that the wicked will not inherit the kingdom of God? Do not be deceived: Neither the sexually immoral, nor idolaters, nor adulterers, nor men who submit to or perform homosexual acts, nor thieves, nor the greedy, nor drunkards, nor verbal abusers, nor swindlers, will inherit the kingdom of God. And that is what some of you were. But you were washed, you were sanctified, you were justified, in the name of the Lord Jesus Christ and by the Spirit of our God.","bibleUrl":"https://www.bible.com/bible/3034/1CO.6.1-11"},"1-corinthians-6-6":{"ref":"1 Corinthians 6:6","text":"Instead, one brother goes to law against another, and this in front of unbelievers!","bibleUrl":"https://www.bible.com/bible/3034/1CO.6.6"},"deuteronomy-22-22-24":{"ref":"Deuteronomy 22:22-24","text":"If a man is found lying with another man\u2019s wife, both the man who slept with her and the woman must die. You must purge the evil from Israel. If there is a virgin pledged in marriage to a man, and another man encounters her in the city and sleeps with her, you must take both of them out to the gate of that city and stone them to death\u2014the young woman because she did not cry out in the city, and the man because he has violated his neighbor\u2019s wife. So you must purge the evil from among you.","bibleUrl":"https://www.bible.com/bible/3034/DEU.22.22-24"},"1-corinthians-5-3":{"ref":"1 Corinthians 5:3","text":"Although I am absent from you in body, I am present with you in spirit, and I have already pronounced judgment on the one who did this, just as if I were present.","bibleUrl":"https://www.bible.com/bible/3034/1CO.5.3"},"1-corinthians-5-10-11":{"ref":"1 Corinthians 5:10-11","text":"I was not including the sexually immoral of this world, or the greedy and swindlers, or idolaters. In that case you would have to leave this world. But now I am writing you not to associate with anyone who claims to be a brother but is sexually immoral or greedy, an idolater or a verbal abuser, a drunkard or a swindler. With such a man do not even eat.","bibleUrl":"https://www.bible.com/bible/3034/1CO.5.10-11"},"1-corinthians-6-11":{"ref":"1 Corinthians 6:11","text":"And that is what some of you were. But you were washed, you were sanctified, you were justified, in the name of the Lord Jesus Christ and by the Spirit of our God.","bibleUrl":"https://www.bible.com/bible/3034/1CO.6.11"},"1-corinthians-6-7":{"ref":"1 Corinthians 6:7","text":"The very fact that you have lawsuits among you means that you are thoroughly defeated already. Why not rather be wronged? Why not rather be cheated?","bibleUrl":"https://www.bible.com/bible/3034/1CO.6.7"},"luke-12-14":{"ref":"Luke 12:14","text":"But Jesus replied, \u201cMan, who appointed Me judge or executor between you?\u201d","bibleUrl":"https://www.bible.com/bible/3034/LUK.12.14"},"1-corinthians-6-2":{"ref":"1 Corinthians 6:2","text":"Do you not know that the saints will judge the world? And if you are to judge the world, are you not competent to judge trivial cases?","bibleUrl":"https://www.bible.com/bible/3034/1CO.6.2"},"1-corinthians-6-3":{"ref":"1 Corinthians 6:3","text":"Do you not know that we will judge angels? How much more the things of this life!","bibleUrl":"https://www.bible.com/bible/3034/1CO.6.3"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

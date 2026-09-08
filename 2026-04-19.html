@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>The Most Powerful Weapon — Daily Bible Study</title>
 <meta name="study-title" content="The Most Powerful Weapon">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Part 2 of 7">
+<meta name="study-passage" content="Ephesians 6:17-18">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Day 2 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="The Most Powerful Weapon">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Part 2 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Day 2 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-04-19.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Part 2 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Day 2 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,356 +38,237 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>The Most Powerful Weapon</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 4, The Role of the Bible</span>
-      <span>Part 2 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Sun · Apr 19</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">11 min</span>
     </div>
-    <div class="date-badge">April 19, 2026</div>
+    <h1 class="study-title">The Most Powerful Weapon</h1>
+    <p class="study-sub"><span class="sub-title">The Role of the Bible</span><span class="sub-facts"><span>Lesson 4</span><span>Day 2 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">A prisoner in a Roman cell, chained to a soldier he could not ignore, wrote the clearest description of spiritual warfare the New Testament contains.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p class="tldr-hook">A prisoner in a Roman cell, chained to a soldier he could not ignore, wrote the clearest description of spiritual warfare the New Testament contains.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span> Paul's only offensive weapon in the full armor of God is the "sword of the Spirit," a specific word God gives for a specific fight.</li>
-        <li><span class="bullet-icon">☩</span> The enemy's most effective attack is not temptation or doubt; it is a scheduled, polite, convincing campaign of distraction that keeps the Bible closed.</li>
-        <li><span class="bullet-icon">☩</span> When God's people stop reading, the damage shows up first in the people around them: shorter tempers with kids, strained marriages, thinner patience at work.</li>
-        <li><span class="bullet-icon">☩</span> Our devotion is inconsistent. Lamentations says God's mercy is not. The gap between those two sentences is where grace actually lives.</li>
+        <li>
+<span class="bullet-icon">☩</span> Paul's only offensive weapon in the full armor of God is the "sword of the Spirit," a specific word God gives for a specific fight.</li>
+        <li>
+<span class="bullet-icon">☩</span> The enemy's most effective attack is not temptation or doubt; it is a scheduled, polite, convincing campaign of distraction that keeps the Bible closed.</li>
+        <li>
+<span class="bullet-icon">☩</span> When God's people stop reading, the damage shows up first in the people around them: shorter tempers with kids, strained marriages, thinner patience at work.</li>
+        <li>
+<span class="bullet-icon">☩</span> Our devotion is inconsistent. Lamentations says God's mercy is not. The gap between those two sentences is where grace actually lives.</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday we sat with a Roman short sword. Hebrews 4:12 put the <em>machaira</em> in our hands and said the book on our shelf is closer to that than to a coffee table decoration. Today we find out who the blade is for. Paul, writing from a prison cell, takes us onto the actual battlefield. The enemy is real, the strategy is ancient, and the first move is almost always the same. Keep the Bible closed. Before the week walks through authority, truth, and the condition of the heart, today is the recruitment notice. You are in a fight. You have been handed a weapon. Most believers lose by never drawing it.</p>
-    </div>
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday we sat with a Roman short sword. Hebrews 4:12 put the <em>machaira</em> in our hands and said the book on our shelf is closer to that than to a coffee table decoration. Today we find out who the blade is for. Paul, writing from a prison cell, takes us onto the actual battlefield. The enemy is real, the strategy is ancient, and the first move is almost always the same. Keep the Bible closed. Before the week walks through authority, truth, and the condition of the heart, today is the recruitment notice. You are in a fight. You have been handed a weapon. Most believers lose by never drawing it.</p>
+    </section>
 
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Apostle and His Guard</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Apostle and His Guard</h3>
       <p>Around A.D. 62, Paul is under house arrest in Rome, chained wrist-to-wrist in rotating shifts to a member of the Praetorian Guard, the emperor's elite unit. When he dictates Ephesians 6, he is not reaching for a metaphor. He is looking at one. The belt, the breastplate, the sandals, the shield, the helmet, the sword are not abstract concepts. They are the gear of the soldier three feet away. Every recipient in Ephesus would have understood this at sight. Ephesus was a Roman provincial capital with a substantial garrison, and Roman legionaries were a daily feature of the streets and markets.</p>
       <p>The detail that matters for today is the sword. Paul specifies the <em>machaira</em>, not the long cavalry sword (<em>rhomphaia</em>) and not the ceremonial gladius. The <em>machaira</em> was the infantryman's short sword, roughly two feet long, double-edged, designed for the thrust at close range. It was the weapon you used when the fight had already arrived. And the word Paul pairs it with, "word of God," is not the usual <em>logos</em>. He uses <em>rhema</em>, a specific, spoken word. Not the Bible in the abstract. The exact verse, the exact truth, the exact promise the Holy Spirit hands you for the exact fight in front of you. This is the armory the lesson will walk through all week. Everything in Ephesians 6 is defensive except one piece. The one offensive weapon is the one most believers never learn to draw.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>The anchor for today is Paul's short sentence about the sword and the prayer in Ephesians 6:17-18. The reason this is where the week starts, and not with a philosophical claim about inspiration, is that the weapon comes before the theory of the weapon. Paul tells us what the Bible is for before he tells us why it works. The supporting verses press in from three angles: Lamentations on the steady character behind the weapon, the psalms and Gospels on the creative and combat power of God's spoken word, and Ezekiel on the enemy who knows exactly how sharp the blade is, which is why he spends so much energy making sure you never pick it up.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>The anchor for today is Paul's short sentence about the sword and the prayer in Ephesians 6:17-18. The reason this is where the week starts, and not with a philosophical claim about inspiration, is that the weapon comes before the theory of the weapon. Paul tells us what the Bible is for before he tells us why it works. The supporting verses press in from three angles: Lamentations on the steady character behind the weapon, the psalms and Gospels on the creative and combat power of God's spoken word, and Ezekiel on the enemy who knows exactly how sharp the blade is, which is why he spends so much energy making sure you never pick it up.</p>
 
 <!-- BSB_BLOCK: Ephesians 6:17-18 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:ad5ebe58885d8981a84265bb87d21a11bd334d81c4ab613987cc6f38a9216c63 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Ephesians 6:17-18</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/EPH.6.17-18" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 17">17</sup>And take the helmet of salvation and the sword of the Spirit, which is the word of God. <sup class="verse-number" aria-label="Verse 18">18</sup>Pray in the Spirit at all times, with every kind of prayer and petition. To this end, stay alert with all perseverance in your prayers for all the saints.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/EPH.6.17-18" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 17">17</sup>And take the helmet of salvation and the sword of the Spirit, which is the word of God. <sup class="verse-number" aria-label="Verse 18">18</sup>Pray in the Spirit at all times, with every kind of prayer and petition. To this end, stay alert with all perseverance in your prayers for all the saints.</div>
 <div class="verse-commentary">
         <p>Notice what Paul does not say. He does not tell the Ephesian believers to read the Bible so they can win arguments, feel better about themselves, or produce a correct theology. He tells them to pick it up because they are in a fight. The helmet of salvation protects what you think about who you are in Christ. The sword protects what you say back when the fight begins. And Paul does not leave the sword standing alone. He laces it immediately into prayer. <em>Rhema</em> and <em>proseuche</em>, spoken word and speaking to God, are the same activity from two directions. You are listening in Scripture and speaking in prayer, and both together are how the sword stays sharp.</p>
 
 <p>The grammar of verse 18 is relentless. <em>All</em> times, <em>every</em> prayer, <em>all</em> perseverance, <em>all</em> the saints. Paul refuses to make prayer a devotional hobby. It is the oxygen the sword breathes in. Separate the sword from prayer and you are swinging a dead blade. Separate prayer from Scripture and you are whispering into the dark without a compass.</p>
 
-<p>Here is the practical weight of this. The enemy does not mostly fight believers by convincing them the Bible is wrong. He fights by keeping them busy, tired, distracted, discouraged, and behind schedule. None of those feel demonic. They feel like a normal Tuesday. That is the genius of the strategy. Paul saw it clearly from his cell. The sword is free. The sword is powerful. And most believers will never once this year draw it on purpose in the heat of a real battle. If the only place a reader takes one thing from this study, let it be this: the most powerful weapon in your possession sits on a shelf, and the enemy does not fear it until you pick it up.</p></div>
-      </div>
+<p>Here is the practical weight of this. The enemy does not mostly fight believers by convincing them the Bible is wrong. He fights by keeping them busy, tired, distracted, discouraged, and behind schedule. None of those feel demonic. They feel like a normal Tuesday. That is the genius of the strategy. Paul saw it clearly from his cell. The sword is free. The sword is powerful. And most believers will never once this year draw it on purpose in the heat of a real battle. If the only place a reader takes one thing from this study, let it be this: the most powerful weapon in your possession sits on a shelf, and the enemy does not fear it until you pick it up.</p>
+</div>
+      </figure>
 
 <!-- BSB_BLOCK: Lamentations 3:22-23 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c8c190b198b5ba654db58a7faac7abe88f43c638e91c1fae1c7553b30b2204be | footnotes-stripped:1 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Lamentations 3:22-23</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/LAM.3.22-23" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 22">22</sup>Because of the loving devotion of the LORD we are not consumed, for His mercies never fail. <sup class="verse-number" aria-label="Verse 23">23</sup>They are new every morning; great is Your faithfulness!</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/LAM.3.22-23" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 22">22</sup>Because of the loving devotion of the LORD we are not consumed, for His mercies never fail. <sup class="verse-number" aria-label="Verse 23">23</sup>They are new every morning; great is Your faithfulness!</div>
 <div class="verse-commentary">
         <p>This is the verse the lesson page puts in a box and asks you to read slowly. Consider where it was written. Jeremiah is sitting in the smoking ruins of Jerusalem, watching the city of David burn. The temple is rubble. His people are walking away in chains. The Book of Lamentations is, line by line, the most honest grief in the Old Testament. And right in the middle of it, in chapter three, the prophet says this. God's mercies are new <em>every morning</em>. The Hebrew word for "faithful love" is <em>chesed</em>, the covenant-loyalty word, God's stubborn commitment to keep loving His people when every reason to stop is on fire around them.</p>
 
 <p>Hold that next to your own devotional life. Most of us have had seasons where the Bible went unopened for weeks. Seasons where prayer became a quick thank-You before a meal. Seasons where Sunday morning was more social than spiritual. Our pattern is not steady. God's is. The terrifying and beautiful thing about <em>chesed</em> is that it does not measure itself by ours. His mercies were new this morning whether you noticed them or not. They were new yesterday morning when the Bible stayed closed. They will be new tomorrow whether you remember the anchor or not.</p>
 
-<p>This is not permission to stay inconsistent. It is the ground that makes coming back possible. Most people avoid the Bible in their inconsistent seasons because they expect to be met with disappointment. <em>Chesed</em> is why that expectation is wrong.</p></div>
-      </div>
+<p>This is not permission to stay inconsistent. It is the ground that makes coming back possible. Most people avoid the Bible in their inconsistent seasons because they expect to be met with disappointment. <em>Chesed</em> is why that expectation is wrong.</p>
+</div>
+      </figure>
       <!-- BSB_FOOTNOTE: Lamentations 3:22 | 3:22 Forms of the Hebrew chesed are translated here and in most cases throughout the Scriptures as loving devotion; the range of meaning includes love, goodness, kindness, faithfulness, and mercy, as well as loyalty to a covenant. -->
 
 <!-- BSB_BLOCK: Psalms 33:6 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:6113f1a624c9439d51b1733e8785ff34e442fc86b1311ae2572641b942e375f5 | footnotes-stripped:0 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Psalms 33:6</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.33.6" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/PSA.33.6" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">By the word of the LORD the heavens were made, and all the stars by the breath of His mouth.</div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Psalms 33:9 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:fbfe6e37ac64f105f7d8c69129d4e737c9be6c2db24076165d01463ba94c5994 | footnotes-stripped:0 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Psalms 33:9</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/PSA.33.9" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/PSA.33.9" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">For He spoke, and it came to be; He commanded, and it stood firm.</div>
 <div class="verse-commentary">
-          <p>If you want to know how much power is stored in the word of God, look up. The same speech that called galaxies into orbit is the speech that has been written down and handed to you in a paperback volume. When Jesus stood outside Lazarus' tomb, He did not wave a staff. He did not pile up ritual. He spoke three words, "Lazarus, come out" (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.11.43" target="_blank" rel="noopener">John 11:43</a>), and four days of death obeyed. The same pattern runs through the wilderness temptations, where Jesus answered Satan not with power displays but with the short phrase "It is written" (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.4.4" target="_blank" rel="noopener">Matthew 4:4</a>). When the Son of God faced the most concentrated spiritual assault of His human life, He reached for memorized Scripture. That is not a coincidence. That is the pattern.</p>
+          <p>If you want to know how much power is stored in the word of God, look up. The same speech that called galaxies into orbit is the speech that has been written down and handed to you in a paperback volume. When Jesus stood outside Lazarus' tomb, He did not wave a staff. He did not pile up ritual. He spoke three words, "Lazarus, come out" (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.11.43" target="_blank" rel="noopener" data-verse="john-11-43" data-ref="John 11:43" aria-expanded="false">John 11:43</a>), and four days of death obeyed. The same pattern runs through the wilderness temptations, where Jesus answered Satan not with power displays but with the short phrase "It is written" (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.4.4" target="_blank" rel="noopener" data-verse="matthew-4-4" data-ref="Matthew 4:4" aria-expanded="false">Matthew 4:4</a>). When the Son of God faced the most concentrated spiritual assault of His human life, He reached for memorized Scripture. That is not a coincidence. That is the pattern.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Ezekiel 28:14-15 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:37b4780b5bf65a04642736b1f3d8802451fc754a715be6e3fecc55af2324812b | footnotes-stripped:0 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Ezekiel 28:14-15</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/EZK.28.14-15" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 14">14</sup>You were anointed as a guardian cherub, for I had ordained you. You were on the holy mountain of God; you walked among the fiery stones. <sup class="verse-number" aria-label="Verse 15">15</sup>From the day you were created you were blameless in your ways—until wickedness was found in you.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/EZK.28.14-15" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 14">14</sup>You were anointed as a guardian cherub, for I had ordained you. You were on the holy mountain of God; you walked among the fiery stones. <sup class="verse-number" aria-label="Verse 15">15</sup>From the day you were created you were blameless in your ways—until wickedness was found in you.</div>
 <div class="verse-commentary">
           <p>Ezekiel's oracle is addressed to the king of Tyre, but its imagery reaches past any human ruler to the being behind him. The cherub who stood in God's own presence, who walked among the stones of fire, heard God speak and knew firsthand what that voice could do. That is why the opposition to Scripture is personal for him. He lost heaven the moment he turned against the One whose voice had created him. He knows the <em>rhema</em> can restore in your life everything his pride cost him in his. Your distraction is not neutral. It is strategic from the other side. Every time you pick up the Bible on purpose, you are drawing a sword forged in the very voice that exposed him.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Extinguisher on the Wall</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Extinguisher on the Wall</h3>
       <p>Walk into most American kitchens and somewhere near the pantry, usually mounted on a wall or tucked on top of the fridge, sits a small red fire extinguisher. It has been there for years. The gauge is probably still in the green. The pin is probably still in place. The instructions printed on the label have never been read by anyone in the house. And that is the quiet tragedy of most fire extinguishers in most kitchens. Not that they do not work. They work. It is that nobody who owns one has ever taken it down, turned it over, and rehearsed the four short steps on the back, so that when a grease fire flashes up from a skillet at 6:42 on a Tuesday night, the person with the extinguisher in their hand is not fumbling with a label for the first time.</p>
       <p>The sword of the Spirit is that extinguisher. It is on the wall. It works. It has put out fires like the ones in your life for two thousand years. But most of us have not taken it down on a calm afternoon and gotten familiar with how it draws, how it aims, how it sprays. We only remember it when the skillet is already in flames, and then we are squinting at a label instead of pulling a pin. Sunday is a calm afternoon. It is the kind of day made, on purpose, for taking the extinguisher down off the wall before the fire starts. Open the Bible. Feel the weight of the sword. Learn where it draws from. When the skillet flares next Tuesday night, your hands will already know the move.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">Seven Seconds</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>Seven Seconds</h3>
       <p>In the year 2000, the average person's sustained focus on a single piece of digital content was about twelve seconds. By 2023, a large study tracking over forty-five thousand participants across thirteen years had that same number at seven-point-six seconds, a 37 percent collapse. Cross-platform data from early 2026 puts the figure at just under eight seconds overall, and among mobile-first users ages eighteen to thirty-four, the number has fallen to six-point-eight seconds before a person swipes away. Put plainly, most adults under thirty-five cannot stay on one screen long enough to finish reading the average sentence in this paragraph.</p>
       <p>It gets worse. The American Psychological Association's decade-long study of reading habits, covering 2014 to 2024, found a 39 percent decrease in time spent on deep, sustained reading among adults, and a 17 percent drop in reading comprehension scores among the same eighteen-to-thirty-four age group. A separate set of experiments (Nature Scientific Reports, 2023, and Frontiers in Psychology meta-analysis, 2025) found that the mere presence of a phone on the desk, face down, silenced, notifications off, still measurably lowers working memory and sustained attention. The brain quietly spends effort not-looking at the phone, and that effort is subtracted from everything else you are trying to do.</p>
       <p>Put those findings next to Paul's instruction to take up the sword of the Spirit and the picture is stark. The enemy does not need to outlaw the Bible to disarm the church. He only needs to keep the Bible from ever being opened for more than eight seconds at a time. Every time you put your phone in another room and give Scripture a long, slow read, you are not just building a spiritual discipline. You are recovering a faculty your culture is losing.</p>
-    </div>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>When Jesus stepped into the wilderness to face the most focused spiritual attack of His human life, He brought no army and no miracles. He had fasted forty days, and the enemy came at Him when He was at His weakest. Each time, the Son of God answered with the same three words. "It is written." Not "I am God." Not "Stand down." Just a quoted verse, thrust forward like a <em>machaira</em>. The most powerful Person in the universe chose to win His most decisive fight by quoting a book. That is the verdict on how powerful the Word is. It is also the verdict on how powerful it is in your hands. The sword you were given is the one Jesus used. He did not leave you underarmed. He left you with the exact weapon that already beat the enemy once. He is also, in Himself, the Word that became flesh (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.1.14" target="_blank" rel="noopener">John 1:14</a>). Every verse points back to Him.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>When Jesus stepped into the wilderness to face the most focused spiritual attack of His human life, He brought no army and no miracles. He had fasted forty days, and the enemy came at Him when He was at His weakest. Each time, the Son of God answered with the same three words. "It is written." Not "I am God." Not "Stand down." Just a quoted verse, thrust forward like a <em>machaira</em>. The most powerful Person in the universe chose to win His most decisive fight by quoting a book. That is the verdict on how powerful the Word is. It is also the verdict on how powerful it is in your hands. The sword you were given is the one Jesus used. He did not leave you underarmed. He left you with the exact weapon that already beat the enemy once. He is also, in Himself, the Word that became flesh (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.1.14" target="_blank" rel="noopener" data-verse="john-1-14" data-ref="John 1:14" aria-expanded="false">John 1:14</a>). Every verse points back to Him.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Pick one verse you do not already have memorized and commit it to memory this week. Do not pick a famous verse. Pick one that directly answers a lie you hear yourself believe (about your worth, your past, your temper, your future). Write it on a card. Say it out loud three times today. That card is your <em>rhema</em> for the fight this week.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, forgive us for the weeks we have walked around unarmed. Forgive us for treating Your Word as a resource for Sundays instead of the weapon it actually is. We confess how easily we have been outmaneuvered by a strategy we should have seen by now. Busyness. Fatigue. A screen that is always closer than the page. Teach us this week to pick up the sword on purpose. Give us a specific <em>rhema</em>, a spoken word from You that meets the specific fights in our homes, our marriages, our work, our thought life. And when our devotion is inconsistent, which it will be, remind us that Your mercies are new every morning. We do not bring a perfect record. We bring our willingness. Meet us with Your faithful love this week. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"Think about the last stretch of weeks when your Bible sat unopened. What was actually crowding in (a new work schedule, a child's sports season, a streaming show, an ongoing relational stress)? If the enemy's number one strategy is keeping God's Word out of your hands, what is one of those pressures that you would need to start treating as a spiritual threat rather than just a scheduling problem?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"Think about the last stretch of weeks when your Bible sat unopened. What was actually crowding in (a new work schedule, a child's sports season, a streaming show, an ongoing relational stress)? If the enemy's number one strategy is keeping God's Word out of your hands, what is one of those pressures that you would need to start treating as a spiritual threat rather than just a scheduling problem?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, forgive us for the weeks we have walked around unarmed. Forgive us for treating Your Word as a resource for Sundays instead of the weapon it actually is. We confess how easily we have been outmaneuvered by a strategy we should have seen by now. Busyness. Fatigue. A screen that is always closer than the page. Teach us this week to pick up the sword on purpose. Give us a specific <em>rhema</em>, a spoken word from You that meets the specific fights in our homes, our marriages, our work, our thought life. And when our devotion is inconsistent, which it will be, remind us that Your mercies are new every morning. We do not bring a perfect record. We bring our willingness. Meet us with Your faithful love this week. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-04-18.html"><span class="day-nav-kicker">← Saturday</span><span class="day-nav-title">The Role of the Bible</span></a><a class="day-nav-item" href="/bible-study/2026-04-20.html"><span class="day-nav-kicker">Monday →</span><span class="day-nav-title">Scripture, the Authority</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"john-11-43":{"ref":"John 11:43","text":"After Jesus had said this, He called out in a loud voice, \u201cLazarus, come out!\u201d","bibleUrl":"https://www.bible.com/bible/3034/JHN.11.43"},"matthew-4-4":{"ref":"Matthew 4:4","text":"But Jesus answered, \u201cIt is written: \u2018Man shall not live on bread alone, but on every word that comes from the mouth of God.\u2019\u201d","bibleUrl":"https://www.bible.com/bible/3034/MAT.4.4"},"john-1-14":{"ref":"John 1:14","text":"The Word became flesh and made His dwelling among us. We have seen His glory, the glory of the one and only Son from the Father, full of grace and truth.","bibleUrl":"https://www.bible.com/bible/3034/JHN.1.14"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

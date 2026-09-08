@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>A Lifestyle That Reflects the Cross — Daily Bible Study</title>
 <meta name="study-title" content="A Lifestyle That Reflects the Cross">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 3, Unity in Christ · Part 6 of 7">
+<meta name="study-passage" content="2 Corinthians 11:23-28">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 3, Unity in Christ · Day 6 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="A Lifestyle That Reflects the Cross">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 3, Unity in Christ · Part 6 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 3, Unity in Christ · Day 6 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-07-16.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 3, Unity in Christ · Part 6 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 3, Unity in Christ · Day 6 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,322 +38,196 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>A Lifestyle That Reflects the Cross</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 3, Unity in Christ</span>
-      <span>Part 6 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">July 16, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Thu · Jul 16</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
+    </div>
+    <h1 class="study-title">A Lifestyle That Reflects the Cross</h1>
+    <p class="study-sub"><span class="sub-title">Unity in Christ</span><span class="sub-facts"><span>Lesson 3</span><span>Day 6 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>In a world where leaders advertised their honors, Paul brags about his beatings. Five floggings, three shipwrecks, hunger, cold, and the daily weight of worry for churches like Corinth. He pictures the apostles as prisoners at the tail of a Roman parade, marched out last to die while the crowd watches. Why hand a status-drunk church a résumé of scars? Because that is what a life shaped like the cross actually looks like, and it looks like Jesus. <strong>The wounds are not an interruption of the ministry. They are where the love becomes visible.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday we watched Jesus trade a throne for a towel, and Paul told a status-hungry church that real leaders go down, not up. Today he shows us how far down. Servanthood is not just a humble attitude you put on for church. Lived all the way out, it costs you something, and Paul has the scars to prove it. He stops debating leadership in the abstract and lays his own body on the table, beaten, imprisoned, shipwrecked, worn thin with worry for churches like Corinth. If you want to know what a life shaped like the cross actually looks like, he says, stop picturing a stage and look at the wounds.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>In a world where leaders advertised their honors, Paul brags about his beatings. Five floggings, three shipwrecks, hunger, cold, and the daily weight of worry for churches like Corinth. He pictures the apostles as prisoners at the tail of a Roman parade, marched out last to die while the crowd watches. Why hand a status-drunk church a résumé of scars? Because that is what a life shaped like the cross actually looks like, and it looks like Jesus. <strong>The wounds are not an interruption of the ministry. They are where the love becomes visible.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday we watched Jesus trade a throne for a towel, and Paul told a status-hungry church that real leaders go down, not up. Today he shows us how far down. Servanthood is not just a humble attitude you put on for church. Lived all the way out, it costs you something, and Paul has the scars to prove it. He stops debating leadership in the abstract and lays his own body on the table, beaten, imprisoned, shipwrecked, worn thin with worry for churches like Corinth. If you want to know what a life shaped like the cross actually looks like, he says, stop picturing a stage and look at the wounds.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Parade Everyone Cheered Ended With the Condemned</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Parade Everyone Cheered Ended With the Condemned</h3>
       <p>When a Roman general won a great victory, the city threw him a triumph, one of the grandest spectacles the ancient world could stage. He rode through Rome in gold and purple, wagons of plunder rolling behind him, the streets packed and roaring. But the parade had a back end nobody envied. At the very rear, in chains, came the conquered enemies, the captured kings and soldiers, dragged along as living proof of the victory. And for many of them, the parade route ended at the arena or the executioner. The front of the procession was pure glory. The back was a death sentence performed for a cheering crowd.</p>
       <p>Paul deliberately puts himself at the back. When he says God has displayed the apostles "at the end of the procession, like prisoners appointed for death," this Roman parade is the picture in his head, the doomed captives at the tail of the triumph, the part of the show the crowd came to watch die. And here is the scandal he presses on Corinth. They pictured themselves near the front, robed and reigning, and they wanted leaders who matched that fantasy. Paul says the true apostles are marching at the back with the condemned, and that is exactly what makes them look like their Lord, who was Himself paraded to a cross while a crowd looked on. In Corinth everyone wanted the front of the parade. In Christ the glory was waiting at the back.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>Paul has just said a real leader is a steward, not a star. Now he shows the price tag on that kind of life, and it is not a stage. It is a cross-shaped existence. He insists that God Himself sets the standard for Christian leadership, not the applause of a crowd (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.4.1-5" target="_blank" rel="noopener">1 Corinthians 4:1-5</a>), and he points out that even Jesus, during His time on earth, handed every scrap of glory back to the Father (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.17.4" target="_blank" rel="noopener">John 17:4</a>). Then Paul does the one thing no self-promoter would ever do. He builds his entire credibility not on his triumphs but on his scars, and quietly dares the Corinthians to notice which résumé actually looks like the crucified One they claim to follow.</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>Paul has just said a real leader is a steward, not a star. Now he shows the price tag on that kind of life, and it is not a stage. It is a cross-shaped existence. He insists that God Himself sets the standard for Christian leadership, not the applause of a crowd (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.4.1-5" target="_blank" rel="noopener" data-verse="1-corinthians-4-1-5" data-ref="1 Corinthians 4:1-5" aria-expanded="false">1 Corinthians 4:1-5</a>), and he points out that even Jesus, during His time on earth, handed every scrap of glory back to the Father (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.17.4" target="_blank" rel="noopener" data-verse="john-17-4" data-ref="John 17:4" aria-expanded="false">John 17:4</a>). Then Paul does the one thing no self-promoter would ever do. He builds his entire credibility not on his triumphs but on his scars, and quietly dares the Corinthians to notice which résumé actually looks like the crucified One they claim to follow.</p>
 
 <!-- BSB_BLOCK: 2 Corinthians 11:23-28 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:661f68062e054b6fd96b94a700710f1085a1a8574673f5bd3b3a7f4f32dc34fc | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 11:23-28</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.11.23-28" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 23">23</sup>Are they servants of Christ? (I am speaking as if I were out of my mind.) I am so much more: in harder labor, in more imprisonments, in worse beatings, in frequent danger of death. <sup class="verse-number" aria-label="Verse 24">24</sup>Five times I received from the Jews the forty lashes minus one. <sup class="verse-number" aria-label="Verse 25">25</sup>Three times I was beaten with rods, once I was stoned, three times I was shipwrecked. I spent a night and a day in the open sea. <sup class="verse-number" aria-label="Verse 26">26</sup>In my frequent journeys, I have been in danger from rivers and from bandits, in danger from my countrymen and from the Gentiles, in danger in the city and in the country, in danger on the sea and among false brothers, <sup class="verse-number" aria-label="Verse 27">27</sup>in labor and toil and often without sleep, in hunger and thirst and often without food, in cold and exposure. <sup class="verse-number" aria-label="Verse 28">28</sup>Apart from these external trials, I face daily the pressure of my concern for all the churches.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.11.23-28" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 23">23</sup>Are they servants of Christ? (I am speaking as if I were out of my mind.) I am so much more: in harder labor, in more imprisonments, in worse beatings, in frequent danger of death. <sup class="verse-number" aria-label="Verse 24">24</sup>Five times I received from the Jews the forty lashes minus one. <sup class="verse-number" aria-label="Verse 25">25</sup>Three times I was beaten with rods, once I was stoned, three times I was shipwrecked. I spent a night and a day in the open sea. <sup class="verse-number" aria-label="Verse 26">26</sup>In my frequent journeys, I have been in danger from rivers and from bandits, in danger from my countrymen and from the Gentiles, in danger in the city and in the country, in danger on the sea and among false brothers, <sup class="verse-number" aria-label="Verse 27">27</sup>in labor and toil and often without sleep, in hunger and thirst and often without food, in cold and exposure. <sup class="verse-number" aria-label="Verse 28">28</sup>Apart from these external trials, I face daily the pressure of my concern for all the churches.</div>
 <div class="verse-commentary">
           <p>Watch what Paul brags about. In a culture where leaders advertised their honors, their wealth, and their winning streak, Paul lists his beatings. Five floggings, three rods, a stoning, three shipwrecks, a night and a day adrift in open water. Hunger, cold, sleeplessness, constant danger. And then, as if it weighs more than all the rest, the daily pressure of worry for the churches he loves. This is not a man fishing for sympathy. He is redrawing the whole idea of what proves a ministry is real. The Corinthians wanted leaders who looked victorious. Paul says the marks of a true servant of Christ are the wounds he took while following a crucified Lord. His credentials are his scars. The most Christlike thing on his résumé is everything the world would file under failure.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: Colossians 1:24 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:0b23eb9428a977f59f4985045e8b6fe5b9996d96c0070b6d28bf79463051039b | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Colossians 1:24</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/COL.1.24" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/COL.1.24" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Now I rejoice in my sufferings for you, and I fill up in my flesh what is lacking in regard to Christ’s afflictions for the sake of His body, which is the church.</div>
 <div class="verse-commentary">
           <p>Stranger still, Paul says he rejoices in all of it. Not grits his teeth through it. Rejoices. He can even speak of "completing what is lacking in Christ's afflictions" for the sake of the church, and he does not mean the cross fell short of paying for sin, because that work was finished. He means the love that poured out on the cross keeps pouring out through people willing to suffer to carry it to others. Paul's pain was never meaningless. It was the shape love takes when it actually costs something. When a shepherd bleeds for the flock, the flock sees in flesh and blood what Jesus did for them all. This is why suffering, not status, is the real trademark of ministry. Anyone can chase applause. Only love will bleed.</p>
         </div>
-      </div>
+      </figure>
 
 <!-- BSB_BLOCK: 1 Corinthians 4:9-13 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:504f80df79f0e4980719ae42db7c19ab3fa81b0d780fa67409b582b2b05341dd | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 4:9-13</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.4.9-13" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 9">9</sup>For it seems to me that God has displayed us apostles at the end of the procession, like prisoners appointed for death. We have become a spectacle to the whole world, to angels as well as to men. <sup class="verse-number" aria-label="Verse 10">10</sup>We are fools for Christ, but you are wise in Christ. We are weak, but you are strong. You are honored, but we are dishonored. <sup class="verse-number" aria-label="Verse 11">11</sup>To this very hour we are hungry and thirsty, we are poorly clothed, we are brutally treated, we are homeless. <sup class="verse-number" aria-label="Verse 12">12</sup>We work hard with our own hands. When we are vilified, we bless; when we are persecuted, we endure it; <sup class="verse-number" aria-label="Verse 13">13</sup>when we are slandered, we answer gently. Up to this moment we have become the scum of the earth, the refuse of the world.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.4.9-13" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 9">9</sup>For it seems to me that God has displayed us apostles at the end of the procession, like prisoners appointed for death. We have become a spectacle to the whole world, to angels as well as to men. <sup class="verse-number" aria-label="Verse 10">10</sup>We are fools for Christ, but you are wise in Christ. We are weak, but you are strong. You are honored, but we are dishonored. <sup class="verse-number" aria-label="Verse 11">11</sup>To this very hour we are hungry and thirsty, we are poorly clothed, we are brutally treated, we are homeless. <sup class="verse-number" aria-label="Verse 12">12</sup>We work hard with our own hands. When we are vilified, we bless; when we are persecuted, we endure it; <sup class="verse-number" aria-label="Verse 13">13</sup>when we are slandered, we answer gently. Up to this moment we have become the scum of the earth, the refuse of the world.</div>
 <div class="verse-commentary">
-          <p>Then Paul turns the whole thing into theater, on purpose. He says God has put the apostles on display like prisoners at the very end of a Roman parade, the condemned marched out last to die in the arena. The word he uses is <em>theatron</em>, a spectacle, a public theater show, the source of our word "theater." The whole world, he says, is watching the apostles be humiliated. Meanwhile he skewers the Corinthians' self-image with heavy irony, picturing them as rich, reigning kings while the men who brought them the gospel go hungry, beaten, homeless, and slandered, treated like the filth scraped off the world (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.4.8" target="_blank" rel="noopener">1 Corinthians 4:8</a>). Sit in that contrast. They imagined they had already arrived, and the apostles were being counted as garbage. Underneath the whole mess Paul names the actual disease, pride (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.4.6" target="_blank" rel="noopener">1 Corinthians 4:6</a>), the very root the factions had grown from. A church chasing thrones had stopped recognizing the cross even when it walked through the door.</p>
+          <p>Then Paul turns the whole thing into theater, on purpose. He says God has put the apostles on display like prisoners at the very end of a Roman parade, the condemned marched out last to die in the arena. The word he uses is <em>theatron</em>, a spectacle, a public theater show, the source of our word "theater." The whole world, he says, is watching the apostles be humiliated. Meanwhile he skewers the Corinthians' self-image with heavy irony, picturing them as rich, reigning kings while the men who brought them the gospel go hungry, beaten, homeless, and slandered, treated like the filth scraped off the world (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.4.8" target="_blank" rel="noopener" data-verse="1-corinthians-4-8" data-ref="1 Corinthians 4:8" aria-expanded="false">1 Corinthians 4:8</a>). Sit in that contrast. They imagined they had already arrived, and the apostles were being counted as garbage. Underneath the whole mess Paul names the actual disease, pride (<a class="vlink" href="https://www.bible.com/bible/3034/1CO.4.6" target="_blank" rel="noopener" data-verse="1-corinthians-4-6" data-ref="1 Corinthians 4:6" aria-expanded="false">1 Corinthians 4:6</a>), the very root the factions had grown from. A church chasing thrones had stopped recognizing the cross even when it walked through the door.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Helmet He Won't Replace</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Helmet He Won't Replace</h3>
       <p>Walk into a firehouse and you can usually spot the veterans without a word, just by their helmets. The rookie's is clean and bright, barely scuffed. The veteran's is a wreck. Scorched down one side, the paint bubbled and discolored, the brim warped from heat. And here is what surprises people. He could get a brand new one anytime he wanted. He keeps the battered one on purpose. In that world a scarred helmet is not an embarrassment. It is a record. Every burn on it is a door he walked through, a night he went into the smoke while everyone else was pouring out, a person he carried down a ladder. To the people who know, the scars are the credential.</p>
       <p>Now you can see what Paul is doing when he answers a status-drunk church by bragging about his beatings. Five floggings, three shipwrecks, a stoning, years of hunger and cold and worry for people who rarely thanked him. In a city that measured leaders by how polished and victorious they looked, Paul holds up his scars and says these are my credentials. Not in spite of the wounds. Because of them. They are the proof he actually went into the fire for people, that love cost him something and he paid it. A faith with no marks on it at all might just be a faith that never went in after anyone. Paul's wounds were never the thing that spoiled his standing. They were the proof that he loved.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <!-- TODAYS_WORLD_SOURCE: Peer Recovery Support Services and Recovery Coaching for Substance Use Disorder: A Systematic Review (peer support from lived experience builds trust and credibility and improves treatment engagement and retention) | Current Addiction Reports (Springer) | 2025 | https://link.springer.com/article/10.1007/s40429-025-00645-8 -->
-      <div class="section-heading">The Wound That Becomes the Credential</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<!-- TODAYS_WORLD_SOURCE: Peer Recovery Support Services and Recovery Coaching for Substance Use Disorder: A Systematic Review (peer support from lived experience builds trust and credibility and improves treatment engagement and retention) | Current Addiction Reports (Springer) | 2025 | https://link.springer.com/article/10.1007/s40429-025-00645-8 -->
+      <h3>The Wound That Becomes the Credential</h3>
       <p>In many addiction recovery programs now, some of the people best able to draw someone still using toward help are not the ones with a framed degree on the wall. They are the peer recovery specialists, and their qualification is the one thing you cannot earn in a classroom. They have been an addict themselves. They have been to the bottom the other person is living in and clawed their way out. Recent reviews of these programs keep pointing the same direction. Peers who share that lived experience build a trust and credibility that helps draw people into treatment and keep them engaged. The very thing the world would file under failure, a life once wrecked by addiction, becomes the exact thing that opens a door to someone in the same pit.</p>
       <p>Paul is making that same upside-down claim to a church dazzled by status. Corinth wanted leaders who looked impressive and strong, and Paul answered by pointing to his beatings and his sleepless nights of worry over people who rarely thanked him. He was not apologizing for those wounds. He was holding them up as the one thing that proved he had actually gone to people in their pain instead of performing for them from a safe distance. Scars cannot be faked, and a watching world quietly knows it. The person who has bled a little for you is the one you finally believe. The mark of real ministry was never a spotless, winning image. It was a love that had already paid for itself, the kind a hurting person can trust precisely because it cost the one who offered it.</p>
-    </div>
+    <details class="disclosure source-disclosure"><summary class="disclosure-summary"><span class="disclosure-label">Source</span> <span class="disclosure-publisher">Current Addiction Reports (Springer)</span></summary><div class="disclosure-body"><p><cite>Peer Recovery Support Services and Recovery Coaching for Substance Use Disorder: A Systematic Review (peer support from lived experience builds trust and credibility and improves treatment engagement and retention)</cite>. Current Addiction Reports (Springer), 2025. <a href="https://link.springer.com/article/10.1007/s40429-025-00645-8" target="_blank" rel="noopener noreferrer">Read the source</a>.</p></div></details></section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Everything Paul says about himself was true first of Jesus. If the apostles march at the back of the parade, it is only because their Lord walked there first. Jesus was the truly condemned One, paraded through Jerusalem, stripped, mocked, and nailed up as a public spectacle for a jeering crowd. The King of glory took the last place in the procession on purpose. And that is the pattern Paul is pressing into a church drunk on status. The road to real glory runs straight through the place everyone is scrambling to avoid. Jesus did not suffer because His mission had failed. He suffered because love, when it is real, absorbs the cost instead of passing it on. So a leader who reflects the cross will never look like a winner on the world's scoreboard. He will look like Jesus, poured out for people who may never thank him. The wounds are not the interruption of the ministry. They are the ministry, because they are where the love becomes visible.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Everything Paul says about himself was true first of Jesus. If the apostles march at the back of the parade, it is only because their Lord walked there first. Jesus was the truly condemned One, paraded through Jerusalem, stripped, mocked, and nailed up as a public spectacle for a jeering crowd. The King of glory took the last place in the procession on purpose. And that is the pattern Paul is pressing into a church drunk on status. The road to real glory runs straight through the place everyone is scrambling to avoid. Jesus did not suffer because His mission had failed. He suffered because love, when it is real, absorbs the cost instead of passing it on. So a leader who reflects the cross will never look like a winner on the world's scoreboard. He will look like Jesus, poured out for people who may never thank him. The wounds are not the interruption of the ministry. They are the ministry, because they are where the love becomes visible.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Think of one place where following Jesus is currently costing you something, a relationship strained because you did the right thing, a thankless role you keep showing up for, a hurt you absorbed instead of passing on. Rather than resenting the cost or advertising it, offer it to God today as your actual ministry. Then find one small way this week to serve someone exactly where you will get no credit for it. A cross-shaped life is not measured by how impressive it looks. It is measured by how much love it is willing to pay out.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we like the idea of following Jesus far more than we like the cost of it. We want the crown without the cross, the influence without the wounds. Forgive us for chasing a comfortable, impressive faith while Your Son walked to the back of the parade for us. Thank You that Jesus did not count the cost too high, that He poured Himself out all the way to death so we could be brought home. Give us the courage to serve where it hurts, to absorb wrongs instead of returning them, and to find our glory where He found His, in a love that is willing to bleed. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"When you picture a 'successful' Christian life, how much of your image looks like winning (comfort, respect, influence) and how much of it looks like the cross (sacrifice, service, absorbing hurt for others)? Where might God be inviting you this week to measure your life by Jesus' scoreboard instead of the world's?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"When you picture a 'successful' Christian life, how much of your image looks like winning (comfort, respect, influence) and how much of it looks like the cross (sacrifice, service, absorbing hurt for others)? Where might God be inviting you this week to measure your life by Jesus' scoreboard instead of the world's?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, we like the idea of following Jesus far more than we like the cost of it. We want the crown without the cross, the influence without the wounds. Forgive us for chasing a comfortable, impressive faith while Your Son walked to the back of the parade for us. Thank You that Jesus did not count the cost too high, that He poured Himself out all the way to death so we could be brought home. Give us the courage to serve where it hurts, to absorb wrongs instead of returning them, and to find our glory where He found His, in a love that is willing to bleed. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-07-15.html"><span class="day-nav-kicker">← Wednesday</span><span class="day-nav-title">Christlike Servanthood</span></a><a class="day-nav-item" href="/bible-study/2026-07-17.html"><span class="day-nav-kicker">Friday →</span><span class="day-nav-title">Further Thought &amp; Discussion</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"1-corinthians-4-1-5":{"ref":"1 Corinthians 4:1-5","text":"So then, men ought to regard us as servants of Christ and stewards of the mysteries of God. Now it is required of stewards that they be found faithful. I care very little, however, if I am judged by you or by any human court. In fact, I do not even judge myself. My conscience is clear, but that does not vindicate me. It is the Lord who judges me. Therefore judge nothing before the appointed time; wait until the Lord comes. He will bring to light what is hidden in darkness and will expose the motives of men\u2019s hearts. At that time each will receive his praise from God.","bibleUrl":"https://www.bible.com/bible/3034/1CO.4.1-5"},"john-17-4":{"ref":"John 17:4","text":"I have glorified You on earth by accomplishing the work You gave Me to do.","bibleUrl":"https://www.bible.com/bible/3034/JHN.17.4"},"1-corinthians-4-8":{"ref":"1 Corinthians 4:8","text":"Already you have all you want. Already you have become rich. Without us, you have become kings. How I wish you really were kings, so that we might be kings with you!","bibleUrl":"https://www.bible.com/bible/3034/1CO.4.8"},"1-corinthians-4-6":{"ref":"1 Corinthians 4:6","text":"Brothers, I have applied these things to myself and Apollos for your benefit, so that you may learn from us not to go beyond what is written. Then you will not take pride in one man over another.","bibleUrl":"https://www.bible.com/bible/3034/1CO.4.6"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

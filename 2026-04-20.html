@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Scripture, the Authority — Daily Bible Study</title>
 <meta name="study-title" content="Scripture, the Authority">
-<meta name="study-series" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Part 3 of 7">
+<meta name="study-passage" content="2 Timothy 3:15-17">
+<meta name="study-series" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Day 3 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Scripture, the Authority">
-<meta property="og:description" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Part 3 of 7 · Daily Bible Study">
+<meta property="og:description" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Day 3 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-04-20.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Part 3 of 7 · Daily Bible Study">
+<meta name="description" content="Growing in a Relationship with God · Lesson 4, The Role of the Bible · Day 3 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,94 +38,117 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Scripture, the Authority</h1>
-    <div class="header-subtitle">
-      <span>Growing in a Relationship with God</span>
-      <span>Lesson 4, The Role of the Bible</span>
-      <span>Part 3 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Mon · Apr 20</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">11 min</span>
     </div>
-    <div class="date-badge">April 20, 2026</div>
+    <h1 class="study-title">Scripture, the Authority</h1>
+    <p class="study-sub"><span class="sub-title">The Role of the Bible</span><span class="sub-facts"><span>Lesson 4</span><span>Day 3 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">An old apostle in a Roman dungeon, writing what he knows is his last letter, hands a young pastor the only sentence that settles the question of who gets the final word.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p class="tldr-hook">An old apostle in a Roman dungeon, writing what he knows is his last letter, hands a young pastor the only sentence that settles the question of who gets the final word.</p>
       <ul class="tldr-list">
-        <li><span class="bullet-icon">☩</span> Paul coined a word that did not exist in Greek before he used it. Scripture, he says, is "God-breathed," the same breath that shaped Adam out of dust still moving through the pages.</li>
-        <li><span class="bullet-icon">☩</span> The temptation is never to throw the Bible away. The temptation is to keep it while quietly editing it, skipping the parts that press.</li>
-        <li><span class="bullet-icon">☩</span> God is not against the mind. He wrote to them, argued with them, invited them, and taught them. He simply refuses to be bypassed by them.</li>
-        <li><span class="bullet-icon">☩</span> When Scripture and our opinion collide, one of them has to move. Today settles which.</li>
+        <li>
+<span class="bullet-icon">☩</span> Paul coined a word that did not exist in Greek before he used it. Scripture, he says, is "God-breathed," the same breath that shaped Adam out of dust still moving through the pages.</li>
+        <li>
+<span class="bullet-icon">☩</span> The temptation is never to throw the Bible away. The temptation is to keep it while quietly editing it, skipping the parts that press.</li>
+        <li>
+<span class="bullet-icon">☩</span> God is not against the mind. He wrote to them, argued with them, invited them, and taught them. He simply refuses to be bypassed by them.</li>
+        <li>
+<span class="bullet-icon">☩</span> When Scripture and our opinion collide, one of them has to move. Today settles which.</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday Paul, chained in a Roman cell, put the sword of the Spirit into our hands and told us where the real fight was. Today he is still in chains, only worse. The house arrest has become a dungeon. The letter to Ephesus has become a final letter to a young pastor he is trying to prepare for a long road without him. Sunday gave us the weapon. Monday tells us where the weapon gets its edge. Before we ask how powerful the Bible is, we have to settle the older question. Who is behind it? Whose authority do its words carry? If you have ever picked up the Bible wanting it to agree with you, today is where that wanting gets named.</p>
-    </div>
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday Paul, chained in a Roman cell, put the sword of the Spirit into our hands and told us where the real fight was. Today he is still in chains, only worse. The house arrest has become a dungeon. The letter to Ephesus has become a final letter to a young pastor he is trying to prepare for a long road without him. Sunday gave us the weapon. Monday tells us where the weapon gets its edge. Before we ask how powerful the Bible is, we have to settle the older question. Who is behind it? Whose authority do its words carry? If you have ever picked up the Bible wanting it to agree with you, today is where that wanting gets named.</p>
+    </section>
 
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Last Letter</div>
-      <p>Second Timothy was almost certainly the last letter Paul ever wrote. By the time he dictates it, probably around A.D. 66 or 67, he is in a second Roman imprisonment under Nero, and the conditions have gone from bad to grim. This is not the rented house of Acts 28, where guests could visit freely. This is an underground holding cell, cold and dark enough that he asks Timothy specifically to bring a cloak and his scrolls before winter (<a class="vlink" href="https://www.bible.com/bible/3034/2TI.4.13" target="_blank" rel="noopener">2 Timothy 4:13</a>). Paul knows what is coming. He tells Timothy so in plain language: "I have fought the good fight, I have finished the race" (<a class="vlink" href="https://www.bible.com/bible/3034/2TI.4.7" target="_blank" rel="noopener">2 Timothy 4:7</a>).</p>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Last Letter</h3>
+      <p>Second Timothy was almost certainly the last letter Paul ever wrote. By the time he dictates it, probably around A.D. 66 or 67, he is in a second Roman imprisonment under Nero, and the conditions have gone from bad to grim. This is not the rented house of Acts 28, where guests could visit freely. This is an underground holding cell, cold and dark enough that he asks Timothy specifically to bring a cloak and his scrolls before winter (<a class="vlink" href="https://www.bible.com/bible/3034/2TI.4.13" target="_blank" rel="noopener" data-verse="2-timothy-4-13" data-ref="2 Timothy 4:13" aria-expanded="false">2 Timothy 4:13</a>). Paul knows what is coming. He tells Timothy so in plain language: "I have fought the good fight, I have finished the race" (<a class="vlink" href="https://www.bible.com/bible/3034/2TI.4.7" target="_blank" rel="noopener" data-verse="2-timothy-4-7" data-ref="2 Timothy 4:7" aria-expanded="false">2 Timothy 4:7</a>).</p>
       <p>Into that chill, one last instruction. Timothy is a young pastor in Ephesus, a wealthy cosmopolitan city full of teachers who believed they had outgrown the old Jewish Scriptures. Some were adding rules, some were subtracting miracles, some were suggesting that the resurrection had already happened spiritually and no one had quite noticed. Paul's final counsel is not sophisticated. Stay with the Book. Hold the sacred writings you learned from your mother and grandmother. And then, in the center of that counsel, Paul uses a word nobody had ever used before. <em>Theopneustos</em>. Literally, "God-breathed." There is no earlier use of this compound in any surviving Greek text. Paul coins it on the spot, as if no existing word quite said what he needed to say about these pages. The Scripture is not merely inspired. It is exhaled. The same breath that made a living being out of dust in Genesis 2 still moves through every line a weary pastor is about to read by candlelight.</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-
-      <p>The anchor today is Paul's sentence about Scripture's source and job, 2 Timothy 3:15-17. The supporting verses sharpen what the anchor implies. Isaiah reminds us that God's ways run on an entirely different altitude than ours, which is why our first instinct with the Bible is usually to lower it to our level. Jesus' great commandment tells us God is not rejecting the mind; He is asking for it, all of it, submitted rather than replaced. Read together, these verses answer a practical question most readers feel without naming: when the Bible and my opinion collide, who bends?</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>The anchor today is Paul's sentence about Scripture's source and job, 2 Timothy 3:15-17. The supporting verses sharpen what the anchor implies. Isaiah reminds us that God's ways run on an entirely different altitude than ours, which is why our first instinct with the Bible is usually to lower it to our level. Jesus' great commandment tells us God is not rejecting the mind; He is asking for it, all of it, submitted rather than replaced. Read together, these verses answer a practical question most readers feel without naming: when the Bible and my opinion collide, who bends?</p>
 
 <!-- BSB_BLOCK: 2 Timothy 3:15-17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:038605854a2dcd707000d56f16163b8b644266ca986e02425a6f4d74b1e2ce0b | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Timothy 3:15-17</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2TI.3.15-17" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 15">15</sup>From infancy you have known the Holy Scriptures, which are able to make you wise for salvation through faith in Christ Jesus. <sup class="verse-number" aria-label="Verse 16">16</sup>All Scripture is God-breathed and is useful for instruction, for conviction, for correction, and for training in righteousness, <sup class="verse-number" aria-label="Verse 17">17</sup>so that the man of God may be complete, fully equipped for every good work.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2TI.3.15-17" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 15">15</sup>From infancy you have known the Holy Scriptures, which are able to make you wise for salvation through faith in Christ Jesus. <sup class="verse-number" aria-label="Verse 16">16</sup>All Scripture is God-breathed and is useful for instruction, for conviction, for correction, and for training in righteousness, <sup class="verse-number" aria-label="Verse 17">17</sup>so that the man of God may be complete, fully equipped for every good work.</div>
 <div class="verse-commentary">
         <p>Paul begins with Timothy's childhood. His grandmother Lois and his mother Eunice had taught him the Hebrew Scriptures since he was small enough to sit on a lap. That line matters. Paul is not claiming Scripture's authority from thin air. He is pointing at a living history of lives formed by it. The Bible's authority was not theoretical in Timothy's family. It was the thing that raised him.</p>
 
@@ -132,240 +156,98 @@ if ('serviceWorker' in navigator) {
 
 <p>Then, four functions. Teaching (what is true). Rebuking (what is wrong). Correcting (how to make it right). Training in righteousness (how to live rightly from here). Notice the order. Scripture starts on offense, tells us what is, then takes away what should not be, then puts back what should be, then trains us to walk that way. Any approach to the Bible that wants only the teaching and refuses the rebuking is reading it wrong. Any approach that keeps only the rebuking without the restoration is also reading it wrong. Paul refuses to let Timothy divide the functions. All four, or none rightly.</p>
 
-<p>The sentence lands with a purpose clause. "So that." The whole point is not that you finish a Bible reading plan. It is that you are <em>artios</em>, complete, fit for use. A tool in working order. The question at the end of this verse is not whether you believe the Bible. The question is whether the Bible has been allowed to do its full four-part work on you.</p></div>
-      </div>
+<p>The sentence lands with a purpose clause. "So that." The whole point is not that you finish a Bible reading plan. It is that you are <em>artios</em>, complete, fit for use. A tool in working order. The question at the end of this verse is not whether you believe the Bible. The question is whether the Bible has been allowed to do its full four-part work on you.</p>
+</div>
+      </figure>
 
 <!-- BSB_BLOCK: Isaiah 55:8-9 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:f279e84b71c7c019cbb3b0a598b730b1aa95fd2e2d3efd653ade824ddd3bbdd0 | footnotes-stripped:0 | poetry:flattened -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Isaiah 55:8-9</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ISA.55.8-9" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 8">8</sup>“For My thoughts are not your thoughts, neither are your ways My ways,” declares the LORD. <sup class="verse-number" aria-label="Verse 9">9</sup>“For as the heavens are higher than the earth, so My ways are higher than your ways and My thoughts than your thoughts.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ISA.55.8-9" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 8">8</sup>“For My thoughts are not your thoughts, neither are your ways My ways,” declares the LORD. <sup class="verse-number" aria-label="Verse 9">9</sup>“For as the heavens are higher than the earth, so My ways are higher than your ways and My thoughts than your thoughts.</div>
 <div class="verse-commentary">
         <p>This is the theological wall that stops the modern habit of rewriting Scripture to match personal preference. God's thoughts do not run on the same elevation as ours. The prophet gives us the picture. Sky to dirt. The altitude difference is not one step. It is the full vertical distance between the two. That gap is not hostile. It is honest. If God's thoughts ran at our height, He would not be worth obeying. He would just be worth consulting.</p>
 
-<p>The practical pressure of this verse is simple. When the Bible says something that strikes you as wrong, weak, outdated, or uncomfortable, you are sitting at the bottom of that ladder and the passage is speaking from the top. The correct first move is not to edit the passage down to your height. It is to ask whether the discomfort is an invitation to climb.</p></div>
-      </div>
+<p>The practical pressure of this verse is simple. When the Bible says something that strikes you as wrong, weak, outdated, or uncomfortable, you are sitting at the bottom of that ladder and the passage is speaking from the top. The correct first move is not to edit the passage down to your height. It is to ask whether the discomfort is an invitation to climb.</p>
+</div>
+      </figure>
 
 <!-- BSB_BLOCK: Matthew 22:37 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:8c2ddf458767c961662377098ca97e1777418b21ed8960156ebb9edeb8ac9954 | footnotes-stripped:1 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Matthew 22:37</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/MAT.22.37" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text">Jesus declared, <span class="words-of-jesus">“‘Love the Lord your God with all your heart and with all your soul and with all your mind.’</span></div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/MAT.22.37" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">Jesus declared, <span class="words-of-jesus">“‘Love the Lord your God with all your heart and with all your soul and with all your mind.’</span>
+</div>
 <div class="verse-commentary">
           <p>If there was any question about whether the Bible asks us to check our minds at the door, Jesus settles it. The mind is in the commandment, listed right alongside heart and soul. God is not afraid of a reader who thinks hard. He is after one. The Scriptures are full of conversations He held with thoughtful people (<a class="vlink" href="https://www.bible.com/bible/3034/GEN.18.22-33" target="_blank" rel="noopener">Abraham</a> bargaining for Sodom, <a class="vlink" href="https://www.bible.com/bible/3034/JOB.38.1" target="_blank" rel="noopener">Job</a> pressing for answers, <a class="vlink" href="https://www.bible.com/bible/3034/EXO.33.18" target="_blank" rel="noopener">Moses</a> asking to see His glory). The difference between those thinkers and ours is the posture. They brought their minds under the voice of God. Modern reason often asks the voice of God to come under the mind. Jesus' command reorders the sequence. Bring all of it. Submit all of it. The mind is not excluded; it is enlisted.</p>
         </div>
-      </div>
+      </figure>
       <!-- BSB_FOOTNOTE: Matthew 22:37 | 22:37 Deuteronomy 6:5 -->
-    </div>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Rulebook in the Ref's Pocket</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Rulebook in the Ref's Pocket</h3>
       <p>Watch a close call in the fourth quarter of a football game. The receiver leaps, the defender contests, the ball hits the turf, and the stadium becomes a roar of seventy thousand people all certain they saw what happened. The coach is on the sideline yelling. The quarterback is waving his arms. The defensive coordinator is on the headset. Every sportscaster in the booth is offering a theory. And then the referee jogs to the sideline, pulls out a small black-and-white pamphlet that never leaves his pocket, and checks the exact language of the rule. Everybody's opinion has to sit down. The rulebook is going to decide the play. Not the coach. Not the quarterback. Not the camera angle the crowd liked best. The rulebook.</p>
       <p>That is what <em>theopneustos</em> does. Scripture is the rulebook in God's back pocket, pulled out when every other voice in the stadium has had its say. You are allowed to have opinions. You are allowed to feel strongly. You are allowed to stand up and wave your arms. But when the passage is read, the opinions sit down. "God-breathed" is not a sentimental compliment the apostle paid his favorite book. It is a jurisdictional claim. When the text speaks, it is the final call on the field. The moment we start editing Scripture to agree with our preferences, we have stopped being players in God's game and started trying to be the referee ourselves. And the referee who appoints himself never lasts through the fourth quarter.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Religion of the Curated Self</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Religion of the Curated Self</h3>
       <p>Sociologists call the dominant spiritual posture of our moment <em>expressive individualism</em>. In its most honest form it goes like this: my deepest self is discovered from the inside, not imposed from the outside, and any tradition, teacher, or text that contradicts that inner voice must either adapt to me or be set aside. In the religious version of this, Scripture stops being an authority and becomes a resource. A playlist. You skip the verses that grate and loop the verses that comfort. A 2025 global synthesis of religion and culture, published in the <em>Open Journal of Stigmatized Knowledge and Suppressed Discourses</em>, described the result exactly: a rapid liberalization of ethics accompanied by sincere religious identification, together producing congregations full of people who are genuinely "spiritual" and genuinely sovereign at the same time.</p>
       <p>The numbers have been trending in one direction for years. A 2019 Pew report on American religion found that the share of adults who say the Bible is the literal word of God has been cut roughly in half across two generations, while the share who say it is "a book of fables and history" has steadily risen. More recent research in <em>Politics and Religion</em> (Cambridge University Press) has mapped a clean statistical line between a person's <em>source</em> of moral authority (internal preference vs. external text) and that person's positions on the most contested ethical questions of the day. The source of authority is the quiet variable behind almost every loud debate. A 9Marks essay on the topic summed it up in a sentence: expressive individualism fills the pews with people for whom church attendance is an expression of their own identities rather than a submission to any text's authority.</p>
       <p>Paul's word <em>theopneustos</em> is a direct challenge to this whole posture. The Bible is not a resource you curate. It is a voice that curates you. The question is not whether this book fits my preferences. The question is whether I am willing to let this book decide what my preferences should be.</p>
-    </div>
+    </section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Jesus treated Scripture as the final word in every single dispute He walked into. When Satan quoted a psalm at Him, He did not argue theology; He quoted Deuteronomy back. When the Sadducees denied the resurrection, He did not appeal to philosophy; He said, "You are mistaken because you do not know the Scriptures" (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.22.29" target="_blank" rel="noopener">Matthew 22:29</a>). When He stood up in the Nazareth synagogue, He opened the scroll of Isaiah and said, "Today this Scripture is fulfilled in your hearing" (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.4.21" target="_blank" rel="noopener">Luke 4:21</a>). The Son of God never once appealed over the head of Scripture. He submitted to it, taught from it, quoted it, embodied it, and declared Himself its fulfillment. He is, John says, the Word who was with God and was God, now in the flesh. If the Bible is God-breathed, the Son is the Breath walking around in sandals. You cannot have the Christ of the New Testament on any terms other than His.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Jesus treated Scripture as the final word in every single dispute He walked into. When Satan quoted a psalm at Him, He did not argue theology; He quoted Deuteronomy back. When the Sadducees denied the resurrection, He did not appeal to philosophy; He said, "You are mistaken because you do not know the Scriptures" (<a class="vlink" href="https://www.bible.com/bible/3034/MAT.22.29" target="_blank" rel="noopener" data-verse="matthew-22-29" data-ref="Matthew 22:29" aria-expanded="false">Matthew 22:29</a>). When He stood up in the Nazareth synagogue, He opened the scroll of Isaiah and said, "Today this Scripture is fulfilled in your hearing" (<a class="vlink" href="https://www.bible.com/bible/3034/LUK.4.21" target="_blank" rel="noopener" data-verse="luke-4-21" data-ref="Luke 4:21" aria-expanded="false">Luke 4:21</a>). The Son of God never once appealed over the head of Scripture. He submitted to it, taught from it, quoted it, embodied it, and declared Himself its fulfillment. He is, John says, the Word who was with God and was God, now in the flesh. If the Bible is God-breathed, the Son is the Breath walking around in sandals. You cannot have the Christ of the New Testament on any terms other than His.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Copy 2 Timothy 3:15-17 by hand today. Not typed. Not photographed. Written, on paper, in your own handwriting, slowly enough to feel each word. Then underline whichever of the four functions (teaching, rebuking, correcting, training) you most often dodge. Leave the paper where you will see it tomorrow morning.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, we come as people who have edited You more often than we have obeyed You. We have read the parts that warmed us and skimmed the parts that pressed. We have treated Your Word as a resource for the days we wanted counsel and a nuisance on the days we wanted our own way. Forgive us. Thank You that Your thoughts run higher than ours, because if they did not, we would be led by something no bigger than our own preferences. Give us the humility to climb rather than the pride to edit. Take our minds, too. We confess that we have sometimes thought the mind was Yours to avoid and ours to keep. We offer it back. Let Your Word teach us, rebuke us, correct us, and train us this week, in that order, and let us stay in the room for all four. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"What is one specific passage or command in Scripture that you have quietly reinterpreted, softened, or set aside because it pressed against something you wanted to keep (a relationship, a habit, a grudge, a financial pattern, a political identity)? And if <em>theopneustos</em> means what Paul says it means, what would you need to stop defending this week in order to let that passage speak on its own terms?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"What is one specific passage or command in Scripture that you have quietly reinterpreted, softened, or set aside because it pressed against something you wanted to keep (a relationship, a habit, a grudge, a financial pattern, a political identity)? And if <em>theopneustos</em> means what Paul says it means, what would you need to stop defending this week in order to let that passage speak on its own terms?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Father, we come as people who have edited You more often than we have obeyed You. We have read the parts that warmed us and skimmed the parts that pressed. We have treated Your Word as a resource for the days we wanted counsel and a nuisance on the days we wanted our own way. Forgive us. Thank You that Your thoughts run higher than ours, because if they did not, we would be led by something no bigger than our own preferences. Give us the humility to climb rather than the pride to edit. Take our minds, too. We confess that we have sometimes thought the mind was Yours to avoid and ours to keep. We offer it back. Let Your Word teach us, rebuke us, correct us, and train us this week, in that order, and let us stay in the room for all four. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-04-19.html"><span class="day-nav-kicker">← Sunday</span><span class="day-nav-title">The Most Powerful Weapon</span></a><a class="day-nav-item" href="/bible-study/2026-04-21.html"><span class="day-nav-kicker">Tuesday →</span><span class="day-nav-title">Bible Truth</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"2-timothy-4-13":{"ref":"2 Timothy 4:13","text":"When you come, bring the cloak that I left with Carpus at Troas, and my scrolls, especially the parchments.","bibleUrl":"https://www.bible.com/bible/3034/2TI.4.13"},"2-timothy-4-7":{"ref":"2 Timothy 4:7","text":"I have fought the good fight, I have finished the race, I have kept the faith.","bibleUrl":"https://www.bible.com/bible/3034/2TI.4.7"},"matthew-22-29":{"ref":"Matthew 22:29","text":"Jesus answered, \u201cYou are mistaken because you do not know the Scriptures or the power of God.","bibleUrl":"https://www.bible.com/bible/3034/MAT.22.29"},"luke-4-21":{"ref":"Luke 4:21","text":"and He began by saying, \u201cToday this Scripture is fulfilled in your hearing.\u201d","bibleUrl":"https://www.bible.com/bible/3034/LUK.4.21"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

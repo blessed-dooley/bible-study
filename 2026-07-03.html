@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Further Thought &amp; Discussion — Daily Bible Study</title>
 <meta name="study-title" content="Further Thought &amp; Discussion">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 1, Paul&#x27;s Ministry in Corinth · Part 7 of 7">
+<meta name="study-passage" content="1 Corinthians 1:1">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 1, Paul's Ministry in Corinth · Day 7 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Further Thought &amp; Discussion">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 1, Paul&#x27;s Ministry in Corinth · Part 7 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 1, Paul's Ministry in Corinth · Day 7 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-07-03.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 1, Paul&#x27;s Ministry in Corinth · Part 7 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 1, Paul's Ministry in Corinth · Day 7 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,307 +38,208 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--friday">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Further Thought &amp; Discussion</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 1, Paul's Ministry in Corinth</span>
-      <span>Part 7 of 7</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Fri · Jul 3</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">8 min</span>
     </div>
-    <div class="date-badge">July 3, 2026</div>
+    <h1 class="study-title">Further Thought &amp; Discussion</h1>
+    <p class="study-sub"><span class="sub-title">Paul's Ministry in Corinth</span><span class="sub-facts"><span>Lesson 1</span><span>Day 7 of 7</span></span></p>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
-  </div>
-
-  <div class="card">
-
-    <!-- 1. WEEK IN REVIEW -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">Week in Review</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p class="tldr-hook">We opened a new quarter not with a perfect church but a real one, and watched a frightened apostle plant the gospel in the hardest soil he knew.</p>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">Week in Review</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="review">Week in Review</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="clarifies">What This Week Clarifies</button><button type="button" class="chip" data-jump="speaking">Still Speaking</button><button type="button" class="chip" data-jump="christ">Christ at the Center of the Week</button><button type="button" class="chip" data-jump="application">Weekend Practice</button><button type="button" class="chip" data-jump="prayer">Closing Prayer for the Week</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="review" aria-labelledby="review-label">
+      <h2 class="section-label" id="review-label">Week in Review</h2>
+<p class="tldr-hook">We opened a new quarter not with a perfect church but a real one, and watched a frightened apostle plant the gospel in the hardest soil he knew.</p>
       <ul class="week-review-list">
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sabbath:</span> Paul's Ministry in Corinth. We met a brash, idol-soaked boomtown, a missionary worn thin, and one promise spoken in the dark, that God already had people in that city before anyone believed.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> Paul, a God-called Apostle of Jesus. Before the church's problems, we looked at the man God sent and learned his confidence came from a calling he never gave himself.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Monday:</span> From Athens to Corinth. After a polite shrug in clever Athens, Paul refused to out-clever Corinth and staked everything on Jesus Christ and Him crucified.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Tuesday:</span> The City of Corinth. We walked the temples and markets and learned that holiness meant being different inside the chaos, not escaping it.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Wednesday:</span> "Many in This City." Opposition and harvest came together, and God steadied a discouraged Paul with people he could not yet see.</span></li>
-        <li><span class="bullet-icon">☩</span><span><span class="day-label">Thursday:</span> Paul's Letters to the Corinthians. Behind the famous letters we found a father writing through tears, proving that the hard word can be the most loving one.</span></li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Sabbath:</span> Paul's Ministry in Corinth. We met a brash, idol-soaked boomtown, a missionary worn thin, and one promise spoken in the dark, that God already had people in that city before anyone believed.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Sunday:</span> Paul, a God-called Apostle of Jesus. Before the church's problems, we looked at the man God sent and learned his confidence came from a calling he never gave himself.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Monday:</span> From Athens to Corinth. After a polite shrug in clever Athens, Paul refused to out-clever Corinth and staked everything on Jesus Christ and Him crucified.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Tuesday:</span> The City of Corinth. We walked the temples and markets and learned that holiness meant being different inside the chaos, not escaping it.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Wednesday:</span> "Many in This City." Opposition and harvest came together, and God steadied a discouraged Paul with people he could not yet see.</span>
+</li>
+        <li>
+<span class="bullet-icon">☩</span><span><span class="day-label">Thursday:</span> Paul's Letters to the Corinthians. Behind the famous letters we found a father writing through tears, proving that the hard word can be the most loving one.</span>
+</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- 2. HISTORICAL & CULTURAL CONTEXT (condensed capstone) -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">A Small Church in a Loud City</div>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>A Small Church in a Loud City</h3>
       <p>Pull the week's settings together and you can see what Paul was actually up against. A city erased by Rome and rebuilt from scratch with freed slaves and strivers, all hungry to prove themselves. A harbor on each side pouring in cargo, sailors, and the wealth that funded a hundred shrines. A temple to the goddess of love crowning the skyline, idol-meat in every market stall, and a reputation so loose the city's name became a verb for vice. Down the road sat sophisticated Athens, where a fresh idea was an afternoon's entertainment and the resurrection got a polite hearing and little else.</p>
       <p>Into all of that, God planted something small and unlikely, a handful of believers meeting in a house next door to the synagogue that had thrown them out. They had no temple, no status, no political cover, just a crucified Messiah and a tentmaker's letters arriving by ship. By every measure Corinth respected, this church should have been swallowed whole. It was not. The same pressures that ran through that city, money, sex, status, and the constant noise of a culture sure of itself, are the pressures running through ours. Which is exactly why two letters written to that loud city still speak so plainly into this one.</p>
-    </div>
+    </section>
 
-    <!-- 3. WHAT THIS WEEK CLARIFIES -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">💡</span>
-        <span class="section-title">What This Week Clarifies</span>
-        <div class="section-title-line"></div>
-      </div>
+    <section class="section" id="clarifies" aria-labelledby="clarifies-label">
+      <h2 class="section-label" id="clarifies-label">What This Week Clarifies</h2>
+<p>This opening week covered a lot of road, Athens to Corinth, a synagogue to the house next door, a workbench to a night vision. Three tensions traveled with us the whole way, and the week itself has already answered them.</p>
 
-      <p>This opening week covered a lot of road, Athens to Corinth, a synagogue to the house next door, a workbench to a night vision. Three tensions traveled with us the whole way, and the week itself has already answered them.</p>
-
-      <div class="section-heading">Corinth Had Everything to Prove. Paul Did Not.</div>
+      <h3>Corinth Had Everything to Prove. Paul Did Not.</h3>
       <p>Sunday put a strange first sentence under the microscope. Corinth was new money from the ground up, a city with no old families and everything to prove, and its young church had caught the same fever, lining up behind favorite leaders. Writing into that room, Paul had a resume worth leading with. He led instead with a credential he did not give himself.</p>
 
 <!-- BSB_BLOCK: 1 Corinthians 1:1 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:02017c4c23446260a2b6321bcd2ed32243332e66a620d88400561128affe44ed | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">1 Corinthians 1:1</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/1CO.1.1" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/1CO.1.1" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Paul, called to be an apostle of Christ Jesus by the will of God, and our brother Sosthenes,</div>
 <div class="verse-commentary">
           <p>The week's answer starts with the word apostle, which Sunday unpacked as a sent one, an envoy carrying authority that belongs entirely to the King who sent him. Paul wraps two safeguards around it. He was called, not self-appointed, and the call was God's will, not his own ambition. In a city where every identity was built, his was given, settled before he was born and handed to him while he was still hunting Christians, which is why he names grace as the only explanation for what he became. That is what made him steady in a place that graded everybody. A self-made man has to defend his standing every day. A sent man just has to deliver the message, and he does not need the room to admire him.</p>
         </div>
-      </div>
+      </figure>
 
-      <div class="section-heading">The City Was His Before It Believed</div>
+      <h3>The City Was His Before It Believed</h3>
       <p>By midweek the evidence had stacked up against Corinth. The synagogue had turned hostile, the city ran on money and appetite, and the missionary was worn down to the edge of quitting. Anyone doing the math Paul could see would have called the place unreachable. Then Jesus stood beside him at night and counted the city differently.</p>
 
 <!-- BSB_BLOCK: Acts 18:9-10 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:68f9f12cf72b0c021f46473c50be4598b0dc30825cce66a10eb1f76470b5cd72 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">Acts 18:9-10</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/ACT.18.9-10" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 9">9</sup>One night the Lord spoke to Paul in a vision: <span class="words-of-jesus">“Do not be afraid; keep on speaking; do not be silent.</span> <sup class="verse-number" aria-label="Verse 10">10</sup><span class="words-of-jesus">For I am with you and no one will lay a hand on you, because I have many people in this city.”</span></div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/ACT.18.9-10" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 9">9</sup>One night the Lord spoke to Paul in a vision: <span class="words-of-jesus">“Do not be afraid; keep on speaking; do not be silent.</span> <sup class="verse-number" aria-label="Verse 10">10</sup><span class="words-of-jesus">For I am with you and no one will lay a hand on you, because I have many people in this city.”</span>
+</div>
 <div class="verse-commentary">
           <p>The promise turns on one word. Sabbath pointed at the Greek word behind it, laos, the covenant name Scripture normally saves for Israel, God's own nation, and Jesus spends it on a pagan port full of people who have not yet believed. He claims them in advance. The week then watched the claim come true, the synagogue's own leader believing with his whole household, a congregation growing one wall away from the room that had rejected it. And Wednesday named the reason the promise could be made at all. The harvest was not a hopeful forecast. It was already paid for, purchased at the cross before Paul ever opened his mouth. God does not measure a city by its resistance. He measures it by His people inside it, the ones nobody else can see yet.</p>
         </div>
-      </div>
+      </figure>
 
-      <div class="section-heading">Love Kept Picking the Pen Back Up</div>
+      <h3>Love Kept Picking the Pen Back Up</h3>
       <p>Thursday put the famous letters in an uncomfortable light. They are full of hard words, rebukes about division, tolerated sin, and worship gone sideways, all aimed at people Paul claimed to love. Correction and affection do not usually share a page, and a father who keeps sending painful letters starts to look like something other than a father.</p>
 
 <!-- BSB_BLOCK: 2 Corinthians 2:4 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:c86a1174732ba0faf3a7b6b13bae6c7ef4a695d0bc4c92d0821ce16bfb05bd7f | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 2:4</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.2.4" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.2.4" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">For through many tears I wrote you out of great distress and anguish of heart, not to grieve you but to let you know how much I love you.</div>
 <div class="verse-commentary">
           <p>The verse hands us Paul's own explanation. The severe letter was written through tears, with his chest knotted, and the stated goal was not to grieve them but to show them the depth of his love. Thursday filled in the rest. He warns them as beloved children, and the authority behind every rebuke exists for building up, not tearing down. The week's picture for it was a bone that healed crooked. Leaving it alone feels kind and quietly cripples, so a good surgeon breaks it again to set it straight, hating the pain the whole time. That is what each letter was, a father refusing to let his children heal wrong. The same love that claimed a corrupt city refused to flatter a compromised church. Hard words were simply what that love looked like when it picked up a pen.</p>
         </div>
-      </div>
+      </figure>
 
-    </div>
+    </section>
 
-    <!-- 4. STILL SPEAKING (merged Street Level + Today's World) -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Still Speaking</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">You Become What You Stand Next To</div>
+    <section class="section" id="speaking" aria-labelledby="speaking-label">
+      <h2 class="section-label" id="speaking-label">Still Speaking</h2>
+<h3>You Become What You Stand Next To</h3>
       <p>Stand in a kitchen full of garlic and onions long enough and you carry the smell home on your clothes, whether you cooked or not. That is how culture works on a soul. You do not have to agree with your city to start to smell like it. The Corinthian believers did not vote to become proud, divided, and casual about sin. They simply breathed the same air as everyone around them until the city's instincts felt like their own. The sobering truth is that our own world is just as contagious. Spend every spare minute marinating in the feeds that reward outrage, envy, and self-display, and slowly your reflexes start to match them, no decision required.</p>
       <p>But the principle cuts the other way too, and this is where the whole week lands. Paul walked into the most corrosive city in Greece and did not catch its disease, because he was standing next to Someone stronger than Corinth. He had decided to know nothing but Christ and Him crucified, and that single, stubborn nearness to Jesus reshaped him faster than the city could. This is the genius of the gospel for people who cannot leave the world and were never meant to. We are not asked to scrub ourselves clean by sheer effort or to flee to a safer town. We are asked to stay close to Christ, so close that His character rubs off on us deeper and faster than the culture's does. Holiness is less about what you avoid and more about Who you stand next to. Stand near Him long enough, and you start to carry the scent of home.</p>
-    </div>
+    </section>
 
-    <!-- 5. CHRIST AT THE CENTER OF THE WEEK -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">Christ at the Center of the Week</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Every day this week, when you traced it back far enough, ended at the same Person. Sabbath set the lens, that Paul would judge everything in the Christian life by one thing, Jesus Christ and Him crucified. Sunday showed us a Savior so gracious that He drafted the man who had been hunting His people and made him an apostle. Monday planted the whole mission on a cross the world called foolish and God called power. Tuesday set the one true God, who took on a face and walked into towns like Corinth, against a city full of gods who were nothing. Wednesday put Jesus beside a frightened servant in the dark, promising a harvest He had already bought with His own blood. Thursday showed us a God who writes hard, loving words to wandering children, the same God who sent His final word in the form of a Son. Strip away the city, the letters, and the centuries, and the whole lesson is really about Him. Corinth's only hope, and ours, was never a better strategy. It was a crucified and risen Savior who refuses to give up on a messy church.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the Center of the Week</h2>
+<p>Every day this week, when you traced it back far enough, ended at the same Person. Sabbath set the lens, that Paul would judge everything in the Christian life by one thing, Jesus Christ and Him crucified. Sunday showed us a Savior so gracious that He drafted the man who had been hunting His people and made him an apostle. Monday planted the whole mission on a cross the world called foolish and God called power. Tuesday set the one true God, who took on a face and walked into towns like Corinth, against a city full of gods who were nothing. Wednesday put Jesus beside a frightened servant in the dark, promising a harvest He had already bought with His own blood. Thursday showed us a God who writes hard, loving words to wandering children, the same God who sent His final word in the form of a Son. Strip away the city, the letters, and the centuries, and the whole lesson is really about Him. Corinth's only hope, and ours, was never a better strategy. It was a crucified and risen Savior who refuses to give up on a messy church.</p>
+    </section>
 
-    <!-- 6. WEEKEND PRACTICE -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Weekend Practice</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Weekend Practice</h2>
+<div class="application-card">
         Take a card or a note on your phone and write two lines from this week. First, the week's promise, "I have many people in this city," next to the name of one place or person you have been ready to give up on. Second, the week's resolve, "know nothing but Christ and Him crucified," next to the one cultural pressure you named that pulls hardest on you. Before Sabbath ends, pray over both. Ask God to let you see the harvest you cannot, and to keep you standing so close to Jesus this coming week that His character, not the culture's, is the one that rubs off.
       </div>
-    </div>
+    </section>
 
-    <!-- 7. CLOSING PRAYER FOR THE WEEK -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer for the Week</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Father, thank You for starting this quarter in a place as honest as Corinth, because it looks so much like where we live. Thank You that You called Paul, steadied him in the dark, and grew a church in soil everyone else had written off. Do the same among us. Settle our hearts in the knowledge that we are called and sent by You, so we are not blown around by the world's praise or its scorn. Keep us in the middle of our culture without letting it shape us into its image, and draw us so near to Jesus that His values quietly become our own. We give You the people and places we are tempted to give up on, trusting that You already have many there. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer for the Week</h2>
+<p>Father, thank You for starting this quarter in a place as honest as Corinth, because it looks so much like where we live. Thank You that You called Paul, steadied him in the dark, and grew a church in soil everyone else had written off. Do the same among us. Settle our hearts in the knowledge that we are called and sent by You, so we are not blown around by the world's praise or its scorn. Keep us in the middle of our culture without letting it shape us into its image, and draw us so near to Jesus that His values quietly become our own. We give You the people and places we are tempted to give up on, trusting that You already have many there. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+  </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-07-02.html"><span class="day-nav-kicker">← Thursday</span><span class="day-nav-title">Paul&#x27;s Letters to the Corinthians</span></a><a class="day-nav-item" href="/bible-study/2026-07-04.html"><span class="day-nav-kicker">Saturday →</span><span class="day-nav-title">The Message of the Cross</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>

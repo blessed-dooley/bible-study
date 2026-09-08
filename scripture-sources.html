@@ -1,38 +1,93 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-red="on">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Scripture Sources · Daily Bible Study</title>
-  <meta name="description" content="Where this site's Berean Standard Bible text comes from, how the retained copy is verified, and the rights that cover Scripture and study material.">
-  <style>
-    :root { color-scheme: dark; --bg:#1a1a1a; --card:#1f1f1f; --text:#e8e8e8; --soft:#b9b7b1; --muted:#8e918e; --emerald:#6fcf9b; --border:#343735; }
-    * { box-sizing:border-box; }
-    body { margin:0; padding:32px 18px 64px; background:var(--bg); color:var(--text); font:17px/1.75 system-ui,-apple-system,"Segoe UI",sans-serif; }
-    main { max-width:760px; margin:auto; }
-    article { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:clamp(24px,5vw,48px); }
-    .eyebrow { color:var(--emerald); font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; }
-    h1 { margin:.35em 0 .65em; font-family:Georgia,serif; font-size:clamp(34px,7vw,54px); line-height:1.08; }
-    h2 { margin:1.7em 0 .45em; font-family:Georgia,serif; font-size:26px; }
-    p, li { color:var(--soft); }
-    code { overflow-wrap:anywhere; color:var(--text); }
-    a { color:var(--emerald); }
-    nav, footer { text-align:center; margin-top:24px; color:var(--muted); font-size:14px; }
-    nav a, footer a { margin:0 8px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scripture sources — Daily Bible Study</title>
+<meta name="description" content="Where the site’s Berean Standard Bible text comes from and how it is verified.">
+<meta name="theme-color" content="#1a1a1a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="icon" type="image/png" href="./assets/favicon-729135cb.png">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="./assets/apple-touch-icon-729135cb.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap">
+<link rel="stylesheet" href="./assets/study-v5_0.css">
+<script>
+/* Service-worker registration. v5.0 shipped this on index.html and every
+   study page but NOT on the four trust pages, so a reader landing on About
+   got no offline caching and no install prompt. Present on all eight now.
+   In this review sandbox the script 404s and the .catch logs a benign
+   message; no worker is installed, because the /bible-study/ scope does not
+   match the preview path. */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('/bible-study/sw.js')
+      .catch(function (error) { console.log('SW registration failed:', error); });
+  });
+}
+</script>
 </head>
-<body>
-  <main>
-    <article>
-      <div class="eyebrow">Daily Bible Study</div>
-      <h1>Scripture Sources</h1>
-      <p>The Bible text on this site comes from the Berean Standard Bible, a modern English translation often abbreviated BSB, unless an exception is clearly identified beside a quotation. This page explains where our copy of that text comes from, how we keep it faithful, and what rights cover it. The heart of it is simple. Displayed Scripture passages reproduce wording from an exact, verified copy of the publisher's official text without alteration, and we credit the source voluntarily.</p>
-
-      <h2>Where our copy comes from</h2>
+<body class="trust-page">
+<a class="skip-link" href="#main">Skip to the content</a><header class="appbar">
+  <div class="appbar-row">
+    <a class="wordmark" href="./index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span><span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
+  </div>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
+    </div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this page</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="./index.html">All studies</a>
+    <a class="menu-row" href="./about.html">About our approach</a>
+    <a class="menu-row" href="./scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="./privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="./corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
+  </div>
+</header><div class="prose-header"><div class="prose-header-inner">
+<h1 class="prose-title">Scripture sources</h1>
+<p class="prose-lede">The Bible text on this site comes from the Berean Standard Bible, a modern English translation often abbreviated BSB, unless an exception is clearly identified beside a quotation. This page explains where our copy of that text comes from, how we keep it faithful, and what rights cover it. The heart of it is simple. Displayed Scripture passages reproduce wording from an exact, verified copy of the publisher's official text without alteration, and we credit the source voluntarily.</p>
+</div></div><nav class="on-this-page" aria-label="On this page"><span class="otp-label">On this page</span><span class="otp-chips"><a class="chip" href="#where-our-copy-comes-from">Where our copy comes from</a><a class="chip" href="#how-the-copy-is-verified">How the copy is verified</a><a class="chip" href="#how-quotations-are-displayed">How quotations are displayed</a><a class="chip" href="#bible-app-links">Bible app links</a><a class="chip" href="#rights-and-reuse">Rights and reuse</a></span></nav>
+<main class="prose-body" id="main"><section class="section" id="where-our-copy-comes-from" aria-labelledby="where-our-copy-comes-from-label"><h2 class="section-label" id="where-our-copy-comes-from-label">Where our copy comes from</h2>
       <p>Each finished study page carries its Scripture text directly. During production, the project draws displayed BSB passages from a pinned local copy of the publisher's official files, keeping the wording fixed and verifiable.</p>
       <p>That copy was acquired on August 15, 2026 from the publisher's official downloads page, in the edition the publisher designates as Current, updated to 3rd Printing. Two official formats are retained together. The rendered plain text fixes the exact wording and punctuation readers see. The structured USX archive preserves details the plain text cannot carry, such as exactly where the words of Jesus begin and end.</p>
 
-      <h2>How the copy is verified</h2>
+      </section><section class="section" id="how-the-copy-is-verified" aria-labelledby="how-the-copy-is-verified-label"><h2 class="section-label" id="how-the-copy-is-verified-label">How the copy is verified</h2>
       <p>The archive, the rendered text, and all 66 extracted book files are recorded by byte count and by SHA-256 checksum, a standard digital fingerprint that reveals any change to the retained source.</p>
       <p>When the copy was acquired, the two official formats were also checked against each other across all 31,086 non-empty verses. The wording agreed everywhere, and every words-of-Jesus boundary aligned cleanly. That was a check of the whole dataset at acquisition. Individual studies then quote from this verified copy, and automated checks compare each study's primary displayed Scripture blocks with it before publication. That comparison covers wording, punctuation, verse boundaries, and words-of-Jesus markup.</p>
       <p>For readers who want the record, here it is.</p>
@@ -41,27 +96,41 @@
         <li>Publisher's edition designation: Current, updated to 3rd Printing</li>
         <li>Acquired: August 15, 2026, from the publisher's official downloads page</li>
         <li>Retained formats: the official rendered plain text and the official USX structured archive, with all 66 extracted book files, each pinned by byte count and SHA-256</li>
-        <li>Archive SHA-256: <code>7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f</code></li>
-        <li>Rendered-text SHA-256: <code>2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96</code></li>
+        <li>Archive SHA-256: <code>7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f</code>
+</li>
+        <li>Rendered-text SHA-256: <code>2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96</code>
+</li>
         <li>Cross-check at acquisition: the two official formats agreed across all 31,086 non-empty verses</li>
       </ul>
 
-      <h2>How quotations are displayed</h2>
+      </section><section class="section" id="how-quotations-are-displayed" aria-labelledby="how-quotations-are-displayed-label"><h2 class="section-label" id="how-quotations-are-displayed-label">How quotations are displayed</h2>
       <p>Displayed wording and punctuation follow the publisher's rendered plain text.</p>
       <p>Some passages show the words of Jesus in red. Those boundaries come exclusively from the words-of-Jesus markers in the publisher's structured text. Red lettering is optional and can be turned off, and no study depends on the color to be understood.</p>
       <p>The translators' footnotes are not currently shown on study pages, though their presence is preserved in our internal source records. Poetry is currently displayed as flowing prose. Its wording is preserved exactly, but the poetic line breaks are not yet reproduced on the page.</p>
       <p>If a future study intentionally quotes a different translation, that exception will be identified beside the quotation itself as well as in the page's source information.</p>
 
-      <h2>Bible app links</h2>
+      </section><section class="section" id="bible-app-links" aria-labelledby="bible-app-links-label"><h2 class="section-label" id="bible-app-links-label">Bible app links</h2>
       <p>Each displayed Scripture block offers an “Open in Bible App” link. These links open the Berean Standard Bible on YouVersion, where it is version 3034. The quotation printed on the study page remains the locally retained text regardless of a reader's Bible-app preferences.</p>
 
-      <h2>Rights and reuse</h2>
+      </section><section class="section" id="rights-and-reuse" aria-labelledby="rights-and-reuse-label"><h2 class="section-label" id="rights-and-reuse-label">Rights and reuse</h2>
       <p>The Berean Bible terms state that the text was dedicated to the public domain effective April 30, 2023, and that all uses are freely permitted. Attribution is appreciated but not required, so the credit this project gives is voluntary.</p>
       <p><a href="https://berean.bible/terms.htm" rel="noopener">Official terms</a> · <a href="https://berean.bible/downloads.htm" rel="noopener">Official downloads</a></p>
       <p>That public-domain status belongs to the Bible text itself. It is separate from this project's own CC0 1.0 Universal dedication, which covers eligible original study material and is described on the <a href="about.html">About Our Approach</a> page.</p>
-    </article>
-      <nav><a href="index.html">Home</a><a href="about.html">About Our Approach</a></nav>
-    <footer>☩ Daily Bible Study · Shared with Love ☩</footer>
-  </main>
+      </section></main><footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="./about.html">About</a>
+    <a href="./scripture-sources.html">Scripture sources</a>
+    <a href="./privacy.html">Privacy</a>
+    <a href="./corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer>
+<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="./assets/notifications.js" defer></script>
+<script src="./assets/reader-controls.js" defer></script>
 </body>
 </html>

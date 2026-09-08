@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-red="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Bible Study</title>
+<title>Simplicity and Sincerity — Daily Bible Study</title>
 <meta name="study-title" content="Simplicity and Sincerity">
-<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 9, Love-driven Ministry · Part 3 of 7">
+<meta name="study-passage" content="2 Corinthians 1:12-14">
+<meta name="study-series" content="The Essence of Christian Life and Witness · Lesson 9, Love-driven Ministry · Day 3 of 7">
 
 <!-- Open Graph — link preview -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Daily Bible Study">
 <meta property="og:title" content="Simplicity and Sincerity">
-<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 9, Love-driven Ministry · Part 3 of 7 · Daily Bible Study">
+<meta property="og:description" content="The Essence of Christian Life and Witness · Lesson 9, Love-driven Ministry · Day 3 of 7 · Daily Bible Study">
 <meta property="og:url" content="https://blessedcontent.github.io/bible-study/2026-08-24.html">
 <meta property="og:image" content="https://blessedcontent.github.io/bible-study/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="The Essence of Christian Life and Witness · Lesson 9, Love-driven Ministry · Part 3 of 7 · Daily Bible Study">
+<meta name="description" content="The Essence of Christian Life and Witness · Lesson 9, Love-driven Ministry · Day 3 of 7 · Daily Bible Study">
 
 <!-- Favicon — emerald cross -->
 <link rel="icon" type="image/png" href="/bible-study/assets/favicon-729135cb.png">
@@ -37,323 +38,199 @@ if ('serviceWorker' in navigator) {
 </script>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/bible-study/assets/study-v4_9.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet">
+<script>(function () {
+  var themes = { dark: 1, paper: 1, light: 1 };
+  var theme = 'dark', red = 'on';
+  try {
+    var stored = localStorage.getItem('dbs_theme');
+    if (stored && themes[stored]) theme = stored;
+    if (localStorage.getItem('dbs_red_letter') === 'off') red = 'off';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-red', red);
+})();</script><link rel="stylesheet" href="/bible-study/assets/study-v5_0.css">
+<meta name="apple-mobile-web-app-title" content="Bible Study">
 </head>
 <body class="study-page--daily">
-  <!-- Notification opt-in banner -->
-  <div id="notifBanner" class="notif-banner hidden">
-    <div class="notif-banner-text">
-      <span>Get notified when new studies are posted?</span>
-    </div>
-    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
-    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  <a class="skip-link" href="#study-content">Skip to the study</a><header class="appbar">
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+  <div class="appbar-row">
+    <a class="wordmark" href="/bible-study/index.html" aria-label="Daily Bible Study, all studies">
+      <span class="wordmark-mark" aria-hidden="true">☩</span>
+      <span class="wordmark-text">Daily Bible Study</span>
+    </a>
+    <button type="button" class="icon-btn" data-menu-toggle aria-expanded="false" aria-controls="reader-menu" aria-label="Reader menu">
+      <span class="icon-btn-line"></span><span class="icon-btn-line"></span><span class="icon-btn-line"></span>
+    </button>
   </div>
-
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-eyebrow">Daily Bible Study</div>
-    <h1>Simplicity and Sincerity</h1>
-    <div class="header-subtitle">
-      <span>The Essence of Christian Life and Witness</span>
-      <span>Lesson 9, Love-driven Ministry</span>
-      <span>Part 3 of 7</span>
+  <div class="menu" id="reader-menu" hidden>
+    <button type="button" class="menu-row" data-toggle="red" role="switch" aria-checked="true">
+      <span>Words of Jesus in red</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <button type="button" class="menu-row" data-toggle="notify" role="switch" aria-checked="false">
+      <span>Morning reminder</span>
+      <span class="switch" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+    <div class="menu-row" role="group" aria-label="Theme">
+      <span>Theme</span>
+      <span class="seg">
+        <button type="button" class="seg-btn" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" class="seg-btn" data-theme-set="paper" aria-pressed="false">Paper</button>
+        <button type="button" class="seg-btn" data-theme-set="light" aria-pressed="false">Light</button>
+      </span>
     </div>
-    <div class="date-badge">August 24, 2026</div>
+    <button type="button" class="menu-row" data-share>
+      <span class="menu-row-label"><svg class="menu-row-icon" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"></line><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line></svg>Share this study</span>
+    </button>
+    <div class="menu-sep"></div>
+    <a class="menu-row" href="/bible-study/index.html">All studies</a>
+    <a class="menu-row" href="/bible-study/about.html">About our approach</a>
+    <a class="menu-row" href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a class="menu-row" href="/bible-study/privacy.html">Privacy &amp; reader controls</a>
+    <a class="menu-row" href="/bible-study/corrections.html">Corrections</a>
+    <div id="share-status" class="visually-hidden" role="status" aria-live="polite"></div>
   </div>
-
-  <div class="celtic-divider">
-    <span class="celtic-divider-symbol">✦ ☩ ✦</span>
+</header><div class="study-header">
+  <div class="study-header-inner">
+    <span class="study-cross" aria-hidden="true"></span>
+    <div class="study-meta-row">
+      <span class="eyebrow">Mon · Aug 24</span>
+      <span class="meta-rule" aria-hidden="true"></span>
+      <span class="eyebrow">10 min</span>
+    </div>
+    <h1 class="study-title">Simplicity and Sincerity</h1>
+    <p class="study-sub"><span class="sub-title">Love-driven Ministry</span><span class="sub-facts"><span>Lesson 9</span><span>Day 3 of 7</span></span></p>
   </div>
+</div>
+<div class="study-shell">
+<nav class="jumpbar" aria-label="Sections in this study">
+  <button type="button" class="jumpbar-row" data-toggle="jumplist" aria-expanded="false" aria-controls="jumplist"><span class="jumpbar-current">In brief</span><span class="jumpbar-toggle">Sections</span></button>
+  <div class="jumplist" id="jumplist" hidden>
+<button type="button" class="chip" data-jump="tldr">In brief</button><button type="button" class="chip" data-jump="connection">Yesterday</button><button type="button" class="chip" data-jump="context">Historical Context</button><button type="button" class="chip" data-jump="word">Into the Word</button><button type="button" class="chip" data-jump="street">Street Level</button><button type="button" class="chip" data-jump="today">Today’s World</button><button type="button" class="chip" data-jump="christ">Christ at the center</button><button type="button" class="chip" data-jump="application">Application</button><button type="button" class="chip" data-jump="discussion">Discussion Question</button><button type="button" class="chip" data-jump="prayer">Closing Prayer</button>
+</div>
+</nav><main class="study-body" id="study-content"><section class="section" id="tldr" aria-labelledby="tldr-label">
+      <h2 class="section-label" id="tldr-label">In brief</h2>
+<p>The rumor moving through Corinth was small and deadly. He says yes and means maybe. What is he really after? Paul answers with the only witness he has, a conscience that can stand daylight, and then reaches into the marketplace for his defense. Other teachers water down the word of God like dishonest wine dealers and sell the blend. Not us. No hidden ways, no distortion, no code in the letters. Just truth poured at full strength, before God, for love. <strong>Love has nothing to hide, because love is not selling anything.</strong></p>
+    </section>
 
-  <div class="card">
+    <section class="section" id="connection" aria-labelledby="connection-label">
+      <h2 class="section-label" id="connection-label">Yesterday</h2>
+<p>Yesterday ended with a surprise promotion, Paul lifting the church that doubted him onto his prayer team as he retold the comfort and rescue of God (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.1.1-11" target="_blank" rel="noopener" data-verse="2-corinthians-1-1-11" data-ref="2 Corinthians 1:1-11" aria-expanded="false">2 Corinthians 1:1-11</a>). Today the letter walks into harder territory. Comfort was the easy part to hear. Now Paul takes on the whisper underneath the whole conflict, the suspicion that his warmth was a technique and his changed plans revealed a changeable heart. He does not answer like a politician protecting his polling. He calls one witness, his own conscience, and invites the audit. Watch closely, because the quality he defends today, love with unmixed motives, is the very thing your hardest relationship is waiting to see in you.</p>
+    </section>
 
-    <!-- 1. TL;DR -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📌</span>
-        <span class="section-title">TL;DR</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>The rumor moving through Corinth was small and deadly. He says yes and means maybe. What is he really after? Paul answers with the only witness he has, a conscience that can stand daylight, and then reaches into the marketplace for his defense. Other teachers water down the word of God like dishonest wine dealers and sell the blend. Not us. No hidden ways, no distortion, no code in the letters. Just truth poured at full strength, before God, for love. <strong>Love has nothing to hide, because love is not selling anything.</strong></p>
-    </div>
-
-    <!-- 2. CONNECTION TO YESTERDAY -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🔁</span>
-        <span class="section-title">Connection to Yesterday</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Yesterday ended with a surprise promotion, Paul lifting the church that doubted him onto his prayer team as he retold the comfort and rescue of God (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.1.1-11" target="_blank" rel="noopener">2 Corinthians 1:1-11</a>). Today the letter walks into harder territory. Comfort was the easy part to hear. Now Paul takes on the whisper underneath the whole conflict, the suspicion that his warmth was a technique and his changed plans revealed a changeable heart. He does not answer like a politician protecting his polling. He calls one witness, his own conscience, and invites the audit. Watch closely, because the quality he defends today, love with unmixed motives, is the very thing your hardest relationship is waiting to see in you.</p>
-    </div>
-
-    <!-- 3. HISTORICAL & CULTURAL CONTEXT -->
-    <div class="section section-context">
-      <div class="section-label">
-        <span class="section-emoji">🗺️</span>
-        <span class="section-title">Historical &amp; Cultural Context</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Wine Was Watered Before You Bought It</div>
-      <p>Buying wine in a Roman market was a small act of faith. Everyone knew the drink would be diluted at the table; that was ordinary custom. The scandal was the dealer who did the watering before the sale, stretching a fine vintage with cheap stock or plain water and charging for the pure article. The retail wine seller carried such a reputation for this that the prophets had turned him into a sermon illustration centuries earlier. Isaiah indicted Jerusalem by saying her silver had become dross and her best wine was cut with water (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.1.22" target="_blank" rel="noopener">Isaiah 1:22</a>). In a port city like Corinth, wary shoppers squinted at every amphora, every measure, every smiling seller. You assumed the blend until proven otherwise.</p>
+    <section class="section section-context" id="context" aria-labelledby="context-label">
+      <h2 class="section-label" id="context-label">Historical Context</h2>
+<h3>The Wine Was Watered Before You Bought It</h3>
+      <p>Buying wine in a Roman market was a small act of faith. Everyone knew the drink would be diluted at the table; that was ordinary custom. The scandal was the dealer who did the watering before the sale, stretching a fine vintage with cheap stock or plain water and charging for the pure article. The retail wine seller carried such a reputation for this that the prophets had turned him into a sermon illustration centuries earlier. Isaiah indicted Jerusalem by saying her silver had become dross and her best wine was cut with water (<a class="vlink" href="https://www.bible.com/bible/3034/ISA.1.22" target="_blank" rel="noopener" data-verse="isaiah-1-22" data-ref="Isaiah 1:22" aria-expanded="false">Isaiah 1:22</a>). In a port city like Corinth, wary shoppers squinted at every amphora, every measure, every smiling seller. You assumed the blend until proven otherwise.</p>
       <p>Paul reaches straight into that market to describe his ministry. Plenty of traveling teachers, he says, handle the word of God the way those dealers handled wine, thinning the hard parts, sweetening the pitch, moving product. He refuses the whole trade. What Corinth heard from him was the message at full strength, from sincerity, from God, spoken before God. Keep the watered wine in mind as you read today's verses. The question underneath them is one every reader can feel in the gut. When someone hands you truth, how do you know it has not been tampered with on the way?</p>
-    </div>
+    </section>
 
-    <!-- 4. INTO THE WORD -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">📖</span>
-        <span class="section-title">Into the Word</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>By the time this letter reached Corinth, the whisper had made its rounds. He says yes and means maybe. He changes plans when it suits him. What is he really after? Every leader lives one rumor away from those questions, and most reach for credentials to answer them. Paul reaches for something stranger and sturdier, the testimony of his own conscience. Today's passages open a window into a ministry that could survive a daylight audit, and they press an uncomfortable question on the rest of us. Could our motives survive the same light?</p>
+    <section class="section" id="word" aria-labelledby="word-label">
+      <h2 class="section-label" id="word-label">Into the Word</h2>
+<p>By the time this letter reached Corinth, the whisper had made its rounds. He says yes and means maybe. He changes plans when it suits him. What is he really after? Every leader lives one rumor away from those questions, and most reach for credentials to answer them. Paul reaches for something stranger and sturdier, the testimony of his own conscience. Today's passages open a window into a ministry that could survive a daylight audit, and they press an uncomfortable question on the rest of us. Could our motives survive the same light?</p>
 
       <!-- BSB_BLOCK: 2 Corinthians 1:12-14 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:f7b52ba09759821b51c64bc2364cd0518159d684c1e46958348ace86c28fa08d | footnotes-stripped:2 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 1:12-14</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.1.12-14" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
-        <div class="verse-text"><sup class="verse-number" aria-label="Verse 12">12</sup>For this is our boast: Our conscience testifies that we have conducted ourselves in the world, and especially in relation to you, in the holiness and sincerity that are from God—not in worldly wisdom, but in the grace of God. <sup class="verse-number" aria-label="Verse 13">13</sup>For we do not write you anything that is beyond your ability to read and understand. And I hope that you will understand us completely, <sup class="verse-number" aria-label="Verse 14">14</sup>as you have already understood us in part, that you may boast of us just as we will boast of you in the day of our Lord Jesus.</div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.1.12-14" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
+        <div class="verse-text">
+<sup class="verse-number" aria-label="Verse 12">12</sup>For this is our boast: Our conscience testifies that we have conducted ourselves in the world, and especially in relation to you, in the holiness and sincerity that are from God—not in worldly wisdom, but in the grace of God. <sup class="verse-number" aria-label="Verse 13">13</sup>For we do not write you anything that is beyond your ability to read and understand. And I hope that you will understand us completely, <sup class="verse-number" aria-label="Verse 14">14</sup>as you have already understood us in part, that you may boast of us just as we will boast of you in the day of our Lord Jesus.</div>
         <div class="verse-commentary">
-          <p>Against the whisper Paul calls a single witness, his conscience (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.1.12" target="_blank" rel="noopener">2 Corinthians 1:12</a>), and its testimony centers on two words. Simplicity and sincerity. Both describe something unmixed, motives with nothing slipped into the blend, and Paul is careful to say the purity is not homegrown. It is from God, not from clever worldly wisdom, the same undivided heart Scripture asks of servants who work identically whether or not anyone is watching (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.6.5" target="_blank" rel="noopener">Ephesians 6:5</a>, <a class="vlink" href="https://www.bible.com/bible/3034/COL.3.22" target="_blank" rel="noopener">Colossians 3:22</a>). Then he applies it to his writing. There is no code in my letters, he says, no gap between what you read and what I mean (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.1.13-14" target="_blank" rel="noopener">2 Corinthians 1:13-14</a>). And he books the final audit in advance, the day of our Lord Jesus (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.1.14" target="_blank" rel="noopener">2 Corinthians 1:14</a>), when he and this church will be each other's boast. A mixed motive dreads that day. A clean one leans toward it.</p>
+          <p>Against the whisper Paul calls a single witness, his conscience (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.1.12" target="_blank" rel="noopener" data-verse="2-corinthians-1-12" data-ref="2 Corinthians 1:12" aria-expanded="false">2 Corinthians 1:12</a>), and its testimony centers on two words. Simplicity and sincerity. Both describe something unmixed, motives with nothing slipped into the blend, and Paul is careful to say the purity is not homegrown. It is from God, not from clever worldly wisdom, the same undivided heart Scripture asks of servants who work identically whether or not anyone is watching (<a class="vlink" href="https://www.bible.com/bible/3034/EPH.6.5" target="_blank" rel="noopener" data-verse="ephesians-6-5" data-ref="Ephesians 6:5" aria-expanded="false">Ephesians 6:5</a>, <a class="vlink" href="https://www.bible.com/bible/3034/COL.3.22" target="_blank" rel="noopener" data-verse="colossians-3-22" data-ref="Colossians 3:22" aria-expanded="false">Colossians 3:22</a>). Then he applies it to his writing. There is no code in my letters, he says, no gap between what you read and what I mean (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.1.13-14" target="_blank" rel="noopener" data-verse="2-corinthians-1-13-14" data-ref="2 Corinthians 1:13-14" aria-expanded="false">2 Corinthians 1:13-14</a>). And he books the final audit in advance, the day of our Lord Jesus (<a class="vlink" href="https://www.bible.com/bible/3034/2CO.1.14" target="_blank" rel="noopener" data-verse="2-corinthians-1-14" data-ref="2 Corinthians 1:14" aria-expanded="false">2 Corinthians 1:14</a>), when he and this church will be each other's boast. A mixed motive dreads that day. A clean one leans toward it.</p>
         </div>
-      </div>
+      </figure>
 
       <p>From his conscience Paul turns to his craft. If the motives are unmixed, the handling of the message had better match, and he describes that handling with a word straight off the market street.</p>
 
       <!-- BSB_BLOCK: 2 Corinthians 2:17 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:799569b7caa61f62ccbba5e2cad5daa34f4908fc4ce9c0b01f61d65206a51a69 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 2:17</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.2.17" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.2.17" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">For we are not like so many others, who peddle the word of God for profit. On the contrary, in Christ we speak before God with sincerity, as men sent from God.</div>
         <div class="verse-commentary">
           <p>The job Paul refuses here is vivid in the original. The Greek verb is <em>kapēleuō</em>, to hawk something the way the market's wine dealer did, retailing a product he had quietly watered down, and Paul says so many others were doing exactly that with the word of God. It was a crowded profession. Itinerant experts adjusted the message to the audience and the audience's wallet, filed off the offense, poured whatever would sell. The tragedy is not only the profit motive. It is what watering does to wine. A diluted message goes down easier and changes nobody. So Paul states his sourcing like a man with nothing to hide. In Christ, before God, as sent from God, we speak. Water the wine and you can sell more of it. Paul would rather pour it pure.</p>
         </div>
-      </div>
+      </figure>
 
       <p>And this was no one-time flourish for the defense. Two chapters later he is still saying it, and the wording grows even more sweeping.</p>
 
       <!-- BSB_BLOCK: 2 Corinthians 4:2 | archive-sha256:7530e07b44b11ec42a2a6148d2707031dbafe8cdd616f2c383275f8106e79e4f | text-sha256:2ac3af1de52d4e68261cba91d85c320b7eadc6560e830d99e591767b8ff5ca96 | block-sha256:96cf64bac39c6e04a19e8b9ad2683791d7984a38894da200a7c300547ef7e5b7 | footnotes-stripped:0 | poetry:flow -->
-      <div class="verse-block">
-        <div class="verse-header">
+      <figure class="verse-block">
+        <figcaption class="verse-head">
           <div class="verse-ref">2 Corinthians 4:2</div>
-          <a class="bible-btn" href="https://www.bible.com/bible/3034/2CO.4.2" target="_blank" rel="noopener">☩ Open in Bible App</a>
-        </div>
+          <a class="verse-open" href="https://www.bible.com/bible/3034/2CO.4.2" target="_blank" rel="noopener">Open ↗</a>
+        </figcaption>
         <div class="verse-text">Instead, we have renounced secret and shameful ways. We do not practice deceit, nor do we distort the word of God. On the contrary, by open proclamation of the truth, we commend ourselves to every man’s conscience in the sight of God.</div>
         <div class="verse-commentary">
           <p>Whatever hidden levers other teachers pulled, Paul has walked away from the entire toolbox. No secret ways, no deceit, no distorting the word to fit the market. His whole method is open proclamation of the truth, and his whole appeal is to your conscience, wide awake, in the sight of God. Notice what that rules out. Manipulation needs shadows, an angle the listener cannot see, a motive that stays backstage. Love works in daylight because it wants nothing from you that it cannot ask for out loud. That is why sincerity reveals love. The seller needs you persuaded. The father simply needs you to know the truth, and he is willing to be examined while he tells it.</p>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
 
-    <!-- 5. STREET LEVEL -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🎯</span>
-        <span class="section-title">Street Level</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Move You Were Never Meant to See</div>
+    <section class="section" id="street" aria-labelledby="street-label">
+      <h2 class="section-label" id="street-label">Street Level</h2>
+<h3>The Move You Were Never Meant to See</h3>
       <p>A good close-up magician can fool you from two feet away, and the method is almost never fancy. It is management. The patter, the joke, the tap of the left hand on the table, all of it exists to decide where your eyes are allowed to be while the right hand does the move. Magicians even have a rule about it. Never announce what you are about to do, because a warned eye is nearly impossible to fool. For ten minutes at a birthday party this arrangement is pure delight. Everybody in the room agreed to be steered.</p>
       <p>But you have felt the other version, the one nobody agreed to. Somewhere in the middle of a conversation your gut names it before your brain does. The compliments are positioned. The story keeps steering somewhere. You are not being talked to. You are being worked. And once you catch a single hidden move, you go back and recheck every sentence that person ever said to you. That is why Paul's defense of his ministry is really a love letter. No move, no angle, no version of him Corinth was never supposed to meet. What they read was what he meant. A trick has to control where you look. Love invites you to look anywhere, because a seller needs you persuaded while a father simply needs you to know the truth. The most loving thing you can bring into a room is a motive that can stand the lights.</p>
-    </div>
+    </section>
 
-    <!-- 6. TODAY'S WORLD, ANCIENT TRUTH -->
-    <div class="section">
-      <div class="section-label">
-        <span class="section-emoji">🌍</span>
-        <span class="section-title">Today's World, Ancient Truth</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="section-heading">The Five-Star Review Went Up for Sale</div>
+    <section class="section" id="today" aria-labelledby="today-label">
+      <h2 class="section-label" id="today-label">Today’s World</h2>
+<h3>The Five-Star Review Went Up for Sale</h3>
       <p>The closest thing our world has to the Corinthian wine market is the online review. It is how strangers vouch for products, doctors, contractors, and restaurants, modern word of mouth, and it has been watered exactly the way the amphoras were. Paid praise, invented customers, five stars generated by software. The adulteration grew so routine that in 2024 a federal regulation took effect to police it, the Federal Trade Commission's Consumer Review Rule, which prohibits deceptive or unfair conduct involving reviews and testimonials for goods and services. On December 22, 2025, the agency issued ten warning letters to companies over possible violations of the rule. It did not name the recipients, but its template warning letter spells out the kind of conduct in view, such as paying employees to obtain five-star reviews from friends and family, or gathering reviews from people who had never used the company's products or services at all.</p>
       <p>Step back and feel the strangeness of that. Praise became a product, so the government had to regulate compliments. And notice what the rule is really trying to buy back. Not stars. Trust, the simple assurance that a recommendation means what it says and nobody was paid to say it. Every fake review is a small dose of the poison Corinth suspected in Paul, the voice that sounds warm while the motive stays hidden. Paul's answer was never regulation. It was renunciation. He walked away from the entire trade, spoke before God, and let his life be the disclosure statement. No agency can manufacture that kind of credibility. It can only punish the counterfeit. Which leaves believers holding something the marketplace cannot fake and the law cannot require, a word about God carried by people who are not on commission. Keep it that way, and the world can tell.</p>
       <!-- TODAYS_WORLD_SOURCE: FTC issues consumer review warning letters and vacates AI consent order: Key points | DLA Piper | 2025 | https://www.dlapiper.com/en-us/insights/publications/2025/12/ftc-warning-letters-ai-consumer-reviews -->
-    </div>
+    <details class="disclosure source-disclosure"><summary class="disclosure-summary"><span class="disclosure-label">Source</span> <span class="disclosure-publisher">DLA Piper</span></summary><div class="disclosure-body"><p><cite>FTC issues consumer review warning letters and vacates AI consent order: Key points</cite>. DLA Piper, 2025. <a href="https://www.dlapiper.com/en-us/insights/publications/2025/12/ftc-warning-letters-ai-consumer-reviews" target="_blank" rel="noopener noreferrer">Read the source</a>.</p></div></details></section>
 
-    <!-- 7. CHRIST CONNECTION -->
-    <div class="section section-christ">
-      <div class="section-label">
-        <span class="section-emoji">✝️</span>
-        <span class="section-title">The Christ Connection</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Paul's defense only works because he is imitating Someone whose motives were never once mixed. Jesus taught in public, healed in public, and when the high priest demanded an account of His teaching, He could answer, I have spoken openly to the world, and in secret I have said nothing (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.18.20" target="_blank" rel="noopener">John 18:20</a>). There were no two versions of Him. No message adjusted for wealthy listeners, no private teaching that contradicted the public one. And when God wanted His word delivered to us at full strength, He did not send a document. The Word became flesh and dwelt among us, full of grace and truth (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.1.14" target="_blank" rel="noopener">John 1:14</a>). Undiluted grace. Undiluted truth. Both at once, both to the last drop, all the way to a cross He refused to negotiate His way down from. Every watered gospel since has been an attempt to make that cross easier to swallow. Jesus is the proof that God waters nothing down. Not His word, not His love, and not what that love was willing to pay.</p>
-    </div>
+    <section class="section section-christ" id="christ" aria-labelledby="christ-label">
+      <h2 class="section-label" id="christ-label">Christ at the center</h2>
+<p>Paul's defense only works because he is imitating Someone whose motives were never once mixed. Jesus taught in public, healed in public, and when the high priest demanded an account of His teaching, He could answer, I have spoken openly to the world, and in secret I have said nothing (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.18.20" target="_blank" rel="noopener" data-verse="john-18-20" data-ref="John 18:20" aria-expanded="false">John 18:20</a>). There were no two versions of Him. No message adjusted for wealthy listeners, no private teaching that contradicted the public one. And when God wanted His word delivered to us at full strength, He did not send a document. The Word became flesh and dwelt among us, full of grace and truth (<a class="vlink" href="https://www.bible.com/bible/3034/JHN.1.14" target="_blank" rel="noopener" data-verse="john-1-14" data-ref="John 1:14" aria-expanded="false">John 1:14</a>). Undiluted grace. Undiluted truth. Both at once, both to the last drop, all the way to a cross He refused to negotiate His way down from. Every watered gospel since has been an attempt to make that cross easier to swallow. Jesus is the proof that God waters nothing down. Not His word, not His love, and not what that love was willing to pay.</p>
+    </section>
 
-    <!-- 8. APPLICATION -->
-    <div class="section section-application">
-      <div class="section-label">
-        <span class="section-emoji">✅</span>
-        <span class="section-title">Personal Application Challenge</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="action-box">
+    <section class="section section-application" id="application" aria-labelledby="application-label">
+      <h2 class="section-label" id="application-label">Application</h2>
+<div class="application-card">
         Run a one-item honesty audit today. Find the single place where you most manage your image, the stretched line on the résumé, the story you tell better than it happened, the spiritual health you imply at church but do not have, and straighten it with one person today. Correct the record plainly, without ceremony. It will feel like losing leverage. It is actually love, because the people around you deserve the pure pour, and so does the God who watches you serve.
       </div>
-    </div>
+    </section>
 
-    <!-- 9. PRAYER -->
-    <div class="section section-prayer">
-      <div class="section-label">
-        <span class="section-emoji">🙏</span>
-        <span class="section-title">Closing Prayer</span>
-        <div class="section-title-line"></div>
-      </div>
-      <p>Lord, You see the blends we sell. The half-truths that smooth our path, the motives we dress up in nicer motives, the different versions of ourselves we pour for different rooms. We do not want to live like merchants of our own image anymore. Give us what Paul had, a conscience that can testify in daylight, simplicity and sincerity that come from You, because we have tried manufacturing our own and it does not hold. Make our words plain. Let the people who deal with us understand us, with no code to crack and no fine print to find. Guard us from handling Your word like a product, trimming it where it costs us and sweetening it where it stings. And when we fear what transparency might cost, remind us of the day of the Lord Jesus, when everything hidden evaporates and only the unmixed remains. We would rather be pure than impressive. In Jesus' name, Amen.</p>
-    </div>
+    <section class="section section-discussion" id="discussion" aria-labelledby="discussion-label">
+      <h2 class="section-label" id="discussion-label">Discussion Question</h2>
+<div class="discussion-question">"When have you watched trust collapse because a motive turned out to be mixed (a friendship that became a sales funnel, a kindness that came with strings, a leader with a private version of himself)? Where might someone quietly wonder the same thing about you, and what one step this week would clear the water?"</div>
+    </section>
 
-    <!-- 10. DISCUSSION -->
-    <div class="section section-discussion">
-      <div class="section-label">
-        <span class="section-emoji">💬</span>
-        <span class="section-title">Discussion Question</span>
-        <div class="section-title-line"></div>
-      </div>
-      <div class="discussion-q">"When have you watched trust collapse because a motive turned out to be mixed (a friendship that became a sales funnel, a kindness that came with strings, a leader with a private version of himself)? Where might someone quietly wonder the same thing about you, and what one step this week would clear the water?"</div>
-    </div>
+  <section class="section section-prayer" id="prayer" aria-labelledby="prayer-label">
+      <h2 class="section-label" id="prayer-label">Closing Prayer</h2>
+<p>Lord, You see the blends we sell. The half-truths that smooth our path, the motives we dress up in nicer motives, the different versions of ourselves we pour for different rooms. We do not want to live like merchants of our own image anymore. Give us what Paul had, a conscience that can testify in daylight, simplicity and sincerity that come from You, because we have tried manufacturing our own and it does not hold. Make our words plain. Let the people who deal with us understand us, with no code to crack and no fine print to find. Guard us from handling Your word like a product, trimming it where it costs us and sweetening it where it stings. And when we fear what transparency might cost, remind us of the day of the Lord Jesus, when everything hidden evaporates and only the unmixed remains. We would rather be pure than impressive. In Jesus' name, Amen.</p>
+    </section>
 
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>☩ Daily Bible Study · Shared with Love ☩</p>
-    <p class="footer-meta">Independently written · <a href="/bible-study/about.html">About our approach</a></p>
-    <p class="scripture-source">Scripture quotations are from the <a href="/bible-study/scripture-sources.html">Berean Standard Bible</a> (public domain).</p>
-    <button type="button" class="red-letter-toggle" aria-pressed="true">Red letters on</button>
-    <a class="footer-archive" href="/bible-study/index.html">← Home</a>
-  </div>
-
+    </main>
 </div>
-<script>
-(function() {
-  var button = document.querySelector('.red-letter-toggle');
-  if (!button) return;
-  if (!document.querySelector('.words-of-jesus')) {
-    button.hidden = true;
-    return;
-  }
-  var key = 'dbs_red_letter';
-  function apply(enabled) {
-    document.body.classList.toggle('red-letter-off', !enabled);
-    button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    button.textContent = enabled ? 'Red letters on' : 'Red letters off';
-  }
-  var enabled = true;
-  try { enabled = localStorage.getItem(key) !== 'off'; } catch (e) {}
-  apply(enabled);
-  button.addEventListener('click', function() {
-    enabled = !enabled;
-    apply(enabled);
-    try { localStorage.setItem(key, enabled ? 'on' : 'off'); } catch (e) {}
-  });
-})();
-</script>
-<script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/bible-study/sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW registration failed:', err));
-}
-</script>
+<nav class="day-nav" aria-label="Nearby studies"><a class="day-nav-item" href="/bible-study/2026-08-23.html"><span class="day-nav-kicker">← Sunday</span><span class="day-nav-title">Thanksgiving</span></a><a class="day-nav-item" href="/bible-study/2026-08-25.html"><span class="day-nav-kicker">Tuesday →</span><span class="day-nav-title">Changing Plans for Love</span></a></nav><div id="notifBanner" class="notif-banner hidden" role="region" aria-label="Study notifications" aria-hidden="true">
+    <div class="notif-banner-text">Get a morning reminder for each day’s study?</div>
+    <button class="notif-btn-yes" onclick="dbsNotifOptIn()">Yes, notify me</button>
+    <button class="notif-btn-no" onclick="dbsNotifDismiss()">No thanks</button>
+  </div>
 
-<!-- Firebase SDK for push notifications -->
+<footer class="site-footer">
+  <p class="footer-tagline">Drawing closer to God, one day at a time</p>
+  <p class="footer-links">
+    <a href="/bible-study/about.html">About</a>
+    <a href="/bible-study/scripture-sources.html">Scripture sources</a>
+    <a href="/bible-study/privacy.html">Privacy</a>
+    <a href="/bible-study/corrections.html">Corrections</a>
+  </p>
+  <p class="footer-line scripture-source"><span class="fl-a">Independently written, shared with love</span><span class="fl-b">Scripture from the Berean Standard Bible</span><span class="fl-c">(public domain)</span></p>
+</footer><script type="application/json" id="verse-data">{"2-corinthians-1-1-11":{"ref":"2 Corinthians 1:1-11","text":"Paul, an apostle of Christ Jesus by the will of God, and Timothy our brother, To the church of God in Corinth, together with all the saints throughout Achaia: Grace and peace to you from God our Father and the Lord Jesus Christ. Blessed be the God and Father of our Lord Jesus Christ, the Father of compassion and the God of all comfort, who comforts us in all our troubles, so that we can comfort those in any trouble with the comfort we ourselves have received from God. For just as the sufferings of Christ overflow to us, so also through Christ our comfort overflows. If we are afflicted, it is for your comfort and salvation; if we are comforted, it is for your comfort, which accomplishes in you patient endurance of the same sufferings we experience. And our hope for you is sure, because we know that just as you share in our sufferings, so also you will share in our comfort. We do not want you to be unaware, brothers, of the hardships we encountered in the province of Asia. We were under a burden far beyond our ability to endure, so that we despaired even of life. Indeed, we felt we were under the sentence of death, in order that we would not trust in ourselves, but in God, who raises the dead. He has delivered us from such a deadly peril, and He will deliver us. In Him we have placed our hope that He will yet again deliver us, as you help us by your prayers. Then many will give thanks on our behalf for the favor shown us in answer to their prayers.","bibleUrl":"https://www.bible.com/bible/3034/2CO.1.1-11"},"isaiah-1-22":{"ref":"Isaiah 1:22","text":"Your silver has become dross; your fine wine is diluted with water.","bibleUrl":"https://www.bible.com/bible/3034/ISA.1.22"},"2-corinthians-1-12":{"ref":"2 Corinthians 1:12","text":"For this is our boast: Our conscience testifies that we have conducted ourselves in the world, and especially in relation to you, in the holiness and sincerity that are from God\u2014not in worldly wisdom, but in the grace of God.","bibleUrl":"https://www.bible.com/bible/3034/2CO.1.12"},"ephesians-6-5":{"ref":"Ephesians 6:5","text":"Slaves, obey your earthly masters with respect and fear and sincerity of heart, just as you would obey Christ.","bibleUrl":"https://www.bible.com/bible/3034/EPH.6.5"},"colossians-3-22":{"ref":"Colossians 3:22","text":"Slaves, obey your earthly masters in everything, not only to please them while they are watching, but with sincerity of heart and fear of the Lord.","bibleUrl":"https://www.bible.com/bible/3034/COL.3.22"},"2-corinthians-1-13-14":{"ref":"2 Corinthians 1:13-14","text":"For we do not write you anything that is beyond your ability to read and understand. And I hope that you will understand us completely, as you have already understood us in part, that you may boast of us just as we will boast of you in the day of our Lord Jesus.","bibleUrl":"https://www.bible.com/bible/3034/2CO.1.13-14"},"2-corinthians-1-14":{"ref":"2 Corinthians 1:14","text":"as you have already understood us in part, that you may boast of us just as we will boast of you in the day of our Lord Jesus.","bibleUrl":"https://www.bible.com/bible/3034/2CO.1.14"},"john-18-20":{"ref":"John 18:20","text":"\u201cI have spoken openly to the world,\u201d Jesus answered. \u201cI always taught in the synagogues and at the temple, where all the Jews come together. I said nothing in secret.","bibleUrl":"https://www.bible.com/bible/3034/JHN.18.20"},"john-1-14":{"ref":"John 1:14","text":"The Word became flesh and made His dwelling among us. We have seen His glory, the glory of the one and only Son from the Father, full of grace and truth.","bibleUrl":"https://www.bible.com/bible/3034/JHN.1.14"}}</script><script src="/bible-study/assets/reader-controls.js"></script><script src="/bible-study/assets/verse-popover.js?v=74b31b80"></script><script data-goatcounter="https://blessedcontent.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-// Push notification opt-in
-(function() {
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkxvPgrgtVOVFhE3iprkZsM9iQT_xf-do",
-    authDomain: "blessed-content-bible-study.firebaseapp.com",
-    projectId: "blessed-content-bible-study",
-    storageBucket: "blessed-content-bible-study.firebasestorage.app",
-    messagingSenderId: "707607010200",
-    appId: "1:707607010200:web:7f15b6b0fd3d662ab469ed",
-    measurementId: "G-BY2BM5HTX4"
-  };
-
-  var VAPID_KEY = "BNBrwPnK6OvDZ-QdVztthcprC77oHv2NY3tD1NKa2Fu4ls1yWbtQ_SC9DL1WhMkj0DC_YfFzHAgRJiidhiN96HI";
-
-  // Check if notifications are supported
-  if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-  // Check if user already made a choice
-  function getCookie(name) {
-    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  }
-  function setCookie(name, value) {
-    document.cookie = name + '=' + value + ';path=/bible-study/;max-age=31536000;SameSite=Lax';
-  }
-
-  // If already opted in, silently ensure token is current
-  if (getCookie('dbs_notif') === 'yes' && Notification.permission === 'granted') {
-    initFirebaseAndRegister();
-    return;
-  }
-
-  // If denied at browser level or user said no, do nothing
-  if (Notification.permission === 'denied' || getCookie('dbs_notif') === 'no') return;
-
-  // Show the banner after a short delay
-  setTimeout(function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.remove('hidden');
-  }, 2000);
-
-  // Opt-in handler
-  window.dbsNotifOptIn = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'yes');
-    initFirebaseAndRegister();
-  };
-
-  // Dismiss handler
-  window.dbsNotifDismiss = function() {
-    var banner = document.getElementById('notifBanner');
-    if (banner) banner.classList.add('hidden');
-    setCookie('dbs_notif', 'no');
-  };
-
-  function initFirebaseAndRegister() {
-    try {
-      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-      var messaging = firebase.messaging();
-      var db = firebase.firestore();
-
-      navigator.serviceWorker.ready.then(function(swReg) {
-        return messaging.getToken({
-          vapidKey: VAPID_KEY,
-          serviceWorkerRegistration: swReg
-        });
-      }).then(function(token) {
-        if (token) {
-          // Save token to Firestore using a hash of the token as document ID
-          var docId = token.substring(0, 32);
-          db.collection('fcm_tokens').doc(docId).set({
-            token: token,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            userAgent: navigator.userAgent.substring(0, 100)
-          }, { merge: true });
-        }
-      }).catch(function(err) {
-        console.log('Notification setup error:', err);
-      });
-    } catch(e) {
-      console.log('Firebase init error:', e);
-    }
-  }
-})();
-</script>
+<script src="/bible-study/assets/notifications.js" defer></script>
 </body>
 </html>
