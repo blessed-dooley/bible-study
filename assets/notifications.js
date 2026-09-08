@@ -85,9 +85,12 @@
 
   window.dbsNotifOptIn = function () {
     hideBanner();
-    register(true).catch(function (error) {
+    return register(true).then(function () {
+      return true;
+    }).catch(function (error) {
       setFailure();
       console.log('Notification setup error:', error);
+      return false;
     });
   };
 
@@ -96,6 +99,7 @@
     setCookie('dbs_notif', 'no');
     setCookie('dbs_notif_error', 'no');
     notifyChange();
+    return true;
   };
 
   window.dbsNotifDisable = function () {
@@ -105,11 +109,11 @@
       setCookie('dbs_notif_registered', 'no');
       setCookie('dbs_notif_error', 'no');
       notifyChange();
-      return;
+      return Promise.resolve(true);
     }
     try {
       var services = messagingServices();
-      navigator.serviceWorker.ready.then(function (swReg) {
+      return navigator.serviceWorker.ready.then(function (swReg) {
         return services.messaging.getToken({
           vapidKey: vapidKey,
           serviceWorkerRegistration: swReg
@@ -128,13 +132,16 @@
         setCookie('dbs_notif_registered', 'no');
         setCookie('dbs_notif_error', 'no');
         notifyChange();
+        return true;
       }).catch(function (error) {
         setFailure();
         console.log('Notification removal error:', error);
+        return false;
       });
     } catch (error) {
       setFailure();
       console.log('Notification removal error:', error);
+      return Promise.resolve(false);
     }
   };
 

@@ -279,9 +279,15 @@ a:hover { text-decoration-thickness: 2px; }
 
 /* ---- reader-controls menu ---------------------------------------------- */
 .menu {
+  position: absolute; top: var(--appbar-h); left: 0; right: 0;
   max-width: var(--col-read); margin-inline: auto;
   padding: var(--sp-2) var(--sp-3) var(--sp-4);
+  max-height: calc(100vh - var(--appbar-h)); overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--bar);
   border-top: var(--bw-hair) solid var(--line);
+  border-bottom: var(--bw-hair) solid var(--line2);
+  box-shadow: var(--shadow-pop);
 }
 .menu[hidden] { display: none; }
 .menu-row {
@@ -296,6 +302,10 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .menu-row:hover { background: var(--accent-soft); }
 .menu-sep { height: 1px; margin: var(--sp-2) var(--sp-3); background: var(--line); }
+.menu-notification-note {
+  margin: 0 var(--sp-3) var(--sp-2);
+  font-size: var(--fs-meta); line-height: var(--lh-ui); color: var(--ink-mute);
+}
 
 /* P7 — Share is an action, not a destination, so it carries a glyph. */
 .menu-row-icon {
@@ -1661,7 +1671,7 @@ button.jumpbar-row[aria-expanded="true"] .jumpbar-current { color: var(--accent-
   .appbar { position: sticky; }
   .appbar-row { position: relative; }
   .menu {
-    position: absolute; right: calc(50% - var(--col-read) / 2 + var(--sp-3)); top: var(--appbar-h);
+    position: absolute; left: auto; right: calc(50% - var(--col-read) / 2 + var(--sp-3)); top: var(--appbar-h);
     width: 340px; max-width: calc(100vw - var(--sp-8));
     background: var(--panel);
     border: var(--bw-hair) solid var(--line2); border-radius: var(--r-lg);

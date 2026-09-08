@@ -14,11 +14,21 @@
       menuBtn.setAttribute('aria-expanded', 'false');
       if (restoreFocus) menuBtn.focus();
     }
-    menuBtn.addEventListener('click', function () {
+    menuBtn.addEventListener('click', function (event) {
       var open = menu.hidden;
       menu.hidden = !open;
       menuBtn.setAttribute('aria-expanded', String(open));
-      if (open) { var f = menu.querySelector('button, a, input'); if (f) f.focus(); }
+      /* Pointer users keep focus on the sticky trigger. Moving focus into an
+         absolutely positioned descendant makes some mobile browsers scroll
+         back toward the app bar's original document position. Keyboard
+         activation has event.detail === 0 and still receives menu focus. */
+      if (open && event.detail === 0) {
+        var f = menu.querySelector('button, a, input');
+        if (f) {
+          try { f.focus({ preventScroll: true }); }
+          catch (error) { f.focus(); }
+        }
+      }
     });
     d.addEventListener('pointerdown', function (event) {
       if (!menu.hidden && !menu.contains(event.target) && !menuBtn.contains(event.target)) {
@@ -126,33 +136,95 @@
   function syncNotifications() {
     var state = notificationState();
     notifyBtns.forEach(function (button) {
-      button.setAttribute('aria-checked', String(state === 'on'));
-      button.setAttribute('aria-disabled', String(state === 'unsupported' || state === 'denied'));
+      var canToggle = state === 'on' || state === 'off' || state === 'failed';
+      var label = button.children.length ? button.children[0] : null;
+      var visibleLabel = state === 'denied' ? 'Morning reminder · browser blocked' :
+        (state === 'unsupported' ? 'Morning reminder · unavailable' :
+        (state === 'failed' ? 'Morning reminder · retry setup' : 'Morning reminder'));
+      if (label) label.textContent = visibleLabel;
+      button.setAttribute('role', canToggle ? 'switch' : 'button');
+      if (canToggle) button.setAttribute('aria-checked', String(state === 'on'));
+      else button.removeAttribute('aria-checked');
+      button.removeAttribute('aria-disabled');
+      button.removeAttribute('aria-busy');
       button.setAttribute('data-notification-state', state);
       button.setAttribute('aria-label', state === 'on' ? 'Morning reminder, on' :
-        (state === 'failed' ? 'Morning reminder setup failed; open Privacy and reader controls' :
-        (state === 'denied' ? 'Morning reminder blocked in this browser; open Privacy and reader controls' :
-        (state === 'unsupported' ? 'Morning reminder unavailable in this browser; open Privacy and reader controls' :
+        (state === 'failed' ? 'Morning reminder setup failed; activate to retry' :
+        (state === 'denied' ? 'Morning reminder blocked for this site; allow notifications in the site controls beside the address bar, then reload' :
+        (state === 'unsupported' ? 'Morning reminder unavailable in this browser' :
         'Morning reminder, off'))));
+      var noteId = 'notification-menu-note';
+      var note = button.parentNode ? button.parentNode.querySelector('#' + noteId) : null;
+      var noteText = state === 'denied' ?
+        'This site is blocked. Use the site controls beside the address bar to allow notifications, then reload.' :
+        (state === 'unsupported' ? 'Website notifications are unavailable in this browser.' : '');
+      if (noteText && button.parentNode) {
+        if (!note) {
+          note = d.createElement('p');
+          note.id = noteId;
+          note.className = 'menu-notification-note';
+          note.setAttribute('role', 'status');
+          button.insertAdjacentElement('afterend', note);
+        }
+        note.textContent = noteText;
+        button.setAttribute('aria-describedby', noteId);
+      } else {
+        button.removeAttribute('aria-describedby');
+        if (note) note.remove();
+      }
+    });
+    var status = d.getElementById('notification-status');
+    var card = d.querySelector('.notif-card');
+    var message = state === 'denied' ?
+      'Notifications are blocked in this browser. Open the site permissions beside the address bar, allow Notifications, then reload this page.' :
+      (state === 'unsupported' ?
+      'This browser does not offer website notifications. You can use another current browser or install the site as an app on a supported device.' :
+      (state === 'failed' ?
+      'Notification setup did not finish. Check this site’s browser permission and connection, then try again.' :
+      (state === 'on' ? 'Morning reminders are on for this browser.' : '')));
+    if (card && message) {
+      if (!status) {
+        status = d.createElement('p');
+        status.id = 'notification-status';
+        status.className = 'form-note';
+        status.setAttribute('role', 'status');
+        status.setAttribute('aria-live', 'polite');
+        card.appendChild(status);
+      }
+      status.textContent = message;
+    } else if (status) {
+      status.textContent = '';
+    }
+  }
+  function setNotificationBusy(busy) {
+    notifyBtns.forEach(function (button) {
+      if (busy) button.setAttribute('aria-busy', 'true');
+      else button.removeAttribute('aria-busy');
     });
   }
-  function openNotificationHelp() { window.location.href = './privacy.html#notifications'; }
+  function openNotificationHelp() { window.location.href = '/bible-study/privacy.html#notifications'; }
   function enableNotifications() {
-    if (typeof window.dbsNotifOptIn !== 'function') { openNotificationHelp(); return; }
-    window.dbsNotifOptIn();
-    window.setTimeout(syncNotifications, 500);
+    if (typeof window.dbsNotifOptIn !== 'function') { openNotificationHelp(); return Promise.resolve(false); }
+    setNotificationBusy(true);
+    return Promise.resolve(window.dbsNotifOptIn()).then(function (enabled) {
+      syncNotifications();
+      return enabled;
+    });
+  }
+  function disableNotifications() {
+    if (typeof window.dbsNotifDisable !== 'function') { openNotificationHelp(); return Promise.resolve(false); }
+    setNotificationBusy(true);
+    return Promise.resolve(window.dbsNotifDisable()).then(function (disabled) {
+      syncNotifications();
+      return disabled;
+    });
   }
   notifyBtns.forEach(function (button) {
     button.addEventListener('click', function () {
       var state = notificationState();
-      if (state === 'unsupported' || state === 'denied' || state === 'failed') { openNotificationHelp(); return; }
+      if (state === 'unsupported' || state === 'denied') { syncNotifications(); return; }
       if (state === 'on') {
-        if (typeof window.dbsNotifDisable === 'function') {
-          window.dbsNotifDisable();
-          window.setTimeout(syncNotifications, 500);
-        } else {
-          openNotificationHelp();
-        }
+        disableNotifications();
         return;
       }
       enableNotifications();
@@ -161,13 +233,18 @@
   notifyActions.forEach(function (button) {
     button.addEventListener('click', function () {
       var action = button.getAttribute('data-notif');
-      if (action === 'enable') enableNotifications();
-      if (action === 'dismiss' && typeof window.dbsNotifDismiss === 'function') window.dbsNotifDismiss();
-      if (action === 'disable') {
-        if (typeof window.dbsNotifDisable === 'function') window.dbsNotifDisable();
-        else openNotificationHelp();
+      var state = notificationState();
+      if (action === 'enable' && (state === 'denied' || state === 'unsupported')) {
+        syncNotifications();
+        return;
       }
-      syncNotifications();
+      if (action === 'enable') { enableNotifications(); return; }
+      if (action === 'dismiss' && typeof window.dbsNotifDismiss === 'function') {
+        window.dbsNotifDismiss();
+        syncNotifications();
+        return;
+      }
+      if (action === 'disable') { disableNotifications(); return; }
     });
   });
   window.addEventListener('dbs-notification-change', syncNotifications);
