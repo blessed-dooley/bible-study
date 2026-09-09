@@ -42,9 +42,10 @@
     node.classList.remove('hidden');
     node.setAttribute('aria-hidden', 'false');
   }
-  function setFailure() {
+  function setFailure(error) {
     setCookie('dbs_notif_registered', 'no');
-    setCookie('dbs_notif_error', 'yes');
+    var detail = error && (error.message || String(error));
+    setCookie('dbs_notif_error', /push service error/i.test(detail || '') ? 'push-service' : 'yes');
     notifyChange();
   }
   function messagingServices() {
@@ -88,7 +89,7 @@
     return register(true).then(function () {
       return true;
     }).catch(function (error) {
-      setFailure();
+      setFailure(error);
       console.log('Notification setup error:', error);
       return false;
     });
@@ -134,12 +135,12 @@
         notifyChange();
         return true;
       }).catch(function (error) {
-        setFailure();
+        setFailure(error);
         console.log('Notification removal error:', error);
         return false;
       });
     } catch (error) {
-      setFailure();
+      setFailure(error);
       console.log('Notification removal error:', error);
       return Promise.resolve(false);
     }
@@ -150,7 +151,7 @@
   if (Notification.permission === 'granted' &&
       getCookie('dbs_notif_registered') === 'yes') {
     register(false).catch(function (error) {
-      setFailure();
+      setFailure(error);
       console.log('Notification refresh error:', error);
     });
     return;

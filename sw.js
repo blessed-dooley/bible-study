@@ -2,7 +2,7 @@
 // Cache strategy: Cache-first for studies, network-first for navigation
 // Push notifications via Firebase Cloud Messaging
 
-const CACHE_VERSION = 'dbs-v11-reader-controls';
+const CACHE_VERSION = 'dbs-v12-reader-controls';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const STUDY_CACHE = `${CACHE_VERSION}-studies`;
 const RUNTIME_CACHE = `${CACHE_VERSION}-runtime`;

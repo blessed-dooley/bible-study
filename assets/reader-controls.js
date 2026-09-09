@@ -129,6 +129,7 @@
   function notificationState() {
     if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return 'unsupported';
     if (Notification.permission === 'denied') return 'denied';
+    if (getCookie('dbs_notif_error') === 'push-service') return 'push-service';
     if (getCookie('dbs_notif_error') === 'yes') return 'failed';
     if (Notification.permission === 'granted' && getCookie('dbs_notif_registered') === 'yes') return 'on';
     return 'off';
@@ -136,11 +137,12 @@
   function syncNotifications() {
     var state = notificationState();
     notifyBtns.forEach(function (button) {
-      var canToggle = state === 'on' || state === 'off' || state === 'failed';
+      var canToggle = state === 'on' || state === 'off' || state === 'failed' || state === 'push-service';
       var label = button.children.length ? button.children[0] : null;
       var visibleLabel = state === 'denied' ? 'Morning reminder · browser blocked' :
         (state === 'unsupported' ? 'Morning reminder · unavailable' :
-        (state === 'failed' ? 'Morning reminder · retry setup' : 'Morning reminder'));
+        (state === 'push-service' ? 'Morning reminder · enable browser push' :
+        (state === 'failed' ? 'Morning reminder · retry setup' : 'Morning reminder')));
       if (label) label.textContent = visibleLabel;
       button.setAttribute('role', canToggle ? 'switch' : 'button');
       if (canToggle) button.setAttribute('aria-checked', String(state === 'on'));
@@ -149,15 +151,19 @@
       button.removeAttribute('aria-busy');
       button.setAttribute('data-notification-state', state);
       button.setAttribute('aria-label', state === 'on' ? 'Morning reminder, on' :
+        (state === 'push-service' ? 'Morning reminder needs browser push messaging; enable it in browser privacy settings, then retry' :
         (state === 'failed' ? 'Morning reminder setup failed; activate to retry' :
         (state === 'denied' ? 'Morning reminder blocked for this site; allow notifications in the site controls beside the address bar, then reload' :
         (state === 'unsupported' ? 'Morning reminder unavailable in this browser' :
-        'Morning reminder, off'))));
+        'Morning reminder, off')))));
       var noteId = 'notification-menu-note';
       var note = button.parentNode ? button.parentNode.querySelector('#' + noteId) : null;
       var noteText = state === 'denied' ?
         'This site is blocked. Use the site controls beside the address bar to allow notifications, then reload.' :
-        (state === 'unsupported' ? 'Website notifications are unavailable in this browser.' : '');
+        (state === 'push-service' ?
+        ((navigator.brave ? 'In Brave, turn on Settings → Privacy and security → Use Google services for push messaging, then reload and retry.' :
+        'Turn on push messaging in your browser’s privacy settings, then reload and retry.')) :
+        (state === 'unsupported' ? 'Website notifications are unavailable in this browser.' : ''));
       if (noteText && button.parentNode) {
         if (!note) {
           note = d.createElement('p');
@@ -179,9 +185,12 @@
       'Notifications are blocked in this browser. Open the site permissions beside the address bar, allow Notifications, then reload this page.' :
       (state === 'unsupported' ?
       'This browser does not offer website notifications. You can use another current browser or install the site as an app on a supported device.' :
+      (state === 'push-service' ?
+      ((navigator.brave ? 'Brave allows notifications for this site, but its push service is off. Turn on Settings → Privacy and security → Use Google services for push messaging, reload, then try again.' :
+      'Your browser allows notifications, but its push service did not register. Turn on push messaging in browser privacy settings, reload, then try again.')) :
       (state === 'failed' ?
       'Notification setup did not finish. Check this site’s browser permission and connection, then try again.' :
-      (state === 'on' ? 'Morning reminders are on for this browser.' : '')));
+      (state === 'on' ? 'Morning reminders are on for this browser.' : ''))));
     if (card && message) {
       if (!status) {
         status = d.createElement('p');
