@@ -137,47 +137,18 @@
   function syncNotifications() {
     var state = notificationState();
     notifyBtns.forEach(function (button) {
-      var canToggle = state === 'on' || state === 'off' || state === 'failed' || state === 'push-service';
       var label = button.children.length ? button.children[0] : null;
-      var visibleLabel = state === 'denied' ? 'Morning reminder · browser blocked' :
-        (state === 'unsupported' ? 'Morning reminder · unavailable' :
-        (state === 'push-service' ? 'Morning reminder · enable browser push' :
-        (state === 'failed' ? 'Morning reminder · retry setup' : 'Morning reminder')));
-      if (label) label.textContent = visibleLabel;
-      button.setAttribute('role', canToggle ? 'switch' : 'button');
-      if (canToggle) button.setAttribute('aria-checked', String(state === 'on'));
-      else button.removeAttribute('aria-checked');
+      if (label) label.textContent = 'Morning notification';
+      button.setAttribute('role', 'switch');
+      button.setAttribute('aria-checked', String(state === 'on'));
       button.removeAttribute('aria-disabled');
       button.removeAttribute('aria-busy');
       button.setAttribute('data-notification-state', state);
-      button.setAttribute('aria-label', state === 'on' ? 'Morning reminder, on' :
-        (state === 'push-service' ? 'Morning reminder needs browser push messaging; enable it in browser privacy settings, then retry' :
-        (state === 'failed' ? 'Morning reminder setup failed; activate to retry' :
-        (state === 'denied' ? 'Morning reminder blocked for this site; allow notifications in the site controls beside the address bar, then reload' :
-        (state === 'unsupported' ? 'Morning reminder unavailable in this browser' :
-        'Morning reminder, off')))));
-      var noteId = 'notification-menu-note';
-      var note = button.parentNode ? button.parentNode.querySelector('#' + noteId) : null;
-      var noteText = state === 'denied' ?
-        'This site is blocked. Use the site controls beside the address bar to allow notifications, then reload.' :
-        (state === 'push-service' ?
-        ((navigator.brave ? 'In Brave, turn on Settings → Privacy and security → Use Google services for push messaging, then reload and retry.' :
-        'Turn on push messaging in your browser’s privacy settings, then reload and retry.')) :
-        (state === 'unsupported' ? 'Website notifications are unavailable in this browser.' : ''));
-      if (noteText && button.parentNode) {
-        if (!note) {
-          note = d.createElement('p');
-          note.id = noteId;
-          note.className = 'menu-notification-note';
-          note.setAttribute('role', 'status');
-          button.insertAdjacentElement('afterend', note);
-        }
-        note.textContent = noteText;
-        button.setAttribute('aria-describedby', noteId);
-      } else {
-        button.removeAttribute('aria-describedby');
-        if (note) note.remove();
-      }
+      button.removeAttribute('aria-describedby');
+      button.setAttribute('aria-label', state === 'on' ? 'Morning notification, on' :
+        (state === 'denied' ? 'Morning notification, off; blocked in browser settings' :
+        (state === 'unsupported' ? 'Morning notification unavailable in this browser' :
+        'Morning notification, off')));
     });
     var status = d.getElementById('notification-status');
     var card = d.querySelector('.notif-card');
